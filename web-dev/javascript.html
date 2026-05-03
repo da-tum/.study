@@ -1,0 +1,3003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript | Web Dev II Guide</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --bg-color: #ffffff;
+      --sidebar-bg: #f8fafc;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --primary: #f59e0b;
+      --primary-light: #fef3c7;
+      --border-color: #e2e8f0;
+      --accent: #0070f3;
+      --code-bg: #1e1e1e;
+      --wiki-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    }
+
+    [data-theme='dark'] {
+      --bg-color: #0f172a;
+      --sidebar-bg: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #fbbf24;
+      --primary-light: rgba(251, 191, 36, 0.1);
+      --border-color: #334155;
+      --code-bg: #0b0f19;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+      transition: background 0.3s ease;
+      min-width: 100%;
+    }
+
+    /* Sidebar Wiki Logic */
+    .wiki-sidebar {
+      width: 300px;
+      height: 100vh;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border-color);
+      position: fixed;
+      overflow-y: auto;
+      padding: 30px 20px;
+      z-index: 100;
+    }
+
+    .wiki-logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-color);
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .nav-group {
+      margin-bottom: 30px;
+    }
+
+    .nav-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      padding: 0 12px;
+      opacity: 0.8;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 8px;
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+      line-height: 1.4;
+      width: 100%;
+    }
+
+    .nav-link:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .nav-link.active {
+      background: var(--primary);
+      color: #000;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2);
+    }
+
+    /* Main Content Wiki style */
+    .wiki-main {
+      margin-left: 300px;
+      width: calc(100% - 300px);
+      max-width: 900px;
+      padding: 60px 80px;
+      margin-right: auto;
+    }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    section[id] {
+      scroll-margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      color: var(--primary);
+      scroll-margin-top: 80px;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      scroll-margin-top: 80px;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: var(--text-main);
+    }
+
+    .wiki-card {
+      background: var(--sidebar-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 30px;
+      box-shadow: var(--wiki-shadow);
+    }
+
+    /* Advanced Code Blocks */
+    pre {
+      background: var(--code-bg);
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 0.7rem;
+      cursor: pointer;
+    }
+
+    /* Callouts */
+    .callout {
+      padding: 20px;
+      border-radius: 10px;
+      border-left: 5px solid;
+      margin-bottom: 2rem;
+    }
+
+    .callout-info {
+      background: #eff6ff;
+      border-color: #3b82f6;
+      color: #1e40af;
+    }
+
+    .callout-warning {
+      background: #fffbeb;
+      border-color: #f59e0b;
+      color: #92400e;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 300px;
+      width: calc(100% - 300px);
+      height: 4px;
+      background: transparent;
+      z-index: 1000;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+    }
+
+    @media (max-width: 1024px) {
+      .wiki-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        visibility: hidden;
+      }
+
+      .wiki-sidebar.active {
+        transform: translateX(0);
+        visibility: visible;
+      }
+
+      .wiki-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 40px 20px;
+      }
+
+      .progress-container {
+        left: 0;
+        width: 100%;
+      }
+    }
+
+    /* Mobile Toggle Button */
+    .mobile-toggle {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+      background: var(--primary);
+      color: #000;
+      border-radius: 50%;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      z-index: 1001;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 1024px) {
+      .mobile-toggle {
+        display: flex;
+      }
+      .wiki-main {
+        padding: 30px 15px;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .wiki-sidebar.active {
+        transform: translateX(0);
+        visibility: visible;
+      }
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>
+
+  <button class="mobile-toggle" id="menuToggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <div class="wiki-sidebar">
+    <div class="wiki-logo">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+      </svg>
+      <span>JSWiki</span>
+    </div>
+
+    <input type="text" class="search-box" placeholder="Search documentation..." id="wikiSearch">
+
+    <div class="nav-group">
+      <div class="nav-title">Basics</div>
+      <a href="#intro" class="nav-link">Introduction</a>
+      <a href="#variables" class="nav-link">Variables & Scope</a>
+      <a href="#data-types" class="nav-link">Data Types</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-title">Control Flow</div>
+      <a href="#operators" class="nav-link">Operators</a>
+      <a href="#decision" class="nav-link">Decision Making</a>
+      <a href="#loops" class="nav-link">Loops & Iteration</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-title">Data Structures</div>
+      <a href="#arrays" class="nav-link">Arrays & Big O</a>
+      <a href="#objects" class="nav-link">Objects & References</a>
+      <a href="#sets-maps" class="nav-link">Sets & Maps</a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-title">Advanced JS</div>
+      <a href="#event-loop" class="nav-link">The Event Loop</a>
+      <a href="#closures" class="nav-link">Closures</a>
+      <a href="#prototypes" class="nav-link">Prototypes</a>
+      <a href="#async" class="nav-link">Asynchronous JS</a>
+    </div>
+
+    <div class="nav-group" style="margin-top: 40px;">
+      <a href="../index.html" class="nav-link" style="color: var(--accent);">← Back to Portal</a>
+      <a href="react.html" class="nav-link" style="color: var(--accent);">⚛️ React Guide</a>
+    </div>
+  </div>
+
+  <div class="wiki-main">
+    <div class="breadcrumb">Docs > Web Development > JavaScript Wiki</div>
+
+    <header style="margin-bottom: 60px;">
+      <h1>JavaScript <span style="color:var(--primary)">Foundation</span></h1>
+      <p style="font-size: 1.25rem; color: var(--text-muted); font-weight: 500;">Core mechanics and high-level concepts
+        of the modern web language.</p>
+    </header>
+
+
+    <section id="quick-ref">
+      <h2>Quick Reference</h2>
+      <div class="wiki-card"
+        style="background: linear-gradient(135deg, var(--sidebar-bg) 0%, var(--primary-light) 100%);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+          <div>
+            <h5 style="color: var(--primary);">Fundamentals</h5>
+            <ul style="font-size: 0.85rem; padding-left: 15px;">
+              <li><code>let</code> / <code>const</code> (Block scope)</li>
+              <li>8 Data Types (7 Primitive + Object)</li>
+              <li>Strict Equality (<code>===</code>)</li>
+            </ul>
+          </div>
+          <div>
+            <h5 style="color: var(--primary);">Data Structures</h5>
+            <ul style="font-size: 0.85rem; padding-left: 15px;">
+              <li>Arrays: <code>map</code>, <code>filter</code>, <code>reduce</code></li>
+              <li>Objects: Reference-based, <code>this</code> context</li>
+              <li>Map/Set: Specialized collections</li>
+            </ul>
+          </div>
+          <div>
+            <h5 style="color: var(--primary);">Advanced JS</h5>
+            <ul style="font-size: 0.85rem; padding-left: 15px;">
+              <li>Closures: Scope persistence</li>
+              <li>Prototypes: Inheritance mechanism</li>
+              <li>Event Loop: Async orchestration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <h2>Introduction</h2>
+    <div class="wiki-card">
+      <p>JavaScript (JS) is a lightweight, interpreted, or just-in-time compiled programming language with first-class
+        functions. While it is most well-known as the scripting language for Web pages, many non-browser environments
+        also use it, such as Node.js, Apache CouchDB and Adobe Acrobat.</p>
+      <div class="callout callout-info">
+        <strong>Academic Context:</strong> JS is a prototype-based, multi-paradigm, single-threaded, dynamic language,
+        supporting object-oriented, imperative, and declarative styles.
+      </div>
+    </div>
+    </section>
+
+    <section id="variables">
+      <h2>Variables & Scope</h2>
+      <div class="wiki-card">
+        <p>Modern JavaScript uses <code>let</code> and <code>const</code> for variable declaration, replacing the legacy
+          <code>var</code>.
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div>
+            <h4>let</h4>
+            <ul>
+              <li>Block-scoped.</li>
+              <li>Can be reassigned.</li>
+              <li>Not hoisted (initialized as undefined).</li>
+            </ul>
+          </div>
+          <div>
+            <h4>const</h4>
+            <ul>
+              <li>Block-scoped.</li>
+              <li>Immutable binding (cannot reassign).</li>
+              <li>Requires initialization.</li>
+            </ul>
+          </div>
+        </div>
+        <pre><code class="language-javascript">let score = 10;
+const API_URL = "https://api.viva.com";</code></pre>
+      </div>
+    </section>
+
+    <section id="data-types">
+      <h2>Data Types</h2>
+      <div class="wiki-card">
+        <p>JavaScript defines 8 built-in types, categorized into Primitives and Objects.</p>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+          <tr style="border-bottom: 1px solid var(--border-color);">
+            <th style="text-align: left; padding: 10px;">Type</th>
+            <th style="text-align: left; padding: 10px;">Description</th>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">Number</td>
+            <td style="padding: 10px;">Double-precision 64-bit binary format IEEE 754.</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">String</td>
+            <td style="padding: 10px;">Immutable sequence of UTF-16 code units.</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">Boolean</td>
+            <td style="padding: 10px;">Logical entity: <code>true</code> or <code>false</code>.</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px;">BigInt</td>
+            <td style="padding: 10px;">Represent integers with arbitrary precision.</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <section id="operators">
+      <h3 id="operators">JavaScript Operators</h3>
+      <h4>1. Arithmetic Operators</h4>
+      <p>Arithmetic operators are used to perform mathematical operations in JavaScript. Here are some common ones:</p>
+      <ul>
+        <li>
+          <p><strong>Addition (+):</strong> Adds two numbers.</p>
+          <pre><code class="language-javascript">let sum = 5 + 3; // sum is 8
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Subtraction (-):</strong> Subtracts one number from another.</p>
+          <pre><code class="language-javascript">let difference = 10 - 3; // difference is 7
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Multiplication (*):</strong> Multiplies two numbers.</p>
+          <pre><code class="language-javascript">let product = 4 * 6; // product is 24
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Division (/):</strong> Divides one number by another.</p>
+          <pre><code class="language-javascript">let quotient = 15 / 3; // quotient is 5
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Modulus (%):</strong> Returns the remainder of a division.</p>
+          <pre><code class="language-javascript">let remainder = 10 % 3; // remainder is 1
+</code></pre>
+        </li>
+      </ul>
+      <h4>2. Relational Operators</h4>
+      <p>Relational operators are used to compare values. They return a Boolean result (true or false).</p>
+      <ul>
+        <li>
+          <p><strong>Equality (==):</strong> Checks if two values are equal, but it may perform type coercion.</p>
+          <pre><code class="language-javascript">5 == &quot;5&quot;; // true (value comparison, type coerced)
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Inequality (!=):</strong> Checks if two values are not equal, but it may perform type coercion.</p>
+          <pre><code class="language-javascript">5 != &quot;6&quot;; // true (value comparison, type coerced)
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Strict Equality (===):</strong> Checks if two values are equal without type coercion (same value
+            and same type).</p>
+          <pre><code class="language-javascript">5 === &quot;5&quot;; // false (strict equality)
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Strict Inequality (!==):</strong> Checks if two values are not equal without type coercion.</p>
+          <pre><code class="language-javascript">5 !== &quot;5&quot;; // true (strict inequality)
+</code></pre>
+        </li>
+      </ul>
+      <h4>3. Logical Operators</h4>
+      <p>Logical operators are used to perform logical operations.</p>
+      <ul>
+        <li>
+          <p><strong>AND (&amp;&amp;):</strong> Returns true if both operands are true.</p>
+          <pre><code class="language-javascript">true &amp;&amp; true; // true
+true &amp;&amp; false; // false
+</code></pre>
+        </li>
+        <li>
+          <p><strong>OR (||):</strong> Returns true if at least one operand is true.</p>
+          <pre><code class="language-javascript">true || false; // true
+false || false; // false
+</code></pre>
+        </li>
+        <li>
+          <p><strong>NOT (!):</strong> Negates the value of an operand.</p>
+          <pre><code class="language-javascript">!true; // false
+!false; // true
+</code></pre>
+        </li>
+      </ul>
+      <h4>4. Bitwise Operators</h4>
+      <p>Bitwise operators perform operations on binary representations of numbers.</p>
+      <ul>
+        <li>
+          <p><strong>Bitwise AND (&amp;):</strong> Performs a bitwise AND operation.</p>
+          <pre><code class="language-javascript">5 &amp; 3; // 1
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Bitwise OR (|):</strong> Performs a bitwise OR operation.</p>
+          <pre><code class="language-javascript">5 | 3; // 7
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Bitwise XOR (^):</strong> Performs a bitwise XOR (exclusive OR) operation.</p>
+          <pre><code class="language-javascript">5 ^ 3; // 6
+</code></pre>
+        </li>
+      </ul>
+      <h4>5. Increment vs. Decrement Operators</h4>
+      <p>Increment and decrement operators are used to increase or decrease the value of a variable.</p>
+      <ul>
+        <li>
+          <p><strong>Increment (++):</strong> Increases the value of a variable by 1.</p>
+          <pre><code class="language-javascript">let x = 5;
+x++; // x is now 6
+</code></pre>
+        </li>
+        <li>
+          <p><strong>Decrement (--):</strong> Decreases the value of a variable by 1.</p>
+          <pre><code class="language-javascript">let y = 10;
+y--; // y is now 9
+</code></pre>
+        </li>
+      </ul>
+      <h4>6. Assignment Operators</h4>
+      <p>Assignment operators are used to assign values to variables.</p>
+      <ul>
+        <li>
+          <p><strong>Assignment (=):</strong> Assigns a value to a variable.</p>
+          <pre><code class="language-javascript">let z = 15;
+</code></pre>
+        </li>
+        <li>
+          <p>*<em>Other Assignment Operators (e.g., +=, -=, <em>=, /=):</em></em> Perform an operation and assign the
+            result to a variable in a single step.</p>
+          <pre><code class="language-javascript">let a = 5;
+a += 3; // Equivalent to: a = a + 3; (a is now 8)
+</code></pre>
+        </li>
+      </ul>
+      <h4>7. Ternary Operator (Conditional Operator)</h4>
+      <p>The ternary operator is a shorthand for an if-else statement. It returns one of two values based on a
+        condition.</p>
+      <pre><code class="language-javascript">let age = 18;
+let canVote = age &gt;= 18 ? &quot;Yes&quot; : &quot;No&quot;;
+console.log(canVote); // &quot;Yes&quot;
+</code></pre>
+      <h4>8. Nullish Coalescing Operator (??)</h4>
+      <p>The nullish coalescing operator returns the right-hand operand when the left-hand operand is null or undefined;
+        otherwise, it returns the left-hand operand.</p>
+      <pre><code class="language-javascript">let value = null;
+let defaultValue = &quot;Default Value&quot;;
+let result = value ?? defaultValue;
+console.log(result); // &quot;Default Value&quot;
+</code></pre>
+      <section id="decision">
+        <h3 id="decision">Decision-Making Statements in JavaScript</h3>
+        <h4>1. <code>if</code> Statement</h4>
+        <p>The <code>if</code> statement is used for conditional execution of code. It evaluates a condition and
+          executes a block of code if the condition is true.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">if (condition) {
+    // Code to execute if the condition is true
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let age = 20;
+if (age &gt;= 18) {
+    console.log(&quot;You are an adult.&quot;);
+}
+</code></pre>
+        <h4>2. <code>if-else</code> Statement</h4>
+        <p>The <code>if-else</code> statement allows you to execute one block of code if a condition is true and another
+          block of code if the condition is false.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">if (condition) {
+    // Code to execute if the condition is true
+} else {
+    // Code to execute if the condition is false
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let isRaining = true;
+if (isRaining) {
+    console.log(&quot;Bring an umbrella.&quot;);
+} else {
+    console.log(&quot;No need for an umbrella.&quot;);
+}
+</code></pre>
+        <h4>3. Nested <code>if-else</code> Statement</h4>
+        <p>You can nest <code>if-else</code> statements inside each other to handle more complex conditions.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">if (condition1) {
+    // Code to execute if condition1 is true
+    if (condition2) {
+        // Code to execute if condition2 is true
+    } else {
+        // Code to execute if condition2 is false
+    }
+} else {
+    // Code to execute if condition1 is false
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let score = 75;
+if (score &gt;= 60) {
+    console.log(&quot;You passed.&quot;);
+    if (score &gt;= 90) {
+        console.log(&quot;You got an A grade!&quot;);
+    } else {
+        console.log(&quot;You got a B grade.&quot;);
+    }
+} else {
+    console.log(&quot;You failed.&quot;);
+}
+</code></pre>
+        <h4>4. Cascaded <code>if-else</code> Statement</h4>
+        <p>A cascaded <code>if-else</code> statement is used when you have multiple conditions to check one after the
+          other.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">if (condition1) {
+    // Code to execute if condition1 is true
+} else if (condition2) {
+    // Code to execute if condition2 is true
+} else if (condition3) {
+    // Code to execute if condition3 is true
+} else {
+    // Code to execute if none of the conditions are true
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let grade = &#39;B&#39;;
+if (grade === &#39;A&#39;) {
+    console.log(&quot;Excellent!&quot;);
+} else if (grade === &#39;B&#39;) {
+    console.log(&quot;Good job!&quot;);
+} else if (grade === &#39;C&#39;) {
+    console.log(&quot;You can do better.&quot;);
+} else {
+    console.log(&quot;Needs improvement.&quot;);
+}
+</code></pre>
+        <h4>5. <code>switch-case</code> Statement</h4>
+        <p>The <code>switch-case</code> statement is used to select one of many code blocks to be executed.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">switch (expression) {
+    case value1:
+        // Code to execute if expression === value1
+        break;
+    case value2:
+        // Code to execute if expression === value2
+        break;
+    // More cases...
+    default:
+        // Code to execute if none of the cases match
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let dayOfWeek = &#39;Monday&#39;;
+switch (dayOfWeek) {
+    case &#39;Monday&#39;:
+        console.log(&quot;It&#39;s the start of the week.&quot;);
+        break;
+    case &#39;Friday&#39;:
+        console.log(&quot;Weekend is almost here!&quot;);
+        break;
+    default:
+        console.log(&quot;It&#39;s a weekday.&quot;);
+}
+</code></pre>
+        <h3>1. <code>break</code> Statement</h3>
+        <p>The <code>break</code> statement is used to exit a loop prematurely when a certain condition is met. It is
+          commonly used to terminate a loop early, preventing further iterations.</p>
+        <p><strong>Example: Using <code>break</code> in a <code>for</code> loop</strong></p>
+        <pre><code class="language-javascript">for (let i = 1; i &lt;= 10; i++) {
+    if (i === 5) {
+        break; // Exit the loop when i equals 5
+    }
+    console.log(i);
+}
+</code></pre>
+        <p>In this example, the loop runs from 1 to 10, but when <code>i</code> becomes equal to 5, the
+          <code>break</code> statement is executed, and the loop terminates. So, only the numbers 1 through 4 are
+          printed.
+        </p>
+        <h3>2. <code>continue</code> Statement</h3>
+        <p>The <code>continue</code> statement is used to skip the current iteration of a loop and proceed to the next
+          iteration. It allows you to skip over specific values or conditions without terminating the loop entirely.</p>
+        <p><strong>Example: Using <code>continue</code> in a <code>for</code> loop</strong></p>
+        <pre><code class="language-javascript">for (let i = 1; i &lt;= 5; i++) {
+    if (i === 3) {
+        continue; // Skip iteration when i equals 3
+    }
+    console.log(i);
+}
+</code></pre>
+        <p>In this example, when <code>i</code> is equal to 3, the <code>continue</code> statement is executed, and the
+          loop proceeds to the next iteration. As a result, the number 3 is skipped in the output, and the loop
+          continues to print 1, 2, 4, and 5.</p>
+        <h3>JavaScript Math functions</h3>
+        <h3>1. <code>Math.abs(x)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Returns the absolute (positive) value of a number.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let num = -5;
+let absoluteValue = Math.abs(num); // absoluteValue is 5
+</code></pre>
+          </li>
+        </ul>
+        <h3>2. <code>Math.round(x)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Rounds a number to the nearest integer.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let num = 5.49;
+let rounded = Math.round(num); // rounded is 5
+</code></pre>
+          </li>
+        </ul>
+        <h3>3. <code>Math.ceil(x)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Rounds a number up to the nearest integer.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let num = 5.01;
+let roundedUp = Math.ceil(num); // roundedUp is 6
+</code></pre>
+          </li>
+        </ul>
+        <h3>4. <code>Math.floor(x)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Rounds a number down to the nearest integer.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let num = 5.99;
+let roundedDown = Math.floor(num); // roundedDown is 5
+</code></pre>
+          </li>
+        </ul>
+        <h3>5. <code>Math.random()</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Generates a random decimal number between 0 (inclusive) and 1 (exclusive).
+            </p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let randomNumber = Math.random(); // Generates a random number between 0 and 1 (e.g., 0.123456)
+</code></pre>
+          </li>
+        </ul>
+        <h3>6. <code>Math.max(x, y, z, ...)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Returns the largest of zero or more numbers.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let maxNumber = Math.max(10, 5, 20, 8); // maxNumber is 20
+</code></pre>
+          </li>
+        </ul>
+        <h3>7. <code>Math.min(x, y, z, ...)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Returns the smallest of zero or more numbers.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let minNumber = Math.min(10, 5, 20, 8); // minNumber is 5
+</code></pre>
+          </li>
+        </ul>
+        <h3>8. <code>Math.pow(x, y)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Returns the value of x to the power of y.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let result = Math.pow(2, 3); // result is 8 (2^3 = 8)
+</code></pre>
+          </li>
+        </ul>
+        <h3>9. <code>Math.sqrt(x)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Returns the square root of a number.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let squareRoot = Math.sqrt(25); // squareRoot is 5 (√25 = 5)
+</code></pre>
+          </li>
+        </ul>
+        <h3>10. <code>Math.PI</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> A predefined constant representing the mathematical constant π (pi).</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let circleArea = Math.PI * Math.pow(5, 2); // Calculates the area of a circle with radius 5
+</code></pre>
+          </li>
+        </ul>
+        <h3>11. <code>Math.trunc(x)</code></h3>
+        <ul>
+          <li>
+            <p><strong>Description:</strong> Returns the integer part of a number by removing the fractional part,
+              effectively truncating the decimal portion.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">let num = 5.78;
+let truncated = Math.trunc(num); // truncated is 5
+</code></pre>
+          </li>
+        </ul>
+        <h3 id="arrays">JavaScript Arrays & Big O</h3>
+        <div class="wiki-card">
+          <p>Arrays in JavaScript are ordered, integer-indexed collections. They are technically objects under the hood,
+            but optimized for sequential access.</p>
+
+          <h4>Time Complexity (Big O)</h4>
+          <ul>
+            <li><strong>Access by Index:</strong> O(1)</li>
+            <li><strong>Push/Pop:</strong> O(1)</li>
+            <li><strong>Shift/Unshift:</strong> O(n) - requires re-indexing.</li>
+            <li><strong>Splicing:</strong> O(n).</li>
+          </ul>
+
+          <h4>Essential Modern Methods</h4>
+          <ul>
+            <li><code>.map()</code>: Transform each element. Returns new array.</li>
+            <li><code>.filter()</code>: Keep elements that match condition. Returns new array.</li>
+            <li><code>.reduce()</code>: Accumulate array into a single value.</li>
+            <li><code>.find()</code>: Returns first element matching condition.</li>
+          </ul>
+        </div>
+        <p><strong>Syntax of Creating an Array:</strong></p>
+        <pre><code class="language-javascript">let fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;];
+</code></pre>
+        <p><strong>Accessing Elements:</strong>
+          You can access elements in an array using square brackets and the index of the element.</p>
+        <pre><code class="language-javascript">console.log(fruits[0]); // &quot;apple&quot;
+console.log(fruits[1]); // &quot;banana&quot;
+</code></pre>
+        <p><strong>Length Attribute:</strong>
+          The <code>length</code> property of an array returns the number of elements in the array.</p>
+        <pre><code class="language-javascript">console.log(fruits.length); // 3
+</code></pre>
+        <p><strong>display the array elements:</strong></p>
+        <pre><code class="language-javascript">let arr = [1,2,3,4,5,6]
+for(i=0;i&lt;arr.length;i++){
+  console.log(arr[i]);
+}
+</code></pre>
+        <p><strong>find out all the even numbers from an array:</strong></p>
+        <pre><code class="language-javascript">let arr = [1,2,3,4,5,6]
+for(i=0;i&lt;arr.length;i++){
+  if(arr[i]%2===0)
+  console.log(arr[i]);
+}
+</code></pre>
+        <p><strong>Add 3 to each element in an array:</strong></p>
+        <pre><code class="language-javascript">let arr = [1,2,3,4,5,6]
+for(i=0;i&lt;arr.length;i++){
+  arr[i]=arr[i]+3;
+  console.log(arr[i]);
+}
+</code></pre>
+        <p><strong>Find out the maximum element in an array:</strong></p>
+        <pre><code class="language-javascript">let arr = [4,5,8,2,7,1]
+let max=arr[0];
+for(i=0;i&lt;arr.length;i++){
+    if(arr[i]&gt;max){
+        max=arr[i];
+    }
+}
+console.log(max);
+</code></pre>
+        <p><strong>Sort the numbers in an array:</strong></p>
+        <pre><code class="language-javascript">let arr = [4,5,8,2,7,1];
+let c=0;
+for(i=0;i&lt;arr.length;i++){
+    for(j=i+1;j&lt;arr.length;j++){
+        if(arr[i]&gt;arr[j]){
+            c=arr[i];
+            arr[i]=arr[j];
+            arr[j]=c;
+        }
+    }
+    console.log(arr[i]);
+}
+</code></pre>
+        <p><strong>Reverse the numbers in an array:</strong></p>
+        <pre><code class="language-javascript">let arr = [1,2,3,4,5]
+let s=0;
+let e=arr.length-1;
+
+while(s&lt;e){
+    let temp = arr[s];
+    arr[s]=arr[e];
+    arr[e]=temp;
+    s++;
+    e--;
+}
+console.log(arr);
+</code></pre>
+        <p><strong>Multidimensional Array:</strong>
+          JavaScript arrays can also hold other arrays, creating multidimensional arrays.</p>
+        <pre><code class="language-javascript">let matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+console.log(matrix[1][2]); // Accesses the element 6
+</code></pre>
+        <h3>Creating a Multidimensional Array</h3>
+        <p>To create a multidimensional array, you can nest arrays within arrays. Here&#39;s an example of a 2D array (a
+          grid with rows and columns):</p>
+        <pre><code class="language-javascript">let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+</code></pre>
+        <p>In this example, <code>matrix</code> is a 2D array with three rows and three columns.</p>
+        <h3>Accessing Elements in a Multidimensional Array</h3>
+        <p>You can access elements in a multidimensional array using multiple pairs of square brackets. The first pair
+          selects the row, and the second pair selects the column:</p>
+        <pre><code class="language-javascript">console.log(matrix[0][0]); // Accesses the element in the first row and first column (1)
+console.log(matrix[1][2]); // Accesses the element in the second row and third column (6)
+</code></pre>
+        <h3>Iterating Through a Multidimensional Array</h3>
+        <p>You can use nested loops to iterate through the elements of a multidimensional array. For example, to print
+          all elements in the <code>matrix</code>:</p>
+        <pre><code class="language-javascript">for (let i = 0; i &lt; matrix.length; i++) {
+    for (let j = 0; j &lt; matrix[i].length; j++) {
+        console.log(matrix[i][j]);
+    }
+}
+</code></pre>
+        <p>This nested loop structure traverses each row and column, printing all the elements.</p>
+        <h3>Use Cases of Multidimensional Arrays</h3>
+        <p>Multidimensional arrays are useful in various scenarios, including:</p>
+        <ol>
+          <li>
+            <p><strong>Matrices</strong>: Representing mathematical matrices for operations like matrix multiplication.
+            </p>
+          </li>
+          <li>
+            <p><strong>Grids</strong>: Storing data in a grid format, such as game boards, spreadsheets, or images
+              (pixels).</p>
+          </li>
+          <li>
+            <p><strong>Tabular Data</strong>: Storing tabular data with rows and columns, like a database table.</p>
+          </li>
+          <li>
+            <p><strong>Nested Structures</strong>: Creating hierarchical or nested data structures.</p>
+          </li>
+        </ol>
+        <p>Here are some more examples:</p>
+        <h4>Game Board</h4>
+        <pre><code class="language-javascript">let ticTacToeBoard = [
+    [&#39;X&#39;, &#39;O&#39;, &#39;X&#39;],
+    [&#39;O&#39;, &#39;X&#39;, &#39;O&#39;],
+    [&#39;X&#39;, &#39;O&#39;, &#39;X&#39;]
+];
+</code></pre>
+        <h4>Student Grades</h4>
+        <pre><code class="language-javascript">let studentGrades = [
+    [&#39;Alice&#39;, 95, 88, 92],
+    [&#39;Bob&#39;, 89, 91, 87],
+    [&#39;Carol&#39;, 92, 87, 95]
+];
+</code></pre>
+        <h4>Color Image</h4>
+        <pre><code class="language-javascript">let imagePixels = [
+    [&#39;#FF0000&#39;, &#39;#00FF00&#39;, &#39;#0000FF&#39;],
+    [&#39;#000000&#39;, &#39;#FFFFFF&#39;, &#39;#808080&#39;],
+    [&#39;#FFFF00&#39;, &#39;#FF00FF&#39;, &#39;#00FFFF&#39;]
+];
+</code></pre>
+        <h4>Calendar</h4>
+        <pre><code class="language-javascript">let monthlyCalendar = [
+    [&#39;Jan&#39;, &#39;Feb&#39;, &#39;Mar&#39;],
+    [&#39;Apr&#39;, &#39;May&#39;, &#39;Jun&#39;],
+    [&#39;Jul&#39;, &#39;Aug&#39;, &#39;Sep&#39;],
+    [&#39;Oct&#39;, &#39;Nov&#39;, &#39;Dec&#39;]
+];
+</code></pre>
+        <h3>print first column</h3>
+        <pre><code class="language-javascript">let firstColumn = [];
+
+for (let i = 0; i &lt; matrix.length; i++) {
+    firstColumn.push(matrix[i][0]);
+}
+console.log(firstColumn)
+</code></pre>
+        <h3>Transpose the matrix</h3>
+        <pre><code class="language-javascript">let matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+let transpose = []
+for (let i = 0; i &lt; matrix.length; i++) {
+    transpose[i] = []
+    console.log(transpose)
+    for (let j = 0; j &lt; matrix[i].length; j++) {
+        transpose[i][j] = matrix[j][i]; 
+    }
+}
+console.log(transpose)
+</code></pre>
+        <pre><code>output
+[ [ 1, 4, 7 ], [ 2, 5, 8 ], [ 3, 6, 9 ] ]
+</code></pre>
+        <h3>add all the elements</h3>
+        <pre><code class="language-javascript">let sum = 0
+ for (let i = 0; i &lt; matrix.length; i++) {
+    for (let j = 0; j &lt; matrix[i].length; j++){
+        sum=sum+matrix[i][j]
+    }
+}
+console.log(sum)
+</code></pre>
+        <h3>find out the maximum element</h3>
+        <pre><code class="language-javascript">let max=matrix[0][0]
+ for (let i = 0; i &lt; matrix.length; i++) {
+    for (let j = 0; j &lt; matrix[i].length; j++) {
+        if(matrix[i][j]&gt;max)
+        max=matrix[i][j];
+    }
+}
+console.log(max)
+</code></pre>
+        <h3>The Matrices</h3>
+        <p>You have two matrices, <code>matrixA</code> and <code>matrixB</code>:</p>
+        <p><strong>Matrix A:</strong></p>
+        <pre><code>1  2
+3  4
+</code></pre>
+        <p><strong>Matrix B:</strong></p>
+        <pre><code>5  6
+7  8
+</code></pre>
+        <h3>Resultant Matrix (Product Matrix)</h3>
+        <p>The goal is to find the product of these two matrices, which will result in a new matrix:</p>
+        <p><strong>Product Matrix (Result):</strong></p>
+        <pre><code>19  22
+43  50
+</code></pre>
+        <h3>How Matrix Multiplication Works</h3>
+        <p>Matrix multiplication involves multiplying each element of a row in the first matrix by each element in a
+          corresponding column of the second matrix and summing these products. Here&#39;s a step-by-step explanation:
+        </p>
+        <ol>
+          <li>
+            <p>To calculate the element in the first row and first column of the product matrix (result[0][0]), you take
+              the dot product of the first row of matrixA and the first column of matrixB:</p>
+            <ul>
+              <li>result[0][0] = (1 * 5) + (2 * 7) = 5 + 14 = 19</li>
+            </ul>
+          </li>
+          <li>
+            <p>To calculate result[0][1], you continue with the first row of matrixA but use the second column of
+              matrixB:</p>
+            <ul>
+              <li>result[0][1] = (1 * 6) + (2 * 8) = 6 + 16 = 22</li>
+            </ul>
+          </li>
+          <li>
+            <p>Next, you move to the second row of the product matrix:</p>
+            <ul>
+              <li>result[1][0] = (3 * 5) + (4 * 7) = 15 + 28 = 43</li>
+              <li>result[1][1] = (3 * 6) + (4 * 8) = 18 + 32 = 50</li>
+            </ul>
+          </li>
+        </ol>
+        <h4>2. Array Methods</h4>
+        <p>JavaScript provides various methods to manipulate arrays effectively. Here are some commonly used array
+          methods:</p>
+        <ul>
+          <li>
+            <p><strong><code>map(callback)</code></strong>: Creates a new array by applying a callback function to each
+              element of the original array.</p>
+            <pre><code class="language-javascript">let numbers = [1, 2, 3];
+let doubled = numbers.map(x =&gt; x * 2); // [2, 4, 6]
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>filter(callback)</code></strong>: Creates a new array with elements that satisfy a
+              condition defined in the callback function.</p>
+            <pre><code class="language-javascript">let scores = [85, 92, 78, 90, 88];
+let highScores = scores.filter(score =&gt; score &gt;= 90); // [92, 90]
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>reduce(callback)</code></strong>: Applies a callback function to reduce an array to a
+              single value (e.g., summing all elements).</p>
+            <pre><code class="language-javascript">let numbers = [1, 2, 3, 4, 5];
+let sum = numbers.reduce((acc, current) =&gt; acc + current, 0); // 15
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>indexOf(element)</code></strong>: Returns the first index at which a specified element is
+              found in the array. Returns -1 if the element is not found.</p>
+            <pre><code class="language-javascript">let fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;];
+let index = fruits.indexOf(&quot;banana&quot;); // 1
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>push(element)</code></strong>: Adds an element to the end of the array and returns the new
+              length of the array.</p>
+            <pre><code class="language-javascript">let fruits = [&quot;apple&quot;, &quot;banana&quot;];
+let newLength = fruits.push(&quot;cherry&quot;); // 3
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>pop()</code></strong>: Removes the last element from the array and returns that element.
+            </p>
+            <pre><code class="language-javascript">let fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;];
+let removed = fruits.pop(); // &quot;cherry&quot;
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>shift()</code></strong>: Removes the first element from the array and returns that element.
+            </p>
+            <pre><code class="language-javascript">let fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;];
+let removed = fruits.shift(); // &quot;apple&quot;
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>unshift(element)</code></strong>: Adds one or more elements to the beginning of the array
+              and returns the new length.</p>
+            <pre><code class="language-javascript">let fruits = [&quot;banana&quot;, &quot;cherry&quot;];
+let newLength = fruits.unshift(&quot;apple&quot;); // 3
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>slice(start, end)</code></strong>: Returns a new array containing elements from the
+              original array within the specified range (from <code>start</code> to <code>end</code>, not inclusive).
+            </p>
+            <pre><code class="language-javascript">let numbers = [1, 2, 3, 4, 5];
+let sliced = numbers.slice(1, 4); // [2, 3, 4]
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>some(callback)</code></strong>: Checks if at least one element in the array satisfies the
+              condition specified in the callback function. Returns <code>true</code> if any element meets the
+              condition; otherwise, <code>false</code>.</p>
+            <pre><code class="language-javascript">let numbers = [1, 3, 5, 7, 9];
+let hasEven = numbers.some(x =&gt; x % 2 === 0); // false
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>every(callback)</code></strong>: Checks if all elements in the array satisfy the condition
+              specified in the callback function. Returns <code>true</code> if all elements meet the condition;
+              otherwise, <code>false</code>.</p>
+            <pre><code class="language-javascript">let numbers = [2, 4, 6, 8, 10];
+let allEven = numbers.every(x =&gt; x % 2 === 0); // true
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>concat(array)</code></strong>: Combines the current array with another array(s) and returns
+              a new concatenated array.</p>
+            <pre><code class="language-javascript">let fruits1 = [&quot;apple&quot;, &quot;banana&quot;];
+let fruits2 = [&quot;cherry&quot;, &quot;orange&quot;];
+let combined = fruits1.concat(fruits2); // [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;, &quot;orange&quot;]
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>splice(start, deleteCount, item1, item2, ...)</code></strong>: Changes the contents of an
+              array by removing or replacing existing elements and/or adding new elements.</p>
+            <pre><code class="language-javascript">let fruits = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;];
+fruits.splice(1, 1, &quot;orange&quot;, &quot;grape&quot;); // Removes &quot;banana&quot; and adds &quot;orange&quot; and &quot;grape&quot;
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>reverse()</code></strong>: Reverses the order of elements in the array.</p>
+            <pre><code class="language-javascript">let numbers = [1, 2, 3, 4, 5];
+numbers.reverse(); // [5, 4, 3, 2, 1]
+</code></pre>
+          </li>
+          <li>
+            <p><strong><code>includes()</code></strong>: determines whether an array includes a certain value among its
+              entries, returning true or false as appropriate.</p>
+            <pre><code class="language-javascript">const array1 = [1, 2, 3];
+console.log(array1.includes(2));
+
+const pets = [&#39;cat&#39;, &#39;dog&#39;, &#39;bat&#39;];
+console.log(pets.includes(&#39;cat&#39;));
+console.log(pets.includes(&#39;at&#39;));
+</code></pre>
+          </li>
+        </ul>
+        <h3>1. JavaScript Strings</h3>
+        <h4>JavaScript Strings</h4>
+        <ul>
+          <li>Strings in JavaScript are sequences of characters, such as letters, numbers, symbols, or spaces.</li>
+          <li>They are defined using single (&#39;&#39;), double (&quot;&quot;) or backticks (``) quotes.</li>
+        </ul>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">let singleQuotes = &#39;This is a string.&#39;;
+let doubleQuotes = &quot;This is another string.&quot;;
+let backticks = `And this is a string using backticks.`;
+</code></pre>
+        <h4>Length Attribute</h4>
+        <ul>
+          <li>The <code>length</code> attribute of a string returns the number of characters in the string.</li>
+          <li>It is useful for determining the size of a string.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let message = &quot;Hello, world!&quot;;
+let length = message.length; // length is 13
+</code></pre>
+        <p><strong>find out all the characters in a string :</strong></p>
+        <pre><code class="language-javascript">var str = &quot;Hello&quot;;
+for (var i = 0; i &lt; str.length; i++) {
+  console.log(str[i]);
+}
+</code></pre>
+        <p><strong>reverse a string :</strong></p>
+        <pre><code class="language-javascript">var str = &quot;Hello&quot;;
+let rev=&quot;&quot;;
+for (var i = str.length-1; i &gt;=0; i--) {
+  rev+=str[i];
+}
+console.log(rev);
+</code></pre>
+        <p><strong>retrive a string from a given string :</strong></p>
+        <pre><code class="language-javascript">var str = &quot;The quick brown fox jumps over the lazy dog&quot;;
+var result = &quot;&quot;;
+var startIndex = str.indexOf(&quot;fox&quot;);
+console.log(startIndex)
+if (startIndex !== -1) {
+  var endIndex = startIndex + 3;
+  for (var i = startIndex; i &lt; endIndex; i++) {
+    result += str[i];
+  }
+}
+console.log(result);
+</code></pre>
+        <h4>Escape Character</h4>
+        <p>Because strings must be written within quotes, JavaScript will misunderstand this string:</p>
+        <pre><code class="language-javascript">let text = &quot;We are the so-called &quot;Vikings&quot; from the north.&quot;;
+console.log(text);
+</code></pre>
+        <pre><code class="language-javascript">let text = &quot;We are the so-called \&quot;Vikings\&quot; from the north.&quot;;
+</code></pre>
+        <h3>2. String Methods</h3>
+        <h4>slice(start, end)</h4>
+        <ul>
+          <li>The <code>slice()</code> method extracts a section of a string and returns it as a new string.</li>
+          <li>It takes two arguments: <code>start</code> (inclusive) and <code>end</code> (exclusive) positions.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let str = &quot;JavaScript is fun!&quot;;
+let sliced = str.slice(0, 10); // sliced is &quot;JavaScript&quot;
+</code></pre>
+        <h4>substring(start, end)</h4>
+        <ul>
+          <li>The <code>substring()</code> method is similar to <code>slice()</code> but does not accept negative
+            indices.</li>
+          <li>It also extracts a section of a string based on <code>start</code> (inclusive) and <code>end</code>
+            (exclusive).</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let str = &quot;JavaScript is amazing!&quot;;
+let sub = str.substring(11, 17); // sub is &quot;amazin&quot;
+</code></pre>
+        <h4>indexOf()</h4>
+        <ul>
+          <li>The <code>indexOf()</code> method of String values searches this string and returns the index of the
+            first occurrence of the specified substring.</li>
+        </ul>
+        <pre><code class="language-javascript">const paragraph = &#39;The quick brown fox jumps over the lazy dog. If the dog barked, was it really lazy?&#39;;
+const indexOfFirst = paragraph.indexOf(&quot;dog&quot;);
+console.log(indexOfFirst);
+</code></pre>
+        <h4>substr(start, length)</h4>
+        <ul>
+          <li>The <code>substr()</code> method extracts a specified number of characters from a string.</li>
+          <li>It takes <code>start</code> (inclusive) and the <code>length</code> of the substring.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let str = &quot;OpenAI is innovative!&quot;;
+let sub = str.substr(8, 2); // sub is &quot;is&quot;
+</code></pre>
+        <h4>replace(search, replacement)</h4>
+        <ul>
+          <li>The <code>replace()</code> method replaces the first occurrence of a specified substring with another
+            substring.</li>
+          <li>It takes <code>search</code> string and the <code>replacement</code> string as arguments.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let sentence = &quot;I love JavaScript. JavaScript is powerful.&quot;;
+let newSentence = sentence.replace(&quot;JavaScript&quot;, &quot;Node.js&quot;);
+// newSentence is &quot;I love Node.js. JavaScript is powerful.&quot;
+</code></pre>
+        <h4>replaceAll(search, replacement)</h4>
+        <ul>
+          <li>The <code>replaceAll()</code> method replaces all occurrences of a specified substring with another
+            substring.</li>
+          <li>It takes <code>search</code> string and the <code>replacement</code> string as arguments.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let sentence = &quot;I love JavaScript. JavaScript is powerful.&quot;;
+let newSentence = sentence.replaceAll(&quot;JavaScript&quot;, &quot;Node.js&quot;);
+// newSentence is &quot;I love Node.js. Node.js is powerful.&quot;
+</code></pre>
+        <h4>toUpperCase() and toLowerCase()</h4>
+        <ul>
+          <li><code>toUpperCase()</code> and <code>toLowerCase()</code> are used to convert a string to all uppercase or
+            all lowercase characters, respectively.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let name = &quot;John Doe&quot;;
+let upperCaseName = name.toUpperCase(); // &quot;JOHN DOE&quot;
+let lowerCaseName = name.toLowerCase(); // &quot;john doe&quot;
+</code></pre>
+        <h4>concat(string1, string2, ...)</h4>
+        <ul>
+          <li>The <code>concat()</code> method is used to join two or more strings.</li>
+          <li>It combines the original string with other strings and returns a new string.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let firstName = &quot;John&quot;;
+let lastName = &quot;Doe&quot;;
+let fullName = firstName.concat(&quot; &quot;, lastName); // &quot;John Doe&quot;
+</code></pre>
+        <h4>trim()</h4>
+        <ul>
+          <li>The <code>trim()</code> method removes whitespace (spaces, tabs, line breaks) from both ends of a string.
+          </li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let sentence = &quot;   This is a sentence with spaces.   &quot;;
+let trimmed = sentence.trim(); // &quot;This is a sentence with spaces.&quot;
+</code></pre>
+        <h4>charAt(index) and charCodeAt(index)</h4>
+        <ul>
+          <li><code>charAt(index)</code> returns the character at the specified index in a string.</li>
+          <li><code>charCodeAt(index)</code> returns the Unicode value of the character at the specified index.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let word = &quot;Hello&quot;;
+let char = word.charAt(1); // &quot;e&quot;
+let charCode = word.charCodeAt(1); // 101 (Unicode value of &quot;e&quot;)
+</code></pre>
+        <h4>split(separator)</h4>
+        <ul>
+          <li>The <code>split()</code> method splits a string into an array of substrings based on a specified
+            separator.</li>
+          <li>It&#39;s useful for breaking a string into parts.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let sentence = &quot;I,am,a,comma,separated,sentence&quot;;
+let words = sentence.split(&quot;,&quot;); // [&quot;I&quot;, &quot;am&quot;, &quot;a&quot;, &quot;comma&quot;, &quot;separated&quot;, &quot;sentence&quot;]
+</code></pre>
+        <h3>Types of Functions in JavaScript</h3>
+        <p>JavaScript supports various types of functions, each with its own syntax and use cases. Understanding these
+          functions is essential for writing effective JavaScript code. Here is a detailed explanation of each type:</p>
+        <h3>1. Regular Function</h3>
+        <p><strong>Definition:</strong> Regular functions are the most common type of functions in JavaScript. They are
+          defined using the <code>function</code> keyword.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">function functionName(parameters) {
+    // function body
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet(&quot;Alice&quot;)); // Hello, Alice!
+</code></pre>
+        <p><strong>Use Cases:</strong> Regular functions are used for most function definitions, including event
+          handlers, methods in objects, and general-purpose functions.</p>
+        <h3>2. Arrow Function</h3>
+        <p><strong>Definition:</strong> Arrow functions provide a shorter syntax for writing functions. They do not have
+          their own <code>this</code> context; instead, they inherit <code>this</code> from the parent scope.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">const functionName = (parameters) =&gt; {
+    // function body
+};
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const greet = (name) =&gt; `Hello, ${name}!`;
+
+console.log(greet(&quot;Bob&quot;)); // Hello, Bob!
+</code></pre>
+        <p><strong>Use Cases:</strong> Arrow functions are often used for concise function expressions, especially for
+          callbacks and functional programming.</p>
+        <p><strong>Difference between Regular Function and Arrow Function:</strong></p>
+        <ul>
+          <li><strong>Syntax:</strong> Arrow functions have a more concise syntax.</li>
+          <li><strong><code>this</code> Binding:</strong> Arrow functions do not have their own <code>this</code>; they
+            inherit <code>this</code> from the parent scope, whereas regular functions have their own <code>this</code>.
+          </li>
+          <li><strong>Usage:</strong> Arrow functions are preferred in scenarios where <code>this</code> should not
+            change, such as callbacks and functional programming.</li>
+        </ul>
+        <h3>3. Anonymous Function</h3>
+        <p><strong>Definition:</strong> Anonymous functions are functions without a name. They are often used as
+          arguments to other functions or assigned to variables.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">function(parameter) {
+    // function body
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">setTimeout(function() {
+    console.log(&quot;Hello, world!&quot;);
+}, 1000);
+</code></pre>
+        <p><strong>Use Cases:</strong> Anonymous functions are commonly used as callbacks, event handlers, or immediate
+          invocations.</p>
+        <h3>4. Function Expression</h3>
+        <p><strong>Definition:</strong> Function expressions involve defining a function and assigning it to a variable.
+          They can be named or anonymous.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">const functionName = function(parameters) {
+    // function body
+};
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const greet = function(name) {
+    return `Hello, ${name}!`;
+};
+
+console.log(greet(&quot;Charlie&quot;)); // Hello, Charlie!
+</code></pre>
+        <p><strong>Use Cases:</strong> Function expressions are used when a function needs to be assigned to a variable,
+          passed as an argument, or returned from another function.</p>
+        <h3>5. Callback Function</h3>
+        <p><strong>Definition:</strong> A callback function is a function passed as an argument to another function and
+          is executed after some operation has been completed.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">function callback() {
+    // function body
+}
+
+function mainFunction(callback) {
+    // execute callback
+    callback();
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">function logMessage() {
+    console.log(&quot;This is a callback function.&quot;);
+}
+
+function executeCallback(callback) {
+    callback();
+}
+
+executeCallback(logMessage);
+</code></pre>
+        <p><strong>Use Cases:</strong> Callback functions are widely used in asynchronous programming, event handling,
+          and functional programming.</p>
+        <h3>6. First-Class Function</h3>
+        <p><strong>Definition:</strong> JavaScript treats functions as first-class citizens, meaning they can be
+          assigned to variables, passed as arguments, and returned from other functions.</p>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+const sayHello = greet;
+console.log(sayHello(&quot;Dave&quot;)); // Hello, Dave!
+</code></pre>
+        <p><strong>Use Cases:</strong> This property of functions allows for higher-order functions, functional
+          programming, and creating flexible APIs.</p>
+        <h3>7. Higher-Order Function</h3>
+        <p><strong>Definition:</strong> A higher-order function is a function that accepts other functions as arguments
+          or returns a function.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">function higherOrderFunction(callback) {
+    // function body
+}
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">function higherOrderFunction(callback) {
+    callback();
+}
+
+function logMessage() {
+    console.log(&quot;This is a higher-order function.&quot;);
+}
+
+higherOrderFunction(logMessage);
+</code></pre>
+        <p><strong>Use Cases:</strong> Higher-order functions are used in functional programming, array methods like
+          <code>map</code>, <code>filter</code>, and <code>reduce</code>.
+        </p>
+        <h3>8. Self-Invoking Function (IIFE)</h3>
+        <p><strong>Definition:</strong> A self-invoking function, also known as an Immediately Invoked Function
+          Expression (IIFE), is a function that is executed immediately after it is defined.</p>
+        <p><strong>Syntax:</strong></p>
+        <pre><code class="language-javascript">(function() {
+    // function body
+})();
+</code></pre>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">(function() {
+    console.log(&quot;This is an IIFE.&quot;);
+})();
+</code></pre>
+        <p><strong>Use Cases:</strong> IIFEs are used to create a local scope and avoid polluting the global namespace.
+        </p>
+        <p><strong>Difference between Regular Function and Self-Invoking Function:</strong></p>
+        <ul>
+          <li><strong>Invocation:</strong> Regular functions are invoked explicitly, while self-invoking functions are
+            executed immediately.</li>
+          <li><strong>Scope:</strong> Self-invoking functions create a local scope immediately upon execution.</li>
+        </ul>
+        <h3>Detailed Examples</h3>
+        <h4>Regular Function vs. Arrow Function</h4>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Alice&quot;,
+    regularFunction: function() {
+        console.log(this.name); // Alice
+    },
+    arrowFunction: () =&gt; {
+        console.log(this.name); // undefined (inherits `this` from the global scope)
+    }
+};
+
+person.regularFunction();
+person.arrowFunction();
+</code></pre>
+        <h4>Regular Function vs. Self-Invoking Function</h4>
+        <pre><code class="language-javascript">// Regular Function
+function regularFunction() {
+    console.log(&quot;This is a regular function.&quot;);
+}
+
+regularFunction(); // This is a regular function.
+
+// Self-Invoking Function (IIFE)
+(function() {
+    console.log(&quot;This is an IIFE.&quot;);
+})(); // This is an IIFE.
+</code></pre>
+        <h3>1. Different Scopes in JavaScript:</h3>
+        <p><strong>Definition:</strong> Scope refers to the context in which variables are declared and accessed. In
+          JavaScript, there are two main types of scope:</p>
+        <ul>
+          <li>
+            <p><strong>Global Scope:</strong> Variables declared outside of any function or block have a global scope.
+              They can be accessed from any part of the code.</p>
+            <pre><code class="language-javascript">var globalVariable = &quot;I am global&quot;;
+
+function exampleFunction() {
+    console.log(globalVariable); // Accessible inside functions
+}
+
+console.log(globalVariable); // Accessible globally
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Local Scope (Function Scope):</strong> Variables declared within a function have local scope.
+              They are only accessible within that function.</p>
+            <pre><code class="language-javascript">function exampleFunction() {
+    var localVariable = &quot;I am local&quot;;
+    console.log(localVariable); // Accessible inside the function
+}
+
+console.log(localVariable); // Error: localVariable is not defined
+</code></pre>
+          </li>
+        </ul>
+        <h3>2. Scope Chaining:</h3>
+        <p><strong>Definition:</strong> Scope chaining refers to the ability of a function to access variables from its
+          own scope, the scope of the function it was declared within, and the global scope.</p>
+        <pre><code class="language-javascript">var globalVar = &quot;I am global&quot;;
+
+function outerFunction() {
+    var outerVar = &quot;I am outer&quot;;
+
+    function innerFunction() {
+        var innerVar = &quot;I am inner&quot;;
+        console.log(innerVar);   // Access innerVar
+        console.log(outerVar);   // Access outerVar
+        console.log(globalVar);  // Access globalVar
+    }
+
+    innerFunction();
+    console.log(innerVar);   // Error: innerVar is not defined
+}
+
+outerFunction();
+console.log(outerVar);   // Error: outerVar is not defined
+</code></pre>
+        <h3>3. Shadowing:</h3>
+        <p><strong>Definition:</strong> Shadowing occurs when a variable declared within a local scope has the same name
+          as a variable in an outer scope. The inner variable &quot;shadows&quot; the outer one within its scope.</p>
+        <pre><code class="language-javascript">var outerVar = &quot;I am outer&quot;;
+
+function exampleFunction() {
+    var innerVar = &quot;I am inner&quot;;
+    console.log(innerVar);   // Access innerVar
+    console.log(outerVar);   // Access outerVar from the outer scope
+
+    var outerVar = &quot;I am inner&#39;s shadow&quot;; // This shadows the outerVar
+    console.log(outerVar);   // Access the innerVar&#39;s shadow
+}
+
+exampleFunction();
+</code></pre>
+        <p>Shadowing in JavaScript occurs when a variable declared within a local scope has the same name as a variable
+          in an outer scope, effectively &quot;shadowing&quot; the outer variable within its scope. While shadowing can
+          be a source of confusion and bugs if used carelessly, there are situations where it can be intentionally
+          employed for specific purposes. Here are some use cases for shadowing:</p>
+        <ol>
+          <li>
+            <p><strong>Local Variable Modification:</strong></p>
+            <ul>
+              <li>Shadowing can be used when you want to modify the value of a variable within a specific scope without
+                affecting the outer variable.</li>
+            </ul>
+            <pre><code class="language-javascript">var count = 10;
+
+function updateCount() {
+    var count = 20; // Shadowing the outer &#39;count&#39;
+    console.log(count); // Outputs 20
+}
+
+updateCount();
+console.log(count); // Outputs 10 (outer &#39;count&#39; remains unchanged)
+</code></pre>
+            <p>In this case, the inner function has its own <code>count</code> variable that shadows the outer
+              <code>count</code>, allowing modification within its scope.
+            </p>
+          </li>
+          <li>
+            <p><strong>Parameter Shadowing:</strong></p>
+            <ul>
+              <li>Function parameters can shadow variables with the same name in outer scopes. This is a common practice
+                and is not considered problematic.</li>
+            </ul>
+            <pre><code class="language-javascript">var x = 5;
+
+function addX(x) {
+    return x + 10; // &#39;x&#39; here shadows the outer &#39;x&#39;
+}
+
+console.log(addX(3)); // Outputs 13 (inner &#39;x&#39; is used as a parameter)
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Nested Function Definitions:</strong></p>
+            <ul>
+              <li>When functions are defined within other functions, shadowing can be used to create isolated scopes for
+                variables. This is often seen in closures.</li>
+            </ul>
+            <pre><code class="language-javascript">function outerFunction() {
+    var message = &quot;Hello from outer&quot;;
+
+    function innerFunction() {
+        var message = &quot;Hello from inner&quot;; // Shadowing &#39;message&#39; from outer scope
+        console.log(message); // Outputs &quot;Hello from inner&quot;
+    }
+
+    innerFunction();
+    console.log(message); // Outputs &quot;Hello from outer&quot;
+}
+
+outerFunction();
+</code></pre>
+            <p>In this example, the inner function has its own <code>message</code> variable, which shadows the
+              <code>message</code> from the outer scope.
+            </p>
+          </li>
+          <li>
+            <p><strong>Avoiding Global Scope Pollution:</strong></p>
+            <ul>
+              <li>Shadowing can be used to avoid unintentional pollution of the global scope by reusing variable names
+                within a function, preventing unintended interactions with global variables.</li>
+            </ul>
+            <pre><code class="language-javascript">var data = &quot;Global data&quot;;
+
+function processData(data) {
+    // &#39;data&#39; parameter shadows the global &#39;data&#39;
+    console.log(data); // Outputs the function parameter
+}
+
+processData(&quot;Local data&quot;);
+</code></pre>
+            <p>In this case, the local <code>data</code> parameter shadows the global <code>data</code>, providing a
+              clear separation between local and global contexts.</p>
+          </li>
+        </ol>
+        <h3>4. Closures:</h3>
+        <p><strong>Definition:</strong> A closure is a function that has access to variables from its own scope, the
+          scope of the function it was declared within, and the global scope. Closures allow for the preservation of the
+          outer function&#39;s state even after the outer function has finished executing.</p>
+        <pre><code class="language-javascript">function outerFunction() {
+    var outerVar = &quot;I am outer&quot;;
+
+    function innerFunction() {
+        var innerVar = &quot;I am inner&quot;;
+        console.log(outerVar);   // Access outerVar from the outer scope
+        console.log(innerVar);   // Access innerVar
+    }
+
+    return innerFunction; // Return the inner function (closure)
+}
+
+var closure = outerFunction();
+closure(); // Executes innerFunction with access to outerVar and innerVar
+</code></pre>
+        <p>In this example, <code>innerFunction</code> is returned from <code>outerFunction</code> and assigned to
+          <code>closure</code>. Even though <code>outerFunction</code> has finished executing, <code>closure</code>
+          still has access to <code>outerVar</code> due to the closure mechanism.
+        </p>
+        <p>Understanding these concepts is crucial for writing efficient and maintainable JavaScript code.</p>
+        <p>Scope chaining and closures are related concepts in JavaScript, but they are not exactly the same. Let&#39;s
+          clarify the difference between them:</p>
+        <h3>Scope Chaining:</h3>
+        <ul>
+          <li>
+            <p><strong>Definition:</strong> Scope chaining refers to the process by which a function can access
+              variables not only within its own scope but also in the outer scopes in which it was defined.</p>
+          </li>
+          <li>
+            <p><strong>Mechanism:</strong> When a function is invoked, JavaScript looks for variables in its local
+              scope. If a variable is not found, it looks in the outer (enclosing) scope. This process continues until
+              the variable is found or the global scope is reached.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">var globalVar = &quot;I am global&quot;;
+
+function outerFunction() {
+    var outerVar = &quot;I am outer&quot;;
+
+    function innerFunction() {
+        console.log(innerVar);   // Access innerVar
+        console.log(outerVar);   // Access outerVar from the outer scope
+        console.log(globalVar);  // Access globalVar
+    }
+
+    innerFunction();
+}
+
+outerFunction();
+</code></pre>
+          </li>
+        </ul>
+        <h3>Closures:</h3>
+        <ul>
+          <li>
+            <p><strong>Definition:</strong> A closure is a function that &quot;closes over&quot; variables from its
+              outer scope, preserving access to those variables even after the outer function has finished executing.
+            </p>
+          </li>
+          <li>
+            <p><strong>Mechanism:</strong> A closure is created when a function is defined inside another function, and
+              the inner function references variables from the outer function. The inner function maintains a reference
+              to the outer function&#39;s variables, creating a closure.</p>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">function outerFunction() {
+    var outerVar = &quot;I am outer&quot;;
+
+    function innerFunction() {
+        console.log(outerVar);  // Access outerVar from the closure
+    }
+
+    return innerFunction; // Return the inner function (closure)
+}
+
+var closure = outerFunction();
+closure(); // Executes innerFunction with access to outerVar from the closure
+</code></pre>
+          </li>
+        </ul>
+        <h3>Key Difference:</h3>
+        <ul>
+          <li>
+            <p><strong>Scope chaining</strong> is the mechanism that allows a function to access variables in its
+              lexical scope chain, while <strong>closures</strong> are the result of a function having access to
+              variables from its outer scope even after the outer function has finished executing.</p>
+          </li>
+          <li>
+            <p><strong>Closure is a concept that involves scope chaining but is not limited to it.</strong> A closure is
+              formed when a function retains access to variables from its outer scope, creating a closure even if it
+              doesn&#39;t explicitly reference variables from the outer scope in its code.</p>
+          </li>
+        </ul>
+        <h2>1. Class and Inheritance in JavaScript:</h2>
+        <p><strong>Class in JavaScript:</strong></p>
+        <ul>
+          <li>
+            <p><strong>Definition:</strong> A class is a blueprint for creating objects with a predefined structure and
+              behavior. It encapsulates data (properties) and functions (methods) that operate on that data.</p>
+          </li>
+          <li>
+            <p><strong>Syntax:</strong></p>
+            <pre><code class="language-javascript">class ClassName {
+    constructor(parameters) {
+        // constructor code
+    }
+
+    method1() {
+        // method1 code
+    }
+
+    method2() {
+        // method2 code
+    }
+}
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} makes a sound.`);
+    }
+}
+
+const dog = new Animal(&#39;Dog&#39;);
+dog.speak(); // Output: Dog makes a sound.
+</code></pre>
+          </li>
+        </ul>
+        <p><strong>Inheritance in JavaScript:</strong></p>
+        <ul>
+          <li>
+            <p><strong>Definition:</strong> Inheritance is a mechanism that allows a class (subclass/derived class) to
+              inherit properties and methods from another class (superclass/base class).</p>
+          </li>
+          <li>
+            <p><strong>Syntax:</strong></p>
+            <pre><code class="language-javascript">class Subclass extends Superclass {
+    constructor(parameters) {
+        super(parameters); // Call the superclass constructor
+        // subclass constructor code
+    }
+
+    // additional methods specific to the subclass
+}
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">class Bird extends Animal {
+    constructor(name, wingspan) {
+        super(name); // Call the superclass constructor
+        this.wingspan = wingspan;
+    }
+
+    fly() {
+        console.log(`${this.name} is flying with a wingspan of ${this.wingspan} cm.`);
+    }
+}
+
+const eagle = new Bird(&#39;Eagle&#39;, 200);
+eagle.speak(); // Output: Eagle makes a sound.
+eagle.fly();   // Output: Eagle is flying with a wingspan of 200 cm.
+</code></pre>
+          </li>
+        </ul>
+        <p><strong>First-Class Functions:</strong></p>
+        <p>In programming languages, a language is said to have first-class functions if functions are treated as
+          first-class citizens. This means functions can be:</p>
+        <ol>
+          <li>Assigned to variables.</li>
+          <li>Passed as arguments to other functions.</li>
+          <li>Returned from other functions.</li>
+        </ol>
+        <p><strong>Example of First-Class Functions:</strong></p>
+        <pre><code class="language-javascript">// Function assigned to a variable
+const greet = function(name) {
+    return `Hello, ${name}!`;
+};
+
+// Function passed as an argument to another function
+function processGreeting(greeterFunction, name) {
+    return greeterFunction(name);
+}
+
+// Function returned from another function
+function createGreeter(greeting) {
+    return function(name) {
+        return `${greeting}, ${name}!`;
+    };
+}
+
+// Using first-class functions
+const result1 = processGreeting(greet, &quot;John&quot;);
+console.log(result1); // Output: Hello, John!
+
+const customGreeter = createGreeter(&quot;Hi&quot;);
+const result2 = customGreeter(&quot;Alice&quot;);
+console.log(result2); // Output: Hi, Alice!
+</code></pre>
+        <p><strong>High-Order Functions:</strong></p>
+        <p>A higher-order function is a function that takes one or more functions as arguments or returns a function as
+          its result.</p>
+        <p><strong>Example of High-Order Functions:</strong></p>
+        <pre><code class="language-javascript">// Higher-order function taking a function as an argument
+function multiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = multiplier(2);
+const triple = multiplier(3);
+
+console.log(double(5)); // Output: 10
+console.log(triple(5)); // Output: 15
+
+// Higher-order function returning a function
+function greeterFactory(greeting) {
+    return function(name) {
+        return `${greeting}, ${name}!`;
+    };
+}
+
+const sayHello = greeterFactory(&quot;Hello&quot;);
+const sayHi = greeterFactory(&quot;Hi&quot;);
+
+console.log(sayHello(&quot;Tom&quot;)); // Output: Hello, Tom!
+console.log(sayHi(&quot;Jerry&quot;));  // Output: Hi, Jerry!
+</code></pre>
+        <p><strong>Key Differences:</strong></p>
+        <ol>
+          <li>
+            <p><strong>First-Class Functions:</strong></p>
+            <ul>
+              <li>Refers to the treatment of functions as first-class citizens.</li>
+              <li>Allows functions to be assigned to variables, passed as arguments, and returned from other functions.
+              </li>
+              <li>It&#39;s more about the characteristics of functions in a language.</li>
+            </ul>
+          </li>
+          <li>
+            <p><strong>High-Order Functions:</strong></p>
+            <ul>
+              <li>Refers to functions that operate on other functions by taking them as arguments or returning them.
+              </li>
+              <li>It&#39;s more about the behavior or capability of functions to operate on functions.</li>
+            </ul>
+          </li>
+        </ol>
+        <pre><code class="language-javascript">function marker(func) {
+    return function(a, b) {
+        console.log(&quot;======&quot;);
+        func(a, b);
+        console.log(&quot;======&quot;);
+    };
+}
+function sum(a, b) {
+    console.log(a + b);
+}
+const wrap = marker(sum);
+wrap(2, 3); // Now you can call wrap, which in turn calls sum with the wrapping behavior
+</code></pre>
+        <h2 id="objects">Objects & Memory References</h2>
+        <div class="wiki-card">
+          <p>Objects are stored and copied <strong>by reference</strong>, unlike primitives which are copied by value.
+          </p>
+
+          <h4>Object Pro-Tips</h4>
+          <ul>
+            <li><strong>Property Shorthand:</strong> If key and variable name are same, use <code>{ name }</code>
+              instead of <code>{ name: name }</code>.</li>
+            <li><strong>Computed Properties:</strong> Use <code>{ [keyName]: value }</code> for dynamic keys.</li>
+            <li><strong>Optional Chaining:</strong> <code>user?.address?.city</code> - safely access nested props
+              without crashing.</li>
+          </ul>
+        </div>
+        <h3>Syntax</h3>
+        <ul>
+          <li>Objects are defined using <strong>curly braces <code>{}</code></strong>.</li>
+          <li>Key-value pairs are separated by <strong>colons</strong>, and pairs are separated by
+            <strong>commas</strong>.
+          </li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let user = {     // an object
+  name: &quot;John&quot;,  // by key &quot;name&quot; store value &quot;John&quot;
+  age: 30        // by key &quot;age&quot; store value 30
+};
+</code></pre>
+        <p>A property has a key (also known as “name” or “identifier”) before the colon &quot;:&quot; and a value to the
+          right of it.</p>
+        <p>In the user object, there are two properties:</p>
+        <p>The first property has the name &quot;name&quot; and the value &quot;John&quot;.
+          The second one has the name &quot;age&quot; and the value 30.</p>
+        <p>console.log(user.name)//John</p>
+        <h3>Why Use Objects</h3>
+        <ol>
+          <li>
+            <p><strong>Structure and Organization</strong>: Objects allow you to group related data and functions
+              together, providing a way to structure your code.</p>
+          </li>
+          <li>
+            <p><strong>Easy Access</strong>: You can access properties and methods using their names (keys), making it
+              easy to retrieve or modify data.</p>
+          </li>
+          <li>
+            <p><strong>Flexibility</strong>: Objects can store data of different types and can be modified dynamically,
+              making them versatile for various use cases.</p>
+          </li>
+        </ol>
+        <h3>Key Concepts</h3>
+        <ol>
+          <li>
+            <p><strong>Properties</strong>: Keys in an object are called <strong>properties</strong>, and their
+              corresponding values can be of any data type.</p>
+          </li>
+          <li>
+            <p><strong>Methods</strong>: Functions within an object are known as <strong>methods</strong>. They allow
+              objects to encapsulate behavior.</p>
+          </li>
+          <li>
+            <p><strong>Accessing Properties and Methods</strong>: Use dot notation (<code>object.property</code>) or
+              bracket notation (<code>object[&#39;property&#39;]</code>) to access object members.</p>
+          </li>
+        </ol>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">let person = {
+    name: &quot;John&quot;,
+    age: 30,
+    greet: function() {
+        return `Hello, my name is ${this.name}.`;
+    },
+};
+
+console.log(person.name);        // &quot;John&quot;
+console.log(person.greet());     // &quot;Hello, my name is John.&quot;
+</code></pre>
+        <h3>Where to Use Objects</h3>
+        <ol>
+          <li>
+            <p><strong>Modeling Real-World Entities</strong>: Objects are suitable for modeling real-world entities,
+              like users, products, or vehicles, where you can represent properties and actions.</p>
+          </li>
+          <li>
+            <p><strong>Configuration</strong>: Objects are used to store configuration settings for applications.</p>
+          </li>
+          <li>
+            <p><strong>Data Structures</strong>: Objects are often used as data structures for organizing, storing, and
+              retrieving data efficiently.</p>
+          </li>
+        </ol>
+        <h3>Object Creation</h3>
+        <ol>
+          <li>
+            <p><strong>Object Literals</strong>: The most common way to create an object is by defining it using object
+              literals, as shown in the syntax example.</p>
+          </li>
+          <li>
+            <p><strong>Using the <code>new</code> Operator</strong>: You can create objects from constructor functions
+              using the <code>new</code> operator.</p>
+          </li>
+          <li>
+            <p><strong>Object.create()</strong>: You can create objects with a specific prototype using the
+              <code>Object.create()</code> method.
+            </p>
+          </li>
+        </ol>
+        <h3>Object Methods</h3>
+        <ol>
+          <li>
+            <p><strong>Adding Methods</strong>: You can add methods to an object by assigning function expressions to
+              its properties.</p>
+          </li>
+          <li>
+            <p><strong>this Keyword</strong>: The <code>this</code> keyword refers to the object itself and is often
+              used to access its own properties and methods.</p>
+          </li>
+        </ol>
+        <h3>Object Properties</h3>
+        <ol>
+          <li>
+            <p><strong>Accessing Properties</strong>: Use dot notation (<code>object.property</code>) or bracket
+              notation (<code>object[&#39;property&#39;]</code>) to access object properties.</p>
+          </li>
+          <li>
+            <p><strong>Adding and Modifying Properties</strong>: You can add or modify properties by simply assigning
+              values to them.</p>
+          </li>
+          <li>
+            <p><strong>Deleting Properties</strong>: The <code>delete</code> keyword can be used to remove properties
+              from an object.</p>
+          </li>
+        </ol>
+        <h3>Object Iteration</h3>
+        <ol>
+          <li><strong>for...in Loop</strong>: You can use a <code>for...in</code> loop to iterate over an object&#39;s
+            properties and perform actions on them.</li>
+        </ol>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">for (let key in person) {
+    console.log(key, person[key]);
+}
+</code></pre>
+        <h3>Summary</h3>
+        <ul>
+          <li>Objects are a fundamental data structure in JavaScript.</li>
+          <li>They are used to group related data and functions together for better organization and ease of access.
+          </li>
+          <li>Objects are versatile and flexible, making them suitable for a wide range of use cases.</li>
+        </ul>
+        <h3>1. <code>Object.keys(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an array containing the object&#39;s own enumerable property names
+            (keys).</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Alice&quot;,
+    age: 28,
+    job: &quot;Engineer&quot;
+};
+
+const keys = Object.keys(person);
+console.log(keys); // [&quot;name&quot;, &quot;age&quot;, &quot;job&quot;]
+</code></pre>
+        <h3>2. <code>Object.values(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an array containing the object&#39;s own enumerable property values.
+          </li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Bob&quot;,
+    age: 35,
+    job: &quot;Designer&quot;
+};
+
+const values = Object.values(person);
+console.log(values); // [&quot;Bob&quot;, 35, &quot;Designer&quot;]
+</code></pre>
+        <h3>3. <code>Object.entries(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an array of the object&#39;s own enumerable property key-value pairs
+            as arrays.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Carol&quot;,
+    age: 42,
+    job: &quot;Teacher&quot;
+};
+
+const entries = Object.entries(person);
+console.log(entries);
+// [
+//     [&quot;name&quot;, &quot;Carol&quot;],
+//     [&quot;age&quot;, 42],
+//     [&quot;job&quot;, &quot;Teacher&quot;]
+// ]
+</code></pre>
+        <h3>4. <code>Object.assign(target, source1, source2, ...)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Copies the values of all enumerable own properties of one or more source
+            objects to a target object. It returns the modified target object.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const target = { a: 1, b: 2 };
+const source = { b: 3, c: 4 };
+
+const merged = Object.assign(target, source);
+console.log(merged); // { a: 1, b: 3, c: 4 }
+</code></pre>
+        <h3>5. <code>Object.create(proto)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Creates a new object with the specified prototype object.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const parent = {
+    greet: function() {
+        console.log(&quot;Hello!&quot;);
+    }
+};
+
+const child = Object.create(parent);
+child.greet(); // &quot;Hello!&quot;
+</code></pre>
+        <h3>6. <code>Object.defineProperty(obj, prop, descriptor)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Adds a new property to an object or modifies an existing property&#39;s
+            attributes.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {};
+
+Object.defineProperty(person, &#39;name&#39;, {
+    value: &quot;David&quot;,
+    writable: false
+});
+
+console.log(person.name); // &quot;David&quot;
+person.name = &quot;Eva&quot;; // This assignment will be ignored.
+console.log(person.name); // &quot;David&quot;
+</code></pre>
+        <h3>7. <code>Object.freeze(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Freezes an object, preventing new properties from being added, existing
+            properties from being removed, and the values of existing properties from being changed.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const car = { make: &quot;Toyota&quot;, model: &quot;Camry&quot; };
+Object.freeze(car);
+
+car.color = &quot;Blue&quot;; // This property addition is ignored.
+console.log(car.color); // undefined
+</code></pre>
+        <h3>8. <code>Object.seal(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Seals an object, preventing new properties from being added and existing
+            properties from being removed.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const laptop = { brand: &quot;Dell&quot;, model: &quot;XPS&quot; };
+Object.seal(laptop);
+
+laptop.price = 1000; // This property addition is ignored.
+delete laptop.model; // This property deletion is ignored.
+console.log(laptop); // { brand: &quot;Dell&quot;, model: &quot;XPS&quot; }
+</code></pre>
+        <p>These are just a few of the many methods and functionalities provided by JavaScript objects. Objects are
+          powerful data structures that allow you to work with and manipulate data in a flexible and versatile way.
+          Understanding these methods and how to use them is crucial for JavaScript development.</p>
+        <h3>9. <code>Object.getOwnPropertyNames(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an array containing all the names of an object&#39;s own enumerable
+            and non-enumerable properties.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Eve&quot;,
+    age: 25,
+    [Symbol(&#39;id&#39;)]: &#39;unique&#39;
+};
+
+const propertyNames = Object.getOwnPropertyNames(person);
+console.log(propertyNames); // [&quot;name&quot;, &quot;age&quot;]
+</code></pre>
+        <h3>10. <code>Object.getOwnPropertyDescriptor(obj, prop)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an object describing the property&#39;s attributes (configurable,
+            enumerable, value, writable, get, set).</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Frank&quot;,
+    age: 30
+};
+
+const descriptor = Object.getOwnPropertyDescriptor(person, &#39;name&#39;);
+console.log(descriptor);
+// {
+//     value: &quot;Frank&quot;,
+//     writable: true,
+//     enumerable: true,
+//     configurable: true
+// }
+</code></pre>
+        <h3>11. <code>Object.is(obj1, obj2)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Compares two values for strict equality (e.g., NaN is considered equal to
+            NaN).</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">console.log(Object.is(5, 5));     // true
+console.log(Object.is(NaN, NaN)); // true
+console.log(Object.is(0, -0));    // false
+</code></pre>
+        <h3>13. <code>Object.getOwnPropertySymbols(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an array of an object&#39;s own symbol properties.</li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    [Symbol(&#39;id&#39;)]: &#39;unique&#39;,
+    [Symbol(&#39;code&#39;)]: &#39;12345&#39;
+};
+
+const symbols = Object.getOwnPropertySymbols(person);
+console.log(symbols); // [Symbol(id), Symbol(code)]
+</code></pre>
+        <h3>14. <code>Object.entries(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an array of an object&#39;s own enumerable property
+            <code>[key, value]</code> pairs as arrays.
+          </li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Hannah&quot;,
+    age: 40,
+    job: &quot;Engineer&quot;
+};
+
+const entries = Object.entries(person);
+console.log(entries);
+// [
+//     [&quot;name&quot;, &quot;Hannah&quot;],
+//     [&quot;age&quot;, 40],
+//     [&quot;job&quot;, &quot;Engineer&quot;]
+// ]
+</code></pre>
+        <h3>15. <code>Object.values(obj)</code></h3>
+        <ul>
+          <li><strong>Description:</strong> Returns an array containing an object&#39;s own enumerable property values.
+          </li>
+        </ul>
+        <p><strong>Example:</strong></p>
+        <pre><code class="language-javascript">const person = {
+    name: &quot;Isaac&quot;,
+    age: 45,
+    job: &quot;Artist&quot;
+};
+
+const values = Object.values(person);
+console.log(values); // [&quot;Isaac&quot;, 45, &quot;Artist&quot;]
+</code></pre>
+        <h2>call,apply,bind methods:</h2>
+        <ul>
+          <li>We are using these 3 methods to invoke the functions but the advantages are when we use these approaches
+            then we dont have to define the object name as a parameter or we dont have to take the variable to access
+            the object.</li>
+        </ul>
+        <p><strong><code>Normal method</code></strong></p>
+        <pre><code class="language-javascript">let obj = {
+   name:&quot;Raj&quot;,
+   age:24
+}
+function demo(a){
+   console.log(a.name,a.age)
+}
+demo(obj)
+</code></pre>
+        <p><strong><code>After applying call</code></strong></p>
+        <pre><code class="language-javascript">let obj = {
+   name:&quot;Raj&quot;,
+   age:24
+}
+function demo(){
+   console.log(this.name,this.age)
+}
+demo.call(obj)
+</code></pre>
+        <pre><code>`this` keyword refers to the particular object.
+</code></pre>
+        <h3>Differences between call,apply,bind:</h3>
+        <ul>
+          <li>call : In case of call each and every argument which is required to passed to the function will be passed
+            individually.</li>
+        </ul>
+        <pre><code class="language-javascript">let obj = {
+   name:&quot;Raj&quot;,
+   age:24
+}
+function demo(company,jobrole){
+   console.log(this.name,this.age,company,jobrole)
+}
+demo.call(obj,&quot;Google&quot;,&quot;Developer&quot;)
+</code></pre>
+        <ul>
+          <li>apply : In case of call each and every argument which is required to passed to the function will be passed
+            inside an array.</li>
+        </ul>
+        <pre><code class="language-javascript">let obj = {
+   name:&quot;Raj&quot;,
+   age:24
+}
+function demo(company,jobrole){
+   console.log(this.name,this.age,company,jobrole)
+}
+demo.apply(obj,[&quot;Google&quot;,&quot;Developer&quot;])
+</code></pre>
+        <ul>
+          <li>bind : It will return a new function and this new function can use anytime , anywhere.</li>
+        </ul>
+        <pre><code class="language-javascript">let obj = {
+   name:&quot;Raj&quot;,
+   age:24
+}
+function demo(company,jobrole){
+   console.log(this.name,this.age,company,jobrole)
+}
+const value = demo.bind(obj)
+value(&quot;Google&quot;,&quot;Developer&quot;);
+</code></pre>
+        <h3>How to render elements from an array of objects.</h3>
+        <p>An array of objects in JavaScript is a collection where each item is an object. This structure is
+          particularly useful for handling a list of records where each record has the same set of properties. Here’s an
+          example:</p>
+        <pre><code class="language-javascript">let users = [
+  { name: &quot;Alice&quot;, age: 25, city: &quot;New York&quot; },
+  { name: &quot;Bob&quot;, age: 30, city: &quot;San Francisco&quot; },
+  { name: &quot;Charlie&quot;, age: 35, city: &quot;Chicago&quot; }
+];
+</code></pre>
+        <p>In this example, <code>users</code> is an array containing three objects. Each object represents a user with
+          properties <code>name</code>, <code>age</code>, and <code>city</code>.</p>
+        <h3>Examples of Simple Logic Building Questions</h3>
+        <ol>
+          <li>
+            <p><strong>Find a user by name</strong>:
+              Write a function to find a user by their name from the array of objects.</p>
+            <pre><code class="language-javascript">function findUserByName(users, name) {
+  return users.find(user =&gt; user.name === name);
+}
+
+console.log(findUserByName(users, &quot;Bob&quot;));
+// Output: { name: &#39;Bob&#39;, age: 30, city: &#39;San Francisco&#39; }
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Filter users by age</strong>:
+              Write a function to get all users above a certain age.</p>
+            <pre><code class="language-javascript">function filterUsersByAge(users, minAge) {
+  return users.filter(user =&gt; user.age &gt; minAge);
+}
+
+console.log(filterUsersByAge(users, 28));
+// Output: [{ name: &#39;Bob&#39;, age: 30, city: &#39;San Francisco&#39; }, { name: &#39;Charlie&#39;, age: 35, city: &#39;Chicago&#39; }]
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Sort users by age</strong>:
+              Write a function to sort the users by age in ascending order.</p>
+            <pre><code class="language-javascript">function sortUsersByAge(users) {
+  return users.sort((a, b) =&gt; a.age - b.age);
+}
+
+console.log(sortUsersByAge(users));
+// Output: [{ name: &#39;Alice&#39;, age: 25, city: &#39;New York&#39; }, { name: &#39;Bob&#39;, age: 30, city: &#39;San Francisco&#39; }, { name: &#39;Charlie&#39;, age: 35, city: &#39;Chicago&#39; }]
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Get a list of cities</strong>:
+              Write a function to extract the list of cities from the array of users.</p>
+            <pre><code class="language-javascript">function getCities(users) {
+  return users.map(user =&gt; user.city);
+}
+
+console.log(getCities(users));
+// Output: [&#39;New York&#39;, &#39;San Francisco&#39;, &#39;Chicago&#39;]
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Calculate the average age</strong>:
+              Write a function to calculate the average age of the users.</p>
+            <pre><code class="language-javascript">function calculateAverageAge(users) {
+  const totalAge = users.reduce((sum, user) =&gt; sum + user.age, 0);
+  return totalAge / users.length;
+}
+
+console.log(calculateAverageAge(users));
+// Output: 30
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Add a new user</strong>:
+              Write a function to add a new user to the array.</p>
+            <pre><code class="language-javascript">function addUser(users, newUser) {
+  users.push(newUser);
+  return users;
+}
+
+let newUser = { name: &quot;Dave&quot;, age: 28, city: &quot;Los Angeles&quot; };
+console.log(addUser(users, newUser));
+// Output: Updated array with the new user added
+</code></pre>
+          </li>
+          <li>
+            <p><strong>Update a user’s age</strong>:
+              Write a function to update the age of a user given their name.</p>
+            <pre><code class="language-javascript">function updateUserAge(users, name, newAge) {
+  let user = users.find(user =&gt; user.name === name);
+  if (user) {
+    user.age = newAge;
+  }
+  return users;
+}
+
+console.log(updateUserAge(users, &quot;Alice&quot;, 26));
+// Output: Updated array with Alice&#39;s age updated to 26
+</code></pre>
+          </li>
+        </ol>
+        <h2>JavaScript Set</h2>
+        <h3>Set Constructor</h3>
+        <ul>
+          <li>
+            <p><strong>Definition:</strong> A Set is basically a collection of unique values, i.e., one value can occur
+              only once in a Set. If we try to insert a value that is already present in the Set, it is simply ignored.
+              The values stored in a Set can be of any type, whether it is a primitive type or object references.</p>
+          </li>
+          <li>
+            <p><strong>Why should we use :</strong> The benefits of using a Set come down to the optimization and
+              performance benefits. Sets are internally implemented as hash tables or search trees that give us a
+              constant O(1) or O(logN) lookup time in searching an element. Although different browsers or JavaScript
+              engines may implement Set differently, it is always guaranteed to give us time complexity better than
+              O(N).</p>
+          </li>
+          <li>
+            <p>So if you are working with a large collection of values and you are only concerned with the unique
+              values, using a Set is your best bet. With that being said, let us look at how we can create Sets in
+              JavaScript and carry out different operations that we can perform on them.</p>
+          </li>
+          <li>
+            <p><strong>Constructor:</strong> <code>new Set(iterable)</code> where <code>iterable</code> is an optional
+              iterable object (e.g., an array) that provides the initial values for the set.</p>
+          </li>
+        </ul>
+        <h2>Creating a Set</h2>
+        <p>You can create a Set in JavaScript in two ways:</p>
+        <h3>Creating an Empty Set</h3>
+        <p>You can create an empty Set object using the <code>new</code> keyword as follows:</p>
+        <pre><code class="language-javascript">const myNewSet = new Set();
+</code></pre>
+        <h3>Initializing a Set with Values</h3>
+        <p>You can also initialize a Set with values by passing an array to the constructor:</p>
+        <pre><code class="language-javascript">const myNewSet = new Set([&quot;here&quot;, &quot;are&quot;, &quot;are&quot;, &quot;some&quot;, &quot;values&quot;]);
+
+console.log([...myNewSet]); // [&quot;here&quot;, &quot;are&quot;, &quot;some&quot;, &quot;values&quot;]
+</code></pre>
+        <p>You can even create a Set of unique characters in a string by passing the string to the Set constructor:</p>
+        <pre><code class="language-javascript">const myNewSet = new Set(&quot;here&quot;);
+
+console.log([...myNewSet]); // [&quot;h&quot;, &quot;e&quot;, &quot;r&quot;]
+</code></pre>
+        <h2>Adding Values</h2>
+        <p>To add new values to a Set, you can use the <code>add()</code> method on the Set object:</p>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+myNewSet.add(7); // added
+myNewSet.add(1); // already exists in Set, ignored
+
+console.log([...myNewSet]); // [1, 4, 6, 7]
+</code></pre>
+        <h2>Deleting Values</h2>
+        <p>You can remove a specific value from a Set using the <code>delete()</code> method. The method returns
+          <code>true</code> if an element is removed and <code>false</code> if the element is not found in the Set:
+        </p>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+console.log(myNewSet.delete(1)); // true
+console.log(myNewSet.delete(5)); // false
+
+console.log([...myNewSet]); // [4, 6]
+</code></pre>
+        <h2>Deleting All Elements</h2>
+        <p>To remove all elements from a Set and make it empty, you can use the <code>clear()</code> method:</p>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+myNewSet.clear();
+
+console.log([...myNewSet]); // []
+</code></pre>
+        <h2>Checking if a Value Exists</h2>
+        <p>You can check if a value exists in the Set by calling the <code>has()</code> method. It returns
+          <code>true</code> if the value exists and <code>false</code> otherwise:
+        </p>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+console.log(myNewSet.has(1)); // true
+console.log(myNewSet.has(5)); // false
+</code></pre>
+        <h2>Looping Through Elements</h2>
+        <p>There are a few ways to loop through each element of a Set. You can use the <code>forEach()</code> method or
+          a <code>for...of</code> loop:</p>
+        <h3>Using <code>forEach()</code></h3>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+myNewSet.forEach(element =&gt; {
+  console.log(element); 
+});
+</code></pre>
+        <h3>Using <code>for...of</code> Loop</h3>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+for (const element of myNewSet) {
+  console.log(element);
+}
+</code></pre>
+        <h2>Checking the Number of Elements</h2>
+        <p>You can view the number of elements present in a Set by using the <code>size</code> property:</p>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+console.log(myNewSet.size); // 3
+</code></pre>
+        <h2>Converting to Iterator</h2>
+        <p>You can convert a Set to an Iterator by calling the <code>values()</code> method on the Set object. This
+          method returns an iterator with all the elements of the Set:</p>
+        <pre><code class="language-javascript">const myNewSet = new Set([1, 4, 6]);
+const iterator = myNewSet.values();
+
+for (const element of iterator) {
+  console.log(element); 
+}
+</code></pre>
+        <h2>Important Methods and Properties</h2>
+        <p>Here are some important methods and properties of Sets:</p>
+        <ul>
+          <li><code>new Set()</code>: Create a new Set object.</li>
+          <li><code>add()</code>: Add a new element to the Set.</li>
+          <li><code>has()</code>: Check if an element is present in the Set.</li>
+          <li><code>delete()</code>: Delete a specified value from the Set.</li>
+          <li><code>clear()</code>: Delete all elements from the Set.</li>
+          <li><code>forEach()</code>: Run a specified function for every element of the Set.</li>
+          <li><code>values()</code>: Return an Iterator with all the values present in the Set.</li>
+          <li><code>size</code>: Property to check the number of elements in the Set.</li>
+        </ul>
+        <pre><code>
+
+### Common Set Methods
+
+1. `add(value)`: Adds a new element with the specified value to the set. It returns the set itself.
+   
+   **Example:**
+   ```javascript
+   const mySet = new Set();
+   mySet.add(1).add(2).add(3);
+</code></pre>
+        <ol start="2">
+          <li>
+            <p><code>delete(value)</code>: Removes an element with the specified value from the set. Returns
+              <code>true</code> if the element was in the set and <code>false</code> otherwise.
+            </p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">mySet.delete(2); // Removes 2 from the set
+</code></pre>
+          </li>
+          <li>
+            <p><code>has(value)</code>: Checks whether an element with the specified value exists in the set. Returns
+              <code>true</code> if found, <code>false</code> if not.
+            </p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">mySet.has(3); // Returns true
+</code></pre>
+          </li>
+          <li>
+            <p><code>clear()</code>: Removes all elements from the set.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">mySet.clear(); // Clears the set
+</code></pre>
+          </li>
+          <li>
+            <p><code>size</code>: Returns the number of elements in the set.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">const setSize = mySet.size; // Returns the size of the set
+</code></pre>
+          </li>
+        </ol>
+        <h3>JavaScript Map</h3>
+        <h3>Map Constructor</h3>
+        <ul>
+          <li><strong>Definition:</strong> A <code>Map</code> is another built-in object in JavaScript that allows you
+            to store key-value pairs. It can have keys of any data type.</li>
+          <li><strong>Constructor:</strong> <code>new Map(iterable)</code> where <code>iterable</code> is an optional
+            iterable object (e.g., an array of key-value pairs) that provides the initial values for the map.</li>
+        </ul>
+        <h3>Common Map Methods</h3>
+        <ol>
+          <li>
+            <p><code>set(key, value)</code>: Sets the value for the specified key in the map. Returns the map itself.
+            </p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">const myMap = new Map();
+myMap.set(&quot;name&quot;, &quot;Alice&quot;).set(&quot;age&quot;, 28);
+</code></pre>
+          </li>
+          <li>
+            <p><code>get(key)</code>: Returns the value associated with the specified key, or <code>undefined</code> if
+              the key is not found.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">const name = myMap.get(&quot;name&quot;); // Returns &quot;Alice&quot;
+</code></pre>
+          </li>
+          <li>
+            <p><code>delete(key)</code>: Removes the key-value pair with the specified key from the map. Returns
+              <code>true</code> if the key was found and removed, <code>false</code> otherwise.
+            </p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">myMap.delete(&quot;age&quot;); // Removes the key &quot;age&quot; and its associated value
+</code></pre>
+          </li>
+          <li>
+            <p><code>has(key)</code>: Checks whether a key exists in the map. Returns <code>true</code> if found,
+              <code>false</code> if not.
+            </p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">myMap.has(&quot;name&quot;); // Returns true
+</code></pre>
+          </li>
+          <li>
+            <p><code>clear()</code>: Removes all key-value pairs from the map.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">myMap.clear(); // Clears the map
+</code></pre>
+          </li>
+          <li>
+            <p><code>size</code>: Returns the number of key-value pairs in the map.</p>
+            <p><strong>Example:</strong></p>
+            <pre><code class="language-javascript">const mapSize = myMap.size; // Returns the size of the map
+</code></pre>
+          </li>
+        </ol>
+
+        <section id="loops">
+          <h2>Loops & Iteration</h2>
+          <div class="wiki-card">
+            <p>Loops are used in JavaScript to perform repeated tasks based on a condition. Conditions typically return
+              true or false when analysed. A loop will continue running until the defined condition returns false.</p>
+            <h3>1. for Loop</h3>
+            <pre><code class="language-javascript">for (let i = 0; i < 5; i++) {
+  console.log("Iteration " + i);
+}</code></pre>
+            <h3>2. while Loop</h3>
+            <pre><code class="language-javascript">let i = 0;
+while (i < 5) {
+  console.log(i);
+  i++;
+}</code></pre>
+          </div>
+        </section>
+
+        <section id="prototypes">
+          <h2>Prototypes & Inheritance</h2>
+          <div class="wiki-card">
+            <p>Prototypes are the mechanism by which JavaScript objects inherit features from one another. Every object
+              in JavaScript has a built-in property, which is called its <strong>prototype</strong>.</p>
+            <pre><code class="language-javascript">const person = {
+  greet() { console.log("Hello!"); }
+};
+const student = Object.create(person);
+student.greet(); // "Hello!" (inherited)</code></pre>
+          </div>
+        </section>
+
+        <hr>
+
+        <section id="event-loop">
+          <h2>The Event Loop & Concurrency</h2>
+          <div class="wiki-card">
+            <p>JavaScript is a single-threaded language, meaning it can only do one thing at a time. The <strong>Event
+                Loop</strong> is the secret sauce that allows JS to be non-blocking and handle asynchronous operations.
+            </p>
+            <ul>
+              <li><strong>Call Stack:</strong> Where your synchronous code is executed.</li>
+              <li><strong>Web APIs:</strong> Browser-provided features (DOM, Fetch, setTimeout) that run in the
+                background.</li>
+              <li><strong>Callback Queue:</strong> Where callbacks wait to be executed.</li>
+              <li><strong>Microtask Queue:</strong> Where Promise callbacks (.then, async/await) go. <em>Priority:
+                  Microtasks > Callback Queue.</em></li>
+            </ul>
+            <pre><code class="language-javascript">console.log('Start');
+setTimeout(() => console.log('Timeout'), 0);
+Promise.resolve().then(() => console.log('Promise'));
+console.log('End');
+
+// Output: Start -> End -> Promise -> Timeout</code></pre>
+          </div>
+        </section>
+
+        <section id="closures">
+          <h2>Closures & Lexical Scoping</h2>
+          <div class="wiki-card">
+            <p>A <strong>Closure</strong> is the combination of a function bundled together with references to its
+              surrounding state (the lexical environment).</p>
+            <pre><code class="language-javascript">function makeCounter() {
+  let count = 0;
+  return function() {
+    return ++count;
+  };
+}
+
+const counter = makeCounter();
+console.log(counter()); // 1
+console.log(counter()); // 2</code></pre>
+            <div class="callout callout-info">
+              <strong>VIVA TIP:</strong> Use closures to create "private" variables in JavaScript. The inner function
+              "remembers" the variable even after the outer function has finished executing.
+            </div>
+          </div>
+        </section>
+
+        <section id="async">
+          <h2>Asynchronous JavaScript (Deep Dive)</h2>
+          <div class="wiki-card">
+            <h3>Promises</h3>
+            <p>A Promise represents the eventual completion (or failure) of an asynchronous operation.</p>
+            <pre><code class="language-javascript">const getData = new Promise((resolve, reject) => {
+  const success = true;
+  if(success) resolve("Data received!");
+  else reject("Error!");
+});</code></pre>
+
+            <h3>Async / Await</h3>
+            <p>Syntactic sugar over Promises that makes asynchronous code look synchronous.</p>
+            <pre><code class="language-javascript">async function fetchUser() {
+  try {
+    const response = await fetch('https://api.github.com/users/octocat');
+    const data = await response.json();
+    console.log(data.name);
+  } catch (error) {
+    console.error("Fetch failed", error);
+  }
+}</code></pre>
+          </div>
+        </section>
+
+        <footer style="text-align:center; margin-top: 100px; padding-bottom: 60px;">
+          <p style="color: var(--text-muted);">© 2026 Pseudo-OS Documentation System • Professional Edition</p>
+          <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+            <a href="#" class="nav-link">Back to Top</a>
+            <a href="react.html" class="nav-link">Next: React Core</a>
+          </div>
+        </footer>
+  </div>
+
+  <script>
+    // Search Functionality
+    const searchInput = document.getElementById('wikiSearch');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      navLinks.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        link.style.display = text.includes(term) ? 'block' : 'none';
+      });
+    });
+
+    // Reading Progress Bar
+    window.onscroll = function () { myFunction() };
+    function myFunction() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById("myBar").style.width = scrolled + "%";
+    }
+
+    // Code Copy Button Logic
+    document.querySelectorAll('pre').forEach(block => {
+      const button = document.createElement('button');
+      button.innerText = 'Copy';
+      button.className = 'copy-btn';
+      block.appendChild(button);
+
+      button.addEventListener('click', () => {
+        const code = block.querySelector('code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          button.innerText = 'Copied!';
+          setTimeout(() => button.innerText = 'Copy', 2000);
+        });
+      });
+    });
+
+    // Active Link Highlight
+    const sections = document.querySelectorAll('section[id]');
+    const sidebarLinks = document.querySelectorAll('.wiki-sidebar .nav-link');
+
+    window.addEventListener('scroll', () => {
+      let current = "";
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 160) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      sidebarLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    });
+
+    // Mobile Sidebar Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebar = document.querySelector('.wiki-sidebar');
+
+      if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar on link click (mobile)
+        document.querySelectorAll('.wiki-sidebar .nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+              sidebar.classList.remove('active');
+            }
+          });
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+          if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== menuToggle) {
+            sidebar.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

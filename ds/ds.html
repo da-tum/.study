@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate DS Exam Guide</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0d1117;
+  --surface:#161b22;
+  --surface2:#21262d;
+  --border:#30363d;
+  --text:#c9d1d9;
+  --text-dim:#8b949e;
+  --primary:#58a6ff;
+  --green:#3fb950;
+  --yellow:#d29922;
+  --red:#f85149;
+  --purple:#bc8cff;
+  --orange:#ffa657;
+  --pink:#f778ba;
+}
+
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:17px}
+
+.container{max-width:860px;margin:0 auto;padding:40px 20px}
+
+/* ---- COVER ---- */
+.cover{text-align:center;padding:60px 0 40px}
+.cover h1{font-size:3rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--purple),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2;margin-bottom:16px}
+.cover p{color:var(--text-dim);font-size:1.1rem;max-width:600px;margin:0 auto 30px}
+.toc{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:left;max-width:500px;margin:0 auto}
+.toc h3{color:var(--primary);font-size:1rem;margin-bottom:14px;text-transform:uppercase;letter-spacing:.05em}
+.toc a{display:block;color:var(--text-dim);text-decoration:none;padding:4px 0;border-bottom:1px solid var(--border);font-size:.95rem}
+.toc a:hover{color:var(--primary)}
+.toc a:last-child{border-bottom:none}
+
+/* ---- CHAPTER HEADER ---- */
+.chapter{background:linear-gradient(135deg,var(--surface),var(--surface2));border:1px solid var(--border);border-radius:16px;padding:30px;margin:40px 0 0}
+.chapter-label{display:inline-block;background:var(--primary);color:#000;font-weight:700;font-size:.75rem;padding:4px 12px;border-radius:20px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+.chapter h2{font-size:2rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:8px}
+.chapter p.sub{color:var(--text-dim);font-size:.95rem}
+
+/* ---- CARDS ---- */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:20px 0}
+.card.green{border-color:var(--green)}
+.card.yellow{border-color:var(--yellow)}
+.card.red{border-color:var(--red)}
+.card.purple{border-color:var(--purple)}
+
+/* ---- ELI5 BOX ---- */
+.eli5{background:rgba(63,185,80,.08);border-left:4px solid var(--green);border-radius:0 10px 10px 0;padding:16px 20px;margin:20px 0;font-size:.97rem}
+.eli5 strong{color:var(--green)}
+
+/* ---- TIP / NOTE ---- */
+.tip{background:rgba(210,153,34,.08);border-left:4px solid var(--yellow);padding:14px 18px;border-radius:0 8px 8px 0;margin:16px 0;font-size:.92rem}
+
+/* ---- CODE ---- */
+pre.code-block{background:#000;border:1px solid var(--border);border-radius:10px;padding:20px;overflow-x:auto;font-family:'Fira Code',monospace;font-size:14px;color:#abb2bf;line-height:1.7;margin:18px 0}
+code{font-family:'Fira Code',monospace;background:rgba(88,166,255,.1);color:var(--primary);padding:2px 6px;border-radius:5px;font-size:.88em}
+
+/* ---- VIVA ---- */
+.vq{color:var(--yellow);font-weight:700;margin:16px 0 4px}
+.va{color:var(--text);border-left:3px solid var(--border);padding-left:14px;margin-bottom:18px;font-size:.95rem}
+
+/* ---- TABLES ---- */
+table{width:100%;border-collapse:collapse;margin:18px 0;font-size:.9rem}
+th{background:var(--surface2);color:var(--primary);padding:10px 14px;border:1px solid var(--border);text-align:left}
+td{padding:9px 14px;border:1px solid var(--border)}
+tr:hover td{background:var(--surface2)}
+
+h1{font-size:1.8rem;color:var(--primary);margin:30px 0 10px}
+h2{font-size:1.4rem;color:var(--orange);margin:24px 0 8px;border-bottom:1px solid var(--border);padding-bottom:6px}
+h3{font-size:1.15rem;color:var(--purple);margin:18px 0 6px}
+h4{font-size:1rem;color:var(--green);margin:12px 0 4px}
+p{margin:8px 0}
+ul,ol{padding-left:24px;margin:8px 0}
+li{margin:4px 0}
+strong{color:#fff}
+
+/* ---- DIVIDER ---- */
+.divider{border:none;border-top:2px solid var(--border);margin:50px 0}
+
+/* ---- PRINT ---- */
+@media print{
+  body{background:#fff;color:#000;font-size:13px}
+  .cover h1{-webkit-text-fill-color:#000;color:#000}
+  .card,.chapter{border:1px solid #ccc;box-shadow:none;page-break-inside:avoid}
+  pre.code-block{background:#f5f5f5;color:#333;border:1px solid #ccc;white-space:pre-wrap;word-break:break-all}
+  .eli5{background:#f0fff0;border-left:4px solid green}
+  .tip{background:#fffbea;border-left:4px solid #c0a000}
+  h1,h2,h3,h4{color:#000}
+  code{background:#eee;color:#333}
+  .vq{color:#b45309}
+/* Mindmap (Flexbox blocks) */
+.mindmap{display:flex;flex-direction:column;align-items:center;gap:20px;margin:40px 0;}
+.mm-node{background:var(--surface2);border:2px solid var(--primary);padding:15px 30px;border-radius:30px;font-weight:600;color:#fff;position:relative;text-align:center;box-shadow:0 0 15px var(--primary-glow);}
+.mm-branches{display:flex;gap:20px;justify-content:center;position:relative;}
+.mm-branches::before{content:'';position:absolute;top:-20px;left:50%;width:2px;height:20px;background:var(--border);}
+.mm-branch-node{background:var(--surface);border:1px solid var(--border);padding:10px 20px;border-radius:8px;text-align:center;position:relative;}
+
+/* Keywords Grid */
+.keyword-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:15px;}
+.keyword-card{background:var(--surface2);padding:15px;border-radius:8px;border-left:3px solid var(--accent);}
+.keyword-card strong{color:var(--accent);display:block;margin-bottom:5px;}
+
+  a{color:#000;text-decoration:none}
+}
+
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 30px;
+  transition: color 0.2s;
+}
+.back-home:hover {
+  color: var(--primary);
+}
+.back-home svg {
+  transition: transform 0.2s;
+}
+.back-home:hover svg {
+  transform: translateX(-4px);
+}
+
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .container { padding: 20px 15px; }
+  .cover h1 { font-size: 2.2rem; }
+  .chapter h2 { font-size: 1.5rem; }
+  pre.code-block { font-size: 13px; padding: 15px; }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; }
+  table { font-size: 0.8rem; }
+}
+</style>
+
+</head>
+<body>
+<div class="container">
+<a href="../index.html" class="back-home">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+  Back to Portal
+</a>
+
+<div class="cover">
+  <h1>🧠 Ultimate DS Exam Guide</h1>
+  <p>Everything you need — theory, diagrams, code, and viva Q&A —<br>for your practical exam. Read on the bus, nail it in the hall.</p>
+  <div class="toc">
+    <h3>📋 Table of Contents</h3>
+    <a href="#unit1">Unit 1 — Big O, Recursion, ADTs</a>
+    <a href="#unit2">Unit 2 — Arrays, Linked Lists, Stack, Queue</a>
+    <a href="#unit3">Unit 3 — Sorting Algorithms</a>
+    <a href="#unit4">Unit 4 — Trees, Graphs, Hashing</a>
+    <a href="#viva">Master Viva Q&A (61 Questions)</a>
+    <a href="#cheat">Cheatsheet</a>
+    <a href="#code">📎 Complete Code — All 5 Programs</a>
+    <a href="#ds-mindmap">🗺️ Data Structures Mindmap</a>
+    <a href="#ds-keywords">⚡ Quick Revision Keywords</a>
+  </div>
+</div>
+<hr class="divider">
+
+<div id="master" class="chapter">
+  <span class="chapter-label">🗺️ Master Plan</span>
+  <p class="sub">5-hour study battle plan</p>
+</div>
+<h1>🎯 DATA STRUCTURES — MASTER EXAM PLAN</h1>
+<h3>Exam: Tomorrow | Time Available: ~5 Hours | Language: Python</h3>
+<br>
+<p>---</p>
+<br>
+<h2>⏱️ YOUR 5-HOUR BATTLE PLAN</h2>
+<br>
+<table><thead><tr>
+<th>Hour</th>
+<th>Focus</th>
+<th>Files</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|------|-------|-------|</p>
+<table><thead><tr>
+<th><strong>Hour 1</strong> (10:00 PM – 11:00 PM)</th>
+<th>Unit 1: Big O + Recursion + ADT concepts</th>
+<th><code>01_unit1_foundations.md</code></th>
+</tr></thead><tbody>
+<tr><td><strong>Hour 2</strong> (11:00 PM – 12:00 AM)</td><td>Unit 2: Linked Lists, Stack, Queue</td><td><code>02_unit2_linear_ds.md</code></td></tr>
+<tr><td><strong>Hour 3</strong> (12:00 AM – 1:00 AM)</td><td><strong>CODE</strong> → Linked List + Queue + Infix-Postfix</td><td><code>programs/</code> folder</td></tr>
+<tr><td><strong>Hour 4</strong> (1:00 AM – 2:00 AM)</td><td>Unit 3: Sorting + <strong>CODE</strong> Bubble/Merge/Quick</td><td><code>03_unit3_sorting.md</code> + programs</td></tr>
+<tr><td><strong>Hour 5</strong> (2:00 AM – 3:00 AM)</td><td>Unit 4: Trees, BST, Graphs, Hashing + <strong>CODE</strong> BST</td><td><code>04_unit4_nonlinear.md</code> + programs</td></tr>
+<tr><td><strong>Final 30 min</strong></td><td>Viva Q&amp;A blast — read fast and memorize key answers</td><td><code>05_viva_questions.md</code></td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>🔥 TEACHER'S PRIORITY PROGRAMS (Nail These!)</h2>
+<br>
+<ol>
+<li>✅ <strong>Linked List</strong> → <code>programs/01_linked_list.py</code></li>
+<li>✅ <strong>Queue</strong> → <code>programs/02_queue.py</code></li>
+<li>✅ <strong>Infix to Postfix using Stack</strong> → <code>programs/03_infix_to_postfix.py</code></li>
+<li>✅ <strong>Bubble, Merge, Quick Sort</strong> → <code>programs/04_sorting.py</code></li>
+<li>✅ <strong>Binary Search Tree</strong> → <code>programs/05_bst.py</code></li>
+</ol>
+<br>
+<p>---</p>
+<br>
+<h2>📌 MOST IMPORTANT CONCEPTS (If you only have 30 min)</h2>
+<br>
+<ol>
+<li><strong>Big O Notation</strong> — O(1), O(log n), O(n), O(n log n), O(n²)</li>
+<li><strong>Linked List</strong> — singly, insert, delete, traverse</li>
+<li><strong>Stack</strong> — LIFO, push/pop, infix→postfix conversion</li>
+<li><strong>Queue</strong> — FIFO, enqueue/dequeue</li>
+<li><strong>Bubble Sort</strong> — O(n²), stable</li>
+<li><strong>Merge Sort</strong> — O(n log n), divide &amp; conquer, stable</li>
+<li><strong>Quick Sort</strong> — O(n log n) avg, pivot, in-place</li>
+<li><strong>BST</strong> — left &lt; root &lt; right, insert/search/delete</li>
+<li><strong>BFS vs DFS</strong> — queue vs stack</li>
+<li><strong>Hashing</strong> — hash function, collision resolution</li>
+</ol>
+<br>
+<p>---</p>
+<br>
+<h2>💡 VIVA GOLDEN RULES</h2>
+<br>
+<ul>
+<li>Always say <strong>time complexity</strong> for every algorithm you mention</li>
+<li>Always explain <strong>real-world use</strong> (browser history → linked list, etc.)</li>
+<li>Know the <strong>difference</strong> between similar structures (Stack vs Queue, Array vs Linked List)</li>
+<li>For every sort: know <strong>stable/unstable</strong>, <strong>in-place/not</strong>, <strong>best/avg/worst</strong></li>
+</ul>
+<br>
+<p>---</p>
+<br>
+<p><em>Files in this folder:</em></p>
+<pre class="code-block">
+final-material/
+├── 00_MASTER_PLAN.md          ← YOU ARE HERE
+├── 01_unit1_foundations.md    ← Big O, Recursion, ADT
+├── 02_unit2_linear_ds.md      ← Arrays, LL, Stack, Queue
+├── 03_unit3_sorting.md        ← All sorting algorithms
+├── 04_unit4_nonlinear.md      ← Trees, Graphs, Hashing
+├── 05_viva_questions.md       ← Q&amp;A for exam viva
+├── CHEATSHEET.md              ← Last-minute 1-page reference
+└── programs/
+    ├── 01_linked_list.py
+    ├── 02_queue.py
+    ├── 03_infix_to_postfix.py
+    ├── 04_sorting.py
+    └── 05_bst.py
+</pre>
+<br><hr class="divider">
+<div id="unit1" class="chapter">
+  <span class="chapter-label">📐 Unit 1 — Foundations</span>
+  <p class="sub">Big O, Recursion, ADT</p>
+</div>
+<h1>📘 UNIT 1 — Foundations &amp; Algorithmic Analysis</h1>
+<div class="tip">Target: Read in 60 minutes | CO1</div>
+<br>
+<p>---</p>
+<br>
+<h2>1.1 Data Structures &amp; ADTs</h2>
+<br>
+<h3>What is a Data Structure?</h3>
+<p>A <strong>Data Structure</strong> is a way of organizing and storing data in memory so that it can be accessed and modified efficiently.</p>
+<br>
+<p><strong>Two types:</strong></p>
+<ul>
+<li><strong>Primitive</strong>: int, float, char, bool</li>
+<li><strong>Non-Primitive</strong>: Arrays, Linked Lists, Trees, Graphs, etc.</li>
+</ul>
+<br>
+<h3>What is an ADT (Abstract Data Type)?</h3>
+<p>An <strong>ADT</strong> is a <em>logical description</em> of how data is organized and what operations can be performed — WITHOUT worrying about implementation details.</p>
+<br>
+<pre class="code-block">
+ADT = Data + Operations (no implementation detail)
+Example: Stack ADT → push(), pop(), peek(), isEmpty()
+         You don't care if it's implemented via array or linked list
+</pre>
+<br>
+<p><strong>Why ADTs?</strong> → Separation of concerns. The user of the ADT doesn't need to know HOW it works.</p>
+<br>
+<h3>Common Operations on Data Structures:</h3>
+<table><thead><tr>
+<th>Operation</th>
+<th>Description</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-----------|-------------|</p>
+<table><thead><tr>
+<th><strong>Traversal</strong></th>
+<th>Visit every element once</th>
+</tr></thead><tbody>
+<tr><td><strong>Insertion</strong></td><td>Add a new element</td></tr>
+<tr><td><strong>Deletion</strong></td><td>Remove an element</td></tr>
+<tr><td><strong>Searching</strong></td><td>Find an element</td></tr>
+<tr><td><strong>Sorting</strong></td><td>Arrange elements in order</td></tr>
+<tr><td><strong>Merging</strong></td><td>Combine two structures</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>1.2 Algorithm Analysis — The BIG PICTURE</h2>
+<br>
+<div class="tip">"Before coding, ask: HOW LONG will this take? HOW MUCH MEMORY?"</div>
+<br>
+<h3>Time Complexity</h3>
+<p>How the <strong>runtime</strong> grows as input size <code>n</code> increases.</p>
+<br>
+<h3>Space Complexity</h3>
+<p>How <strong>memory usage</strong> grows as input size <code>n</code> increases.</p>
+<br>
+<p>---</p>
+<br>
+<h2>1.3 Big O Notation — MASTER THIS!</h2>
+<br>
+<p>Big O describes the <strong>upper bound</strong> (worst case).</p>
+<br>
+<pre class="code-block">
+O(f(n)) = algorithm's growth rate
+</pre>
+<br>
+<h3>The Complexity Ladder (Best → Worst):</h3>
+<br>
+<table><thead><tr>
+<th>Notation</th>
+<th>Name</th>
+<th>Example</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|----------|------|---------|</p>
+<table><thead><tr>
+<th><strong>O(1)</strong></th>
+<th>Constant</th>
+<th>Array access <code>arr[i]</code>, hash lookup</th>
+</tr></thead><tbody>
+<tr><td><strong>O(log n)</strong></td><td>Logarithmic</td><td>Binary search</td></tr>
+<tr><td><strong>O(n)</strong></td><td>Linear</td><td>Linear search, single loop</td></tr>
+<tr><td><strong>O(n log n)</strong></td><td>Linearithmic</td><td>Merge sort, Quick sort (avg)</td></tr>
+<tr><td><strong>O(n²)</strong></td><td>Quadratic</td><td>Bubble sort, nested loops</td></tr>
+<tr><td><strong>O(n³)</strong></td><td>Cubic</td><td>Triple nested loops</td></tr>
+<tr><td><strong>O(2ⁿ)</strong></td><td>Exponential</td><td>Fibonacci (naive recursive)</td></tr>
+<tr><td><strong>O(n!)</strong></td><td>Factorial</td><td>Permutations, traveling salesman brute force</td></tr>
+</tbody></table>
+<br>
+<h3>Visual Memory Trick:</h3>
+<pre class="code-block">
+1 &lt; log n &lt; n &lt; n log n &lt; n² &lt; n³ &lt; 2ⁿ &lt; n!
+FAST ←————————————————————————————→ SLOW
+</pre>
+<br>
+<h3>Big Omega (Ω) — Lower Bound (Best Case)</h3>
+<pre class="code-block">
+Ω(n) = best-case scenario
+Example: Linear search finds element at index 0 → Ω(1)
+</pre>
+<br>
+<h3>Big Theta (Θ) — Tight Bound (Average Case)</h3>
+<pre class="code-block">
+Θ(n) = both upper AND lower bound match
+Example: Linear search in average case → Θ(n)
+</pre>
+<br>
+<h3>Simplification Rules:</h3>
+<pre class="code-block">
+# Rule 1: Drop constants
+O(2n) → O(n)
+O(100) → O(1)
+
+# Rule 2: Drop lower order terms
+O(n² + n) → O(n²)
+O(n + log n) → O(n)
+
+# Rule 3: Different inputs = different variables
+def func(a, b):        # O(a + b), NOT O(n)
+    for x in a: ...
+    for y in b: ...
+</pre>
+<br>
+<h3>Examples to Know:</h3>
+<br>
+<pre class="code-block">
+# O(1) — constant
+def get_first(arr):
+    return arr[0]
+
+# O(n) — linear
+def find(arr, target):
+    for item in arr:
+        if item == target:
+            return True
+
+# O(n²) — quadratic
+def bubble(arr):
+    for i in range(len(arr)):
+        for j in range(len(arr)-1):  # nested loop!
+            ...
+
+# O(log n) — binary search
+def binary_search(arr, target):
+    lo, hi = 0, len(arr)-1
+    while lo &lt;= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == target: return mid
+        elif arr[mid] &lt; target: lo = mid + 1
+        else: hi = mid - 1
+</pre>
+<br>
+<p>---</p>
+<br>
+<h2>1.4 Cases: Best / Average / Worst</h2>
+<br>
+<table><thead><tr>
+<th>Case</th>
+<th>Meaning</th>
+<th>Example (Linear Search)</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|------|---------|------------------------|</p>
+<table><thead><tr>
+<th><strong>Best</strong></th>
+<th>Most favorable input</th>
+<th>Element is at index 0 → O(1)</th>
+</tr></thead><tbody>
+<tr><td><strong>Average</strong></td><td>Typical/random input</td><td>Element is in the middle → O(n/2) = O(n)</td></tr>
+<tr><td><strong>Worst</strong></td><td>Least favorable input</td><td>Element not in list → O(n)</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>1.5 Algorithm Design Paradigms</h2>
+<br>
+<h3>1. Divide &amp; Conquer</h3>
+<pre class="code-block">
+Split problem → Solve subproblems recursively → Combine results
+Examples: Merge Sort, Quick Sort, Binary Search
+</pre>
+<br>
+<h3>2. Greedy</h3>
+<pre class="code-block">
+At each step, pick the locally optimal choice
+Hope: local optima → global optimum
+Examples: Dijkstra's shortest path, Huffman encoding
+Note: Doesn't always give the BEST answer globally
+</pre>
+<br>
+<h3>3. Dynamic Programming (DP)</h3>
+<pre class="code-block">
+Break into overlapping subproblems → Store results (memoization)
+Avoid recomputing the same subproblems
+Examples: Fibonacci, Knapsack, Longest Common Subsequence
+</pre>
+<br>
+<table><thead><tr>
+<th>Paradigm</th>
+<th>Key Idea</th>
+<th>Examples</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|----------|----------|----------|</p>
+<table><thead><tr>
+<th>Divide &amp; Conquer</th>
+<th>Split, solve, merge</th>
+<th>Merge Sort, Quick Sort</th>
+</tr></thead><tbody>
+<tr><td>Greedy</td><td>Best local choice</td><td>Dijkstra, Huffman</td></tr>
+<tr><td>Dynamic Programming</td><td>Memoize overlapping subproblems</td><td>Fibonacci, Knapsack</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>1.6 Recursion</h2>
+<br>
+<h3>What is Recursion?</h3>
+<p>A function that <strong>calls itself</strong> to solve a smaller version of the same problem.</p>
+<br>
+<h3>Two Essential Parts:</h3>
+<ol>
+<li><strong>Base Case</strong> — The stopping condition (prevents infinite loop)</li>
+<li><strong>Recursive Case</strong> — The function calling itself with a smaller input</li>
+</ol>
+<br>
+<pre class="code-block">
+# Classic: Factorial
+def factorial(n):
+    if n == 0:          # BASE CASE
+        return 1
+    return n * factorial(n - 1)  # RECURSIVE CASE
+
+# Classic: Fibonacci
+def fib(n):
+    if n &lt;= 1:          # BASE CASE
+        return n
+    return fib(n-1) + fib(n-2)  # RECURSIVE CASE
+</pre>
+<br>
+<h3>The Call Stack</h3>
+<pre class="code-block">
+factorial(4)
+  → 4 * factorial(3)
+       → 3 * factorial(2)
+            → 2 * factorial(1)
+                 → 1 * factorial(0)
+                      → returns 1
+</pre>
+<p>Each function call is pushed onto the <strong>call stack</strong> and popped when it returns.</p>
+<br>
+<div class="tip">⚠️ <strong>Stack Overflow</strong> = too many recursive calls, call stack runs out of memory!</div>
+<br>
+<h3>Recursion vs Iteration</h3>
+<table><thead><tr>
+<th>Recursion</th>
+<th>Iteration</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-|-----------|-----------|</p>
+<table><thead><tr>
+<th>Memory</th>
+<th>O(n) call stack</th>
+<th>O(1) usually</th>
+</tr></thead><tbody>
+<tr><td>Readability</td><td>Cleaner for trees/graphs</td><td>Better for simple loops</td></tr>
+<tr><td>Risk</td><td>Stack overflow</td><td>None</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>🎯 UNIT 1 VIVA QUICK-FIRE</h2>
+<br>
+<p class="vq"><strong>Q: What is Big O?</strong></p>
+<p class="va">A: Upper bound of an algorithm's time complexity — worst-case growth rate.</p>
+<br>
+<p class="vq"><strong>Q: What's O(log n)?</strong></p>
+<p class="va">A: Binary search — each step halves the input.</p>
+<br>
+<p class="vq"><strong>Q: Difference between O, Ω, Θ?</strong></p>
+<p class="va">A: O = worst case upper bound, Ω = best case lower bound, Θ = tight/average bound.</p>
+<br>
+<p class="vq"><strong>Q: What is an ADT?</strong></p>
+<p class="va">A: A mathematical model of a data type with defined operations but no implementation details.</p>
+<br>
+<p class="vq"><strong>Q: What is the base case in recursion?</strong></p>
+<p class="va">A: The condition that stops recursion. Without it, you get infinite recursion / stack overflow.</p>
+<br>
+<p class="vq"><strong>Q: What is Divide &amp; Conquer?</strong></p>
+<p class="va">A: Break problem into smaller subproblems, solve recursively, then combine results. Example: Merge Sort.</p>
+<br><hr class="divider">
+<div id="unit2" class="chapter">
+  <span class="chapter-label">🔗 Unit 2 — Linear DS</span>
+  <p class="sub">Arrays, Linked Lists, Stack, Queue</p>
+</div>
+<h1>Unit 2 — Linear Data Structures</h1>
+<br>
+<h2>Arrays</h2>
+<br>
+<p><strong>What is an Array?</strong> A collection of elements stored in contiguous (side-by-side) memory locations. All elements must be the same type.</p>
+<br>
+<p><strong>Types:</strong></p>
+<ul>
+<li><strong>1D Array:</strong> <code>arr = [10, 20, 30, 40]</code></li>
+<li><strong>2D Array (Matrix):</strong> <code>matrix = [[1,2],[3,4]]</code></li>
+<li><strong>Static:</strong> Fixed size (C arrays)</li>
+<li><strong>Dynamic:</strong> Resizable (Python list, Java ArrayList)</li>
+</ul>
+<br>
+<p><strong>Complexity:</strong></p>
+<br>
+<table><thead><tr>
+<th>Operation</th>
+<th>Time</th>
+<th>Why</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-----------|------|-----|</p>
+<table><thead><tr>
+<th>Access arr[i]</th>
+<th>O(1)</th>
+<th>Direct index calculation</th>
+</tr></thead><tbody>
+<tr><td>Search (unsorted)</td><td>O(n)</td><td>Must check each element</td></tr>
+<tr><td>Insert at end</td><td>O(1) amortized</td><td>Python list append</td></tr>
+<tr><td>Insert at middle</td><td>O(n)</td><td>Must shift elements right</td></tr>
+<tr><td>Delete</td><td>O(n)</td><td>Must shift elements left</td></tr>
+</tbody></table>
+<br>
+<p><strong>Array vs Linked List:</strong></p>
+<br>
+<table><thead><tr>
+<th>Array</th>
+<th>Linked List</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-|-------|-------------|</p>
+<table><thead><tr>
+<th>Memory</th>
+<th>Contiguous</th>
+<th>Scattered</th>
+</tr></thead><tbody>
+<tr><td>Access</td><td>O(1) random</td><td>O(n) sequential</td></tr>
+<tr><td>Insert/Delete</td><td>O(n) — shift</td><td>O(1) at known node</td></tr>
+<tr><td>Size</td><td>Fixed/Dynamic</td><td>Always Dynamic</td></tr>
+<tr><td>Cache friendly</td><td>YES</td><td>NO</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>Linked Lists ⭐ EXAM PRIORITY</h2>
+<br>
+<p><strong>What is it?</strong> A sequence of Nodes where each node has DATA + a NEXT pointer to the next node. Nodes are scattered in memory, connected by pointers.</p>
+<br>
+<pre class="code-block">
+HEAD → [10|→] → [20|→] → [30|None]
+</pre>
+<br>
+<p><strong>The Node class (memorize this):</strong></p>
+<pre class="code-block">
+class Node:
+    def __init__(self, data):
+        self.data = data   # stores value
+        self.next = None   # points to next node
+</pre>
+<br>
+<h3>Singly Linked List</h3>
+<p>Each node points FORWARD only. <code>HEAD → A → B → C → None</code></p>
+<br>
+<h3>Doubly Linked List</h3>
+<p>Each node has BOTH prev and next pointers.</p>
+<p><code>None ← A ↔ B ↔ C → None</code></p>
+<p><strong>Use case:</strong> Browser history (back AND forward navigation)</p>
+<br>
+<h3>Circular Linked List</h3>
+<p>Last node's next points BACK to HEAD. No None at end.</p>
+<p><code>HEAD → A → B → C → (back to HEAD)</code></p>
+<p><strong>Use case:</strong> Round-robin scheduling, music playlist loop</p>
+<br>
+<p><strong>Insert at HEAD — O(1):</strong></p>
+<pre class="code-block">
+new_node.next = self.head   # point new node to old head
+self.head = new_node         # head now points to new node
+</pre>
+<br>
+<p><strong>Traversal — O(n):</strong></p>
+<pre class="code-block">
+current = self.head
+while current:
+    print(current.data)
+    current = current.next
+</pre>
+<br>
+<p><strong>Delete by value — O(n):</strong></p>
+<pre class="code-block">
+# Special case: deleting head
+if self.head.data == target:
+    self.head = self.head.next
+    return
+# General case: find node BEFORE target
+current = self.head
+while current.next:
+    if current.next.data == target:
+        current.next = current.next.next  # skip target
+        return
+    current = current.next
+</pre>
+<br>
+<p><strong>Complexity Summary:</strong></p>
+<br>
+<table><thead><tr>
+<th>Operation</th>
+<th>Time</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-----------|------|</p>
+<table><thead><tr>
+<th>Insert at head</th>
+<th>O(1)</th>
+</tr></thead><tbody>
+<tr><td>Insert at tail</td><td>O(n) — walk to end first</td></tr>
+<tr><td>Delete (known position)</td><td>O(1)</td></tr>
+<tr><td>Delete (by value)</td><td>O(n) — search first</td></tr>
+<tr><td>Search</td><td>O(n)</td></tr>
+<tr><td>Traverse</td><td>O(n)</td></tr>
+</tbody></table>
+<br>
+<p><strong>Real World Uses:</strong></p>
+<ul>
+<li>Browser history (Doubly Linked List)</li>
+<li>Undo/Redo in text editors</li>
+<li>Music playlists (Circular)</li>
+<li>Dynamic memory allocation</li>
+</ul>
+<br>
+<p>---</p>
+<br>
+<h2>Stacks (LIFO) ⭐ EXAM PRIORITY</h2>
+<br>
+<p><strong>What is it?</strong> Last In, First Out. Like a stack of plates — you add and remove from the TOP only.</p>
+<br>
+<pre class="code-block">
+     ┌───┐
+     │ C │  ← TOP (last added, first removed)
+     ├───┤
+     │ B │
+     ├───┤
+     │ A │  ← BOTTOM (first added, last removed)
+     └───┘
+</pre>
+<br>
+<p><strong>ADT Operations:</strong></p>
+<br>
+<table><thead><tr>
+<th>Operation</th>
+<th>Description</th>
+<th>Complexity</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-----------|-------------|------------|</p>
+<table><thead><tr>
+<th>push(x)</th>
+<th>Add to top</th>
+<th>O(1)</th>
+</tr></thead><tbody>
+<tr><td>pop()</td><td>Remove from top</td><td>O(1)</td></tr>
+<tr><td>peek()</td><td>View top (don't remove)</td><td>O(1)</td></tr>
+<tr><td>isEmpty()</td><td>Check if empty</td><td>O(1)</td></tr>
+</tbody></table>
+<br>
+<p><strong>Python Implementation:</strong></p>
+<pre class="code-block">
+stack = []
+stack.append(10)    # push
+stack.append(20)
+top = stack[-1]     # peek
+stack.pop()         # pop → removes 20
+</pre>
+<br>
+<p><strong>Real World Uses:</strong></p>
+<ul>
+<li>Function call stack (recursion uses this!)</li>
+<li>Infix to Postfix conversion</li>
+<li>Undo/Redo operations</li>
+<li>Browser back button</li>
+<li>DFS graph traversal</li>
+</ul>
+<br>
+<p>---</p>
+<br>
+<h2>Queues (FIFO) ⭐ EXAM PRIORITY</h2>
+<br>
+<p><strong>What is it?</strong> First In, First Out. Like a bank line — people join at REAR and leave from FRONT.</p>
+<br>
+<pre class="code-block">
+FRONT → [A] [B] [C] [D] ← REAR
+dequeue ↑                  ↑ enqueue
+</pre>
+<br>
+<p><strong>ADT Operations:</strong></p>
+<br>
+<table><thead><tr>
+<th>Operation</th>
+<th>Description</th>
+<th>Complexity</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-----------|-------------|------------|</p>
+<table><thead><tr>
+<th>enqueue(x)</th>
+<th>Add to rear</th>
+<th>O(1)</th>
+</tr></thead><tbody>
+<tr><td>dequeue()</td><td>Remove from front</td><td>O(1)</td></tr>
+<tr><td>peek()</td><td>View front element</td><td>O(1)</td></tr>
+<tr><td>isEmpty()</td><td>Check if empty</td><td>O(1)</td></tr>
+</tbody></table>
+<br>
+<p><strong>Python Implementation (use deque!):</strong></p>
+<pre class="code-block">
+from collections import deque
+q = deque()
+q.append(10)      # enqueue — add to rear
+q.append(20)
+q.popleft()       # dequeue — remove from front → returns 10
+print(q[0])       # peek front
+</pre>
+<br>
+<div class="tip">Why deque and not list? Because list.pop(0) is O(n) — it shifts all elements. deque.popleft() is O(1). Always use deque for queues!</div>
+<br>
+<p><strong>Types of Queues:</strong></p>
+<ul>
+<li><strong>Simple Queue:</strong> Basic FIFO</li>
+<li><strong>Circular Queue:</strong> Rear connects to front — fixes wasted space</li>
+<li><strong>Priority Queue:</strong> Elements have priorities, highest exits first (implemented with Heap)</li>
+<li><strong>Deque:</strong> Insert/delete from BOTH ends</li>
+</ul>
+<br>
+<p><strong>Real World Uses:</strong></p>
+<ul>
+<li>CPU scheduling / Print queue</li>
+<li>BFS graph traversal</li>
+<li>Keyboard input buffer</li>
+<li>Call center waiting lines</li>
+</ul>
+<br>
+<p>---</p>
+<br>
+<h2>Stack vs Queue — KEY COMPARISON</h2>
+<br>
+<table><thead><tr>
+<th>Feature</th>
+<th>Stack</th>
+<th>Queue</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|---------|-------|-------|</p>
+<table><thead><tr>
+<th>Full Name</th>
+<th>LIFO</th>
+<th>FIFO</th>
+</tr></thead><tbody>
+<tr><td>Add operation</td><td>push (top)</td><td>enqueue (rear)</td></tr>
+<tr><td>Remove operation</td><td>pop (top)</td><td>dequeue (front)</td></tr>
+<tr><td>Access ends</td><td>One end only</td><td>Two ends</td></tr>
+<tr><td>Algorithm use</td><td>DFS, backtracking</td><td>BFS, scheduling</td></tr>
+<tr><td>Real world</td><td>Undo, call stack</td><td>Printer, bank line</td></tr>
+</tbody></table>
+<br>
+<h2>Viva Quick-Fire</h2>
+<br>
+<p class="vq"><strong>Q: What is a Linked List?</strong></p>
+<p class="va">A: A data structure where nodes are stored in non-contiguous memory. Each node contains data and a pointer (next) to the next node.</p>
+<br>
+<p class="vq"><strong>Q: Difference between Array and Linked List?</strong></p>
+<p class="va">A: Arrays use contiguous memory with O(1) random access but O(n) insert/delete. Linked Lists use scattered memory with O(n) access but O(1) insert/delete at a known node.</p>
+<br>
+<p class="vq"><strong>Q: What is LIFO?</strong></p>
+<p class="va">A: Last In, First Out. Stack uses LIFO — the last element pushed is the first to be popped.</p>
+<br>
+<p class="vq"><strong>Q: What is FIFO?</strong></p>
+<p class="va">A: First In, First Out. Queue uses FIFO — the first element enqueued is the first to be dequeued.</p>
+<br>
+<p class="vq"><strong>Q: What is the difference between Stack and Queue?</strong></p>
+<p class="va">A: Stack is LIFO (one end — top for both push and pop). Queue is FIFO (two ends — rear for enqueue, front for dequeue).</p>
+<br>
+<p class="vq"><strong>Q: What is a Circular Linked List?</strong></p>
+<p class="va">A: A linked list where the last node's next pointer points back to the head instead of None. Used in round-robin scheduling.</p>
+<br>
+<p class="vq"><strong>Q: What is a Doubly Linked List?</strong></p>
+<p class="va">A: Each node has two pointers — next and prev. Allows traversal in both directions. Used in browser history.</p>
+<br>
+<p class="vq"><strong>Q: What is peek() in Stack?</strong></p>
+<p class="va">A: Returns the top element without removing it from the stack. O(1) operation.</p>
+<br>
+<p class="vq"><strong>Q: Why use deque for Queue in Python?</strong></p>
+<p class="va">A: list.pop(0) is O(n) because it shifts all elements. deque.popleft() is O(1) — no shifting needed.</p>
+<br>
+<p class="vq"><strong>Q: What is a Priority Queue?</strong></p>
+<p class="va">A: A queue where elements have priorities. The element with highest priority is dequeued first regardless of insertion order. Implemented using a Heap.</p>
+<br><hr class="divider">
+<div id="unit3" class="chapter">
+  <span class="chapter-label">🔀 Unit 3 — Sorting</span>
+  <p class="sub">Bubble, Merge, Quick, Heap</p>
+</div>
+<h1>Unit 3 — Sorting Algorithms</h1>
+<br>
+<h2>Key Terminology</h2>
+<br>
+<table><thead><tr>
+<th>Term</th>
+<th>Meaning</th>
+<th>Examples</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|------|---------|---------|</p>
+<table><thead><tr>
+<th>Stable</th>
+<th>Equal elements keep their original relative order</th>
+<th>Bubble, Merge, Insertion</th>
+</tr></thead><tbody>
+<tr><td>Unstable</td><td>Equal elements may swap positions</td><td>Quick, Heap, Selection</td></tr>
+<tr><td>In-place</td><td>Uses O(1) extra space</td><td>Bubble, Selection, Insertion, Quick, Heap</td></tr>
+<tr><td>Out-of-place</td><td>Needs extra memory</td><td>Merge Sort — O(n) extra</td></tr>
+<tr><td>Comparison sort</td><td>Compares element pairs</td><td>Bubble, Merge, Quick, Heap</td></tr>
+<tr><td>Non-comparison</td><td>Uses digit/count values</td><td>Counting Sort, Radix Sort</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>Bubble Sort ⭐ EXAM PRIORITY</h2>
+<br>
+<p><strong>Idea:</strong> Compare adjacent elements. If left &gt; right, swap them. The largest element "bubbles up" to its correct position after each pass.</p>
+<br>
+<p><strong>Step-by-step with [64, 34, 25, 12]:</strong></p>
+<pre class="code-block">
+Pass 1: compare (64,34) → swap → compare (64,25) → swap → compare (64,12) → swap
+        [34, 25, 12, 64]   ← 64 is in final position!
+Pass 2: [25, 12, 34, 64]
+Pass 3: [12, 25, 34, 64]   ← sorted!
+</pre>
+<br>
+<p><strong>The Code (memorize this pattern):</strong></p>
+<pre class="code-block">
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):           # n-1 passes
+        swapped = False
+        for j in range(n - 1 - i):   # -i because last i are sorted
+            if arr[j] &gt; arr[j + 1]:  # wrong order?
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # swap!
+                swapped = True
+        if not swapped:               # already sorted — optimization
+            break
+    return arr
+</pre>
+<br>
+<table><thead><tr>
+<th>Case</th>
+<th>Time</th>
+<th>Space</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|------|------|-------|</p>
+<table><thead><tr>
+<th>Best (sorted array)</th>
+<th>O(n)</th>
+<th>O(1)</th>
+</tr></thead><tbody>
+<tr><td>Average</td><td>O(n²)</td><td>O(1)</td></tr>
+<tr><td>Worst (reverse sorted)</td><td>O(n²)</td><td>O(1)</td></tr>
+</tbody></table>
+<br>
+<p><strong>Stable: YES | In-place: YES</strong></p>
+<br>
+<p>---</p>
+<br>
+<h2>Insertion Sort</h2>
+<br>
+<p><strong>Idea:</strong> Like sorting playing cards in your hand. Pick one card, slide it into the correct position in your already-sorted hand.</p>
+<br>
+<pre class="code-block">
+[5, 2, 4, 6, 1]
+Take 2: insert before 5 → [2, 5, 4, 6, 1]
+Take 4: insert between 2 and 5 → [2, 4, 5, 6, 1]
+Take 1: insert at start → [1, 2, 4, 5, 6]
+</pre>
+<br>
+<p><strong>Best case O(n) — great for nearly-sorted data!</strong></p>
+<p><strong>Stable: YES | In-place: YES</strong></p>
+<br>
+<p>---</p>
+<br>
+<h2>Selection Sort</h2>
+<br>
+<p><strong>Idea:</strong> Find the minimum in the unsorted portion, place it at the start. Repeat.</p>
+<br>
+<p>O(n²) always. Unstable. In-place.</p>
+<br>
+<p>---</p>
+<br>
+<h2>Merge Sort ⭐ EXAM PRIORITY</h2>
+<br>
+<p><strong>Idea:</strong> Divide &amp; Conquer. Keep splitting array in half until you have individual elements (already sorted). Then merge sorted halves back together.</p>
+<br>
+<p><strong>Trace with [38, 27, 43, 3]:</strong></p>
+<pre class="code-block">
+DIVIDE:
+[38, 27, 43, 3]
+  [38, 27]    [43, 3]
+  [38] [27]   [43] [3]
+
+MERGE (each pair in sorted order):
+  [27, 38]    [3, 43]
+[3, 27, 38, 43]  ← done!
+</pre>
+<br>
+<p><strong>The TWO functions (learn separately!):</strong></p>
+<pre class="code-block">
+# Function 1: SPLIT (just divides recursively)
+def merge_sort(arr):
+    if len(arr) &lt;= 1:        # BASE CASE: single element is sorted
+        return arr
+    mid = len(arr) // 2
+    left  = merge_sort(arr[:mid])   # sort left half
+    right = merge_sort(arr[mid:])   # sort right half
+    return merge(left, right)       # merge sorted halves
+
+# Function 2: MERGE (the actual work happens here)
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i &lt; len(left) and j &lt; len(right):
+        if left[i] &lt;= right[j]:   # &lt;= makes it STABLE
+            result.append(left[i]); i += 1
+        else:
+            result.append(right[j]); j += 1
+    result.extend(left[i:])    # add remaining
+    result.extend(right[j:])
+    return result
+</pre>
+<br>
+<table><thead><tr>
+<th>Case</th>
+<th>Time</th>
+<th>Space</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|------|------|-------|</p>
+<table><thead><tr>
+<th>Best</th>
+<th>O(n log n)</th>
+<th>O(n)</th>
+</tr></thead><tbody>
+<tr><td>Average</td><td>O(n log n)</td><td>O(n)</td></tr>
+<tr><td>Worst</td><td>O(n log n)</td><td>O(n)</td></tr>
+</tbody></table>
+<br>
+<p><strong>Stable: YES | In-place: NO — needs O(n) extra memory</strong></p>
+<br>
+<div class="tip">Why O(n log n)? → log n levels of splitting × O(n) work to merge each level = O(n log n)</div>
+<br>
+<p>---</p>
+<br>
+<h2>Quick Sort ⭐ EXAM PRIORITY</h2>
+<br>
+<p><strong>Idea:</strong> Choose a PIVOT element. Partition the array so all elements &lt; pivot go LEFT, all &gt; pivot go RIGHT. Pivot is now in its FINAL correct position! Recursively sort left and right sides.</p>
+<br>
+<p><strong>Trace with [10, 7, 8, 9, 1, 5], pivot = 5 (last element):</strong></p>
+<pre class="code-block">
+Walk left to right, put elements &lt;= 5 on left side:
+1 ≤ 5 → left side
+Result: [1, 5, 8, 9, 7, 10]
+         ↑ ← 5 is in final position! → ↑
+Sort [1] and [8, 9, 7, 10] separately → done!
+</pre>
+<br>
+<p><strong>The Partition function (memorize this):</strong></p>
+<pre class="code-block">
+def partition(arr, low, high):
+    pivot = arr[high]     # choose last element as pivot
+    i = low - 1           # i = boundary of smaller elements
+
+    for j in range(low, high):
+        if arr[j] &lt;= pivot:         # if current &lt;= pivot
+            i += 1                  # expand smaller boundary
+            arr[i], arr[j] = arr[j], arr[i]  # swap into smaller zone
+
+    # Place pivot in its correct final position
+    arr[i+1], arr[high] = arr[high], arr[i+1]
+    return i + 1   # return pivot's final index
+
+def quick_sort(arr, low, high):
+    if low &lt; high:
+        pivot_idx = partition(arr, low, high)
+        quick_sort(arr, low, pivot_idx - 1)   # sort left
+        quick_sort(arr, pivot_idx + 1, high)  # sort right
+</pre>
+<br>
+<table><thead><tr>
+<th>Case</th>
+<th>Time</th>
+<th>Space</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|------|------|-------|</p>
+<table><thead><tr>
+<th>Best</th>
+<th>O(n log n)</th>
+<th>O(log n)</th>
+</tr></thead><tbody>
+<tr><td>Average</td><td>O(n log n)</td><td>O(log n)</td></tr>
+<tr><td>Worst (sorted input)</td><td>O(n²)</td><td>O(n)</td></tr>
+</tbody></table>
+<br>
+<p><strong>Stable: NO | In-place: YES | Fastest in practice</strong></p>
+<br>
+<div class="tip">Worst case happens when pivot is always min or max (e.g., sorted array). Fix: random pivot selection.</div>
+<br>
+<p>---</p>
+<br>
+<h2>Heap Sort</h2>
+<br>
+<p>Build a Max-Heap from array → repeatedly extract the max and place at end.</p>
+<br>
+<p>O(n log n) always | O(1) space | Unstable | In-place</p>
+<br>
+<p>---</p>
+<br>
+<h2>Non-Comparison Sorts (Conceptual)</h2>
+<br>
+<p><strong>Counting Sort:</strong> Count frequency of each element. Works only for integers in a known range [0, k]. Time: O(n+k). Stable.</p>
+<br>
+<p><strong>Radix Sort:</strong> Sort digit by digit (least to most significant). Uses Counting Sort internally. Time: O(d × (n+k)).</p>
+<br>
+<p>---</p>
+<br>
+<h2>THE MASTER TABLE — Memorize This!</h2>
+<br>
+<table><thead><tr>
+<th>Algorithm</th>
+<th>Best</th>
+<th>Average</th>
+<th>Worst</th>
+<th>Space</th>
+<th>Stable</th>
+<th>In-place</th>
+</tr></thead><tbody>
+</tbody></table>
+<p>|-----------|------|---------|-------|-------|--------|----------|</p>
+<table><thead><tr>
+<th>Bubble</th>
+<th>O(n)</th>
+<th>O(n²)</th>
+<th>O(n²)</th>
+<th>O(1)</th>
+<th>YES</th>
+<th>YES</th>
+</tr></thead><tbody>
+<tr><td>Selection</td><td>O(n²)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>NO</td><td>YES</td></tr>
+<tr><td>Insertion</td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>O(1)</td><td>YES</td><td>YES</td></tr>
+<tr><td>Merge</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td><td>YES</td><td>NO</td></tr>
+<tr><td>Quick</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td><td>NO</td><td>YES</td></tr>
+<tr><td>Heap</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>O(1)</td><td>NO</td><td>YES</td></tr>
+<tr><td>Counting</td><td>O(n+k)</td><td>O(n+k)</td><td>O(n+k)</td><td>O(k)</td><td>YES</td><td>NO</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>Viva Quick-Fire</h2>
+<br>
+<p class="vq"><strong>Q: What is a stable sort?</strong></p>
+<p class="va">A: A sort where equal elements maintain their original relative order. Bubble, Merge, Insertion are stable.</p>
+<br>
+<p class="vq"><strong>Q: Which sort has guaranteed O(n log n) in ALL cases?</strong></p>
+<p class="va">A: Merge Sort and Heap Sort.</p>
+<br>
+<p class="vq"><strong>Q: Why is Merge Sort O(n) space?</strong></p>
+<p class="va">A: It needs an auxiliary array to merge two sorted halves — cannot merge in-place.</p>
+<br>
+<p class="vq"><strong>Q: When is Quick Sort worst case O(n²)?</strong></p>
+<p class="va">A: When the pivot is always the smallest or largest element — happens with sorted/reverse sorted arrays and bad pivot choice.</p>
+<br>
+<p class="vq"><strong>Q: How does Bubble Sort work?</strong></p>
+<p class="va">A: Repeatedly compares adjacent elements and swaps if arr[j] &gt; arr[j+1]. After each pass, the largest unsorted element reaches its correct position at the end.</p>
+<br>
+<p class="vq"><strong>Q: What is a pivot in Quick Sort?</strong></p>
+<p class="va">A: An element used to partition the array. All elements smaller than pivot go left, all larger go right. The pivot ends up in its final sorted position.</p>
+<br>
+<p class="vq"><strong>Q: Which sort is fastest in practice?</strong></p>
+<p class="va">A: Quick Sort — excellent cache performance and low constant factors despite O(n²) worst case.</p>
+<br>
+<p class="vq"><strong>Q: Best sort for nearly-sorted data?</strong></p>
+<p class="va">A: Insertion Sort — best case O(n).</p>
+<br>
+<p class="vq"><strong>Q: Best sort for linked lists?</strong></p>
+<p class="va">A: Merge Sort — doesn't require random access.</p>
+<br><hr class="divider">
+<div id="unit4" class="chapter">
+  <span class="chapter-label">🌳 Unit 4 — Non-Linear DS</span>
+  <p class="sub">Trees, Graphs, Hashing, Tries</p>
+</div>
+<h1>Unit 4 — Non-Linear Data Structures</h1>
+<br>
+<h2>Trees</h2>
+<br>
+<p><strong>What is a Tree?</strong> A hierarchical data structure consisting of nodes connected by edges. It represents a parent-child relationship.</p>
+<br>
+<p><strong>Terminology:</strong></p>
+<ul>
+<li><strong>Root:</strong> The topmost node.</li>
+<li><strong>Child / Parent:</strong> Standard hierarchy.</li>
+<li><strong>Leaf Node:</strong> A node with NO children.</li>
+<li><strong>Internal Node:</strong> A node with at least one child.</li>
+<li><strong>Height of Tree:</strong> Longest path from root to a leaf.</li>
+<li><strong>Depth of Node:</strong> Path from root to that node.</li>
+</ul>
+<br>
+<h3>Binary Tree</h3>
+<p>A tree where each node has AT MOST 2 children (Left and Right).</p>
+<br>
+<h3>Binary Search Tree (BST) ⭐ EXAM PRIORITY</h3>
+<p>A Binary Tree with a strict rule:</p>
+<ol>
+<li>All nodes in LEFT subtree are <strong>&lt;</strong> (smaller than) the root.</li>
+<li>All nodes in RIGHT subtree are <strong>&gt;</strong> (greater than) the root.</li>
+</ol>
+<br>
+<p><strong>Why use BST?</strong> It allows for extremely fast searching. Each comparison cuts the search space in half.</p>
+<ul>
+<li>Average Search Time: <code>O(log n)</code></li>
+<li>Worst Case (Unbalanced like a linked list): <code>O(n)</code></li>
+</ul>
+<br>
+<h4>Tree Traversals (Printing the tree)</h4>
+<p>Traversing means visiting every node exactly once.</p>
+<br>
+<ol>
+<li><strong>Pre-order (Root, Left, Right):</strong></li>
+</ol>
+<p>   - Used to create a copy of the tree.</p>
+<p>   - Example: 5, 3, 2, 4, 7, 6, 8</p>
+<br>
+<ol>
+<li><strong>In-order (Left, Root, Right):</strong> ⭐</li>
+</ol>
+<p>   - <strong>CRITICAL:</strong> Inorder traversal of a BST always prints elements in <strong>SORTED (ascending)</strong> order!</p>
+<p>   - Example: 2, 3, 4, 5, 6, 7, 8</p>
+<br>
+<ol>
+<li><strong>Post-order (Left, Right, Root):</strong></li>
+</ol>
+<p>   - Used to delete the tree (delete children before parent).</p>
+<p>   - Example: 2, 4, 3, 6, 8, 7, 5</p>
+<br>
+<p>---</p>
+<br>
+<h2>Graphs</h2>
+<br>
+<p><strong>What is a Graph?</strong> A collection of Vertices (Nodes) and Edges (connections between them). Trees are a special type of graph (a graph with no cycles).</p>
+<br>
+<p><strong>Types:</strong></p>
+<ul>
+<li><strong>Directed (Digraph):</strong> Edges have direction (A → B). Example: Twitter followers.</li>
+<li><strong>Undirected:</strong> Edges have no direction (A — B). Example: Facebook friends.</li>
+<li><strong>Weighted:</strong> Edges have weights/costs. Example: Distance between cities.</li>
+<li><strong>Cyclic / Acyclic:</strong> Contains cycles (loops) or not.</li>
+</ul>
+<br>
+<p><strong>Representations:</strong></p>
+<ol>
+<li><strong>Adjacency Matrix:</strong> 2D array. <code>matrix[i][j] = 1</code> if edge exists.</li>
+</ol>
+<p>   - Space: <code>O(V²)</code></p>
+<p>   - Best for: Dense graphs (many edges).</p>
+<ol>
+<li><strong>Adjacency List:</strong> Array of lists. <code>list[i]</code> contains all neighbors of vertex <code>i</code>.</li>
+</ol>
+<p>   - Space: <code>O(V + E)</code></p>
+<p>   - Best for: Sparse graphs (few edges). Most commonly used!</p>
+<br>
+<h3>Graph Traversals</h3>
+<br>
+<h4>1. Breadth-First Search (BFS)</h4>
+<ul>
+<li>Explores level by level (neighbors first).</li>
+<li>Uses a <strong>Queue</strong> data structure.</li>
+<li>Used for finding the shortest path in unweighted graphs.</li>
+</ul>
+<br>
+<h4>2. Depth-First Search (DFS)</h4>
+<ul>
+<li>Explores as deep as possible before backtracking.</li>
+<li>Uses a <strong>Stack</strong> (or recursion).</li>
+<li>Used for finding cycles, topological sorting, solving mazes.</li>
+</ul>
+<br>
+<p>---</p>
+<br>
+<h2>Hashing</h2>
+<br>
+<p><strong>What is Hashing?</strong> A technique to map a large range of key values to a smaller range of array indices using a <strong>Hash Function</strong>.</p>
+<br>
+<p><strong>Why?</strong> It allows for <strong>O(1)</strong> average time complexity for Search, Insert, and Delete!</p>
+<br>
+<h3>Hash Table</h3>
+<p>An array that stores the values based on the index calculated by the Hash Function.</p>
+<br>
+<h3>Hash Collision</h3>
+<p>What happens when the hash function maps two different keys to the SAME index? This is a collision.</p>
+<br>
+<p><strong>Collision Resolution Techniques:</strong></p>
+<br>
+<ol>
+<li><strong>Chaining (Open Hashing):</strong></li>
+</ol>
+<p>   - Each slot in the array is a Linked List.</p>
+<p>   - If collision occurs, just append the new element to the linked list at that index.</p>
+<br>
+<ol>
+<li><strong>Open Addressing (Closed Hashing):</strong></li>
+</ol>
+<p>   - All elements are stored in the array itself. If a collision happens, find the next empty slot.</p>
+<p>   - <strong>Linear Probing:</strong> Check next slot (index + 1), then next, until empty found. (Leads to clustering).</p>
+<p>   - <strong>Quadratic Probing:</strong> Check index + 1², index + 2², index + 3², etc.</p>
+<p>   - <strong>Double Hashing:</strong> Use a second hash function to determine the step size.</p>
+<br>
+<p>---</p>
+<br>
+<h2>Tries (Prefix Tree)</h2>
+<br>
+<p><strong>What is a Trie?</strong> A tree-like structure used for storing strings.</p>
+<ul>
+<li>Each node represents a single character.</li>
+<li>Excellent for autocomplete, spell checkers, and searching prefixes.</li>
+<li>Search time depends on the length of the string, NOT the number of strings stored. <code>O(L)</code> where L is word length.</li>
+</ul>
+<br>
+<p>---</p>
+<br>
+<h2>Viva Quick-Fire</h2>
+<br>
+<p class="vq"><strong>Q: Difference between Tree and Graph?</strong></p>
+<p class="va">A: A Tree is a hierarchical structure with a root and no cycles. A Graph is a network structure that can have cycles and disconnected components.</p>
+<br>
+<p class="vq"><strong>Q: Why use a Binary Search Tree (BST)?</strong></p>
+<p class="va">A: Because it provides fast search, insertion, and deletion operations (O(log n) on average) by maintaining elements in a sorted structure.</p>
+<br>
+<p class="vq"><strong>Q: What is the worst-case time complexity of a BST?</strong></p>
+<p class="va">A: O(n). This happens if the tree becomes skewed (e.g., inserting elements that are already sorted), turning it essentially into a linked list.</p>
+<br>
+<p class="vq"><strong>Q: Which traversal of a BST gives a sorted sequence?</strong></p>
+<p class="va">A: In-order traversal (Left, Root, Right).</p>
+<br>
+<p class="vq"><strong>Q: What data structure does BFS use?</strong></p>
+<p class="va">A: Queue.</p>
+<br>
+<p class="vq"><strong>Q: What data structure does DFS use?</strong></p>
+<p class="va">A: Stack (or recursion, which uses the call stack).</p>
+<br>
+<p class="vq"><strong>Q: What is a Hash Collision?</strong></p>
+<p class="va">A: When two distinct keys are mapped to the exact same index in a hash table by the hash function.</p>
+<br>
+<p class="vq"><strong>Q: Name two ways to handle Hash Collisions.</strong></p>
+<p class="va">A: Chaining (using linked lists at each index) and Open Addressing (like Linear Probing, finding the next available slot).</p>
+<br>
+<p class="vq"><strong>Q: What is the main advantage of a Trie?</strong></p>
+<p class="va">A: It provides extremely fast string searching based on prefixes, making it ideal for autocomplete features. Time complexity is proportional to word length, not dictionary size.</p>
+<br><hr class="divider">
+<div id="viva" class="chapter">
+  <span class="chapter-label">🎤 Master Viva Q&A</span>
+  <p class="sub">61 Questions with Gold-Standard Answers</p>
+</div>
+<h1>Master Viva Q&amp;A — 61 Questions</h1>
+<br>
+<p>This section contains rapid-fire questions covering all 4 units, specifically tailored for what an examiner will ask during your practical/viva.</p>
+<br>
+<h2>General &amp; Unit 1</h2>
+<br>
+<p><strong>Q1: What is a Data Structure?</strong></p>
+<p class="va">A: A specialized format for organizing, processing, retrieving and storing data in memory.</p>
+<br>
+<p><strong>Q2: What is an Algorithm?</strong></p>
+<p class="va">A: A step-by-step procedure or set of rules to solve a specific problem.</p>
+<br>
+<p><strong>Q3: What is Time Complexity?</strong></p>
+<p class="va">A: The amount of time an algorithm takes to run, expressed as a function of the input size (n).</p>
+<br>
+<p><strong>Q4: What is Space Complexity?</strong></p>
+<p class="va">A: The amount of extra memory an algorithm requires to run, expressed as a function of input size (n).</p>
+<br>
+<p><strong>Q5: What is Big O Notation?</strong></p>
+<p class="va">A: It represents the UPPER BOUND or WORST-CASE scenario of an algorithm's time or space complexity.</p>
+<br>
+<p><strong>Q6: What is Big Omega (Ω) and Big Theta (Θ)?</strong></p>
+<p class="va">A: Omega is the lower bound (best case). Theta is the exact bound (average case).</p>
+<br>
+<p><strong>Q7: Rank time complexities from fastest to slowest.</strong></p>
+<p class="va">A: O(1) &gt; O(log n) &gt; O(n) &gt; O(n log n) &gt; O(n²) &gt; O(2^n) &gt; O(n!)</p>
+<br>
+<p><strong>Q8: What is an ADT (Abstract Data Type)?</strong></p>
+<p class="va">A: A theoretical model that specifies WHAT operations can be performed on a data structure, but not HOW they are implemented (e.g., List, Stack, Queue).</p>
+<br>
+<p><strong>Q9: What is Recursion?</strong></p>
+<p class="va">A: When a function calls itself to solve a smaller instance of the same problem.</p>
+<br>
+<p><strong>Q10: What is a Base Case in recursion?</strong></p>
+<p class="va">A: The condition that stops the recursive calls, preventing an infinite loop and stack overflow.</p>
+<br>
+<p>---</p>
+<br>
+<h2>Unit 2 — Linear Data Structures</h2>
+<br>
+<p><strong>Q11: Difference between Array and Linked List?</strong></p>
+<p class="va">A: Arrays use contiguous memory, sizes are fixed, access is O(1). Linked lists use non-contiguous memory connected by pointers, size is dynamic, access is O(n).</p>
+<br>
+<p><strong>Q12: What is a Stack?</strong></p>
+<p class="va">A: A linear data structure following LIFO (Last In First Out). Insertion (push) and deletion (pop) happen at the same end (top).</p>
+<br>
+<p><strong>Q13: Name an application of Stack.</strong></p>
+<p class="va">A: Undo mechanism in text editors, browser history, recursive function call stack, evaluating postfix expressions.</p>
+<br>
+<p><strong>Q14: What is a Queue?</strong></p>
+<p class="va">A: A linear data structure following FIFO (First In First Out). Insertion (enqueue) at the rear, deletion (dequeue) at the front.</p>
+<br>
+<p><strong>Q15: Name an application of Queue.</strong></p>
+<p class="va">A: Print queue, CPU task scheduling, breadth-first search in graphs.</p>
+<br>
+<p><strong>Q16: Why use <code>deque</code> from <code>collections</code> for Queues in Python instead of lists?</strong></p>
+<p class="va">A: In a normal Python list, <code>pop(0)</code> takes O(n) time because it shifts all elements. <code>deque.popleft()</code> takes O(1) time.</p>
+<br>
+<p><strong>Q17: What is a Circular Queue?</strong></p>
+<p class="va">A: A queue where the last position is connected back to the first position. It solves the problem of wasted space in standard array-based queues.</p>
+<br>
+<p><strong>Q18: What is a Priority Queue?</strong></p>
+<p class="va">A: A queue where each element has a priority. Elements with higher priority are dequeued before elements with lower priority, regardless of insertion order.</p>
+<br>
+<p><strong>Q19: What is a Doubly Linked List?</strong></p>
+<p class="va">A: A linked list where each node contains two pointers: one pointing to the next node and one pointing to the previous node.</p>
+<br>
+<p><strong>Q20: Advantage of Doubly Linked List?</strong></p>
+<p class="va">A: You can traverse the list in both forward and backward directions. Deletion is easier if you have a pointer to the node to be deleted.</p>
+<br>
+<p><strong>Q21: What is a Circular Linked List?</strong></p>
+<p class="va">A: A linked list where the last node points back to the head node instead of None.</p>
+<br>
+<p><strong>Q22: How do you convert Infix to Postfix?</strong></p>
+<p class="va">A: Use a stack for operators. Operands go directly to output. Operators are pushed to the stack based on precedence rules. Brackets control the flow.</p>
+<br>
+<p><strong>Q23: Why do computers prefer Postfix notation?</strong></p>
+<p class="va">A: Postfix eliminates the need for parentheses and precedence rules (BODMAS). It can be easily evaluated using a single stack.</p>
+<br>
+<p><strong>Q24: What is the time complexity of inserting at the head of a Linked List?</strong></p>
+<p class="va">A: O(1).</p>
+<br>
+<p><strong>Q25: What is the time complexity of accessing the nth element in a Linked List?</strong></p>
+<p class="va">A: O(n), because you must traverse from the head.</p>
+<br>
+<p>---</p>
+<br>
+<h2>Unit 3 — Sorting</h2>
+<br>
+<p><strong>Q26: What is a stable sort?</strong></p>
+<p class="va">A: A sorting algorithm that preserves the original relative order of equal elements.</p>
+<br>
+<p><strong>Q27: Name some stable sorts.</strong></p>
+<p class="va">A: Bubble Sort, Insertion Sort, Merge Sort.</p>
+<br>
+<p><strong>Q28: What is an in-place sort?</strong></p>
+<p class="va">A: An algorithm that requires a small, constant amount of extra memory space O(1) to sort the data.</p>
+<br>
+<p><strong>Q29: Name an out-of-place sort.</strong></p>
+<p class="va">A: Merge Sort. It requires O(n) auxiliary space to merge the arrays.</p>
+<br>
+<p><strong>Q30: How does Bubble Sort work?</strong></p>
+<p class="va">A: It repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The largest elements "bubble" to the end.</p>
+<br>
+<p><strong>Q31: Time complexity of Bubble Sort?</strong></p>
+<p class="va">A: Worst and Average: O(n²). Best (if already sorted and optimized with a flag): O(n).</p>
+<br>
+<p><strong>Q32: How does Merge Sort work?</strong></p>
+<p class="va">A: Divide the array in half recursively until sub-arrays are size 1. Then repeatedly merge the sub-arrays to produce new sorted sub-arrays until one sorted array remains.</p>
+<br>
+<p><strong>Q33: Time complexity of Merge Sort?</strong></p>
+<p class="va">A: O(n log n) in Best, Average, and Worst cases.</p>
+<br>
+<p><strong>Q34: How does Quick Sort work?</strong></p>
+<p class="va">A: Pick a pivot element. Partition the array so elements smaller than the pivot are on the left, and larger elements are on the right. Recursively apply this to the left and right sub-arrays.</p>
+<br>
+<p><strong>Q35: Time complexity of Quick Sort?</strong></p>
+<p class="va">A: Average/Best: O(n log n). Worst: O(n²) (happens when the array is already sorted and the pivot is chosen poorly).</p>
+<br>
+<p><strong>Q36: Which is faster in practice: Merge Sort or Quick Sort?</strong></p>
+<p class="va">A: Quick Sort is generally faster in practice due to better cache locality and smaller constant factors, even though its worst-case is O(n²).</p>
+<br>
+<p><strong>Q37: Best sorting algorithm for linked lists?</strong></p>
+<p class="va">A: Merge Sort, because it does not require random access to elements.</p>
+<br>
+<p><strong>Q38: What is Insertion Sort best used for?</strong></p>
+<p class="va">A: Small datasets or arrays that are already mostly sorted.</p>
+<br>
+<p><strong>Q39: How does Selection Sort work?</strong></p>
+<p class="va">A: Repeatedly finds the minimum element from the unsorted part and puts it at the beginning.</p>
+<br>
+<p><strong>Q40: Is Quick Sort stable?</strong></p>
+<p class="va">A: No, Quick Sort is typically unstable.</p>
+<br>
+<p>---</p>
+<br>
+<h2>Unit 4 — Non-Linear Data Structures</h2>
+<br>
+<p><strong>Q41: What is a Tree?</strong></p>
+<p class="va">A: A hierarchical non-linear data structure consisting of nodes connected by edges, with a single root.</p>
+<br>
+<p><strong>Q42: What is a Binary Tree?</strong></p>
+<p class="va">A: A tree where every node has at most two children (left and right).</p>
+<br>
+<p><strong>Q43: What is a Binary Search Tree (BST)?</strong></p>
+<p class="va">A: A binary tree where for every node, all elements in the left subtree are smaller, and all elements in the right subtree are larger.</p>
+<br>
+<p><strong>Q44: Time complexity of searching in a BST?</strong></p>
+<p class="va">A: Average: O(log n). Worst: O(n) (if the tree becomes skewed like a linked list).</p>
+<br>
+<p><strong>Q45: Name the three depth-first tree traversals.</strong></p>
+<p class="va">A: In-order (Left, Root, Right), Pre-order (Root, Left, Right), Post-order (Left, Right, Root).</p>
+<br>
+<p><strong>Q46: Which traversal gives elements in sorted order for a BST?</strong></p>
+<p class="va">A: In-order traversal.</p>
+<br>
+<p><strong>Q47: What is the height of a tree?</strong></p>
+<p class="va">A: The length of the longest path from the root to a leaf node.</p>
+<br>
+<p><strong>Q48: What is a Graph?</strong></p>
+<p class="va">A: A non-linear data structure consisting of a set of vertices (nodes) and a set of edges connecting them.</p>
+<br>
+<p><strong>Q49: Difference between Directed and Undirected Graph?</strong></p>
+<p class="va">A: In a directed graph, edges have a direction (one-way). In an undirected graph, edges have no direction (two-way).</p>
+<br>
+<p><strong>Q50: How do you represent a Graph in memory?</strong></p>
+<p class="va">A: Adjacency Matrix (2D array) or Adjacency List (array of linked lists).</p>
+<br>
+<p><strong>Q51: When to use Adjacency Matrix vs Adjacency List?</strong></p>
+<p class="va">A: Use Matrix for dense graphs (many edges). Use List for sparse graphs (few edges) to save memory.</p>
+<br>
+<p><strong>Q52: What is Breadth-First Search (BFS)?</strong></p>
+<p class="va">A: A graph traversal algorithm that explores the neighbor nodes first, level by level. It uses a Queue.</p>
+<br>
+<p><strong>Q53: What is Depth-First Search (DFS)?</strong></p>
+<p class="va">A: A graph traversal algorithm that explores as far as possible along each branch before backtracking. It uses a Stack (or recursion).</p>
+<br>
+<p><strong>Q54: What is Hashing?</strong></p>
+<p class="va">A: A technique to convert a range of key values into a range of indexes of an array using a hash function.</p>
+<br>
+<p><strong>Q55: What is the main benefit of a Hash Table?</strong></p>
+<p class="va">A: Average O(1) time complexity for search, insertion, and deletion.</p>
+<br>
+<p><strong>Q56: What is a Hash Collision?</strong></p>
+<p class="va">A: When a hash function generates the same index for more than one key.</p>
+<br>
+<p><strong>Q57: How do you resolve Hash Collisions?</strong></p>
+<p class="va">A: Chaining (using linked lists at each index) or Open Addressing (finding the next empty slot using linear or quadratic probing).</p>
+<br>
+<p><strong>Q58: What is a Trie?</strong></p>
+<p class="va">A: A tree data structure used for efficient retrieval of a key in a large dataset of strings (Prefix tree).</p>
+<br>
+<p><strong>Q59: Application of a Trie?</strong></p>
+<p class="va">A: Autocomplete, spell checking, IP routing.</p>
+<br>
+<p><strong>Q60: What is a Heap?</strong></p>
+<p class="va">A: A specialized tree-based data structure that satisfies the heap property (e.g., in a Max Heap, parent is always &gt;= children).</p>
+<br>
+<p><strong>Q61: What data structure is used to implement a Priority Queue?</strong></p>
+<p class="va">A: A Heap.</p>
+<br><hr class="divider">
+<div id="cheat" class="chapter">
+  <span class="chapter-label">⚡ Cheatsheet</span>
+  <p class="sub">Last-10-min rapid reference</p>
+</div>
+<h1>Last 10-Minute Exam Cheatsheet ⚡</h1>
+<br>
+<div class="tip"><strong>How to use this:</strong> Read this right before you walk into the exam hall. Do not try to learn new things here, just use it to trigger your memory.</div>
+<br>
+<p>---</p>
+<br>
+<h2>⏱️ Time Complexity Cheat Codes</h2>
+<br>
+<table><thead><tr>
+<th>Data Structure / Algo</th>
+<th>Best</th>
+<th>Average</th>
+<th>Worst</th>
+<th>Key Characteristic</th>
+</tr></thead><tbody>
+<tr><td><strong>Array Access</strong></td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>Instant index lookup</td></tr>
+<tr><td><strong>Array Insert/Del</strong></td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>Must shift elements</td></tr>
+<tr><td><strong>Linked List Access</strong></td><td>O(n)</td><td>O(n)</td><td>O(n)</td><td>Must traverse from head</td></tr>
+<tr><td><strong>Linked List Insert</strong></td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td><em>If position is known</em></td></tr>
+<tr><td><strong>Stack (Push/Pop)</strong></td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>Top only</td></tr>
+<tr><td><strong>Queue (Enq/Deq)</strong></td><td>O(1)</td><td>O(1)</td><td>O(1)</td><td>Front/Rear only</td></tr>
+<tr><td><strong>Bubble Sort</strong></td><td>O(n)</td><td>O(n²)</td><td>O(n²)</td><td>Compare adjacent</td></tr>
+<tr><td><strong>Merge Sort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n log n)</td><td>Divide &amp; Conquer (needs memory)</td></tr>
+<tr><td><strong>Quick Sort</strong></td><td>O(n log n)</td><td>O(n log n)</td><td>O(n²)</td><td>Pivot based (fastest in practice)</td></tr>
+<tr><td><strong>BST Search</strong></td><td>O(log n)</td><td>O(log n)</td><td>O(n)</td><td>Skewed tree = worst case</td></tr>
+<tr><td><strong>Hash Table</strong></td><td>O(1)</td><td>O(1)</td><td>O(n)</td><td>Worst case = many collisions</td></tr>
+</tbody></table>
+<br>
+<p>---</p>
+<br>
+<h2>🧩 The "Explain Like I'm 5" Anchors</h2>
+<br>
+<p>If your mind goes blank, remember these real-world objects:</p>
+<br>
+<ul>
+<li>  <strong>Linked List:</strong> A Train. Carriages connected by hooks. Easy to add a carriage, hard to find the 50th carriage.</li>
+<li>  <strong>Stack:</strong> A Stack of Plates. Last plate put down is the first one picked up (LIFO).</li>
+<li>  <strong>Queue:</strong> A Movie Ticket Line. First person in line gets the ticket first (FIFO).</li>
+<li>  <strong>Bubble Sort:</strong> Bubbles rising. Largest items float to the end one by one.</li>
+<li>  <strong>Merge Sort:</strong> Sorting a deck of cards by tearing it in half until you have single cards, then pairing them back up.</li>
+<li>  <strong>Quick Sort:</strong> Picking a leader (pivot). Shorter people go left, taller people go right.</li>
+<li>  <strong>BST:</strong> A family tree where left children are always smaller, right children always bigger.</li>
+</ul>
+<br>
+<p>---</p>
+<br>
+<h2>💻 3-Line Code Skeletons</h2>
+<br>
+<p><strong>1. Linked List Traversal:</strong></p>
+<pre class="code-block">
+current = self.head
+while current:
+    print(current.data)
+    current = current.next
+</pre>
+<br>
+<p><strong>2. Queue with Deque:</strong></p>
+<pre class="code-block">
+from collections import deque
+q = deque()
+q.append(x)     # Insert
+q.popleft()     # Delete
+</pre>
+<br>
+<p><strong>3. BST Inorder Traversal (Always Sorted!):</strong></p>
+<pre class="code-block">
+def inorder(node):
+    if node:
+        inorder(node.left)
+        print(node.data)
+        inorder(node.right)
+</pre>
+<br>
+<p><strong>4. Bubble Sort Swap Logic:</strong></p>
+<pre class="code-block">
+if arr[j] &gt; arr[j+1]:
+    arr[j], arr[j+1] = arr[j+1], arr[j]
+</pre>
+<br>
+<p>---</p>
+<br>
+<h2>🗣️ Viva Survival Phrases</h2>
+<br>
+<p>If you get stuck during the viva, use these phrases to show you know what you're talking about:</p>
+<br>
+<ul>
+<li>  <em>"I used a <strong>deque</strong> instead of a list because list.pop(0) is <strong>O(n)</strong>, but deque is <strong>O(1)</strong>."</em></li>
+<li>  <em>"Merge Sort guarantees <strong>O(n log n)</strong>, but it requires extra memory, so it is <strong>not in-place</strong>."</em></li>
+<li>  <em>"Quick Sort's worst-case is <strong>O(n²)</strong>, but in practice, it is the fastest because of <strong>cache locality</strong>."</em></li>
+<li>  <em>"In a Binary Search Tree, an <strong>In-Order Traversal</strong> will always return the elements in sorted order."</em></li>
+<li>  <em>"Postfix notation is better for computers because it doesn't require <strong>parentheses</strong> or <strong>BODMAS rules</strong>, so we can evaluate it linearly using a <strong>Stack</strong>."</em></li>
+</ul>
+<br>
+<p><strong>Deep Breath. You've got this. Good luck! 🚀</strong></p>
+<br><hr class="divider"><div id="code"><div class="chapter"><span class="chapter-label">💻 Programs</span><h2>Complete Source Code — All 5 Programs</h2><p class="sub">Exam-ready Python with comments explaining every line.</p></div><h2>🔗 Linked List — Full Implementation</h2>
+<div class='eli5'>
+<strong>🚂 Think of it as a Train!</strong> Each carriage (Node) carries passengers (data) and is hooked to the next carriage (next pointer). To add a carriage you unhook one connection and insert. To remove you skip one. You NEVER need to shift everyone like in arrays!
+</div>
+<div class='card green'>
+<strong>The 3 Types:</strong><br>
+<strong>Singly:</strong> Each node points FORWARD only → → →<br>
+<strong>Doubly:</strong> Each node points both ways ← → (e.g., browser history back/forward)<br>
+<strong>Circular:</strong> Last node points back to Head (e.g., round-robin scheduling)
+</div>
+<div class='card yellow'>
+<strong>⏱ Complexity Quick-Ref:</strong><br>
+Insert at Head → <code>O(1)</code> (just change head pointer)<br>
+Insert at Tail → <code>O(n)</code> (must walk to end first)<br>
+Delete by value → <code>O(n)</code> (search then unlink)<br>
+Access element → <code>O(n)</code> (no random access, must walk from head)
+</div>
+
+<div class='card purple'>
+<strong>🧠 HOW TO LEARN THIS CODE — 3 Steps</strong><br><br>
+<strong>Step 1: Understand the Node first.</strong> Before anything, burn this into your brain:<br>
+<code>self.data = data</code> — stores the value<br>
+<code>self.next = None</code> — pointer to next node (None = end of list)<br><br>
+<strong>Step 2: Learn Insert at Head (the easiest operation):</strong><br>
+<code>new_node.next = self.head</code> &nbsp;← new node points to OLD head<br>
+<code>self.head = new_node</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← head now points to NEW node<br>
+<em>Just 2 lines. That's it.</em><br><br>
+<strong>Step 3: Learn Traversal (used in EVERY other operation):</strong><br>
+<code>current = self.head</code><br>
+<code>while current:</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;print(current.data)</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;current = current.next</code><br><br>
+<strong>Memory Trick:</strong> Think HEAD → NODE → NODE → None as a treasure hunt. You start at the HEAD and keep following the "next" clue until you hit None (dead end).
+</div>
+<details><summary style="cursor:pointer;color:var(--primary);font-weight:700;padding:12px 0;font-size:1rem;">📄 View Full Code (click to expand)</summary><pre class="code-block"></pre></details><hr class="divider"><h2>🚶 Queue — 3 Implementations</h2>
+<div class='eli5'>
+<strong>🎟️ Think of a Movie Ticket Line!</strong> First person in line gets the ticket FIRST (FIFO). New people join at the REAR. People leave from the FRONT. Simple.
+</div>
+<div class='card green'>
+<strong>Two Ends, Two Rules:</strong><br>
+<code>enqueue(x)</code> → Add to REAR<br>
+<code>dequeue()</code>  → Remove from FRONT<br>
+<code>peek()</code>    → View FRONT without removing
+</div>
+<div class='card yellow'>
+<strong>Stack vs Queue in 5 seconds:</strong><br>
+Stack = LIFO (stack of plates - last plate placed is first removed)<br>
+Queue = FIFO (ticket line - first person in is first out)
+</div>
+
+<div class='card purple'>
+<strong>🧠 HOW TO LEARN THIS CODE — 3 Steps</strong><br><br>
+<strong>Step 1: Just use Python's deque. It's the right way.</strong><br>
+<code>from collections import deque</code><br>
+<code>q = deque()</code><br><br>
+<strong>Step 2: Two operations only. Remember them as REAR/FRONT:</strong><br>
+<code>q.append(x)</code> &nbsp;&nbsp;&nbsp;← add to REAR (enqueue)<br>
+<code>q.popleft()</code> &nbsp;&nbsp;← remove from FRONT (dequeue)<br><br>
+<strong>Step 3: Know the difference from a list.pop():</strong><br>
+<code>list.pop(0)</code> = O(n) — slow! Shifts all elements<br>
+<code>deque.popleft()</code> = O(1) — instant! That's why we use deque.<br><br>
+<strong>Memory Trick:</strong> "append = join the queue at the back. popleft = served at the counter."
+</div>
+<details><summary style="cursor:pointer;color:var(--primary);font-weight:700;padding:12px 0;font-size:1rem;">📄 View Full Code (click to expand)</summary><pre class="code-block">"""
+====================================================
+QUEUE — Complete Implementation (Exam Ready)
+====================================================
+Covers:
+  - Queue using Python list (simple)
+  - Queue using collections.deque (proper/efficient)
+  - Queue using Linked List (manual implementation)
+  - Operations: enqueue, dequeue, peek, isEmpty, size
+
+KEY VIVA POINTS:
+  - FIFO: First In, First Out
+  - Enqueue = add to REAR
+  - Dequeue = remove from FRONT
+  - Real use: BFS, scheduling, printer queue
+"""
+
+from collections import deque
+
+
+# ======================================
+# METHOD 1: Queue using Python list
+# (Simple — but dequeue is O(n))
+# ======================================
+class QueueUsingList:
+    def __init__(self):
+        self.queue = []
+
+    def enqueue(self, data):
+        self.queue.append(data)           # add to rear — O(1)
+        print(f"Enqueued: {data}")
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty! Underflow.")
+            return None
+        removed = self.queue.pop(0)       # remove from front — O(n)!
+        print(f"Dequeued: {removed}")
+        return removed
+
+    def peek(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return None
+        return self.queue[0]
+
+    def is_empty(self):
+        return len(self.queue) == 0
+
+    def size(self):
+        return len(self.queue)
+
+    def display(self):
+        print("Front -&gt;", self.queue, "&lt;- Rear")
+
+
+# ======================================
+# METHOD 2: Queue using deque (BEST)
+# Both enqueue and dequeue are O(1)
+# ======================================
+class QueueUsingDeque:
+    def __init__(self):
+        self.queue = deque()
+
+    def enqueue(self, data):
+        self.queue.append(data)           # add to rear — O(1)
+        print(f"Enqueued: {data}")
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty! Underflow.")
+            return None
+        removed = self.queue.popleft()    # remove from front — O(1)!
+        print(f"Dequeued: {removed}")
+        return removed
+
+    def peek(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return None
+        return self.queue[0]
+
+    def is_empty(self):
+        return len(self.queue) == 0
+
+    def size(self):
+        return len(self.queue)
+
+    def display(self):
+        print("Front -&gt;", list(self.queue), "&lt;- Rear")
+
+
+# ======================================
+# METHOD 3: Queue using Linked List
+# (Manual — shows deep understanding)
+# ======================================
+class QNode:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+class QueueLinkedList:
+    def __init__(self):
+        self.front = None   # points to front node (for dequeue)
+        self.rear = None    # points to rear node (for enqueue)
+        self._size = 0
+
+    def enqueue(self, data):
+        new_node = QNode(data)
+        if self.rear is None:           # empty queue
+            self.front = self.rear = new_node
+        else:
+            self.rear.next = new_node   # link to end
+            self.rear = new_node        # update rear
+        self._size += 1
+        print(f"Enqueued: {data}")
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty! Underflow.")
+            return None
+        removed = self.front.data
+        self.front = self.front.next    # move front forward
+        if self.front is None:          # queue became empty
+            self.rear = None
+        self._size -= 1
+        print(f"Dequeued: {removed}")
+        return removed
+
+    def peek(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return None
+        return self.front.data
+
+    def is_empty(self):
+        return self.front is None
+
+    def size(self):
+        return self._size
+
+    def display(self):
+        current = self.front
+        elements = []
+        while current:
+            elements.append(str(current.data))
+            current = current.next
+        print("Front -&gt; [" + " -&gt; ".join(elements) + "] &lt;- Rear")
+
+
+# =======================
+# MAIN — Demo &amp; Test
+# =======================
+if __name__ == "__main__":
+    print("=" * 50)
+    print("QUEUE DEMO (using deque - recommended)")
+    print("=" * 50)
+    q = QueueUsingDeque()
+
+    print("\n--- Enqueue operations ---")
+    q.enqueue(10)
+    q.enqueue(20)
+    q.enqueue(30)
+    q.enqueue(40)
+    q.display()
+
+    print(f"\nPeek (front): {q.peek()}")
+    print(f"Size: {q.size()}")
+
+    print("\n--- Dequeue operations ---")
+    q.dequeue()
+    q.dequeue()
+    q.display()
+
+    print(f"\nIs empty? {q.is_empty()}")
+    q.dequeue()
+    q.dequeue()
+    q.dequeue()   # underflow check
+
+    print("\n" + "=" * 50)
+    print("QUEUE DEMO (using Linked List)")
+    print("=" * 50)
+    ql = QueueLinkedList()
+    ql.enqueue("A")
+    ql.enqueue("B")
+    ql.enqueue("C")
+    ql.display()
+    ql.dequeue()
+    ql.display()
+
+
+"""
+EXPECTED OUTPUT:
+
+=== QUEUE DEMO (using deque) ===
+Enqueued: 10
+Enqueued: 20
+Enqueued: 30
+Enqueued: 40
+Front → [10, 20, 30, 40] ← Rear
+
+Peek (front): 10
+Size: 4
+
+--- Dequeue operations ---
+Dequeued: 10
+Dequeued: 20
+Front → [30, 40] ← Rear
+
+Is empty? False
+Dequeued: 30
+Dequeued: 40
+Queue is empty! Underflow.
+
+=== QUEUE DEMO (using Linked List) ===
+Enqueued: A, B, C
+Front → [A → B → C] ← Rear
+Dequeued: A
+Front → [B → C] ← Rear
+"""
+</pre></details><hr class="divider"><h2>🧮 Infix to Postfix (Stack)</h2>
+<div class='eli5'>
+<strong>🧮 Humans write:</strong> <code>A + B * C</code> (Infix - operator is BETWEEN)<br>
+<strong>Computers prefer:</strong> <code>A B C * +</code> (Postfix - operator is AFTER)<br>
+Why? Postfix needs NO brackets and NO BODMAS rules. A single stack evaluates it directly.
+</div>
+<div class='card green'>
+<strong>The 4 Golden Rules (Algorithm):</strong><br>
+1. See a <strong>Letter/Number</strong> → output it immediately<br>
+2. See <code>(</code> → push to stack<br>
+3. See <code>)</code> → pop to output until <code>(</code> found<br>
+4. See an <strong>Operator</strong> → pop operators with higher/equal precedence, then push current
+</div>
+<div class='card yellow'>
+<strong>Precedence (High → Low):</strong>
+^ &gt; * / &gt; + -<br><br>
+<strong>Trace A + B * C:</strong><br>
+A→output, +→stack, B→output, * has higher prec than + so push *, C→output<br>
+End: pop *, pop + → Result: <code>ABC*+</code>
+</div>
+
+<div class='card purple'>
+<strong>🧠 HOW TO LEARN THIS CODE — The 4-Rule Skeleton</strong><br><br>
+Don't memorize the whole code. Memorize these 4 conditions inside the loop:<br><br>
+<code>for char in expression:</code><br>
+<code>&nbsp;&nbsp;if is_operand(char):&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output.append(char)</code><br>
+<code>&nbsp;&nbsp;elif char == '(':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stack.append(char)</code><br>
+<code>&nbsp;&nbsp;elif char == ')':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# pop till '('</code><br>
+<code>&nbsp;&nbsp;else: (operator)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# pop >= prec, then push</code><br>
+<code>while stack: output.append(stack.pop())&nbsp;&nbsp;# flush remaining</code><br><br>
+<strong>The ONE Key Line (heart of the algorithm):</strong><br>
+<code>while stack and precedence(stack[-1]) >= precedence(char):</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;output.append(stack.pop())</code><br>
+This pops stronger operators before pushing the current one.<br><br>
+<strong>Memory Trick:</strong> "OPERAND goes out, BRACKET controls flow, OPERATOR fights for dominance."
+</div>
+<details><summary style="cursor:pointer;color:var(--primary);font-weight:700;padding:12px 0;font-size:1rem;">📄 View Full Code (click to expand)</summary><pre class="code-block"></pre></details><hr class="divider"><h2>🔀 Sorting — Bubble, Merge, Quick</h2>
+<div class='eli5'>
+<strong>🫧 Bubble Sort:</strong> Compare neighbors. Swap if wrong order. Repeat. Largest bubbles to end each pass. Simple but O(n²) - very slow.<br><br>
+<strong>✂️ Merge Sort:</strong> Cut pile in half, keep cutting. Sort single cards. Merge back in order. Always O(n log n) - consistent but needs extra memory.<br><br>
+<strong>⚡ Quick Sort:</strong> Pick a Pivot. Put smaller numbers left, bigger right. Pivot is in its final home! Repeat for left and right halves. Average O(n log n) but O(n²) worst case.
+</div>
+
+<div class='card purple'>
+<strong>🧠 HOW TO LEARN THE 3 SORTS</strong><br><br>
+<strong>Bubble Sort — 1 Key Pattern (nested loop + swap):</strong><br>
+<code>for i in range(n-1):</code><br>
+<code>&nbsp;&nbsp;for j in range(n-1-i):</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;if arr[j] > arr[j+1]:</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j], arr[j+1] = arr[j+1], arr[j]</code><br>
+Trick: <em>"n-1-i" because last i elements are already sorted — don't waste time.</em><br><br>
+<strong>Merge Sort — 2 functions. Learn them separately:</strong><br>
+Function 1: <code>merge_sort(arr)</code> — just splits. Base case: len &lt;= 1.<br>
+Function 2: <code>merge(left, right)</code> — walks both arrays, picks smaller, appends.<br>
+Trick: <em>If you know merge(), the rest is just: left = sort(left half), right = sort(right half), return merge(left, right).</em><br><br>
+<strong>Quick Sort — learn the partition() function:</strong><br>
+<code>pivot = arr[high]</code> &nbsp;← pick last element<br>
+<code>i = low - 1</code> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← boundary tracker<br>
+<code>if arr[j] &lt;= pivot: i += 1; swap(arr[i], arr[j])</code><br>
+<code>swap(arr[i+1], arr[high])</code> &nbsp;← put pivot in final spot<br>
+Trick: <em>"i tracks where small elements end. When done, i+1 is pivot's home."</em>
+</div>
+<details><summary style="cursor:pointer;color:var(--primary);font-weight:700;padding:12px 0;font-size:1rem;">📄 View Full Code (click to expand)</summary><pre class="code-block">"""
+====================================================
+SORTING ALGORITHMS — Bubble, Merge, Quick Sort
+====================================================
+
+KEY VIVA COMPARISONS:
+  Bubble: O(n²) stable, in-place, simple
+  Merge:  O(n log n) stable, NOT in-place (O(n) space)
+  Quick:  O(n log n) avg, unstable, in-place, fastest in practice
+"""
+
+
+# ============================================================
+# 1. BUBBLE SORT — O(n²)
+# ============================================================
+def bubble_sort(arr):
+    """
+    Compare adjacent elements, swap if out of order.
+    Largest element 'bubbles up' to end each pass.
+    
+    Stable: YES | In-place: YES
+    Best: O(n) | Average: O(n²) | Worst: O(n²)
+    """
+    arr = arr.copy()  # don't modify original
+    n = len(arr)
+    
+    for i in range(n - 1):            # n-1 passes
+        swapped = False
+        
+        for j in range(n - 1 - i):   # -i because last i elements are sorted
+            if arr[j] &gt; arr[j + 1]:  # if out of order
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]  # SWAP
+                swapped = True
+        
+        # OPTIMIZATION: if no swaps occurred, array is already sorted
+        if not swapped:
+            break
+    
+    return arr
+
+
+# ============================================================
+# 2. MERGE SORT — O(n log n)
+# ============================================================
+def merge_sort(arr):
+    """
+    Divide array in half → sort each half → merge them.
+    
+    Stable: YES | In-place: NO (O(n) extra space)
+    Best/Average/Worst: O(n log n)
+    """
+    if len(arr) &lt;= 1:       # BASE CASE: single element is already sorted
+        return arr
+    
+    # DIVIDE: find midpoint
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])    # recursively sort left half
+    right = merge_sort(arr[mid:])   # recursively sort right half
+    
+    # MERGE: combine sorted halves
+    return merge(left, right)
+
+
+def merge(left, right):
+    """
+    Merge two sorted arrays into one sorted array.
+    The KEY step of merge sort — O(n) time.
+    """
+    result = []
+    i = j = 0
+    
+    # Compare elements from both halves, pick smaller
+    while i &lt; len(left) and j &lt; len(right):
+        if left[i] &lt;= right[j]:     # &lt;= keeps it STABLE
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    
+    # Add remaining elements (one side will have leftovers)
+    result.extend(left[i:])
+    result.extend(right[j:])
+    
+    return result
+
+
+# ============================================================
+# 3. QUICK SORT — O(n log n) average
+# ============================================================
+def quick_sort(arr, low=None, high=None):
+    """
+    Choose pivot → partition (smaller left, larger right) → recurse.
+    
+    Stable: NO | In-place: YES
+    Best/Average: O(n log n) | Worst: O(n²) (sorted input, bad pivot)
+    """
+    arr = arr if low is not None else arr.copy()
+    if low is None:
+        low = 0
+    if high is None:
+        high = len(arr) - 1
+    
+    if low &lt; high:
+        # Partition: put pivot in correct position
+        pivot_index = partition(arr, low, high)
+        
+        # Recursively sort elements before and after pivot
+        quick_sort(arr, low, pivot_index - 1)
+        quick_sort(arr, pivot_index + 1, high)
+    
+    return arr
+
+
+def partition(arr, low, high):
+    """
+    Lomuto Partition Scheme:
+    - Choose last element as pivot
+    - Place all elements &lt; pivot to the LEFT
+    - Place all elements &gt; pivot to the RIGHT
+    - Put pivot in its CORRECT final position
+    
+    Returns the pivot's final index.
+    """
+    pivot = arr[high]   # choose last element as pivot
+    i = low - 1         # i tracks boundary of smaller elements
+    
+    for j in range(low, high):
+        if arr[j] &lt;= pivot:         # if current &lt; pivot
+            i += 1                  # expand boundary
+            arr[i], arr[j] = arr[j], arr[i]  # swap into smaller region
+    
+    # Place pivot in correct position
+    arr[i + 1], arr[high] = arr[high], arr[i + 1]
+    return i + 1  # return pivot's final index
+
+
+# ============================================================
+# HELPER: Print array with step details
+# ============================================================
+def print_array(arr, label=""):
+    print(f"{label}: {arr}")
+
+
+# ============================================================
+# MAIN — Demo &amp; Test All Three
+# ============================================================
+if __name__ == "__main__":
+    
+    original = [64, 34, 25, 12, 22, 11, 90]
+    
+    print("=" * 55)
+    print(f"Original Array: {original}")
+    print("=" * 55)
+
+    # ---- BUBBLE SORT ----
+    print("\n[BUBBLE SORT]")
+    print("Logic: Compare adjacent pairs, swap if needed. Repeat.")
+
+    arr = original.copy()
+    n = len(arr)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - 1 - i):
+            if arr[j] &gt; arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        print(f"  After pass {i+1}: {arr}")
+        if not swapped:
+            break
+    print(f"Sorted: {arr}")
+
+    # ---- MERGE SORT ----
+    print("\n[MERGE SORT]")
+    print("Logic: Split -&gt; sort halves -&gt; merge")
+    result = merge_sort(original)
+    print(f"Sorted: {result}")
+
+    # ---- QUICK SORT ----
+    print("\n[QUICK SORT]")
+    print("Logic: Pick pivot -&gt; partition -&gt; recurse on both sides")
+    arr = original.copy()
+    result = quick_sort(arr)
+    print(f"Sorted: {result}")
+
+    # ---- COMPARISON SUMMARY ----
+    print("\n" + "=" * 55)
+    print("COMPLEXITY SUMMARY")
+    print("=" * 55)
+    print(f"{'Algorithm':&lt;15} {'Best':&lt;15} {'Average':&lt;15} {'Worst':&lt;15} {'Space':&lt;10} {'Stable'}")
+    print("-" * 85)
+    print(f"{'Bubble':&lt;15} {'O(n)':&lt;15} {'O(n²)':&lt;15} {'O(n²)':&lt;15} {'O(1)':&lt;10} {'YES'}")
+    print(f"{'Merge':&lt;15} {'O(n log n)':&lt;15} {'O(n log n)':&lt;15} {'O(n log n)':&lt;15} {'O(n)':&lt;10} {'YES'}")
+    print(f"{'Quick':&lt;15} {'O(n log n)':&lt;15} {'O(n log n)':&lt;15} {'O(n²)':&lt;15} {'O(log n)':&lt;10} {'NO'}")
+
+
+"""
+VIVA QUICK-FIRE:
+
+Q: How does Bubble Sort work?
+A: Compare adjacent elements, swap if arr[j] &gt; arr[j+1]. After each pass,
+   the largest element is in its correct position.
+
+Q: Why Bubble Sort O(n²)?
+A: Two nested loops: outer (n-1 passes) × inner (n-1-i comparisons) = O(n²)
+
+Q: How does Merge Sort work?
+A: Divide array to halves recursively until 1 element, then merge sorted halves.
+
+Q: Why is Merge Sort O(n log n)?
+A: log n levels of division × O(n) to merge each level = O(n log n)
+
+Q: Why is Merge Sort NOT in-place?
+A: The merge step needs a temporary array to store merged result.
+
+Q: How does Quick Sort work?
+A: Pick pivot (usually last element), partition so smaller elements are left
+   of pivot and larger are right, then recursively sort both partitions.
+
+Q: When is Quick Sort O(n²)?
+A: When pivot is always the smallest/largest (e.g., already sorted array).
+   Fix: random pivot selection.
+
+Q: Which sort is fastest in practice?
+A: Quick Sort — great cache performance and small constant factors.
+"""
+</pre></details><hr class="divider"><h2>🌳 Binary Search Tree — Full</h2>
+<div class='eli5'>
+<strong>🌳 One iron-clad rule for every single node:</strong><br>
+Everything to the LEFT is SMALLER. Everything to the RIGHT is LARGER.<br><br>
+This means finding any number is like a game of hot/cold — you cut the search space in HALF at every step. That's O(log n)!
+</div>
+<div class='card green'>
+<strong>3 Traversal Orders — Memory Trick:</strong><br>
+<strong>Pre</strong>order = <strong>Root FIRST</strong>  (Root → Left → Right) - Use to COPY a tree<br>
+<strong>In</strong>order  = <strong>Root MIDDLE</strong> (Left → Root → Right) - Gives SORTED output!<br>
+<strong>Post</strong>order = <strong>Root LAST</strong>  (Left → Right → Root) - Use to DELETE a tree
+</div>
+
+<div class='card purple'>
+<strong>🧠 HOW TO LEARN THE BST — Build it up in 3 stages</strong><br><br>
+<strong>Stage 1: Insert (Recursive — learn this first):</strong><br>
+<code>if data &lt; node.data: go LEFT</code><br>
+<code>if data &gt; node.data: go RIGHT</code><br>
+<code>if slot is None: place the node here</code><br><br>
+<strong>Stage 2: Inorder Traversal (3 lines only!):</strong><br>
+<code>def inorder(node):</code><br>
+<code>&nbsp;&nbsp;if node:</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;inorder(node.left)&nbsp;&nbsp;&nbsp;&nbsp;# Left first</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;print(node.data)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Root</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;inorder(node.right)&nbsp;&nbsp;&nbsp;# Right last</code><br>
+This ALWAYS prints sorted output. That's your viva trump card.<br><br>
+<strong>Stage 3: Delete (3 cases — don't panic):</strong><br>
+1. No children → return None<br>
+2. One child → return that child<br>
+3. Two children → find min of right subtree → copy its value → delete it<br><br>
+<strong>Memory Trick:</strong> "BST = Binary SEARCH Tree. Every decision at every node is a binary choice: go left or go right."
+</div>
+<details><summary style="cursor:pointer;color:var(--primary);font-weight:700;padding:12px 0;font-size:1rem;">📄 View Full Code (click to expand)</summary><pre class="code-block">"""
+====================================================
+BINARY SEARCH TREE (BST) — Complete Implementation
+====================================================
+
+BST PROPERTY:
+  For every node:
+    LEFT subtree values &lt; node value
+    RIGHT subtree values &gt; node value
+
+OPERATIONS:
+  Insert    → O(log n) avg, O(n) worst
+  Search    → O(log n) avg, O(n) worst
+  Delete    → O(log n) avg, O(n) worst
+  Traversal → O(n) always
+
+KEY VIVA: Inorder traversal of BST = SORTED output!
+"""
+
+
+# ============================
+# NODE CLASS
+# ============================
+class BSTNode:
+    def __init__(self, data):
+        self.data = data
+        self.left = None    # left child (smaller values)
+        self.right = None   # right child (larger values)
+
+
+# ============================
+# BST CLASS
+# ============================
+class BST:
+    def __init__(self):
+        self.root = None
+
+    # --------------------------------------------------
+    # INSERT — O(log n) average
+    # --------------------------------------------------
+    def insert(self, data):
+        """Insert data maintaining BST property."""
+        if self.root is None:
+            self.root = BSTNode(data)
+        else:
+            self._insert_recursive(self.root, data)
+        print(f"Inserted: {data}")
+
+    def _insert_recursive(self, node, data):
+        if data &lt; node.data:            # go LEFT for smaller values
+            if node.left is None:
+                node.left = BSTNode(data)
+            else:
+                self._insert_recursive(node.left, data)
+        elif data &gt; node.data:          # go RIGHT for larger values
+            if node.right is None:
+                node.right = BSTNode(data)
+            else:
+                self._insert_recursive(node.right, data)
+        else:
+            print(f"{data} already exists in BST")
+
+    # --------------------------------------------------
+    # SEARCH — O(log n) average
+    # --------------------------------------------------
+    def search(self, data):
+        """Search for data in BST."""
+        result = self._search_recursive(self.root, data)
+        if result:
+            print(f"FOUND: {data}")
+        else:
+            print(f"NOT FOUND: {data}")
+        return result
+
+    def _search_recursive(self, node, data):
+        if node is None:                # not found
+            return False
+        if node.data == data:           # found!
+            return True
+        elif data &lt; node.data:          # search LEFT subtree
+            return self._search_recursive(node.left, data)
+        else:                           # search RIGHT subtree
+            return self._search_recursive(node.right, data)
+
+    # --------------------------------------------------
+    # DELETE — O(log n) average
+    # 3 Cases:
+    #   1. Leaf node → just delete
+    #   2. One child → replace with child
+    #   3. Two children → replace with inorder successor
+    # --------------------------------------------------
+    def delete(self, data):
+        """Delete node with given data from BST."""
+        self.root = self._delete_recursive(self.root, data)
+        print(f"Deleted: {data}")
+
+    def _delete_recursive(self, node, data):
+        if node is None:
+            return node
+
+        if data &lt; node.data:
+            node.left = self._delete_recursive(node.left, data)
+        elif data &gt; node.data:
+            node.right = self._delete_recursive(node.right, data)
+        else:
+            # CASE 1: Leaf node (no children)
+            if node.left is None and node.right is None:
+                return None
+
+            # CASE 2: One child
+            elif node.left is None:
+                return node.right
+            elif node.right is None:
+                return node.left
+
+            # CASE 3: Two children
+            # Find inorder successor (smallest in right subtree)
+            successor = self._find_min(node.right)
+            node.data = successor.data          # copy successor value
+            node.right = self._delete_recursive(node.right, successor.data)  # delete successor
+
+        return node
+
+    def _find_min(self, node):
+        """Find minimum node (leftmost node)."""
+        while node.left:
+            node = node.left
+        return node
+
+    def _find_max(self, node):
+        """Find maximum node (rightmost node)."""
+        while node.right:
+            node = node.right
+        return node
+
+    # --------------------------------------------------
+    # TRAVERSALS — O(n) all
+    # --------------------------------------------------
+    def inorder(self):
+        """Left → Root → Right. Gives SORTED output for BST!"""
+        result = []
+        self._inorder_recursive(self.root, result)
+        print(f"Inorder  (sorted): {result}")
+        return result
+
+    def _inorder_recursive(self, node, result):
+        if node:
+            self._inorder_recursive(node.left, result)   # left
+            result.append(node.data)                      # root
+            self._inorder_recursive(node.right, result)  # right
+
+    def preorder(self):
+        """Root → Left → Right. Used for copying tree."""
+        result = []
+        self._preorder_recursive(self.root, result)
+        print(f"Preorder  (copy):  {result}")
+        return result
+
+    def _preorder_recursive(self, node, result):
+        if node:
+            result.append(node.data)                       # root FIRST
+            self._preorder_recursive(node.left, result)    # left
+            self._preorder_recursive(node.right, result)   # right
+
+    def postorder(self):
+        """Left → Right → Root. Used for deletion."""
+        result = []
+        self._postorder_recursive(self.root, result)
+        print(f"Postorder (delete):{result}")
+        return result
+
+    def _postorder_recursive(self, node, result):
+        if node:
+            self._postorder_recursive(node.left, result)   # left
+            self._postorder_recursive(node.right, result)  # right
+            result.append(node.data)                       # root LAST
+
+    # --------------------------------------------------
+    # LEVEL ORDER (BFS) — uses a Queue
+    # --------------------------------------------------
+    def level_order(self):
+        """Level by level traversal using a Queue (BFS)."""
+        if not self.root:
+            return
+        from collections import deque
+        queue = deque([self.root])
+        result = []
+        while queue:
+            node = queue.popleft()
+            result.append(node.data)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        print(f"Level Order (BFS): {result}")
+        return result
+
+    # --------------------------------------------------
+    # UTILITY: Height of tree
+    # --------------------------------------------------
+    def height(self):
+        return self._height(self.root)
+
+    def _height(self, node):
+        if node is None:
+            return 0
+        return 1 + max(self._height(node.left), self._height(node.right))
+
+    # --------------------------------------------------
+    # UTILITY: Print tree visually
+    # --------------------------------------------------
+    def display(self):
+        print("\nBST Structure:")
+        self._print_tree(self.root, "", True)
+        print()
+
+    def _print_tree(self, node, indent, is_right):
+        if node is not None:
+            self._print_tree(node.right, indent + ("   " if is_right else "|  "), True)
+            print(indent + ("+-- " if is_right else "+-- ") + str(node.data))
+            self._print_tree(node.left, indent + ("   " if is_right else "|  "), False)
+
+
+# =======================
+# MAIN — Demo &amp; Test
+# =======================
+if __name__ == "__main__":
+    bst = BST()
+
+    print("=" * 50)
+    print("BST DEMO")
+    print("=" * 50)
+
+    # Insert elements
+    print("\n--- Insertions ---")
+    for val in [50, 30, 70, 20, 40, 60, 80, 35, 45]:
+        bst.insert(val)
+
+    """
+    BST after insertions:
+            50
+           /  \
+          30   70
+         / \   / \
+        20  40 60  80
+           / \
+          35  45
+    """
+
+    bst.display()
+    print(f"Tree Height: {bst.height()}")
+
+    # Traversals
+    print("\n--- Traversals ---")
+    bst.inorder()      # Should be sorted: 20,30,35,40,45,50,60,70,80
+    bst.preorder()
+    bst.postorder()
+    bst.level_order()
+
+    # Search
+    print("\n--- Search ---")
+    bst.search(40)     # Found
+    bst.search(99)     # Not found
+
+    # Delete
+    print("\n--- Deletions ---")
+    bst.delete(20)     # Delete leaf
+    bst.inorder()
+
+    bst.delete(30)     # Delete node with two children
+    bst.inorder()
+
+    bst.display()
+
+
+"""
+VIVA QUICK-FIRE:
+
+Q: What is BST property?
+A: Left child &lt; parent &lt; right child, for every node.
+
+Q: Inorder traversal of BST gives?
+A: Sorted (ascending) output — this is how BST sort works!
+
+Q: Time complexity of BST operations?
+A: Average O(log n), Worst O(n) when unbalanced (like a linked list).
+
+Q: What is the inorder successor?
+A: The smallest node in the right subtree — used when deleting a node with 2 children.
+
+Q: Difference between BST and Binary Tree?
+A: BST has the ordering property (left &lt; root &lt; right). Binary Tree has no such constraint.
+
+Q: When does BST become O(n)?
+A: When all elements inserted in sorted order → tree becomes a linked list.
+   Solution: Use balanced trees (AVL, Red-Black).
+
+Q: Three deletion cases in BST?
+A: 1) Leaf: just delete. 2) One child: replace with child. 
+   3) Two children: replace with inorder successor.
+
+Q: What is the height of a balanced BST with n nodes?
+A: O(log n)
+"""
+</pre></details><hr class="divider"></div>
+
+<div id="ds-mindmap" class="chapter">
+  <span class="chapter-label">🗺️ Visual Guide</span>
+  <h2>Data Structures Mindmap</h2>
+  <div class="mindmap">
+    <div class="mm-node">Data Structures</div>
+    <div class="mm-branches">
+      <div class="mm-branch-node">Linear
+        <div class="mm-branches" style="margin-top:20px;">
+          <div class="mm-branch-node">Static: Array</div>
+          <div class="mm-branch-node">Dynamic: Linked List, Stack, Queue</div>
+        </div>
+      </div>
+      <div class="mm-branch-node">Non-Linear
+        <div class="mm-branches" style="margin-top:20px;">
+          <div class="mm-branch-node">Hierarchical: Tree, BST</div>
+          <div class="mm-branch-node">Network: Graph</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+<div id="ds-keywords" class="chapter">
+  <span class="chapter-label">⚡ Flashcards</span>
+  <h2>Quick Revision Keywords</h2>
+  <div class="keyword-grid">
+    <div class="keyword-card">
+      <strong>O(1)</strong>
+      Constant time complexity. Execution time does not change with input size. (e.g., Array index access).
+    </div>
+    <div class="keyword-card">
+      <strong>O(n)</strong>
+      Linear time complexity. Execution time grows proportionally to input size. (e.g., Linear search).
+    </div>
+    <div class="keyword-card">
+      <strong>LIFO</strong>
+      Last In, First Out. The fundamental principle of a Stack.
+    </div>
+    <div class="keyword-card">
+      <strong>FIFO</strong>
+      First In, First Out. The fundamental principle of a Queue.
+    </div>
+    <div class="keyword-card">
+      <strong>Node</strong>
+      A fundamental unit of a data structure (like Linked List or Tree) containing data and pointer(s).
+    </div>
+    <div class="keyword-card">
+      <strong>Binary Search Tree (BST)</strong>
+      A tree where left child < parent < right child. Average search time O(log n).
+    </div>
+    <div class="keyword-card">
+      <strong>Hashing</strong>
+      Mapping data of arbitrary size to fixed-size values. Used for O(1) lookups.
+    </div>
+    <div class="keyword-card">
+      <strong>Graph</strong>
+      Vertices (nodes) connected by edges. Can be directed/undirected, weighted/unweighted.
+    </div>
+  </div>
+</div>
+
+<p style="text-align:center;color:var(--text-dim);margin-top:40px">Generated for exam victory. You've got this! 🚀</p>
+</div>
+</body>
+</html>
