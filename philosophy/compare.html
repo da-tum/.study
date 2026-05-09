@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Mindmap & Comparison Matrix</title>
+    
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #06070a;
+            --bg-surface: rgba(13, 15, 24, 0.7);
+            --bg-card: rgba(18, 20, 36, 0.8);
+            --border-color: rgba(212, 175, 55, 0.15);
+            --border-hover: rgba(212, 175, 55, 0.35);
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.4);
+            --secondary: #d4af37;
+            --secondary-glow: rgba(212, 175, 55, 0.3);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --sattvic-green: #10b981;
+            --rajasic-red: #ef4444;
+            --tamasic-grey: #6b7280;
+            --sidebar-width: 320px;
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary) var(--bg-base);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-primary);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Topbar and layout elements */
+        .sub-topbar {
+            height: 76px;
+            background: rgba(6, 7, 10, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            text-shadow: 0 0 10px var(--secondary-glow);
+        }
+
+        .route-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .back-home-btn {
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .back-home-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Subheading, paragraphs and items */
+        h1.page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--secondary), #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        p.page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .sub-topbar {
+                padding: 0 20px;
+            }
+            .container {
+                padding: 24px;
+            }
+            h1.page-title {
+                font-size: 2.2rem;
+            }
+            p.page-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script>
+        function goHome() {
+            const path = window.location.pathname;
+            if (path.includes('Indian_Philosophy_Exam_Prep.html')) {
+                window.location.href = './.study/index.html';
+            } else {
+                window.location.href = '../index.html';
+            }
+        }
+
+        function goBack() {
+            if (document.referrer && (document.referrer.includes('index.html') || document.referrer.includes('.study'))) {
+                window.history.back();
+            } else {
+                goHome();
+            }
+        }
+    </script>
+
+    <style>
+        /* Mindmap Visual Styling */
+        .mindmap-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            overflow-x: auto;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 40px;
+        }
+
+        .tree-level {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            width: 100%;
+            position: relative;
+        }
+
+        .tree-node {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px 20px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            min-width: 130px;
+        }
+
+        .tree-node:hover, .tree-node.active {
+            border-color: var(--secondary);
+            background: rgba(212, 175, 55, 0.1);
+            box-shadow: 0 0 15px var(--secondary-glow);
+            transform: translateY(-2px);
+        }
+
+        .node-accent-orthodox { border-color: rgba(79, 70, 229, 0.3); }
+        .node-accent-heterodox { border-color: rgba(249, 115, 22, 0.3); }
+
+        /* Profile details pane */
+        .details-pane {
+            display: none;
+            background: var(--bg-card);
+            border: 1px solid var(--secondary);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 40px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .details-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding-bottom: 14px;
+            margin-bottom: 16px;
+        }
+
+        .details-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: var(--secondary);
+        }
+
+        .details-meta {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(212, 175, 55, 0.08);
+            padding: 4px 10px;
+            border-radius: 6px;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .details-col h4 {
+            font-family: 'Cinzel', serif;
+            color: var(--secondary);
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .details-col p {
+            font-size: 14.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        /* Comparative Grid */
+        .comparison-section {
+            margin-top: 40px;
+        }
+
+        .matrix-title {
+            font-family: 'Cinzel', serif;
+            font-size: 22px;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            border-left: 3px solid var(--secondary);
+            padding-left: 12px;
+        }
+    </style>
+</head>
+<body>
+    <header class="sub-topbar">
+        <a href="./index.html" class="logo-section">
+            <span style="font-size: 24px;">🗺️</span>
+            <span class="logo-text">MINDMAP PORTAL</span>
+        </a>
+        <div class="route-buttons">
+            <button class="back-home-btn" onclick="window.location.href='./index.html'">
+                ← Back to Hub
+            </button>
+            <button class="back-home-btn" onclick="goHome()">
+                🏠 Portal Home
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Syllabus Mindmap & Matrix</h1>
+        <p class="page-subtitle">Understand the classification systems and direct intellectual linkages between schools.</p>
+
+        <!-- Dynamic Concept Map Tree -->
+        <div class="mindmap-wrapper">
+            <!-- Root Level -->
+            <div class="tree-level">
+                <div class="tree-node active" onclick="showNode('root', this)" style="border-color: var(--secondary); font-family: 'Cinzel', serif; font-size: 16px;">
+                    Indian Philosophy (Darshana)
+                </div>
+            </div>
+            
+            <div style="height: 12px; width: 2px; background: var(--border-color);"></div>
+
+            <!-- Orthodox vs Heterodox Level -->
+            <div class="tree-level">
+                <div class="tree-node node-accent-orthodox" onclick="showNode('astika', this)">
+                    Orthodox (Astika)<br><span style="font-size:10px; color:var(--text-muted)">Accepts Vedas</span>
+                </div>
+                <div class="tree-node node-accent-heterodox" onclick="showNode('nastika', this)">
+                    Heterodox (Nastika)<br><span style="font-size:10px; color:var(--text-muted)">Rejects Vedas</span>
+                </div>
+            </div>
+
+            <div style="height: 12px; width: 2px; background: var(--border-color);"></div>
+
+            <!-- Schools Level -->
+            <div class="tree-level" style="flex-wrap: wrap;">
+                <!-- Astika Schools -->
+                <div class="tree-node node-accent-orthodox" onclick="showNode('sankhya', this)" style="background: rgba(79, 70, 229, 0.03);">Sankhya</div>
+                <div class="tree-node node-accent-orthodox" onclick="showNode('yoga', this)" style="background: rgba(79, 70, 229, 0.03);">Yoga</div>
+                <div class="tree-node node-accent-orthodox" onclick="showNode('nyaya', this)" style="background: rgba(79, 70, 229, 0.03);">Nyaya</div>
+                <div class="tree-node node-accent-orthodox" onclick="showNode('vaisheshika', this)" style="background: rgba(79, 70, 229, 0.03);">Vaisheshika</div>
+                <div class="tree-node node-accent-orthodox" onclick="showNode('mimamsa', this)" style="background: rgba(79, 70, 229, 0.03);">Mimamsa</div>
+                <div class="tree-node node-accent-orthodox" onclick="showNode('vedanta', this)" style="background: rgba(79, 70, 229, 0.03);">Vedanta</div>
+                
+                <!-- Separator / Margin -->
+                <div style="width: 20px; height: 1px;"></div>
+                
+                <!-- Nastika Schools -->
+                <div class="tree-node node-accent-heterodox" onclick="showNode('buddhism', this)" style="background: rgba(249, 115, 22, 0.03);">Buddhism</div>
+                <div class="tree-node node-accent-heterodox" onclick="showNode('jainism', this)" style="background: rgba(249, 115, 22, 0.03);">Jainism</div>
+                <div class="tree-node node-accent-heterodox" onclick="showNode('charvaka', this)" style="background: rgba(249, 115, 22, 0.03);">Charvaka</div>
+            </div>
+        </div>
+
+        <!-- Node Profile Details Panel -->
+        <div class="details-pane" id="details-pane">
+            <div class="details-header">
+                <span class="details-title" id="pane-title">Sankhya School</span>
+                <span class="details-meta" id="pane-meta">Orthodox (Astika)</span>
+            </div>
+            <div class="details-grid">
+                <div class="details-col">
+                    <h4>Metaphysics (Reality)</h4>
+                    <p id="pane-meta-content">Prakriti (matter) and Purusha (consciousness) are dual eternal causes of creation.</p>
+                </div>
+                <div class="details-col">
+                    <h4>Epistemology (Knowledge)</h4>
+                    <p id="pane-epist-content">Accepts 3 valid Pramanas: Perception, Inference, and Verbal Testimony.</p>
+                </div>
+                <div class="details-col">
+                    <h4>Ultimate Freedom (Liberation)</h4>
+                    <p id="pane-lib-content">Attained through Vivekakhyati (discriminative realization separating consciousness from matter).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparative Matrix -->
+        <section class="comparison-section">
+            <h2 class="matrix-title">Philosophical Comparison Matrix</h2>
+            <div class="table-wrapper">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>School</th>
+                            <th>Classification</th>
+                            <th>Metaphysics / Reality</th>
+                            <th>Nature of Self (Atman)</th>
+                            <th>Valid Sources of Knowledge (Pramanas)</th>
+                            <th>View of Liberation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Sankhya</td>
+                            <td>Astika (Orthodox)</td>
+                            <td>Dualism: Consciousness (Purusha) and Matter (Prakriti)</td>
+                            <td>Plural souls (Purushas), passive unchanging witness</td>
+                            <td>3: Perception, Inference, Testimony</td>
+                            <td>Kaivalya (isolated release via discriminative discernment)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Yoga</td>
+                            <td>Astika (Orthodox)</td>
+                            <td>Dualism with God as supreme guide teacher Purusha</td>
+                            <td>Individual souls entangled in mental modifications</td>
+                            <td>3: Perception, Inference, Testimony</td>
+                            <td>Kaivalya (realized by mental mastery & Samadhi practice)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Nyaya</td>
+                            <td>Astika (Orthodox)</td>
+                            <td>Realistic Pluralism: Logic-driven world structures</td>
+                            <td>Indestructible, qualitative eternal soul substance</td>
+                            <td>4: Perception, Inference, Comparison, Testimony</td>
+                            <td>Apavarga (freedom from suffering, cessation of qualities)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Vaisheshika</td>
+                            <td>Astika (Orthodox)</td>
+                            <td>Atomic pluralism, 7 categories (Padarthas)</td>
+                            <td>Substance in which qualities (consciousness) adhere</td>
+                            <td>2: Perception and Inference</td>
+                            <td>Moksha (complete, qualitative atomic separation of soul)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Mimamsa</td>
+                            <td>Astika (Orthodox)</td>
+                            <td>Vedic Ritualism (Dharma), Action-centric metaphysics</td>
+                            <td>Plural, eternal, active doer of karmic Vedic rites</td>
+                            <td>6: All except Prabhakara (omits Non-apprehension)</td>
+                            <td>Apurva reward (Heaven/Swarga, later merged with Moksha)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Vedanta</td>
+                            <td>Astika (Orthodox)</td>
+                            <td>Non-dual Brahman (Advaita) or qualified non-dualism</td>
+                            <td>Identical with universal supreme Brahman (Advaita)</td>
+                            <td>6: Perception, Inference, Testimony, etc.</td>
+                            <td>Moksha (merging with ultimate consciousness)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Buddhism</td>
+                            <td>Nastika (Heterodox)</td>
+                            <td>Dependent origination (Pratityasamutpada), Impermanence</td>
+                            <td>No-Self (Anatta); bundle of 5 aggregates (Skandhas)</td>
+                            <td>2: Perception and Inference</td>
+                            <td>Nirvana (extinction of desire, cessation of cycle)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Jainism</td>
+                            <td>Nastika (Heterodox)</td>
+                            <td>Multifaceted (Anekantavada), Soul (Jiva) and non-soul (Ajiva)</td>
+                            <td>Plural souls, infinite potential, takes body volume</td>
+                            <td>3: Pratyaksha, Paroksha, and Kevala Jnana</td>
+                            <td>Kaivalya (shedding of material karmic particles)</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight:bold; color:var(--secondary)">Charvaka</td>
+                            <td>Nastika (Heterodox)</td>
+                            <td>Materialism (only 4 physical elements exist)</td>
+                            <td>Body itself endowed with consciousness (No immortal soul)</td>
+                            <td>1: Direct Perception (Pratyaksha) only</td>
+                            <td>Death is the only absolute liberation; Hedonism</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const NODE_PROFILES = {
+            "root": {
+                "title": "Indian Philosophy (Darshana)",
+                "meta": "Central Core of Indian Systems",
+                "meta_content": "Darshana literally means 'direct vision of truth'. It emphasizes the unity of intellectual speculation and moral-spiritual practice to address suffering.",
+                "epist_content": "Pramana Shastra: Rigorous methods to validate knowledge. Astika accepts Vedas, Nastika rejects Vedas.",
+                "lib_content": "Pursuit of Moksha or Nirvana—absolute freedom from Samsara (the birth-death cycle) as the final goal."
+            },
+            "astika": {
+                "title": "Orthodox Schools (Astika)",
+                "meta": "Six Darshanas (Shad-Darshana)",
+                "meta_content": "The six classical schools (Sankhya, Yoga, Nyaya, Vaisheshika, Mimamsa, Vedanta) that accept the Veda's supreme authority, though their metaphysics differ widely.",
+                "epist_content": "Maintains Vedic Testimony (Shabda) as an infallible Pramana for understanding transcendental truth.",
+                "lib_content": "Dharma performance and spiritual insight leading to Moksha (liberation) or Apurva rewards."
+            },
+            "nastika": {
+                "title": "Heterodox Schools (Nastika)",
+                "meta": "Vedic Rejecting Systems",
+                "meta_content": "Schools that explicitly reject Vedic authority and priesthood. Includes Buddhism, Jainism, and Charvaka.",
+                "epist_content": "Rejects Vedic Testimony. Accepts only Perception and/or Inference as reliable sources.",
+                "lib_content": "Ranges from Nirvana in Buddhism, Kaivalya in Jainism, to bodily death in materialistic Charvaka."
+            },
+            "sankhya": {
+                "title": "Sankhya Philosophy (Sage Kapila)",
+                "meta": "Dualistic Realism",
+                "meta_content": "Posits Prakriti (unconscious matter governed by Sattva, Rajas, Tamas Gunas) and Purusha (plural, pure consciousness witness souls) as twin causes.",
+                "epist_content": "Accepts 3 Pramanas: Perception, Inference, and Testimony. Rejects God proof as non-provable.",
+                "lib_content": "Kaivalya (liberation via discriminative knowledge - Vivekakhyati, separating Purusha from Prakriti)."
+            },
+            "yoga": {
+                "title": "Yoga Philosophy (Sage Patanjali)",
+                "meta": "Seshvara Sankhya (Practical Yoga)",
+                "meta_content": "Adopts Sankhya metaphysics but adds 'Ishvara' (Supreme Teacher Purusha) as an object of meditation. Outlines the 8-limbed systematic discipline.",
+                "epist_content": "Accepts 3 Pramanas. Explains fluctuations of the mind (Chitta Vrittis) and how to calm them.",
+                "lib_content": "Kaivalya (absolute mental cessation and union realized in Samadhi)."
+            },
+            "nyaya": {
+                "title": "Nyaya Philosophy (Sage Gautama)",
+                "meta": "Epistemological Logic",
+                "meta_content": "The logical school. Contributed the rigorous five-step syllogism model and analyzed the nature of validity, fallacy, and reasoning.",
+                "epist_content": "Accepts 4 Pramanas: Perception, Inference, Comparison, and Testimony.",
+                "lib_content": "Apavarga (release from the bondage of suffering by eliminating false delusion)."
+            },
+            "vaisheshika": {
+                "title": "Vaisheshika Philosophy (Sage Kanada)",
+                "meta": "Atomic Realism",
+                "meta_content": "Metaphysical physics system. Classifies reality into 7 categories (Padarthas) and proposes atomic theory (Paramanu Vada).",
+                "epist_content": "Accepts 2 Pramanas: Perception and Inference.",
+                "lib_content": "Moksha (cessation of all attributes and quality associations from the eternal soul substance)."
+            },
+            "mimamsa": {
+                "title": "Purva Mimamsa (Sage Jaimini)",
+                "meta": "Vedic Exegesis & Rituals",
+                "meta_content": "Karma-centric orthodox school. Focuses on Vedic ritual performance, exegesis, and executing one's duty (Dharma) perfectly.",
+                "epist_content": "Vedas are Apaurusheya (eternally authorless). Intrinsic validity of knowledge (Svatah Pramanya). accepts 6 Pramanas.",
+                "lib_content": "Apurva (invisible moral force produced by rituals) yielding Swarga (heaven) or Moksha."
+            },
+            "vedanta": {
+                "title": "Uttara Mimamsa (Sage Vyasa)",
+                "meta": "Vedantic Non-Dualism / Upanishads",
+                "meta_content": "The peak orthodox school based on Upanishads. Divided into Advaita (non-dualism - Adi Shankara), Vishishtadvaita (Ramanuja), etc.",
+                "epist_content": "Vedas and Upanishad insights are supreme. Epistemology accepts 6 Pramanas.",
+                "lib_content": "Moksha (realization of Atman-Brahman identity, dissolving the illusion of maya)."
+            },
+            "buddhism": {
+                "title": "Buddhist Philosophy (Gautama Buddha)",
+                "meta": "Nastika System",
+                "meta_content": "Rejects soul (Anatta), Vedic rituals, and caste. Based on Dependent Origination (Pratityasamutpada) and Impermanence (Anicca).",
+                "epist_content": "Accepts 2 Pramanas: Perception and Inference.",
+                "lib_content": "Nirvana (blowing out the flame of desire and craving, escaping rebirths)."
+            },
+            "jainism": {
+                "title": "Jain Philosophy (Mahavira / Tirthankaras)",
+                "meta": "Relational Realism",
+                "meta_content": "Dual division of reality: Jiva (living soul) and Ajiva (non-living matter). Emphasizes non-violence (Ahimsa) and many-sided truth (Anekantavada).",
+                "epist_content": "Many perspectives (Syadvada, Naya-vada) and ultimate Kevala Jnana (omniscience).",
+                "lib_content": "Kaivalya (removing material karmic particles from the shining soul)."
+            },
+            "charvaka": {
+                "title": "Charvaka Philosophy (Sage Brihaspati)",
+                "meta": "Lokayata Materialism",
+                "meta_content": "Radical materialistic and hedonistic school. Rejects soul, afterlife, God, and rituals.",
+                "epist_content": "Accepts only 1 Pramana: Perception (Pratyaksha). Rejects Inference as unprovable.",
+                "lib_content": "Bodily death is the only absolute release. Life's purpose is sensory pleasure."
+            }
+        };
+
+        function showNode(nodeId, element) {
+            // Highlight active node
+            document.querySelectorAll('.tree-node').forEach(n => n.classList.remove('active'));
+            element.classList.add('active');
+            
+            const profile = NODE_PROFILES[nodeId];
+            if (!profile) return;
+            
+            document.getElementById('pane-title').innerText = profile.title;
+            document.getElementById('pane-meta').innerText = profile.meta;
+            document.getElementById('pane-meta-content').innerText = profile.meta_content;
+            document.getElementById('pane-epist-content').innerText = profile.epist_content;
+            document.getElementById('pane-lib-content').innerText = profile.lib_content;
+            
+            const pane = document.getElementById('details-pane');
+            pane.style.display = 'block';
+            pane.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Show root node details on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const rootNode = document.querySelector('.tree-node');
+            showNode('root', rootNode);
+        });
+    </script>
+</body>
+</html>

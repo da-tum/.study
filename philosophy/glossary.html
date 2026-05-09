@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanskrit Glossary & Vocabulary Lexicon</title>
+    
+    <!-- Modern Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-base: #06070a;
+            --bg-surface: rgba(13, 15, 24, 0.7);
+            --bg-card: rgba(18, 20, 36, 0.8);
+            --border-color: rgba(212, 175, 55, 0.15);
+            --border-hover: rgba(212, 175, 55, 0.35);
+            --primary: #4f46e5;
+            --primary-glow: rgba(79, 70, 229, 0.4);
+            --secondary: #d4af37;
+            --secondary-glow: rgba(212, 175, 55, 0.3);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --sattvic-green: #10b981;
+            --rajasic-red: #ef4444;
+            --tamasic-grey: #6b7280;
+            --sidebar-width: 320px;
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--secondary) var(--bg-base);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--secondary);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-primary);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Topbar and layout elements */
+        .sub-topbar {
+            height: 76px;
+            background: rgba(6, 7, 10, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            text-shadow: 0 0 10px var(--secondary-glow);
+        }
+
+        .route-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .back-home-btn {
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-secondary);
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .back-home-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Subheading, paragraphs and items */
+        h1.page-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--secondary), #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        p.page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--glass-shadow);
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .sub-topbar {
+                padding: 0 20px;
+            }
+            .container {
+                padding: 24px;
+            }
+            h1.page-title {
+                font-size: 2.2rem;
+            }
+            p.page-subtitle {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script>
+        function goHome() {
+            const path = window.location.pathname;
+            if (path.includes('Indian_Philosophy_Exam_Prep.html')) {
+                window.location.href = './.study/index.html';
+            } else {
+                window.location.href = '../index.html';
+            }
+        }
+
+        function goBack() {
+            if (document.referrer && (document.referrer.includes('index.html') || document.referrer.includes('.study'))) {
+                window.history.back();
+            } else {
+                goHome();
+            }
+        }
+    </script>
+
+    <style>
+        .glossary-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gloss-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .gloss-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(212,175,55,0.06);
+        }
+
+        .gloss-term {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .gloss-def {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .gloss-q-ref {
+            margin-top: auto;
+            font-size: 11px;
+            color: var(--text-muted);
+            border-top: 1px dashed rgba(255,255,255,0.06);
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header class="sub-topbar">
+        <a href="./index.html" class="logo-section">
+            <span style="font-size: 24px;">📖</span>
+            <span class="logo-text">GLOSSARY LEXICON</span>
+        </a>
+        <div class="route-buttons">
+            <button class="back-home-btn" onclick="window.location.href='./index.html'">
+                ← Back to Hub
+            </button>
+            <button class="back-home-btn" onclick="goHome()">
+                🏠 Portal Home
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Sanskrit Glossary Index</h1>
+        <p class="page-subtitle">Master the underlying conceptual vocabulary of Astika and Nastika philosophy.</p>
+
+        <div class="search-row">
+            <!-- Search bar -->
+            <div class="search-container" style="max-width: 100%; flex: 1;">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="gloss-search" placeholder="Search Sanskrit terms or keywords..." oninput="handleGlossSearch()">
+            </div>
+            
+            <!-- Category selects -->
+            <select class="back-home-btn" id="gloss-filter" onchange="handleGlossSearch()" style="background: var(--bg-card); padding: 0 16px; outline: none; width: 180px;">
+                <option value="all">All Schools</option>
+                <option value="sankhya">Sankhya</option>
+                <option value="yoga">Yoga</option>
+                <option value="buddhism">Buddhism</option>
+                <option value="nyaya-vaisheshika">Nyaya-Vaisheshika</option>
+                <option value="mimamsa">Mimamsa</option>
+            </select>
+        </div>
+
+        <div class="glossary-grid" id="glossary-grid">
+            <!-- Glossary cards injected dynamically -->
+        </div>
+    </div>
+
+    <!-- Pass backend structured glossary array to Javascript -->
+    <script>
+        // Combine keywords into a flat glossary index list
+        const RAW_KEYWORDS = {"q1": [{"term": "Darshana", "def": "A Sanskrit term meaning 'vision' or 'to see'. It represents direct, intuitive perception of truth rather than merely theoretical philosophy."}, {"term": "Astika", "def": "Orthodox schools of Indian philosophy that accept the authority of the Vedas (Nyaya, Vaisheshika, Samkhya, Yoga, Mimamsa, Vedanta)."}, {"term": "Nastika", "def": "Heterodox schools of Indian philosophy that reject Vedic authority (Buddhism, Jainism, Charvaka)."}, {"term": "Purusharthas", "def": "The four supreme goals of human life: Dharma (ethics), Artha (wealth), Kama (desire), and Moksha (liberation)."}, {"term": "Moksha", "def": "Ultimate spiritual liberation or freedom from the beginningless cycle of birth, death, and rebirth (Samsara)."}], "q2": [{"term": "Ashtanga", "def": "The 'eight-limbed' systematic path of Yoga formulated by the ancient sage Patanjali in the Yoga Sutras."}, {"term": "Yama", "def": "Universal social ethics and moral restraints: Ahimsa (non-violence), Satya (truthfulness), Asteya (non-stealing), Brahmacharya (continence), and Aparigraha (non-possessiveness)."}, {"term": "Niyama", "def": "Personal spiritual disciplines and observances: Shaucha (purity), Santosha (contentment), Tapas (discipline), Svadhyaya (self-study), and Ishvarapranidhana (surrender)."}, {"term": "Asana", "def": "Physical postures; described as steady and comfortable ('Sthira-Sukham Asanam') to prepare the body for meditation."}, {"term": "Pranayama", "def": "Breath regulation; control of vital life force (prana) to harmonize energy and calm the fluctuations of the mind."}, {"term": "Pratyahara", "def": "Sensory withdrawal; turning attention inward by disconnecting the senses from external environmental objects."}, {"term": "Dharana", "def": "One-pointed concentration; focusing the mind on a single point, image, or idea."}, {"term": "Dhyana", "def": "Uninterrupted meditation; a continuous, focused flow of attention toward the object of concentration."}, {"term": "Samadhi", "def": "Spiritual absorption; state where individual consciousness merges with universal consciousness, dissolving the sense of separation."}], "q3": [{"term": "Purusha", "def": "Pure, eternal, unchanging consciousness in Sankhya. It is the silent, non-active witness (Drashta) of cosmic evolution."}, {"term": "Prakriti", "def": "Primordial matter or nature; the eternal, unconscious, and active first cause of the physical and mental universe."}, {"term": "Gunasamya", "def": "The state of perfect equilibrium among the three Gunas (Sattva, Rajas, Tamas) in unmanifest Prakriti (Avyakta)."}, {"term": "Mahat / Buddhi", "def": "Cosmic Intelligence; the very first evolutionary product (evolute) when Prakriti's balance is disturbed."}, {"term": "Vivekakhyati", "def": "Discriminative discernment; the absolute realization that Purusha (soul) is completely separate and isolated from Prakriti (matter)."}, {"term": "Kaivalya", "def": "Absolute isolation or liberation in Sankhya-Yoga; the state where pure consciousness is completely untangled from material nature."}], "q4": [{"term": "Trigunas", "def": "The three dynamic strands/qualities that constitute Prakriti: Sattva (purity), Rajas (activity), and Tamas (inertia)."}, {"term": "Sattva", "def": "The quality of purity, harmony, clarity, lightness, and wisdom. It generates peace, knowledge, and spiritual growth."}, {"term": "Rajas", "def": "The quality of passion, motion, desire, ambition, and restlessness. It drives action but generates pain and anxiety."}, {"term": "Tamas", "def": "The quality of inertia, ignorance, heaviness, dullness, and delusion. It obstructs activity and causes lethargy or confusion."}, {"term": "Trigunatita", "def": "One who has completely transcended the influence of all three Gunas and is established in pure consciousness."}], "q5": [{"term": "Yogas Chitta Vritti Nirodhah", "def": "Patanjali's definition of Yoga: 'Yoga is the cessation of the modifications (vrittis) of the mind (chitta).'"}, {"term": "Bahiranga Sadhana", "def": "The five external limbs of yoga (Yama, Niyama, Asana, Pranayama, Pratyahara) dealing with body and social ethics."}, {"term": "Antaranga Sadhana", "def": "The three internal limbs of yoga (Dharana, Dhyana, Samadhi) dealing with high-level meditation of the mind."}, {"term": "Samyama", "def": "The integrated, combined practice of concentration, meditation, and absorption (Dharana, Dhyana, Samadhi) on a single object."}], "q6": [{"term": "Purva Mimamsa", "def": "Orthodox school focused on Vedic exegesis, the philosophy of action (Karma), and rigorous ritualistic duty (Dharma)."}, {"term": "Apaurusheya", "def": "The Mimamsa doctrine that the Vedas are 'authorless'\u2014eternally existing and not created by any human or divine creator."}, {"term": "Svatah Pramanya", "def": "The theory of intrinsic validity of knowledge; all knowledge is self-evidently true unless contradicted by subsequent evidence."}, {"term": "Apurva", "def": "An unseen potency or invisible moral force produced by performing a ritual, which bridges the act and its future outcome (e.g. heaven)."}, {"term": "Shabda Pramana", "def": "Verbal testimony, particularly Vedic injunctions, held by Mimamsa to be the highest valid source of absolute truth."}], "q7": [{"term": "Nitishastra", "def": "The traditional Indian philosophical treaties, manuals, and sciences dealing with ethics, morals, and righteous conduct."}, {"term": "Sadharana Dharma", "def": "Universal duties applicable to all human beings regardless of social position (non-violence, truthfulness, purity, compassion)."}, {"term": "Karma Law", "def": "The universal moral law of cause and effect: every intentional action shapes future character and experience."}, {"term": "Ahimsa", "def": "Non-harming or non-violence in thoughts, words, and actions; the ultimate cardinal virtue of Indian systems."}], "q8": [{"term": "Nyaya", "def": "The classical orthodox school of logic and epistemology founded by Sage Gautama; established rules of valid inference."}, {"term": "Vaisheshika", "def": "The classical orthodox school of physics and metaphysics founded by Sage Kanada; classified reality into seven categories."}, {"term": "Pramanas", "def": "Valid sources/means of knowledge. Nyaya accepts four: Perception, Inference, Comparison, and Verbal Testimony."}, {"term": "Paramanu Vada", "def": "The Vaisheshika atomic theory positing that the physical universe is composed of eternal, indivisible, qualitatively distinct atoms."}], "q9": [{"term": "Samsara", "def": "The continuous cycle of birth, death, and reincarnation driven by one's karma."}, {"term": "Atman", "def": "The eternal, unchanging, and divine individual self or soul, distinct from the body-mind complex."}, {"term": "Brahman", "def": "The absolute, ultimate cosmic reality or ground of all existence in Upanishadic and Vedantic traditions."}, {"term": "Vasudhaiva Kutumbakam", "def": "A beautiful Sanskrit slogan meaning 'The whole world is one single family', illustrating universal brotherhood."}], "q10": [{"term": "Ontology", "def": "The branch of metaphysics dealing with the nature of being, existence, and classification of categories of reality."}, {"term": "Pramana Shastra", "def": "Epistemology; the systematic investigation into the nature, validity, limits, and sources of true knowledge."}, {"term": "Satkaryavada", "def": "The theory of causation asserting that the effect already pre-exists in its cause prior to manifestation (Sankhya view)."}, {"term": "Asatkaryavada", "def": "The theory of causation asserting that the effect is a completely new creation not pre-existing in its cause (Nyaya view)."}], "q11": [{"term": "Sattvic State", "def": "A state of pure being, clarity, wisdom, calmness, and joy, closest to spiritual consciousness."}, {"term": "Viveka", "def": "Intellectual discrimination; the capacity to distinguish between the eternal self and temporary material reality."}], "q12": [{"term": "Vyapti", "def": "Universal, invariable concomitance; the constant, unbreakable relation between the middle term (smoke) and major term (fire)."}, {"term": "Anyathakhyati", "def": "The Nyaya theory of error: mistaking one real object for another real object (e.g. mistaking nacre for silver due to past memory)."}, {"term": "Padarthas", "def": "Categories of knowable reality. Vaisheshika lists seven categories: Substance, Quality, Action, Universal, Particular, Inherence, Absence."}], "q13": [{"term": "Arya Ashtangika Marga", "def": "The Noble Eightfold Path of Buddhism designed to extinguish craving and end suffering (Dukkha)."}, {"term": "Prajna Division", "def": "Wisdom division of the path: Right View (understanding truths) and Right Intention (renunciation, compassion)."}, {"term": "Sila Division", "def": "Ethical conduct division of the path: Right Speech, Right Action, and Right Livelihood."}, {"term": "Samadhi Division", "def": "Mental discipline division of the path: Right Effort, Right Mindfulness, and Right Concentration."}, {"term": "Nirvana", "def": "Ultimate peace and liberation in Buddhism; the complete extinguishing of craving, delusion, and the fires of suffering."}], "q14": [{"term": "Advaita Vedanta", "def": "Non-dual school asserting that individual soul (Atman) and universal reality (Brahman) are identical."}, {"term": "Pratityasamutpada", "def": "Dependent Origination; the central Buddhist doctrine that all things arise in dependence upon cause-and-effect conditions."}, {"term": "Anekantavada", "def": "The Jain doctrine of many-sidedness of reality; truth is multifaceted and cannot be captured by a single perspective."}, {"term": "Syadvada", "def": "The Jain theory of relativity of assertions; all judgments are relative, conditional, and partial (seven-fold prediction)."}], "q15": [{"term": "Trilakshana", "def": "The three marks of existence in Buddhism: Anicca (impermanence), Dukkha (suffering), and Anatta (no-self)."}, {"term": "Shunyata", "def": "Emptiness; Mahayana Buddhist insight that all phenomena are empty of a separate, independent, unchanging essence."}, {"term": "Engaged Buddhism", "def": "Modern Buddhist movement founded by Thich Nhat Hanh that actively applies contemplative practice to social reform."}], "q16": [{"term": "Practical Vedanta", "def": "Swami Vivekananda's philosophy of translating Vedantic meditation into active service to humanity, especially the poor."}, {"term": "Satyagraha", "def": "Truth-force; Mahatma Gandhi's philosophy of active, non-violent spiritual resistance to fight political injustice."}, {"term": "Navayana", "def": "New Vehicle Buddhism; Dr. B.R. Ambedkar's reinterpretation of Buddhism focused on social justice, human rights, and anti-caste reform."}, {"term": "Supermind", "def": "Sri Aurobindo's evolutionary concept of a spiritual consciousness above rational mind, destined to manifest on Earth."}], "q17": [{"term": "Gunatita", "def": "One who has transcended the binding power of the three Gunas and remains established in calm, non-dual spiritual awareness."}, {"term": "Rajasic Mind", "def": "An agitated, ambitious, highly active mind driven by greed, ego, desire, and anxiety."}, {"term": "Tamasic Mind", "def": "A sluggish, dull, lazy, and confused mind trapped in depression, ignorance, or addictive habits."}]};
+        const GLOSSARY_LIST = [];
+
+        // Build flat array of terms
+        Object.keys(RAW_KEYWORDS).forEach(qId => {
+            RAW_KEYWORDS[qId].forEach(kw => {
+                if (!GLOSSARY_LIST.some(item => item.term === kw.term)) {
+                    let school = 'General';
+                    if (qId.indexOf('q2') !== -1 || qId.indexOf('q5') !== -1) school = 'yoga';
+                    else if (qId.indexOf('q3') !== -1 || qId.indexOf('q4') !== -1 || qId.indexOf('q11') !== -1 || qId.indexOf('q17') !== -1) school = 'sankhya';
+                    else if (qId.indexOf('q6') !== -1) school = 'mimamsa';
+                    else if (qId.indexOf('q8') !== -1 || qId.indexOf('q12') !== -1) school = 'nyaya-vaisheshika';
+                    else if (qId.indexOf('q13') !== -1 || qId.indexOf('q15') !== -1) school = 'buddhism';
+
+                    GLOSSARY_LIST.push({
+                        term: kw.term,
+                        definition: kw.def,
+                        school: school,
+                        ref: qId.toUpperCase()
+                    });
+                }
+            });
+        });
+
+        // Sort alphabetically
+        GLOSSARY_LIST.sort((a,b) => a.term.localeCompare(b.term));
+
+        function renderGlossary(filteredList) {
+            const grid = document.getElementById('glossary-grid');
+            grid.innerHTML = '';
+
+            filteredList.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'gloss-card';
+                div.innerHTML = `
+                    <div class="gloss-term">${item.term}</div>
+                    <div class="gloss-def">${item.definition}</div>
+                    <div class="gloss-q-ref">School: <strong style="text-transform:uppercase; color:var(--secondary);">${item.school}</strong> | Used in: ${item.ref}</div>
+                `;
+                grid.appendChild(div);
+            });
+        }
+
+        function handleGlossSearch() {
+            const query = document.getElementById('gloss-search').value.toLowerCase();
+            const schoolFilter = document.getElementById('gloss-filter').value;
+
+            const filtered = GLOSSARY_LIST.filter(item => {
+                const matchesSearch = item.term.toLowerCase().indexOf(query) !== -1 || item.definition.toLowerCase().indexOf(query) !== -1;
+                const matchesSchool = schoolFilter === 'all' || item.school === schoolFilter;
+                return matchesSearch && matchesSchool;
+            });
+
+            renderGlossary(filtered);
+        }
+
+        // Init on load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGlossary(GLOSSARY_LIST);
+        });
+    </script>
+</body>
+</html>
