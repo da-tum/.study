@@ -36,7 +36,7 @@
       background: var(--bg);
       background-image: 
         radial-gradient(circle at 5% 10%, rgba(16, 185, 129, 0.04) 0%, transparent 40%),
-        radial-gradient(circle at 95% 90%, rgba(139, 92, 246, 0.04) 0%, transparent 40%);
+        radial-gradient(circle at 95% 80%, rgba(139, 92, 246, 0.04) 0%, transparent 40%);
       color: var(--text);
       min-height: 100vh;
       padding-bottom: 5rem;
@@ -121,10 +121,11 @@
       border-radius: 16px;
       margin-bottom: 2.5rem;
       overflow-x: auto;
+      flex-wrap: wrap; /* Highly mobile responsive */
     }
     .tab-btn {
       flex: 1;
-      min-width: 180px;
+      min-width: 150px;
       background: transparent;
       border: none;
       color: var(--text-muted);
@@ -215,9 +216,6 @@
       color: var(--primary);
       margin: 1.5rem 0 0.5rem 0;
     }
-    .card.accent-card h4 { color: var(--accent); }
-    .card.orange-card h4 { color: var(--orange); }
-    .card.purple-card h4 { color: var(--purple); }
     
     .card p {
       color: var(--text-muted);
@@ -238,17 +236,11 @@
       color: #e5e7eb;
       line-height: 1.6;
       margin: 1.25rem 0;
-      position: relative;
+      max-width: 100%; /* Fully mobile responsive */
     }
     code {
       font-family: 'Fira Code', monospace;
     }
-    .kw { color: #c792ea; font-weight: 600; } /* Keyword */
-    .fn { color: #82aaff; } /* Function */
-    .str { color: #c3e88d; } /* String */
-    .num { color: #f78c6c; } /* Number */
-    .cm { color: #546e7a; font-style: italic; } /* Comment */
-    .obj { color: #ffcb6b; } /* Object */
 
     /* ---- WIDGETS & ANIMATORS ---- */
     .interactive-widget {
@@ -349,6 +341,7 @@
       display: flex;
       gap: 1rem;
       margin-top: 1rem;
+      flex-wrap: wrap; /* Wrap on mobile */
     }
     .avl-diagram-container {
       flex: 1;
@@ -389,11 +382,19 @@
     }
 
     /* ---- TABLES ---- */
+    .table-responsive {
+      overflow-x: auto;
+      width: 100%;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      -webkit-overflow-scrolling: touch;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1.5rem 0;
       font-size: 0.9rem;
+      min-width: 500px; /* Force scroll on tiny mobile screens */
     }
     th {
       background: rgba(255, 255, 255, 0.03);
@@ -411,6 +412,106 @@
     tr:hover td {
       background: rgba(255, 255, 255, 0.01);
       color: #fff;
+    }
+
+    /* ---- IMAGE GALLERY SCANS SECTION ---- */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .image-card {
+      background: rgba(17, 24, 39, 0.5);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .image-card:hover {
+      border-color: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.05);
+      transform: translateY(-4px);
+    }
+    .image-img-wrapper {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .image-card img:hover {
+      transform: scale(1.08);
+    }
+    .image-info {
+      padding: 1.25rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .image-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .image-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 88%;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      animation: zoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: #fff;
+      font-size: 2.5rem;
+      cursor: pointer;
+      font-weight: 300;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover {
+      color: var(--primary);
     }
 
     /* ---- ACCORDIONS FOR QUESTION BANKS ---- */
@@ -509,16 +610,26 @@
       border-top: 1px solid rgba(255, 255, 255, 0.06);
       line-height: 1.6;
     }
-    .model-answer strong {
+
+    /* Search bar styling */
+    .search-container {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: rgba(17, 24, 39, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
       color: #fff;
+      transition: all 0.3s;
     }
-    .model-answer ul, .model-answer ol {
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .model-answer li {
-      margin-bottom: 0.5rem;
-      color: var(--text-muted);
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
+      outline: none;
     }
 
     /* ---- MOCK EXAM PAPER ---- */
@@ -568,7 +679,8 @@
       .container { padding: 1rem; }
       h1 { font-size: 2.2rem; }
       .tab-nav { gap: 0.25rem; }
-      .tab-btn { min-width: 150px; padding: 0.6rem 0.8rem; font-size: 0.8rem; }
+      .tab-btn { min-width: 130px; padding: 0.6rem 0.8rem; font-size: 0.8rem; }
+      .avl-steps { gap: 1.5rem; }
     }
   </style>
   
@@ -603,30 +715,115 @@
     <nav class="tab-nav">
       <button class="tab-btn active primary-active" onclick="showTab('syllabus', this)">📑 Syllabus Solutions</button>
       <button class="tab-btn accent-active" onclick="showTab('highfreq', this)">🔥 High-Frequency Qs</button>
-      <button class="tab-btn orange-active" onclick="showTab('bank', this)">🗃️ Complete Bank (2M & 8M)</button>
-      <button class="tab-btn purple-active" onclick="showTab('mock', this)">🧠 40-Mark Mock Paper</button>
+      <button class="tab-btn orange-active" onclick="showTab('bank', this)">🗃️ Complete Bank</button>
+      <button class="tab-btn purple-active" onclick="showTab('mock', this)">🧠 Mock Paper</button>
+      <button class="tab-btn primary-active" onclick="showTab('scans', this)">📸 Visual Notes Board</button>
     </nav>
 
     <!-- ==================== SECTION 1: SYLLABUS SOLUTIONS ==================== -->
     <div id="syllabus" class="section-content active">
       <!-- Unit 1 -->
       <div class="card">
-        <h3>📐 Unit 1: Foundations & Searching Mechanics</h3>
-        <p>A B.Tech CSE foundation detailing Big-O notations, recursion stacks, and search spacing.</p>
+        <h3>📐 Unit 1: Introduction to Algorithms, Complexity & Recursion</h3>
+        <p>A comprehensive review of Big-O notations, recursion call stacks, algorithm design paradigms, and search mechanics.</p>
         
         <div style="margin-top: 1.5rem;">
           <h4>1. Linear vs. Non-Linear Structures</h4>
-          <p>Linear structures (Arrays, Stacks, Queues, Linked Lists) organize nodes sequentially. Non-linear structures (Trees, Graphs) arrange nodes hierarchically or as interconnected vertices.</p>
+          <p>Linear structures (Arrays, Stacks, Queues, Linked Lists) organize nodes sequentially in a 1D sequence. Non-linear structures (Trees, Graphs) arrange nodes hierarchically or in complex networks.</p>
 
-          <h4>2. Recursion Call Stacks & Tower of Hanoi</h4>
-          <p>Recursion allocates temporary frame scopes inside the system's LIFO Call Stack. For the Tower of Hanoi ($N=3$ disks), moving from source rod $A$ to destination $C$ requires exactly $2^3 - 1 = 7$ sequential moves:</p>
-          <pre class="code-block"><code>Step 1: Move disk 1 from A -> C
-Step 2: Move disk 2 from A -> B
-Step 3: Move disk 1 from C -> B
-Step 4: Move disk 3 from A -> C
-Step 5: Move disk 1 from B -> A
-Step 6: Move disk 2 from B -> C
-Step 7: Move disk 1 from A -> C</code></pre>
+          <h4>2. Asymptotic Notations</h4>
+          <ul>
+            <li><strong>Big-O ($O$):</strong> Represents the upper bound or worst-case complexity: $f(n) \le c \cdot g(n)$ for all $n \ge n_0$.</li>
+            <li><strong>Omega ($\Omega$):</strong> Represents the lower bound or best-case complexity: $f(n) \ge c \cdot g(n)$ for all $n \ge n_0$.</li>
+            <li><strong>Theta ($\Theta$):</strong> Represents the tight exact bound: $c_1 \cdot g(n) \le f(n) \le c_2 \cdot g(n)$ for all $n \ge n_0$.</li>
+          </ul>
+
+          <h4>3. Algorithm Design Paradigms</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Paradigm</th>
+                  <th>Key Strategy</th>
+                  <th>Global Optimality</th>
+                  <th>Classic Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Divide & Conquer</strong></td>
+                  <td>Divides problems recursively, solves subproblems, merges solutions.</td>
+                  <td>Guaranteed (exact solutions).</td>
+                  <td>Merge Sort, Quick Sort, Binary Search</td>
+                </tr>
+                <tr>
+                  <td><strong>Greedy Algorithms</strong></td>
+                  <td>Makes local optimal choice at each step hoping to find global optimum.</td>
+                  <td>Not guaranteed (can yield sub-optimal results).</td>
+                  <td>Prim's & Kruskal's MST, Fractional Knapsack</td>
+                </tr>
+                <tr>
+                  <td><strong>Dynamic Programming</strong></td>
+                  <td>Stores solved overlapping subproblem results to prevent re-computation.</td>
+                  <td>Guaranteed (global optimization).</td>
+                  <td>0/1 Knapsack, Fibonacci Series, Floyd-Warshall</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>4. Recursion vs. Iteration Call Stack Memory</h4>
+          <p>Iteration runs in $O(1)$ auxiliary space because it repeats instructions inside a single frame scope. Recursion uses a LIFO call stack to store temporary activation frames for every self-call, leading to $O(n)$ space complexity.</p>
+          <pre class="code-block"><code># Iterative Factorial (O(1) auxiliary space)
+def fact_iter(n):
+    res = 1
+    for i in range(1, n + 1):
+        res *= i
+    return res
+
+# Recursive Factorial (O(n) auxiliary call stack space)
+def fact_recur(n):
+    if n <= 1:
+        return 1
+    return n * fact_recur(n - 1)</code></pre>
+
+          <h4>5. Searching Frameworks: Benchmarks</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Algorithm</th>
+                  <th>Prerequisite</th>
+                  <th>Best Case</th>
+                  <th>Worst Case</th>
+                  <th>Space Complexity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Linear Search</strong></td>
+                  <td>None (works on unsorted)</td>
+                  <td>$O(1)$</td>
+                  <td>$O(n)$</td>
+                  <td>$O(1)$</td>
+                </tr>
+                <tr>
+                  <td><strong>Binary Search</strong></td>
+                  <td>Sorted array</td>
+                  <td>$O(1)$</td>
+                  <td>$O(\log n)$</td>
+                  <td>$O(1)$ iterative / $O(\log n)$ recursive</td>
+                </tr>
+                <tr>
+                  <td><strong>Jump Search</strong></td>
+                  <td>Sorted array</td>
+                  <td>$O(1)$</td>
+                  <td>$O(\sqrt{n})$</td>
+                  <td>$O(1)$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
           <!-- Loop Complexity Interactive Widget -->
           <div class="interactive-widget">
@@ -652,1386 +849,146 @@ Step 7: Move disk 1 from A -> C</code></pre>
       <!-- Unit 2 -->
       <div class="card accent-card">
         <h3>🔗 Unit 2: Linear Data Structures & Pointer Allocations</h3>
-        <p>Details the memory representation of continuous arrays and pointer adjustments in singly, doubly, and circular linked lists.</p>
+        <p>Details the memory representation of continuous arrays and pointer adjustments in singly, doubly, and circular linked lists, stacks, and circular queues.</p>
         
         <div style="margin-top: 1.5rem;">
-          <h4>1. Arrays vs. Linked List Memory Cost</h4>
-          <p>Arrays allocate memory contiguously, allowing direct index access in $\Theta(1)$ time, but insertion requires shifting $O(n)$ elements. Linked Lists scatter nodes Dynamically in heap memory, using next pointers which consumes extra storage, but insertion at the head is extremely fast taking only $\Theta(1)$ time.</p>
-          
-          <h4>2. Singly vs. Doubly vs. Circular Lists</h4>
-          <table>
-            <thead>
-              <tr>
-                <th>List Paradigm</th>
-                <th>Pointer Structure</th>
-                <th>Search Time</th>
-                <th>Optimal Use Case</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Singly Linked List</strong></td>
-                <td>Data + Next Pointer Only</td>
-                <td>$O(n)$ Sequential</td>
-                <td>Simple forward memory buffers</td>
-              </tr>
-              <tr>
-                <td><strong>Doubly Linked List</strong></td>
-                <td>Data + Prev + Next Pointers</td>
-                <td>$O(n)$ Bidirectional</td>
-                <td>Browser back/forward histories</td>
-              </tr>
-              <tr>
-                <td><strong>Circular Linked List</strong></td>
-                <td>Last next points to head</td>
-                <td>$O(n)$ Cyclic loop</td>
-                <td>Round-Robin CPU process scheduling</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- Unit 3 -->
-      <div class="card orange-card">
-        <h3>🗄️ Unit 3: Stack (LIFO) & Queue (FIFO) Operations</h3>
-        <p>Analyzes basic stack boundaries (overflow/underflow) and wrap-around logic of Circular Queues.</p>
-
-        <div style="margin-top: 1.5rem;">
-          <h4>1. Stack Boundaries</h4>
-          <p>Stacks operate strictly at the `top`. <strong>Stack Overflow</strong> occurs when pushing to a full array: <code>top == MAX - 1</code>. <strong>Stack Underflow</strong> occurs when popping from an empty stack: <code>top == -1</code>.</p>
-          
-          <h4>2. Circular Queue Modulo Arithmetic</h4>
-          <p>To avoid memory slot wastage in linear queues, circular queues wrap the rear and front pointers around the array boundaries using modulo arithmetic:</p>
-          <pre class="code-block"><code>Enqueue: rear = (rear + 1) % MAX_SIZE
-Dequeue: front = (front + 1) % MAX_SIZE
-Full Condition: (rear + 1) % MAX_SIZE == front
-Empty Condition: front == -1</code></pre>
-        </div>
-      </div>
-
-      <!-- Unit 4 -->
-      <div class="card purple-card">
-        <h3>🌳 Unit 4: Trees, Graph Traversals & Hash Collisions</h3>
-        <p>Details binary search tree properties, self-balancing AVL rotation states, and hash collision resolutions.</p>
-
-        <div style="margin-top: 1.5rem;">
-          <h4>1. AVL Balances & Rotations</h4>
-          <p>An AVL Tree maintains balance by ensuring that the balance factor ($BF$) of every node satisfies $|BF| \le 1$. If $BF > 1$ (left heavy) or $BF < -1$ (right heavy), balancing rotations (LL, RR, LR, RL) are triggered.</p>
-          
-          <!-- Interactive AVL Rotations widget -->
-          <div class="interactive-widget">
-            <div class="widget-title">🌳 Step-by-Step AVL RR Rotation Visualizer</div>
-            <p>See how inserting 30 into an AVL tree containing 10 and 20 triggers a Right-Right (RR) imbalance and Left Rotation:</p>
-            
-            <div class="avl-steps">
-              <div class="avl-diagram-container" id="avl-visual-box">
-                <div style="text-align: center;">
-                  <div class="tree-node-visual">
-                    <div class="tree-circle unbalanced">10</div>
-                    <div class="tree-bf">BF = -2 (Unbalanced!)</div>
-                    <div style="margin: 0.2rem 0; color: var(--red);">↓</div>
-                    <div class="tree-circle">20</div>
-                    <div class="tree-bf">BF = -1</div>
-                    <div style="margin: 0.2rem 0; color: var(--red);">↓</div>
-                    <div class="tree-circle">30</div>
-                    <div class="tree-bf">BF = 0</div>
-                  </div>
-                </div>
-              </div>
-              <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem;">
-                <p><strong>Status:</strong> <span id="avl-status" style="color: var(--red); font-weight: 700;">Imbalance Detected (RR Case)</span></p>
-                <p id="avl-desc">Inserting key 30 to the right of 20 causes the parent root node 10's height to become unbalanced with a balance factor of -2.</p>
-                <button class="complexity-btn" id="avl-action-btn" onclick="triggerAVLRotation()" style="border: 1px solid var(--orange); color: var(--orange);">Apply Left Rotation</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SECTION 2: HIGH-FREQUENCY QUESTIONS ==================== -->
-    <div id="highfreq" class="section-content">
-      <div class="card yellow-card">
-        <h3>❓ Q1: Array vs. Linked List on basis of memory and insertions.</h3>
-        <p><strong>Correct Answer:</strong></p>
-        <ul>
-          <li><strong>Memory Allocation:</strong> Arrays use <strong>contiguous, static</strong> allocation determined at compile-time. Elements are stored adjacent to each other. Linked Lists use <strong>non-contiguous, dynamic</strong> allocation at runtime; nodes are scattered in heap memory, linked via address pointers.</li>
-          <li><strong>Insertion Operation:</strong> Arrays require shifting elements sequentially, costing $O(n)$ worst-case. Singly Linked Lists insert at the beginning in $O(1)$ time by adjusting the head pointer, without shifting any elements.</li>
-        </ul>
-      </div>
-
-      <div class="card yellow-card">
-        <h3>❓ Q2: Find Time Complexity: <code>i = 1; while i <= n: i = i * 3</code>.</h3>
-        <p><strong>Correct Answer:</strong></p>
-        <p>In each step, $i$ is multiplied by 3. Its value grows exponentially: $1, 3, 9, 27, \dots, 3^k$. The loop terminates when $3^k \ge n \Rightarrow k \ge \log_3 n$. Thus, the exact Time Complexity is <strong>$O(\log n)$</strong> (Logarithmic).</p>
-      </div>
-
-      <div class="card yellow-card">
-        <h3>❓ Q3: AVL Balance Factor and Rotations.</h3>
-        <p><strong>Correct Answer:</strong></p>
-        <p>The Balance Factor ($BF$) of a node is calculated as: <code>BF = Height(Left Subtree) - Height(Right Subtree)</code>.</p>
-        <p>For an AVL tree to remain balanced, the balance factor of every node must be $-1$, $0$, or $+1$. If $|BF| > 1$, four types of rotations restore balance:
-          <ul>
-            <li><strong>LL Case:</strong> Single Right Rotation (when key inserted in left of left).</li>
-            <li><strong>RR Case:</strong> Single Left Rotation (when key inserted in right of right).</li>
-            <li><strong>LR Case:</strong> Left Rotation on left child, then Right Rotation on parent (when key inserted in right of left).</li>
-            <li><strong>RL Case:</strong> Right Rotation on right child, then Left Rotation on parent (when key inserted in left of right).</li>
-          </ul>
-        </p>
-      </div>
-
-      <div class="card yellow-card">
-        <h3>❓ Q4: Compare Prime and Kruskal's MST Algorithms.</h3>
-        <p><strong>Correct Answer:</strong></p>
-        <ul>
-          <li><strong>Prim's Algorithm:</strong> Grows the Minimum Spanning Tree from a single starting vertex, adding the cheapest connected edge at each step. Better for <strong>dense graphs</strong>. Time complexity: $O(E \log V)$.</li>
-          <li><strong>Kruskal's Algorithm:</strong> Sorts all edges in ascending order of weight and adds them one-by-one, using Union-Find to avoid cycles. Better for <strong>sparse graphs</strong>. Time complexity: $O(E \log E)$ or $O(E \log V)$.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- ==================== SECTION 3: COMPLETE BANK ==================== -->
-    <div id="bank" class="section-content">
-      <div class="bank-category">🗃️ 2-Mark Short Answer Pool (Dr. Shahjad & Syllabus Curation)</div>
-      
-      <span class="bank-unit-title">Unit 1: Fundamentals, Complexity & searching</span>
-
-      <!-- Short 1 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q1. Define Data Structure. Differentiate between linear and non-linear data structures.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            A data structure is a systematic way of organizing and storing data in a computer so that it can be accessed and modified efficiently.
-            <ul>
-              <li><strong>Linear DS:</strong> Elements are arranged sequentially (e.g., Arrays, Stacks, Queues, Linked Lists).</li>
-              <li><strong>Non-Linear DS:</strong> Elements are organized hierarchically or in interconnected patterns (e.g., Trees, Graphs).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 2 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q2. Define Time Complexity and Space Complexity with examples.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <ul>
-              <li><strong>Time Complexity:</strong> Measures the amount of time taken by an algorithm to execute as a function of the input size $n$. Example: A single loop running from $0$ to $n-1$ has time complexity $O(n)$.</li>
-              <li><strong>Space Complexity:</strong> Measures the amount of memory/space used by an algorithm during execution. Example: If only a constant number of helper variables are used, the space complexity is $O(1)$.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 3 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q3. Differentiate between Big-O, Omega, and Theta notations.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <ul>
-              <li><strong>Big-O ($O$):</strong> Represents the asymptotic upper bound (worst-case scenario).</li>
-              <li><strong>Omega ($\Omega$):</strong> Represents the asymptotic lower bound (best-case scenario).</li>
-              <li><strong>Theta ($\Theta$):</strong> Represents the exact bound where the running time is both upper and lower bounded (average-case scenario).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 4 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q4. Arrange the following complexities in increasing order: $O(n^3)$, $O(\log n)$, $O(1)$, $O(n)$, $O(n \log n)$, $O(n^2)$, $O(2^n)$.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            The correct increasing order (fastest to slowest) is:
-            $$O(1) < O(\log n) < O(n) < O(n \log n) < O(n^2) < O(n^3) < O(2^n)$$
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 5 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q5. Why does Binary Search require sorted data?</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            Binary Search eliminates half of the search space in each step based on a comparison with the middle element. This elimination is mathematically guaranteed only if the array is sorted, as all elements to the left of the middle will be smaller and those to the right will be larger.
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 6 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q6. What is recursion? State the importance of the base case.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            Recursion is a programming technique where a function calls itself directly or indirectly to solve a smaller subproblem. 
-            The <strong>base case</strong> is the condition that terminates the recursive calls. Without a base case, recursion leads to infinite execution and a stack overflow error.
-          </div>
-        </div>
-      </div>
-
-      <span class="bank-unit-title">Unit 2: Linked Lists, Stacks & Queues</span>
-
-      <!-- Short 7 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q7. What is Stack Overflow and Stack Underflow? State conditions.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <ul>
-              <li><strong>Stack Overflow:</strong> Attempting to PUSH an element onto a stack that is already full. Condition: <code>top == MAX_SIZE - 1</code>.</li>
-              <li><strong>Stack Underflow:</strong> Attempting to POP an element from an empty stack. Condition: <code>top == -1</code>.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 8 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q8. Differentiate between Singly, Doubly, and Circular Linked Lists.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <ul>
-              <li><strong>Singly:</strong> Nodes have data and a single <code>next</code> pointer pointing forward.</li>
-              <li><strong>Doubly:</strong> Nodes have <code>prev</code> and <code>next</code> pointers allowing bidirectional traversal.</li>
-              <li><strong>Circular:</strong> The <code>next</code> pointer of the last node points back to the head node, forming a closed ring.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 9 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q9. Explain the Enqueue and Dequeue time complexities for Circular Queue.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            Both enqueue (inserting rear element) and dequeue (deleting front element) take constant time <strong>$O(1)$</strong> in a circular queue because elements are accessed directly via pointers without any shifting of slots.
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 10 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q10. What is a double-ended queue (Deque)? State its types.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            A Deque is a queue that allows insertion and deletion of nodes at both the front and rear ends. Its two variants are:
-            <ol>
-              <li><strong>Input-Restricted Deque:</strong> Insertions allowed at one end only, deletions at both ends.</li>
-              <li><strong>Output-Restricted Deque:</strong> Deletions allowed at one end only, insertions at both ends.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <span class="bank-unit-title">Unit 3: Sorting & Hashing</span>
-
-      <!-- Short 11 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q11. Compare Bubble Sort and Selection Sort based on swapping overhead.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            While both Bubble and Selection Sort have worst-case time complexities of $O(n^2)$, <strong>Selection Sort is much faster in terms of writes/swaps</strong>. Bubble Sort swaps adjacent elements repeatedly in every pass, requiring up to $O(n^2)$ swaps. Selection Sort swaps at most once per outer loop iteration, making at most $O(n)$ swaps.
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 12 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q12. What is stable sorting? Give examples of stable and unstable sorts.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            A sorting algorithm is <strong>stable</strong> if it preserves the relative order of duplicate/equal elements in the sorted output.
-            <ul>
-              <li><strong>Stable Sorts:</strong> Bubble Sort, Insertion Sort, Merge Sort.</li>
-              <li><strong>Unstable Sorts:</strong> Selection Sort, Quick Sort, Heap Sort.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 13 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q13. Define collision in hashing and list two collision resolution techniques.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            A collision occurs when two distinct keys hash to the exact same index in a hash table.
-            Resolutions:
-            <ol>
-              <li><strong>Chaining (Open Hashing):</strong> Stores keys mapping to the same index inside a linked list attached to the bucket.</li>
-              <li><strong>Linear Probing (Closed Hashing):</strong> Linearly scans the hash table for the next empty slot to store the collided key.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <span class="bank-unit-title">Unit 4: Trees, Graphs & Advanced Topics</span>
-
-      <!-- Short 14 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q14. Define balance factor ($BF$) of AVL tree and state its valid range.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            The Balance Factor ($BF$) of a node is:
-            $$BF = \text{Height}(\text{Left Subtree}) - \text{Height}(\text{Right Subtree})$$
-            For a binary tree to be a valid self-balancing AVL tree, the balance factor of every node must fall strictly in the range:
-            $$BF \in \{-1, 0, +1\}$$
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 15 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q15. State the data structures used in BFS and DFS traversals.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <ul>
-              <li><strong>BFS (Breadth First Search):</strong> Uses a <strong>Queue (FIFO)</strong> to explore level by level.</li>
-              <li><strong>DFS (Depth First Search):</strong> Uses a <strong>Stack (LIFO)</strong> (or call stack via recursion) to explore deeply branch by branch.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Short 16 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q16. What is a Min Heap and Max Heap?</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            A Heap is a complete binary tree:
-            <ul>
-              <li><strong>Min Heap:</strong> The key of the parent node is always smaller than or equal to the keys of its children. The root contains the minimum element.</li>
-              <li><strong>Max Heap:</strong> The key of the parent node is always greater than or equal to the keys of its children. The root contains the maximum element.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="bank-category">🗃️ 8/10-Mark Long Answer Pool (Exhaustive Exam Solutions)</div>
-
-      <!-- Long 1 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q1. Unique Tree Reconstruction: Preorder P M H K R T W Y and Inorder H M K P W T Y R.</span>
-          <span class="q-badge long">10 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step Construction Trace:</strong></p>
-            <ol>
-              <li><strong>Find Root:</strong> The first element of Preorder is always the root $\Rightarrow$ Root = <code>P</code>.</li>
-              <li><strong>Partition Inorder:</strong> Split Inorder around <code>P</code>:
-                <ul>
-                  <li>Left Subtree Inorder: <code>[H, M, K]</code></li>
-                  <li>Right Subtree Inorder: <code>[W, T, Y, R]</code></li>
-                </ul>
-              </li>
-              <li><strong>Construct Left Subtree (Preorder: M, H, K):</strong>
-                <ul>
-                  <li>First element in sub-preorder $\Rightarrow$ Root of left subtree = <code>M</code>.</li>
-                  <li>Inorder partitioned around <code>M</code>: <code>[H] M [K]</code>.</li>
-                  <li>Left child = <code>H</code>, Right child = <code>K</code>.</li>
-                </ul>
-              </li>
-              <li><strong>Construct Right Subtree (Preorder: R, T, W, Y):</strong>
-                <ul>
-                  <li>First element in sub-preorder $\Rightarrow$ Root of right subtree = <code>R</code>.</li>
-                  <li>Inorder partitioned around <code>R</code>: <code>[W, T, Y] R []</code>.</li>
-                  <li>Right child of <code>R</code> is NULL. The left subtree has Inorder elements <code>[W, T, Y]</code>.</li>
-                </ul>
-              </li>
-              <li><strong>Construct Left Subtree of R (Preorder: T, W, Y):</strong>
-                <ul>
-                  <li>First element in sub-preorder $\Rightarrow$ Root = <code>T</code>.</li>
-                  <li>Inorder partitioned around <code>T</code>: <code>[W] T [Y]</code>.</li>
-                  <li>Left child of <code>T</code> = <code>W</code>, Right child = <code>Y</code>.</li>
-                </ul>
-              </li>
-            </ol>
-            <p><strong>Final Reconstructed Tree Layout:</strong></p>
-            <pre class="code-block"><code>          P
-        /   \
-       M     R
-      / \   /
-     H   K T
-          / \
-         W   Y</code></pre>
-            <p><strong>Postorder Traversal (Left → Right → Root):</strong> <code>H, K, M, W, Y, T, R, P</code></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Long 2 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q2. Quick Sort on: 65, 12, -8, 44, 91, 0, 27, -15, 38 with first element as pivot.</span>
-          <span class="q-badge long">10 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step Partitioning:</strong></p>
-            <p>Initial Array: <code>[65, 12, -8, 44, 91, 0, 27, -15, 38]</code>, Pivot = <code>65</code>.</p>
-            <ol>
-              <li>Scan left-to-right for element $> 65 \Rightarrow 91$ (index 4).</li>
-              <li>Scan right-to-left for element $< 65 \Rightarrow 38$ (index 8).</li>
-              <li>Swap 91 and 38 $\Rightarrow$ <code>[65, 12, -8, 44, 38, 0, 27, -15, 91]</code></li>
-              <li>Scan left-to-right for element $> 65 \Rightarrow 91$ (index 8).</li>
-              <li>Scan right-to-left for element $< 65 \Rightarrow -15$ (index 7).</li>
-              <li>Since indices crossed, swap pivot 65 with element at index 7 (-15):
-                $$\text{Array after Pass 1: } [-15, 12, -8, 44, 38, 0, 27] \ \mathbf{65} \ [91]$$
-              </li>
-            </ol>
-            <p>Pivot 65 is in its correct place. Recursively sort the left subarray <code>[-15, 12, -8, 44, 38, 0, 27]</code>:</p>
-            <ol>
-              <li>Pivot = <code>-15</code>. Elements smaller than -15 do not exist. Elements are partitioned $\Rightarrow$ <code>-15</code> stays at index 0.</li>
-              <li>Subarray <code>[12, -8, 44, 38, 0, 27]</code>, Pivot = <code>12</code>:
-                <ul>
-                  <li>Scan left-to-right for $> 12 \Rightarrow 44$. Right-to-left for $< 12 \Rightarrow 0$. Swap 44 and 0 $\Rightarrow$ <code>[12, -8, 0, 38, 44, 27]</code>.</li>
-                  <li>Crosses indices $\Rightarrow$ Swap pivot 12 with 0 $\Rightarrow$ <code>[0, -8] 12 [38, 44, 27]</code>.</li>
-                </ul>
-              </li>
-              <li>Subarray <code>[0, -8]</code> $\Rightarrow$ pivot 0 swaps with -8 $\Rightarrow$ <code>[-8, 0]</code>.</li>
-              <li>Subarray <code>[38, 44, 27]</code>, Pivot = <code>38</code> $\Rightarrow$ swaps with 27 $\Rightarrow$ <code>[27] 38 [44]</code>.</li>
-            </ol>
-            <p><strong>Final Sorted Array:</strong> <code>[-15, -8, 0, 12, 27, 38, 44, 65, 91]</code></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Long 3 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q3. Merge Sort Program & Trace: 72, 18, 55, 9, 34, 81, 26, 47.</span>
-          <span class="q-badge long">10 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Complete Python Implementation:</strong></p>
-            <pre class="code-block"><code><span class="kw">def</span> <span class="fn">merge_sort</span>(arr):
-    <span class="kw">if</span> <span class="fn">len</span>(arr) &gt; <span class="num">1</span>:
-        mid = <span class="fn">len</span>(arr) // <span class="num">2</span>
-        left = arr[:mid]
-        right = arr[mid:]
-
-        <span class="fn">merge_sort</span>(left)
-        <span class="fn">merge_sort</span>(right)
-
-        i = j = k = 0
-        <span class="kw">while</span> i &lt; <span class="fn">len</span>(left) <span class="kw">and</span> j &lt; <span class="fn">len</span>(right):
-            <span class="kw">if</span> left[i] &lt; right[j]:
-                arr[k] = left[i]
-                i += 1
-            <span class="kw">else</span>:
-                arr[k] = right[j]
-                j += 1
-            k += 1
-
-        <span class="kw">while</span> i &lt; <span class="fn">len</span>(left):
-            arr[k] = left[i]
-            i += 1
-            k += 1
-
-        <span class="kw">while</span> j &lt; <span class="fn">len</span>(right):
-            arr[k] = right[j]
-            j += 1
-            k += 1</code></pre>
-            
-            <p><strong>Divide & Conquer Tracing:</strong></p>
-            <ul>
-              <li><strong>Division:</strong>
-                <ul>
-                  <li>Level 1: <code>[72, 18, 55, 9, 34, 81, 26, 47]</code></li>
-                  <li>Level 2: <code>[72, 18, 55, 9]</code> and <code>[34, 81, 26, 47]</code></li>
-                  <li>Level 3: <code>[72, 18]</code>, <code>[55, 9]</code>, <code>[34, 81]</code>, <code>[26, 47]</code></li>
-                  <li>Level 4: <code>[72]</code>, <code>[18]</code>, <code>[55]</code>, <code>[9]</code>, <code>[34]</code>, <code>[81]</code>, <code>[26]</code>, <code>[47]</code></li>
-                </ul>
-              </li>
-              <li><strong>Merge & Sort:</strong>
-                <ul>
-                  <li>Merge 1: <code>[18, 72]</code> and <code>[9, 55]</code> $\Rightarrow$ <code>[9, 18, 55, 72]</code></li>
-                  <li>Merge 2: <code>[34, 81]</code> and <code>[26, 47]</code> $\Rightarrow$ <code>[26, 34, 47, 81]</code></li>
-                  <li>Final Merge: <code>[9, 18, 26, 34, 47, 55, 72, 81]</code></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Long 4 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q4. AVL Tree Construction: Insert keys [4, 3, 1, 2, 7, 6, 11] step-by-step.</span>
-          <span class="q-badge long">10 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step Construction showing Balance Factors (BF):</strong></p>
-            <ol>
-              <li><strong>Insert 4:</strong> Single root node. $BF(4) = 0$.</li>
-              <li><strong>Insert 3:</strong> Left child of 4. $BF(4) = +1, BF(3) = 0$.</li>
-              <li><strong>Insert 1:</strong> Left child of 3.
-                <ul>
-                  <li>$BF(4) = +2$ (Unbalanced!), $BF(3) = +1, BF(1) = 0$.</li>
-                  <li>LL Imbalance at 4 $\Rightarrow$ Apply **Right Rotation** around 4.</li>
-                  <li>Result: Root = <code>3</code>, Left = <code>1</code>, Right = <code>4</code>.</li>
-                </ul>
-              </li>
-              <li><strong>Insert 2:</strong> Right child of 1.
-                <ul>
-                  <li>$BF(3) = +1, BF(1) = -1, BF(2) = 0$. Tree is balanced.</li>
-                </ul>
-              </li>
-              <li><strong>Insert 7:</strong> Right child of 4.
-                <ul>
-                  <li>$BF(3) = 0, BF(4) = -1, BF(7) = 0$. Tree is balanced.</li>
-                </ul>
-              </li>
-              <li><strong>Insert 6:</strong> Left child of 7.
-                <ul>
-                  <li>$BF(4) = -2$ (Unbalanced!). Imbalance at node 4.</li>
-                  <li>Imbalance is RL (inserted in left of right) $\Rightarrow$ Apply **RL Rotation** (Right rotation on 7, then Left rotation on 4).</li>
-                  <li>Result: Node 4 becomes: Root = <code>6</code>, Left = <code>4</code>, Right = <code>7</code>.</li>
-                  <li>Overall Tree: Root = <code>3</code>, Left = <code>1</code> (with right child <code>2</code>), Right = <code>6</code> (with children <code>4</code> and <code>7</code>).</li>
-                </ul>
-              </li>
-              <li><strong>Insert 11:</strong> Right child of 7.
-                <ul>
-                  <li>$BF(7) = -1, BF(6) = -1, BF(3) = -1$. Balanced.</li>
-                </ul>
-              </li>
-            </ol>
-            <p><strong>Final AVL Tree Structure:</strong></p>
-            <pre class="code-block"><code>          3
-        /   \
-       1     6
-        \   / \
-         2 4   7
-                \
-                 11</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- Long 5 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q5. Implement a Circular Queue using arrays in C/Python. Explain Enqueue/Dequeue algorithms.</span>
-          <span class="q-badge long">10 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Python implementation:</strong></p>
-            <pre class="code-block"><code><span class="kw">class</span> <span class="obj">CircularQueue</span>:
-    <span class="kw">def</span> <span class="fn">__init__</span>(self, size):
-        self.size = size
-        self.queue = [None] * size
-        self.front = self.rear = -1
-
-    <span class="kw">def</span> <span class="fn">enqueue</span>(self, data):
-        <span class="kw">if</span> (self.rear + <span class="num">1</span>) % self.size == self.front:
-            <span class="fn">print</span>("Queue is Full (Overflow!)")
-            <span class="kw">return</span>
-        <span class="kw">elif</span> self.front == -<span class="num">1</span>: <span class="cm"># First element insert</span>
-            self.front = self.rear = 0
-        <span class="kw">else</span>:
-            self.rear = (self.rear + <span class="num">1</span>) % self.size
-        self.queue[self.rear] = data
-
-    <span class="kw">def</span> <span class="fn">dequeue</span>(self):
-        <span class="kw">if</span> self.front == -<span class="num">1</span>:
-            <span class="fn">print</span>("Queue is Empty (Underflow!)")
-            <span class="kw">return</span> <span class="kw">None</span>
-        temp = self.queue[self.front]
-        <span class="kw">if</span> self.front == self.rear: <span class="cm"># Only one element in queue</span>
-            self.front = self.rear = -<span class="num">1</span>
-        <span class="kw">else</span>:
-            self.front = (self.front + <span class="num">1</span>) % self.size
-        <span class="kw">return</span> temp</code></pre>
-            
-            <p><strong>Overcoming Linear Queue wastage:</strong></p>
-            <p>In a linear queue, when elements are dequeued, the empty memory slots at the front are wasted because the <code>rear</code> pointer can only increment forward. In a circular queue, the modulo arithmetic operator <code>%</code> allows pointers to wrap around back to index <code>0</code> when they reach the end index <code>MAX_SIZE-1</code>, thereby making full utilization of the array capacity.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== SECTION 4: MOCK EXAM PAPER ==================== -->
-    <div id="mock" class="section-content">
-      <!-- Simulated Exam Timer -->
-      <div class="exam-timer-bar">
-        <div>
-          <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-dim); display: block;">Simulated Exam Environment</span>
-          <span class="timer-text">⏰ Time Remaining: <span id="timer-val">03:00:00</span></span>
-        </div>
-        <button class="start-exam-btn" id="timer-control" onclick="toggleTimer()">Start Timer</button>
-      </div>
-
-      <div class="eli5"><strong>PART A: Attempt ANY 4 Questions (2 Marks Each)</strong></div>
-
-      <!-- Question A1 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q1. Differentiate between Array and Linked List on the basis of Memory allocation and Insertion operation.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <p><strong>Question Details:</strong> State differences clearly in a concise manner.</p>
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <ul>
-              <li><strong>Memory Allocation:</strong> Arrays use contiguous static allocation determined at compile-time. Linked Lists use non-contiguous dynamic allocation at runtime.</li>
-              <li><strong>Insertion Operation:</strong> Arrays require shifting elements, taking $O(n)$ time. Linked Lists require only pointer adjustment, taking $O(1)$ time to insert at the beginning.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question A2 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q2. Find the time complexity of: <code>i = 1; while i <= n: i = i * 2</code>.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <p><strong>Question Details:</strong> Analyze the loop growth rate and show mathematical steps.</p>
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Mathematical Derivation:</strong></p>
-            <p>The variable $i$ doubles in each step: $1, 2, 4, 8, \dots, 2^k$. The loop terminates when $2^k \ge n$. Taking the logarithm to base 2 on both sides:</p>
-            <p>$$k = \log_2 n$$</p>
-            <p>Hence, the worst-case Time Complexity is <strong>$O(\log n)$</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question A3 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q3. State whether the following statement is TRUE or FALSE: “Binary Search can be applied on unsorted arrays.” Justify your answer.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <strong>FALSE.</strong> Binary search relies on checking the middle element to throw away one-half of the array. Without sorted data, comparisons cannot guarantee which side of the middle element the target key resides on, necessitating a full linear search of $O(n)$.
-          </div>
-        </div>
-      </div>
-
-      <!-- Question A4 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q4. What is Stack Underflow? State the mathematical condition.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            Stack underflow occurs when you attempt to POP or delete an element from an empty stack. For an array-based stack implementation, the mathematical condition is:
-            <code>top == -1</code>.
-          </div>
-        </div>
-      </div>
-
-      <!-- Question A5 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q5. Write the inorder traversal rule of a Binary Tree.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            The Inorder Traversal rule is a recursive formula defined as:
-            <strong>Left Subtree → Root Node → Right Subtree (L Root R)</strong>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question A6 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q6. Differentiate between BFS and DFS.</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <ul>
-              <li><strong>BFS (Breadth First Search):</strong> Traverses graph level-by-level, checking adjacent neighbors first. Uses a **Queue** data structure.</li>
-              <li><strong>DFS (Depth First Search):</strong> Traverses graph deeply branch-by-branch before backtracking. Uses a **Stack** (or recursion).</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question A7 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q7. What is the worst-case complexity of Quick Sort?</span>
-          <span class="q-badge short">2 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            The worst-case time complexity of Quick Sort is <strong>$O(n^2)$</strong>. This happens when the pivot chosen always happens to be the minimum or maximum element (e.g., when trying to sort an already sorted array using the first or last element as pivot).
-          </div>
-        </div>
-      </div>
-
-      <div class="eli5"><strong>PART B: Attempt ANY 4 Questions (8 Marks Each)</strong></div>
-
-      <!-- Question B1 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q1. Quick Sort Dry Run: Perform Quick Sort on array [35, 10, 50, 25, 5, 40, 15] using the first element as pivot.</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step partitioning steps (first element as pivot):</strong></p>
-            <p>Initial: <code>[35, 10, 50, 25, 5, 40, 15]</code>, Pivot = <code>35</code>.</p>
-            <ol>
-              <li>Scan left-to-right for element $> 35 \Rightarrow 50$ (index 2).</li>
-              <li>Scan right-to-left for element $< 35 \Rightarrow 15$ (index 6).</li>
-              <li>Swap <code>50</code> and <code>15</code> $\Rightarrow$ <code>[35, 10, 15, 25, 5, 40, 50]</code></li>
-              <li>Scan left-to-right for element $> 35 \Rightarrow 40$ (index 5).</li>
-              <li>Scan right-to-left for element $< 35 \Rightarrow 5$ (index 4).</li>
-              <li>Since indices crossed (indices 5 and 4), swap pivot <code>35</code> with element at index 4 (<code>5</code>):
-                $$\text{Array: } \mathbf{[5, 10, 15, 25]} \ 35 \ \mathbf{[40, 50]}$$
-              </li>
-            </ol>
-            <p>Recursively sort the left subarray <code>[5, 10, 15, 25]</code> with pivot = <code>5</code>. Since all elements are larger than 5, no swaps occur $\Rightarrow$ <code>5</code> stays fixed, repeat for <code>[10, 15, 25]</code> which is already sorted.</p>
-            <p>Recursively sort the right subarray <code>[40, 50]</code> with pivot = <code>40</code> $\Rightarrow$ stays fixed.</p>
-            <p><strong>Final Sorted Array:</strong> <code>[5, 10, 15, 25, 35, 40, 50]</code></p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question B2 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q2. Queue Rearrangement: Transform [1, 2, 3, 4, 5, 6] into [1, 3, 5, 2, 4, 6] using ONLY queue operations.</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <p><strong>Question Details:</strong> Explore the steps and utilize the interactive animator below to trace every state change:</p>
-          
-          <!-- Queue Interactive Animator -->
-          <div class="interactive-widget" style="background: #090d16;">
-            <div class="widget-title">⚙️ Queue Rearrangement Step-by-Step Animator</div>
-            <div class="queue-lane">
-              <div class="lane-title">Main Queue (Q1)</div>
-              <div class="lane-box" id="q1-box">
-                <div class="element-node node-odd">1</div>
-                <div class="element-node node-even">2</div>
-                <div class="element-node node-odd">3</div>
-                <div class="element-node node-even">4</div>
-                <div class="element-node node-odd">5</div>
-                <div class="element-node node-even">6</div>
-              </div>
-            </div>
-            <div class="queue-lane">
-              <div class="lane-title">Odd Queue (Q_odd)</div>
-              <div class="lane-box" id="q-odd-box"></div>
-            </div>
-            <div class="queue-lane">
-              <div class="lane-title">Even Queue (Q_even)</div>
-              <div class="lane-box" id="q-even-box"></div>
-            </div>
-            <div style="margin-top: 1rem;">
-              <p><strong>Current Step:</strong> <span id="queue-anim-status" style="color: var(--primary); font-weight: 700;">Initial Queue State</span></p>
-              <button class="complexity-btn" onclick="animateQueueStep()" style="border: 1px solid var(--primary); color: var(--primary); margin-top: 0.5rem;">Run Next Step</button>
-              <button class="complexity-btn" onclick="resetQueueAnimation()" style="border: 1px solid var(--text-muted); color: var(--text-muted); margin-top: 0.5rem;">Reset</button>
-            </div>
-          </div>
-
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step Algorithmic Process:</strong></p>
-            <ol>
-              <li>Initialize two helper empty queues: <code>Q_odd</code> and <code>Q_even</code>.</li>
-              <li>Loop through the main queue <code>Q1</code>, dequeueing elements one by one. Check if the element is odd or even:
-                <ul>
-                  <li>If element is odd $\Rightarrow$ Enqueue to <code>Q_odd</code>.</li>
-                  <li>If element is even $\Rightarrow$ Enqueue to <code>Q_even</code>.</li>
-                  <li>Result: <code>Q_odd = [1, 3, 5]</code> and <code>Q_even = [2, 4, 6]</code></li>
-                </ul>
-              </li>
-              <li>Dequeue all elements from <code>Q_odd</code> and enqueue them back to <code>Q1</code> $\Rightarrow$ <code>Q1 = [1, 3, 5]</code>.</li>
-              <li>Dequeue all elements from <code>Q_even</code> and enqueue them back to <code>Q1</code> $\Rightarrow$ <code>Q1 = [1, 3, 5, 2, 4, 6]</code>.</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question B3 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q3. Stack Operations: trace push(10), push(20), push(30), pop(), push(40), pop(), push(50) showing top and final state.</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step Stack Trace Table:</strong></p>
+          <h4>1. Memory Allocation Strategies</h4>
+          <div class="table-responsive">
             <table>
               <thead>
                 <tr>
-                  <th>Operation</th>
-                  <th>Stack State (Bottom to Top)</th>
-                  <th>Top Pointer Value</th>
-                  <th>Popped Element</th>
+                  <th>Data Structure</th>
+                  <th>Allocation Type</th>
+                  <th>Memory Layout</th>
+                  <th>Access Time</th>
                 </tr>
               </thead>
               <tbody>
-                <tr><td>Initial</td><td><code>[]</code></td><td><code>-1</code></td><td>(None)</td></tr>
-                <tr><td>push(10)</td><td><code>[10]</code></td><td><code>0</code></td><td>(None)</td></tr>
-                <tr><td>push(20)</td><td><code>[10, 20]</code></td><td><code>1</code></td><td>(None)</td></tr>
-                <tr><td>push(30)</td><td><code>[10, 20, 30]</code></td><td><code>2</code></td><td>(None)</td></tr>
-                <tr><td>pop()</td><td><code>[10, 20]</code></td><td><code>1</code></td><td><code>30</code></td></tr>
-                <tr><td>push(40)</td><td><code>[10, 20, 40]</code></td><td><code>2</code></td><td>(None)</td></tr>
-                <tr><td>pop()</td><td><code>[10, 20]</code></td><td><code>1</code></td><td><code>40</code></td></tr>
-                <tr><td>push(50)</td><td><code>[10, 20, 50]</code></td><td><code>2</code></td><td>(None)</td></tr>
+                <tr>
+                  <td><strong>Array</strong></td>
+                  <td>Static / Contiguous</td>
+                  <td>Continuous memory block</td>
+                  <td>$O(1)$ random access</td>
+                </tr>
+                <tr>
+                  <td><strong>Linked List</strong></td>
+                  <td>Dynamic / Non-Contiguous</td>
+                  <td>Scattered blocks linked via pointers</td>
+                  <td>$O(n)$ sequential access</td>
+                </tr>
+                <tr>
+                  <td><strong>Stack / Queue</strong></td>
+                  <td>Dynamic / Dynamic Array or Nodes</td>
+                  <td>Sequential logic (LIFO/FIFO)</td>
+                  <td>$O(1)$ push/pop or enqueue/dequeue</td>
+                </tr>
+                <tr>
+                  <td><strong>Tree / Graph</strong></td>
+                  <td>Dynamic / Non-Contiguous</td>
+                  <td>Hierarchical/Network blocks</td>
+                  <td>$O(\log n)$ or $O(n)$ search</td>
+                </tr>
               </tbody>
             </table>
-            <br>
-            <p><strong>Summary:</strong></p>
-            <ol>
-              <li><strong>Final Stack contents (Bottom to Top):</strong> <code>[10, 20, 50]</code></li>
-              <li><strong>Top Element:</strong> <code>50</code></li>
-              <li><strong>Underflow condition:</strong> If a pop operation is performed when the stack is empty (top == -1), a **Stack Underflow Error** is thrown and the operation is rejected.</li>
-            </ol>
           </div>
+
+          <h4>2. Singly Linked List Node Operations</h4>
+          <pre class="code-block"><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Insert at Beginning: O(1)
+    def insert_beginning(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Insert at End: O(n) without tail pointer, O(1) with tail
+    def insert_end(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        temp = self.head
+        while temp.next:
+            temp = temp.next
+        temp.next = new_node</code></pre>
+
+          <h4>3. Singly vs. Doubly vs. Circular Lists</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>List Paradigm</th>
+                  <th>Pointer Structure</th>
+                  <th>Search Time</th>
+                  <th>Optimal Use Case</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Singly Linked List</strong></td>
+                  <td>Data + Next Pointer Only</td>
+                  <td>$O(n)$ Sequential</td>
+                  <td>Simple forward memory buffers</td>
+                </tr>
+                <tr>
+                  <td><strong>Doubly Linked List</strong></td>
+                  <td>Data + Prev + Next Pointers</td>
+                  <td>$O(n)$ Bidirectional</td>
+                  <td>Browser back/forward histories</td>
+                </tr>
+                <tr>
+                  <td><strong>Circular Linked List</strong></td>
+                  <td>Last next points to head</td>
+                  <td>$O(n)$ Cyclic loop</td>
+                  <td>Round-Robin CPU process scheduling</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>4. Stacks & Circular Queues</h4>
+          <p><strong>Overflow:</strong> Attempting to insert into a full structure. <strong>Underflow:</strong> Attempting to remove from an empty structure.</p>
+          <pre class="code-block"><code># Circular Queue array-based implementation
+class CircularQueue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+
+    def enqueue(self, item):
+        if (self.rear + 1) % self.size == self.front:
+            print("Overflow Error!")
+            return
+        if self.front == -1:
+            self.front = 0
+            self.rear = 0
+        else:
+            self.rear = (self.rear + 1) % self.size
+        self.queue[self.rear] = item
+
+    def dequeue(self):
+        if self.front == -1:
+            print("Underflow Error!")
+            return None
+        item = self.queue[self.front]
+        if self.front == self.rear:
+            self.front = -1
+            self.rear = -1
+        else:
+            self.front = (self.front + 1) % self.size
+        return item</code></pre>
         </div>
       </div>
 
-      <!-- Question B4 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q4. Binary Tree Traversal: Find Inorder, Preorder, and Postorder traversals for tree with Root A, left B (children D, E), right C (child F).</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Tree Structure:</strong></p>
-            <pre class="code-block"><code>        A
-       / \
-      B   C
-     / \   \
-    D   E   F</code></pre>
-            <p><strong>Traversal Tracing:</strong></p>
-            <ol>
-              <li><strong>Inorder (Left → Root → Right):</strong>
-                <ul>
-                  <li>Traverse B's left child (D) $\Rightarrow$ <code>D</code></li>
-                  <li>Visit B $\Rightarrow$ <code>B</code></li>
-                  <li>Traverse B's right child (E) $\Rightarrow$ <code>E</code></li>
-                  <li>Visit Root A $\Rightarrow$ <code>A</code></li>
-                  <li>Traverse C $\Rightarrow$ Visit C (<code>C</code>), then traverse F (<code>F</code>).</li>
-                  <li>Result: <code>D B E A C F</code></li>
-                </ul>
-              </li>
-              <li><strong>Preorder (Root → Left → Right):</strong>
-                <ul>
-                  <li>Visit Root A $\Rightarrow$ <code>A</code></li>
-                  <li>Visit B $\Rightarrow$ <code>B</code></li>
-                  <li>Visit B's children $\Rightarrow$ <code>D</code>, then <code>E</code></li>
-                  <li>Visit C $\Rightarrow$ <code>C</code>, then F $\Rightarrow$ <code>F</code></li>
-                  <li>Result: <code>A B D E C F</code></li>
-                </ul>
-              </li>
-              <li><strong>Postorder (Left → Right → Root):</strong>
-                <ul>
-                  <li>Traverse B's children $\Rightarrow$ <code>D</code>, then <code>E</code>, then visit <code>B</code>.</li>
-                  <li>Traverse C's child F $\Rightarrow$ <code>F</code>, then visit <code>C</code>.</li>
-                  <li>Finally visit Root A $\Rightarrow$ <code>A</code></li>
-                  <li>Result: <code>D E B F C A</code></li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
 
-      <!-- Question B5 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q5. BFS and DFS Traversal: Tracing graph starting from Node A (connections A-B,C; B-D,E; C-F; E-G).</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Graph representation:</strong></p>
-            <pre class="code-block"><code>        A
-       / \
-      B   C
-     / \   \
-    D   E   F
-         \
-          G</code></pre>
-            <ol>
-              <li><strong>BFS (Queue-based Level Traversal):</strong>
-                <ul>
-                  <li>Start A $\Rightarrow$ Visited: <code>A</code>. Enqueue A's neighbors: B, C. Queue: <code>[B, C]</code></li>
-                  <li>Dequeue B $\Rightarrow$ Visited: <code>B</code>. Enqueue B's neighbors: D, E. Queue: <code>[C, D, E]</code></li>
-                  <li>Dequeue C $\Rightarrow$ Visited: <code>C</code>. Enqueue C's neighbor: F. Queue: <code>[D, E, F]</code></li>
-                  <li>Dequeue D $\Rightarrow$ Visited: <code>D</code>. Queue: <code>[E, F]</code></li>
-                  <li>Dequeue E $\Rightarrow$ Visited: <code>E</code>. Enqueue E's neighbor: G. Queue: <code>[F, G]</code></li>
-                  <li>Dequeue F $\Rightarrow$ Visited: <code>F</code>. Queue: <code>[G]</code></li>
-                  <li>Dequeue G $\Rightarrow$ Visited: <code>G</code>. Queue: <code>[]</code></li>
-                  <li><strong>BFS Order:</strong> <code>A B C D E F G</code></li>
-                </ul>
-              </li>
-              <li><strong>DFS (Stack-based Depth Traversal):</strong>
-                <ul>
-                  <li>Start A $\Rightarrow$ Visited: <code>A</code>. Push A's neighbors to Stack $\Rightarrow$ B, C.</li>
-                  <li>Visit B $\Rightarrow$ Visited: <code>B</code>. Push B's neighbors $\Rightarrow$ D, E.</li>
-                  <li>Visit D $\Rightarrow$ Visited: <code>D</code>.</li>
-                  <li>Visit E $\Rightarrow$ Visited: <code>E</code>. Push E's neighbors $\Rightarrow$ G.</li>
-                  <li>Visit G $\Rightarrow$ Visited: <code>G</code>. Backtrack to A.</li>
-                  <li>Visit C $\Rightarrow$ Visited: <code>C</code>. Push C's neighbor F $\Rightarrow$ Visit <code>F</code>.</li>
-                  <li><strong>DFS Order:</strong> <code>A B D E G C F</code></li>
-                </ul>
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question B6 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q6. Construct Binary Tree: Preorder A B D E C F and Inorder D B E A C F. Show reconstruction step-by-step.</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step Reconstruction:</strong></p>
-            <ol>
-              <li><strong>Root identification:</strong> First element in Preorder is always the root $\Rightarrow$ Root = <code>A</code>.</li>
-              <li><strong>Split Inorder around A:</strong> Inorder <code>D, B, E | A | C, F</code>:
-                <ul>
-                  <li>Left Subtree Inorder: <code>[D, B, E]</code></li>
-                  <li>Right Subtree Inorder: <code>[C, F]</code></li>
-                </ul>
-              </li>
-              <li><strong>Construct Left Subtree (Preorder B, D, E):</strong> Root = <code>B</code>.
-                <ul>
-                  <li>Inorder partitioned around <code>B</code>: <code>[D] B [E]</code> $\Rightarrow$ Left child = <code>D</code>, Right child = <code>E</code>.</li>
-                </ul>
-              </li>
-              <li><strong>Construct Right Subtree (Preorder C, F):</strong> Root = <code>C</code>.
-                <ul>
-                  <li>Inorder partitioned around <code>C</code>: <code>[] C [F]</code> $\Rightarrow$ Left child is empty, Right child = <code>F</code>.</li>
-                </ul>
-              </li>
-            </ol>
-            <p><strong>Final Tree Structure:</strong></p>
-            <pre class="code-block"><code>          A
-        /   \
-       B     C
-      / \     \
-     D   E     F</code></pre>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question B7 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q7. Complexity Analysis: Analyze loop structures sequential O(n), logarithmic O(log n), quadratic O(n²).</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <ol>
-              <li><strong>Snippet (a):</strong>
-                <pre class="code-block"><code>for i in range(n):
-    print(i)</code></pre>
-                <strong>Complexity:</strong> $O(n)$ linear complexity. The loop iterates exactly $n$ times, performing constant-time print operations in each step.
-              </li>
-              <li><strong>Snippet (b):</strong>
-                <pre class="code-block"><code>i = 1
-while i < n:
-    i = i * 3</code></pre>
-                <strong>Complexity:</strong> $O(\log n)$ logarithmic complexity. The variable $i$ triples in value with every iteration: $1, 3, 9, 27, \dots, 3^k$. The loop exits when $3^k \ge n \Rightarrow k = \log_3 n$.
-              </li>
-              <li><strong>Snippet (c):</strong>
-                <pre class="code-block"><code>for i in range(n):
-    for j in range(n):
-        print(i, j)</code></pre>
-                <strong>Complexity:</strong> $O(n^2)$ quadratic complexity. The outer loop runs $n$ times. For each iteration, the inner loop also runs $n$ times. Total steps = $n \times n = n^2$.
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question B8 -->
-      <div class="question-card">
-        <div class="question-header" onclick="toggleQuestion(this)">
-          <span class="q-title">Q8. Search Element 25 in array: [5, 10, 15, 20, 25, 30, 35] using Binary Search. Show all middle index calculations.</span>
-          <span class="q-badge long">8 Marks</span>
-        </div>
-        <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
-          <div class="model-answer">
-            <p><strong>Step-by-Step Binary Search Trace:</strong></p>
-            <p>Array = <code>[5, 10, 15, 20, 25, 30, 35]</code>, Key = <code>25</code>.</p>
-            <ol>
-              <li><strong>Iteration 1:</strong>
-                <ul>
-                  <li>Low = <code>0</code>, High = <code>6</code>.</li>
-                  <li>$\text{Mid} = \lfloor(0 + 6) / 2\rfloor = 3$.</li>
-                  <li>Element at index 3 $\Rightarrow \text{arr}[3] = 20$.</li>
-                  <li>Comparison: Since $25 > 20$, search in the right half.</li>
-                  <li>New Bounds: Low = $\text{Mid} + 1 = 4$, High = <code>6</code>.</li>
-                </ul>
-              </li>
-              <li><strong>Iteration 2:</strong>
-                <ul>
-                  <li>Low = <code>4</code>, High = <code>6</code>.</li>
-                  <li>$\text{Mid} = \lfloor(4 + 6) / 2\rfloor = 5$.</li>
-                  <li>Element at index 5 $\Rightarrow \text{arr}[5] = 30$.</li>
-                  <li>Comparison: Since $25 < 30$, search in the left half.</li>
-                  <li>New Bounds: Low = <code>4</code>, High = $\text{Mid} - 1 = 4$.</li>
-                </ul>
-              </li>
-              <li><strong>Iteration 3:</strong>
-                <ul>
-                  <li>Low = <code>4</code>, High = <code>4</code>.</li>
-                  <li>$\text{Mid} = \lfloor(4 + 4) / 2\rfloor = 4$.</li>
-                  <li>Element at index 4 $\Rightarrow \text{arr}[4] = 25$.</li>
-                  <li>Comparison: Since $25 == 25$, target is found at index <code>4</code>!</li>
-                </ul>
-              </li>
-            </ol>
-            <p><strong>Result:</strong> Element 25 successfully found at index <strong>4</strong> in exactly 3 iterations.</p>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-
-  <script>
-    // Tab switching system
-    function showTab(tabId, btn) {
-      // Hide all sections
-      const sections = document.querySelectorAll('.section-content');
-      sections.forEach(s => s.classList.remove('active'));
-      
-      // Deactivate all buttons
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(b => b.classList.remove('active'));
-
-      // Show targeted section
-      document.getElementById(tabId).classList.add('active');
-      btn.classList.add('active');
-    }
-
-    // Complexity Analyzer Widget
-    function analyzeLoop(snippetId, btn) {
-      const buttons = btn.parentElement.querySelectorAll('.complexity-btn');
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const outputBox = document.getElementById('loop-output-box');
-      
-      if (snippetId === 1) {
-        outputBox.innerHTML = `
-          <strong>Code Snippet:</strong>
-          <pre style="margin: 0.5rem 0; color: #fff; font-family: monospace;">for i in range(n):
-    print(i)</pre>
-          <strong>Analysis:</strong> The loop runs sequentially from $i = 0$ to $n-1$. The execution steps grow in direct linear proportion to $n$.<br>
-          <strong>Complexity Bound:</strong> <code style="color: var(--primary)">O(n)</code>
-        `;
-      } else if (snippetId === 2) {
-        outputBox.innerHTML = `
-          <strong>Code Snippet:</strong>
-          <pre style="margin: 0.5rem 0; color: #fff; font-family: monospace;">i = 1
-while i < n:
-    i = i * 2</pre>
-          <strong>Analysis:</strong> The variable $i$ doubles in value every step ($1, 2, 4, 8, \dots, 2^k$). The loop stops when $2^k \ge n \Rightarrow k = \log_2 n$ steps.<br>
-          <strong>Complexity Bound:</strong> <code style="color: var(--primary)">O(log n)</code>
-        `;
-      } else if (snippetId === 3) {
-        outputBox.innerHTML = `
-          <strong>Code Snippet:</strong>
-          <pre style="margin: 0.5rem 0; color: #fff; font-family: monospace;">for i in range(n):
-    for j in range(n):
-        print(i, j)</pre>
-          <strong>Analysis:</strong> The outer loop runs $n$ times. For each iteration, the inner loop also executes $n$ times. Total steps = $n \times n = n^2$.<br>
-          <strong>Complexity Bound:</strong> <code style="color: var(--primary)">O(n²)</code>
-        `;
-      } else if (snippetId === 4) {
-        outputBox.innerHTML = `
-          <strong>Code Snippet:</strong>
-          <pre style="margin: 0.5rem 0; color: #fff; font-family: monospace;">for i in range(n):
-    j = 1
-    while j < n:
-        j = j * 2</pre>
-          <strong>Analysis:</strong> The outer loop runs $n$ times. The inner loop doubles $j$ until it reaches $n$, taking $\log_2 n$ iterations. Total operations = $n \times \log n$.<br>
-          <strong>Complexity Bound:</strong> <code style="color: var(--primary)">O(n log n)</code>
-        `;
-      }
-      // Re-trigger MathJax to format newly inserted mathematical text
-      if (window.MathJax) {
-        MathJax.typesetPromise();
-      }
-    }
-
-    // Interactive AVL rotations
-    let avlState = 0;
-    function triggerAVLRotation() {
-      const visualBox = document.getElementById('avl-visual-box');
-      const actionBtn = document.getElementById('avl-action-btn');
-      const statusText = document.getElementById('avl-status');
-      const descText = document.getElementById('avl-desc');
-
-      if (avlState === 0) {
-        visualBox.innerHTML = `
-          <div style="text-align: center;">
-            <div style="display: flex; gap: 2rem; align-items: center;">
-              <div class="tree-node-visual">
-                <div class="tree-circle">10</div>
-                <div class="tree-bf">BF = 0</div>
-              </div>
-              <div style="color: var(--primary); font-size: 1.5rem;">←</div>
-              <div class="tree-node-visual">
-                <div class="tree-circle">20</div>
-                <div class="tree-bf">BF = 0 (Balanced!)</div>
-              </div>
-              <div style="color: var(--primary); font-size: 1.5rem;">→</div>
-              <div class="tree-node-visual">
-                <div class="tree-circle">30</div>
-                <div class="tree-bf">BF = 0</div>
-              </div>
-            </div>
-          </div>
-        `;
-        statusText.innerText = "Rebalanced (Balanced AVL Tree)";
-        statusText.style.color = "var(--primary)";
-        descText.innerText = "Applying a Single Left Rotation around node 10 pulls node 20 up to the root, moving node 10 to its left child. All balance factors become 0!";
-        actionBtn.innerText = "Reset Visualizer";
-        actionBtn.style.color = "var(--text-muted)";
-        actionBtn.style.borderColor = "var(--border)";
-        avlState = 1;
-      } else {
-        visualBox.innerHTML = `
-          <div style="text-align: center;">
-            <div class="tree-node-visual">
-              <div class="tree-circle unbalanced">10</div>
-              <div class="tree-bf">BF = -2 (Unbalanced!)</div>
-              <div style="margin: 0.2rem 0; color: var(--red);">↓</div>
-              <div class="tree-circle">20</div>
-              <div class="tree-bf">BF = -1</div>
-              <div style="margin: 0.2rem 0; color: var(--red);">↓</div>
-              <div class="tree-circle">30</div>
-              <div class="tree-bf">BF = 0</div>
-            </div>
-          </div>
-        `;
-        statusText.innerText = "Imbalance Detected (RR Case)";
-        statusText.style.color = "var(--red)";
-        descText.innerText = "Inserting key 30 to the right of 20 causes the parent root node 10's height to become unbalanced with a balance factor of -2.";
-        actionBtn.innerText = "Apply Left Rotation";
-        actionBtn.style.color = "var(--orange)";
-        actionBtn.style.borderColor = "var(--orange)";
-        avlState = 0;
-      }
-      if (window.MathJax) {
-        MathJax.typesetPromise();
-      }
-    }
-
-    // Interactive Queue Rearrangement Animator
-    let animStep = 0;
-    function animateQueueStep() {
-      const q1Box = document.getElementById('q1-box');
-      const qOddBox = document.getElementById('q-odd-box');
-      const qEvenBox = document.getElementById('q-even-box');
-      const status = document.getElementById('queue-anim-status');
-
-      if (animStep === 0) {
-        q1Box.innerHTML = '';
-        qOddBox.innerHTML = `
-          <div class="element-node node-odd">1</div>
-          <div class="element-node node-odd">3</div>
-          <div class="element-node node-odd">5</div>
-        `;
-        qEvenBox.innerHTML = `
-          <div class="element-node node-even">2</div>
-          <div class="element-node node-even">4</div>
-          <div class="element-node node-even">6</div>
-        `;
-        status.innerText = "Step 1: Elements dequeued and filtered into Q_odd & Q_even";
-        animStep = 1;
-      } else if (animStep === 1) {
-        qOddBox.innerHTML = '';
-        q1Box.innerHTML = `
-          <div class="element-node node-odd">1</div>
-          <div class="element-node node-odd">3</div>
-          <div class="element-node node-odd">5</div>
-        `;
-        status.innerText = "Step 2: Odd elements dequeued from Q_odd and enqueued back to Q1";
-        animStep = 2;
-      } else if (animStep === 2) {
-        qEvenBox.innerHTML = '';
-        q1Box.innerHTML = `
-          <div class="element-node node-odd">1</div>
-          <div class="element-node node-odd">3</div>
-          <div class="element-node node-odd">5</div>
-          <div class="element-node node-even">2</div>
-          <div class="element-node node-even">4</div>
-          <div class="element-node node-even">6</div>
-        `;
-        status.innerText = "Step 3: Even elements dequeued from Q_even and enqueued back to Q1 (Complete!)";
-        animStep = 3;
-      }
-    }
-
-    function resetQueueAnimation() {
-      document.getElementById('q1-box').innerHTML = `
-        <div class="element-node node-odd">1</div>
-        <div class="element-node node-even">2</div>
-        <div class="element-node node-odd">3</div>
-        <div class="element-node node-even">4</div>
-        <div class="element-node node-odd">5</div>
-        <div class="element-node node-even">6</div>
-      `;
-      document.getElementById('q-odd-box').innerHTML = '';
-      document.getElementById('q-even-box').innerHTML = '';
-      document.getElementById('queue-anim-status').innerText = "Initial Queue State";
-      animStep = 0;
-    }
-
-    // Timer control
-    let timerInterval = null;
-    let secondsLeft = 3 * 3600; // 3 hours
-
-    function toggleTimer() {
-      const btn = document.getElementById('timer-control');
-      if (timerInterval) {
-        clearInterval(timerInterval);
-        timerInterval = null;
-        btn.innerText = "Resume Timer";
-        btn.style.background = "var(--red)";
-      } else {
-        btn.innerText = "Pause Timer";
-        btn.style.background = "#22c55e"; // Green
-        timerInterval = setInterval(() => {
-          secondsLeft--;
-          if (secondsLeft <= 0) {
-            clearInterval(timerInterval);
-            document.getElementById('timer-val').innerText = "Time Expired!";
-            return;
-          }
-          const hrs = Math.floor(secondsLeft / 3600).toString().padStart(2, '0');
-          const mins = Math.floor((secondsLeft % 3600) / 60).toString().padStart(2, '0');
-          const secs = (secondsLeft % 60).toString().padStart(2, '0');
-          document.getElementById('timer-val').innerText = `${hrs}:${mins}:${secs}`;
-        }, 1000);
-      }
-    }
-
-    // Collapsible mock exam cards
-    function toggleQuestion(header) {
-      const body = header.nextElementSibling;
-      const display = window.getComputedStyle(body).display;
-      if (display === 'none') {
-        body.style.display = 'block';
-      } else {
-        body.style.display = 'none';
-      }
-    }
-
-    // Reveal Answers
-    function revealAnswer(btn) {
-      const answer = btn.nextElementSibling;
-      const display = window.getComputedStyle(answer).display;
-      if (display === 'none') {
-        answer.style.display = 'block';
-        btn.innerText = "🙈 Hide Model Answer Key";
-      } else {
-        answer.style.display = 'none';
-        btn.innerText = "🔑 Reveal Model Answer Key";
-      }
-    }
-  </script>
 </body>
 </html>
