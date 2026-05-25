@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Written Exam Prep | Web Dev II</title>
+  <meta name="description" content="Ultimate written exam preparation guide for Web Dev II — complete coverage of JavaScript core, DOM, React architecture, output Prediction, and extensive 2-mark & 8-mark questions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #050b18;
+      --surface: #0d1829;
+      --card: #111f35;
+      --card-hover: #172540;
+      --border: #1e3355;
+      --border-glow: #2a4a7f;
+      --text: #e2eaf6;
+      --text-muted: #7a9ac4;
+      --text-dim: #4a6a94;
+
+      --js: #f7df1e;
+      --js-dark: #b8a500;
+      --react: #61dafb;
+      --react-dark: #0ea5e9;
+      --output: #a78bfa;
+      --output-dark: #7c3aed;
+      --tip: #34d399;
+      --tip-dark: #059669;
+      --warn: #fb923c;
+      --danger: #f87171;
+
+      --radius: 14px;
+      --radius-sm: 8px;
+      --transition: 0.25s cubic-bezier(.4,0,.2,1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: linear-gradient(135deg, #050b18 0%, #0a1628 40%, #0d2040 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 3rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 600px; height: 200px;
+      background: radial-gradient(ellipse, rgba(97,218,251,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(167,139,250,0.1);
+      border: 1px solid rgba(167,139,250,0.3);
+      color: var(--output);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.3rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #e2eaf6 30%, #61dafb 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.6rem;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 640px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+    .htag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+    }
+
+    /* ─── TAB NAV ─── */
+    .tab-nav-wrapper {
+      position: sticky;
+      top: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+    }
+    .tab-nav-wrapper::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    .tab-nav {
+      display: flex;
+      min-width: max-content;
+      justify-content: center;
+      gap: 0.3rem;
+      padding: 0.8rem 1rem 0;
+      margin: 0 auto;
+      max-width: 1100px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .tab-btn:hover { color: var(--text); }
+    .tab-btn.active {
+      color: var(--js);
+      border: 1px solid var(--border);
+      border-bottom: 2px solid var(--js);
+      background: rgba(247,223,30,0.04);
+    }
+    .tab-btn.react.active {
+      color: var(--react);
+      border-bottom: 2px solid var(--react);
+      background: rgba(97,218,251,0.04);
+    }
+    .tab-btn.output.active {
+      color: var(--output);
+      border-bottom: 2px solid var(--output);
+      background: rgba(167,139,250,0.04);
+    }
+
+    /* ─── SEARCH & FILTER BAR ─── */
+    .search-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    @media (min-width: 768px) {
+      .search-container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    .search-box {
+      position: relative;
+      flex: 1;
+    }
+    .search-input {
+      width: 100%;
+      background: #020d1a;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem 0.5rem 2.2rem;
+      transition: var(--transition);
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: var(--react);
+      box-shadow: 0 0 10px rgba(97, 218, 251, 0.12);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      pointer-events: none;
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .filter-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-right: 0.2rem;
+    }
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+    }
+    .filter-btn.active {
+      background: rgba(97, 218, 251, 0.1);
+      border-color: var(--react);
+      color: var(--react);
+    }
+
+    /* ─── MAIN LAYOUT ─── */
+    .main-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem;
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+
+    /* ─── SECTION HEADER ─── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-icon {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .section-icon.js { background: rgba(247,223,30,0.15); color: var(--js); }
+    .section-icon.react { background: rgba(97,218,251,0.15); color: var(--react); }
+    .section-icon.out { background: rgba(167,139,250,0.15); color: var(--output); }
+    .section-header h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); }
+    .section-header p { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Subsections */
+    .sub-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin: 2rem 0 1rem;
+      border-left: 3px solid var(--border-glow);
+      padding-left: 0.6rem;
+    }
+
+    /* ─── Q&A CARDS ─── */
+    .qa-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+    .qa-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    }
+
+    .qa-question {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .qa-question:hover { background: rgba(255,255,255,0.02); }
+
+    .q-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.2rem 0.5rem;
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .q-num.js { background: rgba(247,223,30,0.15); color: var(--js); }
+    .q-num.react { background: rgba(97,218,251,0.15); color: var(--react); }
+    .q-num.out { background: rgba(167,139,250,0.15); color: var(--output); }
+
+    .q-text {
+      font-weight: 600;
+      font-size: 0.92rem;
+      color: var(--text);
+      flex: 1;
+    }
+    .q-chevron {
+      color: var(--text-dim);
+      transition: transform var(--transition);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .qa-card.open .q-chevron { transform: rotate(180deg); }
+
+    .qa-answer {
+      display: none;
+      padding: 0 1.2rem 1.2rem;
+      border-top: 1px solid var(--border);
+      animation: slideDown 0.2s ease;
+    }
+    .qa-card.open .qa-answer { display: block; }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .qa-answer p {
+      color: var(--text-muted);
+      margin: 0.6rem 0 0.4rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+    .qa-answer strong { color: var(--text); }
+
+    /* ─── COMPARISON TABLE ─── */
+    .compare-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 0.8rem 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      min-width: 480px;
+    }
+    .compare-table th {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-weight: 700;
+      padding: 0.5rem 0.8rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .compare-table td {
+      padding: 0.5rem 0.8rem;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: rgba(255,255,255,0.01); color: var(--text); }
+
+    /* ─── CODE BLOCKS ─── */
+    pre {
+      background: #020d1a;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 0.8rem 1rem;
+      overflow-x: auto;
+      margin: 0.6rem 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      position: relative;
+    }
+    code { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #b0d8ff; }
+    .kw { color: #c792ea; }   /* keywords */
+    .fn { color: #82aaff; }   /* functions */
+    .str { color: #c3e88d; }  /* strings */
+    .num { color: #f78c6c; }  /* numbers */
+    .cm  { color: #546e7a; }  /* comments */
+    .obj { color: #ffcb6b; }  /* objects/types */
+
+    .copy-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      z-index: 5;
+    }
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: var(--text);
+      border-color: var(--border-glow);
+    }
+    .copy-btn.copied {
+      background: rgba(52, 211, 153, 0.15);
+      color: var(--tip);
+      border-color: var(--tip);
+    }
+
+    /* ─── INLINE CODE ─── */
+    .qa-answer code {
+      background: rgba(97,218,251,0.08);
+      color: var(--react);
+      padding: 0.12rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* ─── CALLOUT BOXES ─── */
+    .callout {
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.8rem;
+      margin: 0.6rem 0;
+      font-size: 0.82rem;
+      border-left: 3px solid;
+    }
+    .callout.tip { border-color: var(--tip); background: rgba(52,211,153,0.05); color: #86efac; }
+    .callout.warn { border-color: var(--warn); background: rgba(251,146,60,0.05); color: #fdba74; }
+    .callout.info { border-color: var(--react); background: rgba(97,218,251,0.05); color: var(--react); }
+    .callout.output { border-color: var(--output); background: rgba(167,139,250,0.05); color: #c4b5fd; }
+    .callout strong { font-weight: 700; color: #fff; }
+
+    /* ─── TAGS / LABELS ─── */
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      margin: 0.15rem;
+    }
+    .tag.imp { background: rgba(248,113,113,0.15); color: var(--danger); }
+    .tag.core { background: rgba(97,218,251,0.12); color: var(--react); }
+    .tag.adv { background: rgba(167,139,250,0.12); color: var(--output); }
+
+    /* ─── LIST STYLES ─── */
+    .qa-answer ul, .qa-answer ol {
+      margin: 0.4rem 0 0.4rem 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .qa-answer li { margin-bottom: 0.3rem; line-height: 1.5; }
+    .qa-answer li strong { color: var(--text); }
+
+    /* ─── OUTPUT BOX ─── */
+    .output-box {
+      background: #020d1a;
+      border: 1px dashed var(--output-dark);
+      border-radius: var(--radius-sm);
+      padding: 0.6rem 0.8rem;
+      margin: 0.5rem 0;
+    }
+    .output-box .label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--output);
+      margin-bottom: 0.2rem;
+    }
+    .output-box code { color: #e0e0e0; background: none; padding: 0; font-size: 0.78rem; }
+
+    /* ─── BACK LINK ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.8rem;
+      padding: 1rem 1rem 0;
+      transition: color var(--transition);
+    }
+    .back-link:hover { color: var(--text); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero { padding: 2rem 1rem 1.5rem; }
+      .main-wrap { padding: 1rem 0.5rem 3rem; }
+      .tab-nav { padding: 0.5rem 0.5rem 0; }
+      .tab-btn { font-size: 0.72rem; padding: 0.4rem 0.8rem; }
+      pre { font-size: 0.72rem; }
+      code { font-size: 0.72rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="../index.html" class="back-link">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+  Back to Web Dev Portal
+</a>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-badge">📝 Ultimate Written Exam Portal</div>
+  <h1>Written Exam<br>Master Guide</h1>
+  <p>Your full-coverage review manual — including comprehensive answers to both 2-Mark short conceptual questions and 8-Mark detailed coding programs.</p>
+  <div class="hero-tags">
+    <span class="htag">⚡ JS & DOM</span>
+    <span class="htag">⚛ React Hooks</span>
+    <span class="htag">🧠 Tracing Predictor</span>
+    <span class="htag">2-Mark Conceptuals</span>
+    <span class="htag">8-Mark Codes</span>
+  </div>
+</section>
+
+<!-- ═══ TAB NAV ═══ -->
+<div class="tab-nav-wrapper">
+  <nav class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('js', this)" id="tab-js">⚡ JS & DOM (35 Qs)</button>
+    <button class="tab-btn react" onclick="showTab('react', this)" id="tab-react">⚛ React & Hooks (30 Qs)</button>
+    <button class="tab-btn output" onclick="showTab('output', this)" id="tab-output">🧠 Output Tracing (6 Qs)</button>
+  </nav>
+</div>
+
+<div class="main-wrap">
+
+  <!-- 🔍 LIVE SEARCH & FILTERING BAR -->
+  <div class="search-container">
+    <div class="search-box">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="search-input" class="search-input" placeholder="Search questions by keyword (e.g. state, promise, DOM)..." oninput="filterCards()">
+    </div>
+    <div class="filter-group">
+      <span class="filter-label">Marks:</span>
+      <button class="filter-btn active weight-btn" onclick="filterWeight('all', this)">All</button>
+      <button class="filter-btn weight-btn" onclick="filterWeight('2m', this)">2 Marks</button>
+      <button class="filter-btn weight-btn" onclick="filterWeight('8m', this)">8 Marks</button>
+
+      <span class="filter-label" style="margin-left: 0.5rem;">Type:</span>
+      <button class="filter-btn active type-btn" onclick="filterType('all', this)">All</button>
+      <button class="filter-btn type-btn" onclick="filterType('theory', this)">Theory</button>
+      <button class="filter-btn type-btn" onclick="filterType('coding', this)">Coding</button>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 1: JAVASCRIPT & DOM
+  ════════════════════════════════════════════ -->
+  <div id="section-js" class="section active">
+    <div class="section-header">
+      <div class="section-icon js">JS</div>
+      <div>
+        <h2>JavaScript & DOM Programming</h2>
+        <p>Short Answer [2 Marks] & Long Answer [8 Marks] comprehensive questions on Core JS, Async, and DOM Manipulation.</p>
+      </div>
+    </div>
+
+    <!-- ── Section A: 2 Marks Short Answers ── -->
+    <div class="sub-title">Section A: Short Answer Questions [2 Marks]</div>
+
+    <!-- JS Q1 -->
+    <div class="qa-card weight-2m type-theory" id="js-q1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 1</span>
+        <span class="q-text">Explain DOM vs HTML.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>HTML (HyperText Markup Language)</strong> is the raw static text markup written in a file representing the layout structure of a page.</p>
+        <p><strong>DOM (Document Object Model)</strong> is the live, dynamic object representation of that HTML stored in the browser's memory, which JavaScript can query and modify dynamically at runtime.</p>
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>HTML</th><th>DOM</th></tr>
+            <tr><td>Static text file source code.</td><td>Live object tree in browser memory.</td></tr>
+            <tr><td>Cannot be modified dynamically.</td><td>Can be modified dynamically by JS.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Q2 -->
+    <div class="qa-card weight-2m type-theory" id="js-q2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 2</span>
+        <span class="q-text">Define the DOM and explain its role in web development.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The <strong>Document Object Model (DOM)</strong> is an API for HTML/XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. Its role is to bridge the gap between static HTML web layouts and dynamic languages like JavaScript, enabling features like interactive user interfaces, animations, and asynchronous content updates without page reloads.</p>
+      </div>
+    </div>
+
+    <!-- JS Q3 -->
+    <div class="qa-card weight-2m type-theory" id="js-q3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 3</span>
+        <span class="q-text">What is DOM? Explain DOM tree structure.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The **DOM Tree Structure** is a hierarchical representation of a webpage where every HTML element, attribute, and text snippet is modeled as a **Node**. The root node of the tree is the `document` object. Under it lies the `html` element node, which branches into `head` and `body` child nodes, which contain further nested element, attribute, and text nodes.</p>
+        <pre><code>GEC (document)
+ └── &lt;html&gt;
+      ├── &lt;head&gt; ➔ &lt;title&gt; ➔ [Text Node]
+      └── &lt;body&gt; ➔ &lt;div&gt; ➔ &lt;p&gt; ➔ [Text Node]</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Q4 -->
+    <div class="qa-card weight-2m type-theory" id="js-q4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 4</span>
+        <span class="q-text">Explain <code>getElementById()</code> and <code>getElementsByClassName()</code>.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong><code>getElementById(id)</code></strong>: Queries the DOM for a single matching element with the specified unique `id` attribute. Returns a single DOM element object (or `null` if none found). Extremely fast.</li>
+          <li><strong><code>getElementsByClassName(className)</code></strong>: Queries the DOM for all elements matching the given CSS `class` attribute. Returns a **live HTMLCollection** of all matching element nodes (not a standard array).</li>
+        </ul>
+        <pre><code><span class="kw">const</span> title = document.<span class="fn">getElementById</span>(<span class="str">"main-title"</span>); <span class="cm">// Single element</span>
+<span class="kw">const</span> items = document.<span class="fn">getElementsByClassName</span>(<span class="str">"menu-item"</span>); <span class="cm">// HTMLCollection</span></code></pre>
+      </div>
+    </div>
+
+    <!-- JS Q5 -->
+    <div class="qa-card weight-2m type-theory" id="js-q5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 5</span>
+        <span class="q-text">What is a callback function? Explain its drawbacks.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A **callback function** is a function passed into another function as an argument, which is then executed inside the outer function to perform a task. </p>
+        <p><strong>Drawbacks:</strong></p>
+        <ul>
+          <li>**Callback Hell / Pyramid of Doom**: Nesting multiple asynchronous callbacks creates hard-to-read, nested indentation structures.</li>
+          <li>**Inversion of Control**: Trusting a third-party function to call your callback correctly, at the right time, and with correct parameters.</li>
+          <li>**Complex Error Handling**: Hard to track and bubbles errors up manually at each nested layer.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- JS Q6 -->
+    <div class="qa-card weight-2m type-theory" id="js-q6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 6</span>
+        <span class="q-text">Explain the concept of event propagation in JavaScript.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Event Propagation</strong> is the process that defines how events travel through the DOM tree to target elements and back up. It occurs in three distinct phases:</p>
+        <ol>
+          <li>**Capturing Phase**: Event moves down from the root (`window`) to the target element.</li>
+          <li>**Target Phase**: Event triggers directly on the target element.</li>
+          <li>**Bubbling Phase**: Event bubbles back up from the target element to the root (default behavior).</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- JS Q7 -->
+    <div class="qa-card weight-2m type-theory" id="js-q7">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 7</span>
+        <span class="q-text">Differentiate between event bubbling and event capturing.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>Event Bubbling (Default)</th><th>Event Capturing (Trickling)</th></tr>
+            <tr><td>Travels upwards from target node ➔ parent nodes ➔ root window.</td><td>Travels downwards from root window ➔ child nodes ➔ target.</td></tr>
+            <tr><td>`element.addEventListener('click', handler, false)`</td><td>`element.addEventListener('click', handler, true)`</td></tr>
+          </table>
+        </div>
+        <div class="callout tip">You can halt this flow using `e.stopPropagation()` in any handler to prevent the event from travelling further.</div>
+      </div>
+    </div>
+
+    <!-- JS Q8 -->
+    <div class="qa-card weight-2m type-coding" id="js-q8">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 8</span>
+        <span class="q-text">Explain Temporal Dead Zone (TDZ) in JavaScript with a suitable example.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The **Temporal Dead Zone (TDZ)** is the time window between entering a block scope and the actual line where a `let` or `const` variable is declared. Accessing the variable inside this zone throws a `ReferenceError` because the variable has been hoisted but not initialized.</p>
+        <pre><code>{
+  <span class="cm">// TDZ starts here</span>
+  <span class="fn">console.log</span>(a); <span class="cm">// ❌ ReferenceError: Cannot access 'a' before initialization</span>
+  
+  <span class="kw">let</span> a = <span class="num">10</span>; <span class="cm">// TDZ ends here. 'a' is initialized to 10.</span>
+  <span class="fn">console.log</span>(a); <span class="cm">// ✅ Output: 10</span>
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Q9 -->
+    <div class="qa-card weight-2m type-theory" id="js-q9">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 9</span>
+        <span class="q-text">Compare localStorage and sessionStorage. Give one use case for each.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>localStorage</strong>: Stores key-value data with no expiration. Survives browser reloads, tab closing, and device reboots. 
+            <br><em>Use Case:</em> Storing site preference configurations like Dark Mode toggles.</li>
+          <li><strong>sessionStorage</strong>: Stores data only for the duration of the current page session. Cleans up automatically as soon as the tab is closed. 
+            <br><em>Use Case:</em> Storing multi-step input form progress tokens during checkout.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- JS Q10 -->
+    <div class="qa-card weight-2m type-coding" id="js-q10">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 10</span>
+        <span class="q-text">Give the explanation of classList methods (add/remove/toggle).</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The `classList` object contains utility methods to easily change HTML class values on elements:</p>
+        <ul>
+          <li><strong>`add(className)`</strong>: Appends class token if not already present.</li>
+          <li><strong>`remove(className)`</strong>: Deletes class token if present.</li>
+          <li><strong>`toggle(className)`</strong>: Adds class if missing; deletes class if already present.</li>
+        </ul>
+        <pre><code><span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">"button"</span>);
+btn.classList.<span class="fn">add</span>(<span class="str">"active"</span>);    <span class="cm">// Adds class</span>
+btn.classList.<span class="fn">remove</span>(<span class="str">"disabled"</span>); <span class="cm">// Removes class</span>
+btn.classList.<span class="fn">toggle</span>(<span class="str">"dark"</span>);     <span class="cm">// Toggles class on/off</span></code></pre>
+      </div>
+    </div>
+
+    <!-- JS Q11 -->
+    <div class="qa-card weight-2m type-theory" id="js-q11">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 11</span>
+        <span class="q-text">What are promise states in JavaScript?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A **Promise** in JavaScript can exist in one of three mutually exclusive states:</p>
+        <ol>
+          <li>🟢 **Pending**: Initial state; the asynchronous operation is still actively running and hasn't settled yet.</li>
+          <li>✅ **Fulfilled**: The operation completed successfully, returning a resolved value (`.then()`).</li>
+          <li>❌ **Rejected**: The operation failed, returning an error reason (`.catch()`).</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- JS Q12 -->
+    <div class="qa-card weight-2m type-theory" id="js-q12">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 12</span>
+        <span class="q-text">Discuss microtask and macrotask queue.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>Microtask Queue</strong>: Holds high-priority asynchronous callbacks (e.g. Promises, `queueMicrotask`, `MutationObserver`). The entire microtask queue is drained fully before the Event Loop moves on to the next render or macrotask.</li>
+          <li><strong>Macrotask Queue</strong>: Holds lower-priority callbacks (e.g. `setTimeout`, `setInterval`, network requests, UI events). Only one macrotask is processed per event loop tick.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- JS Q13 -->
+    <div class="qa-card weight-2m type-theory" id="js-q13">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 13</span>
+        <span class="q-text">What is the difference between var, let, and const?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>Feature</th><th>var</th><th>let</th><th>const</th></tr>
+            <tr><td>Scope</td><td>Function or Global</td><td>Block Scope `{ }`</td><td>Block Scope `{ }`</td></tr>
+            <tr><td>Hoisting</td><td>Hoisted as `undefined`</td><td>Hoisted but in TDZ</td><td>Hoisted but in TDZ</td></tr>
+            <tr><td>Reassignment</td><td>Allowed</td><td>Allowed</td><td>Not Allowed</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Q14 -->
+    <div class="qa-card weight-2m type-theory" id="js-q14">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 14</span>
+        <span class="q-text">What is the difference between == and ===?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>`==` (Loose Equality)</strong>: Compares values after performing **Type Coercion** (converting data types implicitly if they differ).</li>
+          <li><strong>`===` (Strict Equality)</strong>: Compares both **value** and **type** directly without any coercion. Always recommended to prevent unexpected bugs.</li>
+        </ul>
+        <pre><code><span class="num">5</span> == <span class="str">"5"</span>   <span class="cm">// true  (coerced to same type)</span>
+<span class="num">5</span> === <span class="str">"5"</span>  <span class="cm">// false (number vs string)</span></code></pre>
+      </div>
+    </div>
+
+    <!-- JS Q15 -->
+    <div class="qa-card weight-2m type-coding" id="js-q15">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 15</span>
+        <span class="q-text">Explain map, filter, and reduce array methods.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>`map()`</strong>: Creates a new array with the results of calling a function on every element.</li>
+          <li><strong>`filter()`</strong>: Creates a new array with all elements that pass the conditional test.</li>
+          <li><strong>`reduce()`</strong>: Runs an accumulator over the elements, returning a single consolidated value.</li>
+        </ul>
+        <pre><code><span class="kw">const</span> nums = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
+<span class="kw">const</span> doubled = nums.<span class="fn">map</span>(x => x * <span class="num">2</span>);      <span class="cm">// [2, 4, 6]</span>
+<span class="kw">const</span> evens = nums.<span class="fn">filter</span>(x => x % <span class="num">2</span> === <span class="num">0</span>); <span class="cm">// [2]</span>
+<span class="kw">const</span> sum = nums.<span class="fn">reduce</span>((acc, x) => acc + x, <span class="num">0</span>); <span class="cm">// 6</span></code></pre>
+      </div>
+    </div>
+
+    <!-- JS Q16 -->
+    <div class="qa-card weight-2m type-coding" id="js-q16">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 16</span>
+        <span class="q-text">Explain key String and Object methods.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>String</strong>: `slice(start, end)`, `includes(val)`, `split(delimiter)`.</li>
+          <li><strong>Object</strong>: `Object.keys(obj)`, `Object.values(obj)`, `Object.entries(obj)`.</li>
+        </ul>
+        <pre><code><span class="kw">const</span> user = { name: <span class="str">"Bret"</span>, role: <span class="str">"Admin"</span> };
+<span class="obj">Object</span>.<span class="fn">keys</span>(user);   <span class="cm">// ["name", "role"]</span>
+<span class="obj">Object</span>.<span class="fn">values</span>(user); <span class="cm">// ["Bret", "Admin"]</span></code></pre>
+      </div>
+    </div>
+
+    <!-- JS Q17 -->
+    <div class="qa-card weight-2m type-theory" id="js-q17">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 17</span>
+        <span class="q-text">Explain types of functions in JavaScript.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>Regular Function</strong>: Declared with standard function keyword; binds its own `this`.</li>
+          <li><strong>Arrow Function</strong>: Lexical `this` binding, compact syntax, not hoisted.</li>
+          <li><strong>IIFE</strong>: Immediately Invoked Function Expression. Runs as soon as compiled.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- JS Q18 -->
+    <div class="qa-card weight-2m type-theory" id="js-q18">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 18</span>
+        <span class="q-text">What is the difference between setTimeout and setInterval?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>`setTimeout`</strong>: Runs a callback function **once** after a delay.</li>
+          <li><strong>`setInterval`</strong>: Runs a callback function **repeatedly** at set intervals.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- JS Q19 -->
+    <div class="qa-card weight-2m type-theory" id="js-q19">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 19</span>
+        <span class="q-text">Compare textContent, innerHTML, and innerText.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>`innerHTML`</strong>: Returns or sets the HTML markup content (XSS hazard!).</li>
+          <li><strong>`textContent`</strong>: Returns or sets raw text inside the element, including hidden stylesheet/script tags.</li>
+          <li><strong>`innerText`</strong>: Returns or sets clean, human-readable text (CSS-aware, respects hidden status).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- JS Q20 -->
+    <div class="qa-card weight-2m type-coding" id="js-q20">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 20</span>
+        <span class="q-text">How to create and append elements in the DOM?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code><span class="kw">const</span> p = document.<span class="fn">createElement</span>(<span class="str">"p"</span>);
+p.textContent = <span class="str">"Interactive Element"</span>;
+document.body.<span class="fn">appendChild</span>(p); <span class="cm">// Appends paragraph to body</span></code></pre>
+      </div>
+    </div>
+
+
+    <!-- ── Section B: 8 Marks Long Answers ── -->
+    <div class="sub-title">Section B: Long Answer Programs [8 Marks]</div>
+
+    <!-- JS Long 1 -->
+    <div class="qa-card weight-8m type-coding" id="js-l1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 1</span>
+        <span class="q-text">Write a complete HTML/JS program to select an element, change background to blue, and text to "Hello DOM".</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ High-Yield Practical</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    #target { padding: 20px; text-align: center; font-size: 20px; transition: 0.3s; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="target"&gt;Initial Text&lt;/div&gt;
+  &lt;button onclick="changeStyle()"&gt;Change DOM&lt;/button&gt;
+
+  &lt;script&gt;
+    function changeStyle() {
+      // 1. Select the element
+      const el = document.getElementById("target");
+      
+      // 2. Change style and text
+      el.style.backgroundColor = "blue";
+      el.style.color = "white";
+      el.textContent = "Hello DOM";
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 2 -->
+    <div class="qa-card weight-8m type-coding" id="js-l2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 2</span>
+        <span class="q-text">Write a program using HTML and JavaScript to handle form submits, prevent reloads, and console input values in an object.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ Core Exam Question</span>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;form id="userForm"&gt;
+    &lt;input type="text" id="name" placeholder="Name" required&gt;&lt;br&gt;
+    &lt;input type="number" id="age" placeholder="Age" required&gt;&lt;br&gt;
+    &lt;select id="gender"&gt;
+      &lt;option value="Male"&gt;Male&lt;/option&gt;
+      &lt;option value="Female"&gt;Female&lt;/option&gt;
+    &lt;/select&gt;&lt;br&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+
+  &lt;script&gt;
+    document.getElementById("userForm").addEventListener("submit", function(e) {
+      // 1. Prevent default submission page reload
+      e.preventDefault();
+      
+      // 2. Extract inputs into object
+      const formData = {
+        name: document.getElementById("name").value,
+        age: parseInt(document.getElementById("age").value),
+        gender: document.getElementById("gender").value
+      };
+      
+      // 3. Log object to console
+      console.log("Form Values:", formData);
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 3 -->
+    <div class="qa-card weight-8m type-theory" id="js-l3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 3</span>
+        <span class="q-text">What are DOM selectors? Differentiate between <code>getElementsByClassName()</code> and <code>querySelectorAll()</code>.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>DOM Selectors</strong> are specialized functions used to query elements from the HTML DOM tree hierarchy. Major selector APIs include: `getElementById`, `getElementsByClassName`, `getElementsByTagName`, `querySelector`, and `querySelectorAll`.</p>
+        <p><strong>Key Differences:</strong></p>
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>Feature</th><th>getElementsByClassName()</th><th>querySelectorAll()</th></tr>
+            <tr><td>Return value</td><td>**HTMLCollection** (Live list, updates on DOM change)</td><td>**NodeList** (Static snapshot, does not auto-update)</td></tr>
+            <tr><td>Parameters</td><td>Takes a class name string ONLY (e.g. `"item"`)</td><td>Takes any CSS selectors combo (e.g. `".card > p:first-child"`)</td></tr>
+            <tr><td>Utility</td><td>Does not support standard array iterators directly (e.g. `forEach`)</td><td>Supports built-in `forEach` iterations natively.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- JS Long 4 -->
+    <div class="qa-card weight-8m type-coding" id="js-l4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 4</span>
+        <span class="q-text">Write a program using <code>addEventListener()</code> to change paragraph styles on click and hover.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;p id="para"&gt;Interact with me!&lt;/p&gt;
+  &lt;button id="btn"&gt;Click Me&lt;/button&gt;
+
+  &lt;script&gt;
+    const p = document.getElementById("para");
+    const btn = document.getElementById("btn");
+
+    // Click: change text and make color blue
+    btn.addEventListener("click", () => {
+      p.textContent = "Button Clicked!";
+      p.style.color = "blue";
+    });
+
+    // Hover (mouseover): change text color to red
+    p.addEventListener("mouseover", () => {
+      p.style.color = "red";
+    });
+
+    // Hover out (mouseout): restore text color
+    p.addEventListener("mouseout", () => {
+      p.style.color = "";
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 5 -->
+    <div class="qa-card weight-8m type-theory" id="js-l5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 5</span>
+        <span class="q-text">Explain event propagation, bubbling, capturing, and the role of event listeners.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Event Propagation</strong> describes how browser engines route user-action alerts down and back up the DOM hierarchy.</p>
+        <ul>
+          <li><strong>Capturing Phase</strong>: Starts from top `window` and propagates down to the targeted element. Registered via `addEventListener(event, callback, true)`.</li>
+          <li><strong>Bubbling Phase</strong>: Once target is hit, the event travels back up the hierarchy. This is the default mechanism.</li>
+        </ul>
+        <p><strong>Role of Event Listeners</strong>: Act as registered observers waiting for a specific event type on a targeted node to execute handler logic. They allow a clean separation between HTML views and controller logic, supporting multi-handler attachments to single DOM nodes.</p>
+      </div>
+    </div>
+
+    <!-- JS Long 6 -->
+    <div class="qa-card weight-8m type-coding" id="js-l6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 6</span>
+        <span class="q-text">Create a webpage that removes its own click handler after a single click trigger.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2 id="heading"&gt;Default Title&lt;/h2&gt;
+  &lt;button id="oneTimeBtn"&gt;Click Once&lt;/button&gt;
+
+  &lt;script&gt;
+    const btn = document.getElementById("oneTimeBtn");
+    const heading = document.getElementById("heading");
+
+    function handleClick() {
+      // 1. Perform changes
+      heading.textContent = "Triggered!";
+      heading.style.color = "orange";
+      
+      // 2. Remove handler so it doesn't trigger again
+      btn.removeEventListener("click", handleClick);
+      btn.textContent = "Event Removed";
+    }
+
+    // Attach named handler
+    btn.addEventListener("click", handleClick);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 7 -->
+    <div class="qa-card weight-8m type-coding" id="js-l7">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 7</span>
+        <span class="q-text">Discuss event handling using <code>addEventListener()</code> with different event types.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A demonstration of handling multiple event types on a page (click, input, focus, blur, keydown):</p>
+        <pre><code><span class="kw">const</span> input = document.<span class="fn">getElementById</span>(<span class="str">"username"</span>);
+
+<span class="cm">// 'input' event: triggers on every keypress inside text inputs</span>
+input.<span class="fn">addEventListener</span>(<span class="str">"input"</span>, (e) => {
+  console.<span class="fn">log</span>(<span class="str">"Typing:"</span>, e.target.value);
+});
+
+<span class="cm">// 'focus' and 'blur' events: active/inactive input states</span>
+input.<span class="fn">addEventListener</span>(<span class="str">"focus"</span>, () => input.style.borderColor = <span class="str">"blue"</span>);
+input.<span class="fn">addEventListener</span>(<span class="str">"blur"</span>, () => input.style.borderColor = <span class="str">""</span>);
+
+<span class="cm">// 'keydown' event: detects specific keys (e.g. Enter to submit)</span>
+input.<span class="fn">addEventListener</span>(<span class="str">"keydown"</span>, (e) => {
+  <span class="kw">if</span> (e.key === <span class="str">"Enter"</span>) {
+    console.<span class="fn">log</span>(<span class="str">"Submit via Enter key"</span>);
+  }
+});</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 8 -->
+    <div class="qa-card weight-8m type-theory" id="js-l8">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 8</span>
+        <span class="q-text">Explain execution context (GEC, FEC) and the Call Stack.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Execution Context</strong> is the environment created by the engine to run JS code. It has two phases: **Memory Creation Phase** (hoisting placeholders) and **Execution Phase** (assigning variables and running code line-by-line).</p>
+        <ul>
+          <li><strong>Global Execution Context (GEC)</strong>: Created automatically when a script starts. Manages global objects (`window`) and the initial `this` binding.</li>
+          <li><strong>Function Execution Context (FEC)</strong>: Created every time a function is called, managing local arguments and closures.</li>
+        </ul>
+        <p><strong>The Call Stack</strong> is a LIFO (Last In, First Out) buffer that tracks contexts in execution. Below is a stack evolution example for `main() -> first() -> second()`:</p>
+        <pre><code>Call Stack Stages:
+[1. Start]   ➔ [2. main()]  ➔ [3. first()] ➔ [4. second()] ➔ [5. Pop out]
+┌─────────┐    ┌─────────┐    ┌─────────┐    ┌───────────┐    ┌─────────┐
+│         │    │         │    │         │    │ second()  │    │         │
+│         │    │         │    │ first() │    │ first()   │    │ first() │
+│         │    │ main()  │    │ main()  │    │ main()    │    │ main()  │
+│   GEC   │    │   GEC   │    │   GEC   │    │   GEC     │    │   GEC   │
+└─────────┘    └─────────┘    └─────────┘    └───────────┘    └─────────┘</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 9 -->
+    <div class="qa-card weight-8m type-coding" id="js-l9">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 9</span>
+        <span class="q-text">Explain Promises, states, and consumers (.then, .catch, .finally) with code.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code><span class="cm">// 1. Promise Constructor creation</span>
+<span class="kw">const</span> fetchScore = <span class="kw">new</span> <span class="obj">Promise</span>((resolve, reject) => {
+  <span class="kw">let</span> success = <span class="kw">true</span>;
+  <span class="fn">setTimeout</span>(() => {
+    <span class="kw">if</span> (success) <span class="fn">resolve</span>(<span class="num">95</span>); <span class="cm">// Transitions state: Pending ➔ Fulfilled</span>
+    <span class="kw">else</span> reject(<span class="str">"Network failed"</span>); <span class="cm">// Transitions state: Pending ➔ Rejected</span>
+  }, <span class="num">1000</span>);
+});
+
+<span class="cm">// 2. Consumer Methods consumption</span>
+fetchScore
+  .<span class="fn">then</span>(data => {
+    console.<span class="fn">log</span>(<span class="str">"Success score:"</span>, data); <span class="cm">// Triggers on resolve</span>
+  })
+  .<span class="fn">catch</span>(err => {
+    console.<span class="fn">error</span>(<span class="str">"Failed:"</span>, err); <span class="cm">// Triggers on reject</span>
+  })
+  .<span class="fn">finally</span>(() => {
+    console.<span class="fn">log</span>(<span class="str">"Settled successfully."</span>); <span class="cm">// Always runs at the end</span>
+  });</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 10 -->
+    <div class="qa-card weight-8m type-coding" id="js-l10">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 10</span>
+        <span class="q-text">Write a program using setTimeout and setInterval with clearTimeout / clearInterval.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code><span class="cm">// 1. setInterval to repeatedly count ticks</span>
+<span class="kw">let</span> seconds = <span class="num">0</span>;
+<span class="kw">const</span> intervalId = <span class="fn">setInterval</span>(() => {
+  seconds++;
+  console.<span class="fn">log</span>(<span class="str">`Seconds elapsed: ${seconds}`</span>);
+}, <span class="num">1000</span>);
+
+<span class="cm">// 2. setTimeout to cancel interval after 5 seconds</span>
+<span class="kw">const</span> timeoutId = <span class="fn">setTimeout</span>(() => {
+  <span class="fn">clearInterval</span>(intervalId); <span class="cm">// Stops interval loop execution</span>
+  console.<span class="fn">log</span>(<span class="str">"Tick timer halted."</span>);
+}, <span class="num">5100</span>);
+
+<span class="cm">// Optionally stop timeout if needed: clearTimeout(timeoutId);</span></code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 11 -->
+    <div class="qa-card weight-8m type-theory" id="js-l11">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 11</span>
+        <span class="q-text">What is a callback function? Explain nested callbacks and drawbacks.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A **callback** is a function passed as an argument to another function, which is then executed when an operation completes. When multiple asynchronous steps are nested sequentially, it creates **Callback Hell**:</p>
+        <pre><code><span class="fn">getUser</span>(userId, user => {
+  <span class="fn">getOrders</span>(user.id, orders => {
+    <span class="fn">getDetails</span>(orders[<span class="num">0</span>], details => {
+      <span class="fn">updateUI</span>(details); <span class="cm">// Deep structural nesting</span>
+    });
+  });
+});</code></pre>
+        <p><strong>Drawbacks:</strong> High nesting readability barrier, difficult error scoping (need try-catch blocks at each nested level), and tight logical coupling.</p>
+      </div>
+    </div>
+
+    <!-- JS Long 12 -->
+    <div class="qa-card weight-8m type-coding" id="js-l12">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 12</span>
+        <span class="q-text">Create a Promise resolving after 2 seconds, printing a success message inside <code>.then()</code>.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code><span class="kw">const</span> delayPromise = <span class="kw">new</span> <span class="obj">Promise</span>((resolve, reject) => {
+  <span class="fn">setTimeout</span>(() => {
+    <span class="fn">resolve</span>(<span class="str">"Operation Completed Successfully!"</span>);
+  }, <span class="num">2000</span>); <span class="cm">// 2s delay</span>
+});
+
+delayPromise
+  .<span class="fn">then</span>(msg => {
+    console.<span class="fn">log</span>(<span class="str">"Response: "</span> + msg);
+  })
+  .<span class="fn">catch</span>(err => console.<span class="fn">error</span>(err))
+  .<span class="fn">finally</span>(() => console.<span class="fn">log</span>(<span class="str">"Complete."</span>));</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 13 -->
+    <div class="qa-card weight-8m type-theory" id="js-l13">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 13</span>
+        <span class="q-text">Explain localStorage, sessionStorage, and cookies with examples.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>Storage</th><th>Capacity</th><th>Duration</th><th>Sent with requests?</th></tr>
+            <tr><td>**localStorage**</td><td>~5MB to 10MB</td><td>Persistent until manually deleted.</td><td>❌ No (client only)</td></tr>
+            <tr><td>**sessionStorage**</td><td>~5MB</td><td>Cleared when current tab is closed.</td><td>❌ No (client only)</td></tr>
+            <tr><td>**Cookies**</td><td>~4KB</td><td>Configurable expiration.</td><td>✅ Yes (sent in HTTP headers)</td></tr>
+          </table>
+        </div>
+        <pre><code><span class="cm">// Store preferences</span>
+localStorage.<span class="fn">setItem</span>(<span class="str">"theme"</span>, <span class="str">"dark"</span>);
+<span class="kw">const</span> theme = localStorage.<span class="fn">getItem</span>(<span class="str">"theme"</span>);
+
+<span class="cm">// Document Cookie usage</span>
+document.cookie = <span class="str">"user=Bret; expires=Fri, 31 Dec 2026 23:59:59 GMT; path=/"</span>;</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 14 -->
+    <div class="qa-card weight-8m type-coding" id="js-l14">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 14</span>
+        <span class="q-text">Demonstrate async/await with error handling using try...catch blocks.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code><span class="kw">async function</span> <span class="fn">fetchUsers</span>() {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"https://jsonplaceholder.typicode.com/users"</span>);
+    
+    <span class="cm">// Verify response status code</span>
+    <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="obj">Error</span>(<span class="str">"HTTP request failed!"</span>);
+    
+    <span class="kw">const</span> users = <span class="kw">await</span> res.<span class="fn">json</span>();
+    console.<span class="fn">log</span>(<span class="str">"Users Loaded:"</span>, users);
+  } <span class="kw">catch</span> (err) {
+    <span class="cm">// Handle any errors gracefully</span>
+    console.<span class="fn">error</span>(<span class="str">"Fetch Error Trace:"</span>, err.message);
+  }
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- JS Long 15 -->
+    <div class="qa-card weight-8m type-theory" id="js-l15">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 15</span>
+        <span class="q-text">Explain the transition from Callbacks ➔ Promises ➔ async/await.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ol>
+          <li><strong>Callbacks</strong>: Early JavaScript relied on nested function arguments for async workflows, which led to the unreadable **Callback Hell** structural nesting pattern.</li>
+          <li><strong>Promises</strong>: Introduced in ES6, Promises wrapped async operations inside an object, returning `.then()` and `.catch()` hooks to support clean, flat method chaining.</li>
+          <li><strong>Async/Await</strong>: Introduced in ES8, this syntax serves as syntactic sugar over Promises. It allows asynchronous code to look and act like synchronous code, enabling linear flow and standard `try...catch` scoping.</li>
+        </ol>
+      </div>
+    </div>
+
+  </div><!-- /#section-js -->
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 2: REACT & HOOKS
+  ════════════════════════════════════════════ -->
+  <div id="section-react" class="section">
+    <div class="section-header">
+      <div class="section-icon react">⚛</div>
+      <div>
+        <h2>React & Hooks</h2>
+        <p>Short Answer [2 Marks] & Long Answer [8 Marks] questions on Virtual DOM, Component state, Props, Custom Hooks, Routing, and optimizations.</p>
+      </div>
+    </div>
+
+    <!-- ── Section A: 2 Marks Short Answers ── -->
+    <div class="sub-title">Section A: Short Answer Questions [2 Marks]</div>
+
+    <!-- React Q1 -->
+    <div class="qa-card weight-2m type-theory" id="react-q1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 1</span>
+        <span class="q-text">What is React and explain its features.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>React</strong> is a component-based frontend UI library developed by Meta. Key features include:</p>
+        <ul>
+          <li>**Virtual DOM**: Optimizes UI rendering performance.</li>
+          <li>**JSX**: Syntax extension blending HTML structure inside JS logic.</li>
+          <li>**Declarative UI**: Describe what UI states should render rather than listing direct step-by-step imperative actions.</li>
+          <li>**One-Way Data Binding**: Simple parent-to-child data flow control.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- React Q2 -->
+    <div class="qa-card weight-2m type-theory" id="react-q2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 2</span>
+        <span class="q-text">What is the Virtual DOM?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The **Virtual DOM (VDOM)** is a lightweight, in-memory representation of the real DOM nodes stored inside React. When state updates occur, a new Virtual DOM tree is created. React compares the new tree with the previous one (called **Diffing**) and batches updates to modify only the changed parts of the real DOM (called **Reconciliation**).</p>
+      </div>
+    </div>
+
+    <!-- React Q3 -->
+    <div class="qa-card weight-2m type-theory" id="react-q3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 3</span>
+        <span class="q-text">What is a Single Page Application (SPA)?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>An **SPA** is a web app that loads a single HTML document and dynamically updates parts of the viewport as the user interacts with the app, without requesting full document reloads from a server. React achieves this using a client-side routing library like `react-router-dom` to intercept anchor tags.</p>
+      </div>
+    </div>
+
+    <!-- React Q4 -->
+    <div class="qa-card weight-2m type-theory" id="react-q4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 4</span>
+        <span class="q-text">Explain One-Way Data Binding in React.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>In React, data flows in one direction: **Parent to Child via Props**. A child component cannot modify the props it receives from its parent. If a child needs to send data back up to its parent, it must trigger callback functions passed down as props by the parent.</p>
+      </div>
+    </div>
+
+    <!-- React Q5 -->
+    <div class="qa-card weight-2m type-theory" id="react-q5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 5</span>
+        <span class="q-text">What is JSX in React?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>JSX (JavaScript XML)</strong> is a syntax extension that lets you write HTML-like elements directly inside JavaScript code files. It provides a visual template format and is compiled into standard `React.createElement()` function calls before running in the browser.</p>
+      </div>
+    </div>
+
+    <!-- React Q6 -->
+    <div class="qa-card weight-2m type-theory" id="react-q6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 6</span>
+        <span class="q-text">What is the role of Babel in modern React compilation?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Babel</strong> is a compiler that translates modern ECMAScript features and syntax extensions (like JSX) into backwards-compatible JavaScript that older browsers can run. It compiles JSX code down to standard nested `React.createElement()` calls.</p>
+      </div>
+    </div>
+
+    <!-- React Q7 -->
+    <div class="qa-card weight-2m type-theory" id="react-q7">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 7</span>
+        <span class="q-text">Define Props in React.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Props (Properties)</strong> are read-only arguments passed from parent components to child components to configure them. Props are immutable within the child component, ensuring a predictable one-way data flow.</p>
+      </div>
+    </div>
+
+    <!-- React Q8 -->
+    <div class="qa-card weight-2m type-theory" id="react-q8">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 8</span>
+        <span class="q-text">Explain the reconciliation process in React.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Reconciliation</strong> is the process React uses to update the real DOM when state or props change. It uses a **Diffing Algorithm** to compare the previous Virtual DOM tree with the new one. It identifies the differences (diffs) and applies only the minimum necessary changes to the real DOM, optimizing render performance.</p>
+      </div>
+    </div>
+
+    <!-- React Q9 -->
+    <div class="qa-card weight-2m type-theory" id="react-q9">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 9</span>
+        <span class="q-text">What are React Hooks? Why were they introduced?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>React Hooks</strong> are functions starting with `use` that let functional components use state and other React features (like lifecycle methods). They were introduced in React 16.8 to share stateful logic between components easily, without the boilerplate, nesting, and complex `this` bindings of Class components.</p>
+      </div>
+    </div>
+
+    <!-- React Q10 -->
+    <div class="qa-card weight-2m type-theory" id="react-q10">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 10</span>
+        <span class="q-text">Demonstrate the role of useState.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>`useState` lets you add local state to functional components. It returns an array containing the current state value and a setter function to update it.</p>
+        <pre><code><span class="kw">const</span> [count, setCount] = <span class="fn">useState</span>(<span class="num">0</span>);</code></pre>
+      </div>
+    </div>
+
+    <!-- React Q11 -->
+    <div class="qa-card weight-2m type-theory" id="react-q11">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 11</span>
+        <span class="q-text">What is useEffect? Explain side effects.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The `useEffect` hook lets functional components run side effects. **Side effects** are operations that interact with the outside world beyond React's rendering flow, such as fetching data from APIs, setting up timers, or directly updating the DOM.</p>
+      </div>
+    </div>
+
+    <!-- React Q12 -->
+    <div class="qa-card weight-2m type-theory" id="react-q12">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 12</span>
+        <span class="q-text">How does React manage frequent changes effectively?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>React manages frequent updates efficiently using **State Batching** (combining multiple state updates inside the same event handler into a single re-render) and the **Fiber engine** (which prioritizes interactive updates like clicks and typing over background calculations).</p>
+      </div>
+    </div>
+
+    <!-- React Q13 -->
+    <div class="qa-card weight-2m type-theory" id="react-q13">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 13</span>
+        <span class="q-text">Elaborate the use of dependency array in useEffect.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The **dependency array** controls when `useEffect` runs:</p>
+        <ul>
+          <li>`[]` (empty): Runs only once when the component mounts.</li>
+          <li>`[dep1, dep2]`: Runs on mount, and re-runs whenever any dependency value changes.</li>
+          <li>No array: Re-runs on every single render of the component.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- React Q14 -->
+    <div class="qa-card weight-2m type-theory" id="react-q14">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 14</span>
+        <span class="q-text">What is Context API?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The **Context API** is a built-in React feature to share global state (like theme settings or user authentication) across components, without having to manually pass props down through intermediate components (preventing prop drilling).</p>
+      </div>
+    </div>
+
+    <!-- React Q15 -->
+    <div class="qa-card weight-2m type-theory" id="react-q15">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 15</span>
+        <span class="q-text">Controlled vs Uncontrolled components.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>Controlled</strong>: Form input values are driven and synchronized by local React state. Highly recommended.</li>
+          <li><strong>Uncontrolled</strong>: Form data is managed directly by the browser's DOM tree, accessed using React `useRef` handles.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- React Q16 -->
+    <div class="qa-card weight-2m type-theory" id="react-q16">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 16</span>
+        <span class="q-text">What are Custom Hooks?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Custom Hooks</strong> are JavaScript functions starting with `use` that can call other React hooks. They let you extract and reuse stateful logic (like fetching data or tracking scroll positions) across different components.</p>
+      </div>
+    </div>
+
+
+    <!-- ── Section B: 8 Marks Long Answers ── -->
+    <div class="sub-title">Section B: Long Answer Programs [8 Marks]</div>
+
+    <!-- React Long 1 -->
+    <div class="qa-card weight-8m type-coding" id="react-l1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 1</span>
+        <span class="q-text">Write React code to fetch data from API (https://jsonplaceholder.typicode.com/users) and render username and email lists.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ High-Yield Practical</span>
+        <pre><code>import React, { useState, useEffect } from 'react';
+
+function UserList() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => {
+        setUsers(data);
+        setLoading(false);
+      })
+      .catch(err => console.error("Error:", err));
+  }, []); // Run on mount only
+
+  if (loading) return &lt;p&gt;Loading users...&lt;/p&gt;;
+
+  return (
+    &lt;ul&gt;
+      {users.map(user => (
+        &lt;li key={user.id}&gt;
+          &lt;strong&gt;{user.username}&lt;/strong&gt; ({user.email})
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+export default UserList;</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 2 -->
+    <div class="qa-card weight-8m type-coding" id="react-l2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 2</span>
+        <span class="q-text">Create a simple Counter Application with useState: Increment, Decrement, and RESET.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>import React, { useState } from 'react';
+
+function CounterApp() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div style={{ textAlign: 'center', padding: '20px' }}&gt;
+      &lt;h1&gt;Count is {count}&lt;/h1&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;+&lt;/button&gt;
+      &lt;button onClick={() => setCount(count - 1)}&gt;-&lt;/button&gt;
+      &lt;button onClick={() => setCount(0)}&gt;RESET&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+export default CounterApp;</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 3 -->
+    <div class="qa-card weight-8m type-coding" id="react-l3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 3</span>
+        <span class="q-text">Create a React component passing data as props and implementing ternary conditional rendering.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>import React, { useState } from 'react';
+
+// Child Component
+function UserGreeting({ username, isLoggedIn }) {
+  return (
+    &lt;div&gt;
+      {isLoggedIn ? (
+        &lt;h2&gt;Welcome back, {username}!&lt;/h2&gt;
+      ) : (
+        &lt;h2&gt;Please log in to continue.&lt;/h2&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+
+// Parent Component
+function AuthPortal() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  return (
+    &lt;div&gt;
+      &lt;UserGreeting username="Alice" isLoggedIn={isLoggedIn} /&gt;
+      &lt;button onClick={() => setIsLoggedIn(!isLoggedIn)}&gt;
+        {isLoggedIn ? "Log Out" : "Log In"}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 4 -->
+    <div class="qa-card weight-8m type-theory" id="react-l4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 4</span>
+        <span class="q-text">Explain one-way data binding, component architecture, and default vs named exports.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>One-Way Data Binding</strong>: Ensures predictable state tracking by flowing data exclusively downwards from Parent components to Child components via immutable props.</li>
+          <li><strong>Component-Based Architecture</strong>: UIs are broken down into self-contained, independent, and reusable blocks. This improves modularity and makes testing easier.</li>
+          <li><strong>Exports</strong>:
+            <br>- **Default Export**: Expels one main module from a file. Imported without curly braces: `import React from 'react'`.
+            <br>- **Named Export**: Expels multiple utility objects from a single file. Imported inside curly braces: `import { useState, useEffect } from 'react'`.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- React Long 5 -->
+    <div class="qa-card weight-8m type-coding" id="react-l5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 5</span>
+        <span class="q-text">Explain state and props in React. Create a component passing counter state as props to a child component.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>State</strong> represents local, mutable data managed *within* a component. **Props** are immutable configuration parameters passed *into* a component from its parent.</p>
+        <pre><code>// Child Component (Presenter)
+function DisplayCount({ value }) {
+  return &lt;h2&gt;Current Tally: {value}&lt;/h2&gt;; // Value is read-only
+}
+
+// Parent Component (Controller)
+function SharedCounter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;DisplayCount value={count} /&gt; {/* State passed down as props */}
+      &lt;button onClick={() => setCount(count + 1)}&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 6 -->
+    <div class="qa-card weight-8m type-theory" id="react-l6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 6</span>
+        <span class="q-text">Explain class component lifecycle methods and their equivalents in <code>useEffect</code>.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>Class components rely on specific lifecycle methods to run operations at different points in time. Functional components use `useEffect` to replicate these states:</p>
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>Class Component Method</th><th>Functional Equivalent (`useEffect`)</th></tr>
+            <tr><td>`componentDidMount()` (runs once after mount)</td><td>`useEffect(() => {}, [])` (empty dependency array)</td></tr>
+            <tr><td>`componentDidUpdate()` (runs after updates)</td><td>`useEffect(() => {}, [dep])` (dependency array with value)</td></tr>
+            <tr><td>`componentWillUnmount()` (runs before unmount)</td><td>`useEffect(() => { return () => cleanup() }, [])` (return callback)</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- React Long 7 -->
+    <div class="qa-card weight-8m type-coding" id="react-l7">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 7</span>
+        <span class="q-text">Create a React component with 2 buttons: Button 1 increments and shows a popup alert, Button 2 increments silently.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag core">Clever Hook Architecture</span>
+        <pre><code>import React, { useState, useEffect, useRef } from 'react';
+
+function CustomAlertCounter() {
+  const [count, setCount] = useState(0);
+  const isAlertTriggered = useRef(false); // Track if update should alert
+
+  useEffect(() => {
+    if (count > 0 && isAlertTriggered.current) {
+      alert(`Counter updated to: ${count}`);
+      isAlertTriggered.current = false; // Reset trigger flag
+    }
+  }, [count]); // Trigger on count changes
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Counter: {count}&lt;/h3&gt;
+      &lt;button onClick={() => {
+        isAlertTriggered.current = true; // Set trigger flag
+        setCount(prev => prev + 1);
+      }}&gt;
+        Button 1 (Increment &amp; Alert)
+      &lt;/button&gt;
+      &lt;button onClick={() => setCount(prev => prev + 1)}&gt;
+        Button 2 (Silent Increment)
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+export default CustomAlertCounter;</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 8 -->
+    <div class="qa-card weight-8m type-coding" id="react-l8">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 8</span>
+        <span class="q-text">Design a User Information Form with Name, Age, Gender select, and Language checkboxes. Display data on screen on submit.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ Comprehensive Form Handling</span>
+        <pre><code>import React, { useState } from 'react';
+
+function UserForm() {
+  const [form, setForm] = useState({ name: '', age: '', gender: 'Male', languages: [] });
+  const [submittedData, setSubmittedData] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      const updatedLangs = checked 
+        ? [...form.languages, value] 
+        : form.languages.filter(l => l !== value);
+      setForm({ ...form, languages: updatedLangs });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;form onSubmit={(e) => { e.preventDefault(); setSubmittedData(form); }}&gt;
+        &lt;input name="name" placeholder="Name" onChange={handleChange} required /&gt;
+        &lt;input name="age" type="number" placeholder="Age" onChange={handleChange} required /&gt;
+        &lt;select name="gender" onChange={handleChange}&gt;
+          &lt;option value="Male"&gt;Male&lt;/option&gt;
+          &lt;option value="Female"&gt;Female&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox" name="languages" value="JS" onChange={handleChange} /&gt; JS
+        &lt;/label&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox" name="languages" value="HTML" onChange={handleChange} /&gt; HTML
+        &lt;/label&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+      &lt;/form&gt;
+
+      {submittedData && (
+        &lt;div&gt;
+          &lt;h3&gt;Submitted Data:&lt;/h3&gt;
+          &lt;p&gt;Name: {submittedData.name}&lt;/p&gt;
+          &lt;p&gt;Age: {submittedData.age}&lt;/p&gt;
+          &lt;p&gt;Gender: {submittedData.gender}&lt;/p&gt;
+          &lt;p&gt;Languages: {submittedData.languages.join(', ')}&lt;/p&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 9 -->
+    <div class="qa-card weight-8m type-coding" id="react-l9">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 9</span>
+        <span class="q-text">Write a React program to fetch API data and display "Loading..." while data is being fetched.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>import React, { useState, useEffect } from 'react';
+
+function UserListWithLoading() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        const json = await response.json();
+        setData(json);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false); // Stop loading indicator
+      }
+    };
+    fetchUsers();
+  }, []);
+
+  if (loading) return &lt;h2&gt;Loading user profiles...&lt;/h2&gt;;
+
+  return (
+    &lt;ul&gt;
+      {data.map(user => (
+        &lt;li key={user.id}&gt;{user.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 10 -->
+    <div class="qa-card weight-8m type-coding" id="react-l10">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 10</span>
+        <span class="q-text">Explain React Router: Routes, Link / NavLink, and useNavigate with code.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>React Router</strong> is the industry standard for routing in React Single Page Applications:</p>
+        <pre><code>import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+
+function Home() {
+  const navigate = useNavigate(); // Hook for programmatic navigation
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Home Page&lt;/h1&gt;
+      &lt;button onClick={() => navigate('/dashboard')}&gt;
+        Go to Dashboard Programmatically
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+function NavigationPanel() {
+  return (
+    &lt;div&gt;
+      &lt;nav&gt;
+        &lt;Link to="/"&gt;Home&lt;/Link&gt; | 
+        &lt;Link to="/dashboard"&gt;Dashboard&lt;/Link&gt;
+      &lt;/nav&gt;
+
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/dashboard" element={&lt;h2&gt;Dashboard&lt;/h2&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 11 -->
+    <div class="qa-card weight-8m type-theory" id="react-l11">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 11</span>
+        <span class="q-text">Elaborate on prop drilling and its problems. How does Context API solve it?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Prop Drilling</strong> occurs when you need to pass data from a parent component down to a deeply nested child component, forcing intermediate components that don't need the data to receive and pass it along anyway.</p>
+        <p><strong>Problems:</strong> Cluttered code, complex debugging, and tight coupling between components in the tree.</p>
+        <p><strong>Context API Solution:</strong> It creates a **Provider** component that wraps the parent component, allowing any child component in the tree to access the shared data directly using `useContext`, without intermediate components acting as brokers.</p>
+      </div>
+    </div>
+
+    <!-- React Long 12 -->
+    <div class="qa-card weight-8m type-theory" id="react-l12">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 12</span>
+        <span class="q-text">Explain React Form handling, submit events, and synthetic events.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>In standard HTML forms, submitting a form reloads the entire page. In React, we intercept this behavior using submit handlers:</p>
+        <ul>
+          <li><strong>`e.preventDefault()`</strong>: Standard method to prevent the browser's default submit behavior (page reload).</li>
+          <li><strong>`SyntheticEvent`</strong>: React wraps browser-native events in a lightweight, cross-browser wrapper (`SyntheticEvent`). This ensures consistent event behaviors across Chrome, Safari, and Firefox.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- React Long 13 -->
+    <div class="qa-card weight-8m type-coding" id="react-l13">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 13</span>
+        <span class="q-text">Analyze performance optimization: Debouncing and Pagination in React.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag adv">★ Advanced Performance Concept</span>
+        <ul>
+          <li><strong>Debouncing</strong>: Delays executing a callback function until a set amount of time has passed since the last trigger. This is highly effective for reducing API calls on search bar inputs.</li>
+          <li><strong>Pagination</strong>: Fetches and displays data in smaller, organized chunks (pages) rather than loading all items at once, optimizing initial load times.</li>
+        </ul>
+        <pre><code><span class="cm">// Debouncing Search Example</span>
+<span class="fn">useEffect</span>(() => {
+  <span class="kw">const</span> delayTimer = <span class="fn">setTimeout</span>(() => {
+    <span class="fn">triggerSearchAPI</span>(query);
+  }, <span class="num">500</span>); <span class="cm">// Wait for 500ms pause in typing</span>
+
+  <span class="kw">return</span> () => <span class="fn">clearTimeout</span>(delayTimer); <span class="cm">// Reset timer on keypress</span>
+}, [query]);</code></pre>
+      </div>
+    </div>
+
+    <!-- React Long 14 -->
+    <div class="qa-card weight-8m type-coding" id="react-l14">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 14</span>
+        <span class="q-text">Compare Context API and prop drilling. Write a Context Provider and Consumer component.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>import React, { createContext, useContext, useState } from 'react';
+
+// 1. Create Context
+const ThemeContext = createContext();
+
+// 2. Provider Component
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('dark');
+  return (
+    &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+// 3. Nested Consumer Component
+function NestedButton() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  return (
+    &lt;button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}&gt;
+      Current: {theme.toUpperCase()}
+    &lt;/button&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+  </div><!-- /#section-react -->
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 3: OUTPUT TRACING & EVENT LOOP
+  ════════════════════════════════════════════ -->
+  <div id="section-output" class="section">
+    <div class="section-header">
+      <div class="section-icon out">🧠</div>
+      <div>
+        <h2>Execution Tracing & Predictions</h2>
+        <p>Predict the exact output of complex asynchronous snippets and explain the execution flow through GEC, Call Stack, Microtasks, and Macrotasks.</p>
+      </div>
+    </div>
+
+    <!-- Tracing Q1 -->
+    <div class="qa-card weight-8m type-coding" id="out-q1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num out">Trace 1</span>
+        <span class="q-text">Predict: console.log("A"), setTimeout B, Promise C, console.log("D")</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>console.log("A");
+setTimeout(() => { console.log("B"); }, 1000);
+Promise.resolve().then(() => { console.log("C"); });
+console.log("D");</code></pre>
+        <div class="output-box">
+          <div class="label">Output</div>
+          <code>A<br>D<br>C<br>B</code>
+        </div>
+        <p><strong>Execution Flow:</strong></p>
+        <ol>
+          <li>`console.log("A")` is synchronous, runs immediately on the call stack. **Prints "A"**.</li>
+          <li>`setTimeout` goes to Web APIs to wait 1000ms, then queued in the **Macrotask Queue**.</li>
+          <li>`Promise.resolve()` resolves immediately, its callback is queued in the high-priority **Microtask Queue**.</li>
+          <li>`console.log("D")` runs synchronously. **Prints "D"**.</li>
+          <li>Call stack is now empty. Event Loop drains the Microtask Queue first. **Prints "C"**.</li>
+          <li>After 1000ms, the Macrotask Queue runs. **Prints "B"**.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Tracing Q2 -->
+    <div class="qa-card weight-8m type-coding" id="out-q2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num out">Trace 2</span>
+        <span class="q-text">Predict: Promise chains microtask prioritization.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>console.log("1");
+Promise.resolve().then(() => { console.log("2"); });
+Promise.resolve().then(() => { console.log("3"); });
+console.log("4");</code></pre>
+        <div class="output-box">
+          <div class="label">Output</div>
+          <code>1<br>4<br>2<br>3</code>
+        </div>
+        <p><strong>Execution Flow:</strong></p>
+        <p>Synchronous logs (`1` and `4`) print immediately. Meanwhile, the resolve callbacks are queued in order in the Microtask Queue. Once the call stack is empty, the queue is drained sequentially (`2` then `3`).</p>
+      </div>
+    </div>
+
+    <!-- Tracing Q3 -->
+    <div class="qa-card weight-8m type-coding" id="out-q3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num out">Trace 3</span>
+        <span class="q-text">Predict: Promise nested inside a Macrotask.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>setTimeout(() => {
+  console.log("Timeout 1");
+  Promise.resolve().then(() => {
+    console.log("Promise inside Timeout");
+  });
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log("Promise 1");
+});</code></pre>
+        <div class="output-box">
+          <div class="label">Output</div>
+          <code>Promise 1<br>Timeout 1<br>Promise inside Timeout</code>
+        </div>
+        <p><strong>Execution Flow:</strong></p>
+        <ol>
+          <li>The microtask queue has `Promise 1`, which is executed first once the call stack is empty. **Prints "Promise 1"**.</li>
+          <li>Next, the Event Loop processes the macrotask (`setTimeout`). **Prints "Timeout 1"**.</li>
+          <li>Inside the timeout's callback, a new Promise resolves immediately, queueing a new microtask.</li>
+          <li>The Event Loop drains the Microtask Queue again *before* processing any other macrotasks. **Prints "Promise inside Timeout"**.</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Tracing Q4 -->
+    <div class="qa-card weight-8m type-coding" id="out-q4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num out">Trace 4</span>
+        <span class="q-text">Predict: Double nested Promises.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>console.log("1");
+setTimeout(() => console.log("2"), 0);
+Promise.resolve().then(() => {
+  console.log("3");
+  Promise.resolve().then(() => console.log("4"));
+});
+console.log("5");</code></pre>
+        <div class="output-box">
+          <div class="label">Output</div>
+          <code>1<br>5<br>3<br>4<br>2</code>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tracing Q5 -->
+    <div class="qa-card weight-8m type-coding" id="out-q5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num out">Trace 5</span>
+        <span class="q-text">Predict: Promise constructor execution behavior.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>console.log("A");
+new Promise((resolve) => {
+  console.log("B");
+  resolve();
+  console.log("C");
+}).then(() => {
+  console.log("D");
+});
+console.log("E");</code></pre>
+        <div class="output-box">
+          <div class="label">Output</div>
+          <code>A<br>B<br>C<br>E<br>D</code>
+        </div>
+        <div class="callout tip">**Remember:** The Promise executor function (`(resolve) => {...}`) runs **synchronously** immediately when the Promise is constructed. Only the `.then()` callback is placed in the microtask queue.</div>
+      </div>
+    </div>
+
+    <!-- Tracing Q6 -->
+    <div class="qa-card weight-8m type-coding" id="out-q6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num out">Trace 6</span>
+        <span class="q-text">Predict Output: Complete Async/Await execution flow tracing (Paper Q.16).</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ High-Priority Paper Question</span>
+        <pre><code>console.log("Start");
+
+async function test() {
+  console.log("Inside function");
+  await Promise.resolve();
+  console.log("After await");
+}
+
+test();
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+console.log("End");</code></pre>
+        <div class="output-box">
+          <div class="label">Output</div>
+          <code>Start<br>Inside function<br>End<br>After await<br>Timeout</code>
+        </div>
+        <p><strong>Step-by-Step Execution Tracing:</strong></p>
+        <ol>
+          <li>`console.log("Start")` is synchronous. **Prints "Start"**.</li>
+          <li>`test()` is called:
+            <br>- `console.log("Inside function")` runs synchronously. **Prints "Inside function"**.
+            <br>- The code reaches `await Promise.resolve()`. The `await` keyword pauses the async function execution, scheduling the remainder of `test()` as a microtask in the **Microtask Queue**.</li>
+          <li>`setTimeout` schedules its callback in the **Macrotask Queue** with a 0ms delay.</li>
+          <li>`console.log("End")` runs synchronously. **Prints "End"**.</li>
+          <li>The call stack is now empty. The Event Loop prioritizes the **Microtask Queue** and resumes `test()`. **Prints "After await"**.</li>
+          <li>With microtasks cleared, the Event Loop processes the next **Macrotask** (`setTimeout`). **Prints "Timeout"**.</li>
+        </ol>
+      </div>
+    </div>
+
+  </div><!-- /#section-output -->
+
+</div><!-- /.main-wrap -->
+
+<!-- ─── BACK TO PORTAL ─── -->
+<div style="text-align:center; padding: 2rem; border-top: 1px solid var(--border); margin-top: 2rem;">
+  <a href="../index.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">
+    ← Back to Web Dev II Portal
+  </a>
+</div>
+
+<script>
+  function toggleCard(card) {
+    card.classList.toggle('open');
+  }
+
+  function showTab(name, btn) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    // Deactivate all buttons
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    // Show target section
+    document.getElementById('section-' + name).classList.add('active');
+    // Activate button
+    btn.classList.add('active');
+    // Re-run search filters on newly active tab cards
+    filterCards();
+    // Scroll smoothly to top of content
+    window.scrollTo({ top: document.querySelector('.tab-nav-wrapper').offsetTop - 10, behavior: 'smooth' });
+  }
+
+  function filterWeight(weight, btn) {
+    // Toggle active state for weight buttons
+    document.querySelectorAll('.weight-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterCards();
+  }
+
+  function filterType(type, btn) {
+    // Toggle active state for type buttons
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    filterCards();
+  }
+
+  function filterCards() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const activeSection = document.querySelector('.section.active');
+    const cards = activeSection.querySelectorAll('.qa-card');
+
+    const activeWeightBtn = document.querySelector('.weight-btn.active');
+    const activeTypeBtn = document.querySelector('.type-btn.active');
+
+    const activeWeight = activeWeightBtn ? activeWeightBtn.textContent.trim().toLowerCase() : 'all';
+    const activeType = activeTypeBtn ? activeTypeBtn.textContent.trim().toLowerCase() : 'all';
+
+    cards.forEach(card => {
+      const text = card.textContent.toLowerCase();
+      const matchesQuery = text.includes(query);
+
+      let matchesWeight = true;
+      if (activeWeight === '2 marks') {
+        matchesWeight = card.classList.contains('weight-2m');
+      } else if (activeWeight === '8 marks') {
+        matchesWeight = card.classList.contains('weight-8m');
+      }
+
+      let matchesType = true;
+      if (activeType === 'theory') {
+        matchesType = card.classList.contains('type-theory');
+      } else if (activeType === 'coding') {
+        matchesType = card.classList.contains('type-coding');
+      }
+
+      if (matchesQuery && matchesWeight && matchesType) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Keyboard shortcut: J = JS, R = React, O = Output
+  document.addEventListener('keydown', (e) => {
+    if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if(e.key === 'j' || e.key === 'J') showTab('js', document.getElementById('tab-js'));
+    if(e.key === 'r' || e.key === 'R') showTab('react', document.getElementById('tab-react'));
+    if(e.key === 'o' || e.key === 'O') showTab('output', document.getElementById('tab-output'));
+  });
+
+  // Dynamic float Copy Buttons on all code elements
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('pre').forEach(pre => {
+      pre.style.position = 'relative';
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.innerHTML = 'Copy';
+      btn.addEventListener('click', () => {
+        const code = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.innerHTML = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.innerHTML = 'Copy';
+            btn.classList.remove('copied');
+          }, 2000);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  });
+</script>
+</body>
+</html>
