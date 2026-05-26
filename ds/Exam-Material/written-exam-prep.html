@@ -988,6 +988,337 @@ class CircularQueue:
         </div>
       </div>
 
+      <!-- Unit 3 -->
+      <div class="card orange-card">
+        <h3>🗄️ Unit 3: Sorting & Searching Algorithms</h3>
+        <p>Covers stable/unstable sorts, in-place/out-of-place constraints, operational steps of $O(n^2)$ sorts, and full recursive $O(n \log n)$ implementations.</p>
+
+        <div style="margin-top: 1.5rem;">
+          <h4>1. Core Taxonomies</h4>
+          <ul>
+            <li><strong>Stable Sorting:</strong> Preserves the relative order of duplicate elements. Examples: Merge Sort, Insertion Sort, Bubble Sort.</li>
+            <li><strong>Unstable Sorting:</strong> May alter the relative order of duplicate elements. Examples: Quick Sort, Selection Sort, Heap Sort.</li>
+            <li><strong>In-Place:</strong> Operates directly on the input array requiring constant $O(1)$ auxiliary space. Examples: Quick Sort (excluding recursive stack), Insertion Sort, Bubble Sort.</li>
+            <li><strong>Out-of-Place:</strong> Requires additional auxiliary array allocations to sort. Example: Merge Sort ($O(n)$ space).</li>
+          </ul>
+
+          <h4>2. $O(n \log n)$ Sorts in Python</h4>
+          <pre class="code-block"><code># Merge Sort (Guaranteed O(n log n) time, O(n) space)
+def merge_sort(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        L = arr[:mid]
+        R = arr[mid:]
+        merge_sort(L)
+        merge_sort(R)
+        i = j = k = 0
+        while i < len(L) and j < len(R):
+            if L[i] < R[j]:
+                arr[k] = L[i]; i += 1
+            else:
+                arr[k] = R[j]; j += 1
+            k += 1
+        while i < len(L):
+            arr[k] = L[i]; i += 1; k += 1
+        while j < len(R):
+            arr[k] = R[j]; j += 1; k += 1
+
+# Quick Sort (O(n log n) average time, O(n^2) worst case, O(log n) stack space)
+def quick_sort(arr, low, high):
+    if low < high:
+        p = partition(arr, low, high)
+        quick_sort(arr, low, p - 1)
+        quick_sort(arr, p + 1, high)
+
+def partition(arr, low, high):
+    pivot = arr[low] # first element pivot
+    i = low + 1
+    j = high
+    while True:
+        while i <= j and arr[i] <= pivot:
+            i += 1
+        while i <= j and arr[j] >= pivot:
+            j -= 1
+        if i <= j:
+            arr[i], arr[j] = arr[j], arr[i]
+        else:
+            break
+    arr[low], arr[j] = arr[j], arr[low]
+    return j</code></pre>
+
+          <h4>3. Master Sorting Complexity Comparison</h4>
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Algorithm</th>
+                  <th>Best Case</th>
+                  <th>Average Case</th>
+                  <th>Worst Case</th>
+                  <th>Space Complexity</th>
+                  <th>Stability</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Bubble Sort</strong></td>
+                  <td>$O(n)$ (adaptive)</td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(1)$</td>
+                  <td>Stable</td>
+                </tr>
+                <tr>
+                  <td><strong>Insertion Sort</strong></td>
+                  <td>$O(n)$ (adaptive)</td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(1)$</td>
+                  <td>Stable</td>
+                </tr>
+                <tr>
+                  <td><strong>Selection Sort</strong></td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(1)$</td>
+                  <td>Unstable</td>
+                </tr>
+                <tr>
+                  <td><strong>Merge Sort</strong></td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(n)$</td>
+                  <td>Stable</td>
+                </tr>
+                <tr>
+                  <td><strong>Quick Sort</strong></td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(n^2)$</td>
+                  <td>$O(\log n)$ recursive stack</td>
+                  <td>Unstable</td>
+                </tr>
+                <tr>
+                  <td><strong>Heap Sort</strong></td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(n \log n)$</td>
+                  <td>$O(1)$</td>
+                  <td>Unstable</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Unit 4 -->
+      <div class="card purple-card">
+        <h3>🌳 Unit 4: Non-Linear & Advanced Data Structures</h3>
+        <p>Details trees, binary tree construction limits, binary search trees, AVL balances, graph representations/traversals, and hash tables.</p>
+
+        <div style="margin-top: 1.5rem;">
+          <h4>1. Trees and Reconstruction Rules</h4>
+          <ul>
+            <li><strong>Reconstruction Rules:</strong> A unique binary tree can be reconstructed from **Preorder + Inorder** or **Postorder + Inorder**. <strong>Why Preorder + Postorder is impossible:</strong> Lacks relative direction. Without inorder data to partition left/right subtrees, we cannot distinguish between a parent node having only a left child vs. only a right child, resulting in structural ambiguity.</li>
+          </ul>
+
+          <h4>2. Binary Search Tree (BST) Operations</h4>
+          <pre class="code-block"><code>class TreeNode:
+    def __init__(self, key):
+        self.val = key
+        self.left = None
+        self.right = None
+
+# BST Insertion: O(log n) average, O(n) skewed worst case
+def insert_bst(root, key):
+    if not root:
+        return TreeNode(key)
+    if key < root.val:
+        root.left = insert_bst(root.left, key)
+    else:
+        root.right = insert_bst(root.right, key)
+    return root</code></pre>
+
+          <h4>3. Graph Traversal Algorithms (BFS vs. DFS)</h4>
+          <pre class="code-block"><code># Graph BFS (Queue-based Level-by-level traversal)
+def bfs(graph, start):
+    visited = set([start])
+    queue = [start]
+    res = []
+    while queue:
+        node = queue.pop(0)
+        res.append(node)
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    return res
+
+# Graph DFS (Recursive/Stack-based Branch-by-branch traversal)
+def dfs(graph, node, visited=None, res=None):
+    if visited is None: visited = set()
+    if res is None: res = []
+    visited.add(node)
+    res.append(node)
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited, res)
+    return res</code></pre>
+
+          <h4>4. Hashing Collision Resolutions</h4>
+          <ul>
+            <li><strong>Separate Chaining:</strong> Array slots hold pointers to linked list heads. Colliding elements are appended to the linked list. Advantages: Table never fills, simple deletion. Disadvantage: Extra pointer memory overhead.</li>
+            <li><strong>Linear Probing (Open Addressing):</strong> Colliding elements are placed in the next available contiguous slot: <code>h(x, i) = (h(x) + i) % m</code>. Advantages: No pointer overhead, good cache performance. Disadvantage: Primary clustering (runs of occupied slots slow down lookups).</li>
+          </ul>
+          
+          <!-- Interactive AVL Rotations widget -->
+          <div class="interactive-widget">
+            <div class="widget-title">🌳 Step-by-Step AVL RR Rotation Visualizer</div>
+            <p>See how inserting 30 into an AVL tree containing 10 and 20 triggers a Right-Right (RR) imbalance and Left Rotation:</p>
+            
+            <div class="avl-steps">
+              <div class="avl-diagram-container" id="avl-visual-box">
+                <div style="text-align: center;">
+                  <div class="tree-node-visual">
+                    <div class="tree-circle unbalanced">10</div>
+                    <div class="tree-bf">BF = -2 (Unbalanced!)</div>
+                    <div style="margin: 0.2rem 0; color: var(--red);">&darr;</div>
+                    <div class="tree-circle">20</div>
+                    <div class="tree-bf">BF = -1</div>
+                    <div style="margin: 0.2rem 0; color: var(--red);">&darr;</div>
+                    <div class="tree-circle">30</div>
+                    <div class="tree-bf">BF = 0</div>
+                  </div>
+                </div>
+              </div>
+              <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 0.5rem;">
+                <p><strong>Status:</strong> <span id="avl-status" style="color: var(--red); font-weight: 700;">Imbalance Detected (RR Case)</span></p>
+                <p id="avl-desc">Inserting key 30 to the right of 20 causes the parent root node 10's height to become unbalanced with a balance factor of -2.</p>
+                <button class="complexity-btn" id="avl-action-btn" onclick="triggerAVLRotation()">Apply Left Rotation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION 2: HIGH-FREQUENCY QUESTIONS ==================== -->
+    <div id="highfreq" class="section-content">
+      <!-- High-Frequency Question 1 -->
+      <div class="card yellow-card">
+        <h3>❓ Q1: Array vs. Linked List comparison benchmark.</h3>
+        <p><strong>Correct Answer:</strong></p>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Benchmark Metric</th>
+                <th>Array</th>
+                <th>Linked List</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Memory Allocation</strong></td>
+                <td>Contiguous block, statically allocated at compile-time.</td>
+                <td>Non-contiguous heap nodes, dynamically allocated at runtime.</td>
+              </tr>
+              <tr>
+                <td><strong>Insertion / Deletion</strong></td>
+                <td>$O(n)$ due to element shifting.</td>
+                <td>$O(1)$ at the head (no shifting, only pointer updates).</td>
+              </tr>
+              <tr>
+                <td><strong>Element Access</strong></td>
+                <td>$O(1)$ random access using index.</td>
+                <td>$O(n)$ sequential access (must traverse links).</td>
+              </tr>
+              <tr>
+                <td><strong>Memory Overhead</strong></td>
+                <td>Zero extra overhead (only stores values).</td>
+                <td>High overhead (stores data + address pointers).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- High-Frequency Question 2 -->
+      <div class="card yellow-card">
+        <h3>❓ Q2: Find Time Complexity: <code>i = 1; while i <= n: i = i * 3</code>.</h3>
+        <p><strong>Correct Answer:</strong></p>
+        <p>In each step, $i$ is multiplied by 3. Its value grows exponentially: $1, 3, 9, 27, \dots, 3^k$. The loop terminates when $3^k \ge n$. Taking the logarithm to base 3 on both sides:</p>
+        <p>$$k = \log_3 n$$</p>
+        <p>Thus, the exact Time Complexity is **$O(\log n)$** (Logarithmic).</p>
+      </div>
+
+      <!-- High-Frequency Question 3 -->
+      <div class="card yellow-card">
+        <h3>❓ Q3: AVL balance factor and rotations rules.</h3>
+        <p><strong>Correct Answer:</strong></p>
+        <p>The Balance Factor ($BF$) of a node is calculated as: <code>BF = Height(Left Subtree) - Height(Right Subtree)</code>.</p>
+        <p>For an AVL tree to remain balanced, the balance factor of every node must be $-1$, $0$, or $+1$. If $|BF| > 1$, four types of rotations restore balance:
+          <ul>
+            <li><strong>Left-Left (LL) Case:</strong> Single Right Rotation around the parent.</li>
+            <li><strong>Right-Right (RR) Case:</strong> Single Left Rotation around the parent.</li>
+            <li><strong>Left-Right (LR) Case:</strong> Single Left Rotation on the left child, followed by a Single Right Rotation on the parent.</li>
+            <li><strong>Right-Left (RL) Case:</strong> Single Right Rotation on the right child, followed by a Single Left Rotation on the parent.</li>
+          </ul>
+        </p>
+      </div>
+
+      <!-- High-Frequency Question 4 -->
+      <div class="card yellow-card">
+        <h3>❓ Q4: Stack Rearrangement (Even on Top, Odd on Bottom).</h3>
+        <p><strong>Correct Answer:</strong></p>
+        <p>To rearrange elements in a stack (initial `[1, 2, 3, 4, 5, 6, 7, 8]` with `1` at the top and `8` at the bottom) so that evens go on top and odds go to the bottom using an auxiliary stack:</p>
+        <pre class="code-block"><code>def rearrange_stack(stack):
+    evens = []
+    odds = []
+    
+    # 1. Pop all elements from stack and partition
+    while stack:
+        val = stack.pop()
+        if val % 2 == 0:
+            evens.append(val)
+        else:
+            odds.append(val)
+            
+    # 2. Push odds first (they go to the bottom)
+    for o in sorted(odds): # maintain original or sorted order
+        stack.append(o)
+        
+    # 3. Push evens next (they sit on top of odds)
+    for e in sorted(evens):
+        stack.append(e)
+    return stack</code></pre>
+      </div>
+
+      <!-- High-Frequency Question 5 -->
+      <div class="card yellow-card">
+        <h3>❓ Q5: Circular Queue Overcoming Linear Queue limitations.</h3>
+        <p><strong>Correct Answer:</strong></p>
+        <p>In a **Linear Queue**, once the `rear` reaches `MAX_SIZE - 1`, the queue is declared full, even if several dequeue operations have occurred and slots at the front are empty. This is a waste of memory.</p>
+        <p>A **Circular Queue** overcomes this by wrapping pointers circularly using modulo arithmetic: `rear = (rear + 1) % MAX_SIZE`. This allows empty front slots to be recycled.
+          <ul>
+            <li><strong>Enqueue:</strong> <code>rear = (rear + 1) % MAX_SIZE</code></li>
+            <li><strong>Dequeue:</strong> <code>front = (front + 1) % MAX_SIZE</code></li>
+            <li><strong>Full Condition:</strong> <code>(rear + 1) % MAX_SIZE == front</code></li>
+          </ul>
+        </p>
+      </div>
+
+      <!-- High-Frequency Question 6 -->
+      <div class="card yellow-card">
+        <h3>❓ Q6: Why is binary search mathematically impossible to reconstruct using only Preorder and Postorder traversals?</h3>
+        <p><strong>Correct Answer:</strong></p>
+        <p>Preorder traversal visits **[Root, Left, Right]** and Postorder visits **[Left, Right, Root]**. Both list the root but do not tell where the boundary between the left and right subtrees lies. Without **Inorder** traversal (which visits **[Left, Root, Right]**) to act as a separator, we cannot know if a node is a left child or a right child when a parent has only one child. This leads to multiple structurally different trees matching the same Preorder and Postorder traversals, causing ambiguity.</p>
+      </div>
+    </div>
+ 
 
   </div>
 </body>
