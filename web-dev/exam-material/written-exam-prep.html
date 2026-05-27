@@ -173,6 +173,22 @@
       background: rgba(251,191,36,0.04);
     }
 
+        .tab-btn.pdf.active {
+      color: var(--react);
+      border-bottom: 2px solid var(--react);
+      background: rgba(97,218,251,0.04);
+    }
+    .tab-btn.scans.active {
+      color: var(--js);
+      border-bottom: 2px solid var(--js);
+      background: rgba(247,223,30,0.04);
+    }
+    .tab-btn.syllabus-sheet.active {
+      color: var(--gold);
+      border-bottom: 2px solid var(--gold);
+      background: rgba(251,191,36,0.04);
+    }
+
     /* ─── SEARCH & FILTER BAR ─── */
     .search-container {
       background: var(--surface);
@@ -256,7 +272,7 @@
 
     /* ─── MAIN LAYOUT ─── */
     .main-wrap {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 1.5rem 1rem 4rem;
     }
@@ -307,7 +323,7 @@
       border-radius: var(--radius);
       margin-bottom: 1rem;
       overflow: hidden;
-      transition: border-color var(--transition), box-shadow var(--transition);
+      transition: border-color 0.4s ease, box-shadow var(--transition);
     }
     .qa-card:hover {
       border-color: var(--border-glow);
@@ -397,6 +413,9 @@
       border-left: 6px solid var(--syllabus);
       border-radius: var(--radius-sm);
       padding: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       position: relative;
     }
     .notebook-page::after {
@@ -455,6 +474,154 @@
       border-radius: 4px;
       font-weight: 600;
     }
+
+    /* Syllabus direct links */
+    .syllabus-links {
+      margin-top: 1rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .s-link-header {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-dim);
+    }
+    .s-link-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .s-link {
+      background: rgba(97,218,251,0.08);
+      border: 1px solid rgba(97,218,251,0.2);
+      color: var(--react);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .s-link:hover {
+      background: rgba(97,218,251,0.15);
+      border-color: var(--react);
+      color: #fff;
+    }
+    .s-link.js-link {
+      background: rgba(247,223,30,0.08);
+      border-color: rgba(247,223,30,0.2);
+      color: var(--js);
+    }
+    .s-link.js-link:hover {
+      background: rgba(247,223,30,0.15);
+      border-color: var(--js);
+    }
+    .s-link.out-link {
+      background: rgba(167,139,250,0.08);
+      border-color: rgba(167,139,250,0.2);
+      color: var(--output);
+    }
+    .s-link.out-link:hover {
+      background: rgba(167,139,250,0.15);
+      border-color: var(--output);
+    }
+
+    /* ─── VISUAL BOARD SCANS ─── */
+    .scan-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    @media (min-width: 992px) {
+      .scan-card { flex-direction: row; }
+      .scan-img-box { width: 42%; border-right: 1px solid var(--border); }
+      .scan-info-box { width: 58%; }
+    }
+    .scan-img-box {
+      background: #020813;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .scan-img {
+      max-width: 100%;
+      max-height: 520px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+    .scan-img:hover {
+      transform: scale(1.02);
+    }
+    .scan-info-box {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .scan-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--syllabus);
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .scan-title .badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      background: rgba(56,189,248,0.15);
+    }
+    .scan-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .scan-list-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .scan-list {
+      list-style-type: none;
+      padding: 0;
+      margin-bottom: 1.2rem;
+    }
+    .scan-list li {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      position: relative;
+      padding-left: 1.1rem;
+    }
+    .scan-list li::before {
+      content: '✔';
+      position: absolute;
+      left: 0;
+      color: var(--tip);
+      font-size: 0.8rem;
+    }
+    .scan-list li strong { color: var(--text); }
 
     /* ─── COMPARISON TABLE ─── */
     .compare-table-wrapper {
@@ -641,18 +808,22 @@
     <span class="htag">⚛ React Hooks</span>
     <span class="htag">🧠 Tracing Predictor</span>
     <span class="htag">📋 Syllabus Sheets</span>
-    <span class="htag">🎯 Highly Predicted (Top 10)</span>
+    <span class="htag">🎯 Most Likely to Come</span>
+    <span class="htag">📸 Visual Notes Board</span>
   </div>
 </section>
 
 <!-- ═══ TAB NAV ═══ -->
 <div class="tab-nav-wrapper">
   <nav class="tab-nav">
-    <button class="tab-btn active" onclick="showTab('js', this)" id="tab-js">⚡ JS & DOM (35 Qs)</button>
-    <button class="tab-btn react" onclick="showTab('react', this)" id="tab-react">⚛ React & Hooks (30 Qs)</button>
+    <button class="tab-btn pdf active" onclick="showTab('pdf', this)" id="tab-pdf">📑 Master PDF Bank (35 Qs)</button>
+    <button class="tab-btn js" onclick="showTab('js', this)" id="tab-js">⚡ JS & DOM Deep-Dive</button>
+    <button class="tab-btn react" onclick="showTab('react', this)" id="tab-react">⚛ React & Hooks Deep-Dive</button>
     <button class="tab-btn output" onclick="showTab('output', this)" id="tab-output">🧠 Output Tracing (6 Qs)</button>
-    <button class="tab-btn syllabus" onclick="showTab('syllabus', this)" id="tab-syllabus">📋 Syllabus Sheets (6 pgs)</button>
+    <button class="tab-btn syllabus" onclick="showTab('syllabus', this)" id="tab-syllabus">📋 Notebook Summaries (6 pgs)</button>
+    <button class="tab-btn scans" onclick="showTab('scans', this)" id="tab-scans" style="border-bottom-color: var(--js);">📸 Visual Notes Board (5 Scans)</button>
     <button class="tab-btn gold" onclick="showTab('gold', this)" id="tab-gold">🎯 Most Likely to Come (Top 10)</button>
+    <button class="tab-btn syllabus-sheet" onclick="showTab('syllabus-sheet', this)" id="tab-syllabus-sheet" style="border-bottom-color: var(--gold);">📋 Syllabus Sheet Portal (Mapped Qs)</button>
   </nav>
 </div>
 
@@ -679,9 +850,760 @@
 
 
   <!-- ════════════════════════════════════════════
+       SECTION 0: CONSOLIDATED MASTER PDF BANK
+  ════════════════════════════════════════════ -->
+  <div id="section-pdf" class="section active">
+    <div class="section-header">
+      <div class="section-icon react" style="background: rgba(97,218,251,0.15); color: var(--react);">📑</div>
+      <div>
+        <h2>Master PDF Question Bank</h2>
+        <p>Comprehensive, extensive solutions for all 20 short questions and 14 long questions directly from WEB DEV-II Question Bank.pdf.</p>
+      </div>
+    </div>
+
+    <!-- Section A: 2 Marks Short Answers -->
+    <div class="sub-title">Section A: Short Answer Questions [2 Marks]</div>
+<div class="qa-card weight-2m type-theory" id="pdf-s1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 1</span>
+        <span class="q-text">Define the DOM and explain its role in web development.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The <strong>Document Object Model (DOM)</strong> is an API for HTML/XML documents. It defines the logical structure of documents and the way a document is accessed and manipulated. Its role is to bridge the gap between static HTML web layouts and dynamic languages like JavaScript, enabling features like interactive user interfaces, animations, and asynchronous content updates without page reloads.</p>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 2</span>
+        <span class="q-text">Explain DOM vs HTML.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>HTML (HyperText Markup Language)</strong> is the raw static text markup written in a file representing the layout structure of a page.</p>
+        <p><strong>DOM (Document Object Model)</strong> is the live, dynamic object representation of that HTML stored in the browser's memory, which JavaScript can query and modify dynamically at runtime.</p>
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>HTML</th><th>DOM</th></tr>
+            <tr><td>Static text file source code.</td><td>Live object tree in browser memory.</td></tr>
+            <tr><td>Cannot be modified dynamically.</td><td>Can be modified dynamically by JS.</td></tr>
+          </table>
+        </div>
+      </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 3</span>
+        <span class="q-text">Compare textContent, innerHTML, and innerText.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>`innerHTML`</strong>: Returns or sets the HTML markup content (XSS hazard!).</li>
+          <li><strong>`textContent`</strong>: Returns or sets raw text inside the element, including hidden stylesheet/script tags.</li>
+          <li><strong>`innerText`</strong>: Returns or sets clean, human-readable text (CSS-aware, respects hidden status).</li>
+        </ul>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 4</span>
+        <span class="q-text">Difference between <code>getElementById()</code>, <code>getElementsByClassName()</code>, <code>querySelector()</code>, and <code>querySelectorAll()</code>.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A summary of the differences between standard DOM query selectors:</p>
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>Selector</th><th>Parameter</th><th>Returns</th><th>Performance & Live status</th></tr>
+            <tr><td><strong><code>getElementById()</code></strong></td><td>ID name string</td><td>Single DOM Element</td><td>Fastest. Returns exact match (or null).</td></tr>
+            <tr><td><strong><code>getElementsByClassName()</code></strong></td><td>Class name string</td><td>Live <code>HTMLCollection</code></td><td>Fast. Updates automatically if DOM changes.</td></tr>
+            <tr><td><strong><code>querySelector()</code></strong></td><td>Any CSS Selector combo</td><td>First matching Element</td><td>Versatile. Returns first element matching style query.</td></tr>
+            <tr><td><strong><code>querySelectorAll()</code></strong></td><td>Any CSS Selector combo</td><td>Static <code>NodeList</code></td><td>Versatile. Supports built-in <code>.forEach()</code> method.</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-coding" id="pdf-s5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 5</span>
+        <span class="q-text">Give the explanation of classList methods (add/remove/toggle).</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The `classList` object contains utility methods to easily change HTML class values on elements:</p>
+        <ul>
+          <li><strong>`add(className)`</strong>: Appends class token if not already present.</li>
+          <li><strong>`remove(className)`</strong>: Deletes class token if present.</li>
+          <li><strong>`toggle(className)`</strong>: Adds class if missing; deletes class if already present.</li>
+        </ul>
+        <pre><code><span class="kw">const btn = document.querySelector("button");</span>
+btn.classList.<span class="fn">add</span>(<span class="str">"active"</span>);    <span class="cm">// Adds class</span>
+btn.classList.<span class="fn">remove</span>(<span class="str">"disabled"</span>); <span class="cm">// Removes class</span>
+btn.classList.<span class="fn">toggle</span>(<span class="str">"dark"</span>);     <span class="cm">// Toggles class on/off</span></code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 6</span>
+        <span class="q-text">Discuss microtask and macrotask queue.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>Microtask Queue</strong>: Holds high-priority asynchronous callbacks (e.g. Promises, `queueMicrotask`, `MutationObserver`). The entire microtask queue is drained fully before the Event Loop moves on to the next render or macrotask.</li>
+          <li><strong>Macrotask Queue</strong>: Holds lower-priority callbacks (e.g. `setTimeout`, `setInterval`, network requests, UI events). Only one macrotask is processed per event loop tick.</li>
+        </ul>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s7">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 7</span>
+        <span class="q-text">What is the difference between setTimeout and setInterval?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>`setTimeout`</strong>: Runs a callback function **once** after a delay.</li>
+          <li><strong>`setInterval`</strong>: Runs a callback function **repeatedly** at set intervals.</li>
+        </ul>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s8">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 8</span>
+        <span class="q-text">What is a callback function? Explain its drawbacks.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A **callback function** is a function passed into another function as an argument, which is then executed inside the outer function to perform a task. </p>
+        <p><strong>Drawbacks:</strong></p>
+        <ul>
+          <li>**Callback Hell / Pyramid of Doom**: Nesting multiple asynchronous callbacks creates hard-to-read, nested indentation structures.</li>
+          <li>**Inversion of Control**: Trusting a third-party function to call your callback correctly, at the right time, and with correct parameters.</li>
+          <li>**Complex Error Handling**: Hard to track and bubbles errors up manually at each nested layer.</li>
+        </ul>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s9">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 9</span>
+        <span class="q-text">What are promise states in JavaScript?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A **Promise** in JavaScript can exist in one of three mutually exclusive states:</p>
+        <ol>
+          <li>🟢 **Pending**: Initial state; the asynchronous operation is still actively running and hasn't settled yet.</li>
+          <li>✅ **Fulfilled**: The operation completed successfully, returning a resolved value (`.then()`).</li>
+          <li>❌ **Rejected**: The operation failed, returning an error reason (`.catch()`).</li>
+        </ol>
+      </div>
+    </div>
+<div class="qa-card gold-card weight-8m type-theory" id="pdf-s10">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Short 10</span>
+        <span class="q-text">Elaborate on the Event Loop, including GEC, microtasks, and macrotasks. [8 Marks]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>JavaScript is **single-threaded**—it can execute only one statement at a time. It handles asynchronous operations through the **Event Loop** mechanism, which coordinates several key components:</p>
+        <ul>
+          <li><strong>Call Stack</strong>: LIFO stack executing synchronous code contexts.</li>
+          <li><strong>Web APIs</strong>: Browser environment handles (like `setTimeout`, `fetch`, DOM clicks) running in the background.</li>
+          <li><strong>Microtask Queue</strong>: Holds high-priority callbacks (e.g. Promises, async await resolves).</li>
+          <li><strong>Macrotask Queue (Callback Queue)</strong>: Holds lower-priority callbacks (e.g. `setTimeout`, `setInterval`).</li>
+        </ul>
+        <p><strong>The Event Loop Process:</strong></p>
+        <ol>
+          <li>Runs synchronous code on the Call Stack until it is completely empty.</li>
+          <li>Checks the **Microtask Queue** and executes **all** pending microtask callbacks until the queue is completely drained.</li>
+          <li>Checks the **Macrotask Queue** and moves **exactly one** macrotask callback to the Call Stack for execution.</li>
+          <li>Repeats this cycle continuously.</li>
+        </ol>
+        <div class="callout tip">**Remember:** Microtasks always run before macrotasks, and the entire microtask queue is drained fully on every event loop tick.</div>
+      </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s11">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 11</span>
+        <span class="q-text">What is JSX in React?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>JSX (JavaScript XML)</strong> is a syntax extension that lets you write HTML-like elements directly inside JavaScript code files. It provides a visual template format and is compiled into standard `React.createElement()` function calls before running in the browser.</p>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s12">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 12</span>
+        <span class="q-text">Explain One-Way Data Binding in React.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>In React, data flows in one direction: **Parent to Child via Props**. A child component cannot modify the props it receives from its parent. If a child needs to send data back up to its parent, it must trigger callback functions passed down as props by the parent.</p>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s13">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 13</span>
+        <span class="q-text">What are React Hooks? State the rules of hooks.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>React Hooks</strong> are special built-in functions starting with <code>use</code> that let functional components manage state and side effects, replacing Class lifecycle methods entirely.</p>
+        <p><strong>Two Core Rules of Hooks:</strong></p>
+        <ol>
+          <li><strong>Only call Hooks at the top level</strong>: Do not call Hooks inside loops, conditions, nested functions, or blocks. This ensures Hooks run in the exact same order on every render.</li>
+          <li><strong>Only call Hooks from React Functions</strong>: Call Hooks only from React functional components or custom hooks, not from ordinary JavaScript utility functions.</li>
+        </ol>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s14">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 14</span>
+        <span class="q-text">Demonstrate the role of useState.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>`useState` lets you add local state to functional components. It returns an array containing the current state value and a setter function to update it.</p>
+        <pre><code><span class="kw">const [count, setCount] = useState(0);</span></code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s15">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 15</span>
+        <span class="q-text">Define Props in React.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Props (Properties)</strong> are read-only arguments passed from parent components to child components to configure them. Props are immutable within the child component, ensuring a predictable one-way data flow.</p>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s16">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Short 16</span>
+        <span class="q-text">Compare localStorage and sessionStorage. Give one use case for each.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <ul>
+          <li><strong>localStorage</strong>: Stores key-value data with no expiration. Survives browser reloads, tab closing, and device reboots. 
+            <br><em>Use Case:</em> Storing site preference configurations like Dark Mode toggles.</li>
+          <li><strong>sessionStorage</strong>: Stores data only for the duration of the current page session. Cleans up automatically as soon as the tab is closed. 
+            <br><em>Use Case:</em> Storing multi-step input form progress tokens during checkout.</li>
+        </ul>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s17">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 17</span>
+        <span class="q-text">What is the role of Babel in modern React compilation?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Babel</strong> is a compiler that translates modern ECMAScript features and syntax extensions (like JSX) into backwards-compatible JavaScript that older browsers can run. It compiles JSX code down to standard nested `React.createElement()` calls.</p>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s18">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 18</span>
+        <span class="q-text">How does React manage frequent changes effectively?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>React manages frequent updates efficiently using **State Batching** (combining multiple state updates inside the same event handler into a single re-render) and the **Fiber engine** (which prioritizes interactive updates like clicks and typing over background calculations).</p>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s19">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 19</span>
+        <span class="q-text">Elaborate the use of dependency array in useEffect.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The **dependency array** controls when `useEffect` runs:</p>
+        <ul>
+          <li>`[]` (empty): Runs only once when the component mounts.</li>
+          <li>`[dep1, dep2]`: Runs on mount, and re-runs whenever any dependency value changes.</li>
+          <li>No array: Re-runs on every single render of the component.</li>
+        </ul>
+      </div>
+    </div>
+<div class="qa-card weight-2m type-theory" id="pdf-s20">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Short 20</span>
+        <span class="q-text">What are Custom Hooks?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Custom Hooks</strong> are JavaScript functions starting with `use` that can call other React hooks. They let you extract and reuse stateful logic (like fetching data or tracking scroll positions) across different components.</p>
+      </div>
+    </div>
+
+    <!-- Section B: 8 Marks Long Answers -->
+    <div class="sub-title">Section B: Long Answer Questions [8 Marks]</div>
+<div class="qa-card weight-8m type-coding" id="pdf-l1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 1</span>
+        <span class="q-text">Discuss event handling using <code>addEventListener()</code> with different event types.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A demonstration of handling multiple event types on a page (click, input, focus, blur, keydown):</p>
+        <pre><code><span class="kw">const input = document.getElementById("username");</span>
+
+<span class="cm">// 'input' event: triggers on every keypress inside text inputs</span>
+input.<span class="fn">addEventListener</span>(<span class="str">"input"</span>, (e) => {
+  console.<span class="fn">log</span>(<span class="str">"Typing:"</span>, e.target.value);
+});
+
+<span class="cm">// 'focus' and 'blur' events: active/inactive input states</span>
+input.<span class="fn">addEventListener</span>(<span class="str">"focus"</span>, () => input.style.borderColor = <span class="str">"blue"</span>);
+input.<span class="fn">addEventListener</span>(<span class="str">"blur"</span>, () => input.style.borderColor = <span class="str">""</span>);
+
+<span class="cm">// 'keydown' event: detects specific keys (e.g. Enter to submit)</span>
+input.<span class="fn">addEventListener</span>(<span class="str">"keydown"</span>, (e) => {
+  <span class="kw">if</span> (e.key === <span class="str">"Enter"</span>) {
+    console.<span class="fn">log</span>(<span class="str">"Submit via Enter key"</span>);
+  }
+});</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-theory" id="pdf-l2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 2</span>
+        <span class="q-text">Explain event propagation, bubbling, capturing, and the role of event listeners.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Event Propagation</strong> describes how browser engines route user-action alerts down and back up the DOM hierarchy.</p>
+        <ul>
+          <li><strong>Capturing Phase</strong>: Starts from top `window` and propagates down to the targeted element. Registered via `addEventListener(event, callback, true)`.</li>
+          <li><strong>Bubbling Phase</strong>: Once target is hit, the event travels back up the hierarchy. This is the default mechanism.</li>
+        </ul>
+        <p><strong>Role of Event Listeners</strong>: Act as registered observers waiting for a specific event type on a targeted node to execute handler logic. They allow a clean separation between HTML views and controller logic, supporting multi-handler attachments to single DOM nodes.</p>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 3</span>
+        <span class="q-text">Create a webpage that removes its own click handler after a single click trigger.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2 id="heading"&gt;Default Title&lt;/h2&gt;
+  &lt;button id="oneTimeBtn"&gt;Click Once&lt;/button&gt;
+
+  &lt;script&gt;
+    const btn = document.getElementById("oneTimeBtn");
+    const heading = document.getElementById("heading");
+
+    function handleClick() {
+      // 1. Perform changes
+      heading.textContent = "Triggered!";
+      heading.style.color = "orange";
+      
+      // 2. Remove handler so it doesn't trigger again
+      btn.removeEventListener("click", handleClick);
+      btn.textContent = "Event Removed";
+    }
+
+    // Attach named handler
+    btn.addEventListener("click", handleClick);
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-theory" id="pdf-l4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 4</span>
+        <span class="q-text">Explain execution context (GEC, FEC) and the Call Stack.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Execution Context</strong> is the environment created by the engine to run JS code. It has two phases: **Memory Creation Phase** (hoisting placeholders) and **Execution Phase** (assigning variables and running code line-by-line).</p>
+        <ul>
+          <li><strong>Global Execution Context (GEC)</strong>: Created automatically when a script starts. Manages global objects (`window`) and the initial `this` binding.</li>
+          <li><strong>Function Execution Context (FEC)</strong>: Created every time a function is called, managing local arguments and closures.</li>
+        </ul>
+        <p><strong>The Call Stack</strong> is a LIFO (Last In, First Out) buffer that tracks contexts in execution. Below is a stack evolution example for `main() -> first() -> second()`:</p>
+        <pre><code>Call Stack Stages:
+[1. Start]   ➔ [2. main()]  ➔ [3. first()] ➔ [4. second()] ➔ [5. Pop out]
+┌─────────┐    ┌─────────┐    ┌─────────┐    ┌───────────┐    ┌─────────┐
+│         │    │         │    │         │    │ second()  │    │         │
+│         │    │         │    │ first() │    │ first()   │    │ first() │
+│         │    │ main()  │    │ main()  │    │ main()    │    │ main()  │
+│   GEC   │    │   GEC   │    │   GEC   │    │   GEC     │    │   GEC   │
+└─────────┘    └─────────┘    └─────────┘    └───────────┘    └─────────┘</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 5</span>
+        <span class="q-text">Explain Promises, states, and consumers (.then, .catch, .finally) with code.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code><span class="cm">// 1. Promise Constructor creation</span>
+<span class="kw">const fetchScore = new Promise((resolve, reject) => {</span>
+  <span class="kw">let</span> success = <span class="kw">true</span>;
+  <span class="fn">setTimeout</span>(() => {
+    <span class="kw">if</span> (success) <span class="fn">resolve</span>(<span class="num">95</span>); <span class="cm">// Transitions state: Pending ➔ Fulfilled</span>
+    <span class="kw">else</span> reject(<span class="str">"Network failed"</span>); <span class="cm">// Transitions state: Pending ➔ Rejected</span>
+  }, <span class="num">1000</span>);
+});
+
+<span class="cm">// 2. Consumer Methods consumption</span>
+fetchScore
+  .<span class="fn">then</span>(data => {
+    console.<span class="fn">log</span>(<span class="str">"Success score:"</span>, data); <span class="cm">// Triggers on resolve</span>
+  })
+  .<span class="fn">catch</span>(err => {
+    console.<span class="fn">error</span>(<span class="str">"Failed:"</span>, err); <span class="cm">// Triggers on reject</span>
+  })
+  .<span class="fn">finally</span>(() => {
+    console.<span class="fn">log</span>(<span class="str">"Settled successfully."</span>); <span class="cm">// Always runs at the end</span>
+  });</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num js">Long 6</span>
+        <span class="q-text">Demonstrate async/await with error handling using try...catch blocks.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code><span class="kw">async function fetchUsers() {</span>
+  <span class="kw">try</span> {
+    <span class="kw">const res = await fetch("https://jsonplaceholder.typicode.com/users");</span>
+    
+    <span class="cm">// Verify response status code</span>
+    <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="obj">Error</span>(<span class="str">"HTTP request failed!"</span>);
+    
+    <span class="kw">const users = await res.json();</span>
+    console.<span class="fn">log</span>(<span class="str">"Users Loaded:"</span>, users);
+  } <span class="kw">catch</span> (err) {
+    <span class="cm">// Handle any errors gracefully</span>
+    console.<span class="fn">error</span>(<span class="str">"Fetch Error Trace:"</span>, err.message);
+  }
+}</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l7">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 7</span>
+        <span class="q-text">Write React code to fetch data from API (https://jsonplaceholder.typicode.com/users) and render username and email lists.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ High-Yield Practical</span>
+        <pre><code>import React, { useState, useEffect } from 'react';
+
+function UserList() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data => {
+        setUsers(data);
+        setLoading(false);
+      })
+      .catch(err => console.error("Error:", err));
+  }, []); // Run on mount only
+
+  if (loading) return &lt;p&gt;Loading users...&lt;/p&gt;;
+
+  return (
+    &lt;ul&gt;
+      {users.map(user => (
+        &lt;li key={user.id}&gt;
+          &lt;strong&gt;{user.username}&lt;/strong&gt; ({user.email})
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+export default UserList;</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-theory" id="pdf-l8">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 8</span>
+        <span class="q-text">Explain class component lifecycle methods and their equivalents in <code>useEffect</code>.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>Class components rely on specific lifecycle methods to run operations at different points in time. Functional components use `useEffect` to replicate these states:</p>
+        <div class="compare-table-wrapper">
+          <table class="compare-table">
+            <tr><th>Class Component Method</th><th>Functional Equivalent (`useEffect`)</th></tr>
+            <tr><td>`componentDidMount()` (runs once after mount)</td><td>`useEffect(() => {}, [])` (empty dependency array)</td></tr>
+            <tr><td>`componentDidUpdate()` (runs after updates)</td><td>`useEffect(() => {}, [dep])` (dependency array with value)</td></tr>
+            <tr><td>`componentWillUnmount()` (runs before unmount)</td><td>`useEffect(() => { return () => cleanup() }, [])` (return callback)</td></tr>
+          </table>
+        </div>
+      </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l9">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 9</span>
+        <span class="q-text">Create a React component with 2 buttons: Button 1 increments and shows a popup alert, Button 2 increments silently.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag core">Clever Hook Architecture</span>
+        <pre><code>import React, { useState, useEffect, useRef } from 'react';
+
+function CustomAlertCounter() {
+  const [count, setCount] = useState(0);
+  const isAlertTriggered = useRef(false); // Track if update should alert
+
+  useEffect(() => {
+    if (count > 0 && isAlertTriggered.current) {
+      alert(`Counter updated to: ${count}`);
+      isAlertTriggered.current = false; // Reset trigger flag
+    }
+  }, [count]); // Trigger on count changes
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Counter: {count}&lt;/h3&gt;
+      &lt;button onClick={() => {
+        isAlertTriggered.current = true; // Set trigger flag
+        setCount(prev => prev + 1);
+      }}&gt;
+        Button 1 (Increment &amp; Alert)
+      &lt;/button&gt;
+      &lt;button onClick={() => setCount(prev => prev + 1)}&gt;
+        Button 2 (Silent Increment)
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+export default CustomAlertCounter;</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l10">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 10</span>
+        <span class="q-text">Design a User Information Form with Name, Age, Gender select, and Language checkboxes. Display data on screen on submit.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ Comprehensive Form Handling</span>
+        <pre><code>import React, { useState } from 'react';
+
+function UserForm() {
+  const [form, setForm] = useState({ name: '', age: '', gender: 'Male', languages: [] });
+  const [submittedData, setSubmittedData] = useState(null);
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      const updatedLangs = checked 
+        ? [...form.languages, value] 
+        : form.languages.filter(l => l !== value);
+      setForm({ ...form, languages: updatedLangs });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;form onSubmit={(e) => { e.preventDefault(); setSubmittedData(form); }}&gt;
+        &lt;input name="name" placeholder="Name" onChange={handleChange} required /&gt;
+        &lt;input name="age" type="number" placeholder="Age" onChange={handleChange} required /&gt;
+        &lt;select name="gender" onChange={handleChange}&gt;
+          &lt;option value="Male"&gt;Male&lt;/option&gt;
+          &lt;option value="Female"&gt;Female&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox" name="languages" value="JS" onChange={handleChange} /&gt; JS
+        &lt;/label&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox" name="languages" value="HTML" onChange={handleChange} /&gt; HTML
+        &lt;/label&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+      &lt;/form&gt;
+
+      {submittedData && (
+        &lt;div&gt;
+          &lt;h3&gt;Submitted Data:&lt;/h3&gt;
+          &lt;p&gt;Name: {submittedData.name}&lt;/p&gt;
+          &lt;p&gt;Age: {submittedData.age}&lt;/p&gt;
+          &lt;p&gt;Gender: {submittedData.gender}&lt;/p&gt;
+          &lt;p&gt;Languages: {submittedData.languages.join(', ')}&lt;/p&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l11">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 11</span>
+        <span class="q-text">Create a simple Counter Application with useState: Increment, Decrement, and RESET.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>import React, { useState } from 'react';
+
+function CounterApp() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div style={{ textAlign: 'center', padding: '20px' }}&gt;
+      &lt;h1&gt;Count is {count}&lt;/h1&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;+&lt;/button&gt;
+      &lt;button onClick={() => setCount(count - 1)}&gt;-&lt;/button&gt;
+      &lt;button onClick={() => setCount(0)}&gt;RESET&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+export default CounterApp;</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l12">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 12</span>
+        <span class="q-text">Compare Context API and prop drilling. Write a Context Provider and Consumer component.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <pre><code>import React, { createContext, useContext, useState } from 'react';
+
+// 1. Create Context
+const ThemeContext = createContext();
+
+// 2. Provider Component
+export function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('dark');
+  return (
+    &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;
+      {children}
+    &lt;/ThemeContext.Provider>
+  );
+}
+
+// 3. Nested Consumer Component
+function NestedButton() {
+  const { theme, setTheme } = useContext(ThemeContext);
+  return (
+    &lt;button onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}&gt;
+      Current: {theme.toUpperCase()}
+    &lt;/button&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-theory" id="pdf-l13">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 13</span>
+        <span class="q-text">Elaborate on prop drilling and its problems. How does Context API solve it?</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Prop Drilling</strong> occurs when you need to pass data from a parent component down to a deeply nested child component, forcing intermediate components that don't need the data to receive and pass it along anyway.</p>
+        <p><strong>Problems:</strong> Cluttered code, complex debugging, and tight coupling between components in the tree.</p>
+        <p><strong>Context API Solution:</strong> It creates a **Provider** component that wraps the parent component, allowing any child component in the tree to access the shared data directly using `useContext`, without intermediate components acting as brokers.</p>
+      </div>
+    </div>
+<div class="qa-card weight-8m type-coding" id="pdf-l14">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num react">Long 14</span>
+        <span class="q-text">Explain React Router: Routes, Link / NavLink, and useNavigate with code.</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>React Router</strong> is the industry standard for routing in React Single Page Applications:</p>
+        <pre><code>import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+
+function Home() {
+  const navigate = useNavigate(); // Hook for programmatic navigation
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Home Page&lt;/h1&gt;
+      &lt;button onClick={() => navigate('/dashboard')}&gt;
+        Go to Dashboard Programmatically
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+function NavigationPanel() {
+  return (
+    &lt;div&gt;
+      &lt;nav&gt;
+        &lt;Link to="/"&gt;Home&lt;/Link&gt; | 
+        &lt;Link to="/dashboard"&gt;Dashboard&lt;/Link&gt;
+      &lt;/nav&gt;
+
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/dashboard" element={&lt;h2&gt;Dashboard&lt;/h2&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- Section C: Outcome-Based Question -->
+    <div class="sub-title">Section C: Outcome Based Tracing Question [8 Marks]</div>
+<div class="qa-card weight-8m type-coding" id="pdf-out">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num out">Outcome</span>
+        <span class="q-text">Predict Output: Complete Async/Await execution flow tracing (Paper Q.16).</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ High-Priority Paper Question</span>
+        <pre><code>console.log("Start");
+
+async function test() {
+  console.log("Inside function");
+  await Promise.resolve();
+  console.log("After await");
+}
+
+test();
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+console.log("End");</code></pre>
+        <div class="output-box">
+          <div class="label">Output</div>
+          <code>Start<br>Inside function<br>End<br>After await<br>Timeout</code>
+        </div>
+        <p><strong>Step-by-Step Execution Tracing:</strong></p>
+        <ol>
+          <li>`console.log("Start")` is synchronous. **Prints "Start"**.</li>
+          <li>`test()` is called:
+            <br>- `console.log("Inside function")` runs synchronously. **Prints "Inside function"**.
+            <br>- The code reaches `await Promise.resolve()`. The `await` keyword pauses the async function execution, scheduling the remainder of `test()` as a microtask in the **Microtask Queue**.</li>
+          <li>`setTimeout` schedules its callback in the **Macrotask Queue** with a 0ms delay.</li>
+          <li>`console.log("End")` runs synchronously. **Prints "End"**.</li>
+          <li>The call stack is now empty. The Event Loop prioritizes the **Microtask Queue** and resumes `test()`. **Prints "After await"**.</li>
+          <li>With microtasks cleared, the Event Loop processes the next **Macrotask** (`setTimeout`). **Prints "Timeout"**.</li>
+        </ol>
+      </div>
+    </div>
+  </div><!-- /#section-pdf -->
+
+
+
+  <!-- ════════════════════════════════════════════
        SECTION 1: JAVASCRIPT & DOM
   ════════════════════════════════════════════ -->
-  <div id="section-js" class="section active">
+  <div id="section-js" class="section">
     <div class="section-header">
       <div class="section-icon js">JS</div>
       <div>
@@ -1762,7 +2684,7 @@ function UserGreeting({ username, isLoggedIn }) {
   return (
     &lt;div&gt;
       {isLoggedIn ? (
-        &lt;h2&gt;Welcome back, {username}!&lt;/h2&gt;
+        &lt;h2&gt;Welcome back, {username}!&lt;/h2>
       ) : (
         &lt;h2&gt;Please log in to continue.&lt;/h2&gt;
       )}
@@ -2338,6 +3260,18 @@ console.log("End");</code></pre>
             <li><strong>Core React Areas</strong>: counters, component lifecycle replaced by `useEffect`, targeted custom alerts (2 buttons), props, Context API, dynamic Router.</li>
             <li><strong>Priority Index</strong>: Review short 2-mark definitions and focus heavy practice on standard 8-mark coding blocks.</li>
           </ul>
+          <div class="syllabus-links">
+            <div class="s-link-header">🔗 Direct Practice Questions:</div>
+            <div class="s-link-group">
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q1')">var/let/const</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q13')">addEventListener</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q17')">Promises</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q20')">Async/Await</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l2')">useState Counter</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l6')">Class vs useEffect</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l14')">Context API</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2352,6 +3286,13 @@ console.log("End");</code></pre>
             <li><strong>Debouncing & Pagination</strong>: Highlighted as highly practical, <span class="highlight-text">Ready but not V. Imp</span>. Understand conceptual use in minimizing server fetch requests and paginate heavy lists.</li>
             <li><strong>Babel & Webpack</strong>: Very high chance for <span class="highlight-text">2 Marks Question</span>. Study Babel's JSX compilation role and Webpack's asset bundle generation role.</li>
           </ul>
+          <div class="syllabus-links">
+            <div class="s-link-header">🔗 Direct Practice Questions:</div>
+            <div class="s-link-group">
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l13')">Debouncing & Pagination</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q6')">Babel Role</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2370,6 +3311,19 @@ console.log("End");</code></pre>
             <li><strong>Async/Await error handling</strong>: Q15 & Q16 combined. Understand how await pauses function contexts.</li>
             <li><strong>Native Fetch API</strong>: <span class="highlight-text">8 Marks Practical Question</span>. Study GET and POST payloads using standard fetch options.</li>
           </ul>
+          <div class="syllabus-links">
+            <div class="s-link-header">🔗 Direct Practice Questions:</div>
+            <div class="s-link-group">
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q5')">Callbacks</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q18')">setTimeout/setInterval</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l10')">Timer Coding</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l11')">Nested Callbacks</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l12')">Promise 2s delay</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l14')">Async/Await Fetch</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l1')">React Fetch User</a>
+              <a class="s-link out-link" onclick="jumpToCard('output', 'out-q6')">Async Trace Scenario</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2389,6 +3343,20 @@ console.log("End");</code></pre>
             <li><strong>Lifecycle replaced by useEffect</strong>: <span class="highlight-text">8 Marks</span>. Must show how mount, update, and unmount translate directly to useEffect arrays.</li>
             <li><strong>CSS & Styling</strong>: Low probability, but study basic CSS selectors and hover classes.</li>
           </ul>
+          <div class="syllabus-links">
+            <div class="s-link-header">🔗 Direct Practice Questions:</div>
+            <div class="s-link-group">
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q2')">Virtual DOM</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q4')">One-Way Binding</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q5')">JSX Definition</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q7')">Props</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q8')">Reconciliation</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l3')">Ternary Render</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l5')">Counter Props</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l6')">Lifecycles</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l7')">Popup 2 Buttons</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2408,6 +3376,21 @@ console.log("End");</code></pre>
             <li><strong>Prevent Default</strong>: Extremely critical concept. Must show in form submit blocks.</li>
             <li><strong>Execution Context</strong>: <span class="highlight-text">10 Marks V. Imp!</span> Detail GEC, FEC, and Call Stack with clean diagrams.</li>
           </ul>
+          <div class="syllabus-links">
+            <div class="s-link-header">🔗 Direct Practice Questions:</div>
+            <div class="s-link-group">
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q9')">DOM vs HTML</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q11')">getElementById</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q10')">classList Methods</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-q13')">Propagation</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l1')">BG Style Changer</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l2')">Form Console Object</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l3')">DOM Selectors Diff</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l5')">Prop Bubbling Theory</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l6')">One-time Handler</a>
+              <a class="s-link js-link" onclick="jumpToCard('js', 'js-l8')">GEC/FEC Call Stack</a>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2426,6 +3409,19 @@ console.log("End");</code></pre>
             <li><strong>Routing (L32–L34)</strong>: <span class="highlight-text">2 Marks Question</span>. Basic route definitions, pages setup, and links.</li>
             <li><strong>Prop Drilling & Context API (L35–L36)</strong>: <span class="highlight-text">8 Marks V. Imp Mix!</span> Understand the problem of drilling and create a global Context provider and hook consumer in the answer.</li>
           </ul>
+          <div class="syllabus-links">
+            <div class="s-link-header">🔗 Direct Practice Questions:</div>
+            <div class="s-link-group">
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q10')">useState basic</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-q11')">Side Effects</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l2')">useState Counter App</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l8')">User Form</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l9')">Loading Fetch</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l10')">Router & navigate</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l11')">Drilling Problems</a>
+              <a class="s-link react-link" onclick="jumpToCard('react', 'react-l14')">Context API Provider</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2533,8 +3529,8 @@ console.log("End");</code></pre>
           <li>**Bubbling Phase**: The event bubbles back up from the target node towards the root `window`. This is the default propagation behavior.</li>
         </ol>
         <pre><code>Propagation Flow:
-GEC (window) ➔ <html> ➔ <body> ➔ <div> (Target)   [Capture Phase (Trickling)]
-GEC (window) ⇠ <html> ⇠ <body> ⇠ <div> (Target)   [Bubbling Phase (Default)]</code></pre>
+GEC (window) ➔ &lt;html&gt; ➔ &lt;body&gt; ➔ &lt;div&gt; (Target)   [Capture Phase (Trickling)]
+GEC (window) ⇠ &lt;html&gt; ⇠ &lt;body&gt; ⇠ &lt;div&gt; (Target)   [Bubbling Phase (Default)]</code></pre>
         <ul>
           <li><strong>`e.stopPropagation()`</strong>: Immediately stops the event from propagating further up or down the DOM tree.</li>
           <li><strong>`e.preventDefault()`</strong>: Cancels the browser's default behavior for that event (such as reloading the page on form submission or following a link URL).</li>
@@ -2800,6 +3796,288 @@ function ProfileCard() {
 
   </div><!-- /#section-gold -->
 
+
+  <!-- ════════════════════════════════════════════
+       SECTION 6: VISUAL SCANS BOARD
+  ════════════════════════════════════════════ -->
+  <div id="section-scans" class="section">
+    <div class="section-header">
+      <div class="section-icon syllabus" style="background: rgba(56,189,248,0.15); color: var(--syllabus);">📸</div>
+      <div>
+        <h2>Handwritten Lecture Notes Board</h2>
+        <p>Study the original handwritten lecture checklists and annotated key concepts side-by-side with typed summaries and direct jumps to practice cards.</p>
+      </div>
+    </div>
+
+    <!-- Scan 1: Debouncing & Compilation (WhatsApp Image 2026-05-27 at 21.17.37.jpeg) -->
+    <div class="scan-card">
+      <div class="scan-img-box">
+        <img class="scan-img" src="images/WhatsApp Image 2026-05-27 at 21.17.37.jpeg" alt="Handwritten Scan Page 1">
+      </div>
+      <div class="scan-info-box">
+        <div>
+          <div class="scan-title">
+            <span>Scan Page 1: Debouncing & Build Assets</span>
+            <span class="badge">Webpack & Babel</span>
+          </div>
+          <p class="scan-desc">Notes focusing on core compilation tools and optimizations (debouncing and pagination).</p>
+          <div class="scan-list-title">📌 Key Hand-Notes to Memorize:</div>
+          <ul class="scan-list">
+            <li><strong>Debouncing & Pagination</strong>: Annotated as highly practical for server fetch optimizations.</li>
+            <li><strong>Babel & Webpack</strong>: Very high chance for 2-mark definitions. Babel transpiles JSX to React.createElement(); Webpack bundles static code assets.</li>
+          </ul>
+        </div>
+        <div class="syllabus-links" style="margin-top: 0;">
+          <div class="s-link-header">🚀 Instant Practice Shortcuts:</div>
+          <div class="s-link-group">
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s17')">Babel Role</a>
+            <a class="s-link react-link" onclick="jumpToCard('react', 'react-l13')">Debouncing & Pagination</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scan 2: Async Flow & Fetch API (WhatsApp Image 2026-05-27 at 21.17.37 (1).jpeg) -->
+    <div class="scan-card">
+      <div class="scan-img-box">
+        <img class="scan-img" src="images/WhatsApp Image 2026-05-27 at 21.17.37 (1).jpeg" alt="Handwritten Scan Page 2">
+      </div>
+      <div class="scan-info-box">
+        <div>
+          <div class="scan-title">
+            <span>Scan Page 2: Unit 2 — Asynchronous Flow & Fetch API</span>
+            <span class="badge">Unit-2</span>
+          </div>
+          <p class="scan-desc">Unit 2 handwritten guide highlighting asynchronous JavaScript, setTimeout/setInterval, Event Loop queue execution, and native Fetch API HTTP methods.</p>
+          <div class="scan-list-title">📌 Key Hand-Notes to Memorize:</div>
+          <ul class="scan-list">
+            <li><strong>Event Loop Tracing</strong>: High-probability 8-mark tracing scenario (Q16).</li>
+            <li><strong>Timer Cancel Coding</strong>: Standard question for setTimeout, setInterval, clearTimeout, clearInterval.</li>
+            <li><strong>Native Fetch API</strong>: 8-mark question demonstrating GET and POST methods with try...catch.</li>
+          </ul>
+        </div>
+        <div class="syllabus-links" style="margin-top: 0;">
+          <div class="s-link-header">🚀 Instant Practice Shortcuts:</div>
+          <div class="s-link-group">
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s6')">Microtask vs Macrotask</a>
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s7')">setTimeout/setInterval</a>
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l5')">Promise states & consumers</a>
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l6')">Async/Await Fetch try-catch</a>
+            <a class="s-link out-link" onclick="jumpToCard('pdf', 'pdf-out')">Async Tracing Q.16</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scan 3: React Basics & Lifecycles (WhatsApp Image 2026-05-27 at 21.17.37 (2).jpeg) -->
+    <div class="scan-card">
+      <div class="scan-img-box">
+        <img class="scan-img" src="images/WhatsApp Image 2026-05-27 at 21.17.37 (2).jpeg" alt="Handwritten Scan Page 3">
+      </div>
+      <div class="scan-info-box">
+        <div>
+          <div class="scan-title">
+            <span>Scan Page 3: React Basics & Lifecycle Conversion</span>
+            <span class="badge">React Hooks</span>
+          </div>
+          <p class="scan-desc">React handwritten map highlighting the Virtual DOM, one-way data binding, JSX structure, and functional hooks operations.</p>
+          <div class="scan-list-title">📌 Key Hand-Notes to Memorize:</div>
+          <ul class="scan-list">
+            <li><strong>Props & Ternary Render</strong>: 8-mark functional component demonstrating state, props, and conditional ternary.</li>
+            <li><strong>Virtual DOM vs Real DOM</strong>: Reconciliation, diffing, reconciliation details.</li>
+            <li><strong>Lifecycle replaced by useEffect</strong>: Mount, update, unmount mapping.</li>
+          </ul>
+        </div>
+        <div class="syllabus-links" style="margin-top: 0;">
+          <div class="s-link-header">🚀 Instant Practice Shortcuts:</div>
+          <div class="s-link-group">
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-s11')">JSX Definition</a>
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-s12')">One-way Binding</a>
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-s18')">Virtual DOM</a>
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l8')">Class Lifecycles useEffect</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scan 4: DOM & Scoping (WhatsApp Image 2026-05-27 at 21.17.38.jpeg) -->
+    <div class="scan-card">
+      <div class="scan-img-box">
+        <img class="scan-img" src="images/WhatsApp Image 2026-05-27 at 21.17.38.jpeg" alt="Handwritten Scan Page 4">
+      </div>
+      <div class="scan-info-box">
+        <div>
+          <div class="scan-title">
+            <span>Scan Page 4: Unit 1 — DOM, Event Handling & Scoping</span>
+            <span class="badge">Unit-1</span>
+          </div>
+          <p class="scan-desc">Unit 1 handwritten guide focusing on the DOM, DOM tree structures, classList manipulations, propagation mechanics, preventDefault, and Execution Context scoping.</p>
+          <div class="scan-list-title">📌 Key Hand-Notes to Memorize:</div>
+          <ul class="scan-list">
+            <li><strong>classList Methods (add/remove/toggle)</strong>: Highly predicted 2-mark question.</li>
+            <li><strong>Event Handling types</strong>: click, change, submit, mouseover.</li>
+            <li><strong>Bubbling & Capturing</strong>: Event propagation flow diagram and stopPropagation().</li>
+            <li><strong>Execution Context</strong>: GEC, FEC, Call Stack visual LIFO stack diagram.</li>
+          </ul>
+        </div>
+        <div class="syllabus-links" style="margin-top: 0;">
+          <div class="s-link-header">🚀 Instant Practice Shortcuts:</div>
+          <div class="s-link-group">
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s2')">DOM vs HTML</a>
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s5')">classList methods</a>
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l2')">Event Propagation</a>
+            <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l4')">Execution Context GEC/FEC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scan 5: React State & Context (WhatsApp Image 2026-05-27 at 21.17.38 (1).jpeg) -->
+    <div class="scan-card">
+      <div class="scan-img-box">
+        <img class="scan-img" src="images/WhatsApp Image 2026-05-27 at 21.17.38 (1).jpeg" alt="Handwritten Scan Page 5">
+      </div>
+      <div class="scan-info-box">
+        <div>
+          <div class="scan-title">
+            <span>Scan Page 5: React State, Fetch & Global Context</span>
+            <span class="badge">React State</span>
+          </div>
+          <p class="scan-desc">React guide focusing on useState counters, side effect hooks, forms, page Routing, prop drilling, and Context API global states.</p>
+          <div class="scan-list-title">📌 Key Hand-Notes to Memorize:</div>
+          <ul class="scan-list">
+            <li><strong>Counter Application</strong>: Counter functional component with Reset button.</li>
+            <li><strong>JSON API calls</strong>: Fetch API rendered in functional list with "Loading..." state.</li>
+            <li><strong>Routing (Routes, Link, useNavigate)</strong>: Basic routing setup.</li>
+            <li><strong>Prop Drilling & Context API</strong>: Prop drilling problems and Context Provider / Consumer solution.</li>
+          </ul>
+        </div>
+        <div class="syllabus-links" style="margin-top: 0;">
+          <div class="s-link-header">🚀 Instant Practice Shortcuts:</div>
+          <div class="s-link-group">
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l7')">React Fetch User</a>
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l11')">useState Counter app</a>
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l12')">Context nested data</a>
+            <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l14')">React Router navigation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /#section-scans -->
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 7: SYLLABUS SHEET PORTAL (BOTTOM PART)
+  ════════════════════════════════════════════ -->
+  <div id="section-syllabus-sheet" class="section">
+    <div class="section-header">
+      <div class="section-icon gold" style="background: rgba(251,191,36,0.15); color: var(--gold);">📋</div>
+      <div>
+        <h2>Syllabus Sheet Exam Prep Portal</h2>
+        <p>Review the master handwritten syllabus checklist and instantly jump to matching exam questions from the Question Bank.</p>
+      </div>
+    </div>
+
+    <!-- Master Syllabus Sheet Visual Scan -->
+    <div class="scan-card" style="border-color: rgba(251, 191, 36, 0.3);">
+      <div class="scan-img-box" style="background: #0d0600; width: 45%;">
+        <img class="scan-img" src="images/syllabus-sheet/WhatsApp Image 2026-05-10 at 19.51.51.jpeg" alt="Master Syllabus Sheet Overview" style="max-height: 580px;">
+      </div>
+      <div class="scan-info-box" style="width: 55%; padding: 1.8rem;">
+        <div>
+          <div class="scan-title" style="color: var(--gold);">
+            <span>Master Checklist: Lecture topics mapping</span>
+            <span class="badge" style="background: rgba(251,191,36,0.15); color: var(--gold);">Syllabus Overview</span>
+          </div>
+          <p class="scan-desc">Your original master checklist mapping the high-importance fields of JavaScript async operations, DOM selectors, React lifecycle conversion, counters, custom popups, Context, and Routing.</p>
+          
+          <div style="margin-top: 1.5rem;">
+            <div class="scan-list-title" style="color: var(--text-muted); font-size: 0.78rem;">🎯 Mapped Syllabus Topics & Interactive Questions:</div>
+            
+            <div class="compare-table-wrapper" style="margin-top: 0.8rem; background: #070e1b;">
+              <table class="compare-table" style="font-size: 0.8rem;">
+                <tr>
+                  <th style="width: 40%;">Syllabus Topic Checklist</th>
+                  <th style="width: 60%;">Mapped Core Questions (Click to Jump)</th>
+                </tr>
+                <tr>
+                  <td><strong>Core JS & DOM Selection</strong><br>classList methods, selectors, styling</td>
+                  <td>
+                    <div class="s-link-group">
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s1')">Short 1: DOM Definition</a>
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s2')">Short 2: HTML vs DOM</a>
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s5')">Short 5: classList methods</a>
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l3')">Long 3: Click once & remove</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Event Flow & Propagation</strong><br>Bubbling, capturing, handlers</td>
+                  <td>
+                    <div class="s-link-group">
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l1')">Long 1: Event handling types</a>
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l2')">Long 2: Bubbling vs Capturing</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Asynchronous Flow</strong><br>Promises, Callbacks, Event Loop</td>
+                  <td>
+                    <div class="s-link-group">
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s6')">Short 6: Micro/Macrotask</a>
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s8')">Short 8: Callback hell</a>
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-s10')">Short 10: Event Loop execution</a>
+                      <a class="s-link out-link" onclick="jumpToCard('pdf', 'pdf-out')">Outcome: Async Flow Trace</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Execution Context</strong><br>GEC, FEC, Call Stack lifecycle</td>
+                  <td>
+                    <div class="s-link-group">
+                      <a class="s-link js-link" onclick="jumpToCard('pdf', 'pdf-l4')">Long 4: Call Stack & Diagrams</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>React Basics & Lifecycle</strong><br>useState, useEffect, Virtual DOM</td>
+                  <td>
+                    <div class="s-link-group">
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-s14')">Short 14: useState role</a>
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-s18')">Short 18: Virtual DOM</a>
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-s19')">Short 19: useEffect Array</a>
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l8')">Long 8: Lifecycle useEffect</a>
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l9')">Long 9: 2 Buttons Alert</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Context API & Global States</strong><br>Prop drilling disadvantages</td>
+                  <td>
+                    <div class="s-link-group">
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-s20')">Short 20: Drilling problem</a>
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l12')">Long 12: Context Nested data</a>
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l13')">Long 13: Drill vs Context</a>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Forms & Routing</strong><br>Controlled inputs, programmatic Routes</td>
+                  <td>
+                    <div class="s-link-group">
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l10')">Long 10: Interactive User Form</a>
+                      <a class="s-link react-link" onclick="jumpToCard('pdf', 'pdf-l14')">Long 14: Router navigation</a>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /#section-syllabus-sheet -->
+
 </div><!-- /.main-wrap -->
 
 <!-- ─── BACK TO PORTAL ─── -->
@@ -2824,9 +4102,9 @@ function ProfileCard() {
     // Activate button
     btn.classList.add('active');
     
-    // Hide search inputs if syllabus tab is active (search isn't needed there)
+    // Hide search inputs if syllabus or scans tab is active (search isn't needed there)
     const searchContainer = document.querySelector('.search-container');
-    if (name === 'syllabus') {
+    if (name === 'syllabus' || name === 'scans' || name === 'syllabus-sheet') {
       searchContainer.style.display = 'none';
     } else {
       searchContainer.style.display = 'flex';
@@ -2835,6 +4113,32 @@ function ProfileCard() {
     
     // Scroll smoothly to top of content
     window.scrollTo({ top: document.querySelector('.tab-nav-wrapper').offsetTop - 10, behavior: 'smooth' });
+  }
+
+  // Cross-reference scroll-to-card navigation
+  function jumpToCard(sectionName, cardId) {
+    // 1. Show the correct section tab
+    const tabBtn = document.getElementById('tab-' + sectionName);
+    showTab(sectionName, tabBtn);
+
+    // 2. Find and expand the card
+    setTimeout(() => {
+      const card = document.getElementById(cardId);
+      if (card) {
+        if (!card.classList.contains('open')) {
+          card.classList.add('open');
+        }
+        // 3. Scroll card into view
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // 4. Flash card border to highlight it
+        card.style.borderColor = 'var(--gold)';
+        card.style.boxShadow = '0 0 25px rgba(251, 191, 36, 0.4)';
+        setTimeout(() => {
+          card.style.borderColor = '';
+          card.style.boxShadow = '';
+        }, 2200);
+      }
+    }, 150); // Small timeout to allow tab switching to render
   }
 
   function filterWeight(weight, btn) {
@@ -2854,6 +4158,7 @@ function ProfileCard() {
   function filterCards() {
     const query = document.getElementById('search-input').value.toLowerCase();
     const activeSection = document.querySelector('.section.active');
+    if (!activeSection) return;
     const cards = activeSection.querySelectorAll('.qa-card');
 
     const activeWeightBtn = document.querySelector('.weight-btn.active');
@@ -2888,14 +4193,17 @@ function ProfileCard() {
     });
   }
 
-  // Keyboard shortcut: J = JS, R = React, O = Output, S = Syllabus, G = Gold/Top10
+  // Keyboard shortcut: J = JS, R = React, O = Output, S = Syllabus, G = Gold/Top10, V = Visual scans
   document.addEventListener('keydown', (e) => {
     if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if(e.key === 'b' || e.key === 'B') showTab('pdf', document.getElementById('tab-pdf'));
     if(e.key === 'j' || e.key === 'J') showTab('js', document.getElementById('tab-js'));
     if(e.key === 'r' || e.key === 'R') showTab('react', document.getElementById('tab-react'));
     if(e.key === 'o' || e.key === 'O') showTab('output', document.getElementById('tab-output'));
     if(e.key === 's' || e.key === 'S') showTab('syllabus', document.getElementById('tab-syllabus'));
+    if(e.key === 'v' || e.key === 'V') showTab('scans', document.getElementById('tab-scans'));
     if(e.key === 'g' || e.key === 'G') showTab('gold', document.getElementById('tab-gold'));
+    if(e.key === 'p' || e.key === 'P') showTab('syllabus-sheet', document.getElementById('tab-syllabus-sheet'));
   });
 
   // Dynamic float Copy Buttons on all code elements
