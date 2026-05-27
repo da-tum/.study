@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Written Exam Prep | Web Dev II</title>
-  <meta name="description" content="Ultimate written exam preparation guide for Web Dev II — complete coverage of JavaScript core, DOM, React architecture, output Prediction, and extensive 2-mark & 8-mark questions.">
+  <meta name="description" content="Ultimate written exam preparation guide for Web Dev II — comprehensive syllabus guide, 2-mark & 8-mark questions, Event Loop outputs, and highly predicted master decks.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -25,6 +25,9 @@
       --react-dark: #0ea5e9;
       --output: #a78bfa;
       --output-dark: #7c3aed;
+      --syllabus: #38bdf8;
+      --gold: #fbbf24;
+      --gold-dark: #d97706;
       --tip: #34d399;
       --tip-dark: #059669;
       --warn: #fb923c;
@@ -64,9 +67,9 @@
     }
     .hero-badge {
       display: inline-block;
-      background: rgba(167,139,250,0.1);
-      border: 1px solid rgba(167,139,250,0.3);
-      color: var(--output);
+      background: rgba(251,191,36,0.1);
+      border: 1px solid rgba(251,191,36,0.3);
+      color: var(--gold);
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -78,7 +81,7 @@
     .hero h1 {
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
-      background: linear-gradient(135deg, #e2eaf6 30%, #61dafb 100%);
+      background: linear-gradient(135deg, #e2eaf6 30%, #fbbf24 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.03em;
@@ -123,19 +126,19 @@
       display: flex;
       min-width: max-content;
       justify-content: center;
-      gap: 0.3rem;
+      gap: 0.2rem;
       padding: 0.8rem 1rem 0;
       margin: 0 auto;
-      max-width: 1100px;
+      max-width: 1200px;
     }
     .tab-btn {
       background: transparent;
       border: 1px solid transparent;
       color: var(--text-muted);
       font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 0.9rem;
       border-radius: var(--radius-sm) var(--radius-sm) 0 0;
       cursor: pointer;
       transition: var(--transition);
@@ -158,6 +161,16 @@
       color: var(--output);
       border-bottom: 2px solid var(--output);
       background: rgba(167,139,250,0.04);
+    }
+    .tab-btn.syllabus.active {
+      color: var(--syllabus);
+      border-bottom: 2px solid var(--syllabus);
+      background: rgba(56,189,248,0.04);
+    }
+    .tab-btn.gold.active {
+      color: var(--gold);
+      border-bottom: 2px solid var(--gold);
+      background: rgba(251,191,36,0.04);
     }
 
     /* ─── SEARCH & FILTER BAR ─── */
@@ -270,6 +283,8 @@
     .section-icon.js { background: rgba(247,223,30,0.15); color: var(--js); }
     .section-icon.react { background: rgba(97,218,251,0.15); color: var(--react); }
     .section-icon.out { background: rgba(167,139,250,0.15); color: var(--output); }
+    .section-icon.syllabus { background: rgba(56,189,248,0.15); color: var(--syllabus); }
+    .section-icon.gold { background: rgba(251,191,36,0.15); color: var(--gold); }
     .section-header h2 { font-size: 1.3rem; font-weight: 700; color: var(--text); }
     .section-header p { color: var(--text-muted); font-size: 0.85rem; }
 
@@ -298,6 +313,13 @@
       border-color: var(--border-glow);
       box-shadow: 0 4px 15px rgba(0,0,0,0.25);
     }
+    .qa-card.gold-card {
+      border-color: rgba(251, 191, 36, 0.3);
+    }
+    .qa-card.gold-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(251, 191, 36, 0.12);
+    }
 
     .qa-question {
       display: flex;
@@ -321,6 +343,8 @@
     .q-num.js { background: rgba(247,223,30,0.15); color: var(--js); }
     .q-num.react { background: rgba(97,218,251,0.15); color: var(--react); }
     .q-num.out { background: rgba(167,139,250,0.15); color: var(--output); }
+    .q-num.syllabus { background: rgba(56,189,248,0.15); color: var(--syllabus); }
+    .q-num.gold { background: rgba(251,191,36,0.15); color: var(--gold); }
 
     .q-text {
       font-weight: 600;
@@ -356,6 +380,81 @@
       line-height: 1.6;
     }
     .qa-answer strong { color: var(--text); }
+
+    /* ─── NOTEBOOK SYLLABUS STYLING ─── */
+    .syllabus-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    @media (min-width: 768px) {
+      .syllabus-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .notebook-page {
+      background: #0b1524;
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--syllabus);
+      border-radius: var(--radius-sm);
+      padding: 1.2rem;
+      position: relative;
+    }
+    .notebook-page::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 10px;
+      width: 1px; height: 100%;
+      background: rgba(56, 189, 248, 0.08);
+    }
+    .notebook-header {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--syllabus);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .notebook-header .page-tag {
+      font-size: 0.65rem;
+      background: rgba(56,189,248,0.12);
+      padding: 0.1rem 0.5rem;
+      border-radius: 100px;
+    }
+    .notebook-body ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .notebook-body li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      border-bottom: 1px solid rgba(255,255,255,0.02);
+      padding-bottom: 0.4rem;
+    }
+    .notebook-body li::before {
+      content: '📌';
+      position: absolute;
+      left: 0; top: 1px;
+      font-size: 0.8rem;
+    }
+    .notebook-body li strong {
+      color: var(--text);
+    }
+    .notebook-body .highlight-text {
+      background: rgba(251,191,36,0.1);
+      color: var(--gold);
+      padding: 0.05rem 0.25rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
 
     /* ─── COMPARISON TABLE ─── */
     .compare-table-wrapper {
@@ -456,6 +555,7 @@
     .callout.warn { border-color: var(--warn); background: rgba(251,146,60,0.05); color: #fdba74; }
     .callout.info { border-color: var(--react); background: rgba(97,218,251,0.05); color: var(--react); }
     .callout.output { border-color: var(--output); background: rgba(167,139,250,0.05); color: #c4b5fd; }
+    .callout.gold-box { border-color: var(--gold); background: rgba(251,191,36,0.05); color: #ffe4e6; }
     .callout strong { font-weight: 700; color: #fff; }
 
     /* ─── TAGS / LABELS ─── */
@@ -518,7 +618,7 @@
       .hero { padding: 2rem 1rem 1.5rem; }
       .main-wrap { padding: 1rem 0.5rem 3rem; }
       .tab-nav { padding: 0.5rem 0.5rem 0; }
-      .tab-btn { font-size: 0.72rem; padding: 0.4rem 0.8rem; }
+      .tab-btn { font-size: 0.7rem; padding: 0.4rem 0.6rem; }
       pre { font-size: 0.72rem; }
       code { font-size: 0.72rem; }
     }
@@ -533,15 +633,15 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-  <div class="hero-badge">📝 Ultimate Written Exam Portal</div>
+  <div class="hero-badge">📝 Lecture-Mapped Syllabus Portal</div>
   <h1>Written Exam<br>Master Guide</h1>
-  <p>Your full-coverage review manual — including comprehensive answers to both 2-Mark short conceptual questions and 8-Mark detailed coding programs.</p>
+  <p>The ultimate preparation companion — fully mapped to your handwritten lecture checklists, covering everything from core theory to highly predicted exam coding templates.</p>
   <div class="hero-tags">
     <span class="htag">⚡ JS & DOM</span>
     <span class="htag">⚛ React Hooks</span>
     <span class="htag">🧠 Tracing Predictor</span>
-    <span class="htag">2-Mark Conceptuals</span>
-    <span class="htag">8-Mark Codes</span>
+    <span class="htag">📋 Syllabus Sheets</span>
+    <span class="htag">🎯 Highly Predicted (Top 10)</span>
   </div>
 </section>
 
@@ -551,6 +651,8 @@
     <button class="tab-btn active" onclick="showTab('js', this)" id="tab-js">⚡ JS & DOM (35 Qs)</button>
     <button class="tab-btn react" onclick="showTab('react', this)" id="tab-react">⚛ React & Hooks (30 Qs)</button>
     <button class="tab-btn output" onclick="showTab('output', this)" id="tab-output">🧠 Output Tracing (6 Qs)</button>
+    <button class="tab-btn syllabus" onclick="showTab('syllabus', this)" id="tab-syllabus">📋 Syllabus Sheets (6 pgs)</button>
+    <button class="tab-btn gold" onclick="showTab('gold', this)" id="tab-gold">🎯 Most Likely to Come (Top 10)</button>
   </nav>
 </div>
 
@@ -651,8 +753,8 @@
           <li><strong><code>getElementById(id)</code></strong>: Queries the DOM for a single matching element with the specified unique `id` attribute. Returns a single DOM element object (or `null` if none found). Extremely fast.</li>
           <li><strong><code>getElementsByClassName(className)</code></strong>: Queries the DOM for all elements matching the given CSS `class` attribute. Returns a **live HTMLCollection** of all matching element nodes (not a standard array).</li>
         </ul>
-        <pre><code><span class="kw">const</span> title = document.<span class="fn">getElementById</span>(<span class="str">"main-title"</span>); <span class="cm">// Single element</span>
-<span class="kw">const</span> items = document.<span class="fn">getElementsByClassName</span>(<span class="str">"menu-item"</span>); <span class="cm">// HTMLCollection</span></code></pre>
+        <pre><code><span class="kw">const title = document.getElementById("main-title");</span> <span class="cm">// Single element</span>
+<span class="kw">const items = document.getElementsByClassName("menu-item");</span> <span class="cm">// HTMLCollection</span></code></pre>
       </div>
     </div>
 
@@ -721,10 +823,10 @@
         <p>The **Temporal Dead Zone (TDZ)** is the time window between entering a block scope and the actual line where a `let` or `const` variable is declared. Accessing the variable inside this zone throws a `ReferenceError` because the variable has been hoisted but not initialized.</p>
         <pre><code>{
   <span class="cm">// TDZ starts here</span>
-  <span class="fn">console.log</span>(a); <span class="cm">// ❌ ReferenceError: Cannot access 'a' before initialization</span>
+  <span class="fn">console.log(a);</span> <span class="cm">// ❌ ReferenceError: Cannot access 'a' before initialization</span>
   
-  <span class="kw">let</span> a = <span class="num">10</span>; <span class="cm">// TDZ ends here. 'a' is initialized to 10.</span>
-  <span class="fn">console.log</span>(a); <span class="cm">// ✅ Output: 10</span>
+  <span class="kw">let a = 10;</span> <span class="cm">// TDZ ends here. 'a' is initialized to 10.</span>
+  <span class="fn">console.log(a);</span> <span class="cm">// ✅ Output: 10</span>
 }</code></pre>
       </div>
     </div>
@@ -760,7 +862,7 @@
           <li><strong>`remove(className)`</strong>: Deletes class token if present.</li>
           <li><strong>`toggle(className)`</strong>: Adds class if missing; deletes class if already present.</li>
         </ul>
-        <pre><code><span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">"button"</span>);
+        <pre><code><span class="kw">const btn = document.querySelector("button");</span>
 btn.classList.<span class="fn">add</span>(<span class="str">"active"</span>);    <span class="cm">// Adds class</span>
 btn.classList.<span class="fn">remove</span>(<span class="str">"disabled"</span>); <span class="cm">// Removes class</span>
 btn.classList.<span class="fn">toggle</span>(<span class="str">"dark"</span>);     <span class="cm">// Toggles class on/off</span></code></pre>
@@ -848,10 +950,10 @@ btn.classList.<span class="fn">toggle</span>(<span class="str">"dark"</span>);  
           <li><strong>`filter()`</strong>: Creates a new array with all elements that pass the conditional test.</li>
           <li><strong>`reduce()`</strong>: Runs an accumulator over the elements, returning a single consolidated value.</li>
         </ul>
-        <pre><code><span class="kw">const</span> nums = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>];
-<span class="kw">const</span> doubled = nums.<span class="fn">map</span>(x => x * <span class="num">2</span>);      <span class="cm">// [2, 4, 6]</span>
-<span class="kw">const</span> evens = nums.<span class="fn">filter</span>(x => x % <span class="num">2</span> === <span class="num">0</span>); <span class="cm">// [2]</span>
-<span class="kw">const</span> sum = nums.<span class="fn">reduce</span>((acc, x) => acc + x, <span class="num">0</span>); <span class="cm">// 6</span></code></pre>
+        <pre><code><span class="kw">const nums = [1, 2, 3];</span>
+<span class="kw">const doubled = nums.map(x => x * 2);</span>      <span class="cm">// [2, 4, 6]</span>
+<span class="kw">const evens = nums.filter(x => x % 2 === 0);</span> <span class="cm">// [2]</span>
+<span class="kw">const sum = nums.reduce((acc, x) => acc + x, 0);</span> <span class="cm">// 6</span></code></pre>
       </div>
     </div>
 
@@ -867,7 +969,7 @@ btn.classList.<span class="fn">toggle</span>(<span class="str">"dark"</span>);  
           <li><strong>String</strong>: `slice(start, end)`, `includes(val)`, `split(delimiter)`.</li>
           <li><strong>Object</strong>: `Object.keys(obj)`, `Object.values(obj)`, `Object.entries(obj)`.</li>
         </ul>
-        <pre><code><span class="kw">const</span> user = { name: <span class="str">"Bret"</span>, role: <span class="str">"Admin"</span> };
+        <pre><code><span class="kw">const user = { name: "Bret", role: "Admin" };</span>
 <span class="obj">Object</span>.<span class="fn">keys</span>(user);   <span class="cm">// ["name", "role"]</span>
 <span class="obj">Object</span>.<span class="fn">values</span>(user); <span class="cm">// ["Bret", "Admin"]</span></code></pre>
       </div>
@@ -928,7 +1030,7 @@ btn.classList.<span class="fn">toggle</span>(<span class="str">"dark"</span>);  
         <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="qa-answer">
-        <pre><code><span class="kw">const</span> p = document.<span class="fn">createElement</span>(<span class="str">"p"</span>);
+        <pre><code><span class="kw">const p = document.createElement("p");</span>
 p.textContent = <span class="str">"Interactive Element"</span>;
 document.body.<span class="fn">appendChild</span>(p); <span class="cm">// Appends paragraph to body</span></code></pre>
       </div>
@@ -1139,7 +1241,7 @@ document.body.<span class="fn">appendChild</span>(p); <span class="cm">// Append
       </div>
       <div class="qa-answer">
         <p>A demonstration of handling multiple event types on a page (click, input, focus, blur, keydown):</p>
-        <pre><code><span class="kw">const</span> input = document.<span class="fn">getElementById</span>(<span class="str">"username"</span>);
+        <pre><code><span class="kw">const input = document.getElementById("username");</span>
 
 <span class="cm">// 'input' event: triggers on every keypress inside text inputs</span>
 input.<span class="fn">addEventListener</span>(<span class="str">"input"</span>, (e) => {
@@ -1193,7 +1295,7 @@ input.<span class="fn">addEventListener</span>(<span class="str">"keydown"</span
       </div>
       <div class="qa-answer">
         <pre><code><span class="cm">// 1. Promise Constructor creation</span>
-<span class="kw">const</span> fetchScore = <span class="kw">new</span> <span class="obj">Promise</span>((resolve, reject) => {
+<span class="kw">const fetchScore = new Promise((resolve, reject) => {</span>
   <span class="kw">let</span> success = <span class="kw">true</span>;
   <span class="fn">setTimeout</span>(() => {
     <span class="kw">if</span> (success) <span class="fn">resolve</span>(<span class="num">95</span>); <span class="cm">// Transitions state: Pending ➔ Fulfilled</span>
@@ -1224,14 +1326,14 @@ fetchScore
       </div>
       <div class="qa-answer">
         <pre><code><span class="cm">// 1. setInterval to repeatedly count ticks</span>
-<span class="kw">let</span> seconds = <span class="num">0</span>;
-<span class="kw">const</span> intervalId = <span class="fn">setInterval</span>(() => {
+<span class="kw">let seconds = 0;</span>
+<span class="kw">const intervalId = setInterval(() => {</span>
   seconds++;
   console.<span class="fn">log</span>(<span class="str">`Seconds elapsed: ${seconds}`</span>);
 }, <span class="num">1000</span>);
 
 <span class="cm">// 2. setTimeout to cancel interval after 5 seconds</span>
-<span class="kw">const</span> timeoutId = <span class="fn">setTimeout</span>(() => {
+<span class="kw">const timeoutId = setTimeout(() => {</span>
   <span class="fn">clearInterval</span>(intervalId); <span class="cm">// Stops interval loop execution</span>
   console.<span class="fn">log</span>(<span class="str">"Tick timer halted."</span>);
 }, <span class="num">5100</span>);
@@ -1249,10 +1351,10 @@ fetchScore
       </div>
       <div class="qa-answer">
         <p>A **callback** is a function passed as an argument to another function, which is then executed when an operation completes. When multiple asynchronous steps are nested sequentially, it creates **Callback Hell**:</p>
-        <pre><code><span class="fn">getUser</span>(userId, user => {
-  <span class="fn">getOrders</span>(user.id, orders => {
-    <span class="fn">getDetails</span>(orders[<span class="num">0</span>], details => {
-      <span class="fn">updateUI</span>(details); <span class="cm">// Deep structural nesting</span>
+        <pre><code><span class="fn">getUser(userId, user => {</span>
+  <span class="fn">getOrders(user.id, orders => {</span>
+    <span class="fn">getDetails(orders[0], details => {</span>
+      <span class="fn">updateUI(details);</span> <span class="cm">// Deep structural nesting</span>
     });
   });
 });</code></pre>
@@ -1268,7 +1370,7 @@ fetchScore
         <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="qa-answer">
-        <pre><code><span class="kw">const</span> delayPromise = <span class="kw">new</span> <span class="obj">Promise</span>((resolve, reject) => {
+        <pre><code><span class="kw">const delayPromise = new Promise((resolve, reject) => {</span>
   <span class="fn">setTimeout</span>(() => {
     <span class="fn">resolve</span>(<span class="str">"Operation Completed Successfully!"</span>);
   }, <span class="num">2000</span>); <span class="cm">// 2s delay</span>
@@ -1301,7 +1403,7 @@ delayPromise
         </div>
         <pre><code><span class="cm">// Store preferences</span>
 localStorage.<span class="fn">setItem</span>(<span class="str">"theme"</span>, <span class="str">"dark"</span>);
-<span class="kw">const</span> theme = localStorage.<span class="fn">getItem</span>(<span class="str">"theme"</span>);
+<span class="kw">const theme = localStorage.getItem("theme");</span>
 
 <span class="cm">// Document Cookie usage</span>
 document.cookie = <span class="str">"user=Bret; expires=Fri, 31 Dec 2026 23:59:59 GMT; path=/"</span>;</code></pre>
@@ -1316,14 +1418,14 @@ document.cookie = <span class="str">"user=Bret; expires=Fri, 31 Dec 2026 23:59:5
         <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
       </div>
       <div class="qa-answer">
-        <pre><code><span class="kw">async function</span> <span class="fn">fetchUsers</span>() {
+        <pre><code><span class="kw">async function fetchUsers() {</span>
   <span class="kw">try</span> {
-    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"https://jsonplaceholder.typicode.com/users"</span>);
+    <span class="kw">const res = await fetch("https://jsonplaceholder.typicode.com/users");</span>
     
     <span class="cm">// Verify response status code</span>
     <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="obj">Error</span>(<span class="str">"HTTP request failed!"</span>);
     
-    <span class="kw">const</span> users = <span class="kw">await</span> res.<span class="fn">json</span>();
+    <span class="kw">const users = await res.json();</span>
     console.<span class="fn">log</span>(<span class="str">"Users Loaded:"</span>, users);
   } <span class="kw">catch</span> (err) {
     <span class="cm">// Handle any errors gracefully</span>
@@ -1490,7 +1592,7 @@ document.cookie = <span class="str">"user=Bret; expires=Fri, 31 Dec 2026 23:59:5
       </div>
       <div class="qa-answer">
         <p>`useState` lets you add local state to functional components. It returns an array containing the current state value and a setter function to update it.</p>
-        <pre><code><span class="kw">const</span> [count, setCount] = <span class="fn">useState</span>(<span class="num">0</span>);</code></pre>
+        <pre><code><span class="kw">const [count, setCount] = useState(0);</span></code></pre>
       </div>
     </div>
 
@@ -1978,9 +2080,9 @@ function NavigationPanel() {
           <li><strong>Pagination</strong>: Fetches and displays data in smaller, organized chunks (pages) rather than loading all items at once, optimizing initial load times.</li>
         </ul>
         <pre><code><span class="cm">// Debouncing Search Example</span>
-<span class="fn">useEffect</span>(() => {
-  <span class="kw">const</span> delayTimer = <span class="fn">setTimeout</span>(() => {
-    <span class="fn">triggerSearchAPI</span>(query);
+<span class="fn">useEffect(() => {</span>
+  <span class="kw">const delayTimer = setTimeout(() => {</span>
+    <span class="fn">triggerSearchAPI(query);</span>
   }, <span class="num">500</span>); <span class="cm">// Wait for 500ms pause in typing</span>
 
   <span class="kw">return</span> () => <span class="fn">clearTimeout</span>(delayTimer); <span class="cm">// Reset timer on keypress</span>
@@ -2007,7 +2109,7 @@ export function ThemeProvider({ children }) {
   return (
     &lt;ThemeContext.Provider value={{ theme, setTheme }}&gt;
       {children}
-    &lt;/ThemeContext.Provider&gt;
+    &lt;/ThemeContext.Provider>
   );
 }
 
@@ -2210,6 +2312,494 @@ console.log("End");</code></pre>
 
   </div><!-- /#section-output -->
 
+
+  <!-- ════════════════════════════════════════════
+       SECTION 4: HANDWRITTEN SYLLABUS GUIDES
+  ════════════════════════════════════════════ -->
+  <div id="section-syllabus" class="section">
+    <div class="section-header">
+      <div class="section-icon syllabus">📋</div>
+      <div>
+        <h2>Syllabus & Lecture Guide</h2>
+        <p>A direct, page-by-page mapping of the handwritten checklists and unit summaries uploaded to your images directory.</p>
+      </div>
+    </div>
+
+    <div class="syllabus-grid">
+      <!-- Page 1 -->
+      <div class="notebook-page">
+        <div class="notebook-header">
+          <span>Page 1: Master Exam Prep Checklist</span>
+          <span class="page-tag">Overview</span>
+        </div>
+        <div class="notebook-body">
+          <ul>
+            <li><strong>Core JS Areas</strong>: event listeners (`click`, `change`, `submit`), async workflows (await/Promises), API fetch try-catch pipelines, Bubbling/Capturing, Execution Context, stack logic, timers.</li>
+            <li><strong>Core React Areas</strong>: counters, component lifecycle replaced by `useEffect`, targeted custom alerts (2 buttons), props, Context API, dynamic Router.</li>
+            <li><strong>Priority Index</strong>: Review short 2-mark definitions and focus heavy practice on standard 8-mark coding blocks.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Page 2 -->
+      <div class="notebook-page">
+        <div class="notebook-header">
+          <span>Page 2: Debouncing & Build Assets</span>
+          <span class="page-tag">Optimization</span>
+        </div>
+        <div class="notebook-body">
+          <ul>
+            <li><strong>Debouncing & Pagination</strong>: Highlighted as highly practical, <span class="highlight-text">Ready but not V. Imp</span>. Understand conceptual use in minimizing server fetch requests and paginate heavy lists.</li>
+            <li><strong>Babel & Webpack</strong>: Very high chance for <span class="highlight-text">2 Marks Question</span>. Study Babel's JSX compilation role and Webpack's asset bundle generation role.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Page 3 -->
+      <div class="notebook-page">
+        <div class="notebook-header">
+          <span>Page 3: Unit 2 — Async & API Fetching</span>
+          <span class="page-tag">Async JS</span>
+        </div>
+        <div class="notebook-body">
+          <ul>
+            <li><strong>Asynchronous vs Synchronous</strong>: Fundamental difference. Synchronous blocks; Asynchronous is non-blocking.</li>
+            <li><strong>setTimeout vs setInterval</strong>: Indirect definition/code question. Know when to use each and clear variables.</li>
+            <li><strong>PDF Q11, 12, 13</strong>: High probability, <span class="highlight-text">V. Imp (10 Marks combined)</span>. Review nested callback hell, Promise constructor implementation, and JSON API mapping in React.</li>
+            <li><strong>Event Loop Logic</strong>: If 8 marks: scenario-based tracing. If 2 marks: direct theory definitions.</li>
+            <li><strong>Async/Await error handling</strong>: Q15 & Q16 combined. Understand how await pauses function contexts.</li>
+            <li><strong>Native Fetch API</strong>: <span class="highlight-text">8 Marks Practical Question</span>. Study GET and POST payloads using standard fetch options.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Page 4 -->
+      <div class="notebook-page">
+        <div class="notebook-header">
+          <span>Page 4: React Core & Lifecycle hooks</span>
+          <span class="page-tag">React Core</span>
+        </div>
+        <div class="notebook-body">
+          <ul>
+            <li><strong>React V. Imp (Q18)</strong>: <span class="highlight-text">8 Marks V. Imp!</span> React component utilizing state, props, and conditional ternary rendering. Keep top priority.</li>
+            <li><strong>Virtual DOM & One-Way Binding</strong>: Common theoretical questions. Know VDOM comparison steps (diffing, batching, reconciliation).</li>
+            <li><strong>Lecture 20</strong>: JSX syntax vs traditional HTML compilation.</li>
+            <li><strong>Functional vs Class components</strong>: Less important, but know functional + hooks is the modern standard.</li>
+            <li><strong>Hook Operations (Q27)</strong>: useState, useEffect, props, custom hook combinations. Very high chance for code-based data flows.</li>
+            <li><strong>Lifecycle replaced by useEffect</strong>: <span class="highlight-text">8 Marks</span>. Must show how mount, update, and unmount translate directly to useEffect arrays.</li>
+            <li><strong>CSS & Styling</strong>: Low probability, but study basic CSS selectors and hover classes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Page 5 -->
+      <div class="notebook-page">
+        <div class="notebook-header">
+          <span>Page 5: Unit 1 — DOM & Scoping</span>
+          <span class="page-tag">DOM Core</span>
+        </div>
+        <div class="notebook-body">
+          <ul>
+            <li><strong>DOM Definition</strong>: Lecture 1. Study the DOM definition, tree structure, and its difference from raw HTML.</li>
+            <li><strong>Element Fetching (L2–L3)</strong>: Low probability, but know standard DOM selections (`getElementById` & `getElementsByClassName`).</li>
+            <li><strong>classList Methods (L4)</strong>: <span class="highlight-text">Highly Predicted!</span> Memorize `add`, `remove`, and `toggle` methods.</li>
+            <li><strong>Event Handling types</strong>: <span class="highlight-text">V. Imp</span>. Click, change, submit, mouseover events.</li>
+            <li><strong>Bubbling & Capturing</strong>: Highly possible. Understand propagation halts.</li>
+            <li><strong>Prevent Default</strong>: Extremely critical concept. Must show in form submit blocks.</li>
+            <li><strong>Execution Context</strong>: <span class="highlight-text">10 Marks V. Imp!</span> Detail GEC, FEC, and Call Stack with clean diagrams.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Page 6 -->
+      <div class="notebook-page">
+        <div class="notebook-header">
+          <span>Page 6: React Counters & Global State</span>
+          <span class="page-tag">React State</span>
+        </div>
+        <div class="notebook-body">
+          <ul>
+            <li><strong>Increment & Decrement Counter</strong>: <span class="highlight-text">Direct Question Expected</span>. Memorize the basic counter app with Reset option.</li>
+            <li><strong>Side Effect Handling</strong>: Know what side effects are and why they are isolated inside `useEffect`.</li>
+            <li><strong>JSON API calls (8 Marks)</strong>: Will be given a URL (like jsonplaceholder) and asked to query inside `useEffect` and show loading flags.</li>
+            <li><strong>Forms</strong>: Controlled vs Uncontrolled forms theory and code.</li>
+            <li><strong>Routing (L32–L34)</strong>: <span class="highlight-text">2 Marks Question</span>. Basic route definitions, pages setup, and links.</li>
+            <li><strong>Prop Drilling & Context API (L35–L36)</strong>: <span class="highlight-text">8 Marks V. Imp Mix!</span> Understand the problem of drilling and create a global Context provider and hook consumer in the answer.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div><!-- /#section-syllabus -->
+
+
+  <!-- ════════════════════════════════════════════
+       SECTION 5: MOST LIKELY TO COME (TOP 10 DECK)
+  ════════════════════════════════════════════ -->
+  <div id="section-gold" class="section">
+    <div class="section-header">
+      <div class="section-icon gold">🎯</div>
+      <div>
+        <h2>Highly Predicted Master Deck</h2>
+        <p>The **Top 10 predicted exam questions** synthesized directly from your handwritten syllabus priorities and exam question banks.</p>
+      </div>
+    </div>
+
+    <!-- Gold Q1 -->
+    <div class="qa-card gold-card weight-8m type-theory" id="gold-q1">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 1</span>
+        <span class="q-text">Explain Execution Context (GEC, FEC) and the Call Stack with a visual diagram. [10 Marks — Highly Predicted]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Execution Context</strong> is the evaluation environment created by the JS engine to execute code. It has two phases: **Memory Creation Phase** (allocating variable space and setting hoisting states) and **Code Execution Phase** (assigning variables and running statements line-by-line).</p>
+        <ul>
+          <li><strong>Global Execution Context (GEC)</strong>: Created automatically when a script starts. Generates the `window` global object and coordinates `this`.</li>
+          <li><strong>Function Execution Context (FEC)</strong>: Created whenever a function is called, maintaining local arguments and closures.</li>
+        </ul>
+        <p><strong>The Call Stack</strong> is a LIFO (Last In, First Out) stack that tracks active execution contexts. When a function is called, its context is **pushed** onto the stack; when it finishes, it is **popped** off.</p>
+        <pre><code>Call Stack Lifecycle:
+[ 1. Empty GEC ]  ➔ [ 2. main() Pushed ]  ➔ [ 3. nested() Pushed ] ➔ [ 4. Pop out ]
+ ┌─────────────┐     ┌─────────────┐        ┌─────────────┐        ┌─────────────┐
+ │             │     │             │        │  nested()   │        │             │
+ │             │     │   main()    │        │  main()     │        │   main()    │
+ │     GEC     │     │    GEC      │        │   GEC       │        │    GEC      │
+ └─────────────┘     └─────────────┘        └─────────────┘        └─────────────┘</code></pre>
+        <div class="callout tip"><strong>Exam Tip:</strong> Be sure to sketch this stack diagram in your answer sheet. Mention that a `Stack Overflow` occurs when infinite recursive calls fill the stack buffer limit.</div>
+      </div>
+    </div>
+
+    <!-- Gold Q2 -->
+    <div class="qa-card gold-card weight-8m type-coding" id="gold-q2">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 2</span>
+        <span class="q-text">Write a complete program showing element selections and styling using `classList` methods. [8 Marks — High Probability]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The `classList` API is the modern standard to edit class tokens dynamically. Here is a complete HTML and JavaScript example:</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    .box { width: 100px; height: 100px; background: grey; transition: 0.3s; }
+    .active { background: blue; transform: scale(1.1); }
+    .hidden { display: none; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div id="myBox" class="box"&gt;&lt;/div&gt;
+  &lt;button id="toggleBtn"&gt;Toggle Active&lt;/button&gt;
+  &lt;button id="hideBtn"&gt;Hide&lt;/button&gt;
+
+  &lt;script&gt;
+    const box = document.getElementById("myBox");
+    const toggleBtn = document.getElementById("toggleBtn");
+    const hideBtn = document.getElementById("hideBtn");
+
+    // 1. classList.toggle method
+    toggleBtn.addEventListener("click", () => {
+      box.classList.toggle("active");
+    });
+
+    // 2. classList.add / remove methods
+    hideBtn.addEventListener("click", () => {
+      if (box.classList.contains("hidden")) {
+        box.classList.remove("hidden");
+        hideBtn.textContent = "Hide";
+      } else {
+        box.classList.add("hidden");
+        hideBtn.textContent = "Show";
+      }
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+    </div>
+
+    <!-- Gold Q3 -->
+    <div class="qa-card gold-card weight-8m type-theory" id="gold-q3">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 3</span>
+        <span class="q-text">Explain Event Propagation (Bubbling vs Capturing) and `preventDefault()`. [8 Marks — Core Concept]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Event Propagation</strong> defines the path an event takes through the DOM tree. It occurs in three phases:</p>
+        <ol>
+          <li>**Capturing Phase**: The event propagates down from the root `window` to the target node. (Attach handler with `true` as the third parameter).</li>
+          <li>**Target Phase**: The event reaches the targeted element.</li>
+          <li>**Bubbling Phase**: The event bubbles back up from the target node towards the root `window`. This is the default propagation behavior.</li>
+        </ol>
+        <pre><code>Propagation Flow:
+GEC (window) ➔ <html> ➔ <body> ➔ <div> (Target)   [Capture Phase (Trickling)]
+GEC (window) ⇠ <html> ⇠ <body> ⇠ <div> (Target)   [Bubbling Phase (Default)]</code></pre>
+        <ul>
+          <li><strong>`e.stopPropagation()`</strong>: Immediately stops the event from propagating further up or down the DOM tree.</li>
+          <li><strong>`e.preventDefault()`</strong>: Cancels the browser's default behavior for that event (such as reloading the page on form submission or following a link URL).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Gold Q4 -->
+    <div class="qa-card gold-card weight-8m type-coding" id="gold-q4">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 4</span>
+        <span class="q-text">Write a native JavaScript Fetch API program implementing both GET and POST payloads with try...catch. [8 Marks]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A native JavaScript Fetch implementation for GET and POST requests, utilizing async/await and robust error handling:</p>
+        <pre><code><span class="cm">// 1. GET Method Implementation</span>
+<span class="kw">async function</span> <span class="fn">getData</span>() {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"https://jsonplaceholder.typicode.com/users"</span>);
+    <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="obj">Error</span>(<span class="str">`HTTP Error: ${res.status}`</span>);
+    <span class="kw">const</span> users = <span class="kw">await</span> res.<span class="fn">json</span>();
+    console.<span class="fn">log</span>(users);
+  } <span class="kw">catch</span> (err) {
+    console.<span class="fn">error</span>(<span class="str">"GET Fetch Failed:"</span>, err.message);
+  }
+}
+
+<span class="cm">// 2. POST Method Implementation</span>
+<span class="kw">async function</span> <span class="fn">postData</span>() {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">"https://jsonplaceholder.typicode.com/posts"</span>, {
+      method: <span class="str">"POST"</span>,
+      headers: { <span class="str">"Content-Type"</span>: <span class="str">"application/json"</span> },
+      body: JSON.<span class="fn">stringify</span>({ title: <span class="str">"New Post"</span>, body: <span class="str">"Payload Content"</span>, userId: <span class="num">1</span> })
+    });
+    <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="obj">Error</span>(<span class="str">"Failed to post data"</span>);
+    <span class="kw">const</span> newPost = <span class="kw">await</span> res.<span class="fn">json</span>();
+    console.<span class="fn">log</span>(<span class="str">"Created Post:"</span>, newPost);
+  } <span class="kw">catch</span> (err) {
+    console.<span class="fn">error</span>(<span class="str">"POST Fetch Failed:"</span>, err.message);
+  }
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- Gold Q5 -->
+    <div class="qa-card gold-card weight-8m type-theory" id="gold-q5">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 5</span>
+        <span class="q-text">Elaborate on the Event Loop, including GEC, microtasks, and macrotasks. [8 Marks]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>JavaScript is **single-threaded**—it can execute only one statement at a time. It handles asynchronous operations through the **Event Loop** mechanism, which coordinates several key components:</p>
+        <ul>
+          <li><strong>Call Stack</strong>: LIFO stack executing synchronous code contexts.</li>
+          <li><strong>Web APIs</strong>: Browser environment handles (like `setTimeout`, `fetch`, DOM clicks) running in the background.</li>
+          <li><strong>Microtask Queue</strong>: Holds high-priority callbacks (e.g. Promises, async await resolves).</li>
+          <li><strong>Macrotask Queue (Callback Queue)</strong>: Holds lower-priority callbacks (e.g. `setTimeout`, `setInterval`).</li>
+        </ul>
+        <p><strong>The Event Loop Process:</strong></p>
+        <ol>
+          <li>Runs synchronous code on the Call Stack until it is completely empty.</li>
+          <li>Checks the **Microtask Queue** and executes **all** pending microtask callbacks until the queue is completely drained.</li>
+          <li>Checks the **Macrotask Queue** and moves **exactly one** macrotask callback to the Call Stack for execution.</li>
+          <li>Repeats this cycle continuously.</li>
+        </ol>
+        <div class="callout tip">**Remember:** Microtasks always run before macrotasks, and the entire microtask queue is drained fully on every event loop tick.</div>
+      </div>
+    </div>
+
+    <!-- Gold Q6 -->
+    <div class="qa-card gold-card weight-8m type-coding" id="gold-q6">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 6</span>
+        <span class="q-text">Create a complete React Counter component with useState: Increment, Decrement, and RESET. [8 Marks — Direct Question]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <span class="tag imp">★ High-Yield Practical</span>
+        <p>A complete React functional component implementing state updates for a basic counter application:</p>
+        <pre><code>import React, { useState } from 'react';
+
+function SimpleCounter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div style={{ padding: '20px', textAlign: 'center' }}&gt;
+      &lt;h2&gt;Count: {count}&lt;/h2&gt;
+      &lt;button onClick={() =&gt; setCount(prev =&gt; prev + 1)}&gt;Increment&lt;/button&gt;
+      &lt;button onClick={() =&gt; setCount(prev =&gt; prev - 1)}&gt;Decrement&lt;/button&gt;
+      &lt;button onClick={() =&gt; setCount(0)}&gt;RESET&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+export default SimpleCounter;</code></pre>
+      </div>
+    </div>
+
+    <!-- Gold Q7 -->
+    <div class="qa-card gold-card weight-8m type-coding" id="gold-q7">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 7</span>
+        <span class="q-text">Explain component state and props in React. Create a component demonstrating state, props, and conditional ternary rendering. [8 Marks — L-18 V. Imp]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>State</strong> represents local, mutable data managed internally *within* a component. **Props** are immutable parameters passed *into* a component from its parent to configure it.</p>
+        <pre><code>import React, { useState } from 'react';
+
+// Child component (using read-only props & ternary render)
+function WelcomeMessage({ user, count }) {
+  return (
+    &lt;div&gt;
+      {count &gt; 5 ? (
+        &lt;h1&gt;Welcome back Elite Member, {user}!&lt;/h1&gt;
+      ) : (
+        &lt;h2&gt;Greetings, {user}! Keep clicking.&lt;/h2&gt;
+      )}
+    &lt;/div&gt;
+  );
+}
+
+// Parent component (managing mutable state)
+function Dashboard() {
+  const [clicks, setClicks] = useState(0);
+
+  return (
+    &lt;div style={{ padding: '20px' }}&gt;
+      &lt;WelcomeMessage user="Bob" count={clicks} /&gt;
+      &lt;p&gt;Score: {clicks}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setClicks(clicks + 1)}&gt;Click me&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- Gold Q8 -->
+    <div class="qa-card gold-card weight-8m type-coding" id="gold-q8">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 8</span>
+        <span class="q-text">Demonstrate how `useEffect` replaces class lifecycle methods with practical examples. [8 Marks — V. Imp]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>The `useEffect` hook replaces class-based component lifecycles using its **dependency array** configuration:</p>
+        <pre><code>import React, { useState, useEffect } from 'react';
+
+function LifecycleDemo() {
+  const [count, setCount] = useState(0);
+
+  // 1. componentDidMount equivalent: Empty dependency array []
+  useEffect(() => {
+    console.log("Component Mounted! Setup subscriptions/timers here.");
+
+    // 3. componentWillUnmount equivalent: Return a cleanup function
+    return () => {
+      console.log("Component Unmounting! Perform cleanups here.");
+    };
+  }, []);
+
+  // 2. componentDidUpdate equivalent: Triggers when 'count' changes
+  useEffect(() => {
+    if (count > 0) {
+      console.log(`Count updated: ${count}`);
+    }
+  }, [count]);
+
+  return (
+    &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Clicks: {count}&lt;/button&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+    <!-- Gold Q9 -->
+    <div class="qa-card gold-card weight-8m type-coding" id="gold-q9">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 9</span>
+        <span class="q-text">Write a complete React component to fetch API data inside `useEffect` with a "Loading..." state. [8 Marks]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p>A robust implementation for fetching API data within a functional component, including loading status and error handling:</p>
+        <pre><code>import React, { useState, useEffect } from 'react';
+
+function ProfileList() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const res = await fetch("https://jsonplaceholder.typicode.com/users");
+        if (!res.ok) throw new Error("API request failed");
+        const data = await res.json();
+        setUsers(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadData();
+  }, []); // Run on mount only
+
+  if (loading) return &lt;h3&gt;Loading profiles...&lt;/h3&gt;;
+  if (error) return &lt;h3 style={{ color: 'red' }}&gt;Error: {error}&lt;/h3&gt;;
+
+  return (
+    &lt;ul&gt;
+      {users.map(u => (
+        &lt;li key={u.id}&gt;{u.name} - {u.email}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+export default ProfileList;</code></pre>
+      </div>
+    </div>
+
+    <!-- Gold Q10 -->
+    <div class="qa-card gold-card weight-8m type-coding" id="gold-q10">
+      <div class="qa-question" onclick="toggleCard(this.parentElement)">
+        <span class="q-num gold">Top 10</span>
+        <span class="q-text">Explain Prop Drilling and its problems. Write a complete React program to resolve it using Context API. [8 Marks — L-35-36 Mix V. Imp]</span>
+        <svg class="q-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      <div class="qa-answer">
+        <p><strong>Prop Drilling</strong> is the anti-pattern of passing data props down through multiple layers of intermediate components that do not actually need that data, solely to deliver it to a deeply nested child component.</p>
+        <p><strong>Problems:</strong> Excessive boilerplate code, highly coupled components, and difficult state tracking.</p>
+        <p><strong>Context API Solution:</strong> Provides global state access. By wrapping parent elements with a Context Provider, any child component can query the state directly using `useContext` without brokerage by intermediate parents.</p>
+        <pre><code>import React, { createContext, useContext, useState } from 'react';
+
+// 1. Create Context
+const UserContext = createContext();
+
+// 2. Provider Component
+export function UserProvider({ children }) {
+  const [user, setUser] = useState("Alice");
+  return (
+    &lt;UserContext.Provider value={{ user, setUser }}&gt;
+      {children}
+    &lt;/UserContext.Provider&gt;
+  );
+}
+
+// 3. Nested child component directly consuming state
+function ProfileCard() {
+  const { user, setUser } = useContext(UserContext);
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Active User: {user}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setUser("Bob")}&gt;Switch User&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </div>
+
+  </div><!-- /#section-gold -->
+
 </div><!-- /.main-wrap -->
 
 <!-- ─── BACK TO PORTAL ─── -->
@@ -2233,8 +2823,16 @@ console.log("End");</code></pre>
     document.getElementById('section-' + name).classList.add('active');
     // Activate button
     btn.classList.add('active');
-    // Re-run search filters on newly active tab cards
-    filterCards();
+    
+    // Hide search inputs if syllabus tab is active (search isn't needed there)
+    const searchContainer = document.querySelector('.search-container');
+    if (name === 'syllabus') {
+      searchContainer.style.display = 'none';
+    } else {
+      searchContainer.style.display = 'flex';
+      filterCards();
+    }
+    
     // Scroll smoothly to top of content
     window.scrollTo({ top: document.querySelector('.tab-nav-wrapper').offsetTop - 10, behavior: 'smooth' });
   }
@@ -2290,12 +2888,14 @@ console.log("End");</code></pre>
     });
   }
 
-  // Keyboard shortcut: J = JS, R = React, O = Output
+  // Keyboard shortcut: J = JS, R = React, O = Output, S = Syllabus, G = Gold/Top10
   document.addEventListener('keydown', (e) => {
     if(e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
     if(e.key === 'j' || e.key === 'J') showTab('js', document.getElementById('tab-js'));
     if(e.key === 'r' || e.key === 'R') showTab('react', document.getElementById('tab-react'));
     if(e.key === 'o' || e.key === 'O') showTab('output', document.getElementById('tab-output'));
+    if(e.key === 's' || e.key === 'S') showTab('syllabus', document.getElementById('tab-syllabus'));
+    if(e.key === 'g' || e.key === 'G') showTab('gold', document.getElementById('tab-gold'));
   });
 
   // Dynamic float Copy Buttons on all code elements
