@@ -155,6 +155,8 @@
     .tab-btn.active.accent-active { border-bottom: 3px solid var(--accent); }
     .tab-btn.active.orange-active { border-bottom: 3px solid var(--orange); }
     .tab-btn.active.purple-active { border-bottom: 3px solid var(--purple); }
+    .tab-btn.active.red-active { border-bottom: 3px solid var(--red); }
+    .tab-btn.active.cyan-active { border-bottom: 3px solid #06b6d4; }
 
     /* ---- SECTIONS ---- */
     .section-content {
@@ -717,6 +719,8 @@
       <button class="tab-btn accent-active" onclick="showTab('highfreq', this)">🔥 High-Frequency Qs</button>
       <button class="tab-btn orange-active" onclick="showTab('bank', this)">🗃️ Complete Bank</button>
       <button class="tab-btn purple-active" onclick="showTab('mock', this)">🧠 Mock Paper</button>
+      <button class="tab-btn red-active" onclick="showTab('guess', this)">📋 Guess Paper</button>
+      <button class="tab-btn cyan-active" onclick="showTab('bcapaper', this)">📜 BCA Past Paper</button>
       <button class="tab-btn primary-active" onclick="showTab('scans', this)">📸 Visual Notes Board</button>
     </nav>
 
@@ -4745,8 +4749,7 @@ while i < n:
               <li><strong>Iteration 1:</strong>
                 <ul>
                   <li>Low = <code>0</code>, High = <code>6</code>.</li>
-                  <li>$	ext{Mid} = \lfloor(0 + 6) / 2
-floor = 3$.</li>
+                  <li>$	ext{Mid} = \lfloor(0 + 6) / 2floor = 3$.</li>
                   <li>Element at index 3 $\Rightarrow 	ext{arr}[3] = 20$.</li>
                   <li>Comparison: Since $25 > 20$, search in the right half.</li>
                   <li>New Bounds: Low = $	ext{Mid} + 1 = 4$, High = <code>6</code>.</li>
@@ -4755,8 +4758,7 @@ floor = 3$.</li>
               <li><strong>Iteration 2:</strong>
                 <ul>
                   <li>Low = <code>4</code>, High = <code>6</code>.</li>
-                  <li>$	ext{Mid} = \lfloor(4 + 6) / 2
-floor = 5$.</li>
+                  <li>$	ext{Mid} = \lfloor(4 + 6) / 2floor = 5$.</li>
                   <li>Element at index 5 $\Rightarrow 	ext{arr}[5] = 30$.</li>
                   <li>Comparison: Since $25 < 30$, search in the left half.</li>
                   <li>New Bounds: Low = <code>4</code>, High = $	ext{Mid} - 1 = 4$.</li>
@@ -4765,8 +4767,7 @@ floor = 5$.</li>
               <li><strong>Iteration 3:</strong>
                 <ul>
                   <li>Low = <code>4</code>, High = <code>4</code>.</li>
-                  <li>$	ext{Mid} = \lfloor(4 + 4) / 2
-floor = 4$.</li>
+                  <li>$	ext{Mid} = \lfloor(4 + 4) / 2floor = 4$.</li>
                   <li>Element at index 4 $\Rightarrow 	ext{arr}[4] = 25$.</li>
                   <li>Comparison: Since $25 == 25$, target is found at index <code>4</code>!</li>
                 </ul>
@@ -4778,10 +4779,993 @@ floor = 4$.</li>
       </div>
     </div>
 
-    <!-- ==================== SECTION 5: VISUAL NOTES SCANS ==================== -->
+    <!-- ==================== SECTION 5: GUESS PAPER ==================== -->
+    <div id="guess" class="section-content">
+      <!-- Header -->
+      <div class="card red-card" style="padding: 1.5rem; margin-bottom: 2rem; background: rgba(239,68,68,0.05); border-color: rgba(239,68,68,0.2);">
+        <h3 style="color: var(--red); font-size: 1.1rem; margin-bottom: 0.5rem;">📋 K.R. Mangalam University — Final High-Probability Guess Paper</h3>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-muted); margin: 0;">Course: Basics of Data Structures (ETCCDS201/202) &nbsp;|&nbsp; Time: 2.5 Hours &nbsp;|&nbsp; Maximum Marks: 40<br>Prepared after analyzing: syllabus + BCA paper + mock test + question bank + repeated topic pattern. All questions are compulsory.</p>
+      </div>
+
+      <div class="eli5"><strong>PART – A: Attempt ANY 4 Questions (2 × 4 = 8 Marks)</strong></div>
+
+      <!-- Part A Q1 -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q1. Define Big-O notation with example. Find the time complexity of: <code>i = 1; while i &lt; n: i = i * 2</code></span>
+          <span class="q-badge short">2 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Big-O Notation:</strong> Big-O ($O$) notation expresses the <em>upper bound</em> (worst-case) growth rate of an algorithm's time or space complexity as input size $n$ increases. Formally: $f(n) = O(g(n))$ if there exist constants $c > 0$ and $n_0 \ge 1$ such that $f(n) \le c \cdot g(n)$ for all $n \ge n_0$.</p>
+            <p><strong>Example:</strong> Linear Search has $O(n)$ time complexity — in the worst case it checks all $n$ elements.</p>
+            <p><strong>Time Complexity of the loop:</strong></p>
+            <pre class="code-block"><code>i = 1
+while i &lt; n:
+    i = i * 2</code></pre>
+            <p>In each iteration, $i$ doubles: $i = 1, 2, 4, 8, \dots, 2^k$. The loop stops when $2^k \ge n$. Taking $\log_2$ of both sides: $k = \log_2 n$.</p>
+            <p>∴ <strong>Time Complexity = $O(\log n)$</strong> (Logarithmic)</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part A Q2 -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q2. Differentiate between Array and Linked List on the basis of: (i) Memory allocation (ii) Insertion operation</span>
+          <span class="q-badge short">2 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <div class="table-responsive"><table>
+              <thead><tr><th>Basis</th><th>Array</th><th>Linked List</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Memory Allocation</strong></td><td>Contiguous block allocated at compile-time (static).</td><td>Non-contiguous nodes allocated at runtime (dynamic).</td></tr>
+                <tr><td><strong>Insertion</strong></td><td>$O(n)$ — requires shifting all subsequent elements.</td><td>$O(1)$ at head — only pointer updates required.</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part A Q3 -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q3. What is Stack Underflow? Differentiate between Stack Overflow and Underflow.</span>
+          <span class="q-badge short">2 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Stack Underflow</strong> occurs when a <code>POP</code> operation is attempted on an <em>empty stack</em>. Condition: <code>top == -1</code>.</p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Aspect</th><th>Stack Overflow</th><th>Stack Underflow</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Cause</strong></td><td>PUSH on a full stack</td><td>POP on an empty stack</td></tr>
+                <tr><td><strong>Condition</strong></td><td><code>top == MAX_SIZE - 1</code></td><td><code>top == -1</code></td></tr>
+                <tr><td><strong>Result</strong></td><td>No more space to add elements</td><td>No elements exist to remove</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part A Q4 -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q4. Which data structure is used in BFS and DFS? Also write one difference between them.</span>
+          <span class="q-badge short">2 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <ul>
+              <li><strong>BFS (Breadth-First Search)</strong> uses a <strong>Queue</strong> (FIFO). It explores all neighbors level by level before going deeper.</li>
+              <li><strong>DFS (Depth-First Search)</strong> uses a <strong>Stack</strong> (or recursion call stack). It dives as deep as possible along each branch before backtracking.</li>
+            </ul>
+            <p><strong>Key Difference:</strong> BFS visits nodes level by level (shortest path), while DFS visits nodes branch by branch (depth-first). BFS guarantees shortest path in unweighted graphs; DFS does not.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part A Q5 -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q5. Write the inorder traversal rule of Binary Tree. Also define leaf node.</span>
+          <span class="q-badge short">2 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Inorder Traversal Rule:</strong> <strong>Left Subtree → Root Node → Right Subtree</strong> (L-Root-R)</p>
+            <p>For a BST, Inorder traversal always produces elements in <em>ascending sorted order</em>.</p>
+            <p><strong>Example:</strong> For a tree with root 10, left child 5, right child 15 → Inorder: <code>5, 10, 15</code></p>
+            <p><strong>Leaf Node:</strong> A node that has <em>no children</em> — both its left and right child pointers are <code>NULL</code>. It is the terminal/external node of a tree. In the example above, nodes 5 and 15 are leaf nodes.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part A Q6 -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q6. What is the average-case time complexity of Linear Search? (a) O(1) (b) O(log n) (c) O(n) (d) O(n log n) — Justify your answer.</span>
+          <span class="q-badge short">2 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Answer: (c) O(n)</strong></p>
+            <p><strong>Justification:</strong> Linear Search compares the target element against each element of the array one by one from the start. On average, the target is found after scanning approximately $n/2$ elements. Since $n/2$ is still proportional to $n$ (constants are dropped in Big-O notation), the average-case complexity is $O(n)$.</p>
+            <ul>
+              <li><strong>Best Case:</strong> $O(1)$ — target is the first element.</li>
+              <li><strong>Average Case:</strong> $O(n)$ — target is somewhere in the middle.</li>
+              <li><strong>Worst Case:</strong> $O(n)$ — target is the last element or absent.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part A Q7 -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q7. Differentiate between Selection Sort and Bubble Sort.</span>
+          <span class="q-badge short">2 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <div class="table-responsive"><table>
+              <thead><tr><th>Aspect</th><th>Bubble Sort</th><th>Selection Sort</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Strategy</strong></td><td>Repeatedly swaps adjacent pairs if out of order</td><td>Finds minimum and swaps it to its correct position</td></tr>
+                <tr><td><strong>Swaps per pass</strong></td><td>Multiple swaps possible per pass</td><td>Exactly one swap per pass</td></tr>
+                <tr><td><strong>Stability</strong></td><td>Stable (equal elements maintain order)</td><td>Unstable (may disturb equal elements)</td></tr>
+                <tr><td><strong>Best Case</strong></td><td>$O(n)$ (with optimization flag)</td><td>$O(n^2)$ always</td></tr>
+                <tr><td><strong>Worst Case</strong></td><td>$O(n^2)$</td><td>$O(n^2)$</td></tr>
+                <tr><td><strong>Adaptability</strong></td><td>Adaptive (stops early if sorted)</td><td>Non-adaptive</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="eli5" style="margin-top: 2.5rem;"><strong>PART – B: Attempt ANY 4 Questions (8 × 4 = 32 Marks)</strong></div>
+
+      <!-- Part B Q2 Main -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q2(a). Explain Singly Linked List with neat diagram. Also mention advantages of Linked List over Array. &nbsp;(b). Write a Python program implementing: Insert at Beginning, Insert at End, Display all nodes.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Singly Linked List:</strong> A linear data structure where each element (node) stores data and a pointer to the next node. The last node points to <code>NULL</code>.</p>
+            <pre class="code-block"><code>Structure of each node:
++--------+------+
+|  Data  | Next |---> [Next Node] ---> ... ---> NULL
++--------+------+
+
+Example: [10 | *]-->[20 | *]-->[30 | NULL]</code></pre>
+            <p><strong>Advantages of Linked List over Array:</strong></p>
+            <ul>
+              <li><strong>Dynamic Size:</strong> Grows/shrinks at runtime; no pre-allocation needed.</li>
+              <li><strong>Efficient Insertions/Deletions:</strong> $O(1)$ at head; no shifting required.</li>
+              <li><strong>No Memory Wastage:</strong> Allocates exactly as much memory as needed.</li>
+              <li><strong>Flexible Memory:</strong> Nodes can be stored anywhere in heap memory.</li>
+            </ul>
+            <p><strong>Python Implementation:</strong></p>
+            <pre class="code-block"><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class SinglyLinkedList:
+    def __init__(self):
+        self.head = None
+
+    # Insert at Beginning — O(1)
+    def insert_beginning(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node
+
+    # Insert at End — O(n)
+    def insert_end(self, data):
+        new_node = Node(data)
+        if self.head is None:
+            self.head = new_node
+            return
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new_node
+
+    # Display All Nodes — O(n)
+    def display(self):
+        if self.head is None:
+            print("List is empty.")
+            return
+        temp = self.head
+        while temp is not None:
+            print(temp.data, end=" -> ")
+            temp = temp.next
+        print("NULL")
+
+# Test
+ll = SinglyLinkedList()
+ll.insert_beginning(20)
+ll.insert_beginning(10)
+ll.insert_end(30)
+ll.display()  # Output: 10 -> 20 -> 30 -> NULL</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B Q2 OR -->
+      <div class="question-card accent-card" style="border-left: 4px solid var(--accent);">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q2 OR (a). Explain all types of Graphs: Directed, Undirected, Weighted, Cyclic, Acyclic with neat diagrams. &nbsp;(b). Write algorithm of BFS traversal.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Types of Graphs:</strong></p>
+            <ul>
+              <li><strong>Directed Graph (Digraph):</strong> Edges have a specific direction. Represented with arrows. Example: A→B means you can go from A to B but NOT B to A.
+                <pre class="code-block"><code>A ---> B
+|      |
+v      v
+C ---> D</code></pre>
+              </li>
+              <li><strong>Undirected Graph:</strong> Edges have no direction; connection is bidirectional. Example: A—B means travel is possible both ways.</li>
+              <li><strong>Weighted Graph:</strong> Each edge carries a numeric weight/cost. Used in shortest-path algorithms (Dijkstra's).
+                <pre class="code-block"><code>A ---5--- B ---3--- C</code></pre>
+              </li>
+              <li><strong>Cyclic Graph:</strong> Contains at least one cycle — a path that starts and ends at the same vertex. Example: A→B→C→A forms a cycle.</li>
+              <li><strong>Acyclic Graph:</strong> Contains no cycles. A DAG (Directed Acyclic Graph) is used in task scheduling and dependency resolution.</li>
+            </ul>
+            <p><strong>BFS Traversal Algorithm:</strong></p>
+            <pre class="code-block"><code>Algorithm BFS(graph, start):
+  1. Create an empty visited set and a queue Q.
+  2. Mark start as visited. Enqueue(Q, start).
+  3. While Q is not empty:
+       a. node = Dequeue(Q)
+       b. Process(node)  [print or record it]
+       c. For each neighbor of node:
+            - If neighbor not in visited:
+                Mark neighbor as visited
+                Enqueue(Q, neighbor)
+
+# Python Implementation
+from collections import deque
+
+def bfs(graph, start):
+    visited = set([start])
+    queue = deque([start])
+    result = []
+    while queue:
+        node = queue.popleft()
+        result.append(node)
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                visited.add(neighbor)
+                queue.append(neighbor)
+    return result
+
+# Time Complexity: O(V + E)
+# Space Complexity: O(V)</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B Q3 Main -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q3(a). What is a Stack? Explain working with neat diagram. &nbsp;(b). Implement Stack using Python class (Push, Pop, with time complexity).</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Stack:</strong> A linear data structure following the <strong>LIFO</strong> (Last In, First Out) principle. Elements are inserted (PUSH) and removed (POP) only from one end called the <strong>TOP</strong>.</p>
+            <pre class="code-block"><code>Real-world analogy: Stack of plates — last plate placed is first to be removed.
+
+Stack state diagram:
+  PUSH 10 → [10]
+  PUSH 20 → [10, 20]   ← TOP = 20
+  PUSH 30 → [10, 20, 30] ← TOP = 30
+  POP    → [10, 20]    ← Returns 30
+
+Visual:
+  +----+  ← TOP
+  | 30 |  ← Last Pushed
+  +----+
+  | 20 |
+  +----+
+  | 10 |  ← Bottom
+  +----+</code></pre>
+            <p><strong>Python Implementation:</strong></p>
+            <pre class="code-block"><code>class Stack:
+    def __init__(self, max_size=100):
+        self.stack = []
+        self.max_size = max_size
+
+    def is_empty(self):
+        return len(self.stack) == 0
+
+    def is_full(self):
+        return len(self.stack) == self.max_size
+
+    # PUSH — O(1) amortized
+    def push(self, item):
+        if self.is_full():
+            print("Stack Overflow! Cannot push.")
+            return
+        self.stack.append(item)
+        print(f"Pushed: {item}")
+
+    # POP — O(1)
+    def pop(self):
+        if self.is_empty():
+            print("Stack Underflow! Cannot pop.")
+            return None
+        return self.stack.pop()
+
+    def peek(self):
+        if self.is_empty():
+            return None
+        return self.stack[-1]
+
+    def display(self):
+        print("Stack (top to bottom):", self.stack[::-1])
+
+# Test
+s = Stack()
+s.push(10)
+s.push(20)
+s.push(30)
+s.display()    # Stack (top to bottom): [30, 20, 10]
+print(s.pop()) # Returns: 30
+s.display()    # Stack (top to bottom): [20, 10]
+
+# Time Complexity:
+# PUSH: O(1) — append to end of list
+# POP:  O(1) — remove from end of list</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B Q3 OR -->
+      <div class="question-card accent-card" style="border-left: 4px solid var(--accent);">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q3 OR (a). Define Data Structure and ADT. Explain real-world applications. &nbsp;(b). Differentiate between Static and Dynamic Data Structures with examples.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Data Structure:</strong> A systematic way of organising and storing data in computer memory so it can be accessed and modified efficiently. Examples: Array, Stack, Queue, Tree, Graph, Hash Table.</p>
+            <p><strong>Abstract Data Type (ADT):</strong> A mathematical model of a data structure that defines its behaviour (operations) without specifying its implementation. It describes <em>what</em> operations are performed, not <em>how</em>. Example: A Stack ADT defines Push, Pop, Peek, IsEmpty — but the underlying implementation (array or linked list) is hidden.</p>
+            <p><strong>Real-world Applications:</strong></p>
+            <ul>
+              <li><strong>Array:</strong> Storing student marks, image pixel data.</li>
+              <li><strong>Stack:</strong> Browser back/forward history, undo-redo in editors, function call management.</li>
+              <li><strong>Queue:</strong> Print spooler, OS process scheduling, BFS graph traversal.</li>
+              <li><strong>Tree:</strong> File system directory structure, HTML DOM, databases (B-trees).</li>
+              <li><strong>Graph:</strong> Social network connections, Google Maps navigation, network routing.</li>
+              <li><strong>Hash Table:</strong> Dictionary lookups, database indexing, caching systems.</li>
+            </ul>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Aspect</th><th>Static Data Structure</th><th>Dynamic Data Structure</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Memory</strong></td><td>Fixed at compile time</td><td>Allocated at runtime</td></tr>
+                <tr><td><strong>Size</strong></td><td>Cannot change during execution</td><td>Can grow or shrink freely</td></tr>
+                <tr><td><strong>Memory Type</strong></td><td>Stack memory</td><td>Heap memory</td></tr>
+                <tr><td><strong>Speed</strong></td><td>Faster access (contiguous)</td><td>Slightly slower (pointer overhead)</td></tr>
+                <tr><td><strong>Example</strong></td><td>Array, Static Stack</td><td>Linked List, Dynamic Stack, Tree</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B Q4 Main -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q4(a). What is a Tree? Explain terminologies: Root, Height, Leaf, Subtree with neat diagram. &nbsp;(b). Explain difference between Binary Tree and Binary Search Tree (BST).</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Tree:</strong> A non-linear, hierarchical data structure consisting of nodes connected by edges. It has one <strong>root</strong> node, and every other node is reachable from the root through a unique path. No cycles exist.</p>
+            <pre class="code-block"><code>          [A]       ← Root (Level 0)
+         /          [B]   [C]   ← Level 1 (Internal Nodes)
+      / \          [D] [E]   [F]  ← Level 2 (D, E, F are Leaf Nodes)
+
+Height of Tree = 2 (number of edges on longest path)
+Subtree of B = {B, D, E}</code></pre>
+            <p><strong>Key Terminologies:</strong></p>
+            <ul>
+              <li><strong>Root:</strong> The topmost node with no parent. Node A in the diagram.</li>
+              <li><strong>Height:</strong> The number of edges on the longest path from root to a leaf. Height = 2 here.</li>
+              <li><strong>Leaf Node:</strong> A node with no children (both left and right pointers are NULL). D, E, F are leaf nodes.</li>
+              <li><strong>Subtree:</strong> A tree formed by a node and all its descendants. Subtree rooted at B = {B, D, E}.</li>
+            </ul>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Aspect</th><th>Binary Tree</th><th>Binary Search Tree (BST)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Definition</strong></td><td>Each node has at most 2 children (left, right)</td><td>A Binary Tree with the BST ordering property</td></tr>
+                <tr><td><strong>Ordering Rule</strong></td><td>No ordering constraint on node values</td><td>Left child &lt; Parent &lt; Right child (always)</td></tr>
+                <tr><td><strong>Search</strong></td><td>$O(n)$ — must check all nodes</td><td>$O(\log n)$ average — can eliminate half the tree each step</td></tr>
+                <tr><td><strong>Insert/Delete</strong></td><td>$O(1)$ to $O(n)$</td><td>$O(\log n)$ average, $O(n)$ worst (skewed)</td></tr>
+                <tr><td><strong>Inorder Output</strong></td><td>Any order</td><td>Always ascending sorted order</td></tr>
+                <tr><td><strong>Example</strong></td><td>Arithmetic expression trees</td><td>Database indexing, sorted lookups</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B Q4 OR -->
+      <div class="question-card accent-card" style="border-left: 4px solid var(--accent);">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q4 OR (a). What is a Graph? Explain Directed and Undirected with neat labeled graph. &nbsp;(b). Write algorithm for DFS traversal with: data structure used, time complexity.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Graph:</strong> A non-linear data structure consisting of a finite set of <strong>vertices</strong> (nodes) and a set of <strong>edges</strong> connecting them. Formally, $G = (V, E)$ where $V$ = set of vertices, $E$ = set of edges.</p>
+            <pre class="code-block"><code>Undirected Graph:         Directed Graph (Digraph):
+  A --- B                     A ---> B
+  |     |                     ^      |
+  C --- D                     |      v
+                              D <--- C
+
+(No arrows: travel both ways)  (Arrows: one-way direction)</code></pre>
+            <p><strong>DFS (Depth-First Search) Algorithm:</strong></p>
+            <pre class="code-block"><code>Algorithm DFS(graph, start):
+  1. Create an empty visited set.
+  2. Push start onto Stack S.
+  3. While S is not empty:
+       a. node = Pop(S)
+       b. If node not in visited:
+            Mark node as visited
+            Process(node)   [print or record]
+            For each neighbor of node:
+                 If neighbor not in visited:
+                      Push neighbor onto S
+
+# Recursive Python Implementation
+def dfs(graph, node, visited=None):
+    if visited is None:
+        visited = set()
+    visited.add(node)
+    print(node, end=" ")
+    for neighbor in graph[node]:
+        if neighbor not in visited:
+            dfs(graph, neighbor, visited)
+    return visited
+
+# Data Structure Used: STACK (or Recursion Call Stack)
+# Time Complexity:  O(V + E) where V=vertices, E=edges
+# Space Complexity: O(V) for visited set + O(V) recursion depth</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B Q5 Main -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q5(a). Explain Insertion Sort logic with neat diagram. Perform dry run on: [5, 3, 4, 1]. &nbsp;(b). Write Python code for Insertion Sort. State Best and Worst case complexity.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Insertion Sort:</strong> Builds a sorted portion by picking each element from the unsorted region and inserting it into the correct position in the sorted portion — similar to how you sort playing cards in your hand.</p>
+            <p><strong>Dry Run on [5, 3, 4, 1]:</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Pass</th><th>Key</th><th>Action</th><th>Array State</th></tr></thead>
+              <tbody>
+                <tr><td>Initial</td><td>—</td><td>—</td><td><code>[5, 3, 4, 1]</code></td></tr>
+                <tr><td>Pass 1</td><td>3</td><td>3 &lt; 5, shift 5 right, insert 3 at index 0</td><td><code>[3, 5, 4, 1]</code></td></tr>
+                <tr><td>Pass 2</td><td>4</td><td>4 &lt; 5, shift 5 right, 4 &gt; 3, insert 4 at index 1</td><td><code>[3, 4, 5, 1]</code></td></tr>
+                <tr><td>Pass 3</td><td>1</td><td>1 &lt; 5, shift. 1 &lt; 4, shift. 1 &lt; 3, shift. Insert 1 at index 0</td><td><code>[1, 3, 4, 5]</code> ✓</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Python Code:</strong></p>
+            <pre class="code-block"><code>def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        # Shift elements greater than key one position right
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key  # Place key in correct position
+    return arr
+
+# Test
+arr = [5, 3, 4, 1]
+print(insertion_sort(arr))  # Output: [1, 3, 4, 5]
+
+# Best Case Complexity:  O(n)  — Already sorted array (no shifts needed)
+# Worst Case Complexity: O(n²) — Reverse sorted array (maximum shifts)</code></pre>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Case</th><th>Time Complexity</th><th>Condition</th></tr></thead>
+              <tbody>
+                <tr><td>Best Case</td><td>$O(n)$</td><td>Array already sorted — inner while loop never executes</td></tr>
+                <tr><td>Average Case</td><td>$O(n^2)$</td><td>Random order — approximately $n^2/4$ comparisons</td></tr>
+                <tr><td>Worst Case</td><td>$O(n^2)$</td><td>Reverse sorted — every element shifts past all sorted elements</td></tr>
+                <tr><td>Space Complexity</td><td>$O(1)$</td><td>In-place sorting, no auxiliary array needed</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Part B Q5 OR -->
+      <div class="question-card accent-card" style="border-left: 4px solid var(--accent);">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q5 OR (a). Explain working of Linear Search with time complexity of all scenarios. &nbsp;(b). Write Python code for Binary Search. Search element 25 in [5, 10, 15, 20, 25, 30, 35] showing all intermediate steps.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Linear Search:</strong> Sequentially checks each element of an unsorted or sorted list from the beginning until the target is found or the list is exhausted.</p>
+            <pre class="code-block"><code>def linear_search(arr, target):
+    for i in range(len(arr)):        # Check every element
+        if arr[i] == target:
+            return i                 # Found at index i
+    return -1                       # Not found</code></pre>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Scenario</th><th>Complexity</th><th>When it occurs</th></tr></thead>
+              <tbody>
+                <tr><td>Best Case</td><td>$O(1)$</td><td>Target is the first element checked</td></tr>
+                <tr><td>Average Case</td><td>$O(n)$</td><td>Target is in the middle (approx. $n/2$ comparisons)</td></tr>
+                <tr><td>Worst Case</td><td>$O(n)$</td><td>Target is the last element or not in array ($n$ comparisons)</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Binary Search — Python Code:</strong></p>
+            <pre class="code-block"><code>def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    step = 1
+    while low <= high:
+        mid = (low + high) // 2
+        print(f"Step {step}: low={low}, high={high}, mid={mid}, arr[mid]={arr[mid]}")
+        if arr[mid] == target:
+            return mid             # Found!
+        elif arr[mid] < target:
+            low = mid + 1          # Search right half
+        else:
+            high = mid - 1         # Search left half
+        step += 1
+    return -1                      # Not found
+
+# Search 25 in [5, 10, 15, 20, 25, 30, 35]
+arr = [5, 10, 15, 20, 25, 30, 35]
+result = binary_search(arr, 25)</code></pre>
+            <p><strong>Step-by-step trace for target = 25:</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Step</th><th>low</th><th>high</th><th>mid</th><th>arr[mid]</th><th>Decision</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>0</td><td>6</td><td>3</td><td>20</td><td>25 &gt; 20 → Search right half, low = 4</td></tr>
+                <tr><td>2</td><td>4</td><td>6</td><td>5</td><td>30</td><td>25 &lt; 30 → Search left half, high = 4</td></tr>
+                <tr><td>3</td><td>4</td><td>4</td><td>4</td><td>25</td><td>25 == 25 → <strong>FOUND at index 4!</strong></td></tr>
+              </tbody>
+            </table></div>
+            <p>Element 25 found at index <strong>4</strong> in exactly 3 iterations. Binary Search time complexity: <strong>$O(\log n)$</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SECTION 6: BCA PAST PAPER ==================== -->
+    <div id="bcapaper" class="section-content">
+      <!-- Header -->
+      <div class="card" style="padding: 1.5rem; margin-bottom: 2rem; background: rgba(6,182,212,0.05); border-color: rgba(6,182,212,0.2); border-left: 4px solid #06b6d4;">
+        <h3 style="color: #06b6d4; font-size: 1.1rem; margin-bottom: 0.5rem;">📜 BCA Past Paper — Scanned Exam Sheet (K.R. Mangalam University)</h3>
+        <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-muted); margin: 0;">Below are the high-resolution scans of the actual BCA past exam paper. Click any image to zoom in. Fully solved answers are provided beneath the scans for all identifiable questions.</p>
+      </div>
+
+      <!-- BCA Paper Scans Gallery -->
+      <div class="eli5"><strong>📸 Scanned BCA Exam Paper Sheets</strong></div>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">Click any scan to view in full resolution. Use these alongside the solutions below.</p>
+      <div class="image-grid" style="margin-bottom: 3rem;">
+        <div class="image-card">
+          <div class="image-img-wrapper">
+            <img src="images/WhatsApp Image 2026-05-28 at 20.56.42.jpeg" alt="BCA Past Paper Scan Sheet 1" onclick="openLightbox(this.src)">
+          </div>
+          <div class="image-info">
+            <div class="image-title">BCA Past Paper — Page 1</div>
+            <div class="image-desc">Scanned page 1 of the BCA Data Structures past examination paper. Click to zoom and read questions clearly.</div>
+          </div>
+        </div>
+        <div class="image-card">
+          <div class="image-img-wrapper">
+            <img src="images/WhatsApp Image 2026-05-28 at 20.56.42 (1).jpeg" alt="BCA Past Paper Scan Sheet 2" onclick="openLightbox(this.src)">
+          </div>
+          <div class="image-info">
+            <div class="image-title">BCA Past Paper — Page 2</div>
+            <div class="image-desc">Scanned page 2 of the BCA Data Structures past examination paper. Click to zoom and read questions clearly.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Solved Answers -->
+      <div class="eli5"><strong>🧠 Full Solved Answers — BCA Past Paper Questions</strong></div>
+      <p style="color: var(--text-muted); margin: 1rem 0 2rem 0; font-size: 0.88rem;">Comprehensive model answers for all identifiable BCA past paper questions, cross-referenced with the K.R. Mangalam University syllabus for ETCCDS202.</p>
+
+      <!-- BCA Q1: Asymptotic Notations -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q1. Explain Big-O, Big-Omega (Ω), and Theta (Θ) notations. How are they used to express algorithm efficiency?</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <p>Asymptotic notations mathematically describe how an algorithm's resource usage (time/space) grows relative to input size $n$.</p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Notation</th><th>Name</th><th>Meaning</th><th>Formal Definition</th></tr></thead>
+              <tbody>
+                <tr><td>$O(g(n))$</td><td>Big-O</td><td>Upper Bound (Worst Case)</td><td>$f(n) \le c \cdot g(n)$ for all $n \ge n_0$</td></tr>
+                <tr><td>$\Omega(g(n))$</td><td>Big-Omega</td><td>Lower Bound (Best Case)</td><td>$f(n) \ge c \cdot g(n)$ for all $n \ge n_0$</td></tr>
+                <tr><td>$\Theta(g(n))$</td><td>Theta</td><td>Tight Bound (Exact Growth)</td><td>$c_1 g(n) \le f(n) \le c_2 g(n)$ for all $n \ge n_0$</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Example — Linear Search on array of $n$ elements:</strong></p>
+            <ul>
+              <li><strong>Best Case:</strong> $\Omega(1)$ — Target found at index 0, only 1 comparison.</li>
+              <li><strong>Worst Case:</strong> $O(n)$ — Target is at last position or absent, $n$ comparisons.</li>
+              <li><strong>Average Case:</strong> $\Theta(n)$ — On average, $n/2$ comparisons, which is $\Theta(n)$.</li>
+            </ul>
+            <p><strong>Complexity Growth Order (slowest to fastest growing):</strong></p>
+            <p>$$O(1) < O(\log n) < O(n) < O(n \log n) < O(n^2) < O(2^n) < O(n!)$$</p>
+            <p>Algorithms with lower Big-O complexity scale better for large inputs. For example, Binary Search $O(\log n)$ is far more efficient than Linear Search $O(n)$ for sorted large arrays.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Q2: Linked List Types -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q2. Explain Singly, Doubly, and Circular Linked Lists with diagrams. State one real-world application of each.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <p><strong>1. Singly Linked List:</strong> Each node has data and one <code>next</code> pointer. Traversal is unidirectional (forward only). Deletion requires knowing the previous node.</p>
+            <pre class="code-block"><code>[Data|next] -> [Data|next] -> [Data|NULL]
+   Node 1          Node 2         Node 3 (Tail)
+
+Real-world: Browser forward history (one-directional page navigation)</code></pre>
+            <p><strong>2. Doubly Linked List:</strong> Each node has data, a <code>next</code> pointer, and a <code>prev</code> pointer. Traversal is bidirectional. Deletion is easier since we can access the previous node directly.</p>
+            <pre class="code-block"><code>NULL <- [prev|Data|next] <-> [prev|Data|next] <-> [prev|Data|next] -> NULL
+
+Real-world: Browser back/forward navigation (bidirectional page history)</code></pre>
+            <p><strong>3. Circular Linked List:</strong> Similar to Singly but the last node's <code>next</code> pointer points back to the head (first node), forming a loop. No node points to NULL.</p>
+            <pre class="code-block"><code>[Data|next] -> [Data|next] -> [Data|next]
+     ^                              |
+     |_______________ (next)________|  (circular!)
+
+Real-world: Round-Robin CPU process scheduling — each process gets equal time slices cyclically</code></pre>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Type</th><th>Pointer(s)</th><th>Traversal</th><th>Memory/Node</th></tr></thead>
+              <tbody>
+                <tr><td>Singly</td><td>next</td><td>Forward only</td><td>Less (1 pointer)</td></tr>
+                <tr><td>Doubly</td><td>next + prev</td><td>Bidirectional</td><td>More (2 pointers)</td></tr>
+                <tr><td>Circular</td><td>next (to head)</td><td>Cyclic forward</td><td>Less (1 pointer)</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Q3: Bubble Sort with trace -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q3. Explain Bubble Sort with a step-by-step trace on [64, 34, 25, 12, 22, 11]. State best, average, and worst-case complexity.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Bubble Sort:</strong> Repeatedly compares and swaps adjacent elements until the entire array is sorted. In each pass, the largest unsorted element "bubbles up" to its correct position at the end.</p>
+            <p><strong>Step-by-step trace on [64, 34, 25, 12, 22, 11]:</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Pass</th><th>Comparisons &amp; Swaps</th><th>Array After Pass</th></tr></thead>
+              <tbody>
+                <tr><td>Pass 1</td><td>64&gt;34✦swap, 64&gt;25✦swap, 64&gt;12✦swap, 64&gt;22✦swap, 64&gt;11✦swap</td><td>[34, 25, 12, 22, 11, <strong>64</strong>]</td></tr>
+                <tr><td>Pass 2</td><td>34&gt;25✦swap, 34&gt;12✦swap, 34&gt;22✦swap, 34&gt;11✦swap</td><td>[25, 12, 22, 11, <strong>34, 64</strong>]</td></tr>
+                <tr><td>Pass 3</td><td>25&gt;12✦swap, 25&gt;22✦swap, 25&gt;11✦swap</td><td>[12, 22, 11, <strong>25, 34, 64</strong>]</td></tr>
+                <tr><td>Pass 4</td><td>22&gt;12? No. 22&gt;11✦swap</td><td>[12, 11, <strong>22, 25, 34, 64</strong>]</td></tr>
+                <tr><td>Pass 5</td><td>12&gt;11✦swap</td><td>[<strong>11, 12, 22, 25, 34, 64</strong>] ✓ Sorted!</td></tr>
+              </tbody>
+            </table></div>
+            <pre class="code-block"><code>def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n - 1):
+        swapped = False
+        for j in range(n - 1 - i):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                swapped = True
+        if not swapped:         # Optimization: stop early if no swaps
+            break
+    return arr</code></pre>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Case</th><th>Time Complexity</th><th>Reason</th></tr></thead>
+              <tbody>
+                <tr><td>Best Case</td><td>$O(n)$</td><td>Array already sorted — adaptive optimization, 0 swaps in pass 1</td></tr>
+                <tr><td>Average Case</td><td>$O(n^2)$</td><td>Random order — approx. $n^2/2$ comparisons</td></tr>
+                <tr><td>Worst Case</td><td>$O(n^2)$</td><td>Reverse sorted — maximum comparisons and swaps</td></tr>
+                <tr><td>Space Complexity</td><td>$O(1)$</td><td>In-place, only a temp variable for swapping</td></tr>
+                <tr><td>Stability</td><td>Stable ✓</td><td>Does NOT swap equal elements, preserves relative order</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Q4: BST Insertion -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q4. What is a BST? Insert [50, 30, 70, 20, 40, 60, 80] into an empty BST. Draw the resulting tree and explain the search operation.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Binary Search Tree (BST):</strong> A binary tree where for every node: all values in the left subtree are <em>less than</em> the node's value, and all values in the right subtree are <em>greater than</em> the node's value. This property enables efficient $O(\log n)$ search on average.</p>
+            <p><strong>Insertion trace for [50, 30, 70, 20, 40, 60, 80]:</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Insert</th><th>Comparison Path</th><th>Position</th></tr></thead>
+              <tbody>
+                <tr><td>50</td><td>Tree empty</td><td>Root</td></tr>
+                <tr><td>30</td><td>30 &lt; 50 → go left</td><td>Left child of 50</td></tr>
+                <tr><td>70</td><td>70 &gt; 50 → go right</td><td>Right child of 50</td></tr>
+                <tr><td>20</td><td>20 &lt; 50 → left, 20 &lt; 30 → left</td><td>Left child of 30</td></tr>
+                <tr><td>40</td><td>40 &lt; 50 → left, 40 &gt; 30 → right</td><td>Right child of 30</td></tr>
+                <tr><td>60</td><td>60 &gt; 50 → right, 60 &lt; 70 → left</td><td>Left child of 70</td></tr>
+                <tr><td>80</td><td>80 &gt; 50 → right, 80 &gt; 70 → right</td><td>Right child of 70</td></tr>
+              </tbody>
+            </table></div>
+            <pre class="code-block"><code>Resulting BST:
+              50
+            /              30      70
+         /  \    /          20  40  60  80
+
+Inorder traversal: 20, 30, 40, 50, 60, 70, 80 (ascending sorted order ✓)</code></pre>
+            <p><strong>Search Operation:</strong> To search for a value <code>k</code>:</p>
+            <pre class="code-block"><code>def search_bst(root, key):
+    if root is None or root.val == key:
+        return root                   # Found or not in tree
+    if key < root.val:
+        return search_bst(root.left, key)   # Go left
+    return search_bst(root.right, key)      # Go right
+
+# Example: Search 40 → 40 < 50 (go left) → 40 > 30 (go right) → FOUND!
+# Time: O(log n) average, O(n) worst case (skewed tree)</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Q5: Hashing -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q5. What is Hashing? Design a simple hash function. Explain Chaining and Linear Probing for collision resolution with examples.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Hashing:</strong> A technique that maps a key to an index in a fixed-size array (hash table) using a <em>hash function</em>. Ideal for $O(1)$ average-time insertions, deletions, and lookups.</p>
+            <p><strong>Hash Function:</strong> A function $h(k) = k \mod m$ maps key $k$ to bucket index in a table of size $m$.</p>
+            <pre class="code-block"><code>Hash function: h(k) = k % 7  (table size = 7)
+Keys to insert: 10, 20, 15, 7, 12
+
+h(10) = 10 % 7 = 3  → Slot 3
+h(20) = 20 % 7 = 6  → Slot 6
+h(15) = 15 % 7 = 1  → Slot 1
+h(7)  = 7  % 7 = 0  → Slot 0
+h(12) = 12 % 7 = 5  → Slot 5
+# No collisions in this example</code></pre>
+            <p><strong>Collision:</strong> Two keys mapping to the same hash index. Resolution methods:</p>
+            <p><strong>1. Separate Chaining:</strong> Each hash table slot stores a linked list. Colliding keys are appended to the list at that index.</p>
+            <pre class="code-block"><code>Insert: h(10)=3, h(17)=3 (collision!)
+Table:
+  Slot 3: [10] -> [17] -> NULL
+
+Advantages: Table never fills, deletion is simple
+Disadvantage: Extra memory for linked list pointers
+Time: O(1) average, O(n) worst (all keys same slot)</code></pre>
+            <p><strong>2. Linear Probing (Open Addressing):</strong> On collision, search sequentially for the next empty slot: $h(k, i) = (h(k) + i) \mod m$</p>
+            <pre class="code-block"><code>Insert: h(10)=3, h(17)=3 (collision!)
+Linear probe: try slot 4 → empty → place 17 at slot 4
+
+Table: [_, _, _, 10, 17, _, _]
+         0  1   2   3   4  5  6
+
+Advantages: No extra memory, better cache performance
+Disadvantage: Primary clustering — runs of filled slots slow lookup
+Time: O(1) average, O(n) worst (all slots probed)</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Q6: Merge Sort with recursion tree -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q6. Explain Merge Sort using Divide and Conquer. Draw the recursion tree for [38, 27, 43, 3, 9, 82, 10]. Write complete Python code.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Merge Sort:</strong> A Divide and Conquer algorithm. It recursively divides the array into halves until each half is a single element, then merges sorted halves back together.</p>
+            <p><strong>Three phases:</strong></p>
+            <ul>
+              <li><strong>Divide:</strong> Split array into two halves at the midpoint.</li>
+              <li><strong>Conquer:</strong> Recursively sort each half.</li>
+              <li><strong>Merge:</strong> Merge the two sorted halves into a single sorted array.</li>
+            </ul>
+            <p><strong>Recursion Tree for [38, 27, 43, 3, 9, 82, 10]:</strong></p>
+            <pre class="code-block"><code>Level 0:     [38, 27, 43, 3, 9, 82, 10]        (7 elements)
+              /                      Level 1: [38, 27, 43]          [3, 9, 82, 10]   (split at mid=3)
+          /       \              /           Level 2: [38] [27,43]       [3,9]        [82,10]
+               /    \        /   \         /    Level 3:     [27]  [43]    [3]  [9]    [82]   [10]
+
+--- MERGE PHASE (bottom up) ---
+[27,43], [3,9], [10,82]
+[27,38,43], [3,9,10,82]
+Final: [3, 9, 10, 27, 38, 43, 82] ✓</code></pre>
+            <pre class="code-block"><code>def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])    # Conquer left half
+    right = merge_sort(arr[mid:])   # Conquer right half
+    return merge(left, right)       # Merge sorted halves
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] <= right[j]:     # <= ensures stability
+            result.append(left[i]); i += 1
+        else:
+            result.append(right[j]); j += 1
+    result.extend(left[i:])         # Append remaining
+    result.extend(right[j:])
+    return result
+
+# Test
+arr = [38, 27, 43, 3, 9, 82, 10]
+print(merge_sort(arr))  # [3, 9, 10, 27, 38, 43, 82]
+
+# Time Complexity:  O(n log n) — ALL cases (best, average, worst)
+# Space Complexity: O(n) — auxiliary array for merging
+# Stability: STABLE ✓</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Q7: Quick Sort partition -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q7. Explain the partitioning step in Quick Sort. Trace Quick Sort on [40, 20, 60, 10, 50, 30] using first element as pivot.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <p><strong>Quick Sort:</strong> A Divide and Conquer sorting algorithm. It selects a <strong>pivot</strong> element and partitions the array such that all elements smaller than the pivot are to its left, and all greater elements are to its right. Then it recursively sorts the sub-arrays.</p>
+            <p><strong>Trace on [40, 20, 60, 10, 50, 30], pivot = 40 (first element):</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Step</th><th>Action</th><th>Array State</th></tr></thead>
+              <tbody>
+                <tr><td>Initial</td><td>Pivot = 40, i=1, j=5</td><td>[40, 20, 60, 10, 50, 30]</td></tr>
+                <tr><td>1</td><td>i scans right for &gt;40: finds 60 at i=2. j scans left for &lt;40: finds 30 at j=5.</td><td>Swap 60 ↔ 30</td></tr>
+                <tr><td>2</td><td>Array: [40,20,30,10,50,60]. i=2, j=5 continue. i finds 50 at i=4. j finds 10 at j=3. i &gt; j → stop.</td><td>[40,20,30,10,50,60]</td></tr>
+                <tr><td>3</td><td>i(4) &gt; j(3) → Swap pivot(40) with arr[j](10).</td><td>[10, 20, 30, <strong>40</strong>, 50, 60]</td></tr>
+                <tr><td>4</td><td>Pivot 40 is at index 3 — final position! Sort left [10,20,30] and right [50,60] recursively.</td><td>Left: [10,20,30] → sorted. Right: [50,60] → sorted.</td></tr>
+                <tr><td>Final</td><td>Combine</td><td>[10, 20, 30, 40, 50, 60] ✓</td></tr>
+              </tbody>
+            </table></div>
+            <pre class="code-block"><code>def quick_sort(arr, low, high):
+    if low < high:
+        pi = partition(arr, low, high)  # Get pivot index
+        quick_sort(arr, low, pi - 1)    # Sort left of pivot
+        quick_sort(arr, pi + 1, high)   # Sort right of pivot
+
+def partition(arr, low, high):
+    pivot = arr[low]
+    i = low + 1
+    j = high
+    while True:
+        while i <= j and arr[i] <= pivot: i += 1
+        while i <= j and arr[j] >= pivot: j -= 1
+        if i <= j:
+            arr[i], arr[j] = arr[j], arr[i]
+        else:
+            break
+    arr[low], arr[j] = arr[j], arr[low]  # Place pivot
+    return j
+
+# Time: O(n log n) avg, O(n²) worst. Space: O(log n) stack.</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <!-- BCA Q8: DFS and BFS on graph -->
+      <div class="question-card">
+        <div class="question-header" onclick="toggleQuestion(this)">
+          <span class="q-title">Q8. Explain DFS and BFS traversal algorithms. For graph {A-B, A-C, B-D, B-E, C-F}, trace both starting from A.</span>
+          <span class="q-badge long">8 Marks</span>
+        </div>
+        <div class="question-body">
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
+          <div class="model-answer">
+            <pre class="code-block"><code>Graph structure:
+        A
+       /       B   C
+     / \       D   E   F</code></pre>
+            <p><strong>BFS (Breadth-First Search):</strong> Uses a <strong>Queue</strong>. Explores all neighbors at the current level before moving deeper.</p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Step</th><th>Dequeue</th><th>Visited</th><th>Queue</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>A</td><td>{A}</td><td>[B, C]</td></tr>
+                <tr><td>2</td><td>B</td><td>{A,B}</td><td>[C, D, E]</td></tr>
+                <tr><td>3</td><td>C</td><td>{A,B,C}</td><td>[D, E, F]</td></tr>
+                <tr><td>4</td><td>D</td><td>{A,B,C,D}</td><td>[E, F]</td></tr>
+                <tr><td>5</td><td>E</td><td>{A,B,C,D,E}</td><td>[F]</td></tr>
+                <tr><td>6</td><td>F</td><td>{A,B,C,D,E,F}</td><td>[]</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>BFS Order: A → B → C → D → E → F</strong></p>
+            <p><strong>DFS (Depth-First Search):</strong> Uses a <strong>Stack</strong> (or recursion). Dives as deep as possible before backtracking.</p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Step</th><th>Visit</th><th>Stack</th><th>Action</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>A</td><td>[B,C]</td><td>Push A's neighbors</td></tr>
+                <tr><td>2</td><td>B</td><td>[C,D,E]</td><td>Push B's unvisited neighbors</td></tr>
+                <tr><td>3</td><td>D</td><td>[C,E]</td><td>D has no unvisited neighbors</td></tr>
+                <tr><td>4</td><td>E</td><td>[C]</td><td>E has no unvisited neighbors</td></tr>
+                <tr><td>5</td><td>C</td><td>[F]</td><td>Push C's neighbor F</td></tr>
+                <tr><td>6</td><td>F</td><td>[]</td><td>Done</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>DFS Order: A → B → D → E → C → F</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Feature</th><th>BFS</th><th>DFS</th></tr></thead>
+              <tbody>
+                <tr><td>Data Structure</td><td>Queue (FIFO)</td><td>Stack (LIFO) / Recursion</td></tr>
+                <tr><td>Traversal</td><td>Level by Level</td><td>Branch by Branch</td></tr>
+                <tr><td>Shortest Path</td><td>Yes (unweighted)</td><td>Not guaranteed</td></tr>
+                <tr><td>Time Complexity</td><td>$O(V+E)$</td><td>$O(V+E)$</td></tr>
+                <tr><td>Space Complexity</td><td>$O(V)$ queue</td><td>$O(V)$ stack/recursion</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ==================== SECTION 7: VISUAL NOTES SCANS ==================== -->
     <div id="scans" class="section-content">
       <div class="eli5"><strong>📸 Handwritten Exam Notes Scan Sheets</strong></div>
-      <p style="margin-bottom: 2rem; color: var(--text-muted);">A responsive curated digital gallery of all 11 handwritten scan sheets for your final exam. Hover over any scan to scale, and click to open the high-resolution lightbox modal overlay.</p>
+      <p style="margin-bottom: 2rem; color: var(--text-muted);">A responsive curated digital gallery of all handwritten scan sheets for your final exam. Hover over any scan to scale, and click to open the high-resolution lightbox modal overlay.</p>
       
       <div class="image-grid">
         
@@ -4881,6 +5865,24 @@ floor = 4$.</li>
         </div>
         <div class="image-info">
           <div class="image-title">Scan 11: 2026-05-28 at 14.52.31</div>
+          <div class="image-desc">Handwritten Data Structures exam scan sheet. Click on the sheet image to zoom.</div>
+        </div>
+      </div>
+      <div class="image-card">
+        <div class="image-img-wrapper">
+          <img src="images/WhatsApp Image 2026-05-28 at 20.56.42 (1).jpeg" alt="Exam Notes Scan 12" onclick="openLightbox(this.src)">
+        </div>
+        <div class="image-info">
+          <div class="image-title">Scan 12: 2026-05-28 at 20.56.42 (1)</div>
+          <div class="image-desc">Handwritten Data Structures exam scan sheet. Click on the sheet image to zoom.</div>
+        </div>
+      </div>
+      <div class="image-card">
+        <div class="image-img-wrapper">
+          <img src="images/WhatsApp Image 2026-05-28 at 20.56.42.jpeg" alt="Exam Notes Scan 13" onclick="openLightbox(this.src)">
+        </div>
+        <div class="image-info">
+          <div class="image-title">Scan 13: 2026-05-28 at 20.56.42</div>
           <div class="image-desc">Handwritten Data Structures exam scan sheet. Click on the sheet image to zoom.</div>
         </div>
       </div>
