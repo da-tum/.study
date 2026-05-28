@@ -3,21 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Dev Portal | Wiki Suite</title>
+  <title>Academic Study Portal | Wiki Suite</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --text: #f1f5f9;
-      --text-muted: #94a3b8;
-      --primary: #f59e0b;
-      --accent-react: #61dafb;
-      --accent-js: #f7df1e;
-      --accent-viva: #10b981;
-      --accent-exam: #a78bfa;
-      --border: #334155;
+      --bg: #090d16;
+      --card-bg: #111827;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      
+      /* Subject Colors */
+      --color-ds: #10b981;       /* Emerald */
+      --color-web: #3b82f6;      /* Blue */
+      --color-phil: #f59e0b;     /* Amber */
+      --color-maths: #8b5cf6;    /* Purple */
+      --color-chem: #06b6d4;     /* Cyan */
     }
 
     * {
@@ -29,32 +31,58 @@
 
     body {
       background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       width: 100%;
-      text-align: center;
     }
 
     header {
-      margin-bottom: 4rem;
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .portal-tag {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #60a5fa;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.05);
     }
 
     h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      font-weight: 800;
-      letter-spacing: -0.05em;
+    }
+
+    h1 span {
+      font-weight: 400;
+      font-style: italic;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     p.subtitle {
@@ -62,125 +90,171 @@
       font-size: 1.2rem;
       max-width: 600px;
       margin: 0 auto;
+      line-height: 1.6;
     }
 
-    .portal-grid {
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 2.5rem;
-      margin-top: 2rem;
-      justify-content: center;
+      width: 100%;
     }
 
-    .portal-card {
-      background: var(--card-bg);
+    .card {
+      background: rgba(17, 24, 39, 0.6);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--border);
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 2.5rem;
       text-decoration: none;
       color: inherit;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      text-align: left;
+      position: relative;
+      overflow: hidden;
     }
 
-    .portal-card::before {
-      content: "";
+    .card::before {
+      content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 4px;
-      background: var(--accent);
+      background: var(--subject-color);
+      opacity: 0.8;
+      transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .portal-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--subject-color);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(var(--subject-rgb), 0.1);
     }
 
-    .js-card { --accent: var(--accent-js); }
-    .react-card { --accent: var(--accent-react); }
-    .viva-card { --accent: var(--accent-viva); }
-    .exam-card { --accent: var(--accent-exam); }
+    .card:hover::before {
+      height: 6px;
+    }
 
-    .icon {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      background: var(--accent);
-      width: 60px;
-      height: 60px;
+    .card-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(var(--subject-rgb), 0.08);
+      border: 1px solid rgba(var(--subject-rgb), 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 12px;
-      color: #000;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .portal-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: #fff;
+    .card:hover .card-icon-wrapper {
+      transform: scale(1.1) rotate(5deg);
     }
 
-    .portal-card p {
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
       color: var(--text-muted);
       line-height: 1.6;
       font-size: 0.95rem;
+      flex-grow: 1;
     }
 
-    .badge {
-      display: inline-block;
-      padding: 0.25rem 0.75rem;
-      background: rgba(255,255,255,0.05);
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .back-btn {
-      margin-top: 4rem;
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.9rem;
+    .card-footer {
+      margin-top: 2rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      transition: color 0.2s;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--subject-color);
+      opacity: 0.8;
+      transition: gap 0.2s;
     }
 
-    .back-btn:hover {
-      color: #fff;
+    .card:hover .card-footer {
+      gap: 0.8rem;
+      opacity: 1;
+    }
+
+    .card-footer svg {
+      transition: transform 0.2s;
+    }
+
+    .card:hover .card-footer svg {
+      transform: translateX(2px);
+    }
+
+    /* Nested Card Sub-links CSS */
+    .card-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 2rem;
+      width: 100%;
+    }
+
+    .card-link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card-link-btn svg {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      color: var(--subject-color);
+      opacity: 0.8;
+    }
+
+    .card-link-btn:hover {
+      background: rgba(var(--subject-rgb), 0.1);
+      border-color: rgba(var(--subject-rgb), 0.3);
+      box-shadow: 0 4px 15px rgba(var(--subject-rgb), 0.1);
+      transform: translateY(-2px);
+    }
+
+    .card-link-btn:hover svg {
+      transform: translateX(4px);
+      opacity: 1;
     }
 
     @media (max-width: 768px) {
       body {
-        padding: 2rem 1rem;
+        padding: 3rem 1.5rem;
       }
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
       }
       p.subtitle {
         font-size: 1rem;
       }
-      .portal-grid {
+      .grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
-      .portal-card {
-        padding: 1.5rem;
-      }
-      header {
-        margin-bottom: 2.5rem;
+      .card {
+        padding: 2rem;
       }
     }
   </style>
@@ -189,58 +263,74 @@
 
   <div class="container">
     <header>
-      <div class="badge" style="background: rgba(245, 158, 11, 0.1); color: #f59e0b;">Web Dev II</div>
-      <h1>Wiki <span style="font-weight: 400; font-style: italic;">Portal</span></h1>
-      <p class="subtitle">A premium documentation suite for JavaScript mechanics and React architecture.</p>
+      <div class="portal-tag">Wiki & Exam Prep Suite</div>
+      <h1>Academic Study <span>Portal</span></h1>
+      <p class="subtitle">A premium, high-fidelity curation of visual notes, question banks, and interactive tools for your end-term mastery.</p>
     </header>
 
-    <div class="portal-grid">
-      <a href="javascript.html" class="portal-card js-card">
-        <div class="icon">JS</div>
-        <div class="badge">Advanced Foundation</div>
-        <h2>JavaScript Wiki</h2>
-        <p>Event Loop, Closures, Scoping, and Asynchronous patterns. The ultimate JS guide for viva mastery.</p>
+    <div class="grid">
+      <!-- Data Structures (Unified Card) -->
+      <div class="card" style="--subject-color: var(--color-ds); --subject-rgb: 16, 185, 129;">
+        <div class="card-icon-wrapper">🌳</div>
+        <h2>Data Structures</h2>
+        <p>Master arrays, linked lists, trees, and graphs. Packed with interactive mindmaps, AVL rotation traces, loop complexity calculators, and mock exams for both viva and written preparation.</p>
+        <div class="card-links">
+          <a href="./ds/ds.html" class="card-link-btn">
+            <span>viva</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="./ds/Exam-Material/written-exam-prep.html" class="card-link-btn">
+            <span>written-exam prep</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Web Development -->
+      <a href="./web-dev/index.html" class="card" style="--subject-color: var(--color-web); --subject-rgb: 59, 130, 246;">
+        <div class="card-icon-wrapper">⚛️</div>
+        <h2>Web Development</h2>
+        <p>A premium wiki suite covering high-fidelity React architecture, core JS foundations (Event Loop, Call Stack), Practical-Prep (Array algorithms), and comprehensive PDF Question Banks.</p>
+        <div class="card-footer">
+          <span>Enter Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
       </a>
 
-      <a href="react.html" class="portal-card react-card">
-        <div class="icon">⚛️</div>
-        <div class="badge">Architecture</div>
-        <h2>React Wiki</h2>
-        <p>Virtual DOM, Fiber, Hooks Deep-Dive, and State Management. Everything from basics to advanced design patterns.</p>
+      <!-- Indian Philosophy -->
+      <a href="./philosophy/index.html" class="card" style="--subject-color: var(--color-phil); --subject-rgb: 245, 158, 11;">
+        <div class="card-icon-wrapper">🕉️</div>
+        <h2>Indian Philosophy</h2>
+        <p>Comprehensive exam preparation covering Astika & Nastika schools, Yoga, Gunas, Mimamsa, Buddhism, and Modern Indian Thinkers. Features flashcards, text-to-speech, and interactive quizzes.</p>
+        <div class="card-footer">
+          <span>Enter Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
       </a>
 
-      <a href="practical-prep.html" class="portal-card" style="--accent: var(--accent-viva);">
-        <div class="icon">PP</div>
-        <div class="badge">Interview Ready</div>
-        <h2>Practical Prep</h2>
-        <p>The ultimate Viva cheat sheet. Combines React conceptual theory (Hooks, State, Routing) with core JS logic methods.</p>
+      <!-- Computational Maths -->
+      <a href="./comp-maths/index.html" class="card" style="--subject-color: var(--color-maths); --subject-rgb: 139, 92, 246;">
+        <div class="card-icon-wrapper">🧮</div>
+        <h2>Computational Maths II</h2>
+        <p>Exhaustive End-Term Master Guide. Loaded with 11 long derivations, 33 short definitions, and fully solved mathematical breakdowns for Assignments 1-3 and Question Banks Vol 1-2.</p>
+        <div class="card-footer">
+          <span>Enter Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
       </a>
 
-      <a href="viva.html" class="portal-card viva-card">
-        <div class="icon">🎤</div>
-        <div class="badge">Viva Voce</div>
-        <h2>Viva Hub</h2>
-        <p>The ultimate question bank for your practical exams. From basics to Nightmare Mode concepts.</p>
-      </a>
-
-      <a href="exam-material/written-exam-prep.html" class="portal-card exam-card">
-        <div class="icon">📝</div>
-        <div class="badge">Written Exam</div>
-        <h2>Written Exam Prep</h2>
-        <p>Full Q&amp;A coverage for your written exam — 44 questions with complete answers, output tracing, and summaries from your notes.</p>
-      </a>
-    </div>
-
-    <div style="margin-top: 4rem;">
-      <a href="../index.html" class="back-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Project Portal
+      <!-- Engineering Chemistry -->
+      <a href="./chem/index.html" class="card" style="--subject-color: var(--color-chem); --subject-rgb: 6, 182, 212;">
+        <div class="card-icon-wrapper">🧪</div>
+        <h2>Engineering Chemistry</h2>
+        <p>Dec 2025 End-Term Master Portal. Powered by interactive mathematical solvers, Exam Hotspots (2/5/10 Marks), dynamic PDF/DOCX Solver Hub, complete syllabus coverage, and real slide simulators.</p>
+        <div class="card-footer">
+          <span>Enter Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
       </a>
     </div>
   </div>
 
-  <script>
-    // Particle Effect or subtle background animation could go here
-  </script>
 </body>
 </html>
