@@ -4337,17 +4337,21 @@ def merge_sort(arr):
       <!-- Question A1 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q1. Differentiate between Array and Linked List on the basis of Memory allocation and Insertion operation.</span>
+          <span class="q-title">Q1. Differentiate between Array and Linked List on the basis of Memory allocation and Insertion operation.</span>
           <span class="q-badge short">2 Marks</span>
         </div>
         <div class="question-body">
-          <p><strong>Question Details:</strong> State differences clearly in a concise manner.</p>
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
           <div class="model-answer">
-            <ul>
-              <li><strong>Memory Allocation:</strong> Arrays use contiguous static allocation determined at compile-time. Linked Lists use non-contiguous dynamic allocation at runtime.</li>
-              <li><strong>Insertion Operation:</strong> Arrays require shifting elements, taking $O(n)$ time. Linked Lists require only pointer adjustment, taking $O(1)$ time to insert at the beginning.</li>
-            </ul>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Basis</th><th>Array</th><th>Linked List</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Memory Allocation</strong></td><td>Contiguous block of memory allocated at <em>compile-time</em> (static). Size must be declared in advance.</td><td>Non-contiguous nodes allocated at <em>runtime</em> (dynamic). Grows/shrinks freely.</td></tr>
+                <tr><td><strong>Insertion</strong></td><td>$O(n)$ in worst case — all elements after the insertion point must be shifted right by one position.</td><td>$O(1)$ at head — only pointer reassignment: <code>new_node.next = head; head = new_node</code>.</td></tr>
+                <tr><td><strong>Memory Type</strong></td><td>Stack memory (static)</td><td>Heap memory (dynamic)</td></tr>
+                <tr><td><strong>Example</strong></td><td><code>arr = [10, 20, 30]</code> — fixed array</td><td><code>[10|*]->[20|*]->[30|NULL]</code> — linked nodes</td></tr>
+              </tbody>
+            </table></div>
           </div>
         </div>
       </div>
@@ -4365,21 +4369,23 @@ def merge_sort(arr):
             <p><strong>Mathematical Derivation:</strong></p>
             <p>The variable $i$ doubles in each step: $1, 2, 4, 8, \dots, 2^k$. The loop terminates when $2^k \ge n$. Taking the logarithm to base 2 on both sides:</p>
             <p>$$k = \log_2 n$$</p>
-            <p>Hence, the worst-case Time Complexity is <strong>$O(\log n)$</strong>.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Question A3 -->
+            <p>Hence, the worst-case Time Comp      <!-- Question A3 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q3. State whether the following statement is TRUE or FALSE: “Binary Search can be applied on unsorted arrays.” Justify your answer.</span>
+          <span class="q-title">Q3. State whether TRUE or FALSE: "Binary Search can be applied on unsorted arrays." Justify your answer.</span>
           <span class="q-badge short">2 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
           <div class="model-answer">
-            <strong>FALSE.</strong> Binary search relies on checking the middle element to throw away one-half of the array. Without sorted data, comparisons cannot guarantee which side of the middle element the target key resides on, necessitating a full linear search of $O(n)$.
+            <p><strong>Answer: FALSE</strong></p>
+            <p><strong>Justification:</strong> Binary Search works by comparing the target with the <em>middle element</em> and eliminating half the search space based on the comparison. This only works if the array is <em>sorted</em> — if the array is unsorted, we cannot determine which half contains the target after each comparison, making the elimination strategy invalid.</p>
+            <p><strong>Example:</strong> Array = [5, 1, 9, 3, 7], Target = 3.</p>
+            <ul>
+              <li>Mid index = 2, arr[2] = 9. Since 3 &lt; 9, Binary Search would search left: [5, 1] — but 3 is actually in the right half!</li>
+              <li>Binary Search would fail to find 3 and return -1 (incorrect result).</li>
+            </ul>
+            <p><strong>Conclusion:</strong> Binary Search requires a <em>sorted</em> array as a prerequisite. Attempting it on unsorted data produces incorrect results. Use Linear Search for unsorted data.</p>
           </div>
         </div>
       </div>
@@ -4387,14 +4393,22 @@ def merge_sort(arr):
       <!-- Question A4 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q4. What is Stack Underflow? State the mathematical condition.</span>
+          <span class="q-title">Q4. What is Stack Underflow? State the mathematical condition and differentiate it from Stack Overflow.</span>
           <span class="q-badge short">2 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
           <div class="model-answer">
-            Stack underflow occurs when you attempt to POP or delete an element from an empty stack. For an array-based stack implementation, the mathematical condition is:
-            <code>top == -1</code>.
+            <p><strong>Stack Underflow:</strong> Occurs when a <code>POP</code> or <code>PEEK</code> operation is attempted on an <em>empty stack</em> that contains no elements. Condition: <code>top == -1</code>.</p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Aspect</th><th>Stack Overflow</th><th>Stack Underflow</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Trigger</strong></td><td>PUSH on a full stack</td><td>POP on an empty stack</td></tr>
+                <tr><td><strong>Condition</strong></td><td><code>top == MAX_SIZE - 1</code></td><td><code>top == -1</code></td></tr>
+                <tr><td><strong>Error type</strong></td><td>"Stack is Full" error</td><td>"Stack is Empty" error</td></tr>
+                <tr><td><strong>Example</strong></td><td>Pushing 101st item into a 100-element stack</td><td>Calling pop() when stack has 0 elements</td></tr>
+              </tbody>
+            </table></div>
           </div>
         </div>
       </div>
@@ -4402,14 +4416,32 @@ def merge_sort(arr):
       <!-- Question A5 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q5. Write the inorder traversal rule of a Binary Tree.</span>
+          <span class="q-title">Q5. Write the inorder traversal rule of a Binary Tree. Give an example showing the traversal order.</span>
           <span class="q-badge short">2 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
           <div class="model-answer">
-            The Inorder Traversal rule is a recursive formula defined as:
-            <strong>Left Subtree → Root Node → Right Subtree (L Root R)</strong>
+            <p><strong>Inorder Traversal Rule:</strong> <strong>Left Subtree → Root Node → Right Subtree</strong> (abbreviated: L-Root-R)</p>
+            <p>It is a <em>recursive</em> process — at each node, first fully traverse the left subtree, then visit the current node, then fully traverse the right subtree.</p>
+            <pre class="code-block"><code>Tree Example:
+         10
+        /         5    15
+      /      3   7
+
+Inorder traversal trace:
+  Visit left of 10 → go to 5
+    Visit left of 5 → go to 3 (leaf) → print 3
+    Visit 5 → print 5
+    Visit right of 5 → go to 7 (leaf) → print 7
+  Visit root 10 → print 10
+  Visit right of 10 → go to 15 (leaf) → print 15
+
+Inorder Result: 3, 5, 7, 10, 15  ← always ascending order for BST!</code></pre>
+            <p><strong>Key fact:</strong> Inorder traversal of a BST always produces elements in <em>ascending sorted order</em>.</p>
+          </div>
+        </div>
+      </div>ft Subtree → Root Node → Right Subtree (L Root R)</strong>
           </div>
         </div>
       </div>
@@ -4417,16 +4449,23 @@ def merge_sort(arr):
       <!-- Question A6 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q6. Differentiate between BFS and DFS.</span>
+          <span class="q-title">Q6. Differentiate between BFS and DFS on the basis of: data structure used, traversal strategy, and time complexity.</span>
           <span class="q-badge short">2 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
           <div class="model-answer">
-            <ul>
-              <li><strong>BFS (Breadth First Search):</strong> Traverses graph level-by-level, checking adjacent neighbors first. Uses a **Queue** data structure.</li>
-              <li><strong>DFS (Depth First Search):</strong> Traverses graph deeply branch-by-branch before backtracking. Uses a **Stack** (or recursion).</li>
-            </ul>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Aspect</th><th>BFS (Breadth-First Search)</th><th>DFS (Depth-First Search)</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Data Structure</strong></td><td><strong>Queue</strong> (FIFO)</td><td><strong>Stack</strong> (LIFO) or Recursion</td></tr>
+                <tr><td><strong>Strategy</strong></td><td>Level-by-level — visits all nodes at current depth before going deeper</td><td>Branch-by-branch — goes as deep as possible, then backtracks</td></tr>
+                <tr><td><strong>Shortest Path</strong></td><td>✅ Guarantees shortest path in unweighted graphs</td><td>❌ Does not guarantee shortest path</td></tr>
+                <tr><td><strong>Memory Usage</strong></td><td>Higher — stores entire level in queue</td><td>Lower — only stores current path in stack</td></tr>
+                <tr><td><strong>Time Complexity</strong></td><td>$O(V + E)$</td><td>$O(V + E)$</td></tr>
+                <tr><td><strong>Use Case</strong></td><td>Shortest path, social network connectivity</td><td>Topological sort, cycle detection, maze solving</td></tr>
+              </tbody>
+            </table></div>
           </div>
         </div>
       </div>
@@ -4434,13 +4473,28 @@ def merge_sort(arr):
       <!-- Question A7 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q7. What is the worst-case complexity of Quick Sort?</span>
+          <span class="q-title">Q7. What is the worst-case complexity of Quick Sort? When does it occur? How can it be avoided?</span>
           <span class="q-badge short">2 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer</button>
           <div class="model-answer">
-            The worst-case time complexity of Quick Sort is <strong>$O(n^2)$</strong>. This happens when the pivot chosen always happens to be the minimum or maximum element (e.g., when trying to sort an already sorted array using the first or last element as pivot).
+            <p><strong>Worst-case Time Complexity: $O(n^2)$</strong></p>
+            <p><strong>When it occurs:</strong> The worst case happens when the chosen pivot is always the <em>smallest</em> or <em>largest</em> element — causing one partition to have 0 elements and the other to have $n-1$ elements. This gives a skewed recursion tree of depth $n$.</p>
+            <p><strong>Common triggers:</strong></p>
+            <ul>
+              <li>Already sorted array with first/last element as pivot: [1, 2, 3, 4, 5] → pivot=1, partitions into [] and [2,3,4,5] each time.</li>
+              <li>Reverse sorted array with same pivot strategy.</li>
+            </ul>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Case</th><th>Complexity</th><th>Scenario</th></tr></thead>
+              <tbody>
+                <tr><td>Best</td><td>$O(n \log n)$</td><td>Pivot always splits array into two equal halves</td></tr>
+                <tr><td>Average</td><td>$O(n \log n)$</td><td>Random pivot selection</td></tr>
+                <tr><td><strong>Worst</strong></td><td><strong>$O(n^2)$</strong></td><td>Pivot is always min or max element</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Prevention:</strong> Use <em>Randomized Quick Sort</em> (pick pivot randomly) or <em>Median-of-three</em> (pivot = median of first, middle, last element).</p>
           </div>
         </div>
       </div>
@@ -4450,27 +4504,60 @@ def merge_sort(arr):
       <!-- Question B1 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q1. Quick Sort Dry Run: Perform Quick Sort on array [35, 10, 50, 25, 5, 40, 15] using the first element as pivot.</span>
+          <span class="q-title">Q1. Quick Sort Dry Run: Perform Quick Sort on [35, 10, 50, 25, 5, 40, 15] using the first element as pivot. Show pivot selection, partitioning steps, recursive breakdown, final array, and time complexity.</span>
           <span class="q-badge long">8 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
           <div class="model-answer">
-            <p><strong>Step-by-Step partitioning steps (first element as pivot):</strong></p>
-            <p>Initial: <code>[35, 10, 50, 25, 5, 40, 15]</code>, Pivot = <code>35</code>.</p>
-            <ol>
-              <li>Scan left-to-right for element $> 35 \Rightarrow 50$ (index 2).</li>
-              <li>Scan right-to-left for element $< 35 \Rightarrow 15$ (index 6).</li>
-              <li>Swap <code>50</code> and <code>15</code> $\Rightarrow$ <code>[35, 10, 15, 25, 5, 40, 50]</code></li>
-              <li>Scan left-to-right for element $> 35 \Rightarrow 40$ (index 5).</li>
-              <li>Scan right-to-left for element $< 35 \Rightarrow 5$ (index 4).</li>
-              <li>Since indices crossed (indices 5 and 4), swap pivot <code>35</code> with element at index 4 (<code>5</code>):
-                $$	ext{Array: } \mathbf{[5, 10, 15, 25]} \ 35 \ \mathbf{[40, 50]}$$
-              </li>
-            </ol>
-            <p>Recursively sort the left subarray <code>[5, 10, 15, 25]</code> with pivot = <code>5</code>. Since all elements are larger than 5, no swaps occur $\Rightarrow$ <code>5</code> stays fixed, repeat for <code>[10, 15, 25]</code> which is already sorted.</p>
-            <p>Recursively sort the right subarray <code>[40, 50]</code> with pivot = <code>40</code> $\Rightarrow$ stays fixed.</p>
-            <p><strong>Final Sorted Array:</strong> <code>[5, 10, 15, 25, 35, 40, 50]</code></p>
+            <p><strong>Quick Sort</strong> uses the Divide and Conquer strategy. A <em>pivot</em> is selected, the array is partitioned so all elements &lt; pivot go left and all &gt; pivot go right, then the process is repeated recursively.</p>
+            <p><strong>Pass 1: Pivot = 35 (index 0)</strong>, Array = [35, 10, 50, 25, 5, 40, 15]</p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Step</th><th>Action</th><th>Array State</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>i scans right for &gt;35: finds 50 at i=2. j scans left for &lt;35: finds 15 at j=6.</td><td>[35, 10, <u>50</u>, 25, 5, 40, <u>15</u>]</td></tr>
+                <tr><td>2</td><td>Swap 50 ↔ 15</td><td>[35, 10, 15, 25, 5, 40, 50]</td></tr>
+                <tr><td>3</td><td>i scans right for &gt;35: finds 40 at i=5. j scans left for &lt;35: finds 5 at j=4.</td><td>[35, 10, 15, 25, <u>5</u>, <u>40</u>, 50]</td></tr>
+                <tr><td>4</td><td>i(5) &gt; j(4) → indices crossed. Swap pivot(35) ↔ arr[j=4](5)</td><td>[<strong>5</strong>, 10, 15, 25, <strong>35</strong>, 40, 50] ← 35 in final position!</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Recursive Breakdown:</strong></p>
+            <pre class="code-block"><code>Level 0:  [35, 10, 50, 25, 5, 40, 15]  pivot=35
+           /                          Level 1: [5, 10, 15, 25]   35   [40, 50]
+          pivot=5                pivot=40
+           /    \                 /    Level 2: []  [10,15,25]   []
+              pivot=10         Final: [40, 50] ✓
+              /    Level 3:  []  [15,25]  → already sorted ✓
+
+Final: [5, 10, 15, 25, 35, 40, 50] ✓</code></pre>
+            <pre class="code-block"><code>def quick_sort(arr, low, high):
+    if low < high:
+        pi = partition(arr, low, high)
+        quick_sort(arr, low, pi - 1)
+        quick_sort(arr, pi + 1, high)
+
+def partition(arr, low, high):
+    pivot = arr[low]
+    i = low + 1
+    j = high
+    while True:
+        while i <= j and arr[i] <= pivot: i += 1
+        while i <= j and arr[j] >= pivot: j -= 1
+        if i <= j: arr[i], arr[j] = arr[j], arr[i]
+        else: break
+    arr[low], arr[j] = arr[j], arr[low]
+    return j
+
+arr = [35, 10, 50, 25, 5, 40, 15]
+quick_sort(arr, 0, len(arr)-1)
+print(arr)  # [5, 10, 15, 25, 35, 40, 50]</code></pre>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Case</th><th>Time Complexity</th><th>Space Complexity</th></tr></thead>
+              <tbody>
+                <tr><td>Best / Average</td><td>$O(n \log n)$</td><td>$O(\log n)$ stack</td></tr>
+                <tr><td>Worst</td><td>$O(n^2)$</td><td>$O(n)$ stack</td></tr>
+              </tbody>
+            </table></div>
           </div>
         </div>
       </div>
@@ -4578,46 +4665,82 @@ def merge_sort(arr):
       <!-- Question B4 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q4. Binary Tree Traversal: Find Inorder, Preorder, and Postorder traversals for tree with Root A, left B (children D, E), right C (child F).</span>
+          <span class="q-title">Q4. Binary Tree Traversal: For tree with Root A, left=B (children D,E), right=C (child F) — find Inorder, Preorder, Postorder. Show node-by-node tracing clearly.</span>
           <span class="q-badge long">8 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
           <div class="model-answer">
-            <p><strong>Tree Structure:</strong></p>
-            <pre class="code-block"><code>        A
-       /       B   C
-     / \       D   E   F</code></pre>
-            <p><strong>Traversal Tracing:</strong></p>
-            <ol>
-              <li><strong>Inorder (Left → Root → Right):</strong>
-                <ul>
-                  <li>Traverse B's left child (D) $\Rightarrow$ <code>D</code></li>
-                  <li>Visit B $\Rightarrow$ <code>B</code></li>
-                  <li>Traverse B's right child (E) $\Rightarrow$ <code>E</code></li>
-                  <li>Visit Root A $\Rightarrow$ <code>A</code></li>
-                  <li>Traverse C $\Rightarrow$ Visit C (<code>C</code>), then traverse F (<code>F</code>).</li>
-                  <li>Result: <code>D B E A C F</code></li>
-                </ul>
-              </li>
-              <li><strong>Preorder (Root → Left → Right):</strong>
-                <ul>
-                  <li>Visit Root A $\Rightarrow$ <code>A</code></li>
-                  <li>Visit B $\Rightarrow$ <code>B</code></li>
-                  <li>Visit B's children $\Rightarrow$ <code>D</code>, then <code>E</code></li>
-                  <li>Visit C $\Rightarrow$ <code>C</code>, then F $\Rightarrow$ <code>F</code></li>
-                  <li>Result: <code>A B D E C F</code></li>
-                </ul>
-              </li>
-              <li><strong>Postorder (Left → Right → Root):</strong>
-                <ul>
-                  <li>Traverse B's children $\Rightarrow$ <code>D</code>, then <code>E</code>, then visit <code>B</code>.</li>
-                  <li>Traverse C's child F $\Rightarrow$ <code>F</code>, then visit <code>C</code>.</li>
-                  <li>Finally visit Root A $\Rightarrow$ <code>A</code></li>
-                  <li>Result: <code>D E B F C A</code></li>
-                </ul>
-              </li>
-            </ol>
+            <pre class="code-block"><code>Given Binary Tree:
+        A           ← Root
+       /       B   C         ← Level 1
+     / \       D   E   F       ← Level 2 (leaf nodes)</code></pre>
+            <p><strong>Traversal Rules:</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Traversal</th><th>Rule</th><th>Application</th></tr></thead>
+              <tbody>
+                <tr><td>Inorder</td><td>Left → Root → Right</td><td>BST sorted output</td></tr>
+                <tr><td>Preorder</td><td>Root → Left → Right</td><td>Tree copying / serialization</td></tr>
+                <tr><td>Postorder</td><td>Left → Right → Root</td><td>Tree deletion / expression evaluation</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>1. Inorder (L → Root → R):</strong></p>
+            <pre class="code-block"><code>inorder(A):
+  inorder(B):
+    inorder(D): D is leaf → print D ✓
+    print B ✓
+    inorder(E): E is leaf → print E ✓
+  print A ✓
+  inorder(C):
+    C has no left child
+    print C ✓
+    inorder(F): F is leaf → print F ✓
+
+Inorder Result: D → B → E → A → C → F</code></pre>
+            <p><strong>2. Preorder (Root → L → R):</strong></p>
+            <pre class="code-block"><code>preorder(A):
+  print A ✓
+  preorder(B):
+    print B ✓
+    preorder(D): print D ✓
+    preorder(E): print E ✓
+  preorder(C):
+    print C ✓
+    preorder(F): print F ✓
+
+Preorder Result: A → B → D → E → C → F</code></pre>
+            <p><strong>3. Postorder (L → R → Root):</strong></p>
+            <pre class="code-block"><code>postorder(A):
+  postorder(B):
+    postorder(D): print D ✓
+    postorder(E): print E ✓
+    print B ✓
+  postorder(C):
+    postorder(F): print F ✓
+    print C ✓
+  print A ✓
+
+Postorder Result: D → E → B → F → C → A</code></pre>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Traversal</th><th>Result</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Inorder</strong></td><td><code>D, B, E, A, C, F</code></td></tr>
+                <tr><td><strong>Preorder</strong></td><td><code>A, B, D, E, C, F</code></td></tr>
+                <tr><td><strong>Postorder</strong></td><td><code>D, E, B, F, C, A</code></td></tr>
+              </tbody>
+            </table></div>
+            <pre class="code-block"><code># Python Implementation
+def inorder(node):
+    if node: inorder(node.left); print(node.val, end=' '); inorder(node.right)
+
+def preorder(node):
+    if node: print(node.val, end=' '); preorder(node.left); preorder(node.right)
+
+def postorder(node):
+    if node: postorder(node.left); postorder(node.right); print(node.val, end=' ')
+
+# Time: O(n) for all traversals — each node visited exactly once
+# Space: O(h) where h = tree height (recursion stack)</code></pre>
           </div>
         </div>
       </div>
@@ -4737,43 +4860,49 @@ while i < n:
       <!-- Question B8 -->
       <div class="question-card">
         <div class="question-header" onclick="toggleQuestion(this)">
-          <span>Q8. Search Element 25 in array: [5, 10, 15, 20, 25, 30, 35] using Binary Search. Show all middle index calculations.</span>
+          <span class="q-title">Q8. Searching Techniques: Differentiate Linear vs Binary Search (working, complexity, prerequisite, use case). Also search element 25 in [5, 10, 15, 20, 25, 30, 35] using Binary Search — show ALL intermediate steps.</span>
           <span class="q-badge long">8 Marks</span>
         </div>
         <div class="question-body">
-          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Model Answer Key</button>
+          <button class="reveal-btn" onclick="revealAnswer(this)">🔑 Reveal Full Model Answer</button>
           <div class="model-answer">
-            <p><strong>Step-by-Step Binary Search Trace:</strong></p>
-            <p>Array = <code>[5, 10, 15, 20, 25, 30, 35]</code>, Key = <code>25</code>.</p>
-            <ol>
-              <li><strong>Iteration 1:</strong>
-                <ul>
-                  <li>Low = <code>0</code>, High = <code>6</code>.</li>
-                  <li>$	ext{Mid} = \lfloor(0 + 6) / 2floor = 3$.</li>
-                  <li>Element at index 3 $\Rightarrow 	ext{arr}[3] = 20$.</li>
-                  <li>Comparison: Since $25 > 20$, search in the right half.</li>
-                  <li>New Bounds: Low = $	ext{Mid} + 1 = 4$, High = <code>6</code>.</li>
-                </ul>
-              </li>
-              <li><strong>Iteration 2:</strong>
-                <ul>
-                  <li>Low = <code>4</code>, High = <code>6</code>.</li>
-                  <li>$	ext{Mid} = \lfloor(4 + 6) / 2floor = 5$.</li>
-                  <li>Element at index 5 $\Rightarrow 	ext{arr}[5] = 30$.</li>
-                  <li>Comparison: Since $25 < 30$, search in the left half.</li>
-                  <li>New Bounds: Low = <code>4</code>, High = $	ext{Mid} - 1 = 4$.</li>
-                </ul>
-              </li>
-              <li><strong>Iteration 3:</strong>
-                <ul>
-                  <li>Low = <code>4</code>, High = <code>4</code>.</li>
-                  <li>$	ext{Mid} = \lfloor(4 + 4) / 2floor = 4$.</li>
-                  <li>Element at index 4 $\Rightarrow 	ext{arr}[4] = 25$.</li>
-                  <li>Comparison: Since $25 == 25$, target is found at index <code>4</code>!</li>
-                </ul>
-              </li>
-            </ol>
-            <p><strong>Result:</strong> Element 25 successfully found at index <strong>4</strong> in exactly 3 iterations.</p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Aspect</th><th>Linear Search</th><th>Binary Search</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Working Principle</strong></td><td>Sequentially checks each element from left to right</td><td>Repeatedly halves search space by comparing target with middle element</td></tr>
+                <tr><td><strong>Best Case</strong></td><td>$O(1)$ — target at index 0</td><td>$O(1)$ — target is exactly at mid on first try</td></tr>
+                <tr><td><strong>Average/Worst Case</strong></td><td>$O(n)$ — scan up to all elements</td><td>$O(\log n)$ — halves the search space each iteration</td></tr>
+                <tr><td><strong>Prerequisite</strong></td><td>None — works on unsorted arrays</td><td>Array MUST be sorted</td></tr>
+                <tr><td><strong>Best Use Case</strong></td><td>Small or unsorted datasets</td><td>Large sorted datasets (phone books, dictionaries)</td></tr>
+              </tbody>
+            </table></div>
+            <p><strong>Binary Search Trace — Search 25 in [5, 10, 15, 20, 25, 30, 35]:</strong></p>
+            <div class="table-responsive"><table>
+              <thead><tr><th>Iteration</th><th>Low</th><th>High</th><th>Mid = (L+H)//2</th><th>arr[Mid]</th><th>Decision</th></tr></thead>
+              <tbody>
+                <tr><td>1</td><td>0</td><td>6</td><td>3</td><td>20</td><td>25 &gt; 20 → search RIGHT half → low = 4</td></tr>
+                <tr><td>2</td><td>4</td><td>6</td><td>5</td><td>30</td><td>25 &lt; 30 → search LEFT half → high = 4</td></tr>
+                <tr><td>3</td><td>4</td><td>4</td><td>4</td><td>25</td><td>25 == 25 → <strong>FOUND at index 4!</strong> ✓</td></tr>
+              </tbody>
+            </table></div>
+            <pre class="code-block"><code>def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid         # Found!
+        elif arr[mid] < target:
+            low = mid + 1      # Search right half
+        else:
+            high = mid - 1     # Search left half
+    return -1                  # Not found
+
+arr = [5, 10, 15, 20, 25, 30, 35]
+print(binary_search(arr, 25))  # Output: 4
+
+# Time Complexity: O(log n) — 7 elements need at most log₂(7) ≈ 3 iterations
+# Space Complexity: O(1) — iterative approach, no extra memory</code></pre>
+            <p><strong>Result:</strong> Element 25 found at index <strong>4</strong> in exactly <strong>3 iterations</strong> ($\log_2 7 pprox 3$).</p>
           </div>
         </div>
       </div>
