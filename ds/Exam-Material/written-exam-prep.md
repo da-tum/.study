@@ -251,147 +251,586 @@ def infix_to_postfix(expression):
 
 ---
 
-## 🎯 Section 4: [Predictive Exam Paper]
-*Time: 3 Hours | Maximum Marks: 40*
+## 🎯 Section 4: [Mock Exam Paper - High-Fidelity Solved Version]
+*Time allowed: 3 Hours | Maximum Marks: 40*
 
 ---
 
 ### 📝 PART A: Attempt ANY 4 Questions (2 Marks Each)
 
-#### Q1. Differentiate between BFS and DFS traversal of a Graph. State the helper data structure used in each.
-*   **Answer**:
-    *   **BFS (Breadth-First Search)** traverses the graph level-by-level, visiting all neighbor nodes at the current depth before going deeper. It uses a **Queue (FIFO)**.
-    *   **DFS (Depth-First Search)** traverses deeply along a single branch as far as possible before backtracking to unvisited branches. It uses a **Stack (LIFO)** or recursion.
+#### Q1. Differentiate between Array and Linked List on the basis of Memory allocation and Insertion operation.
+*   **Memory Allocation**: 
+    *   *Array*: Contiguous block of memory allocated statically at **compile-time** (on the stack) or dynamically (but still contiguous) at runtime. The size is fixed and must be declared in advance.
+    *   *Linked List*: Non-contiguous nodes allocated dynamically at **runtime** (on the heap) as needed. Memory size grows and shrinks dynamically.
+*   **Insertion**:
+    *   *Array*: Takes **$O(n)$** time in the worst case because inserting at the beginning or middle requires shifting all subsequent elements right.
+    *   *Linked List*: Takes **$O(1)$** time to insert at the head since it only requires adjusting a few pointers (e.g., `new_node.next = head; head = new_node`) without shifting any data.
 
-#### Q2. Write a Python function for the PUSH operation in an array-based Stack. Include overflow handling.
-*   **Answer**:
-```python
-def push(stack, top, item, MAX_SIZE):
-    if top >= MAX_SIZE - 1:
-        print("Stack Overflow! Cannot push element.")
-        return top
-    top += 1
-    stack[top] = item
-    return top
-```
+#### Q2. Find the time complexity of the following loop structure: `i = 1; while i <= n: i = i * 2`.
+*   **Mathematical Derivation**:
+    The loop variable $i$ starts at $1$ and doubles in value in each iteration step:
+    $$\text{Iteration 1}: i = 2^1$$
+    $$\text{Iteration 2}: i = 2^2$$
+    $$\text{Iteration } k: i = 2^k$$
+    The loop terminates when the condition $i \le n$ becomes false, i.e., $2^k > n$. 
+    Taking the logarithm to base 2 on both sides:
+    $$k > \log_2 n$$
+    The total execution steps grow logarithmically with respect to input size $n$.
+    **Time Complexity = $O(\log n)$** (Logarithmic).
 
-#### Q3. State whether the following statement is TRUE or FALSE: "A binary tree can be uniquely reconstructed if both its Preorder and Postorder traversals are given." Justify.
-*   **Answer**: **FALSE**. Preorder (Root-L-R) and Postorder (L-R-Root) traversals do not establish structural boundaries between left and right subtrees for nodes that have only a single child. For example, a root node `A` with a single child `B` yields the same preorder (`A, B`) and postorder (`B, A`) regardless of whether `B` is a left child or a right child.
+#### Q3. State whether the following statement is TRUE or FALSE: "Binary Search can be applied on unsorted arrays." Justify.
+*   **Answer**: **FALSE**.
+*   **Justification**: Binary Search relies on the **ordering property** of sorted arrays. In each iteration, it compares the target with the *middle element* and eliminates one-half of the search space. If the array is unsorted, comparing target with the middle element gives no information about which side the target lies on, making search space elimination mathematically invalid. For example, searching `3` in `[5, 1, 9, 3, 7]` with a middle element of `9` would lead us to search `[5, 1]` (since $3 < 9$), completely missing the target `3` in the right half.
 
-#### Q4. What is the optimal step size $m$ in Jump Search for an array of size $n$, and what is its worst-case time complexity?
-*   **Answer**:
-    *   *Optimal Step Size*: $m = \sqrt{n}$
-    *   *Worst-Case Time Complexity*: $O(\sqrt{n})$
+#### Q4. What is Stack Underflow? State the mathematical condition and differentiate it from Stack Overflow.
+*   **Stack Underflow**: Occurs when a deletion (`POP`) or check (`PEEK`) operation is attempted on an *empty stack* that contains no elements.
+    *   *Mathematical Condition*: `top == -1` (for an array-based implementation).
+*   **Comparison**:
+    *   *Stack Overflow*: Happens when a `PUSH` is attempted on a *full stack*. Condition: `top == MAX_SIZE - 1`.
+    *   *Stack Underflow*: Happens when a `POP` is attempted on an *empty stack*. Condition: `top == -1`.
+
+#### Q5. Write the inorder traversal rule of a Binary Tree. Give an example.
+*   **Inorder Traversal Rule**: **Left Subtree &rarr; Root Node &rarr; Right Subtree** (L-Root-R).
+*   **Example**:
+    ```
+          10 (Root)
+         /  \
+        5    15
+    ```
+    *Traversal order*: `5, 10, 15`. In a Binary Search Tree (BST), Inorder traversal always produces elements in **ascending sorted order**.
+
+#### Q6. Differentiate between BFS and DFS traversal on the basis of data structure, strategy, and complexity.
+| Aspect Metric | BFS (Breadth-First Search) | DFS (Depth-First Search) |
+| :--- | :--- | :--- |
+| **Data Structure** | FIFO **Queue** (First-In First-Out) | LIFO **Stack** (Last-In First-Out) or Recursion |
+| **Traversal Strategy** | Level-by-level (visits all immediate neighbors first) | Branch-by-branch (goes as deep as possible before backtracking) |
+| **Time Complexity** | $O(V + E)$ where $V = \text{vertices}, E = \text{edges}$ | $O(V + E)$ |
+| **Space Complexity** | $O(V)$ auxiliary space for queue | $O(V)$ auxiliary space for recursive call stack |
+
+#### Q7. What is the worst-case complexity of Quick Sort? When does it occur and how is it avoided?
+*   **Worst-Case Complexity**: **$O(n^2)$** (Quadratic).
+*   **When it occurs**: When the partition pivot chosen consistently splits the array extremely unevenly (e.g., $0$ elements on one side and $n-1$ on the other). This happens on already sorted or reverse-sorted arrays when using the first or last element as the pivot.
+*   **How it is avoided**: By using **Randomized Quick Sort** (choosing a random element as pivot) or the **Median-of-Three** pivot strategy (median of first, middle, and last elements).
 
 ---
 
 ### 📝 PART B: Attempt ANY 4 Questions (8 Marks Each)
 
-#### Q1. Quick Sort Partitioning & Tracing.
-*   **(a) Perform a complete dry run of the Quick Sort algorithm on the following array, selecting the first element as the pivot: `[35, 10, 50, 25, 5, 40, 15]`. Show every partition step.** [5 Marks]
-    *   **Initial Array**: `[35, 10, 50, 25, 5, 40, 15]`, Pivot = `35`.
-    *   *Goal*: Partition elements around pivot `35` so that values $< 35$ go left and values $> 35$ go right.
-    *   *Standard Partition Trace (using Hoare's or logical partition)*:
-        *   Scan left-to-right for element $> 35 \Rightarrow 50$ (at index 2).
-        *   Scan right-to-left for element $< 35 \Rightarrow 15$ (at index 6).
-        *   Swap `50` and `15` $\Rightarrow$ Array becomes: `[35, 10, 15, 25, 5, 40, 50]`
-        *   Resume left scan for element $> 35 \Rightarrow 40$ (at index 5).
-        *   Resume right scan for element $< 35 \Rightarrow 5$ (at index 4).
-        *   Since indices have crossed, partition is complete.
-        *   Swap pivot `35` with `5` (at boundary index 4) $\Rightarrow$ Array becomes: `[5, 10, 15, 25] 35 [40, 50]`
-        *   *Pivot `35` is now placed at its correct sorted position.*
-    *   *Recursive Call 1 (Left Subarray)*: `[5, 10, 15, 25]`, Pivot = `5`.
-        *   Partitioning splits it into empty left and `[10, 15, 25]` right.
-        *   Sorted: `[5, 10, 15, 25]`
-    *   *Recursive Call 2 (Right Subarray)*: `[40, 50]`, Pivot = `40`.
-        *   Partitioning splits it into empty left and `[50]` right.
-        *   Sorted: `[40, 50]`
-    *   **Final Sorted Array**: `[5, 10, 15, 25, 35, 40, 50]`
-*   **(b) Discuss the best-case and worst-case time complexities of Quick Sort. Under what structural condition does the worst-case occur?** [3 Marks]
-    *   *Best-Case Time Complexity*: $O(n \log n)$ — Occurs when the pivot consistently partitions the array into two equal halves.
-    *   *Worst-Case Time Complexity*: $O(n^2)$ — Occurs when the pivot consistently partitions the array into highly unbalanced subproblems of size $0$ and $n-1$.
-    *   *Structural Condition*: This worst-case occurs when the array is already sorted (ascending or descending) and we choose the first or last element as the pivot.
+#### Q1. Quick Sort Dry Run: Perform Quick Sort on [35, 10, 50, 25, 5, 40, 15] using the first element as pivot. Show partitioning steps, recursive breakdown, and complete code.
+##### (a) Level-by-Level Dry Run partition trace (Hoare's Partitioning)
+*   **Level 0**: Partitioning `[35, 10, 50, 25, 5, 40, 15]`, Pivot = `35`
+    *   $i$ starts at index 1 (val 10), scans right for $>35$ &rarr; stops at index 2 (`50`).
+    *   $j$ starts at index 6 (val 15), scans left for $\le 35$ &rarr; stops at index 6 (`15`).
+    *   Swap `arr[2]` (50) with `arr[6]` (15) &rarr; Array: `[35, 10, 15, 25, 5, 40, 50]`
+    *   Resume scanning: $i$ stops at index 5 (`40`). $j$ stops at index 4 (`5`).
+    *   Pointers crossed ($i=5, j=4$) &rarr; Stop. Swap pivot `35` with `arr[j=4]` (5) &rarr; Array: `[5, 10, 15, 25] 35 [40, 50]`
+    *   *Result*: Pivot `35` is sorted.
+*   **Level 1 (Left Subarray)**: Partitioning `[5, 10, 15, 25]`, Pivot = `5`
+    *   $i$ stops at index 1 (`10` > 5). $j$ scans left and stops at index 0 (`5` <= 5).
+    *   Pointers crossed ($i=1, j=0$). Swap pivot (no change).
+    *   *Result*: `5` is sorted! Left subtree: `[]`, Right: `[10, 15, 25]`.
+*   **Level 2**: Partitioning `[10, 15, 25]`, Pivot = `10`
+    *   Pointers cross immediately at $i=1, j=0$. Swap pivot (no change).
+    *   *Result*: `10` is sorted. Right subtree: `[15, 25]`.
+*   **Level 3**: Partitioning `[15, 25]`, Pivot = `15` &rarr; `15` sorted, then leaf `[25]` sorted.
+*   **Level 1 (Right Subarray)**: Partitioning `[40, 50]`, Pivot = `40` &rarr; `40` sorted, leaf `[50]` sorted.
 
-#### Q2. Queue Rearrangement using Queue Operations.
-*   **(a) Write a step-by-step description of an algorithm to transform a queue containing `[1, 2, 3, 4, 5, 6]` (where `1` is at the front) into `[1, 3, 5, 2, 4, 6]` using ONLY standard enqueue and dequeue operations and auxiliary queues.** [4 Marks]
-    1.  Initialize two auxiliary queues: `Q_odd` and `Q_even`.
-    2.  Iterate through the original queue `Q1` until empty:
-        *   Dequeue the front element.
-        *   If the element is odd, enqueue it into `Q_odd`.
-        *   If the element is even, enqueue it into `Q_even`.
-    3.  Iterate through `Q_odd` until empty:
-        *   Dequeue from `Q_odd` and enqueue into `Q1`.
-    4.  Iterate through `Q_even` until empty:
-        *   Dequeue from `Q_even` and enqueue into `Q1`.
-*   **(b) Show the state of all queues after each step of the transformation.** [4 Marks]
-    *   *Initial State*: `Q1 = [1, 2, 3, 4, 5, 6]`, `Q_odd = []`, `Q_even = []`
-    *   *After Dequeuing Q1*:
-        *   Element `1` dequeued $\Rightarrow$ `Q_odd = [1]`
-        *   Element `2` dequeued $\Rightarrow$ `Q_even = [2]`
-        *   Element `3` dequeued $\Rightarrow$ `Q_odd = [1, 3]`
-        *   Element `4` dequeued $\Rightarrow$ `Q_even = [2, 4]`
-        *   Element `5` dequeued $\Rightarrow$ `Q_odd = [1, 3, 5]`
-        *   Element `6` dequeued $\Rightarrow$ `Q_even = [2, 4, 6]`
-        *   *Intermediate State*: `Q1 = []`, `Q_odd = [1, 3, 5]`, `Q_even = [2, 4, 6]`
-    *   *Enqueuing Odd Elements back to Q1*:
-        *   `Q1 = [1, 3, 5]`, `Q_odd = []`
-    *   *Enqueuing Even Elements back to Q1*:
-        *   `Q1 = [1, 3, 5, 2, 4, 6]`, `Q_even = []`
-    *   *Final State*: `Q1 = [1, 3, 5, 2, 4, 6]` (Rearrangement complete).
+##### (b) Recursive Decomposition Structure
+```
+[35, 10, 50, 25, 5, 40, 15]
+             | (pivot 35)
+     [5, 10, 15, 25]  35  [40, 50]
+        | (pivot 5)          | (pivot 40)
+      [] 5 [10, 15, 25]    [] 40 [50]
+             | (pivot 10)
+           [] 10 [15, 25]
+                   | (pivot 15)
+                 [] 15 [25]
+```
+**Final Sorted Array**: `[5, 10, 15, 25, 35, 40, 50]`
 
-#### Q3. Tree Reconstruction & Traversals.
-*   **(a) Construct a unique Binary Tree using the following traversals:** [5 Marks]
-    *   **Preorder**: `P M H K R T W Y`
-    *   **Inorder**: `H M K P W T Y R`
-    *   **Reconstruction Steps**:
-        1.  *Identify Root*: First element in preorder is `P` $\Rightarrow$ **Root = P**.
-        2.  *Partition Inorder*: Find `P` in inorder sequence `H, M, K | P | W, T, Y, R`.
-            *   Left subtree inorder: `H, M, K`
-            *   Right subtree inorder: `W, T, Y, R`
-        3.  *Construct Left Subtree*: Preorder elements are `M, H, K`.
-            *   First is `M` $\Rightarrow$ **Root of left subtree = M**.
-            *   Partition left inorder `H, M, K` around `M`: **Left child = H**, **Right child = K**.
-        4.  *Construct Right Subtree*: Preorder elements are `R, T, W, Y`.
-            *   First is `R` $\Rightarrow$ **Root of right subtree = R**.
-            *   Partition right inorder `W, T, Y, R` around `R`: Left subtree inorder is `W, T, Y`, right is empty.
-        5.  *Construct Left Subtree of R*: Preorder elements are `T, W, Y`.
-            *   First is `T` $\Rightarrow$ **Root = T**.
-            *   Partition inorder `W, T, Y` around `T`: **Left child = W**, **Right child = Y**.
-        6.  *Final Tree Diagram*:
-            ```
-                      P
-                    /   \
-                   M     R
-                  / \   /
-                 H   K T
-                      / \
-                     W   Y
-            ```
-*   **(b) Find the unique Postorder traversal of the constructed tree.** [3 Marks]
-    *   **Postorder Traversal (Left-Right-Root)**:
-        *   Postorder of Left subtree: `H K M`
-        *   Postorder of Right subtree: `W Y T R`
-        *   Combined with root `P` $\Rightarrow$ **`H K M W Y T R P`**
+##### (c) Quick Sort & Partitioning Algorithms (Pseudocode)
+```text
+ALGORITHM Partition(arr, low, high)
+  Input: Array arr, boundaries low and high
+  Output: Partition index j
+  
+  pivot = arr[low]
+  i = low + 1
+  j = high
+  
+  while true do
+    while i <= j and arr[i] <= pivot do
+      i = i + 1
+    end while
+    while i <= j and arr[j] > pivot do
+      j = j - 1
+    end while
+    if i < j then
+      Swap arr[i] and arr[j]
+    else
+      break
+    end if
+  end while
+  
+  Swap arr[low] and arr[j]
+  return j
 
-#### Q4. Time Complexity of Snippets.
-*   **Analyze the time complexity of the following code snippets and express them in Big-O notation:** [8 Marks]
-*   **(a)** [2 Marks]
-```python
-for i in range(n):
-    print(i)
+ALGORITHM QuickSort(arr, low, high)
+  Input: Array arr, boundaries low and high
+  
+  if low < high then
+    p = Partition(arr, low, high)
+    QuickSort(arr, low, p - 1)
+    QuickSort(arr, p + 1, high)
+  end if
 ```
-*   *Analysis*: The loop executes sequentially exactly $n$ times. Time Complexity is **$O(n)$** (Linear).
-*   **(b)** [3 Marks]
+
+##### (d) Complete Python Implementation
 ```python
-i = 1
-while i < n:
-    i = i * 3
+def quick_sort(arr, low, high):
+    if low < high:
+        p = partition(arr, low, high)
+        quick_sort(arr, low, p - 1)
+        quick_sort(arr, p + 1, high)
+
+def partition(arr, low, high):
+    pivot = arr[low]
+    i = low + 1
+    j = high
+    while True:
+        while i <= j and arr[i] <= pivot:
+            i += 1
+        while i <= j and arr[j] > pivot:
+            j -= 1
+        if i < j:
+            arr[i], arr[j] = arr[j], arr[i]
+        else:
+            break
+    arr[low], arr[j] = arr[j], arr[low]
+    return j
 ```
-*   *Analysis*: In each iteration, $i$ is multiplied by 3. Its value grows exponentially: $1, 3, 9, 27, \dots, 3^k$. The loop terminates when $3^k \ge n \Rightarrow k \ge \log_3 n$. Time Complexity is **$O(\log n)$** (Logarithmic).
-*   **(c)** [3 Marks]
+
+---
+
+#### Q2. Queue Rearrangement: Transform [1, 2, 3, 4, 5, 6] into [1, 3, 5, 2, 4, 6] using ONLY queue operations.
+##### (a) Step-by-Step State Trace Log
+Using two auxiliary queues: `Q_odd` and `Q_even`.
+1.  **Dequeue elements from main queue `Q1` one by one and filter**:
+    *   Dequeue `1` &rarr; Odd &rarr; Enqueue to `Q_odd` &rarr; `Q_odd = [1]`
+    *   Dequeue `2` &rarr; Even &rarr; Enqueue to `Q_even` &rarr; `Q_even = [2]`
+    *   Dequeue `3` &rarr; Odd &rarr; Enqueue to `Q_odd` &rarr; `Q_odd = [1, 3]`
+    *   Dequeue `4` &rarr; Even &rarr; Enqueue to `Q_even` &rarr; `Q_even = [2, 4]`
+    *   Dequeue `5` &rarr; Odd &rarr; Enqueue to `Q_odd` &rarr; `Q_odd = [1, 3, 5]`
+    *   Dequeue `6` &rarr; Even &rarr; Enqueue to `Q_even` &rarr; `Q_even = [2, 4, 6]`
+    *   *State*: `Q1 = []`, `Q_odd = [1, 3, 5]`, `Q_even = [2, 4, 6]`
+2.  **Dequeue all from `Q_odd` and enqueue to `Q1`**:
+    *   `Q1 = [1, 3, 5]`, `Q_odd = []`
+3.  **Dequeue all from `Q_even` and enqueue to `Q1`**:
+    *   `Q1 = [1, 3, 5, 2, 4, 6]`, `Q_even = []` (Complete!)
+
+##### (b) Queue Rearrangement Algorithm (Pseudocode)
+```text
+ALGORITHM RearrangeQueue(Q1)
+  Input: Queue Q1 filled with integers
+  Output: Queue Q1 with all odd integers followed by all even integers
+  
+  Create empty queues Q_odd and Q_even
+  
+  // Step 1: Partition elements into helper queues
+  while Q1 is not empty do
+    val = Q1.dequeue()
+    if val is odd then
+      Q_odd.enqueue(val)
+    else
+      Q_even.enqueue(val)
+    end if
+  end while
+  
+  // Step 2: Enqueue odd elements back to Q1
+  while Q_odd is not empty do
+    Q1.enqueue(Q_odd.dequeue())
+  end while
+  
+  // Step 3: Enqueue even elements back to Q1
+  while Q_even is not empty do
+    Q1.enqueue(Q_even.dequeue())
+  end while
+```
+
+##### (c) Complete Python Implementation
 ```python
-for i in range(n):
-    for j in range(n):
-        print(i, j)
+from collections import deque
+
+class Queue:
+    def __init__(self, elements=None):
+        self.items = deque(elements) if elements else deque()
+    def enqueue(self, val):
+        self.items.append(val)
+    def dequeue(self):
+        return self.items.popleft()
+    def is_empty(self):
+        return len(self.items) == 0
+
+def rearrange_queue(q1):
+    q_odd = Queue()
+    q_even = Queue()
+    while not q1.is_empty():
+        val = q1.dequeue()
+        if val % 2 != 0:
+            q_odd.enqueue(val)
+        else:
+            q_even.enqueue(val)
+    while not q_odd.is_empty():
+        q1.enqueue(q_odd.dequeue())
+    while not q_even.is_empty():
+        q1.enqueue(q_even.dequeue())
 ```
-*   *Analysis*: The outer loop runs $n$ times. For each iteration of the outer loop, the inner loop also runs $n$ times. The print statement is executed $n \times n = n^2$ times. Time Complexity is **$O(n^2)$** (Quadratic).
+
+---
+
+#### Q3. Stack Operations: trace push(10), push(20), push(30), pop(), push(40), pop(), push(50) showing top and final state.
+##### (a) Operation Log Table
+| Step | Operation | Stack State (Bottom to Top) | Top Pointer | Popped Element |
+| :--- | :--- | :--- | :--- | :--- |
+| 0 | Initial | `[]` | `-1` | &mdash; |
+| 1 | `push(10)` | `[10]` | `0` | &mdash; |
+| 2 | `push(20)` | `[10, 20]` | `1` | &mdash; |
+| 3 | `push(30)` | `[10, 20, 30]` | `2` | &mdash; |
+| 4 | `pop()` | `[10, 20]` | `1` | `30` |
+| 5 | `push(40)` | `[10, 20, 40]` | `2` | &mdash; |
+| 6 | `pop()` | `[10, 20]` | `1` | `40` |
+| 7 | `push(50)` | `[10, 20, 50]` | `2` | &mdash; |
+
+##### (b) Sub-questions Answers
+*   **Final Stack**: `[10, 20, 50]`
+*   **Top Element**: `50`
+*   **Popping Empty Stack (Stack Underflow)**: Causes a runtime crash or underflow check error. In Python, we throw a custom exception `StackUnderflowException`.
+
+##### (c) Stack Push and Pop Algorithms (Pseudocode)
+```text
+ALGORITHM Push(stack, item)
+  Input: Array stack of capacity MAX, active element item
+  
+  if top >= MAX - 1 then
+    throw StackOverflowException
+  else
+    top = top + 1
+    stack[top] = item
+  end if
+
+ALGORITHM Pop(stack)
+  Input: Array stack
+  Output: Top element of the stack
+  
+  if top == -1 then
+    throw StackUnderflowException
+  else
+    popped_val = stack[top]
+    stack[top] = null // clear slot
+    top = top - 1
+    return popped_val
+  end if
+```
+
+##### (d) Complete Python Implementation
+```python
+class ArrayStack:
+    def __init__(self, capacity=10):
+        self.arr = [None] * capacity
+        self.top = -1
+    def push(self, val):
+        self.top += 1
+        self.arr[self.top] = val
+    def pop(self):
+        if self.top == -1:
+            raise IndexError("Stack Underflow")
+        val = self.arr[self.top]
+        self.top -= 1
+        return val
+```
+
+---
+
+#### Q4. Binary Tree Traversal: For tree with Root A, left=B (children D,E), right=C (child F) — find Inorder, Preorder, Postorder traversals.
+##### (a) Tree Structure Diagram
+```
+      Tree Structure:
+             A (Root)
+            / \
+           B   C
+          / \   \
+         D   E   F (Leaves: D, E, F)
+```
+
+##### (b) Traversals Result
+*   **Preorder (Root-L-R)**: `A, B, D, E, C, F`
+*   **Inorder (L-Root-R)**: `D, B, E, A, C, F`
+*   **Postorder (L-R-Root)**: `D, E, B, F, C, A`
+
+##### (c) Node-by-Node Tracing
+*   *Preorder*: Visit root `A` &rarr; go left, visit `B` &rarr; go left, visit leaf `D` &rarr; backtrack to B, go right, visit leaf `E` &rarr; backtrack to A, go right, visit `C` &rarr; go right, visit leaf `F`.
+*   *Inorder*: Recurse left from A to B to D. Visit leaf `D` &rarr; backtrack, visit parent `B` &rarr; go right, visit leaf `E` &rarr; backtrack to A, visit root `A` &rarr; go right to C, visit `C` &rarr; go right, visit leaf `F`.
+
+##### (d) Recursive Tree Traversals Algorithms (Pseudocode)
+```text
+ALGORITHM Preorder(root)
+  Input: Node root of binary tree
+  
+  if root is not null then
+    Visit(root.val)
+    Preorder(root.left)
+    Preorder(root.right)
+  end if
+
+ALGORITHM Inorder(root)
+  Input: Node root of binary tree
+  
+  if root is not null then
+    Inorder(root.left)
+    Visit(root.val)
+    Inorder(root.right)
+  end if
+
+ALGORITHM Postorder(root)
+  Input: Node root of binary tree
+  
+  if root is not null then
+    Postorder(root.left)
+    Postorder(root.right)
+    Visit(root.val)
+  end if
+```
+
+##### (e) Complete Python Implementation
+```python
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+def inorder(root, res):
+    if root:
+        inorder(root.left, res)
+        res.append(root.val)
+        inorder(root.right, res)
+```
+
+---
+
+#### Q5. BFS and DFS Traversal: Tracing graph starting from Node A (connections A-B,C; B-D,E; C-F; E-G).
+##### (a) Step-by-Step Traversal Traces
+*   **BFS (Queue-based)**:
+    1.  Start with queue `['A']`, visited `{'A'}`
+    2.  Process `A` &rarr; queue `['B', 'C']`, visited `{'A', 'B', 'C'}`
+    3.  Process `B` &rarr; queue `['C', 'D', 'E']`, visited `{'A', 'B', 'C', 'D', 'E'}`
+    4.  Process `C` &rarr; queue `['D', 'E', 'F']`, visited `{'A', 'B', 'C', 'D', 'E', 'F'}`
+    5.  Process `D` &rarr; queue `['E', 'F']`
+    6.  Process `E` &rarr; queue `['F', 'G']`, visited `{'A', 'B', 'C', 'D', 'E', 'F', 'G'}`
+    7.  Process `F` &rarr; queue `['G']`
+    8.  Process `G` &rarr; queue `[]`
+    *   **BFS Visit Order**: `A &rarr; B &rarr; C &rarr; D &rarr; E &rarr; F &rarr; G`
+*   **DFS (Stack-based / Recursion)**:
+    1.  Visit `A` &rarr; recurse left to `B` &rarr; recurse left to leaf `D`.
+    2.  Backtrack to `B` &rarr; recurse right to `E` &rarr; recurse to leaf `G`.
+    3.  Backtrack to `E` &rarr; backtrack to `B` &rarr; backtrack to `A`.
+    4.  Recurse right from `A` to `C` &rarr; recurse to leaf `F`.
+    *   **DFS Visit Order**: `A &rarr; B &rarr; D &rarr; E &rarr; G &rarr; C &rarr; F`
+
+##### (b) BFS and DFS Traversal Algorithms (Pseudocode)
+```text
+ALGORITHM BFS(graph, start)
+  Input: Graph representation graph, source node start
+  Output: BFS traversal order list
+  
+  Create set visited and add start
+  Create queue queue and enqueue start
+  Create list traversal_order
+  
+  while queue is not empty do
+    node = queue.dequeue()
+    traversal_order.append(node)
+    
+    for neighbor in graph[node] do
+      if neighbor is not in visited then
+        visited.add(neighbor)
+        queue.enqueue(neighbor)
+      end if
+    end for
+  end while
+  return traversal_order
+
+ALGORITHM DFS(graph, node, visited, traversal_order)
+  Input: Graph representation graph, active node, visited set, traversal_order list
+  
+  visited.add(node)
+  traversal_order.append(node)
+  
+  for neighbor in graph[node] do
+    if neighbor is not in visited then
+      DFS(graph, neighbor, visited, traversal_order)
+    end if
+  end for
+```
+
+##### (c) Complete Python Implementation
+```python
+def bfs(graph, start):
+    visited, queue, order = {start}, [start], []
+    while queue:
+        node = queue.pop(0)
+        order.append(node)
+        for n in graph[node]:
+            if n not in visited:
+                visited.add(n)
+                queue.append(n)
+    return order
+```
+
+---
+
+#### Q6. Construct Binary Tree: Preorder A B D E C F and Inorder D B E A C F. Show reconstruction step-by-step.
+##### (a) Reconstruction Steps & Diagrams
+1.  **First preorder node is Root &rarr; Root = A**
+    *   Split Inorder: `[D, B, E] | A | [C, F]`
+2.  **Left Subtree (Preorder: `B, D, E`, Inorder: `D, B, E`)**
+    *   First preorder node is `B` &rarr; Sub-Root = B
+    *   Split Inorder around B: `[D] | B | [E]`
+    *   Leaves are D (left) and E (right).
+3.  **Right Subtree (Preorder: `C, F`, Inorder: `C, F`)**
+    *   First preorder node is `C` &rarr; Sub-Root = C
+    *   Split Inorder around C: `[] | C | [F]`
+    *   Right child is leaf F (Left child is NULL).
+
+##### (b) Final Tree Structure Diagram
+```
+        A
+       / \
+      B   C
+     / \   \
+    D   E   F
+```
+
+##### (c) Tree Construction Algorithm (Pseudocode)
+```text
+ALGORITHM BuildTree(preorder, inorder)
+  Input: Lists preorder and inorder representing traversals
+  Output: Root Node of reconstructed binary tree
+  
+  if preorder is empty or inorder is empty then
+    return null
+  end if
+  
+  root_val = preorder[0]
+  root = new Node(root_val)
+  
+  root_index = index of root_val in inorder
+  
+  left_inorder = inorder[0 ... root_index - 1]
+  right_inorder = inorder[root_index + 1 ... end]
+  
+  left_preorder = preorder[1 ... length(left_inorder)]
+  right_preorder = preorder[length(left_inorder) + 1 ... end]
+  
+  root.left = BuildTree(left_preorder, left_inorder)
+  root.right = BuildTree(right_preorder, right_inorder)
+  
+  return root
+```
+
+##### (d) Complete Python Implementation
+```python
+def build_tree(preorder, inorder):
+    if not preorder or not inorder:
+        return None
+    root_val = preorder[0]
+    root = Node(root_val)
+    idx = inorder.index(root_val)
+    root.left = build_tree(preorder[1:1+idx], inorder[:idx])
+    root.right = build_tree(preorder[1+idx:], inorder[idx+1:])
+    return root
+```
+
+---
+
+#### Q7. Complexity Analysis: Analyze loop structures sequential O(n), logarithmic O(log n), quadratic O(n²).
+##### (a) Snippet A: Sequential Linear Loop ($O(n)$)
+*   **Code**: `for i in range(n): print(i)`
+*   **Derivation**: The loop runs $n$ times executing $1$ operation each time. Total operations $T(n) = \sum_{i=0}^{n-1} 1 = n$. Complexity is **$O(n)$**. (Classified as Best/Average/Worst Case: $O(n)$).
+
+##### (b) Snippet B: Logarithmic Loop ($O(\log n)$)
+*   **Code**: `i = 1; while i < n: i = i * 3`
+*   **Derivation**: $i$ multiplies by 3 every iteration, taking values $3^1, 3^2, \dots, 3^k$. Loop stops when $3^k \ge n \Rightarrow k = \log_3 n$. Complexity is **$O(\log n)$**. (Classified as Best/Average/Worst Case: $O(\log n)$).
+
+##### (c) Snippet C: Quadratic Loop ($O(n^2)$)
+*   **Code**: `for i in range(n): for j in range(n): print(i, j)`
+*   **Derivation**: Nested sequential loops. The inner runs $n$ times for each of the $n$ outer iterations. Total operations $T(n) = n \times n = n^2$. Complexity is **$O(n^2)$**. (Classified as Best/Average/Worst Case: $O(n^2)$).
+
+##### (d) Algorithmic Complexity Bounds Reference Table
+| Snippet | Loop Structure | Time Complexity | Space Complexity | Reasoning |
+| :--- | :--- | :--- | :--- | :--- |
+| **A** | Single Linear ($0$ to $n-1$) | $O(n)$ | $O(1)$ | Iterates sequentially $n$ times with constant operations inside. |
+| **B** | Logarithmic Multiplicative (multiplies by 3) | $O(\log n)$ | $O(1)$ | Doubles/triples step sizes so values grow exponentially, stopping in $\log_3 n$ steps. |
+| **C** | Nested Quadratic (double nested $n \times n$) | $O(n^2)$ | $O(1)$ | Inner loop executes $n$ times for each of the $n$ outer iterations. |
+
+---
+
+#### Q8. Searching Techniques: Differentiate Linear vs Binary Search. Also search element 25 in [5, 10, 15, 20, 25, 30, 35] using Binary Search.
+##### (a) Benchmark Comparison
+*   *Linear Search*: Compares elements sequentially. Complexity is $O(n)$ worst-case. Prerequisite: None.
+*   *Binary Search*: Divides sorted search space in half. Complexity is $O(\log n)$ worst-case. Prerequisite: Must be sorted.
+
+##### (b) Binary Search Trace table for Key = 25
+*   Input: `[5, 10, 15, 20, 25, 30, 35]`, boundaries: `low = 0`, `high = 6`
+1.  **Iteration 1**: `mid = (0 + 6) // 2 = 3`. `arr[3] = 20`. Since $25 > 20$, search right half &rarr; `low = mid + 1 = 4`.
+2.  **Iteration 2**: `mid = (4 + 6) // 2 = 5`. `arr[5] = 30`. Since $25 < 30$, search left half &rarr; `high = mid - 1 = 4`.
+3.  **Iteration 3**: `mid = (4 + 4) // 2 = 4`. `arr[4] = 25`. Since $25 == 25$, Match found at **index 4**!
+
+##### (c) Searching Algorithms (Pseudocode)
+```text
+ALGORITHM LinearSearch(arr, target)
+  Input: Array arr of size n, active key target
+  Output: Index of target, or -1 if not found
+  
+  for index = 0 to n - 1 do
+    if arr[index] == target then
+      return index
+    end if
+  end for
+  return -1
+
+ALGORITHM BinarySearch(arr, target)
+  Input: Sorted array arr of size n, active key target
+  Output: Index of target, or -1 if not found
+  
+  low = 0
+  high = n - 1
+  
+  while low <= high do
+    mid = (low + high) // 2
+    if arr[mid] == target then
+      return mid
+    elif target > arr[mid] then
+      low = mid + 1
+    else
+      high = mid - 1
+    end if
+  end while
+  return -1
+```
+
+##### (d) Complete Python Implementation
+```python
+def binary_search(arr, target):
+    low, high = 0, len(arr) - 1
+    while low <= high:
+        mid = (low + high) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            low = mid + 1
+        else:
+            high = mid - 1
+    return -1
+```
