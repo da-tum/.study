@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Prep | Web Dev II Guide</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --bg-color: #0f172a;
+      --sidebar-bg: #1e293b;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #10b981;
+      --primary-light: rgba(16, 185, 129, 0.1);
+      --border-color: #334155;
+      --accent: #f59e0b;
+      --code-bg: #0b0f19;
+      --wiki-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+    }
+
+    /* Sidebar Wiki Logic */
+    .wiki-sidebar {
+      width: 300px;
+      height: 100vh;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border-color);
+      position: fixed;
+      overflow-y: auto;
+      padding: 30px 20px;
+      z-index: 100;
+    }
+
+    .wiki-logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+    }
+
+    .nav-group {
+      margin-bottom: 30px;
+    }
+
+    .nav-title {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      padding: 0 12px;
+      opacity: 0.8;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 10px 14px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 8px;
+      margin-bottom: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .wiki-main {
+      margin-left: 300px;
+      width: calc(100% - 300px);
+      max-width: 1000px;
+      padding: 60px 80px;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: 2rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 10px;
+      margin-top: 40px;
+      color: var(--primary);
+    }
+
+    .wiki-card {
+      background: var(--sidebar-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--wiki-shadow);
+    }
+
+    pre {
+      background: var(--code-bg);
+      padding: 20px;
+      border-radius: 12px;
+      overflow-x: auto;
+      margin: 15px 0;
+      border: 1px solid var(--border-color);
+    }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: #34d399;
+    }
+
+    .method-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .mobile-toggle {
+      display: none;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      z-index: 1001;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+    @media (max-width: 1024px) {
+      .wiki-sidebar {
+        display: block;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        visibility: hidden;
+      }
+      .wiki-sidebar.active {
+        transform: translateX(0);
+        visibility: visible;
+      }
+      .mobile-toggle { display: flex; }
+      .wiki-main { margin-left: 0; width: 100%; padding: 80px 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="mobile-toggle" id="menuToggle">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+  </button>
+
+  <div class="wiki-sidebar">
+    <div class="wiki-logo">
+      <span>PracticalPrep</span>
+    </div>
+    <div class="nav-group">
+      <div class="nav-title">Practical Samples</div>
+      <a href="#props-passing" class="nav-link">Props Passing</a>
+      <a href="#usestate-all" class="nav-link">useState Examples</a>
+      <a href="#useeffect-ex" class="nav-link">useEffect Example</a>
+      <a href="#api-fetch" class="nav-link">API Fetching</a>
+      <a href="#react-routing-ex" class="nav-link">React Routing</a>
+      <a href="#context-api-ex" class="nav-link">Context API (Movies)</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-title">Viva Topics</div>
+      <a href="#project-expl" class="nav-link">Project Explanation</a>
+      <a href="#sync-async" class="nav-link">Sync vs Async</a>
+      <a href="#event-loop" class="nav-link">Event Loop</a>
+      <a href="#promises-js" class="nav-link">Promises & Async/Await</a>
+      <a href="#vdom-spa" class="nav-link">Virtual DOM & SPA</a>
+      <a href="#theoretical-masterclass" class="nav-link">📘 Theory Masterclass</a>
+    </div>
+    <div class="nav-group" style="margin-top: 40px;">
+      <a href="index.html" class="nav-link" style="color: var(--accent);">← Back to Portal</a>
+    </div>
+  </div>
+
+  <div class="wiki-main">
+    <header style="margin-bottom: 60px;">
+      <h1>Practical <span style="color:var(--primary)">Mastery</span> Guide</h1>
+      <p style="font-size: 1.25rem; color: var(--text-muted);">A focused resource for Practical Sample Questions and essential Viva Vocé topics.</p>
+    </header>
+
+    <!-- PRACTICAL SAMPLES -->
+    <section id="practical-samples">
+      <h2 style="color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 10px;">🧪 Practical Sample Questions</h2>
+      
+      <div id="props-passing" class="wiki-card">
+        <h3>1. Passing Props between Components</h3>
+        <p>The standard way to pass data from a Parent to a Child component. Data flows in one direction (<strong>Unidirectional</strong>).</p>
+        <pre><code>// 1. Parent Component (App.jsx)
+function App() {
+  const userName = "Alice";
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Main App&lt;/h1&gt;
+      {/* Passing data via 'name' attribute */}
+      &lt;Child name={userName} role="Admin" /&gt;
+    &lt;/div&gt;
+  );
+}
+
+// 2. Child Component (Child.jsx)
+function Child(props) {
+  return (
+    &lt;div className="card"&gt;
+      &lt;h3&gt;Welcome, {props.name}!&lt;/h3&gt;
+      &lt;p&gt;Role: {props.role}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+
+      <div id="usestate-all" class="wiki-card">
+        <h3>2. useState Examples (Essential Patterns)</h3>
+        <p>State allows components to "remember" data. When state changes, React <strong>re-renders</strong> the component.</p>
+        <div style="margin-bottom: 20px;">
+          <div class="method-badge">1. Simple Counter (Numbers)</div>
+          <pre><code>const [count, setCount] = useState(0);
+
+// Correct way to update based on previous value
+const increment = () => setCount(prev => prev + 1);
+
+&lt;button onClick={increment}&gt;Count: {count}&lt;/button&gt;</code></pre>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <div class="method-badge">2. Input Handling (Strings)</div>
+          <pre><code>const [user, setUser] = useState("");
+
+&lt;input 
+  type="text" 
+  value={user} 
+  onChange={(e) => setUser(e.target.value)} 
+  placeholder="Enter name"
+/&gt;
+&lt;p&gt;Live Preview: {user}&lt;/p&gt;</code></pre>
+        </div>
+        <div>
+          <div class="method-badge">3. Object State (Multiple values)</div>
+          <pre><code>const [profile, setProfile] = useState({ name: "User", age: 20 });
+
+const updateAge = () => {
+  // Use spread operator to preserve other properties (Immutability)
+  setProfile({ ...profile, age: 21 });
+};</code></pre>
+        </div>
+      </div>
+
+      <div id="useeffect-ex" class="wiki-card">
+        <h3>3. useEffect Example (Side Effects)</h3>
+        <p>Used for side-effects (API, Timers, DOM). Handles the component lifecycle: <strong>Mount -> Update -> Unmount</strong>.</p>
+        <pre><code>useEffect(() => {
+  // 1. Logic (Runs after render)
+  const timer = setInterval(() => {
+    console.log("OS Heartbeat...");
+  }, 1000);
+
+  // 2. Cleanup (Runs before unmount)
+  return () => {
+    clearInterval(timer);
+    console.log("Cleaning up resources");
+  };
+}, []); // 3. Dependency Array: Empty = Run only once (Mount)</code></pre>
+      </div>
+
+      <div id="api-fetch" class="wiki-card">
+        <h3>4. API Fetching & Rendering</h3>
+        <p>Standard pattern for loading dynamic data into a component using the Fetch API.</p>
+        <pre><code>function DataList() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(res => res.json())
+      .then(json => setData(json));
+  }, []);
+
+  return (
+    &lt;ul&gt;
+      {data.slice(0, 5).map(item => &lt;li key={item.id}&gt;{item.title}&lt;/li&gt;)}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+      </div>
+
+      <div id="react-routing-ex" class="wiki-card">
+        <h3>5. Routing in React (SPA Navigation)</h3>
+        <p>Building a Single Page Application (SPA) using <code>react-router-dom</code>.</p>
+        <pre><code>import { BrowserRouter, Routes, Route, Link, useNavigate, useParams } from 'react-router-dom';
+
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;nav&gt;
+        &lt;Link to="/"&gt;Desktop&lt;/Link&gt; | &lt;Link to="/profile/user1"&gt;Profile&lt;/Link&gt;
+      &lt;/nav&gt;
+
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Desktop /&gt;} /&gt;
+        &lt;Route path="/profile/:id" element={&lt;ProfilePage /&gt;} /&gt;
+        &lt;Route path="*" element={&lt;NotFound /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}
+
+// Example of using Params and Navigation
+function ProfilePage() {
+  const { id } = useParams(); // URL Params
+  const navigate = useNavigate(); // Programmatic Navigation
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;User ID: {id}&lt;/h2&gt;
+      &lt;button onClick={() => navigate('/')}&gt;Back to Desktop&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+
+      <div id="context-api-ex" class="wiki-card">
+        <h3>6. Context API (Movie Context Example)</h3>
+        <p>Global state management to avoid <strong>Prop Drilling</strong>.</p>
+        <pre><code>// 1. Create the Context
+const MovieContext = React.createContext();
+
+// 2. Create the Provider (Wraps the App)
+export function MovieProvider({ children }) {
+  const [movies, setMovies] = useState([
+    { id: 1, title: "Inception" },
+    { id: 2, title: "Interstellar" }
+  ]);
+
+  return (
+    &lt;MovieContext.Provider value={{ movies, setMovies }}&gt;
+      {children}
+    &lt;/MovieContext.Provider&gt;
+  );
+}
+
+// 3. Use the Context (In any child)
+import { useContext } from 'react';
+
+function MovieDisplay() {
+  const { movies } = useContext(MovieContext);
+  return (
+    &lt;div&gt;
+      {movies.map(movie => &lt;li key={movie.id}&gt;{movie.title}&lt;/li&gt;)}
+    &lt;/div&gt;
+  );
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- VIVA TOPICS -->
+    <section id="viva-topics" style="margin-top: 80px;">
+      <h2 style="color: var(--accent); border-bottom: 2px solid var(--accent); padding-bottom: 10px;">🎤 Essential Viva Topics</h2>
+
+      <div id="project-expl" class="wiki-card">
+        <h3>1. Project Explanation</h3>
+        <p>When asked about your project (e.g., <strong>Pseudo-OS</strong>):</p>
+        <ul style="margin-top: 10px; padding-left: 20px;">
+          <li><strong>What:</strong> A React-based OS simulation with a window manager, terminal, and file explorer.</li>
+          <li><strong>Tech:</strong> Built with React 18, Vite, and Lucide Icons.</li>
+          <li><strong>Logic:</strong> Uses <code>useState</code> for window positioning and <code>Context API</code> for system-wide settings.</li>
+        </ul>
+      </div>
+
+      <div id="sync-async" class="wiki-card">
+        <h3>2. Synchronous vs Asynchronous</h3>
+        <p><strong>Synchronous:</strong> Code executes line by line. Each task must wait for the previous one to finish (blocking).</p>
+        <p><strong>Asynchronous:</strong> Tasks can start now and finish later (e.g., API calls). Does not block the execution of subsequent code.</p>
+      </div>
+
+      <div id="event-loop" class="wiki-card">
+        <h3>3. The Event Loop</h3>
+        <p>The mechanism that allows JS to perform non-blocking I/O operations despite being single-threaded.</p>
+        <ul style="margin-top: 10px; padding-left: 20px;">
+          <li><strong>Call Stack:</strong> Where code is executed.</li>
+          <li><strong>Web APIs:</strong> Where async tasks (setTimeout, Fetch) wait.</li>
+          <li><strong>Callback Queue:</strong> Where finished async tasks wait to enter the stack.</li>
+          <li><strong>Event Loop:</strong> Moves tasks from Queue to Stack when the Stack is empty.</li>
+        </ul>
+      </div>
+
+      <div id="promises-js" class="wiki-card">
+        <h3>4. Promises & Async/Await</h3>
+        <div style="margin-bottom: 15px;">
+          <strong>Promises:</strong> An object representing the eventual completion (or failure) of an async operation.
+          <br><em>States:</em> Pending, Fulfilled, Rejected.
+        </div>
+        <div>
+          <strong>Async/Await:</strong> Syntactic sugar for Promises. Makes async code look and behave more like synchronous code.
+          <br><code>async function getData() { const res = await fetch(...); }</code>
+        </div>
+      </div>
+
+      <div id="vdom-spa" class="wiki-card">
+        <h3>5. Virtual DOM & SPA</h3>
+        <div style="margin-bottom: 15px;">
+          <strong>Virtual DOM:</strong> A lightweight copy of the real DOM. React updates the Virtual DOM first, compares it (diffing), and then only updates the necessary parts of the real DOM.
+        </div>
+        <div>
+          <strong>SPA (Single Page Application):</strong> A web app that interacts with the user by dynamically rewriting the current page rather than loading entire new pages from a server.
+        </div>
+      </div>
+
+      <div id="theoretical-masterclass" class="wiki-card">
+        <h2 style="font-size: 1.5rem; margin-top: 0; color: var(--accent);">📘 Theoretical Masterclass (Units 1-4)</h2>
+        <div style="margin-bottom: 20px;">
+          <div class="method-badge">Diffing Algorithm</div>
+          <p>The process where React compares the new Virtual DOM with the old one to identify changes.</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <div class="method-badge">Reconciliation</div>
+          <p>The step where React takes the identified "diffs" and updates the Real DOM to match the Virtual DOM.</p>
+        </div>
+        <div style="margin-bottom: 20px;">
+          <div class="method-badge">One-Way Data Flow</div>
+          <p>Data in React only moves from Parent to Child via Props. This makes the app predictable and easier to debug.</p>
+        </div>
+        <div>
+          <div class="method-badge">Rules of Hooks</div>
+          <ul style="padding-left: 20px; font-size: 0.9rem;">
+            <li>Call hooks only at the <strong>Top Level</strong> (Not inside loops or conditions).</li>
+            <li>Call hooks only from <strong>React Functions</strong> or <strong>Custom Hooks</strong>.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer style="text-align:center; margin-top: 100px; padding-bottom: 60px;">
+      <p style="color: var(--text-muted);">© 2026 Academic Study Portal • Exam Mastery</p>
+    </footer>
+  </div>
+
+  <script>
+    // Mobile Sidebar Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.getElementById('menuToggle');
+      const sidebar = document.querySelector('.wiki-sidebar');
+
+      if (menuToggle && sidebar) {
+        menuToggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar on link click (mobile)
+        document.querySelectorAll('.wiki-sidebar .nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+              sidebar.classList.remove('active');
+            }
+          });
+        });
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', (e) => {
+          if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== menuToggle) {
+            sidebar.classList.remove('active');
+          }
+        });
+      }
+    });
+  </script>
+
+</body>
+
+</html>

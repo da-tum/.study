@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python Programming | Semester I Portal</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../../nav-header.css">
+  <script src="../../nav-header.js" defer></script>
+  
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-tertiary: #1f2937;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent-primary: #3776ab;       /* Python Blue */
+      --accent-secondary: #ffd343;     /* Python Gold */
+      --accent-hover: #2b5b84;
+      --code-bg: #050811;
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+    }
+
+    /* Left Sidebar Navigation */
+    aside.sidebar {
+      width: 340px;
+      height: calc(100vh - 68px);
+      position: fixed;
+      top: 68px;
+      left: 0;
+      background-color: var(--bg-secondary);
+      border-right: 1px solid var(--card-border);
+      display: flex;
+      flex-direction: column;
+      z-index: 1001;
+      overflow-y: auto;
+      padding: 1.5rem;
+    }
+
+    .sidebar-header {
+      padding-bottom: 1.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .sidebar-header h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-primary) 30%, var(--accent-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .sidebar-header p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .sidebar-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .nav-link {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.8rem 1.2rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: 100%;
+      font-family: inherit;
+    }
+
+    .nav-link:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .nav-link.active {
+      color: #050811;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      box-shadow: 0 4px 16px rgba(55, 118, 171, 0.25);
+    }
+
+    /* Mobile Elements */
+    .mobile-topbar {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: var(--bg-secondary);
+      border-bottom: 1px solid var(--card-border);
+      z-index: 1000;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+    }
+
+    .mobile-topbar h2 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-primary);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .hamburger-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hamburger-btn svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 68px);
+      background-color: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+    }
+
+    /* Main Content Wrapper */
+    .main-wrapper {
+      margin-left: 340px;
+      flex: 1;
+      width: calc(100% - 340px);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header.top-hero {
+      background: linear-gradient(135deg, #07101e 0%, #111827 100%);
+      border-bottom: 1px solid var(--card-border);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    header.top-hero h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    header.top-hero p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    main.content-area {
+      padding: 3rem 2.5rem;
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card styling */
+    .chapter {
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-tertiary));
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .chapter-label {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #050811;
+      font-weight: 800;
+      font-size: .75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 15px;
+      font-family: 'Outfit', sans-serif;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--accent-secondary);
+      margin: 25px 0 12px 0;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    p {
+      margin-bottom: 15px;
+      line-height: 1.8;
+      color: var(--text-main);
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Terminal Simulator */
+    .terminal-container {
+      background-color: var(--code-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 25px 0;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .terminal-header {
+      background-color: #1e293b;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background-color: #ef4444; }
+    .dot-yellow { background-color: #f59e0b; }
+    .dot-green { background-color: #10b981; }
+
+    .terminal-title {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-family: 'Fira Code', monospace;
+      margin-left: auto;
+    }
+
+    .terminal-body {
+      padding: 20px;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      color: #38bdf8;
+      height: 380px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: #030712;
+    }
+
+    .terminal-line {
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+
+    .terminal-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-prompt {
+      color: #a855f7;
+    }
+
+    .terminal-text-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #10b981;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.95rem;
+      flex-grow: 1;
+      width: 100%;
+    }
+
+    /* Code Viewer Tab Styles */
+    .code-tabs {
+      display: flex;
+      background: #111827;
+      border: 1px solid var(--card-border);
+      border-bottom: none;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      overflow: hidden;
+    }
+
+    .code-tab-btn {
+      background: transparent;
+      border: none;
+      padding: 10px 20px;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      border-right: 1px solid var(--card-border);
+    }
+
+    .code-tab-btn:hover {
+      background: rgba(255, 255, 255, 0.02);
+      color: #fff;
+    }
+
+    .code-tab-btn.active {
+      background: #050811;
+      color: var(--accent-secondary);
+      border-bottom: 2px solid var(--accent-secondary);
+    }
+
+    pre.code-block {
+      background: #050811;
+      border: 1px solid var(--card-border);
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: #abb2bf;
+      line-height: 1.6;
+      max-height: 500px;
+    }
+
+    .keyword { color: #c678dd; }
+    .function { color: #61afef; }
+    .string { color: #98c379; }
+    .comment { color: #5c6370; font-style: italic; }
+    .number { color: #d19a66; }
+
+    @media (max-width: 1024px) {
+      body {
+        padding-top: 128px !important;
+      }
+      .mobile-topbar {
+        display: flex;
+      }
+      .main-wrapper {
+        margin-left: 0;
+        width: 100%;
+      }
+      aside.sidebar {
+        left: -350px;
+        top: 128px;
+        height: calc(100vh - 128px) !important;
+        transition: left 0.3s ease;
+      }
+      aside.sidebar.open {
+        left: 0;
+      }
+      .sidebar-overlay.open {
+        display: block;
+        top: 128px;
+        height: calc(100vh - 128px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Top Bar -->
+  <div class="mobile-topbar">
+    <h2>Python Programming</h2>
+    <button class="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Sidebar Overlay -->
+  <div class="sidebar-overlay" onclick="toggleMobileMenu()"></div>
+
+  <!-- Left Sidebar Navigation -->
+  <aside class="sidebar" id="sidebarNav">
+    <div class="sidebar-header">
+      <h1>Python I</h1>
+      <p>Semester I Master Portal</p>
+    </div>
+    <nav class="sidebar-menu">
+      <button class="nav-link active" onclick="switchTab('tab-overview')">⭐ Course Overview</button>
+      <button class="nav-link" onclick="switchTab('tab-gradebook')">📝 GradeBook Analyzer CLI</button>
+      <button class="nav-link" onclick="switchTab('tab-library')">📚 Library Inventory CLI</button>
+    </nav>
+  </aside>
+
+  <!-- Main Wrapper -->
+  <div class="main-wrapper">
+    <header class="top-hero">
+      <h2>🐍 Python Programming</h2>
+      <p>Interactive program simulators, core scripts, and syntax breakdowns</p>
+    </header>
+
+    <main class="content-area">
+      <!-- OVERVIEW TAB -->
+      <div id="tab-overview" class="tab-content active">
+        <div class="chapter">
+          <span class="chapter-label">Syllabus Overview</span>
+          <h1>Python Programming Core</h1>
+          <p>Semester I curriculum centers on establishing procedural and early object-oriented programming methodologies in Python. It includes building data processing loops, working with complex file parsing systems, managing databases via SQLite, and utilizing scientific libraries for basic statistics.</p>
+          
+          <h2>Key Academic Modules</h2>
+          <ul>
+            <li><strong>Foundations:</strong> Variables, scoped operators, branching statements, bubble sort list manipulation, and loops.</li>
+            <li><strong>Data Structures:</strong> Dictionaries, tuples, sets, lists, list comprehension.</li>
+            <li><strong>Modules & Packages:</strong> Writing reusable imports, structuring absolute packages with <code>__init__.py</code>.</li>
+            <li><strong>File & DB Handling:</strong> CSV reading/writing, JSON serializations, exception handling block templates.</li>
+            <li><strong>Analytics:</strong> NumPy matrix arithmetic and Pandas dataframes.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- GRADEBOOK TAB -->
+      <div id="tab-gradebook" class="tab-content">
+        <div class="chapter">
+          <span class="chapter-label">Assignment 1</span>
+          <h1>GradeBook Analyzer CLI</h1>
+          <p>An automated CLI that processes student marks, computes central tendency (average, median), evaluates maximum/minimum bounds, assigns letter grades, and filters candidates into Pass/Fail arrays.</p>
+          
+          <h2>Simulated CLI Execution</h2>
+          <p>Interact with the live script simulation below. Type options (e.g. <code>1</code> or <code>2</code>) and input values directly in the console.</p>
+          
+          <div class="terminal-container">
+            <div class="terminal-header">
+              <div class="terminal-dot dot-red"></div>
+              <div class="terminal-dot dot-yellow"></div>
+              <div class="terminal-dot dot-green"></div>
+              <div class="terminal-title">gradebook.py - Live Simulator</div>
+            </div>
+            <div class="terminal-body" id="gradebook-terminal" onclick="focusTerminal('gb-input')">
+              <div class="terminal-line" style="color: #fcd34d;">Welcome to the Gradebook Analyzer
+in this mini project you will be able to
+automate the entire process via a Python-based GradeBook Analyzer CLI,
+of computing statistics on student marks.
+The system will read marks from input or a CSV file, perform key statistical analysis,
+assign grades, and generate summaries in a user friendly format.</div>
+              <div class="terminal-line" style="color: #6ee7b7;">Please choose an option:
+1 for Manual entry (multiple students)
+2 for CSV file import
+3 for Exit</div>
+              <div class="terminal-input-row" id="gb-input-row">
+                <span class="terminal-prompt">&gt;&gt;&gt;</span>
+                <input type="text" id="gb-input" class="terminal-text-input" onkeydown="handleGradebookTerminal(event)">
+              </div>
+            </div>
+          </div>
+          
+          <h2>Source Code</h2>
+          <div class="code-tabs">
+            <button class="code-tab-btn active">gradebook.py</button>
+          </div>
+          <pre class="code-block"><span class="comment"># ------------Task 1 ----------</span>
+<span class="keyword">import</span> csv
+
+<span class="keyword">def</span> <span class="function">calculate_average</span>(marks_dict):
+    <span class="keyword">if not</span> marks_dict: <span class="keyword">return</span> <span class="number">0</span>
+    <span class="keyword">return</span> sum(marks_dict.values()) / len(marks_dict)
+
+<span class="keyword">def</span> <span class="function">calculate_median</span>(marks_dict):
+    <span class="keyword">if not</span> marks_dict: <span class="keyword">return</span> <span class="number">0</span>
+    l = sorted(list(marks_dict.values()))
+    n = len(l)
+    <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">1</span>:
+        <span class="keyword">return</span> l[n // <span class="number">2</span>]
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> (l[(n // <span class="number">2</span>) - <span class="number">1</span>] + l[n // <span class="number">2</span>]) / <span class="number">2</span>
+
+<span class="keyword">def</span> <span class="function">find_max_score</span>(marks_dict):
+    <span class="keyword">return</span> max(marks_dict.values()) <span class="keyword">if</span> marks_dict <span class="keyword">else</span> <span class="string">"N/A"</span>
+
+<span class="keyword">def</span> <span class="function">find_min_score</span>(marks_dict):
+    <span class="keyword">return</span> min(marks_dict.values()) <span class="keyword">if</span> marks_dict <span class="keyword">else</span> <span class="string">"N/A"</span>
+
+<span class="keyword">def</span> <span class="function">assign_grades</span>(marks_dict):
+    grades = {}
+    <span class="keyword">for</span> name, mark <span class="keyword">in</span> marks_dict.items():
+        <span class="keyword">if</span> mark >= <span class="number">90</span>: grades[name] = <span class="string">'A'</span>
+        <span class="keyword">elif</span> mark >= <span class="number">80</span>: grades[name] = <span class="string">'B'</span>
+        <span class="keyword">elif</span> mark >= <span class="number">70</span>: grades[name] = <span class="string">'C'</span>
+        <span class="keyword">elif</span> mark >= <span class="number">60</span>: grades[name] = <span class="string">'D'</span>
+        <span class="keyword">else</span>: grades[name] = <span class="string">'F'</span>
+    <span class="keyword">return</span> grades
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    <span class="comment"># Loop inputs and print formatted summary...</span></pre>
+        </div>
+      </div>
+
+      <!-- LIBRARY TAB -->
+      <div id="tab-library" class="tab-content">
+        <div class="chapter">
+          <span class="chapter-label">Assignment 2</span>
+          <h1>Library Inventory Manager</h1>
+          <p>An OOP-oriented software suite representing book components, logging transactional events, and implementing absolute class architectures with persistent storage in JSON.</p>
+          
+          <h2>Simulated Library Terminal</h2>
+          <p>Use the simulator below to add new volumes, display the directory database in real-time, and execute check-outs or return logs. Data is stored in your browser session.</p>
+          
+          <div class="terminal-container">
+            <div class="terminal-header">
+              <div class="terminal-dot dot-red"></div>
+              <div class="terminal-dot dot-yellow"></div>
+              <div class="terminal-dot dot-green"></div>
+              <div class="terminal-title">library_cli.py - Active Session</div>
+            </div>
+            <div class="terminal-body" id="library-terminal" onclick="focusTerminal('lib-input')">
+              <div class="terminal-line" style="color: #6ee7b7;">Library Inventory Manager Loaded. Loaded 3 books from storage.</div>
+              <div class="terminal-line" style="color: #f3f4f6;">Library Inventory Manager
+1. Add New Book
+2. Issue Book
+3. Return Book
+4. View All Books
+5. Search Book by Title/ISBN
+6. Exit</div>
+              <div class="terminal-input-row" id="lib-input-row">
+                <span class="terminal-prompt">Option (1-6):</span>
+                <input type="text" id="lib-input" class="terminal-text-input" onkeydown="handleLibraryTerminal(event)">
+              </div>
+            </div>
+          </div>
+          
+          <h2>Source Code files</h2>
+          <div class="code-tabs">
+            <button class="code-tab-btn active" onclick="showLibCode('book-py', this)">book.py</button>
+            <button class="code-tab-btn" onclick="showLibCode('inventory-py', this)">inventory.py</button>
+            <button class="code-tab-btn" onclick="showLibCode('main-py', this)">main.py</button>
+          </div>
+          
+          <div id="code-viewer-lib">
+            <pre class="code-block" id="book-py"><span class="comment"># book.py - Book Object Representer</span>
+<span class="keyword">class</span> <span class="function">book</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, title, author, isbn, status=<span class="string">'available'</span>):
+        self.title = title
+        self.author = author
+        self.isbn = isbn
+        self.status = status
+
+    <span class="keyword">def</span> <span class="function">__str__</span>(self):
+        <span class="keyword">return</span> f<span class="string">"Title: {self.title}, Author: {self.author}, ISBN: {self.isbn}, Status: {self.status}"</span>
+
+    <span class="keyword">def</span> <span class="function">to_dict</span>(self):
+        <span class="keyword">return</span> {<span class="string">"title"</span>: self.title, <span class="string">"author"</span>: self.author, <span class="string">"isbn"</span>: self.isbn, <span class="string">"status"</span>: self.status}
+
+    <span class="keyword">def</span> <span class="function">issued</span>(self):
+        self.status = <span class="string">"issued"</span>
+
+    <span class="keyword">def</span> <span class="function">return_book</span>(self):
+        self.status = <span class="string">"available"</span></pre>
+        
+            <pre class="code-block" id="inventory-py" style="display: none;"><span class="comment"># inventory.py - LibraryInventory logic</span>
+<span class="keyword">import</span> json
+<span class="keyword">from</span> .book <span class="keyword">import</span> book
+
+<span class="keyword">class</span> <span class="function">LibraryInventory</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(self, filename=<span class="string">'book_data.json'</span>):
+        self.books = []
+        self.filename = filename
+        self.load_books()
+
+    <span class="keyword">def</span> <span class="function">add_book</span>(self, title, author, isbn):
+        <span class="keyword">if</span> self.search_by_isbn(isbn):
+            <span class="keyword">print</span>(<span class="string">"Error: Book with this ISBN already exists."</span>)
+            <span class="keyword">return</span>
+        new_book = book(title, author, isbn)
+        self.books.append(new_book)
+        self.save_books()
+        <span class="keyword">print</span>(<span class="string">"Book added successfully."</span>)
+
+    <span class="keyword">def</span> <span class="function">search_by_isbn</span>(self, isbn):
+        <span class="keyword">for</span> b <span class="keyword">in</span> self.books:
+            <span class="keyword">if</span> b.isbn == isbn: <span class="keyword">return</span> b
+        <span class="keyword">return</span> <span class="keyword">None</span></pre>
+        
+            <pre class="code-block" id="main-py" style="display: none;"><span class="comment"># main.py - CLI Entry</span>
+<span class="keyword">from</span> Library_manager.inventory <span class="keyword">import</span> LibraryInventory
+
+<span class="keyword">def</span> <span class="function">main</span>():
+    book_inventory = LibraryInventory()
+    <span class="keyword">while</span> <span class="keyword">True</span>:
+        print_menu()
+        choice = input(<span class="string">"Enter choice (1-6): "</span>)
+        <span class="keyword">if</span> choice == <span class="string">'1'</span>:
+            <span class="comment"># Add book logic...</span>
+            <span class="keyword">pass</span>
+        <span class="keyword">elif</span> choice == <span class="string">'6'</span>:
+            <span class="keyword">break</span></pre>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Tab switching controls
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.nav-link').forEach(b => b.classList.remove('active'));
+      
+      document.getElementById(tabId).classList.add('active');
+      event.currentTarget.classList.add('active');
+      
+      // Reset mobile state
+      document.getElementById('sidebarNav').classList.remove('open');
+      document.querySelector('.sidebar-overlay').classList.remove('open');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('sidebarNav').classList.toggle('open');
+      document.querySelector('.sidebar-overlay').classList.toggle('open');
+    }
+
+    function focusTerminal(id) {
+      document.getElementById(id).focus();
+    }
+
+    // Interactive Code Viewers
+    function showLibCode(fileId, btnEl) {
+      document.querySelectorAll('#code-viewer-lib pre').forEach(pre => pre.style.display = 'none');
+      document.getElementById(fileId).style.display = 'block';
+      
+      document.querySelectorAll('.code-tabs button').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+    }
+
+    /* Gradebook CLI Simulation */
+    let gbState = 'CHOICE';
+    let gbStudentsCount = 0;
+    let gbCurrentStudentIndex = 0;
+    let gbTempStudentName = '';
+    let gbData = {
+      'Harsh': 92,
+      'Aarav': 78,
+      'Kavya': 58,
+      'Riya': 35
+    };
+
+    function addGbLine(text, color = '#38bdf8') {
+      const term = document.getElementById('gradebook-terminal');
+      const inputRow = document.getElementById('gb-input-row');
+      const newLine = document.createElement('div');
+      newLine.className = 'terminal-line';
+      newLine.style.color = color;
+      newLine.textContent = text;
+      term.insertBefore(newLine, inputRow);
+      term.scrollTop = term.scrollHeight;
+    }
+
+    function handleGradebookTerminal(e) {
+      if (e.key !== 'Enter') return;
+      const inputEl = document.getElementById('gb-input');
+      const val = inputEl.value.trim();
+      inputEl.value = '';
+      
+      // Echo user input
+      addGbLine('>>> ' + val, '#10b981');
+      
+      if (gbState === 'CHOICE') {
+        if (val === '1') {
+          addGbLine('You have chosen the Manual entry option.', '#f3f4f6');
+          addGbLine('Enter the number of students: ', '#fbbf24');
+          gbState = 'GET_COUNT';
+        } else if (val === '2') {
+          addGbLine('You have chosen the CSV import option.', '#f3f4f6');
+          addGbLine('Enter CSV file path (e.g. students.csv): ', '#fbbf24');
+          addGbLine('(Type "sample" to auto-import sample students)', '#9ca3af');
+          gbState = 'GET_CSV';
+        } else if (val === '3') {
+          addGbLine('Thank You For Using this Service. Exit Code 0.', '#ef4444');
+          inputEl.disabled = true;
+        } else {
+          addGbLine('Incorrect Input Choose Again', '#ef4444');
+        }
+      } else if (gbState === 'GET_COUNT') {
+        const n = parseInt(val);
+        if (isNaN(n) || n < 1) {
+          addGbLine('Error: Must be an integer >= 1. Try again: ', '#ef4444');
+        } else {
+          gbStudentsCount = n;
+          gbCurrentStudentIndex = 0;
+          gbData = {};
+          addGbLine(`Enter name for student number ${gbCurrentStudentIndex + 1}: `, '#fbbf24');
+          gbState = 'GET_NAME';
+        }
+      } else if (gbState === 'GET_NAME') {
+        if (val === '') {
+          addGbLine('Name cannot be empty. Try again: ', '#ef4444');
+        } else {
+          gbTempStudentName = val;
+          addGbLine(`Enter marks for ${gbTempStudentName}: `, '#fbbf24');
+          gbState = 'GET_MARKS';
+        }
+      } else if (gbState === 'GET_MARKS') {
+        const marks = parseInt(val);
+        if (isNaN(marks) || marks < 0 || marks > 100) {
+          addGbLine('Error: Marks must be an integer between 0 and 100. Try again: ', '#ef4444');
+        } else {
+          gbData[gbTempStudentName] = marks;
+          gbCurrentStudentIndex++;
+          if (gbCurrentStudentIndex < gbStudentsCount) {
+            addGbLine(`Enter name for student number ${gbCurrentStudentIndex + 1}: `, '#fbbf24');
+            gbState = 'GET_NAME';
+          } else {
+            runGradebookAnalysis();
+          }
+        }
+      } else if (gbState === 'GET_CSV') {
+        if (val.toLowerCase() === 'sample' || val.endsWith('.csv')) {
+          addGbLine('Reading file contents...', '#9ca3af');
+          addGbLine('Loaded 5 students from CSV successfully.', '#6ee7b7');
+          gbData = {
+            'Divya': 88,
+            'Amit': 62,
+            'Nisha': 45,
+            'Vikram': 97,
+            'Rahul': 28
+          };
+          runGradebookAnalysis();
+        } else {
+          addGbLine('File not found. Please check the path.', '#ef4444');
+          addGbLine('Enter CSV file path (e.g. students.csv): ', '#fbbf24');
+        }
+      } else if (gbState === 'REPEAT') {
+        if (val.toLowerCase() === 'y') {
+          addGbLine('Please choose an option:\n1 for Manual entry\n2 for CSV file import\n3 for Exit', '#6ee7b7');
+          gbState = 'CHOICE';
+        } else {
+          addGbLine('Thank You For Using this Service. Exit Code 0.', '#ef4444');
+          inputEl.disabled = true;
+        }
+      }
+    }
+
+    function runGradebookAnalysis() {
+      // Computations
+      const marks = Object.values(gbData);
+      const avg = marks.reduce((a,b)=>a+b, 0) / marks.length;
+      
+      const sorted = [...marks].sort((a,b)=>a-b);
+      const mid = Math.floor(sorted.length / 2);
+      const med = sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+      
+      const maxScore = Math.max(...marks);
+      const minScore = Math.min(...marks);
+      
+      const grades = {};
+      const dist = {'A':0, 'B':0, 'C':0, 'D':0, 'F':0};
+      const passed = [];
+      const failed = [];
+      
+      for (let [name, m] of Object.entries(gbData)) {
+        let g = 'F';
+        if (m >= 90) g = 'A';
+        else if (m >= 80) g = 'B';
+        else if (m >= 70) g = 'C';
+        else if (m >= 60) g = 'D';
+        grades[name] = g;
+        dist[g]++;
+        if (m >= 40) passed.push(name);
+        else failed.push(name);
+      }
+      
+      // Printing results
+      addGbLine('\nStatistical Analysis:');
+      addGbLine('Metric\t\tValue');
+      addGbLine('--------------------');
+      addGbLine(`Average\t\t${avg.toFixed(2)}`);
+      addGbLine(`Median\t\t${med}`);
+      addGbLine(`Max Score\t${maxScore}`);
+      addGbLine(`Min Score\t${minScore}`);
+      
+      addGbLine('\nGrade Distribution:');
+      addGbLine('Grade\tCount');
+      addGbLine('----------');
+      for(let [g, c] of Object.entries(dist)) {
+        addGbLine(`${g}\t${c}`);
+      }
+      
+      addGbLine(`\nPassed Students (${passed.length}): ${passed.join(', ')}`);
+      addGbLine(`Failed Students (${failed.length}): ${failed.join(', ')}`);
+      
+      addGbLine('\nName\t\tMarks\t\tGrade');
+      addGbLine('-----------------------------------');
+      for (let [name, m] of Object.entries(gbData)) {
+        addGbLine(`${name}\t\t${m}\t\t${grades[name]}`);
+      }
+      
+      addGbLine('\n===================================\n');
+      addGbLine('Do you want to perform another analysis? (y/n): ', '#fbbf24');
+      gbState = 'REPEAT';
+    }
+
+    /* Library CLI Simulation */
+    let libState = 'CHOICE';
+    let libBooks = [
+      {title: 'Python Essentials', author: 'Harsh Dev Jha', isbn: '978-1', status: 'available'},
+      {title: 'Algorithms in Web', author: 'Aarav Mehta', isbn: '978-2', status: 'issued'},
+      {title: 'Data Science Guide', author: 'Kavya Sharma', isbn: '978-3', status: 'available'}
+    ];
+    let libTempBook = {};
+
+    function addLibLine(text, color = '#38bdf8') {
+      const term = document.getElementById('library-terminal');
+      const inputRow = document.getElementById('lib-input-row');
+      const newLine = document.createElement('div');
+      newLine.className = 'terminal-line';
+      newLine.style.color = color;
+      newLine.textContent = text;
+      term.insertBefore(newLine, inputRow);
+      term.scrollTop = term.scrollHeight;
+    }
+
+    function printLibMenu() {
+      addLibLine('\nLibrary Inventory Manager\n1. Add New Book\n2. Issue Book\n3. Return Book\n4. View All Books\n5. Search Book by Title/ISBN\n6. Exit', '#f3f4f6');
+    }
+
+    function handleLibraryTerminal(e) {
+      if (e.key !== 'Enter') return;
+      const inputEl = document.getElementById('lib-input');
+      const val = inputEl.value.trim();
+      inputEl.value = '';
+      
+      addLibLine('Choice (1-6): ' + val, '#10b981');
+      
+      if (libState === 'CHOICE') {
+        if (val === '1') {
+          addLibLine('Enter book title: ', '#fbbf24');
+          libState = 'ADD_TITLE';
+        } else if (val === '2') {
+          addLibLine('Enter ISBN of the book to issue: ', '#fbbf24');
+          libState = 'ISSUE_ISBN';
+        } else if (val === '3') {
+          addLibLine('Enter ISBN of the book to return: ', '#fbbf24');
+          libState = 'RETURN_ISBN';
+        } else if (val === '4') {
+          if (libBooks.length === 0) {
+            addLibLine('No books in inventory.', '#ef4444');
+          } else {
+            addLibLine('Current Book Inventory:');
+            libBooks.forEach(b => {
+              addLibLine(`Title: ${b.title}, Author: ${b.author}, ISBN: ${b.isbn}, Status: ${b.status}`, '#e2e8f0');
+            });
+          }
+          printLibMenu();
+        } else if (val === '5') {
+          addLibLine('Search by (1) Title or (2) ISBN? ', '#fbbf24');
+          libState = 'SEARCH_MODE';
+        } else if (val === '6') {
+          addLibLine('Exiting the program. Session terminated.', '#ef4444');
+          inputEl.disabled = true;
+        } else {
+          addLibLine('Invalid choice. Try again.', '#ef4444');
+          printLibMenu();
+        }
+      } else if (libState === 'ADD_TITLE') {
+        libTempBook.title = val;
+        addLibLine('Enter book author: ', '#fbbf24');
+        libState = 'ADD_AUTHOR';
+      } else if (libState === 'ADD_AUTHOR') {
+        libTempBook.author = val;
+        addLibLine('Enter book ISBN: ', '#fbbf24');
+        libState = 'ADD_ISBN';
+      } else if (libState === 'ADD_ISBN') {
+        libTempBook.isbn = val;
+        libTempBook.status = 'available';
+        
+        // Duplicate check
+        const dup = libBooks.find(b => b.isbn === libTempBook.isbn);
+        if (dup) {
+          addLibLine('Error: A book with this ISBN already exists.', '#ef4444');
+        } else {
+          libBooks.push({...libTempBook});
+          addLibLine('Book added successfully.', '#6ee7b7');
+        }
+        libTempBook = {};
+        libState = 'CHOICE';
+        printLibMenu();
+      } else if (libState === 'ISSUE_ISBN') {
+        const book = libBooks.find(b => b.isbn === val);
+        if (book) {
+          if (book.status === 'available') {
+            book.status = 'issued';
+            addLibLine('Book issued successfully.', '#6ee7b7');
+          } else {
+            addLibLine('Book is already issued.', '#ef4444');
+          }
+        } else {
+          addLibLine('Book not found.', '#ef4444');
+        }
+        libState = 'CHOICE';
+        printLibMenu();
+      } else if (libState === 'RETURN_ISBN') {
+        const book = libBooks.find(b => b.isbn === val);
+        if (book) {
+          if (book.status === 'issued') {
+            book.status = 'available';
+            addLibLine('Book returned successfully.', '#6ee7b7');
+          } else {
+            addLibLine('Book is already available.', '#ef4444');
+          }
+        } else {
+          addLibLine('Book not found.', '#ef4444');
+        }
+        libState = 'CHOICE';
+        printLibMenu();
+      } else if (libState === 'SEARCH_MODE') {
+        if (val === '1') {
+          addLibLine('Enter book title: ', '#fbbf24');
+          libState = 'SEARCH_TITLE';
+        } else if (val === '2') {
+          addLibLine('Enter book ISBN: ', '#fbbf24');
+          libState = 'SEARCH_ISBN';
+        } else {
+          addLibLine('Invalid choice. Returning to main menu.', '#ef4444');
+          libState = 'CHOICE';
+          printLibMenu();
+        }
+      } else if (libState === 'SEARCH_TITLE') {
+        const b = libBooks.find(book => book.title.toLowerCase().includes(val.toLowerCase()));
+        if (b) {
+          addLibLine('Book found:');
+          addLibLine(`Title: ${b.title}, Author: ${b.author}, ISBN: ${b.isbn}, Status: ${b.status}`, '#6ee7b7');
+        } else {
+          addLibLine('Book not found.', '#ef4444');
+        }
+        libState = 'CHOICE';
+        printLibMenu();
+      } else if (libState === 'SEARCH_ISBN') {
+        const b = libBooks.find(book => book.isbn === val);
+        if (b) {
+          addLibLine('Book found:');
+          addLibLine(`Title: ${b.title}, Author: ${b.author}, ISBN: ${b.isbn}, Status: ${b.status}`, '#6ee7b7');
+        } else {
+          addLibLine('Book not found.', '#ef4444');
+        }
+        libState = 'CHOICE';
+        printLibMenu();
+      }
+    }
+  </script>
+</body>
+</html>

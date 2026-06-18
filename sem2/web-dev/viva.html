@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viva Questions | Web Dev II Guide</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-color: #ffffff;
+  --sidebar-bg: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --primary: #10b981;
+  --primary-light: #d1fae5;
+  --border-color: #e2e8f0;
+  --accent: #0070f3;
+  --code-bg: #1e1e1e;
+  --wiki-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+[data-theme='dark'] {
+  --bg-color: #0f172a;
+  --sidebar-bg: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --primary: #34d399;
+  --primary-light: rgba(52, 211, 153, 0.1);
+  --border-color: #334155;
+  --code-bg: #0b0f19;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  display: flex;
+  transition: background 0.3s ease;
+  min-width: 100%;
+}
+
+/* Sidebar Wiki Logic */
+.wiki-sidebar {
+  width: 300px;
+  height: 100vh;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  position: fixed;
+  overflow-y: auto;
+  padding: 30px 20px;
+  z-index: 100;
+}
+
+.wiki-logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary);
+}
+
+.search-box {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  margin-bottom: 25px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.nav-group {
+  margin-bottom: 30px;
+}
+
+.nav-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding: 0 12px;
+  opacity: 0.8;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  color: var(--text-main);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+  width: 100%;
+}
+
+.nav-link:hover {
+  background: var(--primary-light);
+  color: var(--primary);
+  transform: translateX(4px);
+}
+
+.nav-link.active {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Main Content Wiki style */
+.wiki-main {
+  margin-left: 300px;
+  width: calc(100% - 300px);
+  max-width: 900px;
+  padding: 60px 80px;
+  margin-right: auto;
+}
+
+.breadcrumb {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+h1 { font-size: 3rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1rem; line-height: 1.1; }
+h2 { 
+  font-size: 1.8rem; 
+  font-weight: 700; 
+  margin-top: 3rem; 
+  margin-bottom: 1.2rem; 
+  border-bottom: 1px solid var(--border-color); 
+  padding-bottom: 0.5rem; 
+  color: var(--primary);
+  scroll-margin-top: 80px;
+}
+h3 { 
+  font-size: 1.3rem; 
+  font-weight: 600; 
+  margin-top: 2rem; 
+  margin-bottom: 1rem;
+  scroll-margin-top: 80px;
+}
+
+p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--text-main); }
+
+details {
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--wiki-shadow);
+  transition: all 0.3s;
+}
+
+details[open] {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.1rem;
+  list-style: none;
+  position: relative;
+  padding-left: 30px;
+}
+
+summary::before {
+  content: '▶';
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+  transition: transform 0.2s;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+/* Advanced Code Blocks */
+pre {
+  background: var(--code-bg);
+  padding: 20px;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+}
+
+/* Progress Bar */
+.progress-container {
+  position: fixed;
+  top: 0;
+  left: 300px;
+  width: calc(100% - 300px);
+  height: 4px;
+  background: transparent;
+  z-index: 1000;
+}
+.progress-bar {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+}
+
+@media (max-width: 1024px) {
+  .wiki-sidebar { 
+    transform: translateX(-100%); 
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    visibility: hidden;
+  }
+  .wiki-sidebar.active {
+    transform: translateX(0);
+    visibility: visible;
+  }
+  .wiki-main { margin-left: 0; width: 100%; padding: 40px 20px; }
+  .progress-container { left: 0; width: 100%; }
+}
+
+/* Mobile Toggle Button */
+.mobile-toggle {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1001;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1024px) {
+  .mobile-toggle {
+    display: flex;
+  }
+  .wiki-main {
+    padding: 30px 15px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  .wiki-sidebar.active {
+    transform: translateX(0);
+    visibility: visible;
+  }
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+
+<button class="mobile-toggle" id="menuToggle">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+</button>
+
+<div class="wiki-sidebar">
+  <div class="wiki-logo">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+    <span>VivaHub</span>
+  </div>
+  
+  <input type="text" class="search-box" placeholder="Search questions..." id="wikiSearch">
+
+  <div class="nav-group">
+    <div class="nav-title">JavaScript</div>
+    <a href="#js-basics" class="nav-link">Foundations</a>
+    <a href="#js-async" class="nav-link">Async Mechanics</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-title">React</div>
+    <a href="#react-basics" class="nav-link">Core Concepts</a>
+    <a href="#react-hooks" class="nav-link">Hooks Mastery</a>
+    <a href="#react-advanced" class="nav-link">Nightmare Mode</a>
+    <a href="#troubleshooting" class="nav-link">🛠️ Troubleshooting</a>
+    <a href="#project-defense" class="nav-link">🛡️ Project Defense</a>
+
+  </div>
+
+  <div class="nav-group" style="margin-top: 40px;">
+    <a href="../index.html" class="nav-link" style="color: var(--accent);">← Back to Portal</a>
+    <a href="react.html" class="nav-link" style="color: var(--accent);">⚛️ React Guide</a>
+    <a href="javascript.html" class="nav-link" style="color: var(--accent);">📜 JS Guide</a>
+  </div>
+</div>
+
+<div class="wiki-main">
+  <div class="breadcrumb">Docs > Web Development > Viva Q&A Hub</div>
+  
+  <header style="margin-bottom: 60px;">
+    <h1>Ultimate <span style="color:var(--primary)">Viva Q&A</span> Hub</h1>
+    <p style="font-size: 1.25rem; color: var(--text-muted); font-weight: 500;">Rigorous exam preparation for practical and theoretical evaluations.</p>
+  </header>
+
+
+  <section>
+    <h1>🎤 Ultimate Viva &amp; Practical Q&amp;A</h1>
+<p>This section contains rigorous, logic-based, and theoretical questions designed specifically for your Viva Voce based on your exact JavaScript and React syllabus. Use the dropdowns to test yourself!</p>
+  <section id="js-basics">
+    <h2>🟡 JavaScript Foundations</h2>
+<h3>Core Mechanics &amp; Scope</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is the difference between `let`, `const`, and `var`?</strong></summary>
+<br><ul>
+<li><strong><code>var</code></strong>: Function-scoped. Can be redeclared and reassigned. It is hoisted and initialized with <code>undefined</code>.</li>
+<li><strong><code>let</code></strong>: Block-scoped (<code>{}</code>). Cannot be redeclared in the same scope, but can be reassigned. Hoisted but sits in the &quot;Temporal Dead Zone&quot; until execution reaches it.</li>
+<li><strong><code>const</code></strong>: Block-scoped. Cannot be redeclared or reassigned. Must be initialized at the time of declaration. (Note: For objects/arrays, the <em>reference</em> is constant, but the contents can be mutated).</details></li>
+</ul>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Explain "Hoisting" in JavaScript.</strong></summary>
+<br><p><strong>Hoisting</strong> is JavaScript&#39;s default behavior of moving variable and function declarations to the top of their respective scopes during the compilation phase, before execution. </p>
+<ul>
+<li>Function declarations are fully hoisted (you can call them before they appear in code).</li>
+<li><code>var</code> declarations are hoisted and initialized as <code>undefined</code>.</li>
+<li><code>let</code> and <code>const</code> are hoisted but remain uninitialized (in the Temporal Dead Zone), resulting in a <code>ReferenceError</code> if accessed early.</details></li>
+</ul>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: How do Closures work in JavaScript? Explain with a short example.</strong></summary>
+<br><p>A <strong>Closure</strong> is when a function "remembers" its lexical environment (the variables around it) even after the parent function has finished executing.</p>
+<p><strong>Analogy:</strong> A closure is like a "backpack" that a function carries. Even when the function moves away from its home (parent scope), it still has its backpack full of local variables.</p>
+<pre><code class="language-javascript">function createGreeting(greeting) {
+  return function(name) {
+    console.log(greeting + ", " + name);
+  };
+}
+
+const sayHello = createGreeting("Hello"); 
+// 'createGreeting' has finished, but 'sayHello' still remembers "Hello"!
+sayHello("Alice"); // "Hello, Alice"
+</code></pre>
+<p><strong>Viva Tip:</strong> Mention that closures are the foundation for <em>Data Privacy</em> (private variables) and <em>Currying</em>.</p>
+</details>
+<h3>Functions &amp; Objects</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is a Higher-Order Function (HOF)?</strong></summary>
+<br><p>A <strong>Higher-Order Function</strong> is a function that does at least one of the following:</p>
+<ol>
+<li>Takes one or more functions as arguments (e.g., <code>map</code>, <code>filter</code>, <code>reduce</code>).</li>
+<li>Returns a function as its result.</details></li>
+</ol>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is the difference between `==` and `===`?</strong></summary>
+<br><p>This is about <strong>Type Coercion</strong>.</p>
+<ul>
+<li><strong><code>==</code> (Abstract Equality)</strong>: Compares only <em>values</em>. If types are different, JS converts them to the same type first. <code>5 == '5' // true</code>.</li>
+<li><strong><code>===</code> (Strict Equality)</strong>: Compares both <em>value</em> AND <em>type</em>. No conversion happens. <code>5 === '5' // false</code>.</li>
+</ul>
+<p><strong>Example:</strong> <code>0 == false // true</code> (coercion), but <code>0 === false // false</code> (different types).</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: How does the `this` keyword behave differently in Arrow Functions?</strong></summary>
+<br><p>Regular functions define their own <code>this</code> context based on <em>how</em> they are called (e.g., the object calling the method). 
+<strong>Arrow functions do not have their own <code>this</code> binding.</strong> Instead, they inherit <code>this</code> from their surrounding lexical scope at the time they are defined.</p>
+</details>  <section id="js-async">
+    <h3>Asynchronous JavaScript</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is the difference between Sync and Async?</strong></summary>
+<br><p><strong>Synchronous:</strong> Blocking. Code waits for one line to finish before moving to the next.
+<br><strong>Asynchronous:</strong> Non-blocking. Code starts a task (like an API call) and continues to the next line while the task runs in the background.</p>
+<p><strong>Analogy (The Coffee Shop):</strong> 
+  <br><strong>Sync:</strong> You stand at the counter and wait until your coffee is ready before the next person can order. The whole line is blocked.
+  <br><strong>Async:</strong> You order, get a pager (Promise), and sit down. The barista takes the next order immediately. They beep your pager when your coffee is ready.</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is the Event Loop? (Step-by-Step)</strong></summary>
+<br><p>JavaScript is <strong>single-threaded</strong>. The Event Loop is the mechanism that allows it to be non-blocking.</p>
+<p><strong>The Execution Trace:</strong></p>
+<ol>
+<li><strong>Call Stack:</strong> Executes sync code (LIFO).</li>
+<li><strong>Web APIs:</strong> Handles async tasks (setTimeout, Fetch) outside the JS engine.</li>
+<li><strong>Task/Callback Queue:</strong> Where finished async callbacks wait.</li>
+<li><strong>Event Loop:</strong> Monitors the Stack. If the Stack is empty, it pushes the first task from the Queue into the Stack.</li>
+</ol>
+<p><strong>Example:</strong> Even <code>setTimeout(0)</code> will wait for ALL sync code to finish because the Event Loop only checks the queue when the Stack is <strong>completely empty</strong>.</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Code Output Logic: Promises vs SetTimeout</strong></summary>
+<br><pre><code class="language-javascript">console.log("Start");
+setTimeout(() => console.log("Timeout"), 0);
+Promise.resolve().then(() => console.log("Promise"));
+console.log("End");
+</code></pre>
+<p><strong>Output:</strong> Start, End, Promise, Timeout</p>
+<p><strong>Why?</strong>
+  <br>1. <code>Start</code> and <code>End</code> are sync.
+  <br>2. <strong>Microtasks (Promises)</strong> have higher priority than <strong>Macrotasks (setTimeout)</strong>. The Event Loop clears the Microtask queue completely before looking at the Macrotask queue.</p>
+</details>
+<hr>
+  </section>
+
+  <section id="react-basics">
+    <h2>⚛️ React Core Concepts</h2>
+<h3>Fundamentals &amp; Architecture</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is the Virtual DOM and why is it faster?</strong></summary>
+<br><p>The Real DOM is heavy and slow to update. The <strong>Virtual DOM</strong> is a lightweight JS object that is a "copy" of the Real DOM.</p>
+<p><strong>The 3-Step Process:</strong></p>
+<ol>
+<li><strong>New V-DOM:</strong> When state changes, React creates a whole new Virtual DOM tree.</li>
+<li><strong>Diffing:</strong> React compares the <em>new</em> V-DOM with the <em>old</em> one to see exactly what changed.</li>
+<li><strong>Reconciliation:</strong> React updates ONLY the specific elements that changed in the Real DOM.</li>
+</ol>
+<p><strong>Analogy:</strong> If you want to change a room's wallpaper, you don't demolish the whole house and rebuild it (Real DOM update). You just change the blueprint (Virtual DOM), see that only one wall is different, and then go paint only that wall (Reconciliation).</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Explain Single Page Applications (SPA).</strong></summary>
+<br><p>An SPA loads a single HTML page upfront (<code>index.html</code>). Instead of requesting a new HTML page from the server every time you click a link, JavaScript dynamically rewrites the content on the current page. React Router is used to intercept URL changes and swap components without refreshing the page.</p>
+</details><details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is JSX and what does Babel do?</strong></summary>
+<br><p><strong>JSX</strong> is a syntax extension that allows us to write HTML-like markup inside JavaScript. Browsers cannot understand JSX directly. 
+<strong>Babel</strong> is a JavaScript compiler that converts JSX into plain <code>React.createElement()</code> JavaScript function calls that the browser can execute.</p>
+</details><details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Functional vs Class Components?</strong></summary>
+<br><ul>
+<li><strong>Class Components:</strong> Older, require <code>class</code> and <code>this</code> keywords, use lifecycle methods (<code>componentDidMount</code>, <code>render</code>), and maintain state via <code>this.state</code>.</li>
+<li><strong>Functional Components:</strong> Modern, cleaner syntax, use Hooks (<code>useState</code>, <code>useEffect</code>) for state and lifecycles, and generally offer better performance as they are pure JavaScript functions without the overhead of class instances.</details></li>
+</ul>
+<h3>State, Props &amp; Lifecycle</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: State vs Props (Detailed)</strong></summary>
+<br><ul>
+<li><strong>State:</strong> Internal, private, and <strong>Mutable</strong> (changeable). It's the "Heart" of the component. When it changes, React re-renders the component.</li>
+<li><strong>Props:</strong> External, passed from parent, and <strong>Immutable</strong> (read-only). They are like "Configuration" settings.</li>
+</ul>
+<p><strong>Analogy:</strong> A car.
+  <br><strong>State:</strong> The fuel level and speed (changes as the car moves).
+  <br><strong>Props:</strong> The color and brand (stays the same regardless of how fast you drive).</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Why is State Immutability important?</strong></summary>
+<br><p>React uses <strong>Reference Comparison</strong> to check if an object has changed. 
+  <br>If you do <code>user.name = "Bob"</code>, the object's memory address remains the same. React thinks "nothing changed" and skips the re-render.</p>
+<p><strong>The Fix:</strong> Use the spread operator <code>{...user}</code> to create a <strong>new memory reference</strong>. This forces React to recognize the change and update the UI.</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is Prop Drilling and the Context API "Radio" solution?</strong></summary>
+<br><p><strong>Prop Drilling:</strong> Passing data through 10 components that don't need it, just to reach a child at the bottom. This makes code hard to maintain.</p>
+<p><strong>Context API:</strong> A global <strong>"Radio Station"</strong>. 
+  <br>The Parent "Broadcasts" (Provider) the data. 
+  <br>The Child "Tunes in" (useContext) directly. 
+  <br>Intermediate components don't hear a thing and don't need to pass any props.</p>
+</details>
+  <section id="react-hooks">
+    <h3>Hooks Mastery</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Explain the `useEffect` hook and its dependency array.</strong></summary>
+<br><p><code>useEffect</code> is where we handle "Side Effects" (API calls, subscriptions, timers).</p>
+<p><strong>The Dependency Array <code>[ ]</code>:</strong></p>
+<ul>
+<li><strong>No Array:</strong> Runs after <em>every single render</em>. (Danger: can cause infinite loops).</li>
+<li><strong><code>[ ]</code> (Empty):</strong> Runs <em>once</em> after the component is born (Mount). Perfect for API calls.</li>
+<li><strong><code>[state]</code>:</strong> Runs on mount AND whenever <code>state</code> changes.</li>
+</ul>
+<p><strong>Cleanup Function:</strong> If you return a function inside <code>useEffect</code>, React runs it when the component "dies" (Unmount). Used to stop timers or cancel API requests.</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What are the Rules of Hooks and WHY do they exist?</strong></summary>
+<br><p><strong>1. Only call Hooks at the Top Level:</strong> Don't call them in loops, conditions, or nested functions.</p>
+<p><strong>2. Only call Hooks from React Functions:</strong> Or from your own custom hooks.</p>
+<p><strong>The "WHY":</strong> React relies on the <strong>Order of Hook Calls</strong>. Internally, React stores state in an array. If you put a hook inside an <code>if</code> statement, the order might change on the next render, and React will get confused about which state belongs to which hook.</p>
+</details>
+
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is the difference between `useState` and `useRef`?</strong></summary>
+<br><ul>
+<li><code>useState</code>: Triggers a component <strong>re-render</strong> when the state value changes. Used for data that affects the UI.</li>
+<li><code>useRef</code>: Does <strong>not</strong> trigger a re-render when its <code>.current</code> value changes. Used to store mutable values across renders (like timer IDs) or to directly access real DOM elements.</details></li>
+</ul>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What are `useMemo` and `useCallback` used for?</strong></summary>
+<br><p>Both are used for <strong>Performance Optimization</strong>:</p>
+<ul>
+<li><strong><code>useMemo</code></strong>: Caches (memoizes) the <em>result</em> of an expensive calculation so it doesn&#39;t run on every render unless its dependencies change.</li>
+<li><strong><code>useCallback</code></strong>: Caches a <em>function definition</em> so that a new function reference isn&#39;t created on every render, preventing unnecessary re-renders of child components that receive the function as a prop.</details></li>
+</ul>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: React.memo vs useMemo (Visual Performance)</strong></summary>
+<br><p><strong>React.memo</strong>: Prevents a <em>whole component</em> from re-rendering. It "remembers" the output for specific props.
+<br><strong>useMemo</strong>: Prevents a <em>calculation</em> from running again. It "remembers" the result of a math problem or filter logic.</p>
+<p><strong>Example:</strong> If your OS Desktop re-renders, use <code>React.memo</code> on the Icon components so they don't all re-draw every time the clock updates.</p>
+</details>
+
+<h3>Advanced Topics</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Axios vs Fetch API? (With Code)</strong></summary>
+<br><p><strong>Fetch:</strong> Two-step process.
+<pre><code class="language-javascript">fetch(url)
+  .then(res => res.json()) // Step 1: Convert to JSON
+  .then(data => console.log(data)); // Step 2: Use data
+</code></pre></p>
+<p><strong>Axios:</strong> One-step process.
+<pre><code class="language-javascript">axios.get(url)
+  .then(res => console.log(res.data)); // JSON is auto-converted
+</code></pre></p>
+<p><strong>Major Difference:</strong> Axios automatically throws an error for 404/500 statuses, while Fetch only rejects the promise if the <em>network</em> fails.</p>
+</details>
+
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Explain React Router basics (`BrowserRouter`, `Routes`, `Route`).</strong></summary>
+<br><ul>
+<li><code>BrowserRouter</code>: Wraps the app and enables HTML5 history API tracking.</li>
+<li><code>Routes</code>: A container that looks through all its child <code>Route</code> components to find the best match for the current URL.</li>
+<li><code>Route</code>: Defines a specific path and the Component that should be rendered when that path is active (<code>&lt;Route path=&quot;/about&quot; element={&lt;About /&gt;} /&gt;</code>).</li>
+<li><code>Link</code>: Used instead of <code>&lt;a&gt;</code> tags to navigate without causing a page refresh.</details></li>
+</ul>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is Redux Toolkit and how does it differ from Context API?</strong></summary>
+<br><p><strong>Redux Toolkit (RTK)</strong> is the official, recommended way to write Redux logic. It simplifies state management with centralized &quot;slices&quot; and a global store. 
+<strong>Differences:</strong></p>
+<ul>
+<li>Context API is built into React and is great for low-frequency updates (like light/dark themes or auth state).</li>
+<li>Redux is a robust external library designed for high-frequency, complex state updates across massive applications, providing advanced debugging tools (Redux DevTools) and middleware (Thunk/Saga) for async actions.</details></li>
+</ul>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Redux Thunk vs Redux Saga?</strong></summary>
+<br><p>Both are Redux middlewares used to handle asynchronous side effects (like API calls).</p>
+<ul>
+<li><strong>Thunk</strong>: Simpler. It allows action creators to return a function (which can dispatch actions asynchronously) instead of just an object.</li>
+<li><strong>Saga</strong>: More complex but powerful. Uses ES6 Generator functions (<code>yield</code>). Great for highly complex async flows (like race conditions, cancelling requests, or debouncing).</details></li>
+</ul>
+<hr>
+<h3>📈 Syllabus Logic: Units 1-4 Recap</h3>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What are the core themes of Unit 1 through Unit 4?</strong></summary>
+<br><ul>
+<li><strong>Unit 1: Fundamentals</strong> - ES6+, Scopes (let/const), Arrow Functions, and the "This" keyword.</li>
+<li><strong>Unit 2: React Core</strong> - JSX, Components, Props vs State, and the Virtual DOM logic.</li>
+<li><strong>Unit 3: Hooks & Effects</strong> - useState, useEffect, API fetching (Fetch/Axios), and Lifecycle management.</li>
+<li><strong>Unit 4: Advanced Flow</strong> - Routing (SPA), Context API (Prop Drilling), and State Management (Redux/RTK).</li>
+</ul>
+</details>
+
+  <section id="react-advanced">
+    <h2>🔥 Nightmare Mode: Niche &amp; Advanced Concepts</h2>
+<p><em>Prepare to absolutely destroy the examiner with these deep-dive questions.</em></p>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Explain Prototypal Inheritance in JavaScript.</strong></summary>
+<br><p>Unlike class-based languages (like Java), JavaScript objects inherit directly from other objects via an internal link called the <code>[[Prototype]]</code> (accessible via <code>__proto__</code>). When you try to access a property on an object, JavaScript searches the object itself. If it doesn&#39;t find it, it traverses up the &quot;Prototype Chain&quot; to its parent, then its grandparent, all the way until it hits <code>null</code>.</p>
+</details><details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is the exact difference between `call`, `apply`, and `bind`?</strong></summary>
+<br><p>All three are used to explicitly set the <code>this</code> context for a function:</p>
+<ul>
+<li><strong><code>call(thisContext, arg1, arg2)</code></strong>: Invokes the function immediately. Arguments are passed individually.</li>
+<li><strong><code>apply(thisContext, [arg1, arg2])</code></strong>: Invokes the function immediately. Arguments are passed as an array.</li>
+<li><strong><code>bind(thisContext, arg1, arg2)</code></strong>: Does <em>not</em> invoke the function immediately. It returns a <strong>new function</strong> with the <code>this</code> keyword permanently bound.</details></li>
+</ul>
+<details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is "Event Delegation" and why is it highly performant?</strong></summary>
+<br><p>Instead of attaching an event listener to 1,000 individual list items (<code>&lt;li&gt;</code>), you attach a single event listener to their parent (<code>&lt;ul&gt;</code>). Because events <strong>bubble up</strong> the DOM tree in JavaScript, the parent can catch events triggered by its children. You then check <code>event.target</code> to see exactly which child was clicked. This saves massive amounts of memory.</p>
+</details><details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Code Output: Closure "Stale State" Trap in React</strong></summary>
+<br><pre><code class="language-javascript">function Counter() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() =&gt; {
+    const timer = setInterval(() =&gt; {
+      console.log(count);
+    }, 1000);
+    return () =&gt; clearInterval(timer);
+  }, []); // Empty dependency array
+
+  return &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;Increment&lt;/button&gt;;
+}
+</code></pre>
+<p><strong>Q: What happens if the user clicks increment 5 times? What prints to the console?</strong>
+<br>
+<strong>A:</strong> The console will print <code>0</code> every second, infinitely.
+<strong>Why?</strong> Because the <code>useEffect</code> has an empty dependency array (<code>[]</code>), the closure inside the interval only captures the state value from the <em>first</em> render, where <code>count</code> was <code>0</code>. It is &quot;stale.&quot; To fix it, you must add <code>count</code> to the dependency array.</p>
+</details><details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What is React Fiber Architecture?</strong></summary>
+<br><p>Introduced in React 16, <strong>Fiber</strong> is a complete rewrite of React&#39;s core reconciliation algorithm. 
+Older React (Stack Reconciler) performed updates synchronously, which could lock up the main thread during heavy rendering. <strong>Fiber allows rendering to be interruptible.</strong> React can pause an ongoing render, yield control to the browser to handle high-priority tasks (like user typing or animations), and then resume rendering where it left off.</p>
+</details><details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--danger);">
+<summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: What are React Synthetic Events?</strong></summary>
+<br><p>When you write <code>onClick</code> in React, you are not actually interacting with the browser&#39;s native <code>click</code> event. React wraps the native browser event in a cross-browser wrapper called a <strong>SyntheticEvent</strong>. This ensures that the event behaves identically across all browsers (Chrome, Firefox, Safari) and pools events for performance optimization.</p>
+</details><li><strong><code>useLayoutEffect</code></strong>: Runs <strong>synchronously</strong> <em>immediately after</em> React has mutated the DOM but <em>before</em> the browser paints it to the screen. Use this only when you need to read the DOM layout (like measuring an element's width) and re-render synchronously to prevent screen flickering.</details></li>
+</ul>
+
+<hr>
+<section id="troubleshooting">
+  <h2>🛠️ Practical Logic & Troubleshooting</h2>
+  <details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+  <summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Why does React render twice in development mode?</strong></summary>
+  <br><p>This is because of <strong>Strict Mode</strong> (<code>&lt;React.StrictMode&gt;</code>). It intentionally double-renders components to help developers find side-effects and bugs (like improper state mutations or missing cleanups) that might otherwise go unnoticed.</p>
+  </details>
+
+  <details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+  <summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: How do you handle "CORS" errors when fetching APIs?</strong></summary>
+  <br><p><strong>CORS (Cross-Origin Resource Sharing)</strong> is a security feature. If your React app (localhost:5173) tries to talk to an API (localhost:5000), the browser blocks it unless the server explicitly allows it.
+  <br><strong>Solution:</strong> On the backend, use the <code>cors</code> middleware, or in Vite/React, use a <strong>Proxy</strong> in your configuration.</p>
+  </details>
+
+  <details style="margin-bottom: 15px; background: var(--surface2); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+  <summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: How did you debug state changes in your project?</strong></summary>
+  <br><p>I used the <strong>React Developer Tools</strong> browser extension to inspect component props/state and the <strong>Console Tab</strong> with <code>useEffect</code> logs to track when re-renders were happening.</p>
+  </details>
+</section>
+
+  </section>
+
+  <section id="project-defense">
+    <h2>🛡️ Project Defense: Pseudo-OS Logic</h2>
+    <p>Specific questions about your capstone architecture that examiners love to ask.</p>
+
+    <details style="margin-bottom: 15px; background: var(--sidebar-bg); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+      <summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: How does your Terminal "execute" commands?</strong></summary>
+      <br><p>The Terminal uses <strong>String Parsing Logic</strong>. When the user hits Enter, the input string is split into <code>command</code> and <code>arguments</code>. I then use a matching logic to map those strings to specific JavaScript functions (e.g., <code>ls()</code> or <code>mkdir()</code>) defined in the FileSystem Context.</p>
+    </details>
+
+    <details style="margin-bottom: 15px; background: var(--sidebar-bg); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+      <summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Explain the "Virtual File System" (VFS) in your project.</strong></summary>
+      <br><p>The VFS is a <strong>Nested JavaScript Object</strong> that mimics a directory tree. It is managed via <strong>React Context API</strong> to ensure that every app (File Explorer, Terminal, Notes) has a synchronized "Real-time" view of the files without needing a backend database.</p>
+    </details>
+
+    <details style="margin-bottom: 15px; background: var(--sidebar-bg); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+      <summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: Why did you use Context API instead of just passing props?</strong></summary>
+      <br><p>Using Context API avoids <strong>Prop Drilling</strong>. Since the File System and Theme settings are needed by almost every component in the OS, providing them via a Context Provider makes the data globally accessible and keeps the component code much cleaner and easier to maintain.</p>
+    </details>
+
+    <details style="margin-bottom: 15px; background: var(--sidebar-bg); padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent);">
+      <summary style="cursor: pointer; font-size: 1.1rem;"><strong>Q: How do you handle Windowing and Z-Index?</strong></summary>
+      <br><p>Each app is wrapped in an <code>OSWindow</code> component. I manage the window's visibility via <strong>React Routing</strong>. The active window can be brought to the front using CSS <code>z-index</code>, though in this simplified version, the router handles focus by mounting/unmounting apps in the workspace area.</p>
+    </details>
+  </section>
+
+  <footer style="text-align:center; margin-top: 100px; padding-bottom: 60px;">
+    <p style="color: var(--text-muted);">© 2026 Pseudo-OS Documentation System • Designed for Academic Excellence</p>
+  </footer>
+</div>
+
+<script>
+// Search Functionality
+const searchInput = document.getElementById('wikiSearch');
+const navLinks = document.querySelectorAll('.nav-link');
+
+searchInput.addEventListener('input', (e) => {
+  const term = e.target.value.toLowerCase();
+  const details = document.querySelectorAll('details');
+  
+  details.forEach(detail => {
+    const text = detail.textContent.toLowerCase();
+    detail.style.display = text.includes(term) ? 'block' : 'none';
+  });
+});
+
+// Reading Progress Bar
+window.onscroll = function() {myFunction()};
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+
+// Active Link Highlight
+const sections = document.querySelectorAll('section[id]');
+const sidebarLinks = document.querySelectorAll('.wiki-sidebar .nav-link');
+
+window.addEventListener('scroll', () => {
+  let current = "";
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 160) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  sidebarLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Mobile Sidebar Toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menuToggle');
+  const sidebar = document.querySelector('.wiki-sidebar');
+
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar on link click (mobile)
+    document.querySelectorAll('.wiki-sidebar .nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 1024) {
+          sidebar.classList.remove('active');
+        }
+      });
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', (e) => {
+      if (sidebar.classList.contains('active') && !sidebar.contains(e.target) && e.target !== menuToggle) {
+        sidebar.classList.remove('active');
+      }
+    });
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+/* Shared Navigation Header Design */
+:root {
+  --nav-bg: rgba(10, 15, 26, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.08);
+  --nav-text: #f3f4f6;
+  --nav-text-muted: #9ca3af;
+  --nav-glow: rgba(59, 130, 246, 0.15);
+  --nav-active: #60a5fa;
+  
+  /* Subject specific accents */
+  --nav-color-ds: #10b981;
+  --nav-color-web: #3b82f6;
+  --nav-color-phil: #f59e0b;
+  --nav-color-maths: #8b5cf6;
+  --nav-color-chem: #06b6d4;
+}
+
+.global-nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 68px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--nav-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
+  z-index: 10000;
+  font-family: 'Outfit', 'Inter', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.global-nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.global-nav-logo span.gradient-text {
+  background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.global-nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.global-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  color: var(--nav-text-muted);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.global-nav-item:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.global-nav-item.active {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--subject-accent, var(--nav-active));
+  box-shadow: 0 0 15px rgba(var(--subject-rgb, 59, 130, 246), 0.15);
+}
+
+/* Hamburg mobile elements */
+.global-nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.global-nav-toggle svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: 1024px) {
+  .global-nav-header {
+    padding: 0 1.5rem;
+  }
+  
+  .global-nav-menu {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    width: 100%;
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 0.75rem;
+    box-sizing: border-box;
+    backdrop-filter: blur(16px);
+  }
+  
+  .global-nav-menu.open {
+    display: flex;
+  }
+  
+  .global-nav-item {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.75rem 1.25rem;
+  }
+  
+  .global-nav-toggle {
+    display: block;
+  }
+}
+
+/* Adjust page padding for fixed header */
+body {
+  padding-top: 68px !important;
+}
+
+/* Ensure sidebars don't overlap with our sticky header */
+aside, .wiki-sidebar, aside.sidebar, .sidebar {
+  top: 68px !important;
+  height: calc(100vh - 68px) !important;
+}
+
+.main-wrapper {
+  padding-top: 0 !important;
+}

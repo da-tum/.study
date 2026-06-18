@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computational Mathematics II — Exam Study Guide</title>
+    <style>
+        :root {
+            --bg: #f9f7f2;
+            --card: #ffffff;
+            --border: #e2ddd4;
+            --accent: #2563eb;
+            --accent2: #7c3aed;
+            --accent3: #059669;
+            --accent4: #d97706;
+            --text: #1a1a1a;
+            --muted: #6b7280;
+            --code-bg: #f1f5f9;
+            --tag-blue: #dbeafe;
+            --tag-blue-t: #1d40ae;
+            --tag-green: #d1fae5;
+            --tag-green-t: #065f46;
+            --tag-amber: #fef3c7;
+            --tag-amber-t: #92400e;
+            --tag-red: #fee2e2;
+            --tag-red-t: #991b1b;
+            --tag-purple: #ede9fe;
+            --tag-purple-t: #4c1d95;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #7c3aed 100%);
+            color: white;
+            padding: 2.5rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.4rem;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            font-style: italic;
+        }
+
+        .toc {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .toc a {
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .toc a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid;
+        }
+
+        .section-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        .marks-badge {
+            font-family: sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-left: auto;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: sans-serif;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .step {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.6rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            font-family: sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: var(--accent);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .math {
+            font-family: 'Courier New', monospace;
+            background: var(--code-bg);
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.92em;
+            color: #1e3a8a;
+        }
+
+        .math-block {
+            font-family: 'Courier New', monospace;
+            background: var(--code-bg);
+            border-left: 3px solid var(--accent);
+            padding: 0.75rem 1rem;
+            margin: 0.75rem 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.9rem;
+            color: #1e1e1e;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .answer-box {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            font-family: sans-serif;
+            font-size: 0.88rem;
+            margin-top: 0.75rem;
+        }
+
+        .answer-box strong {
+            color: #15803d;
+        }
+
+        .warning-box {
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            border-radius: 6px;
+            padding: 0.6rem 1rem;
+            font-family: sans-serif;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .warning-box strong {
+            color: #92400e;
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tag {
+            display: inline-block;
+            font-family: sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Section colors */
+        .s1 .section-header {
+            border-color: #2563eb;
+            color: #1d40ae;
+        }
+
+        .s1 .marks-badge {
+            background: var(--tag-blue);
+            color: var(--tag-blue-t);
+        }
+
+        .s2 .section-header {
+            border-color: #7c3aed;
+            color: #4c1d95;
+        }
+
+        .s2 .marks-badge {
+            background: var(--tag-purple);
+            color: var(--tag-purple-t);
+        }
+
+        .s3 .section-header {
+            border-color: #059669;
+            color: #065f46;
+        }
+
+        .s3 .marks-badge {
+            background: var(--tag-green);
+            color: var(--tag-green-t);
+        }
+
+        .s4 .section-header {
+            border-color: #d97706;
+            color: #92400e;
+        }
+
+        .s4 .marks-badge {
+            background: var(--tag-amber);
+            color: var(--tag-amber-t);
+        }
+
+        .s5 .section-header {
+            border-color: #dc2626;
+            color: #991b1b;
+        }
+
+        .s5 .marks-badge {
+            background: var(--tag-red);
+            color: var(--tag-red-t);
+        }
+
+        .matrix-display {
+            font-family: 'Courier New', monospace;
+            background: var(--code-bg);
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 6px;
+            font-size: 0.88rem;
+            display: inline-block;
+            line-height: 1.8;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 2rem 0;
+        }
+
+        p {
+            margin-bottom: 0.5rem;
+        }
+
+        ul {
+            margin-left: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        li {
+            margin-bottom: 0.25rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Computational Mathematics II — Exam Study Guide</h1>
+        <p>K.R. Mangalam University · B.Tech CSE · End-Term Preparation</p>
+    </div>
+
+    <nav class="toc">
+        <a href="#de" style="background:#dbeafe;color:#1d40ae;">1. Differential Equations (8M)</a>
+        <a href="#svd" style="background:#ede9fe;color:#4c1d95;">2. SVD + Lagrange (8M)</a>
+        <a href="#eigen" style="background:#d1fae5;color:#065f46;">3. Eigenvalues + Regression/Gauss (8M)</a>
+        <a href="#twom" style="background:#fef3c7;color:#92400e;">4. Theory Questions (2M)</a>
+        <a href="#unit3" style="background:#fee2e2;color:#991b1b;">5. Unit 3: Distributions (8M)</a>
+    </nav>
+
+    <div class="container">
+
+        <!-- ===== SECTION 1: DIFFERENTIAL EQUATIONS ===== -->
+        <div id="de" class="section s1">
+            <div class="section-header">
+                <h2>1. First Order: Non-Exact &amp; Linear Non-Homogeneous DEs</h2>
+                <span class="marks-badge">8 Marks</span>
+            </div>
+
+            <div class="card">
+                <h3>A. Non-Exact DE → Finding Integrating Factor (I.F.)</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Standard
+                    form: M dx + N dy = 0. Check if ∂M/∂y ≠ ∂N/∂x → non-exact. Find I.F. to make it exact.</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Write in form <span class="math">M dx + N dy = 0</span>. Compute <span class="math">∂M/∂y</span>
+                        and <span class="math">∂N/∂x</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>If <span class="math">∂M/∂y ≠ ∂N/∂x</span>, it is <strong>non-exact</strong>. Try I.F. formulas:
+                    </p>
+                </div>
+
+                <div class="two-col">
+                    <div class="math-block">If (∂M/∂y - ∂N/∂x)/N = f(x) only
+                        → I.F. = e^(∫f(x)dx)</div>
+                    <div class="math-block">If (∂N/∂x - ∂M/∂y)/M = g(y) only
+                        → I.F. = e^(∫g(y)dy)</div>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Multiply entire equation by I.F. → now exact. Solve as exact DE.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Integrate: <span class="math">F = ∫M dx</span> (treat y as constant), then add terms from <span
+                            class="math">∫N dy</span> not already in F.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <p>Solution: <span class="math">F(x, y) = C</span></p>
+                </div>
+
+                <div class="answer-box"><strong>Example (from Assignment 1, Q4):</strong> Solve (x²y² + y)dx + (2x³y −
+                    x)dy = 0<br>
+                    M = x²y² + y, N = 2x³y − x<br>
+                    ∂M/∂y = 2x²y + 1, ∂N/∂x = 6x²y − 1 → Not exact<br>
+                    (∂M/∂y − ∂N/∂x)/N = (2x²y+1−6x²y+1)/(2x³y−x) = (−4x²y+2)/(x(2x²y−1)) = −2/x<br>
+                    I.F. = e^(∫−2/x dx) = e^(−2lnx) = x⁻²<br>
+                    Multiply through by x⁻² → solve as exact.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>B. Linear Non-Homogeneous DE (1st Order)</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Standard
+                    form: dy/dx + P(x)y = Q(x), where Q(x) ≠ 0 → Non-homogeneous.</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Identify <span class="math">P(x)</span> and <span class="math">Q(x)</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Compute Integrating Factor: <span class="math">I.F. = e^(∫P dx)</span></p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Multiply both sides by I.F.: <span class="math">d/dx[y · I.F.] = Q · I.F.</span></p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Integrate both sides: <span class="math">y · I.F. = ∫Q · I.F. dx + C</span></p>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <p>Solve for y.</p>
+                </div>
+
+                <div class="answer-box">
+                    <strong>Example (from Question Bank):</strong> Solve dy/dx + (2/x)y = x²<br>
+                    P = 2/x, Q = x²<br>
+                    I.F. = e^(∫2/x dx) = e^(2lnx) = x²<br>
+                    y·x² = ∫x²·x² dx = ∫x⁴ dx = x⁵/5 + C<br>
+                    <strong>Answer: y = x³/5 + C/x²</strong>
+                </div>
+
+                <div class="answer-box" style="margin-top:0.75rem;">
+                    <strong>Example (Assignment 1, Q5):</strong> Solve y′ − (1/x)y = x³, x > 0<br>
+                    P = −1/x, Q = x³<br>
+                    I.F. = e^(∫−1/x dx) = e^(−lnx) = 1/x<br>
+                    y·(1/x) = ∫x³·(1/x) dx = ∫x² dx = x³/3 + C<br>
+                    <strong>Answer: y = x⁴/3 + Cx</strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>C. Bernoulli's Equation (Non-linear → Linearize)</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Form:
+                    dy/dx + P(x)y = Q(x)yⁿ (n ≠ 0, 1). Used in Assignment 1 Q6–Q9.</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Divide both sides by <span class="math">yⁿ</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Substitute <span class="math">v = y^(1−n)</span>, so <span class="math">dv/dx = (1−n)y^(−n)
+                            dy/dx</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Equation becomes linear in v: <span class="math">dv/dx + (1−n)P·v = (1−n)Q</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Solve using I.F. method, then substitute back.</p>
+                </div>
+
+                <div class="answer-box">
+                    <strong>Example (Q6):</strong> dy/dx + y/x = y² (n=2)<br>
+                    Divide by y²: y⁻²(dy/dx) + y⁻¹/x = 1<br>
+                    Let v = y⁻¹ → dv/dx = −y⁻²(dy/dx)<br>
+                    −dv/dx + v/x = 1 → dv/dx − v/x = −1<br>
+                    I.F. = e^(∫−1/x dx) = 1/x<br>
+                    v/x = ∫(−1)(1/x) dx = −lnx + C<br>
+                    v = −x·lnx + Cx → y = 1/v = 1/(Cx − x·lnx)
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 2: SVD + LAGRANGE ===== -->
+        <div id="svd" class="section s2">
+            <div class="section-header">
+                <h2>2. SVD (3×3) + Cubic Equation &amp; Lagrange Multiplier</h2>
+                <span class="marks-badge">8 Marks</span>
+            </div>
+
+            <div class="card">
+                <h3>A. Singular Value Decomposition (SVD) — Step-by-Step</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Goal:
+                    Decompose A = U Σ Vᵀ. For 3×3, eigenvalues lead to a cubic equation.</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Compute <span class="math">AᵀA</span> (an n×n symmetric matrix).</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Find eigenvalues of <span class="math">AᵀA</span> by solving <span class="math">det(AᵀA − λI) =
+                            0</span>. For 3×3 this gives a <strong>cubic equation</strong> in λ.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Singular values: <span class="math">σᵢ = √λᵢ</span> (take positive square roots, arrange
+                        descending). These form the diagonal of <span class="math">Σ</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Find eigenvectors of <span class="math">AᵀA</span> for each λᵢ → normalize → columns of <span
+                            class="math">V</span>.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <p>Find columns of <span class="math">U</span>: <span class="math">uᵢ = (1/σᵢ)Avᵢ</span>. Normalize
+                        if needed.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">6</div>
+                    <p>Write: <span class="math">A = U Σ Vᵀ</span></p>
+                </div>
+
+                <div class="answer-box">
+                    <strong>Example (Assignment 2, Q15) — A = [[1,1],[0,1],[−1,1]]</strong><br>
+                    AᵀA = [[2,0],[0,3]]. Eigenvalues: λ₁=3, λ₂=2.<br>
+                    σ₁=√3, σ₂=√2. V = [[0,1],[1,0]] (eigenvectors of AᵀA).<br>
+                    u₁ = Av₁/σ₁ = [1/√3, 1/√3, 1/√3]ᵀ; u₂ = Av₂/σ₂ = [1/√2, 0, −1/√2]ᵀ<br>
+                    u₃ = orthogonal to u₁,u₂ via cross product.
+                </div>
+
+                <div class="warning-box"><strong>Key point for 3×3:</strong> det(AᵀA − λI) = 0 expands to a cubic.
+                    Factor it as (λ − a)(λ − b)(λ − c) = 0. Use rational root theorem if needed.</div>
+            </div>
+
+            <div class="card">
+                <h3>B. Lagrange Multiplier Method</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Optimize
+                    f(x,y) or f(x,y,z) subject to constraint g(x,y) = 0.</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Set up Lagrangian: <span class="math">L = f(x,y) − λ·g(x,y)</span></p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Solve: <span class="math">∂L/∂x = 0</span>, <span class="math">∂L/∂y = 0</span>, <span
+                            class="math">∂L/∂λ = 0</span></p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>From the first two equations, express x and y in terms of λ.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>Substitute into constraint to find λ, then find x, y.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <p>Compute the optimal value f(x,y).</p>
+                </div>
+
+                <div class="answer-box">
+                    <strong>Example (Question Bank):</strong> Maximize f(x,y) = xy subject to x + y = 10<br>
+                    L = xy − λ(x + y − 10)<br>
+                    ∂L/∂x = y − λ = 0 → y = λ<br>
+                    ∂L/∂y = x − λ = 0 → x = λ → x = y<br>
+                    Constraint: x + x = 10 → x = 5, y = 5<br>
+                    <strong>Max f = 5×5 = 25 at (5,5)</strong>
+                </div>
+
+                <div class="answer-box" style="margin-top:0.75rem;">
+                    <strong>Example (Vol. 2):</strong> Minimize f(x,y) = x² + y² subject to 2x + 3y = 13<br>
+                    ∂L/∂x = 2x − 2λ = 0 → x = λ; ∂L/∂y = 2y − 3λ = 0 → y = 3λ/2<br>
+                    2λ + 3(3λ/2) = 13 → 6.5λ = 13 → λ = 2<br>
+                    x = 2, y = 3. <strong>Min f = 4 + 9 = 13</strong>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 3: EIGENVALUES + LINEAR REGRESSION/GAUSS ===== -->
+        <div id="eigen" class="section s3">
+            <div class="section-header">
+                <h2>3. Eigenvalue–Eigenvector (3×3) + Linear Regression OR Gauss Methods</h2>
+                <span class="marks-badge">8 Marks</span>
+            </div>
+
+            <div class="card">
+                <h3>A. Eigenvalue and Eigenvector — 3×3 Matrix</h3>
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Form characteristic equation: <span class="math">det(A − λI) = 0</span></p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Expand the 3×3 determinant → cubic in λ. Solve for λ₁, λ₂, λ₃.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>For each λᵢ, solve <span class="math">(A − λᵢI)x = 0</span> via row reduction to find
+                        eigenvector.</p>
+                </div>
+
+                <div class="math-block">For A = [[a,b,c],[d,e,f],[g,h,i]]:
+                    det(A − λI) = det([[a−λ, b, c],
+                    [d, e−λ, f],
+                    [g, h, i−λ]]) = 0
+
+                    Expands to: −λ³ + (a+e+i)λ² − (...)λ + det(A) = 0</div>
+
+                <div class="answer-box">
+                    <strong>Tip — Shortcut for trace and det:</strong><br>
+                    Sum of eigenvalues = trace(A) = a + e + i<br>
+                    Product of eigenvalues = det(A)<br>
+                    These help verify your roots.
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>B. Linear Regression (Least Squares)</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Fit y = a
+                    + bx to n data points. Normal equations:</p>
+
+                <div class="math-block">Σy = na + bΣx ... (1)
+                    Σxy = aΣx + bΣx² ... (2)
+
+                    Solve simultaneously for a and b.</div>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Make a table: x, y, x², xy. Sum each column.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>Plug sums into normal equations and solve for a and b.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Write the regression line <span class="math">y = a + bx</span>.</p>
+                </div>
+
+                <div class="answer-box">
+                    <strong>Example (Vol. 2):</strong> Points (1,3), (2,5), (3,7)<br>
+                    n=3, Σx=6, Σy=15, Σx²=14, Σxy=34<br>
+                    Eq1: 15 = 3a + 6b → 5 = a + 2b<br>
+                    Eq2: 34 = 6a + 14b → 17 = 3a + 7b<br>
+                    Subtract (Eq1×3 from Eq2): 2 = b → a = 1<br>
+                    <strong>Answer: y = 1 + 2x</strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>C. Gauss–Jacobi Method</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.5rem;">Uses
+                    <strong>old</strong> values for all updates in one iteration.</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Rearrange each equation for its diagonal variable.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>For iteration k+1, use ALL values from iteration k (old).</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Repeat until convergence.</p>
+                </div>
+
+                <div class="answer-box">
+                    <strong>Example (Question Bank):</strong> 4x + y = 5, x + 3y = 4. Start (0,0).<br>
+                    x = (5 − y)/4, y = (4 − x)/3<br>
+                    Iter 1: x₁ = (5 − 0)/4 = 1.25; y₁ = (4 − 0)/3 = 1.333 (uses OLD x=0)<br>
+                    <strong>Answer: x₁ = 1.25, y₁ = 1.333</strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>D. Gauss–Seidel Method</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.5rem;">Uses
+                    <strong>newest</strong> (just-computed) values immediately. Converges faster than Jacobi.</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>Rearrange each equation for its diagonal variable.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>For each variable in the iteration, use the <strong>most recently computed</strong> values.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>Repeat until convergence (usually ~3–4 iterations shown).</p>
+                </div>
+
+                <div class="answer-box">
+                    <strong>Example:</strong> Same system: x = (5 − y)/4, y = (4 − x)/3. Start (0,0).<br>
+                    Iter 1: x₁ = (5 − 0)/4 = 1.25; y₁ = (4 − 1.25)/3 = 0.916 (uses NEW x₁=1.25)<br>
+                    <strong>Key difference from Jacobi: y₁ uses x₁, not x₀</strong>
+                </div>
+
+                <div class="warning-box"><strong>Pre-condition:</strong> Check diagonal dominance before applying either
+                    method. |aᵢᵢ| must be greater than sum of |aᵢⱼ| for j ≠ i.</div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 4: 2-MARK THEORY QUESTIONS ===== -->
+        <div id="twom" class="section s4">
+            <div class="section-header">
+                <h2>4. Theory / Short Answer Questions</h2>
+                <span class="marks-badge">2 Marks Each</span>
+            </div>
+
+            <div class="two-col">
+                <div class="card">
+                    <h3>What is a Random Variable? Three Types?</h3>
+                    <p style="font-size:0.9rem;">A random variable is a variable whose value is determined by the
+                        outcome of a random experiment. It maps sample space outcomes to real numbers.</p>
+                    <p style="font-size:0.9rem;margin-top:0.5rem;"><strong>Three types:</strong></p>
+                    <ul style="font-size:0.9rem;">
+                        <li><strong>Discrete:</strong> Takes countable values (e.g., number of heads in 5 tosses)</li>
+                        <li><strong>Continuous:</strong> Takes values in an interval (e.g., height, weight)</li>
+                        <li><strong>Mixed:</strong> Has both discrete and continuous components</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>What is Diagonally Dominant Matrix?</h3>
+                    <p style="font-size:0.9rem;">A square matrix A is diagonally dominant if, for every row i:</p>
+                    <div class="math-block">|aᵢᵢ| ≥ Σⱼ≠ᵢ |aᵢⱼ|</div>
+                    <p style="font-size:0.9rem;">Strictly dominant when >, not ≥. Required for guaranteed convergence of
+                        Gauss-Jacobi and Gauss-Seidel methods.</p>
+                    <div class="answer-box"><strong>Example:</strong> [[4,1],[2,5]] → |4|≥|1|, |5|≥|2| ✓</div>
+                </div>
+
+                <div class="card">
+                    <h3>What is a Convex Set?</h3>
+                    <p style="font-size:0.9rem;">A set S is convex if for any two points x, y ∈ S, the line segment
+                        connecting them lies entirely within S.</p>
+                    <div class="math-block">For all x,y ∈ S and t ∈ [0,1]:
+                        tx + (1−t)y ∈ S</div>
+                    <p style="font-size:0.9rem;margin-top:0.5rem;"><strong>Examples:</strong> Circle, ellipse, line
+                        segment. <strong>Non-example:</strong> star shape, crescent.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Convex Function — 2 Applications</h3>
+                    <p style="font-size:0.9rem;">A function f is convex if the line segment between any two points on
+                        its graph lies above or on the graph:</p>
+                    <div class="math-block">f(tx + (1−t)y) ≤ tf(x) + (1−t)f(y)</div>
+                    <p style="font-size:0.9rem;">Equivalently, f''(x) ≥ 0 everywhere.</p>
+                    <p style="font-size:0.9rem;margin-top:0.5rem;"><strong>Applications:</strong></p>
+                    <ul style="font-size:0.9rem;">
+                        <li>Optimization: any local min is a global min</li>
+                        <li>Machine learning: loss functions (MSE, cross-entropy) are convex → gradient descent
+                            converges</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>Linear Regression — Physical Interpretation</h3>
+                    <p style="font-size:0.9rem;">Linear regression fits the best straight line y = a + bx through data
+                        points by minimizing the sum of squared errors (least squares).</p>
+                    <p style="font-size:0.9rem;margin-top:0.5rem;"><strong>Physical interpretation:</strong></p>
+                    <ul style="font-size:0.9rem;">
+                        <li><strong>b (slope):</strong> Change in y per unit change in x. E.g., if x = temperature and y
+                            = pressure, b is how much pressure changes per 1°C rise.</li>
+                        <li><strong>a (intercept):</strong> Value of y when x = 0 (baseline/starting value).</li>
+                        <li>It predicts the <em>average</em> relationship — the line passes through (x̄, ȳ).</li>
+                    </ul>
+                </div>
+
+                <div class="card">
+                    <h3>What is a Matrix? Example</h3>
+                    <p style="font-size:0.9rem;">A matrix is a rectangular array of numbers arranged in rows and
+                        columns. An m×n matrix has m rows and n columns.</p>
+                    <div class="math-block">Example (2×3 matrix):
+                        A = [[1, 2, 3],
+                        [4, 5, 6]]
+
+                        Element aᵢⱼ is in row i, column j.
+                        a₁₂ = 2, a₂₃ = 6</div>
+                    <p style="font-size:0.9rem;"><strong>Uses:</strong> Representing linear systems, transformations,
+                        storing data.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Central Limit Theorem (CLT)</h3>
+                    <p style="font-size:0.9rem;">If X₁, X₂, ..., Xₙ are i.i.d. random variables with mean μ and variance
+                        σ², then as n → ∞ (practically n ≥ 30), the sample mean X̄ approaches a normal distribution:</p>
+                    <div class="math-block">X̄ ~ N(μ, σ²/n)
+
+                        Standardized: Z = (X̄ − μ)/(σ/√n) ~ N(0,1)</div>
+                    <p style="font-size:0.9rem;margin-top:0.5rem;"><strong>Significance:</strong> Allows normal
+                        distribution methods even when the original population is not normal.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SECTION 5: UNIT 3 — DISTRIBUTIONS ===== -->
+        <div id="unit3" class="section s5">
+            <div class="section-header">
+                <h2>5. Unit 3 — Probability &amp; Distributions</h2>
+                <span class="marks-badge">8 Marks</span>
+            </div>
+
+            <div class="card">
+                <h3>A. Continuous Random Variable: f(x) = kx² on [0, 5] — Find k, Mean, Variance, SD</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">(This is
+                    the exact question from your notes: "Random variable between 0 to ∫kx² & mean, variance, standard
+                    deviation")</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p><strong>Find k:</strong> Total probability = 1, so <span class="math">∫₀⁵ kx² dx = 1</span></p>
+                </div>
+                <div class="math-block">∫₀⁵ kx² dx = k[x³/3]₀⁵ = k(125/3) = 1
+                    → k = 3/125</div>
+
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p><strong>Mean:</strong> <span class="math">E[X] = ∫₀⁵ x·f(x) dx = ∫₀⁵ x·(3/125)x² dx</span></p>
+                </div>
+                <div class="math-block">E[X] = (3/125)∫₀⁵ x³ dx = (3/125)[x⁴/4]₀⁵
+                    = (3/125)(625/4) = 1875/500 = 15/4 = 3.75</div>
+
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p><strong>E[X²]:</strong> <span class="math">E[X²] = ∫₀⁵ x²·(3/125)x² dx = (3/125)∫₀⁵ x⁴ dx</span>
+                    </p>
+                </div>
+                <div class="math-block">= (3/125)[x⁵/5]₀⁵ = (3/125)(3125/5) = (3/125)(625) = 15</div>
+
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p><strong>Variance:</strong> <span class="math">Var(X) = E[X²] − (E[X])² = 15 − (3.75)² = 15 −
+                            14.0625 = 0.9375</span></p>
+                </div>
+
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <p><strong>SD:</strong> <span class="math">σ = √0.9375 ≈ 0.968</span></p>
+                </div>
+
+                <div class="answer-box"><strong>Summary:</strong> k = 3/125, Mean = 3.75, Variance = 0.9375, SD ≈ 0.968
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>B. Binomial Distribution — Through PDF, Mean, Variance, Probability</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Note from
+                    image: "No MGF, through PDF only — mean, variance, probability"</p>
+
+                <div class="math-block">PMF: P(X = r) = ⁿCᵣ · pʳ · qⁿ⁻ʳ where q = 1 − p
+
+                    Mean: E[X] = np
+                    Variance: Var(X) = npq
+                    SD: σ = √(npq)</div>
+
+                <div class="answer-box">
+                    <strong>Example (Assignment 3, Q5):</strong> Binomial with mean = 2.4, variance = 1.44. Find P(X≥5)
+                    and P(1 &lt; X ≤ 4).<br>
+                    np = 2.4, npq = 1.44 → q = 1.44/2.4 = 0.6 → p = 0.4<br>
+                    n = 2.4/0.4 = 6. So X ~ B(6, 0.4).<br>
+                    P(X=r) = ⁶Cᵣ(0.4)ʳ(0.6)^(6−r)<br>
+                    P(X≥5) = P(X=5)+P(X=6) = ⁶C₅(0.4)⁵(0.6)¹ + ⁶C₆(0.4)⁶<br>
+                    = 6(0.01024)(0.6) + 1(0.004096) = 0.036864 + 0.004096 = 0.04096<br>
+                    P(1&lt;X≤4) = P(2)+P(3)+P(4) = 0.31104+0.27648+0.13824 = <strong>0.72576</strong>
+                </div>
+
+                <div class="answer-box" style="margin-top:0.75rem;">
+                    <strong>Example (Assignment 3, Q8):</strong> 10 coins, P(≥7 heads).<br>
+                    n=10, p=0.5, X~B(10,0.5)<br>
+                    P(X≥7) = P(7)+P(8)+P(9)+P(10)<br>
+                    = [¹⁰C₇ + ¹⁰C₈ + ¹⁰C₉ + ¹⁰C₁₀] / 2¹⁰<br>
+                    = [120 + 45 + 10 + 1] / 1024 = 176/1024 = <strong>11/64 ≈ 0.172</strong>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>C. Exponential Distribution — MGF, Mean, Variance + What is Exponential (Derivation)</h3>
+                <p style="font-family:sans-serif;font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">Note from
+                    image: "MGF, mean &amp; variance. What is exponential. Only derivation."</p>
+
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p><strong>Definition:</strong> Exponential distribution models the time between events in a Poisson
+                        process.</p>
+                </div>
+
+                <div class="math-block">PDF: f(x) = λe^(−λx), x ≥ 0, λ > 0
+                    CDF: F(x) = 1 − e^(−λx)
+                    Mean: E[X] = 1/λ
+                    Var: Var(X) = 1/λ²</div>
+
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p><strong>Derivation of Mean</strong> (by integration):</p>
+                </div>
+                <div class="math-block">E[X] = ∫₀^∞ x · λe^(−λx) dx
+
+                    Let u = x, dv = λe^(−λx)dx
+                    → du = dx, v = −e^(−λx)
+
+                    E[X] = [−xe^(−λx)]₀^∞ + ∫₀^∞ e^(−λx) dx
+                    = 0 + [−(1/λ)e^(−λx)]₀^∞
+                    = 0 − (−1/λ) = 1/λ ✓</div>
+
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p><strong>MGF Derivation:</strong></p>
+                </div>
+                <div class="math-block">M_X(t) = E[e^(tX)] = ∫₀^∞ e^(tx) · λe^(−λx) dx
+                    = λ ∫₀^∞ e^(−(λ−t)x) dx (valid for t < λ)=λ · [1/(λ−t)]=λ/(λ−t)</div>
+
+                        <div class="step">
+                            <div class="step-num">4</div>
+                            <p><strong>Mean and Variance from MGF:</strong></p>
+                        </div>
+                        <div class="math-block">M'(t) = λ/(λ−t)² → M'(0) = 1/λ = Mean ✓
+
+                            M''(t) = 2λ/(λ−t)³ → M''(0) = 2/λ²
+
+                            Var(X) = M''(0) − [M'(0)]² = 2/λ² − 1/λ² = 1/λ² ✓</div>
+
+                        <div class="answer-box">
+                            <strong>Example (Question Bank):</strong> Bulb life ~ Exp, mean = 100 hrs. P(fails before 50
+                            hrs)?<br>
+                            1/λ = 100 → λ = 0.01<br>
+                            P(X &lt; 50) = 1 − e^(−0.01×50) = 1 − e^(−0.5) = 1 − 0.6065 = <strong>0.3935
+                                (39.35%)</strong>
+                        </div>
+                </div>
+
+                <div class="card">
+                    <h3>D. Quick Reference: Assignment 3 Questions</h3>
+
+                    <div class="answer-box" style="margin-bottom:0.75rem;">
+                        <strong>Q1 (Poisson): P(X=1) = 2P(X=2)</strong><br>
+                        λe⁻λ/1! = 2·λ²e⁻λ/2! → λ = 2λ²/2 → 1 = λ → λ = 1<br>
+                        P(X=0) = e⁻¹ ≈ 0.368. Mean = Variance = 1.
+                    </div>
+
+                    <div class="answer-box" style="margin-bottom:0.75rem;">
+                        <strong>Q2 (Binomial): n=6, P(X=4)=P(X=2)</strong><br>
+                        ⁶C₄p⁴q² = ⁶C₂p²q⁴ → 15p⁴q² = 15p²q⁴ → p² = q² → p = q = 1/2
+                    </div>
+
+                    <div class="answer-box" style="margin-bottom:0.75rem;">
+                        <strong>Q4 (Poisson): P(X=1) = P(X=2) → find P(X=4)</strong><br>
+                        λe⁻λ = λ²e⁻λ/2 → 1 = λ/2 → λ = 2<br>
+                        P(X=4) = e⁻²·2⁴/4! = 16e⁻²/24 = 2e⁻²/3 ≈ 0.0902
+                    </div>
+
+                    <div class="answer-box">
+                        <strong>Q9 (Comment): Mean=3, Variance=4 — possible?</strong><br>
+                        For binomial: Variance = np(1−p) &lt; np = Mean.<br>
+                        Here Variance (4) &gt; Mean (3) → <strong>IMPOSSIBLE for Binomial!</strong><br>
+                        (Variance can exceed mean in Poisson/Negative Binomial, not Binomial)
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+            <div
+                style="text-align:center;font-family:sans-serif;font-size:0.8rem;color:var(--muted);padding:1rem 0 2rem;">
+                KRMU B.Tech CSE · Computational Mathematics II · End-Term Study Guide
+            </div>
+
+        </div>
+</body>
+
+</html>

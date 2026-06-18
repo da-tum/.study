@@ -1,0 +1,630 @@
+=== Assignment_1.pdf ===
+Course Code & Title Computational Mathematics II
+Programme & School B.Tech CSE (School of Engineering and
+Technology)
+Faculty Name Dr. Vishal
+Type of Assignment Handwritten and Upload
+Weightage / Marks 10
+Submission Mode LMS
+Assignment 1: Differential Equation Modelling
+Instructions:
+• Solve all questions showing detailed steps.
+• Use A4 size sheets.
+• Submit neatly written solutions.
+Questions:
+1. Solve the initial value problem
+sin(x) dx + y dy = 0, y (0) = 1 .
+[CO1]
+2. Solve
+(3x2 + 2xy2) dx + (2x2y) dy = 0, y (2) = −3.
+[CO2]
+3. Solve y
+x2 + 1 + y′
+x = 0.
+[CO2]
+4. Solve
+(x2y2 + y) dx + (2x3y − x) dy = 0.
+[CO2]
+1
+5. Solve
+y′ − 1
+x y = x3, x > 0.
+[CO2]
+6. Solve dy
+dx + y
+x = y2.
+[CO3]
+7. Solve dy
+dx + 1
+3 y = exy4.
+[CO3]
+8. Solve
+x dy
+dx + y = xy3.
+[CO3]
+9. Solve dy
+dx + 2
+x y = −x2 cos x · y2.
+[CO3]
+10. Solve
+3 d2y
+dx2 + dy
+dx − y = 0.
+[CO4]
+11. Solve
+y′′ − 6y′ + 13y = 0.
+[CO4]
+12. Solve the initial value problem
+y′′ + y = 0, y (0) = 2 , y ′(0) = 3 .
+[CO4]
+13. Solve the boundary-value problem
+y′′ + 2y′ + y = 0, y (0) = 1 , y (1) = 3 .
+[CO4]
+2
+
+=== Assignment_2.pdf ===
+Course Code & Title ETCCCM102 (Computational Mathematics II)
+Programme & School B.Tech CSE (School of Engineering and Technol-
+ogy)
+Faculty Name Dr. Vishal
+Type of Assignment Handwritten and Upload
+Weightage / Marks 10
+Submission Mode LMS
+Assignment 2: Numerical Methods
+Instructions:
+• Solve all questions showing detailed steps.
+• Use A4 size sheets.
+• Submit neatly written solutions.
+Questions:
+1. Show that the equation
+f(x) = x3 + 4x2 − 10 = 0
+has a root in the interval [1 , 2]. [CO1]
+2. Solve the equation
+x3 − 1.1x2 + 4x − 4.4 = 0
+correct to two significant figures using the Bisection Method . [CO1]
+3. Use the Secant Method to solve
+xe0.5x + 11.2x = 10x + 5
+using xi = 1.6 and xi−1 = 10. Perform calculations up to three iterations. [CO1]
+4. Use the Secant Method (two iterations) to find a root of
+f(x) = 3e−x − 3x = 0
+in the interval [0, 1]. Take x0 = 0, x1 = 1. [CO1]
+1
+5. Using Newton’s Method , determine x2 for
+f(x) = x3 − 7x2 + 8x − 3
+given that x0 = 5. [CO2]
+6. Using Newton’s Method , find the root of
+x4 − 5x3 + 9x + 3 = 0
+that lies in the interval [4 , 6], correct to six decimal places. [CO2]
+7. Using Newton’s Method , solve
+2x2 + 5 = ex
+for a root in the interval [3 , 4], correct to six decimal places. [CO2]
+8. Determine the root of
+f(x) = 2x3 − 11.7x2 + 17.7x − 5
+using the Fixed Point Iteration Method with x0 = 3. Perform three iterations.
+[CO2]
+9. Determine a root of
+x3 − x − 1 = 0
+in the interval [1 , 2] using Fixed Point Iteration , given x0 = 1.5. Perform four
+iterations. [CO2]
+10. Find the LU decomposition of the matrix
+"
+3 1
+−6 −4
+#
+.
+[CO4]
+11. Find the LU decomposition of the matrix
+
+
+3 1 6
+−6 0 −16
+0 8 −17
+
+ .
+[CO4]
+2
+12. Use the Cholesky Decomposition Method to solve the system of equations
+4x1 + 2x2 + 14x3 = 14,
+2x1 + 17x2 − 5x3 = −101,
+14x1 − 5x2 + 83x3 = 155.
+[CO4]
+13. Solve the following system using the Gauss–Seidel Method
+45x1 + 2x2 + 3x3 = 58,
+−3x1 + 22x2 + 2x3 = 47,
+5x1 + x2 + 20x3 = 67.
+[CO4]
+14. Using the Gauss–Seidel Method , solve
+27x + 6y − z = 85,
+6x + 15y + 2z = 72,
+x + y + 54z = 110.
+[CO4]
+15. Let
+A =
+
+
+1 1
+0 1
+−1 1
+
+ .
+Find the Singular Value Decomposition of A, that is, determine matrices U,
+Σ, and V such that A = UΣV T . [CO4]
+16. Compute the Singular Value Decomposition of the 2 × 3 matrix
+A =
+"
+2 1 4
+−1 2 −2
+#
+.
+[CO4]
+17. Solve the following system using the Jacobi Iteration Method
+20x + y − 2z = 17,
+3x + 20y − z = −18,
+2x − 3y + 20z = 25.
+3
+[CO4]
+18. Use the Gauss–Jacobi Method to solve the following system of linear equations.
+Show the values of x1, x2, x3, and x4 for the first four iterations. Assume the initial
+approximation x1 = x2 = x3 = x4 = 0.
+12x1 + 3x2 − 4x3 + x4 = 10,
+4x1 + 9x2 + 2x3 − 2x4 = 20,
+2x1 − 3x2 + 10x3 + x4 = 30,
+−3x1 + 2x2 − 3x3 + 12x4 = 40.
+[CO4]
+4
+
+=== Assignment_3.pdf ===
+Course Code & Title ETCCCM102(Computational Mathematics II)
+Programme & School B.Tech CSE (School of Engineering and Technol-
+ogy)
+Faculty Name Dr. Vishal
+Type of Assignment Handwritten and Upload
+Weightage / Marks 10
+Submission Mode LMS
+Assignment 3: Probability and Distributions
+Instructions:
+• Solve all questions showing detailed steps.
+• Use A4 size sheets.
+• Submit neatly written solutions.
+Questions:
+1. If X is a Poisson variate such that
+P (X = 1) = 2P (X = 2),
+find:
+(i) P (X = 0)
+(ii) Mean
+(iii) Variance
+[CO3]
+2. With the usual notations, find p for a binomial variate X if
+n = 6 and P (X = 4) = P (X = 2).
+[CO3]
+1
+3. In a binomial distribution consisting of 5 independent trials, the probabilities of 1
+and 2 successes are 0 .4096 and 0 .2048 respectively. Find the parameter p of the
+distribution. [CO3]
+4. If X has a Poisson distribution such that
+P (X = 1) = P (X = 2),
+find P (X = 4). [CO3]
+5. If X is a random variable following a binomial distribution with mean 2 .4 and
+variance 1.44, find:
+(i) P (X ≥ 5)
+(ii) P (1 < X ≤ 4)
+[CO3]
+6. If X and Y are independent Poisson variates such that
+P (X = 1) = P (X = 2) and P (Y = 2) = P (Y = 3),
+find the variance of X − 2Y . [CO3]
+7. If X is a Poisson variate such that
+P (X = 2) = 9P (X = 4) + 90P (X = 6),
+find:
+(i) λ
+(ii) Mean of X
+[CO3]
+8. Ten coins are thrown simultaneously. Find the probability of getting at least seven
+heads. [CO3]
+9. Comment on the following statement:
+“The mean of a binomial distribution is 3 and variance is 4.” [CO3]
+10. The mean and variance of a binomial distribution are 4 and 4
+3 respectively. Find
+P (X ≥ 1). [CO3]
+2
+11. Suppose that X has a Poisson distribution. If
+P (X = 2) = 2
+3 P (X = 1),
+evaluate P (X = 0). [CO3]
+3
+
+=== KRMU_CS_EndTerm_Math_QuestionBank.pdf ===
+[2 Marks]
+[10 Marks]
+[10 Marks]
+K.R. MANGALAM UNIVERSITY
+B.TECH COMPUTER SCIENCE (2ND YEAR)
+END-TERM EXAMINATION QUESTION BANK
+Unit 1: Differential Equations (1st & 2nd Order)
+ORDER & DEGREE
+Q: Determine the order and degree of: (d²y/dx²)³ + 4(dy/dx)⁴ + y = sin(x).
+Step 1: Identify the highest derivative. The highest order derivative is d²y/dx².
+Step 2: The order is the highest derivative present (2).
+Step 3: The degree is the highest power of the highest order derivative (3).
+Answer: Order = 2, Degree = 3
+Unit 1
+TYPE: LINEAR DE
+Q: Solve the linear differential equation: dy/dx + (2/x)y = x².
+Step 1: Identify standard form dy/dx + Py = Q. Here, P = 2/x, Q = x².
+Step 2: Calculate Integrating Factor (I.F) = e^(∫P dx) = e^(∫(2/x)dx) = e^(2 ln x) = x².
+Step 3: Solution is y * (I.F) = ∫ Q * (I.F) dx + C.
+Step 4: y(x²) = ∫ (x²)(x²) dx = ∫ x⁴ dx = x⁵/5 + C.
+Answer: y = x³/5 + C/x²
+TYPE: EXACT DE
+Q: Solve the exact equation: (2xy + 3)dx + (x² - 1)dy = 0.
+Step 1: Let M = 2xy + 3, N = x² - 1. Check exactness: ∂M/∂y = 2x, ∂N/∂x = 2x. (Exact).
+Page 1
+[10 Marks]
+[10 Marks]
+[10 Marks]
+Step 2: ∫ M dx (y constant) = ∫(2xy + 3)dx = x²y + 3x.
+Step 3: ∫ (Terms of N without x) dy = ∫(-1)dy = -y.
+Step 4: Add results and equate to C.
+Answer: x²y + 3x - y = C
+TYPE: HOMOGENEOUS DE
+Q: Solve the homogeneous equation: (x² + y²)dx - 2xy dy = 0.
+Step 1: Rewrite as dy/dx = (x² + y²) / 2xy. Substitute y = vx, dy/dx = v + x(dv/dx).
+Step 2: v + x(dv/dx) = (x² + v²x²) / 2x²v = (1 + v²) / 2v.
+Step 3: x(dv/dx) = (1 + v²)/2v - v = (1 - v²) / 2v.
+Step 4: Separate variables: ∫(2v/(1-v²))dv = ∫(1/x)dx. Let u = 1-v², du = -2v dv. -ln(1-v²) = ln(x) + C.
+Step 5: ln(1/(1-v²)) = ln(Cx) -> 1 - (y/x)² = C/x.
+Answer: x² - y² = Cx
+TYPE: SEPARABLE DE
+Q: Solve the separable equation: dy/dx = (x e^x) / y.
+Step 1: Separate variables: y dy = x e^x dx.
+Step 2: Integrate both sides: ∫y dy = ∫x e^x dx.
+Step 3: LHS = y²/2. RHS uses integration by parts (u=x, dv=e^x dx): x e^x - ∫e^x dx = x e^x - e^x.
+Step 4: y²/2 = e^x(x - 1) + C.
+Answer: y² = 2e^x(x - 1) + C
+TYPE: BERNOULLI DE
+Q: Solve Bernoulli's equation: dy/dx + y = y².
+Step 1: Divide by y²: y⁻²(dy/dx) + y⁻¹ = 1.
+Step 2: Let v = y⁻¹. Then dv/dx = -y⁻²(dy/dx). Substitute: -dv/dx + v = 1 => dv/dx - v = -1.
+Step 3: Linear in v. I.F = e^(∫-1 dx) = e⁻ˣ.
+Page 2
+[10 Marks]
+[10 Marks]
+[10 Marks]
+Step 4: v(e⁻ˣ) = ∫(-1)(e⁻ˣ)dx = e⁻ˣ + C. Therefore, v = 1 + C eˣ.
+Step 5: Substitute back y = 1/v.
+Answer: y = 1 / (1 + C eˣ)
+INITIAL VALUE PROBLEM
+Q: Solve the IVP: dy/dx = -2xy, with y(0) = 5.
+Step 1: Separate variables: dy/y = -2x dx.
+Step 2: Integrate: ln|y| = -x² + C => y = C e^(-x²).
+Step 3: Apply initial condition y(0) = 5. 5 = C e^(0) => C = 5.
+Step 4: Substitute C back into general solution.
+Answer: y = 5 e^(-x²)
+BOUNDARY VALUE PROBLEM
+Q: Solve the BVP: y'' + 4y = 0, y(0) = 0, y(π/4) = 2.
+Step 1: Characteristic equation r² + 4 = 0 => r = ±2i.
+Step 2: General solution: y(x) = C₁ cos(2x) + C₂ sin(2x).
+Step 3: Apply y(0) = 0: 0 = C₁(1) + C₂(0) => C₁ = 0. So y(x) = C₂ sin(2x).
+Step 4: Apply y(π/4) = 2: 2 = C₂ sin(π/2) => 2 = C₂(1) => C₂ = 2.
+Answer: y(x) = 2 sin(2x)
+2ND ORDER HOMOGENEOUS
+Q: Solve: d²y/dx² - 5(dy/dx) + 6y = 0.
+Step 1: Write the auxiliary equation: m² - 5m + 6 = 0.
+Step 2: Factorize: (m - 2)(m - 3) = 0. Roots are m₁ = 2, m₂ = 3.
+Step 3: Since roots are real and distinct, the solution takes the form y = C₁ e^(m₁x) + C₂ e^(m₂x).
+Answer: y = C₁ e^(2x) + C₂ e^(3x)
+Page 3
+[10 Marks]
+[2 Marks]
+[10 Marks]
+2ND ORDER NON-HOMOGENEOUS
+Q: Find the general solution of y'' - 4y = e³ˣ.
+Step 1: Find Complementary Function (C.F). m² - 4 = 0 => m = ±2. C.F = C₁ e²ˣ + C₂ e⁻²ˣ.
+Step 2: Find Particular Integral (P.I). P.I = 1/(D² - 4) [e³ˣ].
+Step 3: Replace D with a=3. P.I = 1/(3² - 4) * e³ˣ = 1/(9 - 4) * e³ˣ = (1/5)e³ˣ.
+Step 4: General Solution y = C.F + P.I.
+Answer: y = C₁ e²ˣ + C₂ e⁻²ˣ + (1/5)e³ˣ
+Unit 2: Numerical Methods
+ERROR ANALYSIS
+Q: Define Absolute, Relative, and Percentage Error.
+Step 1: Absolute Error (Ea) = |True Value - Approximate Value|.
+Step 2: Relative Error (Er) = Absolute Error / |True Value|.
+Step 3: Percentage Error (Ep) = Relative Error × 100%.
+Answer: Formulas defined in steps.
+Unit 2
+BISECTION METHOD
+Q: Find the root of x³ - x - 1 = 0 lying between 1 and 2, using 2 iterations.
+Step 1: f(1) = 1 - 1 - 1 = -1 (Negative). f(2) = 8 - 2 - 1 = 5 (Positive). Root lies in [1, 2].
+Step 2: Iteration 1. Midpoint x₁ = (1+2)/2 = 1.5. f(1.5) = 1.5³ - 1.5 - 1 = 0.875 (Positive). Root in [1,
+1.5].
+Step 3: Iteration 2. Midpoint x₂ = (1+1.5)/2 = 1.25. f(1.25) = 1.25³ - 1.25 - 1 = -0.296 (Negative).
+Answer: Root is approximately 1.25
+Page 4
+[10 Marks]
+[10 Marks]
+[10 Marks]
+[10 Marks]
+SECANT METHOD
+Q: Find the root of x² - 4 = 0 using Secant Method with initial guesses x₀ = 1, x₁ = 3 (1 iteration).
+Step 1: f(x₀) = f(1) = 1 - 4 = -3. f(x₁) = f(3) = 9 - 4 = 5.
+Step 2: Formula: x₂ = x₁ - f(x₁)[(x₁ - x₀) / (f(x₁) - f(x₀))].
+Step 3: x₂ = 3 - 5 * [(3 - 1) / (5 - (-3))] = 3 - 5 * [2 / 8] = 3 - 5(0.25) = 3 - 1.25 = 1.75.
+Answer: x₂ = 1.75
+NEWTON RAPHSON METHOD
+Q: Solve x³ - 2x - 5 = 0 near x₀ = 2 using one iteration.
+Step 1: f(x) = x³ - 2x - 5. Derivative f'(x) = 3x² - 2.
+Step 2: Evaluate at x₀ = 2. f(2) = 8 - 4 - 5 = -1. f'(2) = 12 - 2 = 10.
+Step 3: Apply formula: x₁ = x₀ - f(x₀)/f'(x₀) = 2 - (-1)/10 = 2 + 0.1 = 2.1.
+Answer: x₁ = 2.1
+REGULA FALSI METHOD
+Q: Find a root of x² - 3 = 0 in [1, 2] using 1 iteration.
+Step 1: a=1, f(a) = -2. b=2, f(b) = 1.
+Step 2: Formula x₁ = (a*f(b) - b*f(a)) / (f(b) - f(a)).
+Step 3: x₁ = (1*1 - 2*(-2)) / (1 - (-2)) = (1 + 4) / 3 = 5/3 ≈ 1.666.
+Answer: x₁ = 1.666
+LU DECOMPOSITION
+Q: Decompose matrix A = [[2, 3], [4, 7]] into L and U matrices.
+Step 1: Let A = LU. L = [[1, 0], [L₂₁, 1]], U = [[U₁₁, U₁₂], [0, U₂₂]].
+Step 2: Multiply LU = [[U₁₁, U₁₂], [L₂₁U₁₁, L₂₁U₁₂ + U₂₂]].
+Page 5
+[10 Marks]
+[10 Marks]
+[10 Marks]
+Step 3: Equate to A. U₁₁ = 2, U₁₂ = 3.
+Step 4: L₂₁U₁₁ = 4 => L₂₁(2) = 4 => L₂₁ = 2.
+Step 5: L₂₁U₁₂ + U₂₂ = 7 => 2(3) + U₂₂ = 7 => 6 + U₂₂ = 7 => U₂₂ = 1.
+Answer: L = [[1, 0], [2, 1]], U = [[2, 3], [0, 1]]
+SVD
+Q: Outline the analytical steps to find the Singular Value Decomposition (SVD) of a matrix A.
+Step 1: Compute the matrix A^T A and A A^T.
+Step 2: Find the eigenvalues and eigenvectors of A^T A. The eigenvectors form the columns of V .
+Step 3: The square roots of the non-zero eigenvalues are the singular values, placed diagonally in matrix
+Σ.
+Step 4: Find the eigenvectors of A A^T to form the orthogonal matrix U. Assemble A = U Σ V^T.
+Answer: A = U Σ V^T (Steps outlined)
+GAUSS-SEIDEL METHOD
+Q: Solve: 4x + y = 5, x + 3y = 4. Initial guess (0,0). 1 iteration.
+Step 1: Rearrange for strict diagonal dominance. x = (5 - y)/4. y = (4 - x)/3.
+Step 2: Use most recent values immediately. x₁ = (5 - 0)/4 = 1.25.
+Step 3: y₁ = (4 - x₁)/3 = (4 - 1.25)/3 = 2.75 / 3 ≈ 0.916.
+Answer: x₁ = 1.25, y₁ = 0.916
+JACOBI METHOD
+Q: Solve: 4x + y = 5, x + 3y = 4. Initial guess (0,0). 1 iteration.
+Step 1: Rearrange: x = (5 - y)/4, y = (4 - x)/3.
+Step 2: Use old values only for the iteration. x₁ = (5 - y₀)/4 = 5/4 = 1.25.
+Step 3: y₁ = (4 - x₀)/3 = 4/3 ≈ 1.333.
+Page 6
+[10 Marks]
+[10 Marks]
+[2 Marks]
+Answer: x₁ = 1.25, y₁ = 1.333
+CHOLESKY DECOMPOSITION
+Q: Find Cholesky decomposition of A = [[4, 2], [2, 10]].
+Step 1: Let A = LL^T. L = [[L₁₁, 0], [L₂₁, L₂₂]]. LL^T = [[L₁₁², L₁₁L₂₁], [L₁₁L₂₁, L₂₁² + L₂₂²]].
+Step 2: L₁₁² = 4 => L₁₁ = 2.
+Step 3: L₁₁L₂₁ = 2 => 2*L₂₁ = 2 => L₂₁ = 1.
+Step 4: L₂₁² + L₂₂² = 10 => 1² + L₂₂² = 10 => L₂₂² = 9 => L₂₂ = 3.
+Answer: L = [[2, 0], [1, 3]]
+FINITE DIFFERENCE
+Q: Construct a forward difference table for y = x² for x = 1, 2, 3.
+Step 1: Calculate y values. y(1)=1, y(2)=4, y(3)=9.
+Step 2: First differences (Δy): Δy₁ = 4 - 1 = 3. Δy₂ = 9 - 4 = 5.
+Step 3: Second differences (Δ²y): Δ²y₁ = 5 - 3 = 2.
+Answer: Δy = [3, 5], Δ²y = [2]
+Unit 3: Random Variables
+DISCRETE VS CONTINUOUS
+Q: State the key difference between Discrete and Continuous Random Variables.
+Step 1: A discrete random variable takes on a countable number of distinct values (e.g., number of
+students).
+Step 2: A continuous random variable takes on an infinite number of possible values within a given
+interval (e.g., exact height or weight).
+Answer: Countable vs. Infinite Interval Values
+Page 7
+[10 Marks]
+[10 Marks]
+[2 Marks]
+[10 Marks]
+Unit 3
+MEAN, VARIANCE, STANDARD DEVIATION
+Q: A random variable X has P(0)=0.2, P(1)=0.5, P(2)=0.3. Find Mean, Variance, and SD.
+Step 1: Mean (E[X]) = Σ x_i P(x_i) = 0(0.2) + 1(0.5) + 2(0.3) = 0 + 0.5 + 0.6 = 1.1.
+Step 2: E[X²] = Σ x_i² P(x_i) = 0(0.2) + 1(0.5) + 4(0.3) = 0.5 + 1.2 = 1.7.
+Step 3: Variance (Var) = E[X²] - (E[X])² = 1.7 - (1.1)² = 1.7 - 1.21 = 0.49.
+Step 4: Standard Deviation (SD) = √Var = √0.49 = 0.7.
+Answer: Mean = 1.1, Var = 0.49, SD = 0.7
+CENTRAL LIMIT THEOREM
+Q: Define the Central Limit Theorem.
+Step 1: For a population with mean μ and variance σ²...
+Step 2: ...the distribution of sample means of size n approaches a normal distribution as n becomes large
+(n ≥ 30).
+Step 3: The new normal distribution will have mean μ and variance σ²/n.
+Answer: Z = (X̄ - μ) / (σ / √n) ~ N(0,1)
+BERNOULLI DISTRIBUTION
+Q: Give the probability mass function (PMF) and mean for a Bernoulli distribution.
+Step 1: PMF: P(X=x) = pˣ(1-p)¹⁻ˣ for x ∈ {0, 1}.
+Step 2: Mean (E[X]) = p. Variance = p(1-p).
+Answer: PMF = pˣ(1-p)¹⁻ˣ, Mean = p
+BINOMIAL DISTRIBUTION
+Page 8
+[10 Marks]
+[10 Marks]
+[2 Marks]
+Q: A fair coin is tossed 4 times. Find the probability of getting exactly 2 heads.
+Step 1: Parameters: n=4, p=0.5 (probability of head), r=2.
+Step 2: Formula: P(X=r) = ⁿCᵣ pᵣ qⁿ⁻ᵣ.
+Step 3: P(X=2) = ⁴C₂ (0.5)² (0.5)² = 6 * 0.25 * 0.25 = 6/16 = 3/8.
+Answer: P(X=2) = 0.375
+POISSON DISTRIBUTION
+Q: A call center receives an average of 3 calls per minute. Find the probability of exactly 1 call
+in a given minute.
+Step 1: Identify Poisson parameter λ = 3.
+Step 2: Formula: P(X=x) = (e⁻λ * λˣ) / x!
+Step 3: P(X=1) = (e⁻³ * 3¹) / 1! = 3 / e³ ≈ 3 / 20.08 ≈ 0.149.
+Answer: P(X=1) ≈ 0.149
+EXPONENTIAL DISTRIBUTION
+Q: The life of a bulb follows an exponential distribution with mean 100 hours. Find the
+probability it fails before 50 hours.
+Step 1: Mean = 1/λ = 100, so λ = 0.01.
+Step 2: CDF Formula for P(X < x) = 1 - e^(-λx).
+Step 3: P(X < 50) = 1 - e^(-0.01 * 50) = 1 - e^(-0.5).
+Step 4: 1 - 0.6065 = 0.3935.
+Answer: P(X < 50) ≈ 39.35%
+Unit 4: Optimization
+CONVEX SET & FUNCTION
+Page 9
+[10 Marks]
+[10 Marks]
+Q: Define a Convex Set and a Convex Function.
+Step 1: Convex Set: A set where a line segment connecting any two points in the set lies entirely within
+the set.
+Step 2: Convex Function: A function where the line segment between any two points on its graph lies
+above or on the graph.
+Answer: Definitions provided in steps.
+Unit 4
+OPTIMISATION
+Q: Find the maximum or minimum value of f(x) = x² - 6x + 8.
+Step 1: Find first derivative: f'(x) = 2x - 6.
+Step 2: Set f'(x) = 0 for critical points. 2x - 6 = 0 => x = 3.
+Step 3: Find second derivative to test: f''(x) = 2.
+Step 4: Since f''(3) = 2 > 0, the function has a local minimum at x = 3.
+Step 5: Minimum value = f(3) = 3² - 6(3) + 8 = 9 - 18 + 8 = -1.
+Answer: Minimum value is -1 at x = 3
+LAGRANGE MULTIPLIER
+Q: Maximize f(x,y) = xy subject to x + y = 10.
+Step 1: Define Lagrangian L(x,y,λ) = xy - λ(x + y - 10).
+Step 2: Partial derivatives: ∂L/∂x = y - λ = 0, ∂L/∂y = x - λ = 0, ∂L/∂λ = -(x + y - 10) = 0.
+Step 3: From first two, y = λ and x = λ, so x = y.
+Step 4: Substitute into constraint: x + x = 10 => 2x = 10 => x = 5. Therefore, y = 5.
+Step 5: Maximum value f(5,5) = 25.
+Answer: Max value = 25 at (5,5)
+Page 10
+[10 Marks]
+[10 Marks]
+LINEAR REGRESSION
+Q: State the normal equations to fit a straight line y = a + bx to a set of n data points (x_i, y_i).
+Step 1: The least squares method minimizes Σ(y_i - a - bx_i)².
+Step 2: Taking partial derivatives with respect to a and b and setting them to zero yields the normal
+equations.
+Step 3: Eq 1: Σ y = n a + b Σ x.
+Step 4: Eq 2: Σ xy = a Σ x + b Σ x².
+Answer: Σy = na + bΣx ; Σxy = aΣx + bΣx²
+LEAST APPROXIMATION METHOD
+Q: Write the matrix equation for finding the least squares approximate solution to an
+overdetermined system Ax = b.
+Step 1: In an overdetermined system, Ax = b may have no exact solution.
+Step 2: To minimize the error ||Ax - b||², we multiply both sides by A^T (A transpose).
+Step 3: The normal equation becomes (A^T A)x = A^T b.
+Step 4: Solve for x: x = (A^T A)⁻¹ A^T b.
+Answer: x = (A^T A)⁻¹ A^T b
+Page 11
+
+=== KRMU_CS_EndTerm_Math_QuestionBank_Vol2.pdf ===
+[10 Marks]
+[10 Marks]
+K.R. MANGALAM UNIVERSITY
+B.TECH COMPUTER SCIENCE (2ND YEAR)
+END-TERM EXAMINATION QUESTION BANK:
+VOLUME 2
+Unit 1: Differential Equations
+LINEAR DE
+Q: Solve: dy/dx + y cot(x) = 2x cosec(x).
+Step 1: Standard form dy/dx + P y = Q, where P = cot(x) and Q = 2x cosec(x).
+Step 2: Integrating Factor (IF) = e^(∫cot(x)dx) = e^(ln(sin(x))) = sin(x).
+Step 3: Solution is y * IF = ∫ Q * IF dx + C.
+Step 4: y sin(x) = ∫ (2x cosec(x)) * sin(x) dx = ∫ 2x dx.
+Step 5: y sin(x) = x² + C.
+Answer: y = x² cosec(x) + C cosec(x)
+Unit 1
+EXACT DE
+Q: Solve: (2x + 3y)dx + (3x + 2y)dy = 0.
+Step 1: Let M = 2x + 3y, N = 3x + 2y.
+Step 2: ∂M/∂y = 3, ∂N/∂x = 3. Since they are equal, the DE is exact.
+Step 3: ∫ M dx = ∫(2x + 3y)dx = x² + 3xy (treating y as constant).
+Step 4: ∫ N dy (ignoring terms with x) = ∫ 2y dy = y².
+Step 5: Combine the integrated terms and equate to C.
+Answer: x² + 3xy + y² = C
+Page 1
+[10 Marks]
+[10 Marks]
+[10 Marks]
+2ND ORDER DE (BVP)
+Q: Solve the boundary value problem: y'' + 9y = 0, with y(0) = 1 and y(π/6) = 2.
+Step 1: Auxiliary equation m² + 9 = 0 => m = ±3i.
+Step 2: General solution: y(x) = C₁ cos(3x) + C₂ sin(3x).
+Step 3: Apply y(0) = 1: 1 = C₁ cos(0) + C₂ sin(0) => C₁ = 1.
+Step 4: Apply y(π/6) = 2: 2 = (1)cos(π/2) + C₂ sin(π/2) => 2 = 0 + C₂(1) => C₂ = 2.
+Step 5: Substitute C₁ and C₂ back into the general solution.
+Answer: y(x) = cos(3x) + 2sin(3x)
+Unit 2: Numerical Methods
+NEWTON-RAPHSON
+Q: Find a real root of x e^x = 2 correct to 2 decimal places using x₀ = 0.8.
+Step 1: Let f(x) = x e^x - 2. Then f'(x) = e^x + x e^x = e^x(1 + x).
+Step 2: Iteration 1: f(0.8) = 0.8(2.2255) - 2 = -0.2195. f'(0.8) = 2.2255(1.8) = 4.0059.
+Step 3: x₁ = x₀ - f(x₀)/f'(x₀) = 0.8 - (-0.2195)/4.0059 = 0.8 + 0.0548 = 0.8548.
+Step 4: Iteration 2: f(0.8548) = 0.003, f'(0.8548) = 4.36.
+Step 5: x₂ = 0.8548 - 0.003/4.36 = 0.8541.
+Answer: x ≈ 0.85
+Unit 2
+GAUSS-SEIDEL
+Q: Solve the system using 1 iteration of Gauss-Seidel: 5x - y = 9, -x + 5y = 11 (Initial guess x=0,
+y=0).
+Step 1: Check diagonal dominance (5 > |-1|, 5 > |-1|). It is strictly diagonally dominant.
+Step 2: Rearrange equations: x = (9 + y) / 5; y = (11 + x) / 5.
+Page 2
+[10 Marks]
+[10 Marks]
+Step 3: Iteration 1 for x: Use y₀=0. x₁ = (9 + 0) / 5 = 1.8.
+Step 4: Iteration 1 for y: Use newest x (x₁=1.8). y₁ = (11 + 1.8) / 5 = 12.8 / 5 = 2.56.
+Answer: x₁ = 1.8, y₁ = 2.56
+LU DECOMPOSITION
+Q: Find L and U for matrix A = [[3, 1], [6, 4]].
+Step 1: Let A = LU. L = [[1, 0], [L₂₁, 1]], U = [[U₁₁, U₁₂], [0, U₂₂]].
+Step 2: LU = [[U₁₁, U₁₂], [L₂₁ U₁₁, L₂₁ U₁₂ + U₂₂]]. Equate to A.
+Step 3: U₁₁ = 3, U₁₂ = 1.
+Step 4: L₂₁ * U₁₁ = 6 => L₂₁ * 3 = 6 => L₂₁ = 2.
+Step 5: L₂₁ * U₁₂ + U₂₂ = 4 => 2 * 1 + U₂₂ = 4 => 2 + U₂₂ = 4 => U₂₂ = 2.
+Answer: L = [[1,0],[2,1]], U = [[3,1],[0,2]]
+Unit 3: Random Variables
+POISSON DISTRIBUTION
+Q: If the probability of producing a defective bolt is 0.02, find the probability that a box of 100
+bolts contains exactly 3 defectives.
+Step 1: Identify n = 100, p = 0.02. This is a binomial case that can be approximated by Poisson.
+Step 2: Calculate Poisson parameter λ = n*p = 100 * 0.02 = 2.
+Step 3: Formula P(X=x) = (e⁻^λ * λ^x) / x!.
+Step 4: P(X=3) = (e⁻² * 2³) / 3! = (0.1353 * 8) / 6 = 1.0824 / 6.
+Step 5: P(X=3) = 0.1804.
+Answer: 0.1804 (or 18.04%)
+Page 3
+[10 Marks]
+[10 Marks]
+[10 Marks]
+Unit 3
+CONTINUOUS RV
+Q: Given PDF f(x) = kx for 0 ≤ x ≤ 2, find the constant k and the Mean E[X].
+Step 1: The total integral of f(x) from 0 to 2 must equal 1.
+Step 2: ∫(kx)dx = [k x² / 2] from 0 to 2 = k(4)/2 = 2k. So, 2k = 1 => k = 1/2.
+Step 3: Mean E[X] = ∫ x*f(x) dx from 0 to 2.
+Step 4: E[X] = ∫ x*(x/2) dx = ∫ (x² / 2) dx = [x³ / 6] from 0 to 2.
+Step 5: E[X] = 8/6 = 4/3.
+Answer: k = 1/2, Mean = 4/3
+Unit 4: Optimization
+LAGRANGE MULTIPLIER
+Q: Minimize f(x,y) = x² + y² subject to the constraint 2x + 3y = 13.
+Step 1: Let g(x,y) = 2x + 3y - 13. Construct L = (x² + y²) - λ(2x + 3y - 13).
+Step 2: ∂L/∂x = 2x - 2λ = 0 => x = λ.
+Step 3: ∂L/∂y = 2y - 3λ = 0 => y = (3/2)λ.
+Step 4: Substitute x and y into the constraint: 2(λ) + 3(1.5λ) = 13.
+Step 5: 2λ + 4.5λ = 13 => 6.5λ = 13 => λ = 2.
+Step 6: x = 2, y = 3. Minimum value = 2² + 3² = 4 + 9 = 13.
+Answer: Min value is 13 at (2,3)
+Unit 4
+LINEAR REGRESSION
+Page 4
+Q: Fit a straight line y = a + bx to points: (1,3), (2,5), (3,7).
+Step 1: Prepare sums: n=3. Σx=6, Σy=15, Σx² = 1+4+9 = 14, Σxy = 3+10+21 = 34.
+Step 2: Normal Eq 1: Σy = na + bΣx => 15 = 3a + 6b => 5 = a + 2b (dividing by 3).
+Step 3: Normal Eq 2: Σxy = aΣx + bΣx² => 34 = 6a + 14b => 17 = 3a + 7b (dividing by 2).
+Step 4: Multiply Eq 1 by 3: 15 = 3a + 6b. Subtract from Eq 2: (17 - 15) = (3a - 3a) + (7b - 6b).
+Step 5: 2 = b. Substitute b=2 into 5 = a + 2b => 5 = a + 4 => a = 1.
+Answer: y = 1 + 2x
+Page 5
+

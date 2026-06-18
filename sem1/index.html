@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Study Portal | Semester I</title>
+  <link rel="stylesheet" href="../nav-header.css">
+  <script src="../nav-header.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      
+      /* Subject Colors */
+      --color-py: #3776ab;       /* Python Blue */
+      --color-web1: #e34f26;     /* HTML5 Orange */
+      --color-csfcp: #fbbf24;    /* Amber Yellow */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(55, 118, 171, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 40%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      width: 100%;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 5rem;
+    }
+
+    .portal-tag {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: rgba(55, 118, 171, 0.08);
+      border: 1px solid rgba(55, 118, 171, 0.2);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #3776ab;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(55, 118, 171, 0.05);
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h1 span {
+      font-weight: 400;
+      font-style: italic;
+      background: linear-gradient(135deg, #3776ab, #fbbf24);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      width: 100%;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.6);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--subject-color);
+      opacity: 0.8;
+      transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--subject-color);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(var(--subject-rgb), 0.1);
+    }
+
+    .card:hover::before {
+      height: 6px;
+    }
+
+    .card-icon-wrapper {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      background: rgba(var(--subject-rgb), 0.08);
+      border: 1px solid rgba(var(--subject-rgb), 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover .card-icon-wrapper {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      margin-top: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--subject-color);
+      opacity: 0.8;
+      transition: gap 0.2s;
+    }
+
+    .card:hover .card-footer {
+      gap: 0.8rem;
+      opacity: 1;
+    }
+
+    .card-footer svg {
+      transition: transform 0.2s;
+    }
+
+    .card:hover .card-footer svg {
+      transform: translateX(2px);
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 3rem 1.5rem;
+      }
+      h1 {
+        font-size: 2.8rem;
+      }
+      p.subtitle {
+        font-size: 1rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .card {
+        padding: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="portal-tag">Semester I Core</div>
+      <h1>Semester I <span>Portal</span></h1>
+      <p class="subtitle">A premium, high-fidelity curation of visual notes, source code repositories, and laboratory experiments for Semester I.</p>
+    </header>
+
+    <div class="grid">
+      <!-- Python Programming -->
+      <a href="./python/index.html" class="card" style="--subject-color: var(--color-py); --subject-rgb: 55, 118, 171;">
+        <div class="card-icon-wrapper">🐍</div>
+        <h2>Python Programming</h2>
+        <p>Master Python fundamentals, advanced file handling, SQLite databases, OOP paradigms, and libraries like NumPy & Pandas. Includes interactive script analysis for GradeBook and Library managers.</p>
+        <div class="card-footer">
+          <span>Enter Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- Web Development I -->
+      <a href="./web-dev-1/index.html" class="card" style="--subject-color: var(--color-web1); --subject-rgb: 227, 79, 38;">
+        <div class="card-icon-wrapper">💻</div>
+        <h2>Web Development I</h2>
+        <p>Explore foundations of client-side web technologies. Showcases practical HTML5 structures, vanilla CSS layout systems, responsive Capstone projects, and interactive JavaScript laboratory utilities.</p>
+        <div class="card-footer">
+          <span>Enter Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- CSFCP -->
+      <a href="./csfcp/index.html" class="card" style="--subject-color: var(--color-csfcp); --subject-rgb: 251, 191, 36;">
+        <div class="card-icon-wrapper">🛡️</div>
+        <h2>CSFCP</h2>
+        <p>Computer Science Fundamentals & Career Pathway. Comprehensive reviews of UNIX shell automations, system architecture, version control practices, reports, and interactive Pygame applications.</p>
+        <div class="card-footer">
+          <span>Enter Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

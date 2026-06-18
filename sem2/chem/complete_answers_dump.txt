@@ -1,0 +1,642 @@
+=== FULL DUMP OF Engineering_Chemistry_Complete_Answers (1).docx ===
+
+
+ETCCCH104 — ENGINEERING CHEMISTRY
+Complete Question Bank Answers
+All 4 Units | Section A, B & C
+
+UNIT 1: WATER TECHNOLOGY
+
+SECTION A — Short Answer Questions (2 marks)
+Q1. Define Hardness of Water and Discuss its Types
+Hardness of water is defined as the property of water that prevents the lathering of soap and causes the formation of scales in boilers and pipes. It is mainly due to the presence of dissolved salts of calcium (Ca²⁺) and magnesium (Mg²⁺), and to a lesser extent iron, manganese, and other polyvalent metal ions.
+TYPES OF HARDNESS:
+1. Temporary Hardness (Carbonate Hardness): Caused by dissolved bicarbonates of calcium and magnesium — Ca(HCO₃)₂ and Mg(HCO₃)₂. It is called temporary because it can be removed by simple boiling.
+Ca(HCO₃)₂  →  CaCO₃↓  +  H₂O  +  CO₂↑
+Mg(HCO₃)₂  →  MgCO₃  +  H₂O  +  CO₂↑  →  Mg(OH)₂↓  +  CO₂↑
+2. Permanent Hardness (Non-Carbonate Hardness): Caused by chlorides, sulfates and nitrates of Ca²⁺ and Mg²⁺ — CaCl₂, MgCl₂, CaSO₄, MgSO₄. It cannot be removed by boiling alone and requires chemical treatment.
+Q2. How is the Zeolite Method Different from the Ion-Exchange Process?
+The zeolite process uses natural or synthetic sodium zeolite (Na₂Al₂Si₂O₈·xH₂O) as the exchange medium. It only removes hardness-causing cations (Ca²⁺ and Mg²⁺) by exchanging them with Na⁺ ions.
+The ion-exchange process uses synthetic resin beds — both a cation-exchange resin and an anion-exchange resin in series. It removes ALL dissolved salts (cations and anions) from water, producing demineralized/deionized water. The zeolite process gives soft water but not pure water, whereas the ion-exchange process gives completely demineralized water suitable for laboratories and high-pressure boilers.
+Q3. Differentiate Between Temporary and Permanent Hardness
+Q4. Define ppm, mg/L, °Fr and °Clarke
+ppm (parts per million): 1 ppm = 1 mg of CaCO₃ equivalent per litre of water = 1 mg/L (for dilute solutions, ppm ≈ mg/L).
+mg/L (milligrams per litre): Mass of CaCO₃ equivalent dissolved per litre of water. Numerically equal to ppm for water.
+°Fr (French degree): 1°Fr = 10 mg of CaCO₃ equivalent per litre (10 ppm). 1 ppm = 0.1°Fr.
+°Clarke: 1°Clarke = 14.25 mg of CaCO₃ equivalent per litre (14.25 ppm). 1 ppm = 0.07°Clarke.
+Conversion: 1°Fr = 10 ppm; 1°Clarke = 14.25 ppm; 1°Clarke = 1.433°Fr.
+Q5. Equivalent Weight of CaCO₃ — Why Hardness is Expressed in CaCO₃ Equivalent
+The molecular weight of CaCO₃ = 100 g/mol. Its valency = 2. Therefore, equivalent weight = 100/2 = 50 g.
+Hardness is expressed in terms of CaCO₃ equivalent because: (1) CaCO₃ is a neutral, stable salt with a round molecular weight of 100, making calculations easy. (2) It provides a common reference standard to compare different hardness-causing salts.
+To convert any hardness salt to CaCO₃ equivalent: Multiply the amount of salt by (Mol. wt. of CaCO₃ / Mol. wt. of salt) × (valency of CaCO₃ / valency of salt), or simply by (50 / equivalent weight of the salt).
+Q6. Principle of Phosphate Conditioning
+Phosphate conditioning is an internal treatment method where sodium phosphate (Na₃PO₄) is added to boiler water. It reacts with residual Ca²⁺ ions to form a soft, non-adherent precipitate of hydroxyapatite (calcium phosphoapatite), which can be easily blown down.
+10 Ca²⁺  +  6 PO₄³⁻  +  2 OH⁻  →  Ca₁₀(PO₄)₆(OH)₂↓  (Hydroxyapatite — sludge form)
+It also converts Mg²⁺ hardness to Mg(OH)₂, a soft sludge. This prevents hard scale formation on boiler surfaces.
+Q7. Calgon Conditioning
+Calgon is sodium hexametaphosphate — Na₂[Na₄(PO₃)₆], commonly abbreviated as Na₆P₆O₁₈. When added to boiler water, it forms soluble, stable complexes with Ca²⁺ and Mg²⁺ ions rather than precipitating them. These soluble complexes do not form scales.
+[Na₄P₆O₁₈]²⁻  +  2 Ca²⁺  →  [Ca₂P₆O₁₈]²⁻  +  4 Na⁺  (Soluble complex)
+Advantage: Since the complexes remain in solution, there is no sludge to blow down. The ions are simply sequestered.
+Q8. Colloidal Conditioning
+Colloidal conditioning involves adding protective colloids (like kerosene, tannin, or agar) to boiler water. These colloidal particles adsorb onto the surface of scale-forming particles and make them soft and non-adherent, allowing easy removal by blowdown.
+Two common colloidal agents: (1) Tannin (from bark extracts) and (2) Agar-agar (a polysaccharide).
+Q9. Role of Buffer in EDTA Titration — pH
+In EDTA hardness determination, a buffer of pH 10 (ammonium chloride + ammonium hydroxide — NH₄Cl + NH₄OH) is used. Its purpose is to maintain the solution at pH 10, which is the optimum pH for the indicator Eriochrome Black T (EBT) to function correctly.
+At pH 10, EBT forms a wine-red complex with Ca²⁺ and Mg²⁺ ions. EDTA has greater affinity for these ions than EBT, so it displaces EBT, causing the colour to change from wine-red to pure blue at the end point. If the pH is too low or too high, the indicator does not function properly.
+Q10. Two Advantages of Zeolite over Lime-Soda Process
+The zeolite process removes hardness much more completely; water produced is nearly zero-hardness.
+No chemical sludge is produced, so there is no need for settling tanks or filtration.
+Q11. Two Limitations of the Zeolite Process
+Turbid, acidic, or water with iron/manganese ions cannot be treated as they clog and destroy the zeolite bed.
+It does not remove all dissolved salts — only cations (Ca²⁺, Mg²⁺). Total dissolved solids remain high.
+Q12. Cation-Exchange vs Anion-Exchange Resins
+Cation-Exchange Resin (H-type): Contains —SO₃H or —COOH groups. It exchanges its H⁺ ions for cations like Ca²⁺, Mg²⁺, Na⁺ present in water. Example: Sulfonated polystyrene resin (R-H).
+2 R-H  +  Ca²⁺  →  R₂-Ca  +  2 H⁺
+Anion-Exchange Resin (OH-type): Contains —NH₂ or —N(CH₃)₃OH groups. It exchanges its OH⁻ ions for anions like Cl⁻, SO₄²⁻, HCO₃⁻. Example: Quaternary ammonium resin (R-OH).
+2 R-OH  +  SO₄²⁻  →  R₂-SO₄  +  2 OH⁻
+
+SECTION B — Long Answer Questions
+B1. EDTA Method for Determination of Hardness of Water (10 marks)
+PRINCIPLE: EDTA (Ethylene Diamine Tetra Acetic Acid), also written as H₄Y or Na₂H₂Y in its disodium salt form, forms stable 1:1 molar complexes with Ca²⁺ and Mg²⁺ ions at pH 10. The indicator Eriochrome Black T (EBT) forms a wine-red coloured complex with these ions. Since EDTA has a greater affinity for Ca²⁺ and Mg²⁺ than EBT does, adding EDTA to the sample causes it to displace EBT from the metal-indicator complex, releasing free EBT which is blue in colour.
+REAGENTS REQUIRED:
+Standard EDTA solution (0.01 M)
+Buffer solution: pH 10 (NH₄Cl + NH₄OH)
+Eriochrome Black T (EBT) indicator
+PROCEDURE — Determination of Total Hardness:
+Pipette out 100 mL of the water sample into a clean conical flask.
+Add 10 mL of pH 10 buffer solution. The solution becomes basic.
+Add 2-3 drops of EBT indicator. The solution turns wine-red, indicating metal ions are present.
+Fill the burette with standard EDTA solution. Titrate slowly with constant swirling.
+The endpoint is reached when the wine-red colour changes sharply to pure blue. Note the volume V₁ of EDTA used.
+REACTIONS:
+Before endpoint — metal-indicator complex (wine-red):
+Ca²⁺ + EBT (blue)  →  Ca-EBT complex (wine-red)
+At endpoint — EDTA displaces EBT:
+Ca-EBT (wine-red)  +  EDTA  →  Ca-EDTA (stable, colourless)  +  EBT (blue)
+CALCULATION:
+Total Hardness (ppm) = (V_EDTA × M_EDTA × 1000 × 100) / V_sample
+Where: V_EDTA = volume of EDTA used (mL), M_EDTA = molarity of EDTA, V_sample = volume of sample (mL).
+Since 1 mole EDTA = 1 mole CaCO₃ equivalent (mol. wt. 100):
+Hardness (ppm) = (V_EDTA × M_EDTA × 100 × 1000) / V_sample
+Determination of Permanent Hardness: Boil 100 mL of sample for 30 minutes, filter to remove CaCO₃ and Mg(OH)₂ precipitate. Cool, make up to 100 mL with distilled water. Titrate this with EDTA as above. V₂ = EDTA used. Permanent hardness ∝ V₂.
+Temporary Hardness: = Total Hardness − Permanent Hardness ∝ (V₁ − V₂).
+📌 Key Point: This method gives both total and individual hardness values quickly and accurately without precipitation steps.
+B2. Boiler Scales and Sludge — Formation, Ill Effects, Prevention (10 marks)
+INTRODUCTION: When water is heated in boilers, dissolved salts exceed their solubility limits and deposit on the inner walls of the boiler. These deposits are called scales (hard, adherent) or sludge (soft, non-adherent).
+FORMATION OF SCALE:
+Scales are mainly composed of CaCO₃, CaSO₄, Mg(OH)₂, and silica-based compounds. They form because:
+At high temperatures, CaSO₄ (which has an inverse solubility curve) becomes less soluble and deposits.
+Bicarbonates decompose upon heating to form insoluble CaCO₃:
+Ca(HCO₃)₂  →  CaCO₃↓  +  H₂O  +  CO₂↑
+Magnesium salts hydrolyse at high temperature to form Mg(OH)₂:
+MgCl₂  +  2H₂O  →  Mg(OH)₂↓  +  2HCl
+Silica forms calcium silicate scale: CaSiO₃, which is extremely hard.
+FORMATION OF SLUDGE:
+Sludge is a loose, wet, slimy precipitate that settles in cooler and low-velocity parts of the boiler. It consists of MgCO₃, Mg(OH)₂, CaCO₃, and calcium bicarbonate precipitates.
+ILL EFFECTS OF SCALE:
+Overheating and Wastage of Fuel: Scale is a poor conductor of heat (thermal conductivity ~0.2 W/mK vs 50 W/mK for steel). Even a 3mm scale causes 15-20% extra fuel consumption.
+Reduction in Efficiency: Less heat reaches the water, lowering steam generation.
+Boiler Explosion: Due to overheating, the boiler shell becomes weakened and may burst suddenly.
+Priming and Foaming: Fine scale particles may be carried over with steam, causing damage to turbine blades.
+ILL EFFECTS OF SLUDGE:
+Sludge, if collected in large amounts, interferes with water circulation.
+It can harden into scale if not removed in time.
+Removal by blowdown wastes hot water and energy.
+PREVENTION OF SCALE AND SLUDGE:
+External Treatments (before feeding into boiler):
+Lime-soda process, Zeolite process, or Ion-exchange to remove hardness.
+Internal Treatments (inside the boiler):
+Phosphate conditioning: Na₃PO₄ reacts with Ca²⁺ to form soft, non-adherent calcium phosphoapatite sludge.
+Calgon treatment: Sequestrates Ca²⁺ and Mg²⁺ as soluble complexes.
+Colloidal conditioning: Tannin/kerosene coats scale particles and keeps them soft.
+Blowdown: Periodically draining concentrated bottom water to reduce dissolved salt concentration.
+Carbonate conditioning: Adding Na₂CO₃ to convert CaSO₄ (hard) to CaCO₃ (soft, removable).
+CaSO₄  +  Na₂CO₃  →  CaCO₃↓  +  Na₂SO₄
+B3. Zeolite Process for Water Softening (10 marks)
+INTRODUCTION: The zeolite process uses naturally occurring or synthetic aluminosilicate minerals called zeolites to soften water by ion exchange. The common natural zeolite is Glauconite (green sand). Synthetic zeolites have a formula: Na₂Al₂Si₂O₈·xH₂O, represented as Na₂Z or NaZ.
+CONSTRUCTION OF ZEOLITE UNIT:
+The unit consists of a cylindrical tank (made of MS or FRP) filled with a bed of zeolite granules. The tank has an inlet at the top for hard water, a distributor below the zeolite bed for regeneration, and an outlet at the bottom for softened water. The system also has a separate brine (NaCl solution) tank for regeneration.
+WORKING PRINCIPLE (Softening):
+Hard water is passed through the zeolite bed from top to bottom. The Na⁺ ions of the zeolite exchange with Ca²⁺ and Mg²⁺ ions in the water:
+Na₂Z  +  Ca²⁺  →  CaZ  +  2 Na⁺  (Calcium removed)
+Na₂Z  +  Mg²⁺  →  MgZ  +  2 Na⁺  (Magnesium removed)
+The softened water (containing Na⁺ salts instead of Ca²⁺ and Mg²⁺) is collected at the outlet. The process continues until the zeolite is exhausted — i.e., all Na⁺ has been replaced by Ca²⁺ and Mg²⁺.
+EXHAUSTION: When the zeolite is saturated with Ca²⁺ and Mg²⁺ and the outlet water becomes hard again, the zeolite needs regeneration.
+REGENERATION: A 10% NaCl (brine) solution is passed through the exhausted zeolite bed. Na⁺ ions from brine displace Ca²⁺ and Mg²⁺, restoring the zeolite to its original Na-form:
+CaZ  +  2 NaCl  →  Na₂Z  +  CaCl₂  (washed away as waste)
+MgZ  +  2 NaCl  →  Na₂Z  +  MgCl₂  (washed away as waste)
+After regeneration, the bed is washed with water to remove excess NaCl, and the unit is ready for the next cycle.
+ADVANTAGES:
+Produces almost zero-hardness water.
+No chemical sludge is produced — clean operation.
+Compact, easy to operate, and can be automated.
+Regeneration is simple using cheap NaCl.
+DISADVANTAGES:
+Cannot treat turbid water — suspended matter clogs the zeolite bed.
+Cannot treat acidic water — acid dissolves the zeolite structure.
+Iron, manganese, and aluminium ions 'poison' the zeolite permanently.
+Does not remove dissolved salts — just exchanges Ca²⁺ and Mg²⁺ for Na⁺.
+Effluent contains Na₂SO₄ and NaCl which may be objectionable.
+B4. Ion-Exchange Process for Water Treatment (10 marks)
+PRINCIPLE: The ion-exchange (demineralization) process uses two synthetic resin beds — a cation-exchange resin and an anion-exchange resin — to remove all dissolved cations and anions from water, producing pure demineralized water (equivalent to distilled water).
+CATION-EXCHANGE RESIN (R-H or Cation Exchanger):
+This is a synthetic polymer (like sulfonated polystyrene) containing —SO₃H groups (strong acid type) or —COOH groups (weak acid type). It is in the H⁺ form.
+When hard water passes through the cation-exchange column, all cations (Ca²⁺, Mg²⁺, Na⁺) are exchanged for H⁺:
+2 R-H  +  Ca²⁺  →  R₂-Ca  +  2 H⁺
+2 R-H  +  Mg²⁺  →  R₂-Mg  +  2 H⁺
+R-H  +  Na⁺    →  R-Na   +  H⁺
+The water coming out of the cation column is acidic, containing H₂SO₄, HCl, H₂CO₃ corresponding to the original anions.
+ANION-EXCHANGE RESIN (R-OH or Anion Exchanger):
+This resin contains —N(CH₃)₃OH groups (strong base type) or —NH₂ groups (weak base type). It is in the OH⁻ form.
+The acidic water from the cation column passes through the anion-exchange column. All anions (Cl⁻, SO₄²⁻, HCO₃⁻) are exchanged for OH⁻:
+2 R-OH  +  SO₄²⁻  →  R₂-SO₄  +  2 OH⁻
+R-OH  +  Cl⁻     →  R-Cl    +  OH⁻
+The H⁺ from the first column and OH⁻ from the second combine: H⁺ + OH⁻ → H₂O. The outlet water is pure, deionized water.
+REGENERATION:
+Cation resin: R₂-Ca  +  2 HCl  →  2 R-H  +  CaCl₂  (regenerate with dilute HCl or H₂SO₄)
+Anion resin:  R₂-SO₄  +  2 NaOH  →  2 R-OH  +  Na₂SO₄  (regenerate with dilute NaOH)
+ADVANTAGES OVER ZEOLITE:
+Produces completely demineralized water — all ions removed.
+Treats acidic water (the resin is unaffected by acid).
+Used for high-pressure boilers, laboratories, and pharmaceutical industries.
+B5. Lime-Soda Process for Water Softening (10 marks)
+PRINCIPLE: In the lime-soda process, calculated quantities of lime (Ca(OH)₂) and soda (Na₂CO₃) are added to hard water. Lime precipitates temporary hardness (bicarbonates) and removes CO₂; soda precipitates permanent hardness (sulfates and chlorides). The precipitates are removed by coagulation, settling, and filtration.
+REACTIONS:
+1. Removal of dissolved CO₂ (by lime):
+CO₂  +  Ca(OH)₂  →  CaCO₃↓  +  H₂O
+2. Removal of temporary hardness (bicarbonates) by lime:
+Ca(HCO₃)₂  +  Ca(OH)₂  →  2 CaCO₃↓  +  2 H₂O
+Mg(HCO₃)₂  +  2 Ca(OH)₂  →  2 CaCO₃↓  +  Mg(OH)₂↓  +  2 H₂O
+3. Removal of permanent hardness by lime and soda:
+CaSO₄  +  Na₂CO₃  →  CaCO₃↓  +  Na₂SO₄  (soda removes CaSO₄)
+MgSO₄  +  Ca(OH)₂  →  Mg(OH)₂↓  +  CaSO₄  (lime removes MgSO₄, produces CaSO₄)
+CaSO₄ (formed above)  +  Na₂CO₃  →  CaCO₃↓  +  Na₂SO₄  (soda then removes it)
+MgCl₂  +  Ca(OH)₂  →  Mg(OH)₂↓  +  CaCl₂
+CaCl₂  +  Na₂CO₃  →  CaCO₃↓  +  2 NaCl
+COLD LIME-SODA PROCESS: Chemicals are added at room temperature. Coagulants (alum) are added to aid precipitation. Residual hardness ≈ 50-60 ppm. Used for large-scale municipal water treatment.
+HOT LIME-SODA PROCESS: Treatment done at 80-100°C. Advantages: faster reactions, better precipitation, lower residual hardness (~15-20 ppm), water is partially sterilized, no need for separate coagulant. Used for industrial and boiler feed water.
+B6. Internal Treatment Methods (10 marks)
+Internal treatment methods involve adding chemicals directly into boiler water to prevent scale and sludge formation inside the boiler. These are used as supplementary treatments when external softening is insufficient.
+1. PHOSPHATE CONDITIONING:
+Sodium phosphate (Na₃PO₄) is added to react with residual Ca²⁺ to form hydroxyapatite — a soft, non-adherent sludge:
+10 Ca²⁺  +  6 PO₄³⁻  +  2 OH⁻  →  Ca₁₀(PO₄)₆(OH)₂↓  (blown down)
+Also: 3 Mg²⁺  +  2 PO₄³⁻  →  Mg₃(PO₄)₂↓ (soft sludge)
+2. CALGON TREATMENT:
+Sodium hexametaphosphate (Na₂[Na₄(PO₃)₆]) — Calgon — sequesters Ca²⁺ and Mg²⁺ ions as stable soluble complexes:
+[Na₄P₆O₁₈]²⁻  +  2 Ca²⁺  →  [Ca₂P₆O₁₈]²⁻  +  4 Na⁺  (no precipitate)
+Since no precipitate is formed, there is no scale or sludge. The complexed ions are harmless in solution.
+3. COLLOIDAL CONDITIONING:
+Protective colloids (tannin, kerosene, agar) are added. They adsorb on scale-forming particles and render them soft and non-sticky. The particles remain in suspension and are removed by blowdown.
+4. CARBONATE CONDITIONING:
+Na₂CO₃ is added to convert the hard CaSO₄ scale into soft, removable CaCO₃:
+CaSO₄  +  Na₂CO₃  →  CaCO₃↓ (soft)  +  Na₂SO₄
+5. BLOWDOWN:
+Periodically draining out concentrated boiler water from the bottom of the boiler reduces TDS and prevents excessive concentration of scale-forming ions. Hot concentrated water is replaced with cooler, less concentrated feed water.
+
+UNIT 2: CHEMICAL FUELS
+
+SECTION A — Short Answer Questions
+Q1. Calorific Value — HCV and LCV
+Calorific Value (CV) is defined as the amount of heat liberated when one unit mass (or volume for gases) of a fuel is completely burnt in excess oxygen, and the products are brought back to the initial temperature (usually 25°C).
+Higher Calorific Value (HCV) / Gross Calorific Value: Total heat liberated including the heat released when the water produced during combustion is condensed from steam to liquid. HCV is measured in a bomb calorimeter.
+Lower Calorific Value (LCV) / Net Calorific Value: Heat liberated when water produced remains as steam and is NOT condensed. Practically, in engines and furnaces, steam escapes uncondensed through exhaust gases — so LCV is the practically useful value.
+LCV = HCV − (mass of H₂ per kg of fuel × 9 × latent heat of steam)
+LCV = HCV − 0.09 × H% × L   (where L = 587 cal/g)
+Q2. Anti-Knocking Agents
+Knocking is the premature, uncontrolled detonation of the fuel-air mixture in an IC engine before the spark plug fires. Anti-knocking agents are additives that raise the octane number and suppress knocking.
+Examples: (1) TEL — Tetraethyl Lead, Pb(C₂H₅)₄: Decomposes during combustion to release PbO, which inhibits chain-propagating free radicals, preventing premature ignition. (2) TML — Tetramethyl Lead. (3) MTBE (Methyl tertiary-butyl ether) — used in unleaded petrol as a safer alternative to TEL.
+Q3. Two Characteristics of an Ideal Fuel
+High calorific value: Should release maximum heat per unit mass to give maximum energy per rupee/kg.
+Low ignition temperature but controlled: Should ignite easily yet be safe to handle and store.
+Q4. Refining of Petroleum
+Crude petroleum is a complex mixture of hydrocarbons (alkanes, cycloalkanes, aromatics) along with impurities like S, N, O compounds and dissolved gases. Refining is the process of separating crude oil into useful fractions based on their boiling points by fractional distillation, and then purifying these fractions by removing impurities.
+Q5. Difference Between CNG and LPG
+Q6. Leaded and Unleaded Petrol — Role of TEL
+Leaded petrol contains Tetraethyl Lead (TEL) — Pb(C₂H₅)₄ as an anti-knocking additive to raise the octane number. TEL decomposes during combustion to PbO, which scavenges chain-propagating radicals and prevents knocking.
+Unleaded petrol does not contain TEL. It achieves a high octane number through blending with aromatics, oxygenates (MTBE, ethanol), or by catalytic reforming. Unleaded petrol is used with catalytic converters in modern vehicles, as lead poisons the catalyst.
+Q7. Proximate Analysis of Coal
+Proximate analysis determines the practical fuel properties of coal by finding the percentages of:
+Moisture Content (M): Water present in coal.
+Volatile Matter (VM): Organic gases and vapours driven off on heating in absence of air.
+Ash Content (A): Inorganic residue remaining after complete combustion.
+Fixed Carbon (FC) = 100 − (M + VM + A): The actual combustible carbon content.
+Q8. Ultimate Analysis of Coal
+Ultimate analysis (elemental analysis) determines the exact chemical composition of coal:
+Carbon (C%) — determined by combustion and CO₂ absorption.
+Hydrogen (H%) — determined by combustion and H₂O absorption.
+Nitrogen (N%) — by Kjeldahl method.
+Sulphur (S%) — by combustion and BaSO₄ gravimetry.
+Oxygen (O%) = 100 − (C + H + N + S + Ash) by difference.
+Ash (%) — by direct weighing after ignition.
+Q9. Knocking in IC Engines
+Knocking (pinking) is the spontaneous, premature detonation of the fuel-air mixture in the cylinder before the spark plug fires. It produces a sharp metallic hammering sound. The mixture ignites from multiple points simultaneously, creating pressure waves that collide.
+Ill effects: (1) Loss of power and engine efficiency. (2) Mechanical damage to cylinder walls, piston rings, and cylinder head due to sudden pressure surges.
+Q10. Thermal Cracking vs Catalytic Cracking
+Q11. Significance of Moisture Content in Coal
+High moisture in coal reduces its calorific value because heat energy is wasted in evaporating the water before combustion can occur. It also increases the weight of coal transported (increasing cost), causes difficulties in handling/storage (caking), and reduces the effective fixed carbon content.
+
+SECTION B — Long Answer Questions
+B2. Bomb Calorimeter Method for Calorific Value (10 marks)
+PRINCIPLE: The bomb calorimeter measures the HCV (Higher Calorific Value) of a fuel by burning a known mass of fuel in excess pure oxygen inside a sealed steel bomb, and measuring the temperature rise of the surrounding water.
+CONSTRUCTION:
+The bomb calorimeter consists of:
+A heavy-walled, sealed steel bomb (capacity ~300 mL) fitted with O₂ inlet, fuse wire, and electrodes.
+A calorimeter vessel (inner vessel) filled with a known mass of water (usually 2000 mL).
+An outer jacket (filled with water or air) to minimize heat exchange with surroundings (Dewar flask principle).
+An accurate thermometer (Beckmann thermometer) reading to 0.001°C.
+PROCEDURE:
+Weigh about 1-2 g of fuel accurately and place in the steel crucible inside the bomb.
+Connect the fuse wire to touch the fuel sample.
+Fill the bomb with pure oxygen at 25-30 atm pressure.
+Immerse the bomb in the calorimeter vessel containing a known mass of water (W g).
+Note the initial temperature T₁. Fire the fuse wire electrically.
+The fuel burns completely. Stir the water and note the maximum temperature T₂.
+Apply corrections: cooling correction (+), fuse wire correction (subtract), acid correction (subtract for H₂SO₄ and HNO₃ formed).
+FORMULA:
+HCV = [(W + w) × S × (T₂ − T₁ + cooling correction − fuse correction − acid correction)] / m
+Where: W = mass of water (g), w = water equivalent of calorimeter (g), S = specific heat of water = 1 cal/g/°C, m = mass of fuel (g).
+CALCULATION OF LCV:
+LCV = HCV − (mass of H in fuel × 9 × latent heat of steam)
+LCV = HCV − (H% / 100 × 9 × 587) cal/g
+Here 9 g of H₂O is produced per gram of H₂ burnt, and latent heat = 587 cal/g at 100°C.
+📌 Corrections applied: (1) Cooling correction: heat lost to surroundings while recording temperature. (2) Fuse wire correction: heat from burning fuse wire. (3) Acid correction: heat from formation of H₂SO₄ and HNO₃ (from S and N in fuel).
+B8. Knocking — Mechanism, Ill Effects, Prevention (10 marks)
+INTRODUCTION: Knocking is the characteristic metallic hammering noise heard from IC engines during improper combustion. It is also called 'pinking' or 'pinging'.
+MECHANISM OF KNOCKING:
+In a petrol (SI) engine, the piston compresses the fuel-air mixture. At the right moment, the spark plug fires, igniting the mixture. The flame front should spread smoothly from the spark plug across the cylinder. However, in knocking:
+The unburnt part of the fuel-air mixture (called 'end gas') ahead of the flame front gets subjected to rising temperature and pressure.
+This end gas undergoes self-ignition (autoignition) — it ignites spontaneously before the flame front reaches it.
+Two flame fronts (the propagated one and the autoignition one) collide, creating high-frequency pressure waves that slam against the cylinder walls.
+This produces the characteristic 'knock' sound and causes severe mechanical damage.
+ILL EFFECTS OF KNOCKING:
+Loss of engine power and thermal efficiency.
+Overheating of cylinder head and piston.
+Damage to piston rings, cylinder walls, valves, and bearings due to sudden pressure surges.
+Pre-ignition and engine misfiring leading to rough running.
+Increased fuel consumption for the same power output.
+PREVENTION OF KNOCKING:
+1. Use of fuels with high octane number: Highly branched alkanes and aromatics have better resistance to autoignition. Octane number of iso-octane = 100 (reference — no knock); n-heptane = 0 (reference — maximum knock).
+2. Addition of Anti-Knock Agents:
+TEL (Tetraethyl Lead): Pb(C₂H₅)₄ decomposes to PbO, which scavenges free radicals that initiate autoignition. Very effective but toxic.
+TML (Tetramethyl Lead): Similar to TEL.
+MTBE (Methyl tert-Butyl Ether): Oxygenate used in unleaded petrol — raises octane number without toxic metals.
+Ethanol blending (E10, E20): Ethanol has octane number ~111 and reduces knocking.
+3. Engine design modifications:
+Use of lower compression ratios.
+Better engine cooling to prevent hot spots.
+Optimum spark timing (spark advance control).
+Fuel injection systems (direct injection) for more precise fuel-air control.
+
+UNIT 3: BATTERY TECHNOLOGY
+
+SECTION A — Short Answer Questions
+Q1 & Q2. Define EMF and Electrode Potential
+Electrode Potential: When a metal (M) is immersed in its salt solution, a potential difference is established between the metal and the solution due to the tendency of the metal to lose (or gain) electrons. This potential difference is called electrode potential.
+Standard Electrode Potential (E°): Electrode potential measured at 25°C, 1 atm pressure, and 1 M ion concentration, measured against the Standard Hydrogen Electrode (SHE, E° = 0.00 V).
+EMF of a Cell (Electromotive Force): The potential difference between the two electrodes of a cell when no current flows (open circuit). It is the driving force for electron flow in the external circuit.
+EMF (E°cell) = E°cathode − E°anode = E°reduction(+ve electrode) − E°reduction(−ve electrode)
+Q3. Two Examples of Reserve Batteries
+Magnesium-Silver Chloride battery (used in torpedoes — activated by sea water).
+Zinc-Air battery (dry form; activated by removing a seal that allows air access).
+Q4. Galvanic Cell — Definition and Example
+A galvanic cell (or voltaic cell) is an electrochemical device that converts chemical energy into electrical energy through a spontaneous redox reaction. The oxidation half-reaction occurs at the anode (negative electrode) and reduction occurs at the cathode (positive electrode).
+Example: Daniell Cell — Cell representation:
+Zn | Zn²⁺(aq) ‖ Cu²⁺(aq) | Cu
+Anode (−): Zn → Zn²⁺ + 2e⁻ (oxidation); Cathode (+): Cu²⁺ + 2e⁻ → Cu (reduction). E°cell = 0.34 − (−0.76) = 1.10 V.
+Q5. Primary vs Secondary Batteries
+Q6. Battery Capacity and Energy Density
+Battery Capacity: The total charge a battery can deliver at rated voltage, measured in Ampere-hours (Ah) or milliampere-hours (mAh). Capacity = Current (A) × Time (h).
+Energy Density: The amount of energy stored per unit volume (Wh/L) or per unit mass (Wh/kg). Energy Density = Voltage × Capacity / Mass (or Volume).
+Q7. Power Density and Energy Efficiency
+Power Density: The rate at which a battery can deliver energy per unit mass (W/kg) or per unit volume (W/L). High power density batteries can deliver large bursts of current — important for EVs and power tools.
+Energy Efficiency: Ratio of energy obtained during discharge to the energy supplied during charging, expressed as a percentage. η = (Energy out / Energy in) × 100%. For lead-acid, η ≈ 75-80%; for Li-ion, η ≈ 95%.
+Q8. Cycle Life of a Battery
+Cycle life is the number of complete charge-discharge cycles a secondary battery can undergo before its capacity falls below 80% of its original rated capacity. A high cycle life indicates a durable, cost-effective battery. Li-ion batteries typically have a cycle life of 500-2000 cycles.
+Q9. Shelf Life of a Battery
+Shelf life is the time duration for which a battery can be stored in an uncharged or charged state without significant self-discharge or loss of capacity. It depends on: (1) Temperature — lower temperature extends shelf life. (2) Humidity and storage conditions. (3) Chemical composition of the electrodes and electrolyte.
+Q10. Applications of Ni-Cd Battery
+Portable electronic devices — cordless phones, power tools, two-way radios.
+Emergency lighting systems and aircraft starter batteries.
+Q11. Applications of Li-ion Battery
+Laptops, smartphones, tablets, and other consumer electronics.
+Electric vehicles (EVs), grid energy storage, and medical devices.
+Q12. Nernst Equation
+The Nernst equation gives the electrode potential (or cell EMF) at non-standard conditions (concentration ≠ 1 M, temperature ≠ 25°C):
+E = E°  −  (RT / nF) × ln Q
+At 25°C (substituting R = 8.314 J/mol/K, T = 298 K, F = 96500 C/mol):
+E = E°  −  (0.0591 / n) × log₁₀ Q
+Where: E° = standard electrode potential (V), R = gas constant, T = temperature (K), n = number of electrons transferred, F = Faraday constant, Q = reaction quotient = [products] / [reactants].
+
+SECTION B — Long Answer Questions
+B1. Lithium-Ion Battery (10 marks)
+INTRODUCTION: The lithium-ion (Li-ion) battery is a rechargeable secondary battery that operates through the reversible intercalation (insertion and extraction) of Li⁺ ions between two electrodes. It is the dominant energy storage technology for portable electronics and electric vehicles.
+CONSTRUCTION:
+Anode (negative electrode): Graphite (C₆) — Li⁺ ions insert between graphite layers (intercalation).
+Cathode (positive electrode): Lithium metal oxide — LiCoO₂ (lithium cobalt oxide) or LiMn₂O₄ or LiFePO₄.
+Electrolyte: Lithium salt (LiPF₆) dissolved in an organic solvent (ethylene carbonate / dimethyl carbonate). The electrolyte is Li⁺-ion conducting but electron-insulating.
+Separator: A porous polymer membrane (polyethylene) that physically separates the electrodes while allowing Li⁺ to pass through.
+WORKING (DISCHARGE — Battery gives current):
+During discharge, Li⁺ ions de-intercalate (come out) from the graphite anode and travel through the electrolyte to the LiCoO₂ cathode. Simultaneously, electrons flow through the external circuit from anode to cathode:
+Anode (−):    LiC₆  →  C₆  +  Li⁺  +  e⁻  (oxidation — Li released)
+Cathode (+):  Li₁₋ₓCoO₂  +  x Li⁺  +  x e⁻  →  LiCoO₂  (reduction — Li inserted)
+Overall:      LiC₆  +  CoO₂  →  C₆  +  LiCoO₂  (E ≈ 3.6 V)
+WORKING (CHARGING):
+During charging, an external voltage forces Li⁺ back from LiCoO₂ into the graphite anode (the reactions are exactly reversed):
+Cathode:  LiCoO₂  →  Li₁₋ₓCoO₂  +  x Li⁺  +  x e⁻
+Anode:    C₆  +  x Li⁺  +  x e⁻  →  LiC₆
+CHARACTERISTICS:
+Voltage: ~3.6-3.7 V (nominal) — higher than Ni-Cd (1.2 V) or Pb-acid (2 V per cell).
+Energy density: 150-200 Wh/kg — highest among practical rechargeable batteries.
+Cycle life: 500-2000 cycles.
+No memory effect (unlike Ni-Cd).
+Low self-discharge (~2-3% per month).
+APPLICATIONS: Smartphones, laptops, EVs, power tools, grid storage, medical implants.
+LIMITATIONS: Sensitive to overcharging (requires protection circuits), degrades at high temperatures, uses cobalt (expensive and ethically sourced).
+B4. Ni-Cd Battery (10 marks)
+INTRODUCTION: The Nickel-Cadmium (Ni-Cd) battery is a widely used rechargeable secondary battery. It uses nickel hydroxide as the cathode and cadmium as the anode, with an alkaline KOH electrolyte.
+CONSTRUCTION:
+Anode (negative electrode): Cadmium (Cd) / Cadmium hydroxide Cd(OH)₂ plates.
+Cathode (positive electrode): Nickel oxyhydroxide NiO(OH) / Nickel hydroxide Ni(OH)₂ plates.
+Electrolyte: 20-30% aqueous potassium hydroxide (KOH) solution.
+Separator: Nylon or polypropylene sheet soaked in electrolyte.
+The cell is sealed in a nickel-plated steel case.
+WORKING — DISCHARGE (Battery supplies current):
+At the anode, Cd is oxidised. At the cathode, NiO(OH) is reduced. OH⁻ ions migrate from cathode to anode through the electrolyte:
+Anode (−):    Cd  +  2 OH⁻  →  Cd(OH)₂  +  2e⁻  (oxidation)
+Cathode (+):  2 NiO(OH)  +  2 H₂O  +  2e⁻  →  2 Ni(OH)₂  +  2 OH⁻  (reduction)
+Overall:      Cd  +  2 NiO(OH)  +  2 H₂O  →  Cd(OH)₂  +  2 Ni(OH)₂  ;  E = 1.2 V
+WORKING — CHARGING:
+On applying external voltage, the reactions are reversed. Cd(OH)₂ is reduced back to Cd at the anode; Ni(OH)₂ is oxidised back to NiO(OH) at the cathode:
+Anode:    Cd(OH)₂  +  2e⁻  →  Cd  +  2 OH⁻  (reduction)
+Cathode:  2 Ni(OH)₂  +  2 OH⁻  →  2 NiO(OH)  +  2 H₂O  +  2e⁻  (oxidation)
+ADVANTAGES:
+Reliable and long cycle life (500-1000 cycles).
+Works well at low temperatures.
+Can deliver high current rates.
+Stable voltage of 1.2 V throughout discharge cycle.
+LIMITATIONS:
+Memory effect: If repeatedly charged before fully discharged, the battery 'remembers' the reduced capacity. Requires periodic full discharge.
+Cadmium is toxic and environmentally hazardous — disposal is regulated.
+Lower energy density than Li-ion.
+APPLICATIONS: Power tools, emergency lighting, aircraft systems, medical equipment, cordless phones.
+B5. Lead-Acid Battery (10 marks)
+INTRODUCTION: The lead-acid storage battery is the oldest and most widely used rechargeable battery. It is used as a starter battery in automobiles, UPS systems, and emergency lighting.
+CONSTRUCTION:
+Anode (negative plate): Spongy lead (Pb) in a grid of lead-antimony alloy.
+Cathode (positive plate): Lead dioxide (PbO₂) packed in a grid.
+Electrolyte: Dilute sulphuric acid (H₂SO₄), specific gravity 1.28 when fully charged.
+Separator: Porous rubber, glass wool, or PVC sheets between plates.
+Container: Hard rubber or polypropylene case. Multiple cells (6 cells in a 12 V battery, each 2 V).
+DISCHARGE REACTIONS (Battery supplies current):
+Anode (−):    Pb  +  SO₄²⁻  →  PbSO₄  +  2e⁻  (oxidation)
+Cathode (+):  PbO₂  +  SO₄²⁻  +  4H⁺  +  2e⁻  →  PbSO₄  +  2H₂O  (reduction)
+Overall:      Pb  +  PbO₂  +  2H₂SO₄  →  2 PbSO₄  +  2H₂O  ;  E = 2 V
+During discharge, both electrodes form PbSO₄ and H₂SO₄ is consumed — specific gravity of electrolyte falls to ~1.18, indicating the battery is discharged.
+CHARGING REACTIONS:
+Anode:    PbSO₄  +  2e⁻  →  Pb  +  SO₄²⁻  (reduction)
+Cathode:  PbSO₄  +  2H₂O  →  PbO₂  +  SO₄²⁻  +  4H⁺  +  2e⁻  (oxidation)
+Overall:  2 PbSO₄  +  2H₂O  →  Pb  +  PbO₂  +  2H₂SO₄
+During charging, PbSO₄ is converted back to Pb and PbO₂, and H₂SO₄ is regenerated — specific gravity rises back to 1.28.
+ADVANTAGES: Low cost, reliable, high surge current, wide operating temperature. LIMITATIONS: Heavy (low energy density ~35 Wh/kg), uses toxic lead, H₂ gas released during charging (explosion hazard).
+
+UNIT 4: POLYMERS
+
+SECTION A — Short Answer Questions
+Q1. Thermoplastics
+Thermoplastics are polymers that soften and become mouldable on heating and harden again on cooling. This process is reversible and can be repeated many times. They consist of long linear or slightly branched polymer chains with weak van der Waals forces between them. They can be recycled.
+Examples: Polyethylene (PE), Polyvinyl Chloride (PVC), Polypropylene (PP), Polystyrene (PS), Nylon-6, Nylon-6,6.
+Q2. Polymerization and Its Types
+Polymerization is the process of linking many small molecules (monomers) together to form a large molecule (polymer) through repeated covalent bond formation. Types:
+Addition Polymerization (Chain-growth): Monomers with C=C double bonds add to each other without losing any atoms. Example: Polyethylene from ethylene.
+Condensation Polymerization (Step-growth): Monomers react with the elimination of small molecules (H₂O, HCl, CH₃OH). Example: Nylon-6,6 from hexamethylenediamine + adipic acid.
+Copolymerization: Two or more different monomers polymerize together. Example: Buna-S (styrene + butadiene).
+Q3. Classification of Polymers According to Molecular Forces
+Elastomers: Held by very weak van der Waals forces. Highly elastic — can be stretched to several times their length. Example: Natural rubber, Neoprene.
+Fibres: Strong, rigid polymers with high intermolecular forces (H-bonds or dipole-dipole). Example: Nylon, Dacron/Terylene.
+Thermoplastics: Intermediate forces. Soften on heating. Example: PVC, Polythene.
+Thermosetting plastics: Strong covalent cross-links formed during moulding. Example: Bakelite, Urea-formaldehyde.
+Q4. Vulcanization of Rubber
+Vulcanization is the process of heating natural rubber with sulphur (or sulphur compounds) at 140-160°C. During this process, sulphur forms cross-links (S-S bridges) between the polymer chains at the double bond positions. This makes the rubber harder, stronger, less sticky, less elastic at high temperatures, and resistant to solvents. The cross-linking prevents chains from slipping past each other.
+Rubber-CH=CH-Rubber  +  S  →  Rubber-CH(-S-)-CH-Rubber (cross-linked)
+Q5. Addition vs Condensation Polymerization
+Q6. Conducting Polymers
+Conducting polymers (also called intrinsically conducting polymers or synthetic metals) are polymers that can conduct electricity. They have extended conjugated double bonds (alternating single and double bonds) throughout the polymer chain, allowing delocalization of π-electrons. When doped (oxidized or reduced) with suitable dopants, they become conducting.
+Examples: Polyacetylene (first discovered conducting polymer), Polyaniline (PANI), Polypyrrole, Polythiophene.
+Q7. Biodegradable Polymers
+Biodegradable polymers are polymers that can be decomposed (broken down) by microorganisms (bacteria, fungi) in the environment into CO₂, H₂O, and biomass under composting conditions. They are eco-friendly alternatives to conventional plastics.
+Examples: PHBV (poly hydroxy butyrate-valerate), Nylon-2-nylon-6 (a polyamide), PLA (Polylactic acid — from corn starch), PGA (Polyglycolic acid — used in surgical sutures).
+Q8. Neoprene — Monomers and Repeat Unit
+Neoprene is a synthetic rubber (polychloroprene) made by the free-radical polymerization of chloroprene.
+Monomer: Chloroprene (2-chloro-1,3-butadiene) — CH₂=CCl-CH=CH₂
+n CH₂=CCl-CH=CH₂  →  -(CH₂-CCl=CH-CH₂)ₙ-  (Neoprene)
+Repeat unit: -(-CH₂-CCl=CH-CH₂-)ₙ-
+Q9. Industrial Applications of Natural Rubber
+Tyres and tubes for automobiles, bicycles, and aircraft (after vulcanization).
+Gaskets, seals, hoses, belts, and rubber-soled footwear.
+
+SECTION B — Long Answer Questions
+B1. Thermoplastic vs Thermosetting Polymers (10 marks)
+B2 & B3. Buna-S and Neoprene / Buna-S and Buna-N (10 marks)
+BUNA-S (Styrene-Butadiene Rubber — SBR):
+Preparation: Buna-S is a copolymer of butadiene (75%) and styrene (25%). It is prepared by emulsion polymerization (free-radical) in aqueous medium using soap as emulsifier.
+n CH₂=CH-CH=CH₂  +  n CH₂=CH-C₆H₅  →  -(CH₂-CH=CH-CH₂-CH₂-CH(C₆H₅))ₙ-
+Properties and Applications:
+Good abrasion resistance — better than natural rubber for tyre treads.
+Poor oil and solvent resistance.
+Used for: automobile tyres (most common), shoe soles, belts, hoses, gaskets.
+BUNA-N (Nitrile Rubber — NBR):
+Preparation: Buna-N is a copolymer of butadiene (60-80%) and acrylonitrile (20-40%) by emulsion polymerization.
+n CH₂=CH-CH=CH₂  +  n CH₂=CH-CN  →  -(CH₂-CH=CH-CH₂-CH₂-CH(CN))ₙ-
+Properties and Applications:
+Excellent oil, solvent, and fuel resistance (due to CN groups — polar).
+Good heat resistance and abrasion resistance.
+Used for: oil seals, fuel hoses, gaskets, gloves resistant to oils and hydrocarbons, O-rings in hydraulic systems.
+NEOPRENE (Polychloroprene):
+Preparation: Free-radical polymerization of chloroprene:
+n CH₂=CCl-CH=CH₂  →  -(CH₂-CCl=CH-CH₂)ₙ-  (Neoprene)
+Properties and Applications:
+Good resistance to oils, fuels, ozone, and chemicals.
+Flame-resistant (due to Cl atoms).
+Used for: wet suits (scuba diving), laptop sleeves, wire insulation, industrial belts, gaskets.
+B4. Nylon-6,6 — Preparation, Properties and Applications (10 marks)
+INTRODUCTION: Nylon-6,6 is a condensation polyamide, one of the most important engineering polymers. It was the first fully synthetic fibre, developed by Wallace Carothers at DuPont in 1935.
+PREPARATION: Nylon-6,6 is produced by the condensation polymerization of two monomers, each containing 6 carbon atoms:
+Hexamethylene diamine (HMDA): H₂N-(CH₂)₆-NH₂
+Adipic acid (hexanedioic acid): HOOC-(CH₂)₄-COOH
+Reaction: The -NH₂ of HMDA reacts with -COOH of adipic acid, releasing water (H₂O) and forming amide (-CO-NH-) linkages:
+n H₂N-(CH₂)₆-NH₂  +  n HOOC-(CH₂)₄-COOH  →
+-(NH-(CH₂)₆-NH-CO-(CH₂)₄-CO)ₙ-  +  n H₂O
+(The name '6,6' refers to 6 carbons in the diamine and 6 carbons in the diacid.)
+Laboratory method: The 'Nylon rope trick' — HMDA in water is layered under adipic acid chloride in CCl₄. Nylon-6,6 forms as a film at the interface and can be drawn out as a continuous rope.
+PROPERTIES:
+High tensile strength and elasticity.
+Good abrasion and wear resistance.
+High melting point (~265°C) — stable at elevated temperatures.
+Absorbs moisture (hygroscopic) — slightly reduces strength when wet.
+Resistant to most organic solvents but dissolved by phenols and formic acid.
+Can be drawn into fine fibres or cast into complex shapes.
+APPLICATIONS:
+Textile fibres: Stockings, lingerie, sportswear, parachutes, ropes.
+Engineering plastics: Gears, bearings, bushings, automotive parts.
+Bristles for brushes, fishing lines, tennis racket strings.
+Medical: Surgical sutures, catheters.
+B5. Biodegradable Polymers (10 marks)
+INTRODUCTION: Conventional plastics (PE, PP, PVC) are non-biodegradable and persist in the environment for hundreds of years. Biodegradable polymers overcome this by being capable of degradation by microbial enzymes, hydrolysis, or photodegradation.
+KEY EXAMPLES:
+1. PHBV (Poly-3-hydroxybutyrate-co-3-hydroxyvalerate):
+Preparation: Synthesized naturally by bacteria (Alcaligenes eutrophus) through fermentation of glucose/propionic acid. It is a polyester copolymer.
+Properties: Thermoplastic, piezoelectric, biocompatible, biodegrades in soil and water within months.
+Applications: Packaging, biomedical implants, drug delivery systems, disposable tableware.
+2. Nylon-2-Nylon-6 (a co-polyamide):
+Preparation: Condensation polymerization of glycine (H₂N-CH₂-COOH, an amino acid) and amino caproic acid (H₂N-(CH₂)₅-COOH).
+n H₂N-CH₂-COOH  +  n H₂N-(CH₂)₅-COOH  →  -(NH-CH₂-CO-NH-(CH₂)₅-CO)ₙ-  +  n H₂O
+Biodegrades by hydrolysis of amide bonds by soil enzymes. Applications: Packaging, agricultural films.
+3. PLA (Polylactic Acid):
+Derived from lactic acid (from fermentation of cornstarch or sugarcane). Ring-opening polymerization of lactide:
+n CH₃-CH(OH)-COOH  →  -(O-CH(CH₃)-CO)ₙ-  +  n H₂O
+Applications: Compostable cups, packaging film, medical sutures, drug delivery.
+4. PGA (Polyglycolic Acid):
+Prepared from glycolic acid. Degrades in the body by hydrolysis into glycolic acid (metabolized normally). Used for: absorbable surgical sutures, drug delivery scaffolds.
+ADVANTAGES OF BIODEGRADABLE POLYMERS:
+Reduce plastic pollution — degrade naturally without toxic residues.
+Reduce dependence on petroleum-based raw materials.
+Biocompatible — suitable for medical implants (body absorbs them).
+LIMITATIONS:
+Higher production cost than conventional plastics.
+Mechanical properties often inferior to conventional plastics.
+Some require specific composting conditions (industrial, not home compost).
+B6. Classification of Polymers (10 marks)
+A. BASED ON SOURCE:
+Natural Polymers: Occur naturally. Example: Natural rubber (polyisoprene), cellulose, starch, proteins, DNA.
+Semi-synthetic Polymers: Natural polymers chemically modified. Example: Cellulose acetate (from cellulose + acetic acid), vulcanized rubber.
+Synthetic Polymers: Entirely man-made. Example: Nylon, PVC, Dacron, Polythene.
+B. BASED ON STRUCTURE:
+Linear Polymers: Long straight chains. Example: HDPE, Nylon-6,6.
+Branched Polymers: Main chain with side branches. Example: LDPE.
+Cross-linked (Network) Polymers: Chains connected by covalent cross-links. Example: Bakelite, vulcanized rubber.
+C. BASED ON MOLECULAR FORCES:
+Elastomers: Very weak intermolecular forces; high elasticity. Example: Natural rubber, Buna-S, Neoprene.
+Fibres: Strong intermolecular forces (H-bonds), rigid and high tensile strength. Example: Nylon, Dacron.
+Thermoplastics: Moderate forces; soften on heating. Example: PVC, Polystyrene.
+Thermosetting plastics: Strong covalent cross-links after curing. Example: Bakelite, Urea-formaldehyde.
+D. BASED ON MODE OF POLYMERIZATION:
+Addition (Chain-growth) Polymers: Formed by addition of monomers containing double bonds, no byproduct. Example: Polythene (from CH₂=CH₂), PVC (from CH₂=CHCl).
+Condensation (Step-growth) Polymers: Formed with elimination of small molecules (H₂O, HCl). Example: Nylon-6,6 (from hexamethylene diamine + adipic acid), Dacron (from ethylene glycol + terephthalic acid).
+Copolymers: Two or more different monomers. Example: Buna-S (butadiene + styrene), PHBV.
+
+SECTION C — Numerical Problems (All Units)
+
+UNIT 1 — Water Technology Numericals
+Problem 1 — Hardness Calculation (Ca(HCO₃)₂, Mg(HCO₃)₂, CaCl₂, MgSO₄)
+Given per litre: Ca(HCO₃)₂ = 122 mg, Mg(HCO₃)₂ = 73 mg, CaCl₂ = 55.5 mg, MgSO₄ = 60 mg.
+Mol. wt.: Ca(HCO₃)₂ = 162, Mg(HCO₃)₂ = 146, CaCl₂ = 111, MgSO₄ = 120. CaCO₃ ≡ 100 (val = 2).
+Formula: CaCO₃ equivalent (ppm) = (mass of salt / mol. wt. of salt) × (100/2) × 2 = mass × (100/mol.wt.)
+Conversion factor = (Mol. wt. of CaCO₃ / Mol. wt. of salt) × (valency of CaCO₃ / valency of salt) = (100 / mol. wt.) since all bivalent:
+Ca(HCO₃)₂:   Temporary hardness = 122 × (100/162) = 75.31 ppm
+Mg(HCO₃)₂:   Temporary hardness = 73 × (100/146) = 50.00 ppm
+CaCl₂:        Permanent hardness = 55.5 × (100/111) = 50.00 ppm
+MgSO₄:        Permanent hardness = 60 × (100/120) = 50.00 ppm
+Temporary Hardness = 75.31 + 50.00 = 125.31 ppm
+Permanent Hardness = 50.00 + 50.00 = 100.00 ppm
+Total Hardness     = 125.31 + 100.00 = 225.31 ppm
+In °Fr: Total = 225.31 × 0.1 = 22.53 °Fr
+Problem 2 — Ca(HCO₃)₂, Mg(HCO₃)₂, CaSO₄
+Given: Ca(HCO₃)₂ = 162 mg/L, Mg(HCO₃)₂ = 146 mg/L, CaSO₄ = 136 mg/L.
+Ca(HCO₃)₂:   Temp. hardness = 162 × (100/162) = 100.00 ppm
+Mg(HCO₃)₂:   Temp. hardness = 146 × (100/146) = 100.00 ppm
+CaSO₄:        Perm. hardness = 136 × (100/136) = 100.00 ppm
+(a) Temporary Hardness = 100 + 100 = 200.00 ppm
+(b) Permanent Hardness = 100.00 ppm
+(c) Total Hardness = 300.00 ppm
+In °Clarke: Total = 300 × 0.07 = 21.00 °Clarke
+Problem 4 — CaSO₄ and MgCl₂ (Sample given in 2 litres)
+Given: CaSO₄ = 80 mg and MgCl₂ = 40 mg in 2 litres. First convert to mg/L: CaSO₄ = 80/2 = 40 mg/L; MgCl₂ = 40/2 = 20 mg/L.
+Mol. wt.: CaSO₄ = 136, MgCl₂ = 95.
+CaSO₄:  hardness = 40 × (100/136) = 29.41 ppm
+MgCl₂:  hardness = 20 × (100/95)  = 21.05 ppm
+Total Hardness = 29.41 + 21.05 = 50.46 ppm
+In °Fr:     50.46 × 0.1  = 5.046 °Fr
+In °Clarke: 50.46 × 0.07 = 3.53 °Clarke
+Problem 5 — EDTA Method (Total, Permanent, Temporary Hardness)
+Given: 20 mL standard water (1 mg CaCO₃/mL) required 25 mL EDTA. 100 mL sample required 18 mL EDTA (total). Boiled sample (100 mL) required 10 mL EDTA (permanent).
+Step 1 — Find EDTA factor (F): 20 mL standard water contains 20 mg CaCO₃ ≡ 25 mL EDTA.
+F = 20/25 = 0.8 mg CaCO₃ per mL EDTA
+Step 2 — Total Hardness: 100 mL sample required 18 mL EDTA.
+CaCO₃ equivalent = 18 × 0.8 = 14.4 mg in 100 mL
+Total Hardness = 14.4 × (1000/100) = 144 ppm
+Step 3 — Permanent Hardness: 100 mL boiled sample required 10 mL EDTA.
+Permanent Hardness = 10 × 0.8 × 10 = 80 ppm
+Step 4 — Temporary Hardness = Total − Permanent = 144 − 80 = 64 ppm.
+Problem 5 (Unit 1) — Zeolite Softener Capacity
+Given: Zeolite capacity = 1000 °Fr·L of CaCO₃. Water hardness = 250 ppm = 250 × 0.1 = 25 °Fr.
+Litres softened = Capacity (°Fr·L) / Hardness (°Fr)
+= 1000 / 25 = 40 litres
+
+UNIT 2 — Chemical Fuels Numericals
+Problem 1 — Dulong's Formula (C=80, H=10, O=5, S=2%)
+Dulong's formula for HCV (in kcal/kg):
+HCV = 1/100 × [8080C + 34500(H − O/8) + 2240S]  kcal/kg
+HCV = 1/100 × [8080×80 + 34500×(10 − 5/8) + 2240×2]
+= 1/100 × [646400 + 34500×(10 − 0.625) + 4480]
+= 1/100 × [646400 + 34500×9.375 + 4480]
+= 1/100 × [646400 + 323437.5 + 4480]
+= 1/100 × 974317.5
+HCV = 9743.18 kcal/kg
+LCV = HCV − 9 × H% × L / 100
+= 9743.18 − 9 × 10 × 587 / 100
+= 9743.18 − 528.3
+LCV = 9214.88 kcal/kg
+Problem 2 — Bomb Calorimeter (1.90 g fuel, 4000 g water, ΔT = 4.2°C, H = 2%)
+Given: m = 1.90 g, W = 4000 g, w = 385 g, ΔT = 4.2°C, H = 2%, L = 587 cal/g.
+HCV = [(W + w) × S × ΔT] / m
+= [(4000 + 385) × 1 × 4.2] / 1.90
+= [4385 × 4.2] / 1.90
+= 18417 / 1.90
+HCV = 9693.2 cal/g = 9693.2 kcal/kg
+LCV = HCV − 9 × H% × L / 100
+= 9693.2 − 9 × 2 × 587 / 100
+= 9693.2 − 105.66
+LCV = 9587.5 cal/g
+Problem 4 — Bomb Calorimeter with Corrections
+Given: m = 0.75 g, W = 1500 g, w = 250 g, ΔT = 2.8°C, cooling corr = +0.05°C, fuse = 8 cal, acid = 25 cal. H = 3.5%.
+Corrected ΔT = 2.8 + 0.05 = 2.85°C
+Heat from combustion = (W + w) × ΔT = (1500 + 250) × 2.85 = 1750 × 2.85 = 4987.5 cal
+Net heat from fuel = 4987.5 − 8 − 25 = 4954.5 cal
+HCV = 4954.5 / 0.75 = 6606 cal/g
+LCV = HCV − 9 × 3.5/100 × 587 = 6606 − 184.9 = 6421.1 cal/g
+Problem 5 — Bomb Calorimeter (1.5 g coal, 1500 g water, ΔT = 2.5°C, H = 6%)
+Given: m = 1.5 g, W = 1500 g, w = 350 g, T₁ = 25.0°C, T₂ = 27.5°C → ΔT = 2.5°C, cooling corr = +0.04°C.
+Corrected ΔT = 2.5 + 0.04 = 2.54°C
+HCV = [(1500 + 350) × 1 × 2.54] / 1.5
+= [1850 × 2.54] / 1.5
+= 4699 / 1.5
+HCV = 3132.7 cal/g  (Note: this is relatively low for coal)
+LCV = 3132.7 − 9 × 6/100 × 587 = 3132.7 − 316.98 = 2815.7 cal/g
+
+UNIT 3 — Battery Technology Numericals
+Problem 1 — Feasibility of Reactions
+Given: 2Fe³⁺ + 2e⁻ → 2Fe²⁺, E° = +0.77 V; Cl⁻ → Cl₂, E°(Cl₂/Cl⁻) = +1.36 V (red); Br₂/Br⁻ E°(red) = +1.09 V.
+(a) Fe³⁺ and Cl⁻: For Cl⁻ to be oxidized to Cl₂, E°(cell) = E°(reduction of Fe³⁺) − E°(reduction of Cl₂) = 0.77 − 1.36 = −0.59 V. Negative → NOT feasible.
+(b) Fe³⁺ and Br⁻: Fe³⁺ is reduced (E° = +0.77 V); Br⁻ is oxidized (E°red of Br₂ = +1.09 V).
+E°cell = E°(reduction of Fe³⁺) − E°(reduction of Br₂) = 0.77 − 1.09 = −0.32 V → NOT feasible.
+(c) Br₂ and Fe²⁺: Br₂ is reduced (E° = +1.09 V); Fe²⁺ is oxidized to Fe³⁺ (E°red of Fe³⁺ = +0.77 V).
+E°cell = E°(reduction of Br₂) − E°(reduction of Fe³⁺/Fe²⁺) = 1.09 − 0.77 = +0.32 V → FEASIBLE.
+Problem 2 — Nernst Equation (Zn-Cu cell)
+Cell: Zn | Zn²⁺(0.1 M) ‖ Cu²⁺(1.0 M) | Cu. E°(Zn²⁺/Zn) = −0.76 V, E°(Cu²⁺/Cu) = +0.34 V.
+E°cell = E°cathode − E°anode = 0.34 − (−0.76) = 1.10 V
+Cell reaction: Zn + Cu²⁺ → Zn²⁺ + Cu, n = 2
+Q = [Zn²⁺] / [Cu²⁺] = 0.1 / 1.0 = 0.1
+E = E° − (0.0591/n) × log Q
+E = 1.10 − (0.0591/2) × log(0.1)
+E = 1.10 − 0.02955 × (−1)
+E = 1.10 + 0.02955 = 1.1296 V ≈ 1.13 V
+Problem 3 — Nernst Equation (Cd-Ag cell)
+Cell: Cd | Cd²⁺(0.1 M) ‖ Ag⁺(0.01 M) | Ag. E°(Cd²⁺/Cd) = −0.40 V, E°(Ag⁺/Ag) = +0.80 V.
+Cell reaction: Cd + 2 Ag⁺ → Cd²⁺ + 2 Ag, n = 2
+E°cell = 0.80 − (−0.40) = 1.20 V
+Q = [Cd²⁺] / [Ag⁺]² = 0.1 / (0.01)² = 0.1 / 0.0001 = 1000
+E = 1.20 − (0.0591/2) × log(1000)
+E = 1.20 − 0.02955 × 3
+E = 1.20 − 0.0887 = 1.111 V ≈ 1.11 V
+
+— END OF ANSWER BOOKLET — Best of Luck in Your Exam! —

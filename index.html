@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Academic Study Portal | Wiki Suite</title>
+  <title>Academic Study Portal | Selection Hub</title>
+  <link rel="stylesheet" href="nav-header.css">
+  <script src="nav-header.js" defer></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
     :root {
-      --bg: #090d16;
-      --card-bg: #111827;
+      --bg: #050711;
+      --card-bg: rgba(13, 17, 33, 0.65);
       --text: #f3f4f6;
       --text-muted: #9ca3af;
       --border: rgba(255, 255, 255, 0.08);
       
-      /* Subject Colors */
-      --color-ds: #10b981;       /* Emerald */
-      --color-web: #3b82f6;      /* Blue */
-      --color-phil: #f59e0b;     /* Amber */
-      --color-maths: #8b5cf6;    /* Purple */
-      --color-chem: #06b6d4;     /* Cyan */
+      --color-sem1: #3b82f6;       /* Blue */
+      --color-sem1-rgb: 59, 130, 246;
+      --color-sem2: #8b5cf6;       /* Purple */
+      --color-sem2-rgb: 139, 92, 246;
     }
 
     * {
@@ -32,47 +32,51 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
+        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       min-height: 100vh;
-      padding: 5rem 2rem;
+      padding: 2rem;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1000px;
       width: 100%;
+      padding: 4rem 0;
     }
 
     header {
       text-align: center;
-      margin-bottom: 5rem;
+      margin-bottom: 4rem;
+      animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     .portal-tag {
       display: inline-block;
       padding: 0.35rem 1rem;
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.2);
+      background: rgba(139, 92, 246, 0.08);
+      border: 1px solid rgba(139, 92, 246, 0.2);
       border-radius: 100px;
       font-size: 0.75rem;
       font-weight: 700;
-      color: #60a5fa;
+      color: #a78bfa;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.05);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05);
     }
 
     h1 {
-      font-size: 3.8rem;
+      font-size: 4rem;
       font-weight: 800;
+      font-family: 'Outfit', sans-serif;
       letter-spacing: -0.04em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+      background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -80,32 +84,36 @@
     h1 span {
       font-weight: 400;
       font-style: italic;
-      background: linear-gradient(135deg, #6366f1, #a855f7);
+      background: linear-gradient(135deg, #60a5fa, #c084fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     p.subtitle {
       color: var(--text-muted);
-      font-size: 1.2rem;
-      max-width: 600px;
+      font-size: 1.25rem;
+      max-width: 650px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 3rem;
       width: 100%;
+      animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+      opacity: 0;
+      transform: translateY(20px);
     }
 
     .card {
-      background: rgba(17, 24, 39, 0.6);
-      backdrop-filter: blur(12px);
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 2.5rem;
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
       text-decoration: none;
       color: inherit;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -122,139 +130,113 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: var(--subject-color);
+      background: linear-gradient(90deg, var(--theme-color), var(--theme-color-secondary, var(--theme-color)));
       opacity: 0.8;
       transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card:hover {
-      transform: translateY(-8px);
-      border-color: var(--subject-color);
+      transform: translateY(-12px);
+      border-color: var(--theme-color);
       box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(var(--subject-rgb), 0.1);
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(var(--theme-rgb), 0.12);
     }
 
     .card:hover::before {
-      height: 6px;
+      height: 8px;
     }
 
     .card-icon-wrapper {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
-      background: rgba(var(--subject-rgb), 0.08);
-      border: 1px solid rgba(var(--subject-rgb), 0.15);
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: rgba(var(--theme-rgb), 0.08);
+      border: 1px solid rgba(var(--theme-rgb), 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
       margin-bottom: 2rem;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .card:hover .card-icon-wrapper {
-      transform: scale(1.1) rotate(5deg);
+      transform: scale(1.1) rotate(6deg);
     }
 
     .card h2 {
-      font-size: 1.6rem;
+      font-size: 1.80rem;
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem;
       letter-spacing: -0.02em;
+      font-family: 'Outfit', sans-serif;
     }
 
     .card p {
       color: var(--text-muted);
-      line-height: 1.6;
-      font-size: 0.95rem;
+      line-height: 1.7;
+      font-size: 1rem;
       flex-grow: 1;
+      margin-bottom: 2.5rem;
     }
 
     .card-footer {
-      margin-top: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--subject-color);
-      opacity: 0.8;
-      transition: gap 0.2s;
-    }
-
-    .card:hover .card-footer {
-      gap: 0.8rem;
-      opacity: 1;
-    }
-
-    .card-footer svg {
-      transition: transform 0.2s;
-    }
-
-    .card:hover .card-footer svg {
-      transform: translateX(2px);
-    }
-
-    /* Nested Card Sub-links CSS */
-    .card-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      margin-top: 2rem;
-      width: 100%;
-    }
-
-    .card-link-btn {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.85rem 1.25rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 14px;
-      color: #ffffff;
-      font-size: 0.9rem;
+      padding: 1rem 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      font-size: 0.95rem;
       font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      color: #ffffff;
+      transition: all 0.3s ease;
     }
 
-    .card-link-btn svg {
+    .card:hover .card-footer {
+      background: rgba(var(--theme-rgb), 0.15);
+      border-color: rgba(var(--theme-rgb), 0.3);
+      box-shadow: 0 4px 15px rgba(var(--theme-rgb), 0.1);
+    }
+
+    .card-footer svg {
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      color: var(--subject-color);
-      opacity: 0.8;
+      color: var(--theme-color);
     }
 
-    .card-link-btn:hover {
-      background: rgba(var(--subject-rgb), 0.1);
-      border-color: rgba(var(--subject-rgb), 0.3);
-      box-shadow: 0 4px 15px rgba(var(--subject-rgb), 0.1);
-      transform: translateY(-2px);
+    .card:hover .card-footer svg {
+      transform: translateX(6px);
     }
 
-    .card-link-btn:hover svg {
-      transform: translateX(4px);
-      opacity: 1;
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (max-width: 768px) {
       body {
-        padding: 3rem 1.5rem;
+        padding: 2rem 1rem;
       }
       h1 {
         font-size: 2.8rem;
       }
       p.subtitle {
-        font-size: 1rem;
+        font-size: 1.05rem;
       }
       .grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 2rem;
       }
       .card {
-        padding: 2rem;
+        padding: 2.5rem 2rem;
       }
     }
   </style>
@@ -263,74 +245,31 @@
 
   <div class="container">
     <header>
-      <div class="portal-tag">Wiki & Exam Prep Suite</div>
+      <div class="portal-tag">Master Academic Suite</div>
       <h1>Academic Study <span>Portal</span></h1>
-      <p class="subtitle">A premium, high-fidelity curation of visual notes, question banks, and interactive tools for your end-term mastery.</p>
+      <p class="subtitle">Select your academic term to browse custom visual wikis, solved assignments, and interactive simulation dashboards.</p>
     </header>
 
     <div class="grid">
-      <!-- Data Structures (Unified Card) -->
-      <div class="card" style="--subject-color: var(--color-ds); --subject-rgb: 16, 185, 129;">
-        <div class="card-icon-wrapper">🌳</div>
-        <h2>Data Structures</h2>
-        <p>Master arrays, linked lists, trees, and graphs. Packed with interactive mindmaps, AVL rotation traces, loop complexity calculators, and mock exams for both viva and written preparation.</p>
-        <div class="card-links">
-          <a href="./ds/ds.html" class="card-link-btn">
-            <span>viva</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="./ds/Exam-Material/written-exam-prep.html" class="card-link-btn">
-            <span>written-exam prep</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="./ds/Exam-Material/written-exam-prep.html#practise-sir-ques" class="card-link-btn">
-            <span>Sir's Practice Qs 👨‍🏫</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
+      <!-- Semester I -->
+      <a href="./sem1/index.html" class="card" style="--theme-color: var(--color-sem1); --theme-color-secondary: #fbbf24; --theme-rgb: var(--color-sem1-rgb);">
+        <div class="card-icon-wrapper">⏮️</div>
+        <h2>Semester I Portal</h2>
+        <p>Access python script analysis (GradeBook &amp; Library managers), UNIX shell automations, Pygame adventure game breakdowns, and client-side web development labs.</p>
+        <div class="card-footer">
+          <span>Enter Semester I Portal</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </div>
-      </div>
+      </a>
       
-      <!-- Web Development -->
-      <a href="./web-dev/index.html" class="card" style="--subject-color: var(--color-web); --subject-rgb: 59, 130, 246;">
-        <div class="card-icon-wrapper">⚛️</div>
-        <h2>Web Development</h2>
-        <p>A premium wiki suite covering high-fidelity React architecture, core JS foundations (Event Loop, Call Stack), Practical-Prep (Array algorithms), and comprehensive PDF Question Banks.</p>
+      <!-- Semester II -->
+      <a href="./sem2/index.html" class="card" style="--theme-color: var(--color-sem2); --theme-color-secondary: #10b981; --theme-rgb: var(--color-sem2-rgb);">
+        <div class="card-icon-wrapper">🚀</div>
+        <h2>Semester II Portal</h2>
+        <p>Access advanced Data Structures, Web Development II (React structures &amp; Event Loop), Indian Philosophy simulators, Computational Math derivations, and Chemistry solvers.</p>
         <div class="card-footer">
-          <span>Enter Portal</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </div>
-      </a>
-
-      <!-- Indian Philosophy -->
-      <a href="./philosophy/index.html" class="card" style="--subject-color: var(--color-phil); --subject-rgb: 245, 158, 11;">
-        <div class="card-icon-wrapper">🕉️</div>
-        <h2>Indian Philosophy</h2>
-        <p>Comprehensive exam preparation covering Astika & Nastika schools, Yoga, Gunas, Mimamsa, Buddhism, and Modern Indian Thinkers. Features flashcards, text-to-speech, and interactive quizzes.</p>
-        <div class="card-footer">
-          <span>Enter Portal</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </div>
-      </a>
-
-      <!-- Computational Maths -->
-      <a href="./comp-maths/index.html" class="card" style="--subject-color: var(--color-maths); --subject-rgb: 139, 92, 246;">
-        <div class="card-icon-wrapper">🧮</div>
-        <h2>Computational Maths II</h2>
-        <p>Exhaustive End-Term Master Guide. Loaded with 11 long derivations, 33 short definitions, and fully solved mathematical breakdowns for Assignments 1-3 and Question Banks Vol 1-2.</p>
-        <div class="card-footer">
-          <span>Enter Portal</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </div>
-      </a>
-
-      <!-- Engineering Chemistry -->
-      <a href="./chem/index.html" class="card" style="--subject-color: var(--color-chem); --subject-rgb: 6, 182, 212;">
-        <div class="card-icon-wrapper">🧪</div>
-        <h2>Engineering Chemistry</h2>
-        <p>Dec 2025 End-Term Master Portal. Powered by interactive mathematical solvers, Exam Hotspots (2/5/10 Marks), dynamic PDF/DOCX Solver Hub, complete syllabus coverage, and real slide simulators.</p>
-        <div class="card-footer">
-          <span>Enter Portal</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          <span>Enter Semester II Portal</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </div>
       </a>
     </div>
