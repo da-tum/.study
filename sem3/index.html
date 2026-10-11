@@ -10,20 +10,24 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(17, 24, 39, 0.65);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
+      --bg: #1e232d;
+      --bg-surface: #262c37;
+      --card-bg: #2a313e;
+      --card-hover: #313948;
+      --text: #f1f5f9;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(229, 192, 123, 0.35);
 
-      /* Subject Colors */
-      --color-n2t: #ef4444;       /* Crimson / Hardware */
-      --color-cc: #f59e0b;        /* Amber / Competitive Coding */
-      --color-daa: #10b981;       /* Emerald / Algorithms */
-      --color-web3: #6366f1;      /* Indigo / Fullstack Web */
-      --color-dbms: #06b6d4;      /* Cyan / Database */
-      --color-va: #ec4899;        /* Rose / Verbal Ability */
-      --color-iks: #eab308;       /* Gold / Indian Knowledge Systems */
+      /* Classy Subject Colors */
+      --color-n2t: #f87171;       /* Matte Coral */
+      --color-cc: #e5c07b;        /* Matte Gold */
+      --color-daa: #86efac;       /* Matte Mint */
+      --color-web3: #93c5fd;      /* Matte Sky */
+      --color-dbms: #67e8f9;      /* Matte Cyan */
+      --color-va: #f472b6;        /* Matte Rose */
+      --color-iks: #fde047;       /* Matte Ochre */
     }
 
     * {
@@ -36,9 +40,9 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 8% 18%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
-        radial-gradient(circle at 92% 82%, rgba(99, 102, 241, 0.07) 0%, transparent 45%);
-      color: var(--text);
+        radial-gradient(circle at 8% 18%, rgba(229, 192, 123, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 92% 82%, rgba(147, 197, 253, 0.04) 0%, transparent 45%);
+      color: var(--text-body);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -62,16 +66,16 @@
       align-items: center;
       gap: 6px;
       padding: 0.35rem 1rem;
-      background: rgba(245, 158, 11, 0.08);
-      border: 1px solid rgba(245, 158, 11, 0.25);
+      background: rgba(229, 192, 123, 0.1);
+      border: 1px solid rgba(229, 192, 123, 0.28);
       border-radius: 100px;
       font-size: 0.75rem;
       font-weight: 700;
-      color: #fbbf24;
+      color: #e5c07b;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.08);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     h1 {
@@ -80,15 +84,14 @@
       font-family: 'Outfit', sans-serif;
       letter-spacing: -0.04em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 30%, #fcd34d 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text);
     }
 
     h1 span {
       font-weight: 400;
       font-style: italic;
-      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      color: #e5c07b;
+      background: linear-gradient(135deg, #e5c07b, #fde047);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -109,11 +112,11 @@
       justify-content: space-between;
       gap: 1rem;
       margin-bottom: 2.5rem;
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--bg-surface);
       border: 1px solid var(--border);
       padding: 0.85rem 1.5rem;
-      border-radius: 20px;
-      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     .filter-tags {
@@ -123,11 +126,11 @@
     }
 
     .filter-btn {
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card-bg);
       border: 1px solid var(--border);
       color: var(--text-muted);
       padding: 0.4rem 0.9rem;
-      border-radius: 12px;
+      border-radius: 10px;
       font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
@@ -135,19 +138,19 @@
     }
 
     .filter-btn:hover, .filter-btn.active {
-      color: #ffffff;
-      background: rgba(245, 158, 11, 0.15);
-      border-color: rgba(245, 158, 11, 0.4);
+      color: var(--text);
+      background: rgba(229, 192, 123, 0.14);
+      border-color: rgba(229, 192, 123, 0.4);
     }
 
     .search-box {
       display: flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 0, 0, 0.25);
+      background: var(--card-bg);
       border: 1px solid var(--border);
       padding: 0.45rem 1rem;
-      border-radius: 14px;
+      border-radius: 12px;
       min-width: 260px;
     }
 
@@ -174,18 +177,17 @@
 
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 2.5rem;
       text-decoration: none;
       color: inherit;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
     }
 
     .card::before {
@@ -194,18 +196,19 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 3px;
       background: var(--subject-color);
-      opacity: 0.8;
-      transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.9;
+      transition: height 0.35s ease;
     }
 
     .card:hover {
       transform: translateY(-8px);
+      background: var(--card-hover);
       border-color: var(--subject-color);
       box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.45),
-        0 0 35px rgba(var(--subject-rgb), 0.15);
+        0 20px 40px rgba(0, 0, 0, 0.35),
+        0 0 30px rgba(var(--subject-rgb), 0.12);
     }
 
     .card:hover::before {

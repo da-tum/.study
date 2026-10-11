@@ -85,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: 'Philosophy', path: 'sem2/philosophy/index.html', icon: '🕉️', id: 'philosophy', accent: '#f59e0b', rgb: '245, 158, 11' },
       { name: 'Maths', path: 'sem2/comp-maths/index.html', icon: '🧮', id: 'comp-maths', accent: '#8b5cf6', rgb: '139, 92, 246' },
       { name: 'Chemistry', path: 'sem2/chem/index.html', icon: '🧪', id: 'chem', accent: '#06b6d4', rgb: '6, 182, 212' },
+      { name: 'Sem 1 Portal', path: 'sem1/index.html', icon: '⏮️', id: 'sem1-portal' },
       { name: 'Sem 3 Portal', path: 'sem3/index.html', icon: '⚡', id: 'sem3-portal' }
     ];
   } else if (isSem3) {
@@ -96,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: 'Web Dev 3', path: 'sem3/Web-Dev-3/index.html', icon: '🌐', id: 'Web-Dev-3', accent: '#6366f1', rgb: '99, 102, 241' },
       { name: 'DBMS', path: 'sem3/DBMS/index.html', icon: '🗄️', id: 'DBMS', accent: '#06b6d4', rgb: '6, 182, 212' },
       { name: 'VA', path: 'sem3/VA/index.html', icon: '🗣️', id: 'VA', accent: '#ec4899', rgb: '236, 72, 153' },
-      { name: 'OEIKS001', path: 'sem3/OEIKS001/index.html', icon: '📜', id: 'OEIKS001', accent: '#eab308', rgb: '234, 179, 8' }
+      { name: 'OEIKS001', path: 'sem3/OEIKS001/index.html', icon: '📜', id: 'OEIKS001', accent: '#eab308', rgb: '234, 179, 8' },
+      { name: 'Sem 1 Portal', path: 'sem1/index.html', icon: '⏮️', id: 'sem1-portal' },
+      { name: 'Sem 2 Portal', path: 'sem2/index.html', icon: '🚀', id: 'sem2-portal' }
     ];
   } else {
     // Standard dashboard options on root homepage

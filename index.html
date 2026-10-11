@@ -10,18 +10,23 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
     :root {
-      --bg: #050711;
-      --card-bg: rgba(13, 17, 33, 0.65);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
+      --bg: #1e232d;
+      --bg-surface: #262c37;
+      --card-bg: #2a313e;
+      --card-hover: #313948;
+      --text: #f1f5f9;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
       --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(229, 192, 123, 0.35);
       
-      --color-sem1: #3b82f6;       /* Blue */
-      --color-sem1-rgb: 59, 130, 246;
-      --color-sem2: #8b5cf6;       /* Purple */
-      --color-sem2-rgb: 139, 92, 246;
-      --color-sem3: #f59e0b;       /* Amber */
-      --color-sem3-rgb: 245, 158, 11;
+      --color-sem1: #93c5fd;       /* Matte Sky */
+      --color-sem1-rgb: 147, 197, 253;
+      --color-sem2: #d8b4fe;       /* Matte Lilac */
+      --color-sem2-rgb: 216, 180, 254;
+      --color-sem3: #e5c07b;       /* Matte Gold */
+      --color-sem3-rgb: 229, 192, 123;
     }
 
     * {
@@ -34,9 +39,9 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
-      color: var(--text);
+        radial-gradient(circle at 15% 15%, rgba(147, 197, 253, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(229, 192, 123, 0.05) 0%, transparent 45%);
+      color: var(--text-body);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -60,40 +65,39 @@
     .portal-tag {
       display: inline-block;
       padding: 0.35rem 1rem;
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.2);
+      background: rgba(229, 192, 123, 0.1);
+      border: 1px solid rgba(229, 192, 123, 0.28);
       border-radius: 100px;
       font-size: 0.75rem;
       font-weight: 700;
-      color: #a78bfa;
+      color: #e5c07b;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     h1 {
-      font-size: 4rem;
+      font-size: 3.8rem;
       font-weight: 800;
       font-family: 'Outfit', sans-serif;
       letter-spacing: -0.04em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text);
     }
 
     h1 span {
       font-weight: 400;
       font-style: italic;
-      background: linear-gradient(135deg, #60a5fa, #c084fc);
+      color: #e5c07b;
+      background: linear-gradient(135deg, #e5c07b, #fde047);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     p.subtitle {
       color: var(--text-muted);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       max-width: 650px;
       margin: 0 auto;
       line-height: 1.6;
@@ -111,18 +115,17 @@
 
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 3rem 2.5rem;
+      border-radius: 24px;
+      padding: 2.75rem 2.25rem;
       text-decoration: none;
       color: inherit;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
     }
 
     .card::before {
@@ -131,46 +134,47 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, var(--theme-color), var(--theme-color-secondary, var(--theme-color)));
-      opacity: 0.8;
-      transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.9;
+      transition: height 0.35s ease;
     }
 
     .card:hover {
-      transform: translateY(-12px);
+      transform: translateY(-8px);
+      background: var(--card-hover);
       border-color: var(--theme-color);
       box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.5),
-        0 0 40px rgba(var(--theme-rgb), 0.12);
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(var(--theme-rgb), 0.12);
     }
 
     .card:hover::before {
-      height: 8px;
+      height: 6px;
     }
 
     .card-icon-wrapper {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      background: rgba(var(--theme-rgb), 0.08);
-      border: 1px solid rgba(var(--theme-rgb), 0.15);
+      width: 76px;
+      height: 76px;
+      border-radius: 18px;
+      background: rgba(var(--theme-rgb), 0.1);
+      border: 1px solid rgba(var(--theme-rgb), 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 2.4rem;
+      margin-bottom: 1.75rem;
+      transition: transform 0.35s ease;
     }
 
     .card:hover .card-icon-wrapper {
-      transform: scale(1.1) rotate(6deg);
+      transform: scale(1.08) rotate(4deg);
     }
 
     .card h2 {
-      font-size: 1.80rem;
+      font-size: 1.75rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text);
       margin-bottom: 0.8rem;
       letter-spacing: -0.02em;
       font-family: 'Outfit', sans-serif;
@@ -179,29 +183,29 @@
     .card p {
       color: var(--text-muted);
       line-height: 1.7;
-      font-size: 1rem;
+      font-size: 0.98rem;
       flex-grow: 1;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.25rem;
     }
 
     .card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem 1.5rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      font-size: 0.95rem;
+      padding: 0.9rem 1.35rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 0.92rem;
       font-weight: 600;
-      color: #ffffff;
+      color: var(--text);
       transition: all 0.3s ease;
     }
 
     .card:hover .card-footer {
-      background: rgba(var(--theme-rgb), 0.15);
+      background: rgba(var(--theme-rgb), 0.14);
       border-color: rgba(var(--theme-rgb), 0.3);
-      box-shadow: 0 4px 15px rgba(var(--theme-rgb), 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     .card-footer svg {

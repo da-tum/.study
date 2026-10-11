@@ -3,27 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Competitive Coding I (CC-1) | Sessions 1–12 Master Portal</title>
+  <title>Competitive Coding I (CC-1) | Sessions 1–12 Master Study Suite</title>
   <link rel="stylesheet" href="../../nav-header.css">
   <script src="../../nav-header.js" defer></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
 
-    :root {
-      --bg: #090d16;
-      --card-bg: rgba(17, 24, 39, 0.75);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
-      --text-dim: #6b7280;
-      --accent: #f59e0b;
-      --accent-rgb: 245, 158, 11;
-      --accent-secondary: #ef4444;
-      --accent-emerald: #10b981;
-      --accent-cyan: #06b6d4;
-      --accent-purple: #8b5cf6;
-      --code-bg: #050811;
-      --border: rgba(255, 255, 255, 0.08);
+    /* =========================================================================
+       THEME 1: SOFT TWILIGHT (DEFAULT: MATTE GRAPHITE SLATE & WARM CHAMPAGNE GOLD)
+       ========================================================================= */
+    :root, body.theme-twilight, body.theme-dusk {
+      --bg-canvas: #1e232d;
+      --bg-surface: #262c37;
+      --bg-card: #2a313e;
+      --bg-card-subtle: #313948;
+      --border-card: rgba(255, 255, 255, 0.08);
+      --border-card-hover: rgba(229, 192, 123, 0.4);
+      --border-subtle: rgba(255, 255, 255, 0.05);
+
+      --text-heading: #f1f5f9;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      --accent-gold: #e5c07b;
+      --accent-gold-light: #fde047;
+      --accent-gold-bg: rgba(229, 192, 123, 0.12);
+      --accent-gold-border: rgba(229, 192, 123, 0.28);
+
+      --sage-accent: #86efac;
+      --sage-bg: rgba(134, 239, 172, 0.1);
+      --sage-border: rgba(134, 239, 172, 0.25);
+      --sage-chip: rgba(134, 239, 172, 0.15);
+
+      --denim-accent: #93c5fd;
+      --denim-bg: rgba(147, 197, 253, 0.1);
+      --denim-border: rgba(147, 197, 253, 0.25);
+      --denim-chip: rgba(147, 197, 253, 0.15);
+
+      --diff-easy: #86efac;
+      --diff-medium: #e5c07b;
+      --diff-hard: #fca5a5;
+
+      --table-th-bg: #242b36;
+      --table-tr-alt: rgba(255, 255, 255, 0.015);
+
+      --code-bg: #1a1e27;
+      --code-header-bg: #242b36;
+      --code-header-text: #f1f5f9;
+      --code-gutter-bg: #1e232d;
+      --code-gutter-text: #64748b;
+      --code-gutter-border: rgba(255, 255, 255, 0.06);
+      --code-text: #e2e8f0;
+      --code-pill-bg: rgba(255, 255, 255, 0.05);
+      --code-pill-border: rgba(255, 255, 255, 0.08);
+      --code-pill-text: #cbd5e1;
+      --code-desc-bg: rgba(255, 255, 255, 0.02);
+
+      --tok-kw: #d8b4fe;
+      --tok-fn: #fde047;
+      --tok-builtin: #93c5fd;
+      --tok-const: #fdba74;
+      --tok-num: #fca5a5;
+      --tok-str: #86efac;
+      --tok-comment: #94a3b8;
+      --tok-op: #f87171;
+    }
+
+    /* =========================================================================
+       THEME 2: WARM LINEN (GENTLE BOOK PAPER, EYE-RESTING)
+       ========================================================================= */
+    body.theme-linen {
+      --bg-canvas: #fbf9f4;
+      --bg-surface: #f4eee3;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #f8f5ee;
+      --border-card: #e5ded2;
+      --border-card-hover: #b45309;
+      --border-subtle: #ede6da;
+
+      --text-heading: #1e293b;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+
+      --accent-gold: #b45309;
+      --accent-gold-light: #92400e;
+      --accent-gold-bg: rgba(180, 83, 9, 0.08);
+      --accent-gold-border: rgba(180, 83, 9, 0.24);
+
+      --sage-accent: #15803d;
+      --sage-bg: rgba(21, 128, 61, 0.08);
+      --sage-border: rgba(21, 128, 61, 0.22);
+      --sage-chip: rgba(21, 128, 61, 0.12);
+
+      --denim-accent: #1d4ed8;
+      --denim-bg: rgba(29, 78, 216, 0.08);
+      --denim-border: rgba(29, 78, 216, 0.22);
+      --denim-chip: rgba(29, 78, 216, 0.12);
+
+      --diff-easy: #15803d;
+      --diff-medium: #b45309;
+      --diff-hard: #b91c1c;
+
+      --table-th-bg: #f5efe4;
+      --table-tr-alt: rgba(0, 0, 0, 0.015);
+
+      --code-bg: #f5efe4;
+      --code-header-bg: #ebe3d5;
+      --code-header-text: #1e293b;
+      --code-gutter-bg: #ece5d7;
+      --code-gutter-text: #8c97a8;
+      --code-gutter-border: rgba(0, 0, 0, 0.08);
+      --code-text: #1e293b;
+      --code-pill-bg: rgba(0, 0, 0, 0.05);
+      --code-pill-border: rgba(0, 0, 0, 0.08);
+      --code-pill-text: #334155;
+      --code-desc-bg: rgba(0, 0, 0, 0.025);
+
+      --tok-kw: #7c3aed;
+      --tok-fn: #b45309;
+      --tok-builtin: #1d4ed8;
+      --tok-const: #c2410c;
+      --tok-num: #d97706;
+      --tok-str: #15803d;
+      --tok-comment: #64748b;
+      --tok-op: #b91c1c;
+    }
+
+    /* =========================================================================
+       THEME 3: ZEN MATCHA (SOOTHING HERBAL TEA & MIST STUDY)
+       ========================================================================= */
+    body.theme-matcha {
+      --bg-canvas: #f4f8f5;
+      --bg-surface: #e7efe9;
+      --bg-card: #ffffff;
+      --bg-card-subtle: #edf4ef;
+      --border-card: #d2e0d5;
+      --border-card-hover: #2d6a4f;
+      --border-subtle: #e0ebe2;
+
+      --text-heading: #132e1f;
+      --text-body: #244230;
+      --text-muted: #52796f;
+      --text-dim: #78998d;
+
+      --accent-gold: #b07d2b;
+      --accent-gold-light: #8c621e;
+      --accent-gold-bg: rgba(176, 125, 43, 0.09);
+      --accent-gold-border: rgba(176, 125, 43, 0.25);
+
+      --sage-accent: #2d6a4f;
+      --sage-bg: rgba(45, 106, 79, 0.08);
+      --sage-border: rgba(45, 106, 79, 0.22);
+      --sage-chip: rgba(45, 106, 79, 0.12);
+
+      --denim-accent: #1f6f8b;
+      --denim-bg: rgba(31, 111, 139, 0.08);
+      --denim-border: rgba(31, 111, 139, 0.22);
+      --denim-chip: rgba(31, 111, 139, 0.12);
+
+      --diff-easy: #2d6a4f;
+      --diff-medium: #b07d2b;
+      --diff-hard: #b91c1c;
+
+      --table-th-bg: #eaf2ec;
+      --table-tr-alt: rgba(45, 106, 79, 0.02);
+
+      --code-bg: #ecf3ee;
+      --code-header-bg: #dee9e0;
+      --code-header-text: #132e1f;
+      --code-gutter-bg: #e2ece4;
+      --code-gutter-text: #52796f;
+      --code-gutter-border: rgba(45, 106, 79, 0.12);
+      --code-text: #142d1f;
+      --code-pill-bg: rgba(45, 106, 79, 0.05);
+      --code-pill-border: rgba(45, 106, 79, 0.12);
+      --code-pill-text: #244230;
+      --code-desc-bg: rgba(45, 106, 79, 0.03);
+
+      --tok-kw: #6d28d9;
+      --tok-fn: #b07d2b;
+      --tok-builtin: #1f6f8b;
+      --tok-const: #c2410c;
+      --tok-num: #d97706;
+      --tok-str: #2d6a4f;
+      --tok-comment: #52796f;
+      --tok-op: #b91c1c;
+    }
+
+    /* Light Theme Nav Overrides (only active if user selects Linen or Matcha) */
+    body.theme-linen .global-nav-header {
+      background: rgba(251, 249, 244, 0.94) !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 1px 8px rgba(90, 80, 60, 0.04) !important;
+    }
+    body.theme-linen .global-nav-logo {
+      color: #1e293b !important;
+    }
+    body.theme-linen .global-nav-logo span.gradient-text {
+      background: linear-gradient(135deg, #1e293b 30%, #475569 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    body.theme-linen .global-nav-item {
+      color: #475569 !important;
+    }
+    body.theme-linen .global-nav-item:hover {
+      color: #0f172a !important;
+      background: rgba(0, 0, 0, 0.04) !important;
+      border-color: rgba(0, 0, 0, 0.08) !important;
+    }
+    body.theme-linen .global-nav-item.active {
+      color: #b45309 !important;
+      background: rgba(180, 83, 9, 0.08) !important;
+      border-color: rgba(180, 83, 9, 0.28) !important;
+      box-shadow: 0 0 12px rgba(180, 83, 9, 0.12) !important;
+    }
+
+    body.theme-matcha .global-nav-header {
+      background: rgba(244, 248, 245, 0.94) !important;
+      border-bottom: 1px solid rgba(45, 106, 79, 0.1) !important;
+      box-shadow: 0 1px 8px rgba(45, 106, 79, 0.04) !important;
+    }
+    body.theme-matcha .global-nav-logo {
+      color: #132e1f !important;
+    }
+    body.theme-matcha .global-nav-item {
+      color: #375344 !important;
+    }
+    body.theme-matcha .global-nav-item:hover {
+      color: #132e1f !important;
+      background: rgba(45, 106, 79, 0.06) !important;
+      border-color: rgba(45, 106, 79, 0.12) !important;
+    }
+    body.theme-matcha .global-nav-item.active {
+      color: #2d6a4f !important;
+      background: rgba(45, 106, 79, 0.1) !important;
+      border-color: rgba(45, 106, 79, 0.3) !important;
+      box-shadow: 0 0 12px rgba(45, 106, 79, 0.15) !important;
     }
 
     * {
@@ -34,28 +252,34 @@
     }
 
     code, pre {
-      font-family: 'Fira Code', monospace;
+      font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
     }
 
     body {
-      background: var(--bg);
-      background-image: 
-        radial-gradient(circle at 10% 12%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 90% 88%, rgba(239, 68, 68, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 60%);
-      color: var(--text);
+      background: var(--bg-canvas);
+      color: var(--text-body);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      /* Top padding to ensure fixed global navbar (68px) never clips content */
       padding: 85px 1.25rem 5rem;
       overflow-x: hidden;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
     .container {
-      max-width: 1220px;
+      max-width: 1300px;
       width: 100%;
+    }
+
+    /* Top Breadcrumb & Theme Bar */
+    .top-utility-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .breadcrumb {
@@ -64,7 +288,6 @@
       gap: 8px;
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
 
@@ -75,7 +298,54 @@
     }
 
     .breadcrumb a:hover {
-      color: var(--accent);
+      color: var(--accent-gold);
+    }
+
+    /* Soothing Theme Switcher Control */
+    .theme-switcher-box {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .theme-switcher-label {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      padding: 0 6px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .theme-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      padding: 0.26rem 0.65rem;
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-btn:hover {
+      color: var(--text-heading);
+      background: var(--bg-card-subtle);
+    }
+
+    .theme-btn.active {
+      background: var(--bg-card);
+      color: var(--text-heading);
+      border-color: var(--border-card);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      font-weight: 700;
     }
 
     /* Hero Section */
@@ -88,43 +358,37 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 0.3rem 0.85rem;
-      background: rgba(var(--accent-rgb), 0.12);
-      border: 1px solid rgba(var(--accent-rgb), 0.3);
-      border-radius: 100px;
+      padding: 0.32rem 0.85rem;
+      background: var(--accent-gold-bg);
+      border: 1px solid var(--accent-gold-border);
+      border-radius: 6px;
       font-size: 0.72rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--accent-gold);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       margin-bottom: 0.85rem;
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 2.5rem;
       font-weight: 800;
       font-family: 'Outfit', sans-serif;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.03em;
       margin-bottom: 0.65rem;
-      background: linear-gradient(135deg, #ffffff 30%, #fde68a 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.15;
+      color: var(--text-heading);
+      line-height: 1.2;
     }
 
     h1 span {
-      font-weight: 400;
-      font-style: italic;
-      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--accent-gold);
     }
 
     .lead {
       color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 900px;
-      line-height: 1.6;
+      font-size: 1.02rem;
+      max-width: 960px;
+      line-height: 1.65;
       margin-bottom: 1.75rem;
     }
 
@@ -137,70 +401,60 @@
     }
 
     .stat-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
       padding: 0.85rem 1.1rem;
       display: flex;
       align-items: center;
       gap: 0.85rem;
-      backdrop-filter: blur(10px);
       transition: all 0.25s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .stat-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.3);
+      border-color: var(--border-card-hover);
       transform: translateY(-2px);
     }
 
     .stat-icon {
       width: 38px;
       height: 38px;
-      border-radius: 10px;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      border-radius: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       flex-shrink: 0;
     }
 
     .stat-info h4 {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text-heading);
       font-family: 'Outfit', sans-serif;
     }
 
     .stat-info p {
-      font-size: 0.7rem;
+      font-size: 0.68rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
     }
 
     /* =========================================================================
-       TEACHER PRIORITY SPOTLIGHT SECTION
+       TEACHER PRIORITY SPOTLIGHT (STUDIOUS PARCHMENT AESTHETIC)
        ========================================================================= */
     .teacher-priority-box {
-      background: linear-gradient(135deg, rgba(239, 68, 68, 0.07) 0%, rgba(245, 158, 11, 0.07) 100%);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--accent-gold-border);
+      border-radius: 14px;
       padding: 1.25rem 1.5rem;
       margin-bottom: 2rem;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       position: relative;
-    }
-
-    .teacher-priority-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
     }
 
     .priority-header {
@@ -219,21 +473,21 @@
     }
 
     .priority-header-title h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 800;
       font-family: 'Outfit', sans-serif;
-      color: #ffffff;
-      letter-spacing: -0.02em;
+      color: var(--text-heading);
+      letter-spacing: -0.01em;
     }
 
     .priority-chain-formula {
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
       border-radius: 8px;
       padding: 0.45rem 0.85rem;
       font-size: 0.76rem;
       font-family: 'Fira Code', monospace;
-      color: #fde68a;
+      color: var(--text-body);
       overflow-x: auto;
       white-space: nowrap;
       margin-bottom: 0.85rem;
@@ -244,7 +498,7 @@
     }
 
     .priority-chain-formula span.gt {
-      color: #ef4444;
+      color: var(--accent-gold);
       font-weight: bold;
     }
 
@@ -255,8 +509,8 @@
     }
 
     .priority-chip {
-      background: rgba(17, 24, 39, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
       border-radius: 10px;
       padding: 0.6rem 0.8rem;
       cursor: pointer;
@@ -267,8 +521,8 @@
     }
 
     .priority-chip:hover {
-      background: rgba(245, 158, 11, 0.15);
-      border-color: rgba(245, 158, 11, 0.45);
+      background: var(--accent-gold-bg);
+      border-color: var(--accent-gold-border);
       transform: translateY(-2px);
     }
 
@@ -276,8 +530,9 @@
       width: 24px;
       height: 24px;
       border-radius: 6px;
-      background: linear-gradient(135deg, #ef4444, #f59e0b);
-      color: #000;
+      background: var(--accent-gold-bg);
+      border: 1px solid var(--accent-gold-border);
+      color: var(--accent-gold);
       font-weight: 800;
       font-size: 0.72rem;
       display: flex;
@@ -294,7 +549,7 @@
     .chip-title {
       font-size: 0.78rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text-heading);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -306,18 +561,16 @@
     }
 
     /* =========================================================================
-       NON-STICKY FILTER & NAVIGATION SECTION (SIMPLY SCROLLS WITH PAGE)
+       NON-STICKY FILTER & NAVIGATION SECTION (SCROLLS WITH PAGE)
        ========================================================================= */
     .nav-filter-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
       padding: 1.25rem 1.5rem;
       margin-bottom: 2rem;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-      /* STRICTLY NON-STICKY: Normal document flow, scrolls simply */
-      position: static !important;
+      position: static !important; /* STRICTLY NON-STICKY */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
     .filter-row-top {
@@ -333,7 +586,7 @@
       position: relative;
       flex: 1;
       min-width: 240px;
-      max-width: 340px;
+      max-width: 320px;
     }
 
     .search-icon {
@@ -349,19 +602,18 @@
     .search-input {
       width: 100%;
       height: 38px;
-      background: rgba(5, 8, 17, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
       padding: 0 0.85rem 0 2.2rem;
-      font-size: 0.85rem;
-      color: #ffffff;
+      font-size: 0.84rem;
+      color: var(--text-heading);
       transition: all 0.2s;
     }
 
     .search-input:focus {
       outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent-gold);
     }
 
     .search-clear-btn {
@@ -386,11 +638,11 @@
 
     .custom-select {
       height: 38px;
-      background: rgba(5, 8, 17, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
       padding: 0 0.85rem;
-      color: #e5e7eb;
+      color: var(--text-body);
       font-size: 0.82rem;
       font-weight: 500;
       cursor: pointer;
@@ -399,7 +651,7 @@
     }
 
     .custom-select:focus {
-      border-color: var(--accent);
+      border-color: var(--accent-gold);
     }
 
     /* Preset Pills Row */
@@ -409,15 +661,15 @@
       flex-wrap: wrap;
       margin-bottom: 1rem;
       padding-bottom: 0.75rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .preset-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 100px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
       padding: 0.4rem 0.9rem;
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       font-weight: 600;
       color: var(--text-muted);
       cursor: pointer;
@@ -428,24 +680,24 @@
     }
 
     .preset-pill:hover {
-      background: rgba(255, 255, 255, 0.08);
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.2);
+      background: var(--bg-card-subtle);
+      color: var(--text-heading);
+      border-color: rgba(255, 255, 255, 0.18);
     }
 
     .preset-pill.active {
-      background: rgba(var(--accent-rgb), 0.15);
-      border-color: var(--accent);
-      color: #fcd34d;
+      background: var(--accent-gold-bg);
+      border-color: var(--accent-gold);
+      color: var(--text-heading);
       font-weight: 700;
     }
 
     /* Sub-field Sorter Pills Bar */
     .subfield-sorter-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
+      letter-spacing: 0.07em;
+      color: var(--accent-gold);
       font-weight: 700;
       margin-bottom: 0.5rem;
       display: flex;
@@ -461,31 +713,30 @@
     }
 
     .subfield-pill {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
       padding: 0.35rem 0.75rem;
-      font-size: 0.78rem;
+      font-size: 0.77rem;
       font-weight: 600;
-      color: #d1d5db;
+      color: var(--text-body);
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .subfield-pill:hover {
-      background: rgba(245, 158, 11, 0.1);
-      border-color: rgba(245, 158, 11, 0.3);
-      color: #ffffff;
+      background: var(--bg-card-subtle);
+      color: var(--text-heading);
     }
 
     .subfield-pill.active {
-      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(239, 68, 68, 0.25));
-      border-color: var(--accent);
-      color: #ffffff;
+      background: var(--accent-gold-bg);
+      border-color: var(--accent-gold);
+      color: var(--text-heading);
       font-weight: 700;
     }
 
-    /* Progress & Quick Actions */
+    /* Progress Bar Row */
     .progress-bar-row {
       display: flex;
       align-items: center;
@@ -493,7 +744,7 @@
       gap: 0.75rem;
       flex-wrap: wrap;
       padding-top: 0.75rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid var(--border-subtle);
       font-size: 0.78rem;
       color: var(--text-muted);
     }
@@ -503,23 +754,61 @@
       align-items: center;
       gap: 10px;
       flex: 1;
-      max-width: 320px;
+      max-width: 300px;
     }
 
     .meter-bg {
       flex: 1;
       height: 6px;
-      background: rgba(255, 255, 255, 0.08);
+      background: var(--bg-surface);
       border-radius: 100px;
       overflow: hidden;
+      border: 1px solid var(--border-card);
     }
 
     .meter-fill {
       height: 100%;
-      background: linear-gradient(90deg, #10b981, #f59e0b);
+      background: linear-gradient(90deg, var(--sage-accent), var(--accent-gold));
       border-radius: 100px;
       width: 0%;
       transition: width 0.3s ease;
+    }
+
+    /* Layout Mode Toggle (Side-by-Side vs Stacked) */
+    .layout-toggle-group {
+      display: flex;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    .layout-toggle-btn {
+      background: none;
+      border: none;
+      border-radius: 4px;
+      padding: 0.26rem 0.65rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .layout-toggle-btn:hover {
+      color: var(--text-heading);
+    }
+
+    .layout-toggle-btn.active {
+      background: var(--bg-card);
+      color: var(--text-heading);
+      font-weight: 700;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     }
 
     .toggle-all-btns {
@@ -530,7 +819,7 @@
 
     .btn-text {
       background: none;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-card);
       border-radius: 6px;
       padding: 0.3rem 0.65rem;
       color: var(--text-muted);
@@ -541,9 +830,8 @@
     }
 
     .btn-text:hover {
-      background: rgba(255, 255, 255, 0.06);
-      color: #ffffff;
-      border-color: rgba(255, 255, 255, 0.2);
+      background: var(--bg-surface);
+      color: var(--text-heading);
     }
 
     /* =========================================================================
@@ -557,34 +845,29 @@
     }
 
     .problem-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
       padding: 1.35rem 1.5rem;
-      backdrop-filter: blur(12px);
       transition: all 0.25s ease;
       position: relative;
-      /* Scroll offset so card never lands under fixed header */
       scroll-margin-top: 85px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
     .problem-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.3);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+      border-color: var(--border-card-hover);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
     }
 
     .problem-card.teacher-priority-card {
-      border-left: 4px solid #ef4444;
-      background: linear-gradient(180deg, rgba(239, 68, 68, 0.03) 0%, rgba(17, 24, 39, 0.8) 100%);
-    }
-
-    .problem-card.teacher-confirmed-card:not(.teacher-priority-card) {
-      border-left: 4px solid var(--accent);
+      border: 1px solid var(--accent-gold-border);
+      background: linear-gradient(180deg, var(--accent-gold-bg) 0%, var(--bg-card) 100%);
     }
 
     .problem-card.mastered {
       opacity: 0.85;
-      border-color: rgba(16, 185, 129, 0.3);
+      border-color: var(--sage-border);
     }
 
     .card-top-header {
@@ -611,7 +894,7 @@
       font-size: 0.68rem;
       font-weight: 700;
       padding: 0.18rem 0.5rem;
-      border-radius: 6px;
+      border-radius: 5px;
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -619,54 +902,54 @@
     }
 
     .badge-session {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #93c5fd;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      color: var(--text-body);
     }
 
     .badge-subfield {
-      background: rgba(139, 92, 246, 0.12);
-      border: 1px solid rgba(139, 92, 246, 0.25);
-      color: #c4b5fd;
+      background: var(--denim-chip);
+      border: 1px solid var(--denim-border);
+      color: var(--denim-accent);
     }
 
     .badge-priority {
-      background: linear-gradient(135deg, #ef4444, #f59e0b);
-      color: #000000;
+      background: var(--accent-gold-bg);
+      border: 1px solid var(--accent-gold-border);
+      color: var(--accent-gold);
       font-weight: 800;
-      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
     }
 
     .badge-teacher {
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      color: #fde68a;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      color: var(--text-heading);
     }
 
     .badge-diff-easy {
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      color: #6ee7b7;
+      background: var(--sage-chip);
+      border: 1px solid var(--sage-border);
+      color: var(--sage-accent);
     }
 
     .badge-diff-medium {
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.25);
-      color: #fcd34d;
+      background: var(--accent-gold-bg);
+      border: 1px solid var(--accent-gold-border);
+      color: var(--accent-gold);
     }
 
     .badge-diff-hard {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      color: #fca5a5;
+      background: rgba(240, 136, 62, 0.12);
+      border: 1px solid rgba(240, 136, 62, 0.25);
+      color: var(--diff-hard);
     }
 
     .card-title-block h3 {
       font-size: 1.25rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text-heading);
       font-family: 'Outfit', sans-serif;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.25rem;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -680,7 +963,7 @@
     }
 
     .card-title-block h3 a:hover {
-      color: var(--accent);
+      color: var(--accent-gold);
     }
 
     .card-actions-right {
@@ -695,20 +978,20 @@
       align-items: center;
       gap: 5px;
       padding: 0.35rem 0.75rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 600;
-      color: #cbd5e1;
+      color: var(--text-body);
       text-decoration: none;
       transition: all 0.2s;
     }
 
     .external-link-btn:hover {
-      background: rgba(var(--accent-rgb), 0.15);
-      border-color: var(--accent);
-      color: #ffffff;
+      background: var(--accent-gold-bg);
+      border-color: var(--accent-gold-border);
+      color: var(--text-heading);
     }
 
     .mastered-checkbox-wrap {
@@ -722,15 +1005,15 @@
     }
 
     .mastered-checkbox-wrap input {
-      accent-color: #10b981;
+      accent-color: var(--sage-accent);
       width: 15px;
       height: 15px;
       cursor: pointer;
     }
 
     .expand-toggle-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
       width: 28px;
       height: 28px;
       border-radius: 6px;
@@ -743,8 +1026,8 @@
     }
 
     .expand-toggle-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffffff;
+      background: var(--bg-card-subtle);
+      color: var(--text-heading);
     }
 
     .expand-toggle-btn svg {
@@ -760,7 +1043,7 @@
       display: none;
       margin-top: 1.15rem;
       padding-top: 1.15rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      border-top: 1px solid var(--border-subtle);
     }
 
     .problem-card.expanded .card-details-body {
@@ -774,50 +1057,69 @@
     }
 
     .detail-section-block {
-      margin-bottom: 1.15rem;
+      margin-bottom: 1.25rem;
     }
 
     .detail-section-title {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.45rem;
+      color: var(--accent-gold);
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
+    /* Side-by-Side Statement & Intuition Grid */
+    .statement-intuition-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+    }
+
+    @media (max-width: 900px) {
+      .statement-intuition-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .statement-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 10px;
-      padding: 0.8rem 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
+      padding: 0.85rem 1.05rem;
       font-size: 0.86rem;
       line-height: 1.6;
-      color: #e2e8f0;
+      color: var(--text-body);
+      height: 100%;
     }
 
     .intuition-box {
-      background: rgba(13, 19, 34, 0.7);
-      border: 1px solid rgba(6, 182, 212, 0.2);
-      border-left: 3px solid var(--accent-cyan);
-      border-radius: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 8px;
       padding: 0.9rem 1.1rem;
       font-size: 0.86rem;
       line-height: 1.65;
-      color: #cbd5e1;
+      color: var(--text-body);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .formulation-box {
-      background: #050811;
-      border: 1px solid rgba(245, 158, 11, 0.2);
-      border-radius: 8px;
+      background: var(--code-bg);
+      border: 1px solid var(--border-card);
+      border-radius: 6px;
       padding: 0.7rem 0.9rem;
       font-family: 'Fira Code', monospace;
-      font-size: 0.76rem;
-      color: #fde68a;
+      font-size: 0.75rem;
+      color: var(--accent-gold);
       line-height: 1.55;
       margin-top: 0.6rem;
       white-space: pre-wrap;
@@ -827,35 +1129,40 @@
     /* Variable Bifurcation Table */
     .table-container {
       overflow-x: auto;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(5, 8, 17, 0.6);
+      border-radius: 8px;
+      border: 1px solid var(--border-card);
+      background: var(--bg-surface);
       -webkit-overflow-scrolling: touch;
     }
 
     .bifurcation-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.76rem;
+      font-size: 0.77rem;
       text-align: left;
       min-width: 540px;
     }
 
     .bifurcation-table th {
-      background: rgba(255, 255, 255, 0.04);
-      color: #94a3b8;
+      background: var(--table-th-bg);
+      color: var(--text-muted);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      padding: 0.6rem 0.8rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-card);
     }
 
     .bifurcation-table td {
-      padding: 0.6rem 0.8rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--border-subtle);
       vertical-align: top;
       line-height: 1.45;
+      color: var(--text-body);
+    }
+
+    .bifurcation-table tr:nth-child(even) td {
+      background: var(--table-tr-alt);
     }
 
     .bifurcation-table tr:last-child td {
@@ -866,8 +1173,8 @@
       display: inline-block;
       font-family: 'Fira Code', monospace;
       font-weight: 600;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
+      color: var(--denim-accent);
+      background: var(--denim-chip);
       padding: 0.15rem 0.4rem;
       border-radius: 4px;
       font-size: 0.74rem;
@@ -875,21 +1182,24 @@
 
     .var-type-badge {
       font-family: 'Fira Code', monospace;
-      color: #a78bfa;
+      color: var(--tok-kw);
+      background: rgba(216, 180, 254, 0.09);
+      padding: 0.12rem 0.35rem;
+      border-radius: 4px;
       font-size: 0.72rem;
     }
 
-    /* Methods Grid */
+    /* Multi-Approach Breakdown Cards */
     .methods-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 0.75rem;
     }
 
     .method-subcard {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 8px;
       padding: 0.8rem 0.95rem;
     }
 
@@ -902,63 +1212,234 @@
     }
 
     .method-subcard-header h5 {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text-heading);
     }
 
     .method-complexity-tag {
       font-family: 'Fira Code', monospace;
       font-size: 0.68rem;
-      color: var(--accent);
-      background: rgba(var(--accent-rgb), 0.1);
+      color: var(--accent-gold);
+      background: var(--accent-gold-bg);
       padding: 0.15rem 0.4rem;
       border-radius: 4px;
       white-space: nowrap;
     }
 
     .method-desc {
-      font-size: 0.76rem;
+      font-size: 0.77rem;
       color: var(--text-muted);
       line-height: 1.45;
     }
 
-    /* Python Code Box */
-    .code-wrapper {
-      position: relative;
-      background: var(--code-bg);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      overflow: hidden;
+    /* =========================================================================
+       SIDE-BY-SIDE DUAL CODE IMPLEMENTATIONS
+       ========================================================================= */
+    .dual-code-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      align-items: stretch;
+      margin-top: 0.75rem;
     }
 
-    .code-top-bar {
+    .problem-card.view-stacked .dual-code-container {
+      grid-template-columns: 1fr;
+    }
+
+    .code-column-card {
+      background: var(--code-bg);
+      border: 1px solid var(--border-card);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .code-column-card.track-easiest {
+      border-top: 2px solid var(--sage-accent);
+    }
+
+    .code-column-card.track-shortest {
+      border-top: 2px solid var(--denim-accent);
+    }
+
+    .code-col-header {
+      padding: 0.65rem 0.85rem;
+      background: var(--code-header-bg);
+      border-bottom: 1px solid var(--border-card);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.45rem 0.8rem;
-      background: rgba(255, 255, 255, 0.03);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
-    .code-lang-label {
-      font-size: 0.72rem;
+    .code-col-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 4px;
+      margin-right: 4px;
+    }
+
+    .w-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+    }
+
+    .w-dot-red { background: #ff5f56; opacity: 0.8; }
+    .w-dot-amber { background: #ffbd2e; opacity: 0.8; }
+    .w-dot-green { background: #27c93f; opacity: 0.8; }
+
+    .code-col-title {
+      font-size: 0.8rem;
       font-weight: 700;
-      color: #38bdf8;
+      color: var(--code-header-text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .col-badge {
+      font-size: 0.65rem;
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .col-badge-easy {
+      background: var(--sage-chip);
+      color: var(--sage-accent);
+    }
+
+    .col-badge-short {
+      background: var(--denim-chip);
+      color: var(--denim-accent);
+    }
+
+    .col-meta-pills {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .col-pill {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.68rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      background: var(--code-pill-bg);
+      border: 1px solid var(--code-pill-border);
+      color: var(--code-pill-text);
+    }
+
+    .code-col-desc-bar {
+      padding: 0.55rem 0.85rem;
+      background: var(--code-desc-bg);
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .code-col-desc-bar strong {
+      color: var(--text-heading);
+    }
+
+    /* Code Editor Body & Gutter */
+    .code-editor-body {
+      flex: 1;
+      padding: 0.75rem 0;
+      overflow-x: auto;
+      max-height: 480px;
+      -webkit-overflow-scrolling: touch;
+      font-family: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+      font-size: 0.76rem;
+      line-height: 1.62;
+    }
+
+    .code-line {
+      display: flex;
+      padding: 0 0.85rem;
+      min-width: 100%;
+    }
+
+    .code-line:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+    body.theme-linen .code-line:hover {
+      background: rgba(0, 0, 0, 0.03);
+    }
+    body.theme-matcha .code-line:hover {
+      background: rgba(45, 106, 79, 0.04);
+    }
+
+    .line-num {
+      width: 28px;
+      text-align: right;
+      padding-right: 14px;
+      color: var(--code-gutter-text);
+      user-select: none;
+      flex-shrink: 0;
+      font-variant-numeric: tabular-nums;
+      border-right: 1px solid var(--code-gutter-border);
+      margin-right: 10px;
+    }
+
+    .line-text {
+      flex: 1;
+      white-space: pre;
+      color: var(--code-text);
+    }
+
+    /* Rich Soothing Syntax Tokens */
+    .token-keyword { color: var(--tok-kw); font-weight: 600; }
+    .token-function { color: var(--tok-fn); font-weight: 600; }
+    .token-builtin { color: var(--tok-builtin); }
+    .token-constant { color: var(--tok-const); }
+    .token-number { color: var(--tok-num); }
+    .token-string { color: var(--tok-str); }
+    .token-comment { color: var(--tok-comment); font-style: italic; }
+    .token-operator { color: var(--tok-op); }
+
+    /* Code Footer Toolbar */
+    .code-col-footer {
+      padding: 0.4rem 0.85rem;
+      background: var(--code-header-bg);
+      border-top: 1px solid var(--border-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .footer-lang-badge {
+      font-size: 0.68rem;
+      font-family: 'Fira Code', monospace;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 5px;
-      font-family: 'Fira Code', monospace;
     }
 
-    .copy-btn {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 6px;
-      padding: 0.22rem 0.5rem;
-      color: var(--text-muted);
+    .copy-code-btn {
+      background: var(--code-pill-bg);
+      border: 1px solid var(--border-card);
+      border-radius: 5px;
+      padding: 0.22rem 0.55rem;
       font-size: 0.7rem;
       font-weight: 600;
+      color: var(--code-pill-text);
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -966,59 +1447,75 @@
       transition: all 0.2s;
     }
 
-    .copy-btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: #ffffff;
+    .copy-code-btn:hover {
+      background: var(--accent-gold-bg);
+      border-color: var(--accent-gold-border);
+      color: var(--text-heading);
     }
 
-    .copy-btn.copied {
-      background: rgba(16, 185, 129, 0.2);
-      border-color: #10b981;
-      color: #10b981;
+    .copy-code-btn.copied {
+      background: var(--sage-chip);
+      border-color: var(--sage-border);
+      color: var(--sage-accent);
     }
 
-    .code-pre-box {
-      padding: 0.95rem 1.1rem;
-      margin: 0;
-      font-size: 0.76rem;
-      line-height: 1.6;
-      color: #e2e8f0;
-      overflow-x: auto;
-      max-height: 440px;
-      -webkit-overflow-scrolling: touch;
+    .copy-code-btn.copied {
+      background: var(--sage-chip);
+      border-color: var(--sage-border);
+      color: var(--sage-accent);
     }
 
-    /* Complexity Pill Footers */
-    .complexity-strip {
+    /* Card Top View Switcher */
+    .card-code-section-header {
       display: flex;
-      gap: 0.6rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
       flex-wrap: wrap;
-      margin-top: 0.75rem;
+      gap: 0.5rem;
     }
 
-    .c-pill {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.72rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #cbd5e1;
+    .card-layout-toggle {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card-view-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-card);
+      border-radius: 5px;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .card-view-btn:hover {
+      color: var(--text-heading);
+    }
+
+    .card-view-btn.active {
+      background: var(--accent-gold-bg);
+      border-color: var(--accent-gold-border);
+      color: var(--accent-gold);
     }
 
     /* Empty State */
     .no-results-box {
       text-align: center;
       padding: 3rem 1.5rem;
-      background: var(--card-bg);
-      border: 1px dashed var(--border);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-card);
+      border-radius: 14px;
       color: var(--text-muted);
     }
 
     .no-results-box h4 {
       font-size: 1.1rem;
-      color: #ffffff;
+      color: var(--text-heading);
       margin-bottom: 0.4rem;
     }
 
@@ -1027,7 +1524,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border-card);
       padding-top: 1.75rem;
       color: var(--text-muted);
       font-size: 0.8rem;
@@ -1039,7 +1536,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--accent);
+      color: var(--accent-gold);
       text-decoration: none;
       font-weight: 600;
       transition: transform 0.2s;
@@ -1049,10 +1546,11 @@
       transform: translateX(-4px);
     }
 
-    /* =========================================================================
-       RESPONSIVE DESIGN (MOBILE & TABLET OPTIMIZATIONS)
-       ========================================================================= */
-    @media (max-width: 820px) {
+    /* Responsive */
+    @media (max-width: 920px) {
+      .dual-code-container {
+        grid-template-columns: 1fr;
+      }
       .filter-row-top {
         flex-direction: column;
         align-items: stretch;
@@ -1116,7 +1614,7 @@
         width: 100%;
         justify-content: space-between;
         padding-top: 0.4rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        border-top: 1px solid var(--border-subtle);
       }
       .card-title-block h3 {
         font-size: 1.05rem;
@@ -1132,28 +1630,48 @@
     }
   </style>
 </head>
-<body>
+<body class="theme-twilight">
 
   <div class="container">
-    <div class="breadcrumb">
-      <a href="../index.html">Semester III</a>
-      <span>/</span>
-      <span>Competitive Coding I (CC-1)</span>
-      <span>/</span>
-      <span style="color: var(--accent);">Sessions 1–12 Python Repository</span>
+    
+    <!-- Top Utility Bar: Breadcrumbs + Soothing Theme Switcher -->
+    <div class="top-utility-bar">
+      <div class="breadcrumb">
+        <a href="../../index.html">Study Portal Hub</a>
+        <span>/</span>
+        <a href="../index.html">Semester III</a>
+        <span>/</span>
+        <span>Competitive Coding I (CC-1)</span>
+        <span>/</span>
+        <span style="color: var(--accent-gold);">Sessions 1–12 Master Study Suite</span>
+      </div>
+
+      <!-- 3 Curated Soothing Palettes (Zero Harsh Pitch Black) -->
+      <div class="theme-switcher-box">
+        <span class="theme-switcher-label">🎨 Palette:</span>
+        <button class="theme-btn active" id="themeTwilightBtn" onclick="setTheme('twilight')">
+          <span>🌙</span> Soft Twilight
+        </button>
+        <button class="theme-btn" id="themeLinenBtn" onclick="setTheme('linen')">
+          <span>📜</span> Warm Linen
+        </button>
+        <button class="theme-btn" id="themeMatchaBtn" onclick="setTheme('matcha')">
+          <span>🍵</span> Calm Matcha
+        </button>
+      </div>
     </div>
 
     <!-- Hero Header -->
     <div class="hero">
-      <div class="subject-tag">⚔️ Comprehensive Syllabus &amp; Algorithm Mastery</div>
+      <div class="subject-tag">📚 Academic Master Repository &bull; Algorithms &amp; Logic</div>
       <h1>Competitive Coding <span>I (CC-1)</span></h1>
-      <p class="lead">Complete deep-dive repository for Sessions 1 through 12: Problem formulation, algorithmic intuition, detailed variable bifurcation tables, multi-method comparisons, and production Python-only solutions with real LeetCode and GfG question links.</p>
+      <p class="lead">Comprehensive curriculum reference for Sessions 1 through 12: Problem formulation, algorithmic intuition, variable bifurcation invariants, multi-method comparisons, and <strong>dual comparative Python solutions (Main Step-by-Step Code listed side-by-side with Shortest Built-in Pythonic Solution)</strong> with verified LeetCode and GfG problems.</p>
     </div>
 
     <!-- Stats Strip -->
     <div class="stats-strip">
       <div class="stat-card">
-        <div class="stat-icon">📚</div>
+        <div class="stat-icon">📖</div>
         <div class="stat-info">
           <h4>39 Problems</h4>
           <p>Sessions 1–12</p>
@@ -1167,49 +1685,49 @@
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🐍</div>
+        <div class="stat-icon">⚡</div>
         <div class="stat-info">
-          <h4>Python 3 Only</h4>
-          <p>Clean &amp; Tested</p>
+          <h4>Side-by-Side</h4>
+          <p>Step-by-Step &amp; Built-in</p>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">📊</div>
         <div class="stat-info">
-          <h4>Variable Tables</h4>
-          <p>Bifurcation Invariants</p>
+          <h4>Variable Invariants</h4>
+          <p>Bifurcation Tables</p>
         </div>
       </div>
     </div>
 
     <!-- =========================================================================
-         TEACHER PRIORITY TIER SPOTLIGHT
+         TEACHER PRIORITY SPOTLIGHT (STUDIOUS PARCHMENT AESTHETIC)
          ========================================================================= -->
     <div class="teacher-priority-box">
       <div class="priority-header">
         <div class="priority-header-title">
-          <span style="font-size: 1.25rem;">🔥</span>
+          <span style="font-size: 1.15rem;">🔥</span>
           <h3>Teacher-Confirmed High-Yield Priority Tier</h3>
         </div>
-        <div style="font-size: 0.72rem; color: #fde68a;">
+        <div style="font-size: 0.72rem; color: var(--accent-gold);">
           Rank hierarchy: Trapping &gt; Kadane &gt; Moore &gt; BS &gt; Koko &gt; DNF &gt; Container
         </div>
       </div>
 
       <div class="priority-chain-formula">
         <span>Trapping Rain Water</span>
-        <span class="gt">&gt;</span>
+        <span class="gt">&rarr;</span>
         <span>Kadane's Algo</span>
-        <span class="gt">&gt;</span>
+        <span class="gt">&rarr;</span>
         <span>Moore's Voting</span>
-        <span class="gt">&gt;</span>
+        <span class="gt">&rarr;</span>
         <span>Binary Search</span>
-        <span class="gt">&gt;</span>
+        <span class="gt">&rarr;</span>
         <span>Koko Eating Bananas</span>
-        <span class="gt">&gt;</span>
+        <span class="gt">&rarr;</span>
         <span>Dutch National Flag</span>
-        <span class="gt">&gt;</span>
-        <span>Container Most Water</span>
+        <span class="gt">&rarr;</span>
+        <span>Container With Most Water</span>
       </div>
 
       <div class="priority-chips-grid">
@@ -1217,7 +1735,7 @@
           <div class="chip-rank">#1</div>
           <div class="chip-content">
             <div class="chip-title">Trapping Rain Water</div>
-            <div class="chip-sub">LC 42 • Top Expected Question</div>
+            <div class="chip-sub">LC 42 &bull; Top Expected Question</div>
           </div>
         </div>
 
@@ -1225,7 +1743,7 @@
           <div class="chip-rank">#2</div>
           <div class="chip-content">
             <div class="chip-title">Maximum Subarray (Kadane's)</div>
-            <div class="chip-sub">LC 53 • Very Imp DP</div>
+            <div class="chip-sub">LC 53 &bull; Very Imp DP</div>
           </div>
         </div>
 
@@ -1233,7 +1751,7 @@
           <div class="chip-rank">#3</div>
           <div class="chip-content">
             <div class="chip-title">Majority Element (Moore's 169)</div>
-            <div class="chip-sub">LC 169 • Very Imp O(1) space</div>
+            <div class="chip-sub">LC 169 &bull; Very Imp O(1) space</div>
           </div>
         </div>
 
@@ -1249,7 +1767,7 @@
           <div class="chip-rank">#5</div>
           <div class="chip-content">
             <div class="chip-title">Koko Eating Bananas</div>
-            <div class="chip-sub">LC 875 • Bahut Imp BS on Answer</div>
+            <div class="chip-sub">LC 875 &bull; Bahut Imp BS on Answer</div>
           </div>
         </div>
 
@@ -1257,7 +1775,7 @@
           <div class="chip-rank">#6</div>
           <div class="chip-content">
             <div class="chip-title">Dutch National Flag (0,1,2)</div>
-            <div class="chip-sub">LC 75 • Imp 3-Way Partition</div>
+            <div class="chip-sub">LC 75 &bull; Imp 3-Way Partition</div>
           </div>
         </div>
 
@@ -1265,21 +1783,21 @@
           <div class="chip-rank">#7</div>
           <div class="chip-content">
             <div class="chip-title">Container With Most Water</div>
-            <div class="chip-sub">LC 11 • High Exam Probability</div>
+            <div class="chip-sub">LC 11 &bull; High Exam Probability</div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- =========================================================================
-         NON-STICKY FILTER & NAVIGATION SECTION (SIMPLY SCROLLS WITH PAGE)
+         NON-STICKY FILTER & NAVIGATION SECTION (SCROLLS WITH PAGE)
          ========================================================================= -->
     <div class="nav-filter-section" id="filterNavSection">
       <!-- Row 1: Search + Dropdowns -->
       <div class="filter-row-top">
         <div class="search-box-wrapper">
           <span class="search-icon">🔍</span>
-          <input type="text" id="searchInput" class="search-input" placeholder="Search by problem name, LeetCode #, algorithm...">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search problems, topics, LeetCode #...">
           <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">✕</button>
         </div>
 
@@ -1316,9 +1834,9 @@
           <select id="sortOrder" class="custom-select" onchange="applyFilters()">
             <option value="default">Sort: Default (Session 1–12)</option>
             <option value="priority">Sort: 🏆 Teacher Priority Tier (Top Ranked)</option>
-            <option value="diffAsc">Sort: Difficulty (Easy → Hard)</option>
-            <option value="diffDesc">Sort: Difficulty (Hard → Easy)</option>
-            <option value="alpha">Sort: Title (A → Z)</option>
+            <option value="diffAsc">Sort: Difficulty (Easy &rarr; Hard)</option>
+            <option value="diffDesc">Sort: Difficulty (Hard &rarr; Easy)</option>
+            <option value="alpha">Sort: Title (A &rarr; Z)</option>
           </select>
         </div>
       </div>
@@ -1354,18 +1872,25 @@
         </div>
       </div>
 
-      <!-- Row 4: Revision Progress & Batch Toggles -->
+      <!-- Row 4: Progress Bar + Global Layout Switcher + Batch Toggles -->
       <div class="progress-bar-row">
         <div class="progress-meter-container">
           <span id="masteredCountText">0 / 39 Mastered</span>
           <div class="meter-bg">
             <div id="meterFill" class="meter-fill"></div>
           </div>
-          <span id="meterPercentText" style="font-weight: 700; color: #10b981;">0%</span>
+          <span id="meterPercentText" style="font-weight: 700; color: var(--sage-accent);">0%</span>
         </div>
 
-        <div style="font-size: 0.76rem; color: #93c5fd; display: flex; align-items: center; gap: 5px;">
-          <span>🐍</span> Pure Python 3 Solutions
+        <!-- Global Layout Toggle: Side-by-Side vs Stacked -->
+        <div class="layout-toggle-group">
+          <span style="font-size: 0.71rem; color: var(--text-dim); padding-left: 6px; padding-right: 4px;">Code Layout:</span>
+          <button class="layout-toggle-btn active" id="globalLayoutDualBtn" onclick="setGlobalLayout('side-by-side')">
+            <span>⊞ Side-by-Side</span>
+          </button>
+          <button class="layout-toggle-btn" id="globalLayoutStackedBtn" onclick="setGlobalLayout('stacked')">
+            <span>⊟ Stacked</span>
+          </button>
         </div>
 
         <div class="toggle-all-btns">
@@ -1396,7 +1921,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         Back to Semester III Portal
       </a>
-      <span>Academic Portal • Semester III (CC-1) Master Suite</span>
+      <span>Academic Study Suite &bull; Semester III (CC-1) Master Repository</span>
     </footer>
   </div>
 
@@ -1411,7 +1936,31 @@
     let selectedSession = 'all';
     let selectedTopic = 'all';
     let selectedSort = 'default';
+    let globalLayoutMode = 'side-by-side'; // 'side-by-side' or 'stacked'
+    let currentTheme = localStorage.getItem('cc1_theme_v2') || 'twilight';
+    if (!['twilight', 'linen', 'matcha'].includes(currentTheme)) {
+      currentTheme = 'twilight';
+    }
     let masteredSet = new Set(JSON.parse(localStorage.getItem('cc1_mastered') || '[]'));
+
+    // Apply saved theme on boot
+    function applySavedTheme() {
+      setTheme(currentTheme);
+    }
+
+    function setTheme(themeName) {
+      currentTheme = themeName;
+      localStorage.setItem('cc1_theme_v2', themeName);
+
+      document.body.className = `theme-${themeName}`;
+
+      const twilightBtn = document.getElementById('themeTwilightBtn');
+      const linenBtn = document.getElementById('themeLinenBtn');
+      const matchaBtn = document.getElementById('themeMatchaBtn');
+      if (twilightBtn) twilightBtn.classList.toggle('active', themeName === 'twilight');
+      if (linenBtn) linenBtn.classList.toggle('active', themeName === 'linen');
+      if (matchaBtn) matchaBtn.classList.toggle('active', themeName === 'matcha');
+    }
 
     const searchInput = document.getElementById('searchInput');
     const searchClearBtn = document.getElementById('searchClearBtn');
@@ -1453,6 +2002,39 @@
       applyFilters();
     }
 
+    function setGlobalLayout(mode) {
+      globalLayoutMode = mode;
+      document.getElementById('globalLayoutDualBtn').classList.toggle('active', mode === 'side-by-side');
+      document.getElementById('globalLayoutStackedBtn').classList.toggle('active', mode === 'stacked');
+
+      document.querySelectorAll('.problem-card').forEach(card => {
+        if (mode === 'stacked') {
+          card.classList.add('view-stacked');
+        } else {
+          card.classList.remove('view-stacked');
+        }
+      });
+    }
+
+    function toggleCardLayout(cardId, mode, event) {
+      if (event) event.stopPropagation();
+      const card = document.getElementById(cardId);
+      if (!card) return;
+
+      if (mode === 'stacked') {
+        card.classList.add('view-stacked');
+      } else {
+        card.classList.remove('view-stacked');
+      }
+
+      const dualBtn = card.querySelector('.btn-view-dual');
+      const stackedBtn = card.querySelector('.btn-view-stacked');
+      if (dualBtn && stackedBtn) {
+        dualBtn.classList.toggle('active', mode === 'side-by-side');
+        stackedBtn.classList.toggle('active', mode === 'stacked');
+      }
+    }
+
     function resetAllFilters() {
       searchInput.value = '';
       searchQuery = '';
@@ -1476,8 +2058,8 @@
         if (card) {
           card.classList.add('expanded');
           card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          card.style.outline = '2px solid var(--accent)';
-          setTimeout(() => { card.style.outline = 'none'; }, 2000);
+          card.style.outline = '2px solid var(--accent-gold)';
+          setTimeout(() => { card.style.outline = 'none'; }, 2200);
         }
       }, 50);
     }
@@ -1521,7 +2103,7 @@
       document.getElementById('meterFill').style.width = `${pct}%`;
     }
 
-    function copyCode(btn, codeText) {
+    function copyCodeSnippet(btn, codeText) {
       navigator.clipboard.writeText(codeText).then(() => {
         const originalText = btn.innerHTML;
         btn.innerHTML = '✓ Copied!';
@@ -1531,6 +2113,76 @@
           btn.classList.remove('copied');
         }, 2000);
       });
+    }
+
+    /* =========================================================================
+       ROBUST, BEAUTIFUL PYTHON SYNTAX HIGHLIGHTER WITH LINE NUMBERS
+       ========================================================================= */
+    function escapeHtml(s) {
+      if (!s) return '';
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function escapeHtmlAttr(str) {
+      if (!str) return '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+    }
+
+    function highlightPythonWithLines(rawCode) {
+      if (!rawCode) return '';
+
+      const tokenRegex = /(#[^\r\n]*)|("""[\s\S]*?"""|'''[\s\S]*?'''|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\bdef\s+)([A-Za-z_][A-Za-z0-9_]*)|(\b(?:def|return|class|if|elif|else|while|for|in|try|except|finally|raise|with|as|import|from|lambda|yield|break|continue|pass|global|nonlocal|and|or|not|is)\b)|(\b(?:True|False|None)\b)|(\b(?:len|range|max|min|sum|abs|map|filter|sorted|list|dict|set|tuple|str|int|float|bool|enumerate|zip|reversed|print|input|any|all|math|sys|self|bisect|Counter|accumulate|heapq|statistics)\b)|(\b\d+(?:\.\d+)?\b)|(->|==|!=|<=|>=|\+=|-=|\*=|\/\/=|\/=|&=|\|=|\^=|>>|<<|\/\/|\*\*)/g;
+
+      const lines = rawCode.split('\n');
+
+      return lines.map((line, idx) => {
+        let lastIndex = 0;
+        let lineHtml = '';
+        let match;
+
+        tokenRegex.lastIndex = 0;
+
+        while ((match = tokenRegex.exec(line)) !== null) {
+          if (match.index > lastIndex) {
+            lineHtml += escapeHtml(line.slice(lastIndex, match.index));
+          }
+
+          const [full, comment, str, defKw, defName, kw, constant, builtin, num, op] = match;
+
+          if (comment) {
+            lineHtml += `<span class="token-comment">${escapeHtml(comment)}</span>`;
+          } else if (str) {
+            lineHtml += `<span class="token-string">${escapeHtml(str)}</span>`;
+          } else if (defKw && defName) {
+            lineHtml += `<span class="token-keyword">def</span> <span class="token-function">${escapeHtml(defName)}</span>`;
+          } else if (kw) {
+            lineHtml += `<span class="token-keyword">${escapeHtml(kw)}</span>`;
+          } else if (constant) {
+            lineHtml += `<span class="token-constant">${escapeHtml(constant)}</span>`;
+          } else if (builtin) {
+            lineHtml += `<span class="token-builtin">${escapeHtml(builtin)}</span>`;
+          } else if (num) {
+            lineHtml += `<span class="token-number">${escapeHtml(num)}</span>`;
+          } else if (op) {
+            lineHtml += `<span class="token-operator">${escapeHtml(op)}</span>`;
+          } else {
+            lineHtml += escapeHtml(full);
+          }
+
+          lastIndex = tokenRegex.lastIndex;
+        }
+
+        if (lastIndex < line.length) {
+          lineHtml += escapeHtml(line.slice(lastIndex));
+        }
+
+        return `<div class="code-line"><span class="line-num">${idx + 1}</span><span class="line-text">${lineHtml || ' '}</span></div>`;
+      }).join('');
     }
 
     function applyFilters() {
@@ -1593,7 +2245,6 @@
       } else if (selectedSort === 'alpha') {
         list.sort((a, b) => a.title.localeCompare(b.title));
       } else {
-        // Default: Session ascending
         list.sort((a, b) => a.session - b.session);
       }
 
@@ -1624,18 +2275,18 @@
         if (p.difficulty === 'Medium') diffClass = 'badge-diff-medium';
         if (p.difficulty === 'Hard') diffClass = 'badge-diff-hard';
 
-        const escapedCode = p.code.py.replace(/"/g, '&quot;');
-
+        // Variable Bifurcation Rows
         const varRows = p.variableBifurcation.map(v => `
           <tr>
             <td><span class="var-name-badge">${v.name}</span></td>
             <td><span class="var-type-badge">${v.type}</span></td>
-            <td style="color: #fde68a;">${v.init}</td>
+            <td style="color: var(--tok-fn); font-family: 'Fira Code', monospace; font-size: 0.73rem;">${v.init}</td>
             <td>${v.role}</td>
-            <td style="color: #94a3b8;">${v.update}</td>
+            <td style="color: var(--text-muted);">${v.update}</td>
           </tr>
         `).join('');
 
+        // Method comparison cards
         const methodCards = p.methods.map(m => `
           <div class="method-subcard">
             <div class="method-subcard-header">
@@ -1643,13 +2294,40 @@
               <span class="method-complexity-tag">${m.time} | ${m.space}</span>
             </div>
             <div class="method-desc">${m.desc}</div>
-            ${m.pitfall ? `<div style="font-size: 0.73rem; color: #fca5a5; margin-top: 0.35rem;">⚠️ ${m.pitfall}</div>` : ''}
-            ${m.formula ? `<div style="font-size: 0.73rem; color: #fde68a; font-family: 'Fira Code', monospace; margin-top: 0.35rem;">📐 ${m.formula}</div>` : ''}
+            ${m.pitfall ? `<div style="font-size: 0.73rem; color: var(--diff-hard); margin-top: 0.35rem;">⚠️ ${m.pitfall}</div>` : ''}
+            ${m.formula ? `<div style="font-size: 0.73rem; color: var(--accent-gold); font-family: 'Fira Code', monospace; margin-top: 0.35rem;">📐 ${m.formula}</div>` : ''}
           </div>
         `).join('');
 
+        // Dual Approaches (Easiest & Shortest Built-in)
+        const approaches = p.approaches || {
+          easiest: {
+            title: "Main / Step-by-Step Alternative",
+            desc: "Step-by-step intuitive logic.",
+            time: p.timeComplexity,
+            space: p.spaceComplexity,
+            code: p.code ? p.code.py : ""
+          },
+          shortest: {
+            title: "Shortest Built-in Method",
+            desc: "Optimal contest implementation.",
+            time: p.timeComplexity,
+            space: p.spaceComplexity,
+            code: p.code ? p.code.py : ""
+          }
+        };
+
+        const easyData = approaches.easiest || {};
+        const shortData = approaches.shortest || {};
+
+        const easyHighlighted = highlightPythonWithLines(easyData.code || '');
+        const shortHighlighted = highlightPythonWithLines(shortData.code || '');
+
+        const easyLineCount = (easyData.code || '').split('\n').length;
+        const shortLineCount = (shortData.code || '').split('\n').length;
+
         return `
-          <div class="problem-card ${isPriority ? 'teacher-priority-card' : ''} ${p.teacherConfirmed && !isPriority ? 'teacher-confirmed-card' : ''} ${isMastered ? 'mastered' : ''}" id="${p.id}">
+          <div class="problem-card ${isPriority ? 'teacher-priority-card' : ''} ${globalLayoutMode === 'stacked' ? 'view-stacked' : ''} ${isMastered ? 'mastered' : ''}" id="${p.id}">
             <!-- Header (Always Visible) -->
             <div class="card-top-header" onclick="toggleCard('${p.id}')">
               <div class="card-title-block">
@@ -1664,7 +2342,7 @@
                   <span>${p.title}</span>
                   <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted); font-family: 'Inter', sans-serif;">(${p.lcNum})</span>
                 </h3>
-                ${p.teacherNote ? `<div style="font-size: 0.76rem; color: #fde68a; margin-top: 0.2rem;">📌 ${p.teacherNote}</div>` : ''}
+                ${p.teacherNote ? `<div style="font-size: 0.76rem; color: var(--accent-gold); margin-top: 0.2rem;">📌 ${p.teacherNote}</div>` : ''}
               </div>
 
               <div class="card-actions-right">
@@ -1686,31 +2364,37 @@
 
             <!-- Details Body (Expandable) -->
             <div class="card-details-body">
-              <!-- Problem Statement -->
+              
+              <!-- 1. Compact 2-Column Overview (Statement & Intuition Grid) -->
               <div class="detail-section-block">
-                <div class="detail-section-title">
-                  <span>📖</span> Problem Statement &amp; Objective
-                </div>
-                <div class="statement-box">
-                  ${p.problemStatement}
+                <div class="statement-intuition-grid">
+                  <!-- Problem Statement -->
+                  <div>
+                    <div class="detail-section-title">
+                      <span>📖</span> Problem Statement &amp; Objective
+                    </div>
+                    <div class="statement-box">
+                      ${p.problemStatement}
+                    </div>
+                  </div>
+
+                  <!-- Intuition & Formulation -->
+                  <div>
+                    <div class="detail-section-title">
+                      <span>💡</span> Intuition &amp; Mathematical Formulation
+                    </div>
+                    <div class="intuition-box">
+                      <div>${p.intuition}</div>
+                      ${p.formulation ? `<div class="formulation-box">${p.formulation}</div>` : ''}
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <!-- Intuition & Mental Model -->
+              <!-- 2. Variable Bifurcation Table -->
               <div class="detail-section-block">
                 <div class="detail-section-title">
-                  <span>💡</span> Intuition &amp; Algorithmic Mental Model
-                </div>
-                <div class="intuition-box">
-                  ${p.intuition}
-                  ${p.formulation ? `<div class="formulation-box">${p.formulation}</div>` : ''}
-                </div>
-              </div>
-
-              <!-- Variable Bifurcation Table -->
-              <div class="detail-section-block">
-                <div class="detail-section-title">
-                  <span>📊</span> Variable Bifurcation Table (Invariants &amp; Roles)
+                  <span>📊</span> Variable Bifurcation Invariant Matrix
                 </div>
                 <div class="table-container">
                   <table class="bifurcation-table">
@@ -1730,58 +2414,128 @@
                 </div>
               </div>
 
-              <!-- Methods Comparison -->
+              <!-- 3. Methods Comparison Breakdown -->
               <div class="detail-section-block">
                 <div class="detail-section-title">
-                  <span>🛠️</span> Algorithmic Formulations &amp; Approach Comparison
+                  <span>🛠️</span> Multi-Approach Algorithmic Formulations
                 </div>
                 <div class="methods-cards-grid">
                   ${methodCards}
                 </div>
               </div>
 
-              <!-- Python Solution Only -->
+              <!-- 4. Dual Comparative Python Solutions (Side-by-Side) -->
               <div class="detail-section-block">
-                <div class="detail-section-title">
-                  <span>🐍</span> Clean Python 3 Solution (Production Implementation)
-                </div>
-                <div class="code-wrapper">
-                  <div class="code-top-bar">
-                    <div class="code-lang-label">
-                      <span>Python 3</span>
-                    </div>
-                    <button class="copy-btn" onclick="copyCode(this, \`${escapedCode}\`)">
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                      <span>Copy Python Code</span>
+                <div class="card-code-section-header">
+                  <div class="detail-section-title" style="margin-bottom: 0;">
+                    <span>⚡</span> Dual Comparative Python Solutions (Side-by-Side)
+                  </div>
+                  <div class="card-layout-toggle">
+                    <button class="card-view-btn btn-view-dual ${globalLayoutMode === 'side-by-side' ? 'active' : ''}" 
+                            onclick="toggleCardLayout('${p.id}', 'side-by-side', event)">
+                      ⊞ Side-by-Side
+                    </button>
+                    <button class="card-view-btn btn-view-stacked ${globalLayoutMode === 'stacked' ? 'active' : ''}" 
+                            onclick="toggleCardLayout('${p.id}', 'stacked', event)">
+                      ⊟ Stacked
                     </button>
                   </div>
-                  <pre class="code-pre-box"><code>${escapeHtml(p.code.py)}</code></pre>
+                </div>
+
+                <div class="dual-code-container">
+                  <!-- Column 1: Main Step-by-Step Alternative -->
+                  <div class="code-column-card track-easiest">
+                    <div class="code-col-header">
+                      <div class="code-col-title-wrap">
+                        <div class="window-dots">
+                          <span class="w-dot w-dot-red"></span>
+                          <span class="w-dot w-dot-amber"></span>
+                          <span class="w-dot w-dot-green"></span>
+                        </div>
+                        <div class="code-col-title">
+                          <span>📖 Main Code</span>
+                          <span class="col-badge col-badge-easy">Exam-Ready Logic</span>
+                        </div>
+                      </div>
+                      <div class="col-meta-pills">
+                        <span class="col-pill">⏱️ ${easyData.time || p.timeComplexity}</span>
+                        <span class="col-pill">💾 ${easyData.space || p.spaceComplexity}</span>
+                      </div>
+                    </div>
+
+                    <div class="code-col-desc-bar">
+                      <strong>📝 Exam Focus:</strong> ${escapeHtml(easyData.title || 'Step-by-step logic')}: ${escapeHtml(easyData.desc || 'Standard logic, explicit invariants.')}
+                    </div>
+
+                    <div class="code-editor-body">
+                      ${easyHighlighted}
+                    </div>
+
+                    <div class="code-col-footer">
+                      <div class="footer-lang-badge">
+                        <span>Python 3</span>
+                        <span>&bull;</span>
+                        <span>${easyLineCount} lines</span>
+                      </div>
+                      <button class="copy-code-btn" onclick="copyCodeSnippet(this, \`${escapeHtmlAttr(easyData.code || '')}\`)">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy Main Code</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Column 2: Shortest Built-in Method -->
+                  <div class="code-column-card track-shortest">
+                    <div class="code-col-header">
+                      <div class="code-col-title-wrap">
+                        <div class="window-dots">
+                          <span class="w-dot w-dot-red"></span>
+                          <span class="w-dot w-dot-amber"></span>
+                          <span class="w-dot w-dot-green"></span>
+                        </div>
+                        <div class="code-col-title">
+                          <span>⚡ Shortest Method</span>
+                          <span class="col-badge col-badge-short">Python Built-in</span>
+                        </div>
+                      </div>
+                      <div class="col-meta-pills">
+                        <span class="col-pill">⏱️ ${shortData.time || p.timeComplexity}</span>
+                        <span class="col-pill">💾 ${shortData.space || p.spaceComplexity}</span>
+                      </div>
+                    </div>
+
+                    <div class="code-col-desc-bar">
+                      <strong>💡 Built-in Superpower:</strong> ${escapeHtml(shortData.title || 'Shortest Built-in')}: ${escapeHtml(shortData.desc || 'Uses Python standard built-ins.')}
+                    </div>
+
+                    <div class="code-editor-body">
+                      ${shortHighlighted}
+                    </div>
+
+                    <div class="code-col-footer">
+                      <div class="footer-lang-badge">
+                        <span>Python 3</span>
+                        <span>&bull;</span>
+                        <span>${shortLineCount} lines</span>
+                      </div>
+                      <button class="copy-code-btn" onclick="copyCodeSnippet(this, \`${escapeHtmlAttr(shortData.code || '')}\`)">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span>Copy Built-in Code</span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <!-- Complexity Summary -->
-              <div class="complexity-strip">
-                <div class="c-pill">⏱️ <strong>Time:</strong> ${p.timeComplexity}</div>
-                <div class="c-pill">💾 <strong>Space:</strong> ${p.spaceComplexity}</div>
-              </div>
             </div>
           </div>
         `;
       }).join('');
     }
 
-    function escapeHtml(str) {
-      if (!str) return '';
-      return str
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
-    }
-
     // Initialize application on load
     document.addEventListener('DOMContentLoaded', () => {
+      applySavedTheme();
       updateMasteredProgress();
       applyFilters();
     });
