@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Study Portal | Semester III</title>
+  <link rel="stylesheet" href="../nav-header.css">
+  <script src="../nav-header.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.65);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+
+      /* Subject Colors */
+      --color-n2t: #ef4444;       /* Crimson / Hardware */
+      --color-cc: #f59e0b;        /* Amber / Competitive Coding */
+      --color-daa: #10b981;       /* Emerald / Algorithms */
+      --color-web3: #6366f1;      /* Indigo / Fullstack Web */
+      --color-dbms: #06b6d4;      /* Cyan / Database */
+      --color-va: #ec4899;        /* Rose / Verbal Ability */
+      --color-iks: #eab308;       /* Gold / Indian Knowledge Systems */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 8% 18%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 92% 82%, rgba(99, 102, 241, 0.07) 0%, transparent 45%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+    }
+
+    .container {
+      max-width: 1240px;
+      width: 100%;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      animation: slideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .portal-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.35rem 1rem;
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.08);
+    }
+
+    h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 30%, #fcd34d 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h1 span {
+      font-weight: 400;
+      font-style: italic;
+      background: linear-gradient(135deg, #f59e0b, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Filter & Search Bar */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.5rem;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+    }
+
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.4rem 0.9rem;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      color: #ffffff;
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      padding: 0.45rem 1rem;
+      border-radius: 14px;
+      min-width: 260px;
+    }
+
+    .search-box input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      width: 100%;
+    }
+
+    .search-box input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 2rem;
+      width: 100%;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--subject-color);
+      opacity: 0.8;
+      transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--subject-color);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.45),
+        0 0 35px rgba(var(--subject-rgb), 0.15);
+    }
+
+    .card:hover::before {
+      height: 6px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-icon-wrapper {
+      width: 66px;
+      height: 66px;
+      border-radius: 18px;
+      background: rgba(var(--subject-rgb), 0.08);
+      border: 1px solid rgba(var(--subject-rgb), 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .card:hover .card-icon-wrapper {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .subject-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      background: rgba(var(--subject-rgb), 0.12);
+      color: var(--subject-color);
+      border: 1px solid rgba(var(--subject-rgb), 0.25);
+    }
+
+    .card h2 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .topic-pill {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      color: #d1d5db;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ffffff;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .card:hover .card-footer {
+      background: rgba(var(--subject-rgb), 0.12);
+      border-color: rgba(var(--subject-rgb), 0.3);
+      box-shadow: 0 4px 15px rgba(var(--subject-rgb), 0.1);
+    }
+
+    .card-footer svg {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      color: var(--subject-color);
+    }
+
+    .card:hover .card-footer svg {
+      transform: translateX(4px);
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 3rem 1.25rem;
+      }
+      h1 {
+        font-size: 2.6rem;
+      }
+      p.subtitle {
+        font-size: 1.05rem;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="portal-tag">⚡ Semester III Core &amp; Electives</div>
+      <h1>Semester III <span>Portal</span></h1>
+      <p class="subtitle">Complete visual notes, interactive sandboxes, solved lab scripts, and exam-readiness blueprints across all Semester III engineering disciplines.</p>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="controls-bar">
+      <div class="filter-tags">
+        <button class="filter-btn active" onclick="filterCards('all', this)">All (7)</button>
+        <button class="filter-btn" onclick="filterCards('systems', this)">Systems &amp; HW</button>
+        <button class="filter-btn" onclick="filterCards('coding', this)">Algorithms &amp; Coding</button>
+        <button class="filter-btn" onclick="filterCards('web-db', this)">Web &amp; Databases</button>
+        <button class="filter-btn" onclick="filterCards('humanities', this)">Humanities &amp; Electives</button>
+      </div>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" id="subjectSearch" placeholder="Search subjects or keywords..." oninput="searchCards()">
+      </div>
+    </div>
+
+    <!-- Subject Cards Grid -->
+    <div class="grid" id="subjectsGrid">
+
+      <!-- 1. N2T -->
+      <a href="./N2T/index.html" class="card" data-category="systems" data-keywords="nand to tetris n2t hardware alu logic gates hdl cpu architecture ram sequential machine language assembler" style="--subject-color: var(--color-n2t); --subject-rgb: 239, 68, 68;">
+        <div class="card-top">
+          <div class="card-icon-wrapper">💻</div>
+          <span class="subject-badge">Hardware Systems</span>
+        </div>
+        <h2>N2T</h2>
+        <p>From Nand to Tetris: Building a modern computer from elementary logic gates up to ALU architecture, Hack machine language, CPU datapath, and assembly compilers.</p>
+        <div class="tags-row">
+          <span class="topic-pill">Boolean Logic</span>
+          <span class="topic-pill">ALU &amp; Adders</span>
+          <span class="topic-pill">HDL Simulators</span>
+          <span class="topic-pill">Hack CPU</span>
+        </div>
+        <div class="card-footer">
+          <span>Enter N2T Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- 2. CC-1 -->
+      <a href="./CC-1/index.html" class="card" data-category="coding" data-keywords="cc-1 competitive coding core coding arrays hashing two pointer sliding window binary search kadane moore java cpp python leetcode" style="--subject-color: var(--color-cc); --subject-rgb: 245, 158, 11;">
+        <div class="card-top">
+          <div class="card-icon-wrapper">⚔️</div>
+          <span class="subject-badge">Core Coding</span>
+        </div>
+        <h2>CC-1</h2>
+        <p>Master competitive problem-solving patterns: HashMaps, Two-Pointer technique, Sliding Windows, Binary Search on Answer, Kadane, Moore's Voting, and Dutch National Flag across Java, C++, and Python.</p>
+        <div class="tags-row">
+          <span class="topic-pill">Two Pointers</span>
+          <span class="topic-pill">Sliding Window</span>
+          <span class="topic-pill">Hashing Patterns</span>
+          <span class="topic-pill">Kadane &amp; Moore</span>
+        </div>
+        <div class="card-footer">
+          <span>Enter CC-1 Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- 3. DAA -->
+      <a href="./DAA/index.html" class="card" data-category="coding" data-keywords="daa design analysis algorithms divide conquer greedy dynamic programming graph master theorem big-o recurrences" style="--subject-color: var(--color-daa); --subject-rgb: 16, 185, 129;">
+        <div class="card-top">
+          <div class="card-icon-wrapper">📊</div>
+          <span class="subject-badge">Theoretical CS</span>
+        </div>
+        <h2>DAA</h2>
+        <p>Design and Analysis of Algorithms: Master asymptotic recurrence solving, Divide &amp; Conquer, Greedy strategies (Huffman, MST), Dynamic Programming (Knapsack, LCS), and Graph Traversals.</p>
+        <div class="tags-row">
+          <span class="topic-pill">Master Theorem</span>
+          <span class="topic-pill">Greedy MST</span>
+          <span class="topic-pill">DP Memoization</span>
+          <span class="topic-pill">NP-Completeness</span>
+        </div>
+        <div class="card-footer">
+          <span>Enter DAA Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- 4. Web-Dev-3 -->
+      <a href="./Web-Dev-3/index.html" class="card" data-category="web-db" data-keywords="web dev 3 full stack react next express node rest api jwt auth database middleware" style="--subject-color: var(--color-web3); --subject-rgb: 99, 102, 241;">
+        <div class="card-top">
+          <div class="card-icon-wrapper">🌐</div>
+          <span class="subject-badge">Fullstack Engineering</span>
+        </div>
+        <h2>Web-Dev-3</h2>
+        <p>Advanced fullstack architecture: Next.js App Router, Express.js microservice backends, JWT token authentication, middleware pipelines, Prisma ORM, and resilient cloud API endpoints.</p>
+        <div class="tags-row">
+          <span class="topic-pill">Next.js 14+</span>
+          <span class="topic-pill">Express REST</span>
+          <span class="topic-pill">JWT &amp; Auth</span>
+          <span class="topic-pill">ORM Integration</span>
+        </div>
+        <div class="card-footer">
+          <span>Enter Web-Dev-3 Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- 5. DBMS -->
+      <a href="./DBMS/index.html" class="card" data-category="web-db" data-keywords="dbms database sql er diagram normalization 1nf 2nf 3nf bcnf acid transactions joins indexing b-tree" style="--subject-color: var(--color-dbms); --subject-rgb: 6, 182, 212;">
+        <div class="card-top">
+          <div class="card-icon-wrapper">🗄️</div>
+          <span class="subject-badge">Data Systems</span>
+        </div>
+        <h2>DBMS</h2>
+        <p>Database Management Systems: Relational algebra, Entity-Relationship schemas, schema normalization (1NF, 2NF, 3NF, BCNF), SQL indexing, and ACID transaction concurrency control.</p>
+        <div class="tags-row">
+          <span class="topic-pill">ER Modeling</span>
+          <span class="topic-pill">Advanced SQL</span>
+          <span class="topic-pill">BCNF Decomposition</span>
+          <span class="topic-pill">ACID &amp; 2PL</span>
+        </div>
+        <div class="card-footer">
+          <span>Enter DBMS Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- 6. VA -->
+      <a href="./VA/index.html" class="card" data-category="humanities" data-keywords="va verbal ability communication english aptitude reasoning reading comprehension vocabulary grammar" style="--subject-color: var(--color-va); --subject-rgb: 236, 72, 153;">
+        <div class="card-top">
+          <div class="card-icon-wrapper">🗣️</div>
+          <span class="subject-badge">Professional Skills</span>
+        </div>
+        <h2>VA</h2>
+        <p>Verbal Ability &amp; Professional Communication: Syntax precision, high-frequency vocabulary etymology, reading comprehension heuristics, critical reasoning syllogisms, and corporate discourse.</p>
+        <div class="tags-row">
+          <span class="topic-pill">Critical Reasoning</span>
+          <span class="topic-pill">Vocab Etymology</span>
+          <span class="topic-pill">Reading Inferences</span>
+          <span class="topic-pill">Grammar Diagnostics</span>
+        </div>
+        <div class="card-footer">
+          <span>Enter VA Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+      <!-- 7. OEIKS001 -->
+      <a href="./OEIKS001/index.html" class="card" data-category="humanities" data-keywords="oeiks001 indian knowledge systems iks open elective astronomy vedic mathematics metallurgy ayurveda panini linguistics" style="--subject-color: var(--color-iks); --subject-rgb: 234, 179, 8;">
+        <div class="card-top">
+          <div class="card-icon-wrapper">📜</div>
+          <span class="subject-badge">Open Elective</span>
+        </div>
+        <h2>OEIKS001</h2>
+        <p>Indian Knowledge Systems: Foundations of ancient Indian sciences, Sulba Sutras mathematics, astronomy derivations, Wootz steel metallurgy, Panini's formal grammar, and traditional epistemology.</p>
+        <div class="tags-row">
+          <span class="topic-pill">Ancient Mathematics</span>
+          <span class="topic-pill">Indian Metallurgy</span>
+          <span class="topic-pill">Paninian Grammar</span>
+          <span class="topic-pill">Nyaya Epistemology</span>
+        </div>
+        <div class="card-footer">
+          <span>Enter OEIKS001 Portal</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <script>
+    function filterCards(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cards = document.querySelectorAll('#subjectsGrid .card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function searchCards() {
+      const q = document.getElementById('subjectSearch').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('#subjectsGrid .card');
+      cards.forEach(card => {
+        const text = (card.innerText + ' ' + (card.dataset.keywords || '')).toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

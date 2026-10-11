@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design and Analysis of Algorithms (DAA) | Semester III Portal</title>
+  <link rel="stylesheet" href="../../nav-header.css">
+  <script src="../../nav-header.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.7);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #10b981;
+      --accent-rgb: 16, 185, 129;
+      --accent-secondary: #06b6d4;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    code, pre {
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.06) 0%, transparent 45%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .subject-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.35rem 1rem;
+      background: rgba(var(--accent-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: 3.4rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.04em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 40%, #a7f3d0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h1 span {
+      font-weight: 400;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 820px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    /* Stats */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: rgba(var(--accent-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .stat-info h4 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .stat-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Interactive Master Theorem Calculator */
+    .interactive-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
+      border-radius: 24px;
+      padding: 2.25rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interactive-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+    }
+
+    .simulator-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .simulator-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .simulator-title h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .presets-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .preset-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.35rem 0.8rem;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      color: #ffffff;
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: rgba(var(--accent-rgb), 0.3);
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .calc-field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1rem;
+      border-radius: 12px;
+    }
+
+    .calc-field label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #cbd5e1;
+    }
+
+    .calc-field input {
+      width: 70px;
+      background: #1f2937;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      outline: none;
+    }
+
+    .calc-result-box {
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .result-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      background: rgba(var(--accent-rgb), 0.15);
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .result-complexity {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: 'Fira Code', monospace;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Modules */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .module-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(var(--accent-rgb), 0.4);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .module-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .module-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .module-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .topic-badge {
+      font-size: 0.72rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      color: #cbd5e1;
+    }
+
+    .status-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #10b981;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    /* Materials */
+    .materials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .material-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .material-box:hover {
+      background: rgba(var(--accent-rgb), 0.08);
+      border-color: rgba(var(--accent-rgb), 0.3);
+      transform: translateY(-3px);
+    }
+
+    .mat-icon {
+      font-size: 1.8rem;
+    }
+
+    .mat-text h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+
+    .mat-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+
+    @media (max-width: 768px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Semester III</a>
+      <span>/</span>
+      <span>DAA (Design &amp; Analysis of Algorithms)</span>
+    </div>
+
+    <div class="hero">
+      <div class="subject-tag">📊 Asymptotic Complexity &amp; Paradigms</div>
+      <h1>Design &amp; Analysis of <span>Algorithms</span></h1>
+      <p class="lead">Mathematical rigor and design architectures: Master growth of functions, recurrence solutions, Divide &amp; Conquer decompositions, Greedy matroid optimizations, Dynamic Programming matrices, Graph traversals, and P vs NP classifications.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-icon">📈</div>
+        <div class="stat-info">
+          <h4>Big-O, Ω, Θ</h4>
+          <p>Asymptotic Bounds</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌲</div>
+        <div class="stat-info">
+          <h4>Dynamic Prog</h4>
+          <p>Memoized Matrices</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌐</div>
+        <div class="stat-info">
+          <h4>Graph Theory</h4>
+          <p>MST, Shortest Path</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-info">🟢</div>
+        <div class="stat-info">
+          <h4>Active Core</h4>
+          <p>Status: Ready</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Master Theorem Calculator -->
+    <div class="interactive-card">
+      <div class="simulator-header">
+        <div class="simulator-title">
+          <span>🧮</span>
+          <h3>Master Theorem Recurrence Solver</h3>
+        </div>
+        <div style="font-size: 0.8rem; color: var(--text-muted);">Equation: T(n) = a·T(n/b) + Θ(n^k)</div>
+      </div>
+
+      <div class="presets-row">
+        <span style="font-size: 0.8rem; color: var(--text-muted); align-self: center;">Presets:</span>
+        <button class="preset-btn" onclick="applyPreset(2, 2, 1)">MergeSort: 2T(n/2)+n</button>
+        <button class="preset-btn" onclick="applyPreset(1, 2, 0)">BinarySearch: T(n/2)+1</button>
+        <button class="preset-btn" onclick="applyPreset(7, 2, 2)">Strassen: 7T(n/2)+n²</button>
+        <button class="preset-btn" onclick="applyPreset(3, 2, 1)">Karatsuba: 3T(n/2)+n</button>
+      </div>
+
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="calc-field">
+            <label for="valA">Subproblems (a):</label>
+            <input type="number" id="valA" value="2" min="1" oninput="solveRecurrence()">
+          </div>
+          <div class="calc-field">
+            <label for="valB">Division Factor (b):</label>
+            <input type="number" id="valB" value="2" min="2" oninput="solveRecurrence()">
+          </div>
+          <div class="calc-field">
+            <label for="valK">Work Exponent (k):</label>
+            <input type="number" id="valK" value="1" min="0" step="0.5" oninput="solveRecurrence()">
+          </div>
+        </div>
+
+        <div class="calc-result-box">
+          <div class="result-badge" id="caseBadge">Case 2: Balanced Work</div>
+          <div class="result-complexity" id="compDisplay">Θ(n log n)</div>
+          <p class="result-desc" id="compDesc">log_b(a) = log_2(2) = 1.0 equals k = 1. Work is evenly spread across all tree levels.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modules -->
+    <h2 class="section-title">Theoretical Syllabus &amp; Units</h2>
+    <div class="modules-grid">
+      <div class="module-card">
+        <span class="module-num">Unit 01</span>
+        <h3>Asymptotic Analysis &amp; Recurrences</h3>
+        <p>Mathematical definitions of O, Ω, Θ, o, ω. Master Theorem derivation, substitution induction proofs, and recursion tree geometric summation.</p>
+        <div class="topics-list">
+          <span class="topic-badge">Master Theorem</span>
+          <span class="topic-badge">Substitution Method</span>
+          <span class="topic-badge">Recursion Tree</span>
+          <span class="topic-badge">Growth Rankings</span>
+        </div>
+        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-num">Unit 02</span>
+        <h3>Divide and Conquer Strategies</h3>
+        <p>Recursive problem partitioning, combine step complexities, QuickSort pivot strategies, Strassen's matrix algorithm, and Closest Pair of Points in 2D plane.</p>
+        <div class="topics-list">
+          <span class="topic-badge">MergeSort Inversions</span>
+          <span class="topic-badge">QuickSort Randomized</span>
+          <span class="topic-badge">Strassen Matrix</span>
+          <span class="topic-badge">Closest Pair O(n log n)</span>
+        </div>
+        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-num">Unit 03</span>
+        <h3>Greedy Paradigms &amp; Matroids</h3>
+        <p>Locally optimal choices that guarantee global optimality. Greedy-choice property, optimal substructure, Huffman prefix-free encoding, and Minimum Spanning Trees.</p>
+        <div class="topics-list">
+          <span class="topic-badge">Fractional Knapsack</span>
+          <span class="topic-badge">Huffman Coding Tree</span>
+          <span class="topic-badge">Kruskal's &amp; Prim's MST</span>
+          <span class="topic-badge">Activity Selection</span>
+        </div>
+        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-num">Unit 04</span>
+        <h3>Dynamic Programming Framework</h3>
+        <p>Overlapping subproblems and memoization tables. Bellman equations, state transition matrices, sequence alignments, and all-pairs shortest paths.</p>
+        <div class="topics-list">
+          <span class="topic-badge">0/1 Knapsack DP</span>
+          <span class="topic-badge">Longest Common Subsequence</span>
+          <span class="topic-badge">Matrix Chain Multiplication</span>
+          <span class="topic-badge">Floyd-Warshall</span>
+        </div>
+        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-num">Unit 05</span>
+        <h3>Backtracking &amp; Branch and Bound</h3>
+        <p>Systematic state-space tree traversals with bounding functions. Pruning non-promising paths for NP-hard combinatorial optimizations.</p>
+        <div class="topics-list">
+          <span class="topic-badge">N-Queens Problem</span>
+          <span class="topic-badge">Graph Coloring (m-colors)</span>
+          <span class="topic-badge">Hamiltonian Cycles</span>
+          <span class="topic-badge">TSP Branch &amp; Bound</span>
+        </div>
+        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+      </div>
+
+      <div class="module-card">
+        <span class="module-num">Unit 06</span>
+        <h3>Complexity Classes (P, NP, NP-C)</h3>
+        <p>Deterministic vs Nondeterministic Polynomial Time. Polynomial-time verification, reductions (A ≤p B), Cook-Levin theorem, and 3-SAT reduction chains.</p>
+        <div class="topics-list">
+          <span class="topic-badge">P vs NP Concepts</span>
+          <span class="topic-badge">NP-Complete Proofs</span>
+          <span class="topic-badge">Vertex Cover &amp; Clique</span>
+          <span class="topic-badge">Approximation Ratios</span>
+        </div>
+        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+      </div>
+    </div>
+
+    <!-- Materials -->
+    <h2 class="section-title">Course Assets &amp; Resources</h2>
+    <div class="materials-grid">
+      <div class="material-box">
+        <span class="mat-icon">📐</span>
+        <div class="mat-text">
+          <h4>Recurrence Proof Guides</h4>
+          <p>Step-by-step substitution induction templates</p>
+        </div>
+      </div>
+      <div class="material-box">
+        <span class="mat-icon">💡</span>
+        <div class="mat-text">
+          <h4>DP State Transition Sheet</h4>
+          <p>Common recurrences &amp; base case table</p>
+        </div>
+      </div>
+      <div class="material-box">
+        <span class="mat-icon">🎯</span>
+        <div class="mat-text">
+          <h4>Viva &amp; Exam Hotspots</h4>
+          <p>Comparison tables (Greedy vs DP, Prim vs Kruskal)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <a href="../index.html" class="back-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Semester III Portal
+      </a>
+      <span>Academic Portal • Semester III (DAA)</span>
+    </footer>
+  </div>
+
+  <script>
+    function applyPreset(a, b, k) {
+      document.getElementById('valA').value = a;
+      document.getElementById('valB').value = b;
+      document.getElementById('valK').value = k;
+      solveRecurrence();
+    }
+
+    function solveRecurrence() {
+      const a = parseFloat(document.getElementById('valA').value) || 1;
+      const b = parseFloat(document.getElementById('valB').value) || 2;
+      const k = parseFloat(document.getElementById('valK').value) || 0;
+
+      const logBA = Math.log(a) / Math.log(b);
+      const diff = logBA - k;
+
+      const badge = document.getElementById('caseBadge');
+      const disp = document.getElementById('compDisplay');
+      const desc = document.getElementById('compDesc');
+
+      const roundedLog = Math.round(logBA * 100) / 100;
+
+      if (Math.abs(diff) < 0.001) {
+        badge.innerText = 'Case 2: Equal Work';
+        if (k === 0) {
+          disp.innerText = 'Θ(log n)';
+        } else if (k === 1) {
+          disp.innerText = 'Θ(n log n)';
+        } else {
+          disp.innerText = `Θ(n^${k} log n)`;
+        }
+        desc.innerText = `log_${b}(${a}) = ${roundedLog} equals k = ${k}. Work is distributed equally across all recursion tree levels.`;
+      } else if (diff > 0) {
+        badge.innerText = 'Case 1: Leaves Dominate';
+        disp.innerText = `Θ(n^${roundedLog})`;
+        desc.innerText = `log_${b}(${a}) = ${roundedLog} > k = ${k}. Bottom leaf subproblems overpower the root work.`;
+      } else {
+        badge.innerText = 'Case 3: Root Dominates';
+        if (k === 1) {
+          disp.innerText = 'Θ(n)';
+        } else if (k === 0) {
+          disp.innerText = 'Θ(1)';
+        } else {
+          disp.innerText = `Θ(n^${k})`;
+        }
+        desc.innerText = `log_${b}(${a}) = ${roundedLog} < k = ${k}. Root level work dominates total computational cost.`;
+      }
+    }
+
+    solveRecurrence();
+  </script>
+</body>
+</html>
