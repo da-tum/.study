@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Competitive Coding I (CC-1) | Sessions 1–12 Master Portal</title>
+  <link rel="stylesheet" href="../../nav-header.css">
+  <script src="../../nav-header.js" defer></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
+
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(17, 24, 39, 0.75);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --text-dim: #6b7280;
+      --accent: #f59e0b;
+      --accent-rgb: 245, 158, 11;
+      --accent-secondary: #ef4444;
+      --accent-emerald: #10b981;
+      --accent-cyan: #06b6d4;
+      --accent-purple: #8b5cf6;
+      --code-bg: #050811;
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    code, pre {
+      font-family: 'Fira Code', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      background-image: 
+        radial-gradient(circle at 10% 12%, rgba(245, 158, 11, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 90% 88%, rgba(239, 68, 68, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 60%);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      /* Top padding to ensure fixed global navbar (68px) never clips content */
+      padding: 85px 1.25rem 5rem;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1220px;
+      width: 100%;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .breadcrumb a:hover {
+      color: var(--accent);
+    }
+
+    /* Hero Section */
+    .hero {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .subject-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.3rem 0.85rem;
+      background: rgba(var(--accent-rgb), 0.12);
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.85rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.65rem;
+      background: linear-gradient(135deg, #ffffff 30%, #fde68a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.15;
+    }
+
+    h1 span {
+      font-weight: 400;
+      font-style: italic;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 900px;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Stats Strip */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin-bottom: 2rem;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 0.85rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      backdrop-filter: blur(10px);
+      transition: all 0.25s ease;
+    }
+
+    .stat-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+      transform: translateY(-2px);
+    }
+
+    .stat-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: rgba(var(--accent-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .stat-info h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .stat-info p {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* =========================================================================
+       TEACHER PRIORITY SPOTLIGHT SECTION
+       ========================================================================= */
+    .teacher-priority-box {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.07) 0%, rgba(245, 158, 11, 0.07) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .teacher-priority-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+    }
+
+    .priority-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .priority-header-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .priority-header-title h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+    }
+
+    .priority-chain-formula {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.76rem;
+      font-family: 'Fira Code', monospace;
+      color: #fde68a;
+      overflow-x: auto;
+      white-space: nowrap;
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .priority-chain-formula span.gt {
+      color: #ef4444;
+      font-weight: bold;
+    }
+
+    .priority-chips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.6rem;
+    }
+
+    .priority-chip {
+      background: rgba(17, 24, 39, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .priority-chip:hover {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.45);
+      transform: translateY(-2px);
+    }
+
+    .chip-rank {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #ef4444, #f59e0b);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.72rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .chip-content {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .chip-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chip-sub {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* =========================================================================
+       NON-STICKY FILTER & NAVIGATION SECTION (SIMPLY SCROLLS WITH PAGE)
+       ========================================================================= */
+    .nav-filter-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      /* STRICTLY NON-STICKY: Normal document flow, scrolls simply */
+      position: static !important;
+    }
+
+    .filter-row-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .search-box-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 240px;
+      max-width: 340px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      height: 38px;
+      background: rgba(5, 8, 17, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 0 0.85rem 0 2.2rem;
+      font-size: 0.85rem;
+      color: #ffffff;
+      transition: all 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.15);
+    }
+
+    .search-clear-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .filter-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .custom-select {
+      height: 38px;
+      background: rgba(5, 8, 17, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 0 0.85rem;
+      color: #e5e7eb;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .custom-select:focus {
+      border-color: var(--accent);
+    }
+
+    /* Preset Pills Row */
+    .view-preset-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .preset-pill {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .preset-pill:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .preset-pill.active {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
+      color: #fcd34d;
+      font-weight: 700;
+    }
+
+    /* Sub-field Sorter Pills Bar */
+    .subfield-sorter-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .subfield-pills-row {
+      display: flex;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .subfield-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 8px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #d1d5db;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .subfield-pill:hover {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: #ffffff;
+    }
+
+    .subfield-pill.active {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25), rgba(239, 68, 68, 0.25));
+      border-color: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* Progress & Quick Actions */
+    .progress-bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .progress-meter-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      max-width: 320px;
+    }
+
+    .meter-bg {
+      flex: 1;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .meter-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #f59e0b);
+      border-radius: 100px;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .toggle-all-btns {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .btn-text {
+      background: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.3rem 0.65rem;
+      color: var(--text-muted);
+      font-size: 0.74rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-text:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* =========================================================================
+       PROBLEM CARDS CONTAINER & DETAILS
+       ========================================================================= */
+    .problems-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .problem-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.35rem 1.5rem;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s ease;
+      position: relative;
+      /* Scroll offset so card never lands under fixed header */
+      scroll-margin-top: 85px;
+    }
+
+    .problem-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.3);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .problem-card.teacher-priority-card {
+      border-left: 4px solid #ef4444;
+      background: linear-gradient(180deg, rgba(239, 68, 68, 0.03) 0%, rgba(17, 24, 39, 0.8) 100%);
+    }
+
+    .problem-card.teacher-confirmed-card:not(.teacher-priority-card) {
+      border-left: 4px solid var(--accent);
+    }
+
+    .problem-card.mastered {
+      opacity: 0.85;
+      border-color: rgba(16, 185, 129, 0.3);
+    }
+
+    .card-top-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.85rem;
+      cursor: pointer;
+    }
+
+    .card-title-block {
+      flex: 1;
+    }
+
+    .card-meta-badges {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.45rem;
+    }
+
+    .badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.18rem 0.5rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .badge-session {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #93c5fd;
+    }
+
+    .badge-subfield {
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.25);
+      color: #c4b5fd;
+    }
+
+    .badge-priority {
+      background: linear-gradient(135deg, #ef4444, #f59e0b);
+      color: #000000;
+      font-weight: 800;
+      box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-teacher {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #fde68a;
+    }
+
+    .badge-diff-easy {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: #6ee7b7;
+    }
+
+    .badge-diff-medium {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      color: #fcd34d;
+    }
+
+    .badge-diff-hard {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #fca5a5;
+    }
+
+    .card-title-block h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-title-block h3 a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .card-title-block h3 a:hover {
+      color: var(--accent);
+    }
+
+    .card-actions-right {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .external-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0.35rem 0.75rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .external-link-btn:hover {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    .mastered-checkbox-wrap {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+      user-select: none;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .mastered-checkbox-wrap input {
+      accent-color: #10b981;
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+    }
+
+    .expand-toggle-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .expand-toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+    }
+
+    .expand-toggle-btn svg {
+      transition: transform 0.25s ease;
+    }
+
+    .problem-card.expanded .expand-toggle-btn svg {
+      transform: rotate(180deg);
+    }
+
+    /* Card Details Body */
+    .card-details-body {
+      display: none;
+      margin-top: 1.15rem;
+      padding-top: 1.15rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .problem-card.expanded .card-details-body {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-section-block {
+      margin-bottom: 1.15rem;
+    }
+
+    .detail-section-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.45rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .statement-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 0.8rem 1rem;
+      font-size: 0.86rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+
+    .intuition-box {
+      background: rgba(13, 19, 34, 0.7);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 10px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.86rem;
+      line-height: 1.65;
+      color: #cbd5e1;
+    }
+
+    .formulation-box {
+      background: #050811;
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 8px;
+      padding: 0.7rem 0.9rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.76rem;
+      color: #fde68a;
+      line-height: 1.55;
+      margin-top: 0.6rem;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+
+    /* Variable Bifurcation Table */
+    .table-container {
+      overflow-x: auto;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(5, 8, 17, 0.6);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .bifurcation-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.76rem;
+      text-align: left;
+      min-width: 540px;
+    }
+
+    .bifurcation-table th {
+      background: rgba(255, 255, 255, 0.04);
+      color: #94a3b8;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .bifurcation-table td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+
+    .bifurcation-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .var-name-badge {
+      display: inline-block;
+      font-family: 'Fira Code', monospace;
+      font-weight: 600;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.74rem;
+    }
+
+    .var-type-badge {
+      font-family: 'Fira Code', monospace;
+      color: #a78bfa;
+      font-size: 0.72rem;
+    }
+
+    /* Methods Grid */
+    .methods-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .method-subcard {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 10px;
+      padding: 0.8rem 0.95rem;
+    }
+
+    .method-subcard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.4rem;
+      gap: 6px;
+    }
+
+    .method-subcard-header h5 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .method-complexity-tag {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.68rem;
+      color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.1);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .method-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Python Code Box */
+    .code-wrapper {
+      position: relative;
+      background: var(--code-bg);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .code-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0.8rem;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .code-lang-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 6px;
+      padding: 0.22rem 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    .copy-btn.copied {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: #10b981;
+      color: #10b981;
+    }
+
+    .code-pre-box {
+      padding: 0.95rem 1.1rem;
+      margin: 0;
+      font-size: 0.76rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      overflow-x: auto;
+      max-height: 440px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Complexity Pill Footers */
+    .complexity-strip {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .c-pill {
+      font-family: 'Fira Code', monospace;
+      font-size: 0.72rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+    }
+
+    /* Empty State */
+    .no-results-box {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--card-bg);
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      color: var(--text-muted);
+    }
+
+    .no-results-box h4 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Footer */
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.2s;
+    }
+
+    .back-btn:hover {
+      transform: translateX(-4px);
+    }
+
+    /* =========================================================================
+       RESPONSIVE DESIGN (MOBILE & TABLET OPTIMIZATIONS)
+       ========================================================================= */
+    @media (max-width: 820px) {
+      .filter-row-top {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .search-box-wrapper {
+        max-width: 100%;
+        width: 100%;
+      }
+      .filter-controls-group {
+        width: 100%;
+        justify-content: space-between;
+      }
+      .custom-select {
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 78px 0.75rem 4rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      .lead {
+        font-size: 0.92rem;
+      }
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+      .stat-card {
+        padding: 0.65rem 0.75rem;
+      }
+      .stat-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+      }
+      .stat-info h4 {
+        font-size: 0.95rem;
+      }
+      .teacher-priority-box {
+        padding: 0.85rem 1rem;
+      }
+      .priority-chips-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-filter-section {
+        padding: 1rem;
+      }
+      .problem-card {
+        padding: 0.95rem;
+      }
+      .card-top-header {
+        flex-direction: column;
+        gap: 0.55rem;
+      }
+      .card-actions-right {
+        width: 100%;
+        justify-content: space-between;
+        padding-top: 0.4rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .card-title-block h3 {
+        font-size: 1.05rem;
+      }
+      .progress-bar-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.65rem;
+      }
+      .progress-meter-container {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Semester III</a>
+      <span>/</span>
+      <span>Competitive Coding I (CC-1)</span>
+      <span>/</span>
+      <span style="color: var(--accent);">Sessions 1–12 Python Repository</span>
+    </div>
+
+    <!-- Hero Header -->
+    <div class="hero">
+      <div class="subject-tag">⚔️ Comprehensive Syllabus &amp; Algorithm Mastery</div>
+      <h1>Competitive Coding <span>I (CC-1)</span></h1>
+      <p class="lead">Complete deep-dive repository for Sessions 1 through 12: Problem formulation, algorithmic intuition, detailed variable bifurcation tables, multi-method comparisons, and production Python-only solutions with real LeetCode and GfG question links.</p>
+    </div>
+
+    <!-- Stats Strip -->
+    <div class="stats-strip">
+      <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div class="stat-info">
+          <h4>39 Problems</h4>
+          <p>Sessions 1–12</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🔥</div>
+        <div class="stat-info">
+          <h4>7 Priority Ranks</h4>
+          <p>Faculty Hierarchy</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🐍</div>
+        <div class="stat-info">
+          <h4>Python 3 Only</h4>
+          <p>Clean &amp; Tested</p>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📊</div>
+        <div class="stat-info">
+          <h4>Variable Tables</h4>
+          <p>Bifurcation Invariants</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         TEACHER PRIORITY TIER SPOTLIGHT
+         ========================================================================= -->
+    <div class="teacher-priority-box">
+      <div class="priority-header">
+        <div class="priority-header-title">
+          <span style="font-size: 1.25rem;">🔥</span>
+          <h3>Teacher-Confirmed High-Yield Priority Tier</h3>
+        </div>
+        <div style="font-size: 0.72rem; color: #fde68a;">
+          Rank hierarchy: Trapping &gt; Kadane &gt; Moore &gt; BS &gt; Koko &gt; DNF &gt; Container
+        </div>
+      </div>
+
+      <div class="priority-chain-formula">
+        <span>Trapping Rain Water</span>
+        <span class="gt">&gt;</span>
+        <span>Kadane's Algo</span>
+        <span class="gt">&gt;</span>
+        <span>Moore's Voting</span>
+        <span class="gt">&gt;</span>
+        <span>Binary Search</span>
+        <span class="gt">&gt;</span>
+        <span>Koko Eating Bananas</span>
+        <span class="gt">&gt;</span>
+        <span>Dutch National Flag</span>
+        <span class="gt">&gt;</span>
+        <span>Container Most Water</span>
+      </div>
+
+      <div class="priority-chips-grid">
+        <div class="priority-chip" onclick="jumpToProblem('session-6-trapping-rain-water')">
+          <div class="chip-rank">#1</div>
+          <div class="chip-content">
+            <div class="chip-title">Trapping Rain Water</div>
+            <div class="chip-sub">LC 42 • Top Expected Question</div>
+          </div>
+        </div>
+
+        <div class="priority-chip" onclick="jumpToProblem('session-4-kadane')">
+          <div class="chip-rank">#2</div>
+          <div class="chip-content">
+            <div class="chip-title">Maximum Subarray (Kadane's)</div>
+            <div class="chip-sub">LC 53 • Very Imp DP</div>
+          </div>
+        </div>
+
+        <div class="priority-chip" onclick="jumpToProblem('session-4-moore-voting')">
+          <div class="chip-rank">#3</div>
+          <div class="chip-content">
+            <div class="chip-title">Majority Element (Moore's 169)</div>
+            <div class="chip-sub">LC 169 • Very Imp O(1) space</div>
+          </div>
+        </div>
+
+        <div class="priority-chip" onclick="jumpToProblem('session-7-lower-bound')">
+          <div class="chip-rank">#4</div>
+          <div class="chip-content">
+            <div class="chip-title">Binary Search (Lower/Upper)</div>
+            <div class="chip-sub">Very Imp Boundary Search</div>
+          </div>
+        </div>
+
+        <div class="priority-chip" onclick="jumpToProblem('session-7-koko-bananas')">
+          <div class="chip-rank">#5</div>
+          <div class="chip-content">
+            <div class="chip-title">Koko Eating Bananas</div>
+            <div class="chip-sub">LC 875 • Bahut Imp BS on Answer</div>
+          </div>
+        </div>
+
+        <div class="priority-chip" onclick="jumpToProblem('session-6-dutch-national-flag')">
+          <div class="chip-rank">#6</div>
+          <div class="chip-content">
+            <div class="chip-title">Dutch National Flag (0,1,2)</div>
+            <div class="chip-sub">LC 75 • Imp 3-Way Partition</div>
+          </div>
+        </div>
+
+        <div class="priority-chip" onclick="jumpToProblem('session-6-container-most-water')">
+          <div class="chip-rank">#7</div>
+          <div class="chip-content">
+            <div class="chip-title">Container With Most Water</div>
+            <div class="chip-sub">LC 11 • High Exam Probability</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         NON-STICKY FILTER & NAVIGATION SECTION (SIMPLY SCROLLS WITH PAGE)
+         ========================================================================= -->
+    <div class="nav-filter-section" id="filterNavSection">
+      <!-- Row 1: Search + Dropdowns -->
+      <div class="filter-row-top">
+        <div class="search-box-wrapper">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by problem name, LeetCode #, algorithm...">
+          <button id="searchClearBtn" class="search-clear-btn" onclick="clearSearch()">✕</button>
+        </div>
+
+        <div class="filter-controls-group">
+          <!-- Session Filter -->
+          <select id="sessionFilter" class="custom-select" onchange="applyFilters()">
+            <option value="all">All Sessions (1 to 12)</option>
+            <option value="1">Session 1: Foundations</option>
+            <option value="2">Session 2: Recursion I</option>
+            <option value="3">Session 3: Recursion II</option>
+            <option value="4">Session 4: Array I</option>
+            <option value="5">Session 5: Array II</option>
+            <option value="6">Session 6: Array III</option>
+            <option value="7">Session 7: Binary Search I</option>
+            <option value="8">Session 8: Binary Search II</option>
+            <option value="9">Session 9: Matrix I</option>
+            <option value="10">Session 10: Matrix II</option>
+            <option value="11">Session 11: Strings I</option>
+            <option value="12">Session 12: Strings II</option>
+          </select>
+
+          <!-- Topic Filter -->
+          <select id="topicFilter" class="custom-select" onchange="applyFilters()">
+            <option value="all">All Topics</option>
+            <option value="Arrays">Arrays</option>
+            <option value="Recursion">Recursion</option>
+            <option value="Binary Search">Binary Search</option>
+            <option value="Matrix">Matrix</option>
+            <option value="Strings">Strings</option>
+            <option value="Foundations">Foundations</option>
+          </select>
+
+          <!-- Sorter Dropdown -->
+          <select id="sortOrder" class="custom-select" onchange="applyFilters()">
+            <option value="default">Sort: Default (Session 1–12)</option>
+            <option value="priority">Sort: 🏆 Teacher Priority Tier (Top Ranked)</option>
+            <option value="diffAsc">Sort: Difficulty (Easy → Hard)</option>
+            <option value="diffDesc">Sort: Difficulty (Hard → Easy)</option>
+            <option value="alpha">Sort: Title (A → Z)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 2: Presets Tabs -->
+      <div class="view-preset-pills">
+        <button class="preset-pill active" id="presetAll" onclick="setPreset('all', this)">
+          <span>🌟</span> All 39 Problems
+        </button>
+        <button class="preset-pill" id="presetPriority" onclick="setPreset('priority', this)">
+          <span>🔥</span> Teacher Priority Tier (Top 7)
+        </button>
+        <button class="preset-pill" id="presetTeacherConfirmed" onclick="setPreset('confirmed', this)">
+          <span>⭐</span> Teacher Confirmed Set (14)
+        </button>
+      </div>
+
+      <!-- Row 3: Teacher-Confirmed Sub-Field Sorter Pills -->
+      <div>
+        <div class="subfield-sorter-label">
+          <span>🎯</span> TEACHER-CONFIRMED SUB-FIELD SORTER
+        </div>
+        <div class="subfield-pills-row">
+          <button class="subfield-pill active" onclick="setSubField('all', this)">All</button>
+          <button class="subfield-pill" onclick="setSubField('Recursion 1', this)">Recursion 1 (Factorial, Power)</button>
+          <button class="subfield-pill" onclick="setSubField('Recursion 2', this)">Recursion 2 (Pivot, Duplicates, Fib)</button>
+          <button class="subfield-pill" onclick="setSubField('Array 1', this)">Array 1 (Kadane's, Moore's 169)</button>
+          <button class="subfield-pill" onclick="setSubField('Array 2', this)">Array 2 (2 Sum, Max Freq, Rotate)</button>
+          <button class="subfield-pill" onclick="setSubField('Array 3', this)">Array 3 (DNF Sort 0,1,2, Rain Water, Container)</button>
+          <button class="subfield-pill" onclick="setSubField('Binary Search', this)">Binary Search (Lower/Upper, Rotated, Koko)</button>
+          <button class="subfield-pill" onclick="setSubField('Matrix', this)">Matrix (Spiral, Median, Max 1s, Rotate)</button>
+          <button class="subfield-pill" onclick="setSubField('Strings', this)">Strings (Frequency, Isomorphic, LPS)</button>
+        </div>
+      </div>
+
+      <!-- Row 4: Revision Progress & Batch Toggles -->
+      <div class="progress-bar-row">
+        <div class="progress-meter-container">
+          <span id="masteredCountText">0 / 39 Mastered</span>
+          <div class="meter-bg">
+            <div id="meterFill" class="meter-fill"></div>
+          </div>
+          <span id="meterPercentText" style="font-weight: 700; color: #10b981;">0%</span>
+        </div>
+
+        <div style="font-size: 0.76rem; color: #93c5fd; display: flex; align-items: center; gap: 5px;">
+          <span>🐍</span> Pure Python 3 Solutions
+        </div>
+
+        <div class="toggle-all-btns">
+          <button class="btn-text" onclick="toggleAllCards(true)">Expand All</button>
+          <button class="btn-text" onclick="toggleAllCards(false)">Collapse All</button>
+          <button class="btn-text" onclick="resetAllFilters()">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================================================
+         PROBLEMS CONTAINER
+         ========================================================================= -->
+    <div id="problemsContainer" class="problems-grid">
+      <!-- Injected via JavaScript from window.CC1_PROBLEMS -->
+    </div>
+
+    <!-- Empty Results Fallback -->
+    <div id="noResults" class="no-results-box" style="display: none;">
+      <h4>No problems match your current search/filter</h4>
+      <p>Try clearing your search query or selecting "All" in the filters above.</p>
+      <button class="btn-text" style="margin-top: 0.85rem;" onclick="resetAllFilters()">Reset All Filters</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <a href="../index.html" class="back-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        Back to Semester III Portal
+      </a>
+      <span>Academic Portal • Semester III (CC-1) Master Suite</span>
+    </footer>
+  </div>
+
+  <!-- Load Master Problem Dataset -->
+  <script src="cc1-data.js"></script>
+
+  <script>
+    // State management
+    let activePreset = 'all';
+    let activeSubField = 'all';
+    let searchQuery = '';
+    let selectedSession = 'all';
+    let selectedTopic = 'all';
+    let selectedSort = 'default';
+    let masteredSet = new Set(JSON.parse(localStorage.getItem('cc1_mastered') || '[]'));
+
+    const searchInput = document.getElementById('searchInput');
+    const searchClearBtn = document.getElementById('searchClearBtn');
+
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      searchClearBtn.style.display = searchQuery ? 'block' : 'none';
+      applyFilters();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== searchInput) {
+        e.preventDefault();
+        searchInput.focus();
+      } else if (e.key === 'Escape' && document.activeElement === searchInput) {
+        clearSearch();
+        searchInput.blur();
+      }
+    });
+
+    function clearSearch() {
+      searchInput.value = '';
+      searchQuery = '';
+      searchClearBtn.style.display = 'none';
+      applyFilters();
+    }
+
+    function setPreset(preset, el) {
+      activePreset = preset;
+      document.querySelectorAll('.preset-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      applyFilters();
+    }
+
+    function setSubField(sf, el) {
+      activeSubField = sf;
+      document.querySelectorAll('.subfield-pill').forEach(b => b.classList.remove('active'));
+      el.classList.add('active');
+      applyFilters();
+    }
+
+    function resetAllFilters() {
+      searchInput.value = '';
+      searchQuery = '';
+      searchClearBtn.style.display = 'none';
+      document.getElementById('sessionFilter').value = 'all';
+      document.getElementById('topicFilter').value = 'all';
+      document.getElementById('sortOrder').value = 'default';
+      activePreset = 'all';
+      activeSubField = 'all';
+      document.querySelectorAll('.preset-pill').forEach(b => b.classList.remove('active'));
+      document.getElementById('presetAll').classList.add('active');
+      document.querySelectorAll('.subfield-pill').forEach(b => b.classList.remove('active'));
+      document.querySelector('.subfield-pill').classList.add('active');
+      applyFilters();
+    }
+
+    function jumpToProblem(problemId) {
+      resetAllFilters();
+      setTimeout(() => {
+        const card = document.getElementById(problemId);
+        if (card) {
+          card.classList.add('expanded');
+          card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          card.style.outline = '2px solid var(--accent)';
+          setTimeout(() => { card.style.outline = 'none'; }, 2000);
+        }
+      }, 50);
+    }
+
+    function toggleCard(cardId) {
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.toggle('expanded');
+      }
+    }
+
+    function toggleAllCards(expand) {
+      document.querySelectorAll('.problem-card').forEach(card => {
+        if (expand) card.classList.add('expanded');
+        else card.classList.remove('expanded');
+      });
+    }
+
+    function toggleMastered(problemId, event) {
+      event.stopPropagation();
+      if (masteredSet.has(problemId)) {
+        masteredSet.delete(problemId);
+      } else {
+        masteredSet.add(problemId);
+      }
+      localStorage.setItem('cc1_mastered', JSON.stringify(Array.from(masteredSet)));
+      updateMasteredProgress();
+      
+      const card = document.getElementById(problemId);
+      if (card) {
+        card.classList.toggle('mastered', masteredSet.has(problemId));
+      }
+    }
+
+    function updateMasteredProgress() {
+      const total = window.CC1_PROBLEMS ? window.CC1_PROBLEMS.length : 39;
+      const done = masteredSet.size;
+      const pct = Math.round((done / total) * 100);
+      document.getElementById('masteredCountText').innerText = `${done} / ${total} Mastered`;
+      document.getElementById('meterPercentText').innerText = `${pct}%`;
+      document.getElementById('meterFill').style.width = `${pct}%`;
+    }
+
+    function copyCode(btn, codeText) {
+      navigator.clipboard.writeText(codeText).then(() => {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✓ Copied!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+
+    function applyFilters() {
+      selectedSession = document.getElementById('sessionFilter').value;
+      selectedTopic = document.getElementById('topicFilter').value;
+      selectedSort = document.getElementById('sortOrder').value;
+
+      if (!window.CC1_PROBLEMS) return;
+
+      let list = [...window.CC1_PROBLEMS];
+
+      // 1. Preset filtering
+      if (activePreset === 'priority') {
+        list = list.filter(p => p.teacherPriorityRank !== null);
+      } else if (activePreset === 'confirmed') {
+        list = list.filter(p => p.teacherConfirmed);
+      }
+
+      // 2. Sub-field filtering
+      if (activeSubField !== 'all') {
+        list = list.filter(p => p.subField === activeSubField);
+      }
+
+      // 3. Session filter
+      if (selectedSession !== 'all') {
+        list = list.filter(p => String(p.session) === selectedSession);
+      }
+
+      // 4. Topic filter
+      if (selectedTopic !== 'all') {
+        list = list.filter(p => p.topic === selectedTopic);
+      }
+
+      // 5. Search query
+      if (searchQuery) {
+        list = list.filter(p => {
+          const inTitle = p.title.toLowerCase().includes(searchQuery);
+          const inLC = p.lcNum.toLowerCase().includes(searchQuery);
+          const inStatement = p.problemStatement.toLowerCase().includes(searchQuery);
+          const inIntuition = p.intuition.toLowerCase().includes(searchQuery);
+          const inTopic = p.topic.toLowerCase().includes(searchQuery);
+          const inVariables = p.variableBifurcation.some(v => v.name.toLowerCase().includes(searchQuery));
+          return inTitle || inLC || inStatement || inIntuition || inTopic || inVariables;
+        });
+      }
+
+      // 6. Sorting
+      if (selectedSort === 'priority') {
+        list.sort((a, b) => {
+          const rankA = a.teacherPriorityRank !== null ? a.teacherPriorityRank : 999;
+          const rankB = b.teacherPriorityRank !== null ? b.teacherPriorityRank : 999;
+          return rankA - rankB;
+        });
+      } else if (selectedSort === 'diffAsc') {
+        const order = { 'Foundational': 1, 'Easy': 2, 'Medium': 3, 'Hard': 4 };
+        list.sort((a, b) => (order[a.difficulty] || 2) - (order[b.difficulty] || 2));
+      } else if (selectedSort === 'diffDesc') {
+        const order = { 'Foundational': 1, 'Easy': 2, 'Medium': 3, 'Hard': 4 };
+        list.sort((a, b) => (order[b.difficulty] || 2) - (order[a.difficulty] || 2));
+      } else if (selectedSort === 'alpha') {
+        list.sort((a, b) => a.title.localeCompare(b.title));
+      } else {
+        // Default: Session ascending
+        list.sort((a, b) => a.session - b.session);
+      }
+
+      renderProblems(list);
+    }
+
+    function renderProblems(problems) {
+      const container = document.getElementById('problemsContainer');
+      const noResults = document.getElementById('noResults');
+
+      if (problems.length === 0) {
+        container.innerHTML = '';
+        noResults.style.display = 'block';
+        return;
+      }
+
+      noResults.style.display = 'none';
+
+      container.innerHTML = problems.map((p) => {
+        const isMastered = masteredSet.has(p.id);
+        const isPriority = p.teacherPriorityRank !== null;
+        const priorityBadge = isPriority ? 
+          `<span class="badge badge-priority">🔥 Rank #${p.teacherPriorityRank}</span>` : '';
+        const teacherBadge = p.teacherConfirmed && !isPriority ?
+          `<span class="badge badge-teacher">⭐ Teacher Confirmed</span>` : '';
+        
+        let diffClass = 'badge-diff-easy';
+        if (p.difficulty === 'Medium') diffClass = 'badge-diff-medium';
+        if (p.difficulty === 'Hard') diffClass = 'badge-diff-hard';
+
+        const escapedCode = p.code.py.replace(/"/g, '&quot;');
+
+        const varRows = p.variableBifurcation.map(v => `
+          <tr>
+            <td><span class="var-name-badge">${v.name}</span></td>
+            <td><span class="var-type-badge">${v.type}</span></td>
+            <td style="color: #fde68a;">${v.init}</td>
+            <td>${v.role}</td>
+            <td style="color: #94a3b8;">${v.update}</td>
+          </tr>
+        `).join('');
+
+        const methodCards = p.methods.map(m => `
+          <div class="method-subcard">
+            <div class="method-subcard-header">
+              <h5>${m.name}</h5>
+              <span class="method-complexity-tag">${m.time} | ${m.space}</span>
+            </div>
+            <div class="method-desc">${m.desc}</div>
+            ${m.pitfall ? `<div style="font-size: 0.73rem; color: #fca5a5; margin-top: 0.35rem;">⚠️ ${m.pitfall}</div>` : ''}
+            ${m.formula ? `<div style="font-size: 0.73rem; color: #fde68a; font-family: 'Fira Code', monospace; margin-top: 0.35rem;">📐 ${m.formula}</div>` : ''}
+          </div>
+        `).join('');
+
+        return `
+          <div class="problem-card ${isPriority ? 'teacher-priority-card' : ''} ${p.teacherConfirmed && !isPriority ? 'teacher-confirmed-card' : ''} ${isMastered ? 'mastered' : ''}" id="${p.id}">
+            <!-- Header (Always Visible) -->
+            <div class="card-top-header" onclick="toggleCard('${p.id}')">
+              <div class="card-title-block">
+                <div class="card-meta-badges">
+                  <span class="badge badge-session">Session ${p.session}</span>
+                  <span class="badge badge-subfield">${p.subField}</span>
+                  <span class="badge ${diffClass}">${p.difficulty}</span>
+                  ${priorityBadge}
+                  ${teacherBadge}
+                </div>
+                <h3>
+                  <span>${p.title}</span>
+                  <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted); font-family: 'Inter', sans-serif;">(${p.lcNum})</span>
+                </h3>
+                ${p.teacherNote ? `<div style="font-size: 0.76rem; color: #fde68a; margin-top: 0.2rem;">📌 ${p.teacherNote}</div>` : ''}
+              </div>
+
+              <div class="card-actions-right">
+                <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="external-link-btn" onclick="event.stopPropagation()">
+                  <span>Solve Link</span>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+
+                <label class="mastered-checkbox-wrap" onclick="toggleMastered('${p.id}', event)">
+                  <input type="checkbox" ${isMastered ? 'checked' : ''}>
+                  <span>Mastered</span>
+                </label>
+
+                <button class="expand-toggle-btn" aria-label="Toggle details">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Details Body (Expandable) -->
+            <div class="card-details-body">
+              <!-- Problem Statement -->
+              <div class="detail-section-block">
+                <div class="detail-section-title">
+                  <span>📖</span> Problem Statement &amp; Objective
+                </div>
+                <div class="statement-box">
+                  ${p.problemStatement}
+                </div>
+              </div>
+
+              <!-- Intuition & Mental Model -->
+              <div class="detail-section-block">
+                <div class="detail-section-title">
+                  <span>💡</span> Intuition &amp; Algorithmic Mental Model
+                </div>
+                <div class="intuition-box">
+                  ${p.intuition}
+                  ${p.formulation ? `<div class="formulation-box">${p.formulation}</div>` : ''}
+                </div>
+              </div>
+
+              <!-- Variable Bifurcation Table -->
+              <div class="detail-section-block">
+                <div class="detail-section-title">
+                  <span>📊</span> Variable Bifurcation Table (Invariants &amp; Roles)
+                </div>
+                <div class="table-container">
+                  <table class="bifurcation-table">
+                    <thead>
+                      <tr>
+                        <th>Variable</th>
+                        <th>Type</th>
+                        <th>Initial Value</th>
+                        <th>Role &amp; State Invariant</th>
+                        <th>Update Trigger &amp; Transition</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${varRows}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Methods Comparison -->
+              <div class="detail-section-block">
+                <div class="detail-section-title">
+                  <span>🛠️</span> Algorithmic Formulations &amp; Approach Comparison
+                </div>
+                <div class="methods-cards-grid">
+                  ${methodCards}
+                </div>
+              </div>
+
+              <!-- Python Solution Only -->
+              <div class="detail-section-block">
+                <div class="detail-section-title">
+                  <span>🐍</span> Clean Python 3 Solution (Production Implementation)
+                </div>
+                <div class="code-wrapper">
+                  <div class="code-top-bar">
+                    <div class="code-lang-label">
+                      <span>Python 3</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this, \`${escapedCode}\`)">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      <span>Copy Python Code</span>
+                    </button>
+                  </div>
+                  <pre class="code-pre-box"><code>${escapeHtml(p.code.py)}</code></pre>
+                </div>
+              </div>
+
+              <!-- Complexity Summary -->
+              <div class="complexity-strip">
+                <div class="c-pill">⏱️ <strong>Time:</strong> ${p.timeComplexity}</div>
+                <div class="c-pill">💾 <strong>Space:</strong> ${p.spaceComplexity}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Initialize application on load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateMasteredProgress();
+      applyFilters();
+    });
+  </script>
+</body>
+</html>
