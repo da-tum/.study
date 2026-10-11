@@ -10,18 +10,22 @@
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
 
     :root {
-      --bg: #090d16;
-      --card-bg: #111827;
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
+      --bg: #1e232d;
+      --bg-surface: #262c37;
+      --card-bg: #2a313e;
+      --card-hover: #313948;
+      --text: #f1f5f9;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
       --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(229, 192, 123, 0.35);
       
-      /* Subject Colors */
-      --color-ds: #10b981;       /* Emerald */
-      --color-web: #3b82f6;      /* Blue */
-      --color-phil: #f59e0b;     /* Amber */
-      --color-maths: #8b5cf6;    /* Purple */
-      --color-chem: #06b6d4;     /* Cyan */
+      /* Classy Subject Colors */
+      --color-ds: #86efac;       /* Matte Mint */
+      --color-web: #93c5fd;      /* Matte Blue */
+      --color-phil: #e5c07b;     /* Matte Gold */
+      --color-maths: #d8b4fe;    /* Matte Lilac */
+      --color-chem: #67e8f9;     /* Matte Cyan */
     }
 
     * {
@@ -34,9 +38,9 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 40%);
-      color: var(--text);
+        radial-gradient(circle at 10% 20%, rgba(147, 197, 253, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(229, 192, 123, 0.04) 0%, transparent 45%);
+      color: var(--text-body);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -57,16 +61,16 @@
     .portal-tag {
       display: inline-block;
       padding: 0.35rem 1rem;
-      background: rgba(139, 92, 246, 0.08);
-      border: 1px solid rgba(139, 92, 246, 0.2);
+      background: rgba(229, 192, 123, 0.1);
+      border: 1px solid rgba(229, 192, 123, 0.28);
       border-radius: 100px;
       font-size: 0.75rem;
       font-weight: 700;
-      color: #a78bfa;
+      color: #e5c07b;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 1.5rem;
-      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     h1 {
@@ -75,15 +79,14 @@
       font-family: 'Outfit', sans-serif;
       letter-spacing: -0.04em;
       margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--text);
     }
 
     h1 span {
       font-weight: 400;
       font-style: italic;
-      background: linear-gradient(135deg, #8b5cf6, #ec4899);
+      color: #e5c07b;
+      background: linear-gradient(135deg, #e5c07b, #fde047);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -104,18 +107,18 @@
     }
 
     .card {
-      background: rgba(17, 24, 39, 0.6);
-      backdrop-filter: blur(12px);
+      background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 2.5rem;
       text-decoration: none;
       color: inherit;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.18);
     }
 
     .card::before {
@@ -124,18 +127,19 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 4px;
+      height: 3px;
       background: var(--subject-color);
-      opacity: 0.8;
-      transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0.9;
+      transition: height 0.35s ease;
     }
 
     .card:hover {
       transform: translateY(-8px);
+      background: var(--card-hover);
       border-color: var(--subject-color);
       box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.4),
-        0 0 30px rgba(var(--subject-rgb), 0.1);
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px rgba(var(--subject-rgb), 0.12);
     }
 
     .card:hover::before {

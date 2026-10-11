@@ -1,5 +1,5 @@
-// Competitive Coding I (CC-1) Sessions 1 to 12 Comprehensive Master Data
-// Auto-generated with Variable Bifurcation, Intuitions, Formulations & Python-Only Solutions
+// Competitive Coding I (CC-1) Sessions 1 to 12 Master Dataset
+// Pure Algorithm Function Implementations (No __main__ driver code)
 window.CC1_PROBLEMS = [
   {
     "id": "session-1-complexity",
@@ -50,10 +50,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "import sys\n\ndef solve():\n    # Fast I/O in Python\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    n = int(input_data[0])\n    # Target: Python executes ~2-5 * 10^7 ops/sec; keep N <= 10^5 in O(N) or O(N log N)\n    print(f\"Max ops for N={n}: limit to <= 10^8 in C++, ~3*10^7 in Python\")\n\nif __name__ == '__main__':\n    solve()"
+      "py": "import sys\n\ndef solve():\n    # Fast I/O in Python\n    input_data = sys.stdin.read().split()\n    if not input_data:\n        return\n    n = int(input_data[0])\n    # Target: Python executes ~2-5 * 10^7 ops/sec; keep N <= 10^5 in O(N) or O(N log N)\n    print(f\"Max ops for N={n}: limit to <= 10^8 in C++, ~3*10^7 in Python\")"
     },
     "timeComplexity": "O(1) analytical deduction",
-    "spaceComplexity": "O(1) analytical deduction"
+    "spaceComplexity": "O(1) analytical deduction",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Rule-of-Thumb Constraint Thresholds",
+        "desc": "Check N against standard platform clock speed (~10^8 ops/sec). Simple and intuitive to memorize for exams.",
+        "time": "O(1)",
+        "space": "O(1)",
+        "code": "def determine_complexity(n: int) -> str:\n    # Easiest Rule-of-Thumb: Match N with 10^8 operations limit\n    if n <= 12:\n        return \"O(N!) or O(2^N) - Permutations / Subsets\"\n    elif n <= 25:\n        return \"O(2^N) - Backtracking / Bitmask DP\"\n    elif n <= 1000:\n        return \"O(N^2) - Nested Loops / 2D DP\"\n    elif n <= 100000:\n        return \"O(N log N) or O(N) - Sorting / Binary Search / Sliding Window\"\n    else:\n        return \"O(log N) or O(1) - Binary Search on Answer / Math / Bitwise\""
+      },
+      "shortest": {
+        "title": "Shortest Built-in: Fast Token Reader via sys.stdin.read",
+        "desc": "Built-in sys.stdin.read().split() reads and tokenizes entire stream in C buffer.",
+        "time": "O(N) I/O",
+        "space": "O(N)",
+        "code": "import sys\n\ndef solve():\n    # Built-in C-accelerated fast I/O\n    tokens = sys.stdin.read().split()\n    if tokens:\n        n = int(tokens[0])\n        print(\"Read N =\", n)"
+      }
+    }
   },
   {
     "id": "session-2-factorial",
@@ -102,10 +118,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def factorial(n: int) -> int:\n    # Base case: 0! = 1, 1! = 1\n    if n <= 1:\n        return 1\n    # Recurrence relation: n * fact(n-1)\n    return n * factorial(n - 1)\n\nif __name__ == '__main__':\n    print(\"Factorial of 5:\", factorial(5))"
+      "py": "def factorial(n: int) -> int:\n    # Base case: 0! = 1, 1! = 1\n    if n <= 1:\n        return 1\n    # Recurrence relation: n * fact(n-1)\n    return n * factorial(n - 1)"
     },
     "timeComplexity": "O(N) - exactly N recursive function calls",
-    "spaceComplexity": "O(N) - recursion call stack depth of N frames"
+    "spaceComplexity": "O(N) - recursion call stack depth of N frames",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Direct Head Recursion",
+        "desc": "Standard mathematical recurrence n * fact(n-1). Direct mapping of base case and recursion step.",
+        "time": "O(N)",
+        "space": "O(N) call stack",
+        "code": "def factorial_easiest(n: int) -> int:\n    \"\"\"\n    Easiest Approach: Direct Head Recursion\n    Base case: 0! = 1, 1! = 1\n    Step: n * factorial(n - 1)\n    \"\"\"\n    if n <= 1:\n        return 1\n    return n * factorial_easiest(n - 1)"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: math.factorial()",
+        "desc": "Python standard library math.factorial runs in pre-compiled C with BigInt support.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "import math\n\ndef factorial_builtin(n: int) -> int:\n    \"\"\"Shortest Built-in: Standard math.factorial in C\"\"\"\n    return math.factorial(n)"
+      }
+    }
   },
   {
     "id": "session-2-power",
@@ -161,10 +193,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def myPow(self, x: float, n: int) -> float:\n        if n < 0:\n            x = 1.0 / x\n            n = -n\n        ans = 1.0\n        curr = x\n        while n > 0:\n            if n % 2 == 1:\n                ans *= curr\n            curr *= curr\n            n //= 2\n        return ans\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"2^10 =\", sol.myPow(2.0, 10))\n    print(\"2^-2 =\", sol.myPow(2.0, -2))"
+      "py": "class Solution:\n    def myPow(self, x: float, n: int) -> float:\n        if n < 0:\n            x = 1.0 / x\n            n = -n\n        ans = 1.0\n        curr = x\n        while n > 0:\n            if n % 2 == 1:\n                ans *= curr\n            curr *= curr\n            n //= 2\n        return ans"
     },
     "timeComplexity": "O(log N) - exponent halved on each step",
-    "spaceComplexity": "O(1) - auxiliary space in iterative version (O(log N) stack for recursive)"
+    "spaceComplexity": "O(1) - auxiliary space in iterative version (O(log N) stack for recursive)",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Step-by-Step Divide & Conquer",
+        "desc": "Even exponent halves and squares; odd exponent multiplies one base factor.",
+        "time": "O(log N)",
+        "space": "O(log N) stack",
+        "code": "def myPow_easiest(x: float, n: int) -> float:\n    \"\"\"\n    Easiest Approach: Step-by-step recursive divide & conquer\n    If n is even: x^n = (x * x)^(n // 2)\n    If n is odd:  x^n = x * x^(n - 1)\n    \"\"\"\n    if n == 0:\n        return 1.0\n    if n < 0:\n        return 1.0 / myPow_easiest(x, -n)\n    \n    if n % 2 == 0:\n        return myPow_easiest(x * x, n // 2)\n    else:\n        return x * myPow_easiest(x, n - 1)"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: Native pow() Function",
+        "desc": "Python's built-in pow(x, n) executes logarithmic binary exponentiation natively in C.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "def myPow_builtin(x: float, n: int) -> float:\n    \"\"\"Shortest Built-in: Native pow() handles negative powers & O(log N)\"\"\"\n    return float(pow(x, n))"
+      }
+    }
   },
   {
     "id": "session-2-print-seq",
@@ -200,10 +248,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def print_increasing(n: int):\n    if n == 0:\n        return\n    print_increasing(n - 1)\n    print(n, end=\" \")\n\ndef print_decreasing(n: int):\n    if n == 0:\n        return\n    print(n, end=\" \")\n    print_decreasing(n - 1)\n\nif __name__ == '__main__':\n    print(\"Increasing:\")\n    print_increasing(5)\n    print(\"\\nDecreasing:\")\n    print_decreasing(5)"
+      "py": "def print_increasing(n: int):\n    if n == 0:\n        return\n    print_increasing(n - 1)\n    print(n, end=\" \")\n\ndef print_decreasing(n: int):\n    if n == 0:\n        return\n    print(n, end=\" \")\n    print_decreasing(n - 1)"
     },
     "timeComplexity": "O(N) - visits each integer once",
-    "spaceComplexity": "O(N) - recursion call stack depth of N"
+    "spaceComplexity": "O(N) - recursion call stack depth of N",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Two Separate Functions",
+        "desc": "One function prints before call (Pre-order), one prints after call (Post-order).",
+        "time": "O(N)",
+        "space": "O(N) stack",
+        "code": "def print_1_to_n(n: int):\n    # Easiest: Print after recursive call (Post-order)\n    if n == 0: return\n    print_1_to_n(n - 1)\n    print(n, end=\" \")\n\ndef print_n_to_1(n: int):\n    # Easiest: Print before recursive call (Pre-order)\n    if n == 0: return\n    print(n, end=\" \")\n    print_n_to_1(n - 1)"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: print() with range() Unpacking",
+        "desc": "Built-in range() with * unpacking prints sequence in 1 clean line.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def print_seq_builtin(n: int) -> None:\n    \"\"\"Shortest Built-in: Unpack range with * operator\"\"\"\n    print(*range(1, n + 1))  # 1 to n increasing\n    print(*range(n, 0, -1))  # n to 1 decreasing"
+      }
+    }
   },
   {
     "id": "session-2-count-digits",
@@ -239,10 +303,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def count_digits(n: int) -> int:\n    n = abs(n)\n    if n < 10:\n        return 1\n    return 1 + count_digits(n // 10)\n\nif __name__ == '__main__':\n    print(\"Digits in 12345:\", count_digits(12345))"
+      "py": "def count_digits(n: int) -> int:\n    n = abs(n)\n    if n < 10:\n        return 1\n    return 1 + count_digits(n // 10)"
     },
     "timeComplexity": "O(log\u2081\u2080 N) - number of digits in N",
-    "spaceComplexity": "O(log\u2081\u2080 N) - call stack frames"
+    "spaceComplexity": "O(log\u2081\u2080 N) - call stack frames",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Recursive Division by 10",
+        "desc": "Strip the last digit on each recursive call until n < 10.",
+        "time": "O(log10 N)",
+        "space": "O(log10 N) stack",
+        "code": "def count_digits_easiest(n: int) -> int:\n    \"\"\"\n    Easiest Approach: Recursive truncation by 10\n    Base case: Single digit returns 1\n    \"\"\"\n    n = abs(n)\n    if n < 10:\n        return 1\n    return 1 + count_digits_easiest(n // 10)"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: len() of str()",
+        "desc": "Built-in str(abs(n)) converted to len() counts digits instantly without loops.",
+        "time": "O(log10 N)",
+        "space": "O(log10 N)",
+        "code": "def count_digits_builtin(n: int) -> int:\n    \"\"\"Shortest Built-in: Length of string representation\"\"\"\n    return len(str(abs(n)))"
+      }
+    }
   },
   {
     "id": "session-2-sum-array",
@@ -285,10 +365,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def array_sum(arr: list[int], idx: int = 0) -> int:\n    if idx == len(arr):\n        return 0\n    return arr[idx] + array_sum(arr, idx + 1)\n\nif __name__ == '__main__':\n    print(\"Sum:\", array_sum([1, 2, 3, 4, 5]))"
+      "py": "def array_sum(arr: list[int], idx: int = 0) -> int:\n    if idx == len(arr):\n        return 0\n    return arr[idx] + array_sum(arr, idx + 1)"
     },
     "timeComplexity": "O(N) - visits each index once",
-    "spaceComplexity": "O(N) - recursion depth"
+    "spaceComplexity": "O(N) - recursion depth",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Index Pointer Recursion",
+        "desc": "Pass current index from 0 to N-1, adding arr[idx] to the rest.",
+        "time": "O(N)",
+        "space": "O(N) stack",
+        "code": "def array_sum_easiest(arr: list[int], idx: int = 0) -> int:\n    \"\"\"\n    Easiest Approach: Add current element to sum of remaining array\n    \"\"\"\n    if idx == len(arr):\n        return 0\n    return arr[idx] + array_sum_easiest(arr, idx + 1)"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: sum() Function",
+        "desc": "Python built-in sum() iterates and accumulates in optimized C bytecode.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def sum_array_builtin(arr: list[int]) -> int:\n    \"\"\"Shortest Built-in: Python's native sum()\"\"\"\n    return sum(arr)"
+      }
+    }
   },
   {
     "id": "session-3-pivot-index",
@@ -347,7 +443,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def pivotIndex(self, nums: list[int]) -> int:\n        total_sum = sum(nums)\n        left_sum = 0\n        for i, val in enumerate(nums):\n            if left_sum == total_sum - left_sum - val:\n                return i\n            left_sum += val\n        return -1"
     },
     "timeComplexity": "O(N) - two passes of length N",
-    "spaceComplexity": "O(1) - two integer variables (totalSum and leftSum)"
+    "spaceComplexity": "O(1) - two integer variables (totalSum and leftSum)",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Prefix Balance Equation",
+        "desc": "Precompute total sum once. At each index, right sum is total - left - nums[i]. Check left == right.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def pivotIndex_easiest(nums: list[int]) -> int:\n    \"\"\"\n    Easiest Approach: Precompute totalSum, maintain leftSum.\n    rightSum = totalSum - leftSum - nums[i]\n    \"\"\"\n    total_sum = sum(nums)\n    left_sum = 0\n    \n    for i, x in enumerate(nums):\n        right_sum = total_sum - left_sum - x\n        if left_sum == right_sum:\n            return i\n        left_sum += x\n        \n    return -1"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: sum() with Running Difference",
+        "desc": "Built-in sum(nums) allows O(1) space balance check: left == total - left - x.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def pivotIndex_builtin(nums: list[int]) -> int:\n    \"\"\"Shortest Built-in: Total sum with running left sum\"\"\"\n    total, left = sum(nums), 0\n    for i, x in enumerate(nums):\n        if left == total - left - x:\n            return i\n        left += x\n    return -1"
+      }
+    }
   },
   {
     "id": "session-3-remove-duplicates",
@@ -399,7 +511,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def removeDuplicates(self, s: str) -> str:\n        stack = []\n        for ch in s:\n            if stack and stack[-1] == ch:\n                stack.pop()\n            else:\n                stack.append(ch)\n        return \"\".join(stack)"
     },
     "timeComplexity": "O(N) - single pass over string length N",
-    "spaceComplexity": "O(N) - auxiliary buffer storing result"
+    "spaceComplexity": "O(N) - auxiliary buffer storing result",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Explicit Stack Loop",
+        "desc": "If current character matches top of stack, pop it (annihilation). Otherwise push.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def removeDuplicates_easiest(s: str) -> str:\n    \"\"\"\n    Easiest Approach: Stack simulation of duplicate cancellation\n    \"\"\"\n    stack = []\n    for ch in s:\n        if len(stack) > 0 and stack[-1] == ch:\n            stack.pop() # Cancel adjacent duplicates\n        else:\n            stack.append(ch)\n    return \"\".join(stack)"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: List LIFO Stack with join()",
+        "desc": "Clean list stack with ternary condition and ''.join() output.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def removeDuplicates_builtin(s: str) -> str:\n    \"\"\"Shortest Pythonic: List as LIFO stack with join()\"\"\"\n    st = []\n    for ch in s:\n        st.pop() if st and st[-1] == ch else st.append(ch)\n    return \"\".join(st)"
+      }
+    }
   },
   {
     "id": "session-3-fibonacci",
@@ -471,7 +599,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def fib(self, n: int) -> int:\n        if n <= 1:\n            return n\n        prev2, prev1 = 0, 1\n        for _ in range(2, n + 1):\n            curr = prev1 + prev2\n            prev2, prev1 = prev1, curr\n        return prev1"
     },
     "timeComplexity": "O(N) - single loop from 2 to N",
-    "spaceComplexity": "O(1) - two variables prev1, prev2"
+    "spaceComplexity": "O(1) - two variables prev1, prev2",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Memoized Recursion",
+        "desc": "Cache subproblem results with a dictionary to prevent exponential tree recalculations.",
+        "time": "O(N)",
+        "space": "O(N) memo + stack",
+        "code": "def fib_easiest(n: int, memo: dict = None) -> int:\n    \"\"\"\n    Easiest Approach: Top-Down Memoization\n    Prevents recalculation of overlapping subtrees\n    \"\"\"\n    if memo is None: memo = {}\n    if n <= 1: return n\n    if n in memo: return memo[n]\n    \n    memo[n] = fib_easiest(n - 1, memo) + fib_easiest(n - 2, memo)\n    return memo[n]"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: @functools.cache Memoization",
+        "desc": "Standard library @cache transforms pure recursion into O(N) memoized DP in 1 line.",
+        "time": "O(N)",
+        "space": "O(N) cache",
+        "code": "from functools import cache\n\n@cache\ndef fib_builtin(n: int) -> int:\n    \"\"\"Shortest Built-in: @cache handles memoization automatically\"\"\"\n    return n if n <= 1 else fib_builtin(n - 1) + fib_builtin(n - 2)"
+      }
+    }
   },
   {
     "id": "session-3-tower-of-hanoi",
@@ -528,10 +672,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def toh(n: int, from_rod: int, to_rod: int, aux_rod: int) -> int:\n    if n == 0:\n        return 0\n    moves = toh(n - 1, from_rod, aux_rod, to_rod)\n    print(f\"Move disk {n} from rod {from_rod} to rod {to_rod}\")\n    moves += 1\n    moves += toh(n - 1, aux_rod, to_rod, from_rod)\n    return moves\n\nif __name__ == '__main__':\n    print(\"Total moves:\", toh(3, 1, 3, 2))"
+      "py": "def toh(n: int, from_rod: int, to_rod: int, aux_rod: int) -> int:\n    if n == 0:\n        return 0\n    moves = toh(n - 1, from_rod, aux_rod, to_rod)\n    print(f\"Move disk {n} from rod {from_rod} to rod {to_rod}\")\n    moves += 1\n    moves += toh(n - 1, aux_rod, to_rod, from_rod)\n    return moves"
     },
     "timeComplexity": "O(2^N) - exactly 2^N - 1 moves executed",
-    "spaceComplexity": "O(N) - recursion call stack depth of N"
+    "spaceComplexity": "O(N) - recursion call stack depth of N",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Step-by-Step 3-Phase Recursion",
+        "desc": "Move n-1 disks to helper, move largest disk to dest, move n-1 disks from helper to dest.",
+        "time": "O(2^N)",
+        "space": "O(N) stack",
+        "code": "def toh_easiest(n: int, source: int, dest: int, helper: int) -> int:\n    \"\"\"\n    Easiest Approach: Step-by-step 3-phase delegation\n    \"\"\"\n    if n == 0:\n        return 0\n    # Step 1: Move n-1 disks to helper\n    moves = toh_easiest(n - 1, source, helper, dest)\n    # Step 2: Move nth disk to dest\n    print(f\"Move disk {n} from rod {source} to rod {dest}\")\n    moves += 1\n    # Step 3: Move n-1 disks from helper to dest\n    moves += toh_easiest(n - 1, helper, dest, source)\n    return moves"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: pow() Math Formula",
+        "desc": "Minimum moves for N disks is exactly pow(2, n) - 1 in O(1) time.",
+        "time": "O(1) moves, O(2^N) steps",
+        "space": "O(1)",
+        "code": "def toh_moves_builtin(n: int) -> int:\n    \"\"\"Shortest Built-in: Closed-form minimum move count is 2^n - 1\"\"\"\n    return pow(2, n) - 1"
+      }
+    }
   },
   {
     "id": "session-4-kadane",
@@ -592,7 +752,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def maxSubArray(self, nums: list[int]) -> int:\n        curr_sum = nums[0]\n        max_sum = nums[0]\n        for n in nums[1:]:\n            curr_sum = max(n, curr_sum + n)\n            max_sum = max(max_sum, curr_sum)\n        return max_sum"
     },
     "timeComplexity": "O(N) - single pass through array",
-    "spaceComplexity": "O(1) - two scalar variables currSum and maxSum"
+    "spaceComplexity": "O(1) - two scalar variables currSum and maxSum",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Running Sum with Negative Reset",
+        "desc": "Add element to running sum. Update max. If running sum becomes negative, reset to 0.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def maxSubArray_easiest(nums: list[int]) -> int:\n    \"\"\"\n    Easiest Approach: Kadane with explicit negative prefix reset\n    \"\"\"\n    max_sum = nums[0]\n    curr_sum = 0\n    \n    for x in nums:\n        curr_sum += x\n        if curr_sum > max_sum:\n            max_sum = curr_sum\n        if curr_sum < 0:\n            curr_sum = 0 # Drop negative prefix burden\n            \n    return max_sum"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: max() State Machine",
+        "desc": "Condensed Kadane in 4 lines tracking curr = max(x, curr + x).",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def maxSubArray_shortest(nums: list[int]) -> int:\n    \"\"\"Shortest Pythonic: Running max state accumulation\"\"\"\n    curr = ans = nums[0]\n    for x in nums[1:]:\n        curr = max(x, curr + x)\n        ans = max(ans, curr)\n    return ans"
+      }
+    }
   },
   {
     "id": "session-4-max-product-subarray",
@@ -651,7 +827,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def maxProduct(self, nums: list[int]) -> int:\n        curr_max = curr_min = ans = nums[0]\n        for x in nums[1:]:\n            if x < 0:\n                curr_max, curr_min = curr_min, curr_max\n            curr_max = max(x, curr_max * x)\n            curr_min = min(x, curr_min * x)\n            ans = max(ans, curr_max)\n        return ans"
     },
     "timeComplexity": "O(N) - single pass",
-    "spaceComplexity": "O(1) - auxiliary space"
+    "spaceComplexity": "O(1) - auxiliary space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Dual Tracking with Sign Flip Swap",
+        "desc": "Track both max and min product. When number is negative, swap max and min.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def maxProduct_easiest(nums: list[int]) -> int:\n    \"\"\"\n    Easiest Approach: Track both max and min product.\n    Multiply by negative flips max to min and min to max!\n    \"\"\"\n    curr_max = nums[0]\n    curr_min = nums[0]\n    ans = nums[0]\n    \n    for x in nums[1:]:\n        if x < 0:\n            # Swap when negative\n            curr_max, curr_min = curr_min, curr_max\n            \n        curr_max = max(x, curr_max * x)\n        curr_min = min(x, curr_min * x)\n        ans = max(ans, curr_max)\n        \n    return ans"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: Dual Prefix & Suffix Scan",
+        "desc": "Reversing with nums[::-1] and running products naturally captures odd negative counts.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def maxProduct_builtin(nums: list[int]) -> int:\n    \"\"\"Shortest Pythonic: Forward & backward prefix scan\"\"\"\n    rev = nums[::-1]\n    for i in range(1, len(nums)):\n        nums[i] *= nums[i - 1] or 1\n        rev[i] *= rev[i - 1] or 1\n    return max(nums + rev)"
+      }
+    }
   },
   {
     "id": "session-4-moore-voting",
@@ -717,7 +909,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def majorityElement(self, nums: list[int]) -> int:\n        candidate = 0\n        count = 0\n        for num in nums:\n            if count == 0:\n                candidate = num\n            count += 1 if num == candidate else -1\n        return candidate"
     },
     "timeComplexity": "O(N) - single pass over array length N",
-    "spaceComplexity": "O(1) - two integer variables candidate and count"
+    "spaceComplexity": "O(1) - two integer variables candidate and count",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Hash Map Frequency Count",
+        "desc": "Count frequencies of each element. The element with count > n//2 is the winner.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "from collections import Counter\n\ndef majorityElement_easiest(nums: list[int]) -> int:\n    \"\"\"\n    Easiest Approach: Count frequencies and find element with count > n // 2\n    \"\"\"\n    freq = Counter(nums)\n    threshold = len(nums) // 2\n    for val, count in freq.items():\n        if count > threshold:\n            return val\n    return -1"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: collections.Counter.most_common()",
+        "desc": "Built-in Counter(nums).most_common(1)[0][0] retrieves the majority element instantly.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "from collections import Counter\n\ndef majorityElement_builtin(nums: list[int]) -> int:\n    \"\"\"Shortest Built-in: Counter.most_common(1) finds majority element\"\"\"\n    return Counter(nums).most_common(1)[0][0]"
+      }
+    }
   },
   {
     "id": "session-5-two-sum",
@@ -784,7 +992,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def twoSum(self, nums: list[int], target: int) -> list[int]:\n        seen = {}\n        for i, num in enumerate(nums):\n            comp = target - num\n            if comp in seen:\n                return [seen[comp], i]\n            seen[num] = i\n        return []"
     },
     "timeComplexity": "O(N) - single pass with O(1) average hash map lookups",
-    "spaceComplexity": "O(N) - hash map stores at most N elements"
+    "spaceComplexity": "O(N) - hash map stores at most N elements",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Hash Map Complement Lookup",
+        "desc": "For each number x, check if (target - x) was already seen in the map.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def twoSum_easiest(nums: list[int], target: int) -> list[int]:\n    \"\"\"\n    Easiest Approach: Store visited numbers in a dictionary\n    \"\"\"\n    seen = {} # value -> original index\n    for i, x in enumerate(nums):\n        complement = target - x\n        if complement in seen:\n            return [seen[complement], i]\n        seen[x] = i\n    return []"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: Dictionary Hash Map Lookup",
+        "desc": "Check target - x in seen hash map in a single pass of 5 lines.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def twoSum_builtin(nums: list[int], target: int) -> list[int]:\n    \"\"\"Shortest Pythonic: Hash map complement lookup in single pass\"\"\"\n    seen = {}\n    for i, x in enumerate(nums):\n        if target - x in seen:\n            return [seen[target - x], i]\n        seen[x] = i\n    return []"
+      }
+    }
   },
   {
     "id": "session-5-max-frequency",
@@ -837,7 +1061,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def maxFrequencyElements(self, nums: list[int]) -> int:\n        freq = {}\n        max_freq = 0\n        total = 0\n        for x in nums:\n            freq[x] = freq.get(x, 0) + 1\n            f = freq[x]\n            if f > max_freq:\n                max_freq = f\n                total = f\n            elif f == max_freq:\n                total += f\n        return total"
     },
     "timeComplexity": "O(N) - single pass through array",
-    "spaceComplexity": "O(U) - unique elements in frequency map (O(1) with 101-element array)"
+    "spaceComplexity": "O(U) - unique elements in frequency map (O(1) with 101-element array)",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Counter with Max Filter",
+        "desc": "Find maximum frequency, then sum frequencies of all items matching it.",
+        "time": "O(N)",
+        "space": "O(U) unique items",
+        "code": "from collections import Counter\n\ndef maxFrequencyElements_easiest(nums: list[int]) -> int:\n    \"\"\"\n    Easiest Approach: Count frequencies, find max frequency, sum occurrences\n    \"\"\"\n    freq = Counter(nums)\n    max_freq = max(freq.values())\n    \n    total = 0\n    for count in freq.values():\n        if count == max_freq:\n            total += count\n    return total"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: collections.Counter + max()",
+        "desc": "Extract values from Counter, compute max(), and sum matches in 3 lines.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "from collections import Counter\n\ndef maxFrequencyElements_builtin(nums: list[int]) -> int:\n    \"\"\"Shortest Built-in: Counter values filtered by max frequency\"\"\"\n    counts = Counter(nums).values()\n    max_f = max(counts)\n    return sum(f for f in counts if f == max_f)"
+      }
+    }
   },
   {
     "id": "session-5-left-rotate",
@@ -887,10 +1127,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def left_rotate(arr: list[int], k: int) -> None:\n    n = len(arr)\n    if n == 0:\n        return\n    k %= n\n    def rev(l, r):\n        while l < r:\n            arr[l], arr[r] = arr[r], arr[l]\n            l += 1; r -= 1\n    rev(0, k - 1)\n    rev(k, n - 1)\n    rev(0, n - 1)\n\nif __name__ == '__main__':\n    a = [1, 2, 3, 4, 5, 6, 7]\n    left_rotate(a, 2)\n    print(\"Left rotated:\", a) # [3, 4, 5, 6, 7, 1, 2]"
+      "py": "def left_rotate(arr: list[int], k: int) -> None:\n    n = len(arr)\n    if n == 0:\n        return\n    k %= n\n    def rev(l, r):\n        while l < r:\n            arr[l], arr[r] = arr[r], arr[l]\n            l += 1; r -= 1\n    rev(0, k - 1)\n    rev(k, n - 1)\n    rev(0, n - 1)"
     },
     "timeComplexity": "O(N) - each element swapped exactly twice",
-    "spaceComplexity": "O(1) - strictly in-place"
+    "spaceComplexity": "O(1) - strictly in-place",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Python Array Slicing",
+        "desc": "Slice from index k to end, append slice from 0 to k.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def left_rotate_easiest(arr: list[int], k: int) -> list[int]:\n    \"\"\"\n    Easiest Approach: Slice and concatenate\n    \"\"\"\n    n = len(arr)\n    k = k % n\n    return arr[k:] + arr[:k]"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: Python Slice Concatenation",
+        "desc": "Built-in array slicing arr[k:] + arr[:k] rotates left in 1 line.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def leftRotate_builtin(arr: list[int], k: int) -> list[int]:\n    \"\"\"Shortest Built-in: Python slicing concatenation\"\"\"\n    k %= len(arr)\n    return arr[k:] + arr[:k]"
+      }
+    }
   },
   {
     "id": "session-5-right-rotate",
@@ -936,7 +1192,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def rotate(self, nums: list[int], k: int) -> None:\n        n = len(nums)\n        k %= n\n        def rev(l, r):\n            while l < r:\n                nums[l], nums[r] = nums[r], nums[l]\n                l += 1; r -= 1\n        rev(0, n - 1)\n        rev(0, k - 1)\n        rev(k, n - 1)"
     },
     "timeComplexity": "O(N) - each element swapped twice",
-    "spaceComplexity": "O(1) - in-place"
+    "spaceComplexity": "O(1) - in-place",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Python Slice Assignment",
+        "desc": "Assign end elements to front in-place via slice assignment.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def right_rotate_easiest(nums: list[int], k: int) -> None:\n    \"\"\"\n    Easiest Approach: Slice assignment\n    \"\"\"\n    k = k % len(nums)\n    nums[:] = nums[-k:] + nums[:-k]"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: In-Place Slice Assignment",
+        "desc": "nums[:] = nums[-k:] + nums[:-k] updates list in-place without returning a new list.",
+        "time": "O(N)",
+        "space": "O(N) slice buffer",
+        "code": "def rightRotate_builtin(nums: list[int], k: int) -> None:\n    \"\"\"Shortest Built-in: In-place slice modification\"\"\"\n    k %= len(nums)\n    nums[:] = nums[-k:] + nums[:-k]"
+      }
+    }
   },
   {
     "id": "session-6-dutch-national-flag",
@@ -996,7 +1268,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def sortColors(self, nums: list[int]) -> None:\n        low, mid, high = 0, 0, len(nums) - 1\n        while mid <= high:\n            if nums[mid] == 0:\n                nums[low], nums[mid] = nums[mid], nums[low]\n                low += 1\n                mid += 1\n            elif nums[mid] == 1:\n                mid += 1\n            else:\n                nums[mid], nums[high] = nums[high], nums[mid]\n                high -= 1"
     },
     "timeComplexity": "O(N) - single pass (each step advances mid or decreases high)",
-    "spaceComplexity": "O(1) - in-place"
+    "spaceComplexity": "O(1) - in-place",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Two-Pass Counting Sort",
+        "desc": "Count occurrences of 0, 1, 2 in pass 1; overwrite array in pass 2.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def sortColors_easiest(nums: list[int]) -> None:\n    \"\"\"\n    Easiest Approach: Count 0s, 1s, and 2s, then rewrite the array\n    \"\"\"\n    c0 = nums.count(0)\n    c1 = nums.count(1)\n    c2 = nums.count(2)\n    \n    nums[:c0] = [0] * c0\n    nums[c0:c0 + c1] = [1] * c1\n    nums[c0 + c1:] = [2] * c2"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: collections.Counter Reconstruction",
+        "desc": "Count 0s, 1s, and 2s via Counter and rebuild in-place in 2 lines.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "from collections import Counter\n\ndef sortColors_builtin(nums: list[int]) -> None:\n    \"\"\"Shortest Built-in: Counter frequency array reconstruction\"\"\"\n    c = Counter(nums)\n    nums[:] = [0] * c[0] + [1] * c[1] + [2] * c[2]"
+      }
+    }
   },
   {
     "id": "session-6-container-most-water",
@@ -1062,7 +1350,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def maxArea(self, height: list[int]) -> int:\n        l, r = 0, len(height) - 1\n        max_area = 0\n        while l < r:\n            h = min(height[l], height[r])\n            max_area = max(max_area, (r - l) * h)\n            if height[l] < height[r]:\n                l += 1\n            else:\n                r -= 1\n        return max_area"
     },
     "timeComplexity": "O(N) - single pass inward traversal",
-    "spaceComplexity": "O(1) - two pointer variables"
+    "spaceComplexity": "O(1) - two pointer variables",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Step-by-Step Greedy Two Pointers",
+        "desc": "Start at widest span. Area is width * min height. Move shorter wall inward.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def maxArea_easiest(height: list[int]) -> int:\n    \"\"\"\n    Easiest Approach: Start from both ends. Move the shorter wall inward.\n    \"\"\"\n    left, right = 0, len(height) - 1\n    max_water = 0\n    \n    while left < right:\n        width = right - left\n        h = min(height[left], height[right])\n        max_water = max(max_water, width * h)\n        \n        # Discard the shorter boundary\n        if height[left] < height[right]:\n            left += 1\n        else:\n            right -= 1\n            \n    return max_water"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: Condensed Two Pointers",
+        "desc": "Inward two-pointer shrinkage with max and min built-ins in 7 lines.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def maxArea_shortest(height: list[int]) -> int:\n    \"\"\"Shortest Pythonic: Two pointers with min and max\"\"\"\n    l, r, ans = 0, len(height) - 1, 0\n    while l < r:\n        ans = max(ans, (r - l) * min(height[l], height[r]))\n        if height[l] < height[r]: l += 1\n        else: r -= 1\n    return ans"
+      }
+    }
   },
   {
     "id": "session-6-trapping-rain-water",
@@ -1128,7 +1432,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def trap(self, height: list[int]) -> int:\n        l, r = 0, len(height) - 1\n        left_max = right_max = 0\n        total_water = 0\n        while l < r:\n            if height[l] <= height[r]:\n                if height[l] >= left_max:\n                    left_max = height[l]\n                else:\n                    total_water += left_max - height[l]\n                l += 1\n            else:\n                if height[r] >= right_max:\n                    right_max = height[r]\n                else:\n                    total_water += right_max - height[r]\n                r -= 1\n        return total_water"
     },
     "timeComplexity": "O(N) - single pass converging two pointers",
-    "spaceComplexity": "O(1) - constant extra space (4 scalar variables)"
+    "spaceComplexity": "O(1) - constant extra space (4 scalar variables)",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Prefix-Max and Suffix-Max Arrays",
+        "desc": "Precompute tallest walls to left and right of every column. Water above column i is min(l[i], r[i]) - h[i].",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def trap_easiest(height: list[int]) -> int:\n    \"\"\"\n    Easiest Approach: Prefix Max and Suffix Max arrays\n    \"\"\"\n    n = len(height)\n    if n == 0: return 0\n    \n    left_max = [0] * n\n    right_max = [0] * n\n    \n    left_max[0] = height[0]\n    for i in range(1, n):\n        left_max[i] = max(left_max[i - 1], height[i])\n        \n    right_max[-1] = height[-1]\n    for i in range(n - 2, -1, -1):\n        right_max[i] = max(right_max[i + 1], height[i])\n        \n    water = 0\n    for i in range(n):\n        water += min(left_max[i], right_max[i]) - height[i]\n        \n    return water"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: itertools.accumulate() Prefix/Suffix Max",
+        "desc": "Built-in accumulate(height, max) computes left & right boundary limits in 3 lines.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "from itertools import accumulate\n\ndef trap_builtin(height: list[int]) -> int:\n    \"\"\"Shortest Built-in: itertools.accumulate calculates prefix & suffix bounds\"\"\"\n    l_max = list(accumulate(height, max))\n    r_max = list(accumulate(height[::-1], max))[::-1]\n    return sum(min(l, r) - h for l, r, h in zip(l_max, r_max, height))"
+      }
+    }
   },
   {
     "id": "session-7-lower-bound",
@@ -1198,10 +1518,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def lower_bound(arr: list[int], target: int) -> int:\n    \"\"\"\n    Finds the first index in a sorted array where arr[index] >= target.\n    Returns len(arr) if no such element exists.\n    Time Complexity: O(log N) | Space Complexity: O(1)\n    \"\"\"\n    low, high = 0, len(arr) - 1\n    ans = len(arr)  # Default fallback if all elements < target\n\n    while low <= high:\n        mid = low + (high - low) // 2\n\n        if arr[mid] >= target:\n            ans = mid          # mid is valid candidate\n            high = mid - 1     # Try to find a smaller index on the left\n        else:\n            low = mid + 1      # arr[mid] is too small, search right\n\n    return ans\n\nif __name__ == '__main__':\n    nums = [1, 2, 4, 4, 5, 8, 10]\n    print(\"Lower bound of 4:\", lower_bound(nums, 4))  # Output: 2 (first 4 at index 2)\n    print(\"Lower bound of 6:\", lower_bound(nums, 6))  # Output: 5 (element 8 at index 5)\n    print(\"Lower bound of 12:\", lower_bound(nums, 12)) # Output: 7 (beyond array)"
+      "py": "def lower_bound(arr: list[int], target: int) -> int:\n    \"\"\"\n    Finds the first index in a sorted array where arr[index] >= target.\n    Returns len(arr) if no such element exists.\n    Time Complexity: O(log N) | Space Complexity: O(1)\n    \"\"\"\n    low, high = 0, len(arr) - 1\n    ans = len(arr)  # Default fallback if all elements < target\n\n    while low <= high:\n        mid = low + (high - low) // 2\n\n        if arr[mid] >= target:\n            ans = mid          # mid is valid candidate\n            high = mid - 1     # Try to find a smaller index on the left\n        else:\n            low = mid + 1      # arr[mid] is too small, search right\n\n    return ans"
     },
     "timeComplexity": "O(log N) - search interval halves at each iteration",
-    "spaceComplexity": "O(1) - constant auxiliary memory"
+    "spaceComplexity": "O(1) - constant auxiliary memory",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Standard Binary Search Template",
+        "desc": "Check arr[mid] >= target. Record ans = mid and search left to find earlier index.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "def lower_bound_easiest(arr: list[int], target: int) -> int:\n    \"\"\"\n    Easiest Approach: First index where arr[i] >= target\n    \"\"\"\n    low, high = 0, len(arr) - 1\n    ans = len(arr)\n    \n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] >= target:\n            ans = mid\n            high = mid - 1 # Try left\n        else:\n            low = mid + 1  # Search right\n            \n    return ans"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: bisect.bisect_left()",
+        "desc": "Python standard library bisect.bisect_left directly implements lower bound in C.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "import bisect\n\ndef lower_bound_builtin(arr: list[int], target: int) -> int:\n    \"\"\"Shortest Built-in: bisect.bisect_left finds first index with val >= target\"\"\"\n    return bisect.bisect_left(arr, target)"
+      }
+    }
   },
   {
     "id": "session-7-upper-bound",
@@ -1258,10 +1594,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "def upper_bound(arr: list[int], target: int) -> int:\n    \"\"\"\n    Finds the first index in a sorted array where arr[index] > target.\n    Returns len(arr) if no such element exists.\n    Time Complexity: O(log N) | Space Complexity: O(1)\n    \"\"\"\n    low, high = 0, len(arr) - 1\n    ans = len(arr)\n\n    while low <= high:\n        mid = low + (high - low) // 2\n\n        if arr[mid] > target:\n            ans = mid          # candidate index strictly greater than target\n            high = mid - 1     # check for an earlier element on the left\n        else:\n            low = mid + 1      # arr[mid] <= target, must search right\n\n    return ans\n\nif __name__ == '__main__':\n    nums = [1, 2, 4, 4, 5, 8, 10]\n    print(\"Upper bound of 4:\", upper_bound(nums, 4))  # Output: 4 (element 5 at index 4)\n    print(\"Upper bound of 2:\", upper_bound(nums, 2))  # Output: 2 (element 4 at index 2)\n    # Frequency of 4: upper_bound - lower_bound = 4 - 2 = 2 occurrences!"
+      "py": "def upper_bound(arr: list[int], target: int) -> int:\n    \"\"\"\n    Finds the first index in a sorted array where arr[index] > target.\n    Returns len(arr) if no such element exists.\n    Time Complexity: O(log N) | Space Complexity: O(1)\n    \"\"\"\n    low, high = 0, len(arr) - 1\n    ans = len(arr)\n\n    while low <= high:\n        mid = low + (high - low) // 2\n\n        if arr[mid] > target:\n            ans = mid          # candidate index strictly greater than target\n            high = mid - 1     # check for an earlier element on the left\n        else:\n            low = mid + 1      # arr[mid] <= target, must search right\n\n    return ans"
     },
     "timeComplexity": "O(log N) - logarithmic interval halving",
-    "spaceComplexity": "O(1) - constant auxiliary memory"
+    "spaceComplexity": "O(1) - constant auxiliary memory",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Strict Inequality Binary Search",
+        "desc": "First index where arr[mid] > target. Record ans = mid and search left.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "def upper_bound_easiest(arr: list[int], target: int) -> int:\n    \"\"\"\n    Easiest Approach: First index where arr[i] > target\n    \"\"\"\n    low, high = 0, len(arr) - 1\n    ans = len(arr)\n    \n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] > target:\n            ans = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n            \n    return ans"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: bisect.bisect_right()",
+        "desc": "Python standard library bisect.bisect_right directly implements upper bound in C.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "import bisect\n\ndef upper_bound_builtin(arr: list[int], target: int) -> int:\n    \"\"\"Shortest Built-in: bisect.bisect_right finds first index with val > target\"\"\"\n    return bisect.bisect_right(arr, target)"
+      }
+    }
   },
   {
     "id": "session-7-koko-bananas",
@@ -1338,10 +1690,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "import math\n\nclass Solution:\n    def minEatingSpeed(self, piles: list[int], h: int) -> int:\n        \"\"\"\n        Binary search on answer space [1, max(piles)].\n        Time Complexity: O(N * log(max(piles))) | Space Complexity: O(1)\n        \"\"\"\n        def can_finish(speed: int) -> bool:\n            # Calculate total hours needed at given speed\n            hours_spent = 0\n            for pile in piles:\n                # ceil(pile / speed) in integer math: (pile + speed - 1) // speed\n                hours_spent += (pile + speed - 1) // speed\n                if hours_spent > h:\n                    return False\n            return hours_spent <= h\n\n        low, high = 1, max(piles)\n        ans = high\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            if can_finish(mid):\n                ans = mid        # Speed 'mid' works, try even smaller speed\n                high = mid - 1\n            else:\n                low = mid + 1    # Speed 'mid' is too slow, must increase speed\n\n        return ans\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"Min eating speed for [3, 6, 7, 11] in 8 hrs:\", sol.minEatingSpeed([3, 6, 7, 11], 8)) # 4\n    print(\"Min eating speed for [30, 11, 23, 4, 20] in 5 hrs:\", sol.minEatingSpeed([30, 11, 23, 4, 20], 5)) # 30"
+      "py": "import math\n\nclass Solution:\n    def minEatingSpeed(self, piles: list[int], h: int) -> int:\n        \"\"\"\n        Binary search on answer space [1, max(piles)].\n        Time Complexity: O(N * log(max(piles))) | Space Complexity: O(1)\n        \"\"\"\n        def can_finish(speed: int) -> bool:\n            # Calculate total hours needed at given speed\n            hours_spent = 0\n            for pile in piles:\n                # ceil(pile / speed) in integer math: (pile + speed - 1) // speed\n                hours_spent += (pile + speed - 1) // speed\n                if hours_spent > h:\n                    return False\n            return hours_spent <= h\n\n        low, high = 1, max(piles)\n        ans = high\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            if can_finish(mid):\n                ans = mid        # Speed 'mid' works, try even smaller speed\n                high = mid - 1\n            else:\n                low = mid + 1    # Speed 'mid' is too slow, must increase speed\n\n        return ans"
     },
     "timeComplexity": "O(N * log(M)) where N = len(piles) and M = max(piles)",
-    "spaceComplexity": "O(1) - auxiliary space"
+    "spaceComplexity": "O(1) - auxiliary space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Feasibility Function + Binary Search",
+        "desc": "Helper can_finish(speed) checks total hours <= h. Binary search speed in [1, max(piles)].",
+        "time": "O(N log(max_pile))",
+        "space": "O(1)",
+        "code": "def minEatingSpeed_easiest(piles: list[int], h: int) -> int:\n    \"\"\"\n    Easiest Approach: Binary search on answer range [1, max(piles)]\n    \"\"\"\n    def can_finish(speed: int) -> bool:\n        hours = 0\n        for p in piles:\n            hours += (p + speed - 1) // speed # ceil(p / speed)\n        return hours <= h\n        \n    low, high = 1, max(piles)\n    ans = high\n    while low <= high:\n        mid = (low + high) // 2\n        if can_finish(mid):\n            ans = mid\n            high = mid - 1 # Try slower speed\n        else:\n            low = mid + 1  # Must eat faster\n    return ans"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: Binary Search on Speed Space",
+        "desc": "Ceiling division with integer math (p + m - 1) // m in 7 lines.",
+        "time": "O(N log(max(P)))",
+        "space": "O(1)",
+        "code": "def minEatingSpeed_shortest(piles: list[int], h: int) -> int:\n    \"\"\"Shortest Pythonic: Integer ceiling division binary search\"\"\"\n    l, r = 1, max(piles)\n    while l < r:\n        m = (l + r) // 2\n        if sum((p + m - 1) // m for p in piles) <= h:\n            r = m\n        else:\n            l = m + 1\n    return l"
+      }
+    }
   },
   {
     "id": "session-7-first-bad-version",
@@ -1394,7 +1762,23 @@ window.CC1_PROBLEMS = [
       "py": "# The isBadVersion API is defined by the system.\n# def isBadVersion(version: int) -> bool:\n\nclass Solution:\n    def firstBadVersion(self, n: int) -> int:\n        \"\"\"\n        Binary search on monotonic True/False boundary.\n        Time Complexity: O(log N) | Space Complexity: O(1)\n        \"\"\"\n        low, high = 1, n\n        ans = n\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            if isBadVersion(mid):\n                ans = mid        # mid is bad, check if earlier version is also bad\n                high = mid - 1\n            else:\n                low = mid + 1    # mid is good, defect must be to the right\n\n        return ans"
     },
     "timeComplexity": "O(log N) - exactly log2(N) API calls",
-    "spaceComplexity": "O(1) - auxiliary space"
+    "spaceComplexity": "O(1) - auxiliary space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Standard True/False Boundary Search",
+        "desc": "If mid is bad, ans = mid, high = mid - 1. Else low = mid + 1.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "def firstBadVersion_easiest(n: int, isBadVersion) -> int:\n    \"\"\"\n    Easiest Approach: Standard binary search boundary\n    \"\"\"\n    low, high = 1, n\n    ans = n\n    while low <= high:\n        mid = (low + high) // 2\n        if isBadVersion(mid):\n            ans = mid\n            high = mid - 1\n        else:\n            low = mid + 1\n    return ans"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: Boundary Binary Search",
+        "desc": "Standard boundary convergence in 5 lines.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "def firstBadVersion_shortest(n: int, isBadVersion) -> int:\n    \"\"\"Shortest Pythonic: 5-line binary search boundary\"\"\"\n    l, r = 1, n\n    while l < r:\n        m = (l + r) // 2\n        if isBadVersion(m): r = m\n        else: l = m + 1\n    return l"
+      }
+    }
   },
   {
     "id": "session-8-search-rotated",
@@ -1457,10 +1841,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def search(self, nums: list[int], target: int) -> int:\n        \"\"\"\n        Searches for target in a rotated sorted array of unique elements.\n        Time Complexity: O(log N) | Space Complexity: O(1)\n        \"\"\"\n        low, high = 0, len(nums) - 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            # 1. Target directly at midpoint\n            if nums[mid] == target:\n                return mid\n\n            # 2. Check if the LEFT half is sorted\n            if nums[low] <= nums[mid]:\n                # Is target located within the sorted left half?\n                if nums[low] <= target < nums[mid]:\n                    high = mid - 1  # Search left\n                else:\n                    low = mid + 1   # Search right\n            # 3. Otherwise, the RIGHT half must be sorted\n            else:\n                # Is target located within the sorted right half?\n                if nums[mid] < target <= nums[high]:\n                    low = mid + 1   # Search right\n                else:\n                    high = mid - 1  # Search left\n\n        return -1\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"Search 0 in [4,5,6,7,0,1,2]:\", sol.search([4, 5, 6, 7, 0, 1, 2], 0)) # 4\n    print(\"Search 3 in [4,5,6,7,0,1,2]:\", sol.search([4, 5, 6, 7, 0, 1, 2], 3)) # -1"
+      "py": "class Solution:\n    def search(self, nums: list[int], target: int) -> int:\n        \"\"\"\n        Searches for target in a rotated sorted array of unique elements.\n        Time Complexity: O(log N) | Space Complexity: O(1)\n        \"\"\"\n        low, high = 0, len(nums) - 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            # 1. Target directly at midpoint\n            if nums[mid] == target:\n                return mid\n\n            # 2. Check if the LEFT half is sorted\n            if nums[low] <= nums[mid]:\n                # Is target located within the sorted left half?\n                if nums[low] <= target < nums[mid]:\n                    high = mid - 1  # Search left\n                else:\n                    low = mid + 1   # Search right\n            # 3. Otherwise, the RIGHT half must be sorted\n            else:\n                # Is target located within the sorted right half?\n                if nums[mid] < target <= nums[high]:\n                    low = mid + 1   # Search right\n                else:\n                    high = mid - 1  # Search left\n\n        return -1"
     },
     "timeComplexity": "O(log N) - eliminates half the elements at each step",
-    "spaceComplexity": "O(1) - constant space"
+    "spaceComplexity": "O(1) - constant space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Find Pivot then Standard Binary Search",
+        "desc": "Find where array drops, then run regular binary search on the appropriate sorted half.",
+        "time": "O(log N)",
+        "space": "O(1)",
+        "code": "import bisect\n\ndef search_rotated_easiest(nums: list[int], target: int) -> int:\n    \"\"\"\n    Easiest Approach: Find minimum pivot index first, then bisect\n    \"\"\"\n    n = len(nums)\n    low, high = 0, n - 1\n    while low < high:\n        mid = (low + high) // 2\n        if nums[mid] > nums[high]: low = mid + 1\n        else: high = mid\n    pivot = low # Index of smallest element\n    \n    # Target in right sorted portion or left sorted portion\n    if nums[pivot] <= target <= nums[-1]:\n        idx = bisect.bisect_left(nums, target, pivot, n)\n    else:\n        idx = bisect.bisect_left(nums, target, 0, pivot)\n        \n    return idx if idx < n and nums[idx] == target else -1"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: nums.index() with Error Guard",
+        "desc": "Built-in list.index() locates target in optimized C bytecode with ValueError handling.",
+        "time": "O(N) worst-case",
+        "space": "O(1)",
+        "code": "def search_rotated_builtin(nums: list[int], target: int) -> int:\n    \"\"\"Shortest Built-in: List index() with exception guard\"\"\"\n    try:\n        return nums.index(target)\n    except ValueError:\n        return -1"
+      }
+    }
   },
   {
     "id": "session-8-search-rotated-ii",
@@ -1506,7 +1906,23 @@ window.CC1_PROBLEMS = [
       "py": "class Solution:\n    def search(self, nums: list[int], target: int) -> bool:\n        \"\"\"\n        Handles duplicates in rotated sorted array.\n        Time Complexity: O(log N) average, O(N) worst | Space: O(1)\n        \"\"\"\n        low, high = 0, len(nums) - 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            if nums[mid] == target:\n                return True\n\n            # Ambiguity check: cannot determine which half is sorted\n            if nums[low] == nums[mid] == nums[high]:\n                low += 1\n                high -= 1\n                continue\n\n            # Left half is sorted\n            if nums[low] <= nums[mid]:\n                if nums[low] <= target < nums[mid]:\n                    high = mid - 1\n                else:\n                    low = mid + 1\n            # Right half is sorted\n            else:\n                if nums[mid] < target <= nums[high]:\n                    low = mid + 1\n                else:\n                    high = mid - 1\n\n        return False"
     },
     "timeComplexity": "O(log N) average, O(N) worst-case when all elements are duplicates",
-    "spaceComplexity": "O(1) - constant auxiliary memory"
+    "spaceComplexity": "O(1) - constant auxiliary memory",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Python Linear Search",
+        "desc": "Because duplicates force O(N) worst-case anyway, target in nums is valid and easiest.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def search_rotated_ii_easiest(nums: list[int], target: int) -> bool:\n    # Easiest Approach: Direct containment check\n    return target in nums"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: Python 'in' Operator",
+        "desc": "Because duplicates force O(N) worst case regardless, the built-in 'in' operator is C-accelerated.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "def search_rotated_ii_builtin(nums: list[int], target: int) -> bool:\n    \"\"\"Shortest Built-in: Python in operator\"\"\"\n    return target in nums"
+      }
+    }
   },
   {
     "id": "session-8-aggressive-cows",
@@ -1570,10 +1986,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def maxDistance(self, position: list[int], m: int) -> int:\n        \"\"\"\n        Binary search on answer space for 'maximize minimum distance'.\n        Time: O(N log N + N log(max_pos)) | Space: O(1)\n        \"\"\"\n        position.sort()\n\n        def can_place(dist: int) -> bool:\n            # Greedily place first ball at first position\n            count = 1\n            last_pos = position[0]\n            for i in range(1, len(position)):\n                if position[i] - last_pos >= dist:\n                    count += 1\n                    last_pos = position[i]\n                    if count >= m:\n                        return True\n            return False\n\n        low = 1\n        high = position[-1] - position[0]\n        ans = 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            if can_place(mid):\n                ans = mid        # mid is feasible; try to achieve an even larger minimum distance\n                low = mid + 1\n            else:\n                high = mid - 1   # mid is too large to place m balls\n\n        return ans\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"Max min distance for [1, 2, 3, 4, 7] with 3 balls:\", sol.maxDistance([1, 2, 3, 4, 7], 3)) # 3"
+      "py": "class Solution:\n    def maxDistance(self, position: list[int], m: int) -> int:\n        \"\"\"\n        Binary search on answer space for 'maximize minimum distance'.\n        Time: O(N log N + N log(max_pos)) | Space: O(1)\n        \"\"\"\n        position.sort()\n\n        def can_place(dist: int) -> bool:\n            # Greedily place first ball at first position\n            count = 1\n            last_pos = position[0]\n            for i in range(1, len(position)):\n                if position[i] - last_pos >= dist:\n                    count += 1\n                    last_pos = position[i]\n                    if count >= m:\n                        return True\n            return False\n\n        low = 1\n        high = position[-1] - position[0]\n        ans = 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n\n            if can_place(mid):\n                ans = mid        # mid is feasible; try to achieve an even larger minimum distance\n                low = mid + 1\n            else:\n                high = mid - 1   # mid is too large to place m balls\n\n        return ans"
     },
     "timeComplexity": "O(N log N + N log(D)) where D is the coordinate range span",
-    "spaceComplexity": "O(1) - auxiliary space"
+    "spaceComplexity": "O(1) - auxiliary space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Greedy Feasibility + Binary Search",
+        "desc": "Sort stalls. Check if distance D fits k cows greedily. Binary search on distance.",
+        "time": "O(N log N + N log(max_dist))",
+        "space": "O(1)",
+        "code": "def aggressive_cows_easiest(stalls: list[int], k: int) -> int:\n    \"\"\"\n    Easiest Approach: Greedy feasibility check + Binary search\n    \"\"\"\n    stalls.sort()\n    \n    def can_place(dist: int) -> bool:\n        cows = 1\n        last_pos = stalls[0]\n        for pos in stalls[1:]:\n            if pos - last_pos >= dist:\n                cows += 1\n                last_pos = pos\n                if cows >= k: return True\n        return False\n        \n    low, high = 1, stalls[-1] - stalls[0]\n    ans = 1\n    while low <= high:\n        mid = (low + high) // 2\n        if can_place(mid):\n            ans = mid\n            low = mid + 1 # Try larger gap\n        else:\n            high = mid - 1\n    return ans"
+      },
+      "shortest": {
+        "title": "Shortest Pythonic: Binary Search on Distance",
+        "desc": "Sort positions and binary search feasible spacing with greedy allocation.",
+        "time": "O(N log(max-min))",
+        "space": "O(1)",
+        "code": "def maxDistance_shortest(pos: list[int], m: int) -> int:\n    \"\"\"Shortest Pythonic: Binary search on feasible distance\"\"\"\n    pos.sort()\n    def can_place(d):\n        last, count = pos[0], 1\n        for p in pos[1:]:\n            if p - last >= d: last, count = p, count + 1\n        return count >= m\n\n    l, r, ans = 1, pos[-1] - pos[0], 1\n    while l <= r:\n        mid = (l + r) // 2\n        if can_place(mid): ans, l = mid, mid + 1\n        else: r = mid - 1\n    return ans"
+      }
+    }
   },
   {
     "id": "session-9-spiral-matrix",
@@ -1644,10 +2076,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def spiralOrder(self, matrix: list[list[int]]) -> list[int]:\n        \"\"\"\n        4-Boundary spiral peel-off algorithm.\n        Time Complexity: O(M * N) | Space Complexity: O(1) auxiliary\n        \"\"\"\n        if not matrix or not matrix[0]:\n            return []\n\n        m, n = len(matrix), len(matrix[0])\n        top, bottom = 0, m - 1\n        left, right = 0, n - 1\n        res = []\n\n        while top <= bottom and left <= right:\n            # 1. Sweep Left -> Right along 'top'\n            for col in range(left, right + 1):\n                res.append(matrix[top][col])\n            top += 1\n\n            # 2. Sweep Top -> Bottom along 'right'\n            for row in range(top, bottom + 1):\n                res.append(matrix[row][right])\n            right -= 1\n\n            # 3. Sweep Right -> Left along 'bottom' (if row still valid)\n            if top <= bottom:\n                for col in range(right, left - 1, -1):\n                    res.append(matrix[bottom][col])\n                bottom -= 1\n\n            # 4. Sweep Bottom -> Top along 'left' (if col still valid)\n            if left <= right:\n                for row in range(bottom, top - 1, -1):\n                    res.append(matrix[row][left])\n                left += 1\n\n        return res\n\nif __name__ == '__main__':\n    sol = Solution()\n    mat = [\n        [1, 2, 3],\n        [4, 5, 6],\n        [7, 8, 9]\n    ]\n    print(\"Spiral order:\", sol.spiralOrder(mat)) # [1, 2, 3, 6, 9, 8, 7, 4, 5]"
+      "py": "class Solution:\n    def spiralOrder(self, matrix: list[list[int]]) -> list[int]:\n        \"\"\"\n        4-Boundary spiral peel-off algorithm.\n        Time Complexity: O(M * N) | Space Complexity: O(1) auxiliary\n        \"\"\"\n        if not matrix or not matrix[0]:\n            return []\n\n        m, n = len(matrix), len(matrix[0])\n        top, bottom = 0, m - 1\n        left, right = 0, n - 1\n        res = []\n\n        while top <= bottom and left <= right:\n            # 1. Sweep Left -> Right along 'top'\n            for col in range(left, right + 1):\n                res.append(matrix[top][col])\n            top += 1\n\n            # 2. Sweep Top -> Bottom along 'right'\n            for row in range(top, bottom + 1):\n                res.append(matrix[row][right])\n            right -= 1\n\n            # 3. Sweep Right -> Left along 'bottom' (if row still valid)\n            if top <= bottom:\n                for col in range(right, left - 1, -1):\n                    res.append(matrix[bottom][col])\n                bottom -= 1\n\n            # 4. Sweep Bottom -> Top along 'left' (if col still valid)\n            if left <= right:\n                for row in range(bottom, top - 1, -1):\n                    res.append(matrix[row][left])\n                left += 1\n\n        return res"
     },
     "timeComplexity": "O(M * N) - each element visited exactly once",
-    "spaceComplexity": "O(1) auxiliary space (excluding output array)"
+    "spaceComplexity": "O(1) auxiliary space (excluding output array)",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: 4 Boundary Traversal",
+        "desc": "Sweep top row, right col, bottom row, left col, shrinking boundaries.",
+        "time": "O(M * N)",
+        "space": "O(1) aux",
+        "code": "def spiralOrder_easiest(matrix: list[list[int]]) -> list[int]:\n    \"\"\"\n    Easiest Approach: 4 boundary pointers [top, bottom, left, right]\n    \"\"\"\n    top, bottom = 0, len(matrix) - 1\n    left, right = 0, len(matrix[0]) - 1\n    res = []\n    \n    while top <= bottom and left <= right:\n        for c in range(left, right + 1): res.append(matrix[top][c])\n        top += 1\n        for r in range(top, bottom + 1): res.append(matrix[r][right])\n        right -= 1\n        if top <= bottom:\n            for c in range(right, left - 1, -1): res.append(matrix[bottom][c])\n            bottom -= 1\n        if left <= right:\n            for r in range(bottom, top - 1, -1): res.append(matrix[r][left])\n            left += 1\n    return res"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: matrix.pop(0) + zip(*)[::-1] Transpose",
+        "desc": "Pop first row, then rotate the remaining matrix 90 degrees counter-clockwise via zip(*).",
+        "time": "O(M * N)",
+        "space": "O(M * N)",
+        "code": "def spiralOrder_builtin(matrix: list[list[int]]) -> list[int]:\n    \"\"\"Shortest Built-in: Pop top row and rotate matrix via zip(*matrix)[::-1]\"\"\"\n    res = []\n    while matrix:\n        res.extend(matrix.pop(0))\n        matrix = list(zip(*matrix))[::-1]\n    return res"
+      }
+    }
   },
   {
     "id": "session-9-search-2d-matrix",
@@ -1717,10 +2165,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:\n        \"\"\"\n        Virtual 1D array binary search on strictly sorted matrix.\n        Time Complexity: O(log(M * N)) | Space Complexity: O(1)\n        \"\"\"\n        if not matrix or not matrix[0]:\n            return False\n\n        m, n = len(matrix), len(matrix[0])\n        low, high = 0, m * n - 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n            # 1D to 2D coordinate translation\n            r = mid // n\n            c = mid % n\n            val = matrix[r][c]\n\n            if val == target:\n                return True\n            elif val < target:\n                low = mid + 1\n            else:\n                high = mid - 1\n\n        return False\n\n    def searchMatrix2(self, matrix: list[list[int]], target: int) -> bool:\n        \"\"\"\n        Staircase Search (LeetCode 240) where rows and columns are independently sorted.\n        Time Complexity: O(M + N) | Space Complexity: O(1)\n        \"\"\"\n        if not matrix or not matrix[0]:\n            return False\n\n        r = 0\n        c = len(matrix[0]) - 1 # Start at top-right corner\n\n        while r < len(matrix) and c >= 0:\n            val = matrix[r][c]\n            if val == target:\n                return True\n            elif val > target:\n                c -= 1 # Target cannot be in this column\n            else:\n                r += 1 # Target cannot be in this row\n\n        return False\n\nif __name__ == '__main__':\n    sol = Solution()\n    mat = [\n        [1, 3, 5, 7],\n        [10, 11, 16, 20],\n        [23, 30, 34, 60]\n    ]\n    print(\"Search 3 in matrix:\", sol.searchMatrix(mat, 3))   # True\n    print(\"Search 13 in matrix:\", sol.searchMatrix(mat, 13)) # False"
+      "py": "class Solution:\n    def searchMatrix(self, matrix: list[list[int]], target: int) -> bool:\n        \"\"\"\n        Virtual 1D array binary search on strictly sorted matrix.\n        Time Complexity: O(log(M * N)) | Space Complexity: O(1)\n        \"\"\"\n        if not matrix or not matrix[0]:\n            return False\n\n        m, n = len(matrix), len(matrix[0])\n        low, high = 0, m * n - 1\n\n        while low <= high:\n            mid = low + (high - low) // 2\n            # 1D to 2D coordinate translation\n            r = mid // n\n            c = mid % n\n            val = matrix[r][c]\n\n            if val == target:\n                return True\n            elif val < target:\n                low = mid + 1\n            else:\n                high = mid - 1\n\n        return False\n\n    def searchMatrix2(self, matrix: list[list[int]], target: int) -> bool:\n        \"\"\"\n        Staircase Search (LeetCode 240) where rows and columns are independently sorted.\n        Time Complexity: O(M + N) | Space Complexity: O(1)\n        \"\"\"\n        if not matrix or not matrix[0]:\n            return False\n\n        r = 0\n        c = len(matrix[0]) - 1 # Start at top-right corner\n\n        while r < len(matrix) and c >= 0:\n            val = matrix[r][c]\n            if val == target:\n                return True\n            elif val > target:\n                c -= 1 # Target cannot be in this column\n            else:\n                r += 1 # Target cannot be in this row\n\n        return False"
     },
     "timeComplexity": "O(log(M * N)) for LC 74; O(M + N) for LC 240",
-    "spaceComplexity": "O(1) - constant auxiliary memory"
+    "spaceComplexity": "O(1) - constant auxiliary memory",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Top-Right Staircase Search",
+        "desc": "Start at top-right (0, n-1). If val > target col--, else row++.",
+        "time": "O(M + N)",
+        "space": "O(1)",
+        "code": "def searchMatrix_easiest(matrix: list[list[int]], target: int) -> bool:\n    \"\"\"\n    Easiest Approach: Start from top-right corner\n    \"\"\"\n    r = 0\n    c = len(matrix[0]) - 1\n    while r < len(matrix) and c >= 0:\n        val = matrix[r][c]\n        if val == target: return True\n        elif val > target: c -= 1\n        else: r += 1\n    return False"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: any() with 'in' Row Membership",
+        "desc": "Built-in any(target in row for row in matrix) checks row ranges in C-accelerated loops.",
+        "time": "O(M * N)",
+        "space": "O(1)",
+        "code": "def searchMatrix_builtin(matrix: list[list[int]], target: int) -> bool:\n    \"\"\"Shortest Built-in: any() row membership\"\"\"\n    return any(target in row for row in matrix)"
+      }
+    }
   },
   {
     "id": "session-9-sorted-matrix-print",
@@ -1776,10 +2240,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "import heapq\n\ndef sorted_matrix_elements(mat: list[list[int]]) -> list[int]:\n    \"\"\"\n    K-Way Merge using Min-Heap for sorted matrix.\n    Time Complexity: O(N^2 * log N) | Space Complexity: O(N) heap space\n    \"\"\"\n    if not mat or not mat[0]:\n        return []\n\n    n = len(mat)\n    min_heap = []\n\n    # Initialize heap with the first element of each row: (value, row_idx, col_idx)\n    for i in range(n):\n        if len(mat[i]) > 0:\n            heapq.heappush(min_heap, (mat[i][0], i, 0))\n\n    res = []\n\n    while min_heap:\n        val, r, c = heapq.heappop(min_heap)\n        res.append(val)\n\n        # If next column exists in the same row, push it to heap\n        if c + 1 < len(mat[r]):\n            heapq.heappush(min_heap, (mat[r][c + 1], r, c + 1))\n\n    return res\n\nif __name__ == '__main__':\n    grid = [\n        [10, 20, 30, 40],\n        [15, 25, 35, 45],\n        [27, 29, 37, 48],\n        [32, 33, 39, 50]\n    ]\n    print(\"Sorted elements:\", sorted_matrix_elements(grid))"
+      "py": "import heapq\n\ndef sorted_matrix_elements(mat: list[list[int]]) -> list[int]:\n    \"\"\"\n    K-Way Merge using Min-Heap for sorted matrix.\n    Time Complexity: O(N^2 * log N) | Space Complexity: O(N) heap space\n    \"\"\"\n    if not mat or not mat[0]:\n        return []\n\n    n = len(mat)\n    min_heap = []\n\n    # Initialize heap with the first element of each row: (value, row_idx, col_idx)\n    for i in range(n):\n        if len(mat[i]) > 0:\n            heapq.heappush(min_heap, (mat[i][0], i, 0))\n\n    res = []\n\n    while min_heap:\n        val, r, c = heapq.heappop(min_heap)\n        res.append(val)\n\n        # If next column exists in the same row, push it to heap\n        if c + 1 < len(mat[r]):\n            heapq.heappush(min_heap, (mat[r][c + 1], r, c + 1))\n\n    return res"
     },
     "timeComplexity": "O(N\u00b2 log N) - N\u00b2 extractions from heap of size N",
-    "spaceComplexity": "O(N) - auxiliary heap space"
+    "spaceComplexity": "O(N) - auxiliary heap space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Flatten & Sort",
+        "desc": "Flatten 2D matrix into a 1D list and sort directly.",
+        "time": "O(N\u00b2 log N)",
+        "space": "O(N\u00b2)",
+        "code": "def sorted_matrix_easiest(mat: list[list[int]]) -> list[int]:\n    \"\"\"\n    Easiest Approach: Flatten all rows and sort\n    \"\"\"\n    flat = []\n    for row in mat:\n        flat.extend(row)\n    return sorted(flat)"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: heapq.merge() Multi-Way Merge",
+        "desc": "Built-in heapq.merge(*matrix) merges row-sorted matrix in O(N*M log N) with generator efficiency.",
+        "time": "O(N * M log N)",
+        "space": "O(N * M)",
+        "code": "import heapq\n\ndef sorted_matrix_builtin(matrix: list[list[int]]) -> list[int]:\n    \"\"\"Shortest Built-in: heapq.merge on sorted rows\"\"\"\n    return list(heapq.merge(*matrix))"
+      }
+    }
   },
   {
     "id": "session-10-median-row-sorted",
@@ -1836,10 +2316,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "import bisect\n\nclass Solution:\n    def median(self, matrix: list[list[int]], R: int, C: int) -> int:\n        \"\"\"\n        Finds median of row-wise sorted matrix using binary search on answer range.\n        Time Complexity: O(32 * R * log C) | Space Complexity: O(1)\n        \"\"\"\n        # Search range for values\n        low = min(matrix[i][0] for i in range(R))\n        high = max(matrix[i][C - 1] for i in range(R))\n\n        desired_count = (R * C + 1) // 2\n\n        while low < high:\n            mid = low + (high - low) // 2\n\n            # Count elements <= mid across all rows\n            count = 0\n            for row in matrix:\n                count += bisect.bisect_right(row, mid)\n\n            if count < desired_count:\n                low = mid + 1\n            else:\n                high = mid\n\n        return low\n\nif __name__ == '__main__':\n    sol = Solution()\n    mat = [\n        [1, 3, 5],\n        [2, 6, 9],\n        [3, 6, 9]\n    ]\n    print(\"Median:\", sol.median(mat, 3, 3)) # Output: 5"
+      "py": "import bisect\n\nclass Solution:\n    def median(self, matrix: list[list[int]], R: int, C: int) -> int:\n        \"\"\"\n        Finds median of row-wise sorted matrix using binary search on answer range.\n        Time Complexity: O(32 * R * log C) | Space Complexity: O(1)\n        \"\"\"\n        # Search range for values\n        low = min(matrix[i][0] for i in range(R))\n        high = max(matrix[i][C - 1] for i in range(R))\n\n        desired_count = (R * C + 1) // 2\n\n        while low < high:\n            mid = low + (high - low) // 2\n\n            # Count elements <= mid across all rows\n            count = 0\n            for row in matrix:\n                count += bisect.bisect_right(row, mid)\n\n            if count < desired_count:\n                low = mid + 1\n            else:\n                high = mid\n\n        return low"
     },
     "timeComplexity": "O(32 * R * log C) - 32 binary search steps on 32-bit integer range",
-    "spaceComplexity": "O(1) - constant auxiliary memory"
+    "spaceComplexity": "O(1) - constant auxiliary memory",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Flatten, Sort & Pick Middle",
+        "desc": "Flatten all elements, sort, and pick the element at index len // 2.",
+        "time": "O(R * C * log(R * C))",
+        "space": "O(R * C)",
+        "code": "def median_easiest(matrix: list[list[int]], R: int, C: int) -> int:\n    \"\"\"\n    Easiest Approach: Flatten all elements, sort, pick middle\n    \"\"\"\n    flat = []\n    for row in matrix: flat.extend(row)\n    flat.sort()\n    return flat[len(flat) // 2]"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: statistics.median() on Flattened Matrix",
+        "desc": "Python standard library statistics.median computes exact median element in 2 lines.",
+        "time": "O(N * M log(N*M))",
+        "space": "O(N * M)",
+        "code": "import statistics\n\ndef median_builtin(matrix: list[list[int]]) -> int:\n    \"\"\"Shortest Built-in: statistics.median on flattened matrix\"\"\"\n    flat = [x for row in matrix for x in row]\n    return int(statistics.median(flat))"
+      }
+    }
   },
   {
     "id": "session-10-row-with-max-1s",
@@ -1895,10 +2391,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def rowWithMax1s(self, arr: list[list[int]], n: int, m: int) -> int:\n        \"\"\"\n        O(N + M) Staircase Traversal from top-right corner.\n        Time Complexity: O(N + M) | Space Complexity: O(1)\n        \"\"\"\n        row = 0\n        col = m - 1\n        max_row_idx = -1\n\n        while row < n and col >= 0:\n            if arr[row][col] == 1:\n                max_row_idx = row  # This row sets a new record for number of 1s\n                col -= 1           # Step left to see if this row has even more 1s\n            else:\n                row += 1           # 0 found, this row cannot beat the current col record\n\n        return max_row_idx\n\nif __name__ == '__main__':\n    sol = Solution()\n    matrix = [\n        [0, 1, 1, 1],\n        [0, 0, 1, 1],\n        [1, 1, 1, 1],\n        [0, 0, 0, 0]\n    ]\n    print(\"Row with max 1s:\", sol.rowWithMax1s(matrix, 4, 4)) # Output: 2 (row index 2 has all 1s)"
+      "py": "class Solution:\n    def rowWithMax1s(self, arr: list[list[int]], n: int, m: int) -> int:\n        \"\"\"\n        O(N + M) Staircase Traversal from top-right corner.\n        Time Complexity: O(N + M) | Space Complexity: O(1)\n        \"\"\"\n        row = 0\n        col = m - 1\n        max_row_idx = -1\n\n        while row < n and col >= 0:\n            if arr[row][col] == 1:\n                max_row_idx = row  # This row sets a new record for number of 1s\n                col -= 1           # Step left to see if this row has even more 1s\n            else:\n                row += 1           # 0 found, this row cannot beat the current col record\n\n        return max_row_idx"
     },
     "timeComplexity": "O(N + M) - at most N down steps and M left steps",
-    "spaceComplexity": "O(1) - strictly constant memory"
+    "spaceComplexity": "O(1) - strictly constant memory",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Count 1s in Each Row with Bisect",
+        "desc": "Find first occurrence of 1 using binary search in each row; count is C - index.",
+        "time": "O(R * log C)",
+        "space": "O(1)",
+        "code": "import bisect\n\ndef rowWithMax1s_easiest(arr: list[list[int]], n: int, m: int) -> int:\n    \"\"\"\n    Easiest Approach: Count 1s in each row and track maximum\n    \"\"\"\n    max_ones = 0\n    best_row = -1\n    for i, row in enumerate(arr):\n        first_one = bisect.bisect_left(row, 1)\n        count_ones = m - first_one\n        if count_ones > max_ones:\n            max_ones = count_ones\n            best_row = i\n    return best_row"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: max() with sum() Key",
+        "desc": "Map sum(row) across matrix, find max frequency, and return index in 3 lines.",
+        "time": "O(N * M)",
+        "space": "O(N)",
+        "code": "def rowWithMax1s_builtin(matrix: list[list[int]]) -> int:\n    \"\"\"Shortest Built-in: max() with sum of row count\"\"\"\n    counts = [sum(row) for row in matrix]\n    max_c = max(counts)\n    return counts.index(max_c) if max_c > 0 else -1"
+      }
+    }
   },
   {
     "id": "session-10-rotate-image-90",
@@ -1955,10 +2467,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def rotate(self, matrix: list[list[int]]) -> None:\n        \"\"\"\n        Rotates an n x n 2D matrix by 90 degrees clockwise in-place.\n        Time Complexity: O(N^2) | Space Complexity: O(1)\n        \"\"\"\n        n = len(matrix)\n\n        # Step 1: Transpose the matrix (swap matrix[i][j] with matrix[j][i])\n        for i in range(n):\n            for j in range(i + 1, n):\n                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]\n\n        # Step 2: Reverse each row horizontally\n        for i in range(n):\n            matrix[i].reverse()\n\nif __name__ == '__main__':\n    sol = Solution()\n    mat = [\n        [1, 2, 3],\n        [4, 5, 6],\n        [7, 8, 9]\n    ]\n    sol.rotate(mat)\n    print(\"Rotated 90 degrees:\")\n    for row in mat:\n        print(row)\n    # Output:\n    # [7, 4, 1]\n    # [8, 5, 2]\n    # [9, 6, 3]"
+      "py": "class Solution:\n    def rotate(self, matrix: list[list[int]]) -> None:\n        \"\"\"\n        Rotates an n x n 2D matrix by 90 degrees clockwise in-place.\n        Time Complexity: O(N^2) | Space Complexity: O(1)\n        \"\"\"\n        n = len(matrix)\n\n        # Step 1: Transpose the matrix (swap matrix[i][j] with matrix[j][i])\n        for i in range(n):\n            for j in range(i + 1, n):\n                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]\n\n        # Step 2: Reverse each row horizontally\n        for i in range(n):\n            matrix[i].reverse()"
     },
     "timeComplexity": "O(N\u00b2) - visits each cell twice",
-    "spaceComplexity": "O(1) - strictly in-place"
+    "spaceComplexity": "O(1) - strictly in-place",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Transpose then Reverse Each Row",
+        "desc": "Swap across main diagonal, then horizontally reverse each row.",
+        "time": "O(N\u00b2)",
+        "space": "O(1)",
+        "code": "def rotate_easiest(matrix: list[list[int]]) -> None:\n    \"\"\"\n    Easiest Approach: Transpose + Row Reverse\n    \"\"\"\n    n = len(matrix)\n    # Step 1: Transpose matrix across diagonal\n    for i in range(n):\n        for j in range(i + 1, n):\n            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]\n            \n    # Step 2: Reverse each row horizontally\n    for i in range(n):\n        matrix[i].reverse()"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: zip(*matrix[::-1]) Transpose",
+        "desc": "Reverse row order matrix[::-1], then unpack and transpose via zip(*).",
+        "time": "O(N^2)",
+        "space": "O(N^2)",
+        "code": "def rotate_builtin(matrix: list[list[int]]) -> None:\n    \"\"\"Shortest Built-in: In-place assignment with zip(*matrix[::-1])\"\"\"\n    matrix[:] = [list(col) for col in zip(*matrix[::-1])]"
+      }
+    }
   },
   {
     "id": "session-11-char-frequency",
@@ -2008,10 +2536,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def firstUniqChar(self, s: str) -> int:\n        \"\"\"\n        Calculates character frequencies and finds first non-repeating character.\n        Time Complexity: O(N) | Space Complexity: O(1) (fixed 26-int array)\n        \"\"\"\n        # Frequency table for 26 lowercase English letters\n        freq = [0] * 26\n\n        # Pass 1: Tally counts\n        for ch in s:\n            freq[ord(ch) - ord('a')] += 1\n\n        # Pass 2: Find first character with count == 1\n        for i, ch in enumerate(s):\n            if freq[ord(ch) - ord('a')] == 1:\n                return i\n\n        return -1\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"First unique in 'leetcode':\", sol.firstUniqChar(\"leetcode\"))      # 0 ('l')\n    print(\"First unique in 'loveleetcode':\", sol.firstUniqChar(\"loveleetcode\")) # 2 ('v')\n    print(\"First unique in 'aabb':\", sol.firstUniqChar(\"aabb\"))              # -1"
+      "py": "class Solution:\n    def firstUniqChar(self, s: str) -> int:\n        \"\"\"\n        Calculates character frequencies and finds first non-repeating character.\n        Time Complexity: O(N) | Space Complexity: O(1) (fixed 26-int array)\n        \"\"\"\n        # Frequency table for 26 lowercase English letters\n        freq = [0] * 26\n\n        # Pass 1: Tally counts\n        for ch in s:\n            freq[ord(ch) - ord('a')] += 1\n\n        # Pass 2: Find first character with count == 1\n        for i, ch in enumerate(s):\n            if freq[ord(ch) - ord('a')] == 1:\n                return i\n\n        return -1"
     },
     "timeComplexity": "O(N) - two passes of length N",
-    "spaceComplexity": "O(1) - fixed 26 integers space"
+    "spaceComplexity": "O(1) - fixed 26 integers space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Counter + Find First Count == 1",
+        "desc": "Count character occurrences with Counter, find first char with count 1.",
+        "time": "O(N)",
+        "space": "O(1) (26 chars)",
+        "code": "from collections import Counter\n\ndef firstUniqChar_easiest(s: str) -> int:\n    \"\"\"\n    Easiest Approach: Frequency dictionary lookup\n    \"\"\"\n    counts = Counter(s)\n    for i, ch in enumerate(s):\n        if counts[ch] == 1:\n            return i\n    return -1"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: collections.Counter + next()",
+        "desc": "Built-in Counter(s) with next() expression finds first non-repeating character index in 2 lines.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "from collections import Counter\n\ndef firstUniqChar_builtin(s: str) -> int:\n    \"\"\"Shortest Built-in: Counter frequency lookup with next()\"\"\"\n    c = Counter(s)\n    return next((i for i, ch in enumerate(s) if c[ch] == 1), -1)"
+      }
+    }
   },
   {
     "id": "session-11-count-words",
@@ -2061,10 +2605,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def countSegments(self, s: str) -> int:\n        \"\"\"\n        Counts words in O(N) time and O(1) space without allocating split arrays.\n        \"\"\"\n        word_count = 0\n\n        for i in range(len(s)):\n            # An index marks the start of a word if it is non-space preceded by space/start\n            if s[i] != ' ' and (i == 0 or s[i - 1] == ' '):\n                word_count += 1\n\n        return word_count\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"Word count in 'Hello, my name is John':\", sol.countSegments(\"Hello, my name is John\")) # 5\n    print(\"Word count in '   leading and   trailing   ':\", sol.countSegments(\"   leading and   trailing   \")) # 3"
+      "py": "class Solution:\n    def countSegments(self, s: str) -> int:\n        \"\"\"\n        Counts words in O(N) time and O(1) space without allocating split arrays.\n        \"\"\"\n        word_count = 0\n\n        for i in range(len(s)):\n            # An index marks the start of a word if it is non-space preceded by space/start\n            if s[i] != ' ' and (i == 0 or s[i - 1] == ' '):\n                word_count += 1\n\n        return word_count"
     },
     "timeComplexity": "O(N) - single pass over string length N",
-    "spaceComplexity": "O(1) - constant auxiliary memory"
+    "spaceComplexity": "O(1) - constant auxiliary memory",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Built-in String Split",
+        "desc": "s.split() automatically splits on any contiguous whitespace.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def countSegments_easiest(s: str) -> int:\n    # Easiest Approach: Built-in whitespace splitting\n    return len(s.split())"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: len(s.split())",
+        "desc": "Built-in str.split() handles arbitrary consecutive spaces and returns word list.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def countSegments_builtin(s: str) -> int:\n    \"\"\"Shortest Built-in: str.split() ignores multi-spaces\"\"\"\n    return len(s.split())"
+      }
+    }
   },
   {
     "id": "session-11-isomorphic-strings",
@@ -2114,10 +2674,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def isIsomorphic(self, s: str, t: str) -> bool:\n        \"\"\"\n        Enforces bidirectional one-to-one mapping in O(N) time and O(1) space.\n        \"\"\"\n        if len(s) != len(t):\n            return False\n\n        map_s = {}\n        map_t = {}\n\n        for i in range(len(s)):\n            ch_s = s[i]\n            ch_t = t[i]\n\n            # Check forward mapping: ch_s -> ch_t\n            if ch_s in map_s and map_s[ch_s] != ch_t:\n                return False\n            # Check reverse mapping: ch_t -> ch_s\n            if ch_t in map_t and map_t[ch_t] != ch_s:\n                return False\n\n            map_s[ch_s] = ch_t\n            map_t[ch_t] = ch_s\n\n        return True\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"'egg' and 'add':\", sol.isIsomorphic(\"egg\", \"add\"))     # True\n    print(\"'foo' and 'bar':\", sol.isIsomorphic(\"foo\", \"bar\"))     # False\n    print(\"'paper' and 'title':\", sol.isIsomorphic(\"paper\", \"title\")) # True"
+      "py": "class Solution:\n    def isIsomorphic(self, s: str, t: str) -> bool:\n        \"\"\"\n        Enforces bidirectional one-to-one mapping in O(N) time and O(1) space.\n        \"\"\"\n        if len(s) != len(t):\n            return False\n\n        map_s = {}\n        map_t = {}\n\n        for i in range(len(s)):\n            ch_s = s[i]\n            ch_t = t[i]\n\n            # Check forward mapping: ch_s -> ch_t\n            if ch_s in map_s and map_s[ch_s] != ch_t:\n                return False\n            # Check reverse mapping: ch_t -> ch_s\n            if ch_t in map_t and map_t[ch_t] != ch_s:\n                return False\n\n            map_s[ch_s] = ch_t\n            map_t[ch_t] = ch_s\n\n        return True"
     },
     "timeComplexity": "O(N) - single pass over string length N",
-    "spaceComplexity": "O(1) - at most 256 unique ASCII mappings"
+    "spaceComplexity": "O(1) - at most 256 unique ASCII mappings",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Dual Dictionaries",
+        "desc": "Map s[i] to t[i] and t[i] to s[i]. Check if any character has two mappings.",
+        "time": "O(N)",
+        "space": "O(1) (256 chars)",
+        "code": "def isIsomorphic_easiest(s: str, t: str) -> bool:\n    \"\"\"\n    Easiest Approach: Check bidirectional one-to-one mapping\n    \"\"\"\n    map_st, map_ts = {}, {}\n    for c1, c2 in zip(s, t):\n        if (c1 in map_st and map_st[c1] != c2) or (c2 in map_ts and map_ts[c2] != c1):\n            return False\n        map_st[c1] = c2\n        map_ts[c2] = c1\n    return True"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: set(s), set(t) & set(zip(s, t)) Cardinality",
+        "desc": "Both individual character sets and the paired set must have equal cardinality for bijection.",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def isIsomorphic_builtin(s: str, t: str) -> bool:\n    \"\"\"Shortest Built-in: Cardinality equality of set(s), set(t), and set(zip(s, t))\"\"\"\n    return len(set(s)) == len(set(t)) == len(set(zip(s, t)))"
+      }
+    }
   },
   {
     "id": "session-12-valid-anagram",
@@ -2166,10 +2742,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def isAnagram(self, s: str, t: str) -> bool:\n        \"\"\"\n        Validates anagram using a single frequency delta array.\n        Time Complexity: O(N) | Space Complexity: O(1)\n        \"\"\"\n        if len(s) != len(t):\n            return False\n\n        delta = [0] * 26\n\n        for i in range(len(s)):\n            delta[ord(s[i]) - ord('a')] += 1\n            delta[ord(t[i]) - ord('a')] -= 1\n\n        for count in delta:\n            if count != 0:\n                return False\n\n        return True\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"Is anagram ('anagram', 'nagaram'):\", sol.isAnagram(\"anagram\", \"nagaram\")) # True\n    print(\"Is anagram ('rat', 'car'):\", sol.isAnagram(\"rat\", \"car\"))                 # False"
+      "py": "class Solution:\n    def isAnagram(self, s: str, t: str) -> bool:\n        \"\"\"\n        Validates anagram using a single frequency delta array.\n        Time Complexity: O(N) | Space Complexity: O(1)\n        \"\"\"\n        if len(s) != len(t):\n            return False\n\n        delta = [0] * 26\n\n        for i in range(len(s)):\n            delta[ord(s[i]) - ord('a')] += 1\n            delta[ord(t[i]) - ord('a')] -= 1\n\n        for count in delta:\n            if count != 0:\n                return False\n\n        return True"
     },
     "timeComplexity": "O(N) - single pass over string length N",
-    "spaceComplexity": "O(1) - 26 integers auxiliary space"
+    "spaceComplexity": "O(1) - 26 integers auxiliary space",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Compare Character Counts",
+        "desc": "Compare Counter(s) == Counter(t) or sorted(s) == sorted(t).",
+        "time": "O(N)",
+        "space": "O(1) (26 letters)",
+        "code": "from collections import Counter\n\ndef isAnagram_easiest(s: str, t: str) -> bool:\n    # Easiest Approach: Compare frequency maps\n    return Counter(s) == Counter(t)"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: collections.Counter(s) == collections.Counter(t)",
+        "desc": "Built-in Counter compares character frequency tables in C in 1 line.",
+        "time": "O(N)",
+        "space": "O(1)",
+        "code": "from collections import Counter\n\ndef isAnagram_builtin(s: str, t: str) -> bool:\n    \"\"\"Shortest Built-in: Counter frequency equality\"\"\"\n    return Counter(s) == Counter(t)"
+      }
+    }
   },
   {
     "id": "session-12-longest-prefix-suffix",
@@ -2232,10 +2824,26 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def lps(self, s: str) -> int:\n        \"\"\"\n        Computes the Longest Prefix Suffix (KMP LPS table construction).\n        Time Complexity: O(N) | Space Complexity: O(N)\n        \"\"\"\n        n = len(s)\n        if n <= 1:\n            return 0\n\n        lps = [0] * n\n        length = 0  # Length of the previous longest prefix suffix\n        i = 1\n\n        while i < n:\n            if s[i] == s[length]:\n                length += 1\n                lps[i] = length\n                i += 1\n            else:\n                # Mismatch after 'length' matches\n                if length != 0:\n                    # Fall back to previous prefix suffix length without incrementing i\n                    length = lps[length - 1]\n                else:\n                    lps[i] = 0\n                    i += 1\n\n        # The last value lps[n - 1] is the longest proper prefix that is also a suffix\n        return lps[n - 1]\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"LPS of 'abab':\", sol.lps(\"abab\"))           # 2 ('ab')\n    print(\"LPS of 'aaaa':\", sol.lps(\"aaaa\"))           # 3 ('aaa')\n    print(\"LPS of 'abcab':\", sol.lps(\"abcab\"))         # 2 ('ab')"
+      "py": "class Solution:\n    def lps(self, s: str) -> int:\n        \"\"\"\n        Computes the Longest Prefix Suffix (KMP LPS table construction).\n        Time Complexity: O(N) | Space Complexity: O(N)\n        \"\"\"\n        n = len(s)\n        if n <= 1:\n            return 0\n\n        lps = [0] * n\n        length = 0  # Length of the previous longest prefix suffix\n        i = 1\n\n        while i < n:\n            if s[i] == s[length]:\n                length += 1\n                lps[i] = length\n                i += 1\n            else:\n                # Mismatch after 'length' matches\n                if length != 0:\n                    # Fall back to previous prefix suffix length without incrementing i\n                    length = lps[length - 1]\n                else:\n                    lps[i] = 0\n                    i += 1\n\n        # The last value lps[n - 1] is the longest proper prefix that is also a suffix\n        return lps[n - 1]"
     },
     "timeComplexity": "O(N) - pointer 'i' strictly increases and 'length' decreases by at most the same amount",
-    "spaceComplexity": "O(N) - LPS array storage"
+    "spaceComplexity": "O(N) - LPS array storage",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Step-by-Step KMP LPS Construction",
+        "desc": "Maintain length of previous matching prefix. On mismatch, fallback to lps[length-1].",
+        "time": "O(N)",
+        "space": "O(N)",
+        "code": "def lps_easiest(s: str) -> int:\n    \"\"\"\n    Easiest Approach: Classic KMP LPS Array State Machine\n    \"\"\"\n    n = len(s)\n    lps = [0] * n\n    length = 0\n    i = 1\n    \n    while i < n:\n        if s[i] == s[length]:\n            length += 1\n            lps[i] = length\n            i += 1\n        else:\n            if length != 0:\n                length = lps[length - 1] # Fallback without advancing i\n            else:\n                lps[i] = 0\n                i += 1\n    return lps[-1]"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: s.startswith(s[-k:]) Reverse Search",
+        "desc": "Check suffix of length k against prefix via startswith() from largest down to 1.",
+        "time": "O(N^2)",
+        "space": "O(1)",
+        "code": "def lps_builtin(s: str) -> int:\n    \"\"\"Shortest Built-in: Reverse length probe using s.startswith()\"\"\"\n    for length in range(len(s) - 1, 0, -1):\n        if s.startswith(s[-length:]):\n            return length\n    return 0"
+      }
+    }
   },
   {
     "id": "session-12-repeated-string-match",
@@ -2285,9 +2893,25 @@ window.CC1_PROBLEMS = [
       }
     ],
     "code": {
-      "py": "class Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        \"\"\"\n        Repeated string match using mathematical length bounding.\n        Time Complexity: O(N * (len(a) + len(b))) | Space Complexity: O(len(a) + len(b))\n        \"\"\"\n        # Minimum repetitions needed so len(a * q) >= len(b)\n        q = (len(b) + len(a) - 1) // len(a)\n\n        repeated_a = a * q\n        if b in repeated_a:\n            return q\n\n        # Test one additional copy to account for boundary spillover\n        repeated_a += a\n        if b in repeated_a:\n            return q + 1\n\n        return -1\n\nif __name__ == '__main__':\n    sol = Solution()\n    print(\"Repeats for a='abcd', b='cdabcdab':\", sol.repeatedStringMatch(\"abcd\", \"cdabcdab\")) # 3\n    print(\"Repeats for a='a', b='aa':\", sol.repeatedStringMatch(\"a\", \"aa\"))                   # 2"
+      "py": "class Solution:\n    def repeatedStringMatch(self, a: str, b: str) -> int:\n        \"\"\"\n        Repeated string match using mathematical length bounding.\n        Time Complexity: O(N * (len(a) + len(b))) | Space Complexity: O(len(a) + len(b))\n        \"\"\"\n        # Minimum repetitions needed so len(a * q) >= len(b)\n        q = (len(b) + len(a) - 1) // len(a)\n\n        repeated_a = a * q\n        if b in repeated_a:\n            return q\n\n        # Test one additional copy to account for boundary spillover\n        repeated_a += a\n        if b in repeated_a:\n            return q + 1\n\n        return -1"
     },
     "timeComplexity": "O(N * (len(a) + len(b))) using string substring search",
-    "spaceComplexity": "O(len(a) + len(b)) to store concatenated candidate string"
+    "spaceComplexity": "O(len(a) + len(b)) to store concatenated candidate string",
+    "approaches": {
+      "easiest": {
+        "title": "Easiest Approach: Bounded Quotient Testing",
+        "desc": "Calculate minimum repeats q = ceil(len(b)/len(a)). Test q and q+1. If not found, return -1.",
+        "time": "O(N * (len(a) + len(b)))",
+        "space": "O(len(a) + len(b))",
+        "code": "import math\n\ndef repeatedStringMatch_easiest(a: str, b: str) -> int:\n    \"\"\"\n    Easiest Approach: Minimum repeats + 1 for boundary spillover\n    \"\"\"\n    # Minimum repeat count needed to exceed length of b\n    q = math.ceil(len(b) / len(a))\n    \n    if b in (a * q):\n        return q\n    if b in (a * (q + 1)):\n        return q + 1\n        \n    return -1"
+      },
+      "shortest": {
+        "title": "Shortest Built-in: Integer Division Ceiling + 'in' Operator",
+        "desc": "Minimum quotient q = (len(b) + len(a) - 1) // len(a), check q and q+1.",
+        "time": "O(N * (len(a) + len(b)))",
+        "space": "O(len(a) + len(b))",
+        "code": "def repeatedStringMatch_builtin(a: str, b: str) -> int:\n    \"\"\"Shortest Built-in: Ceiling division range check with in operator\"\"\"\n    q = (len(b) + len(a) - 1) // len(a)\n    for count in (q, q + 1):\n        if b in a * count:\n            return count\n    return -1"
+      }
+    }
   }
 ];

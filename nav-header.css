@@ -1,18 +1,18 @@
 /* Shared Navigation Header Design */
 :root {
-  --nav-bg: rgba(10, 15, 26, 0.85);
+  --nav-bg: rgba(30, 35, 45, 0.92);
   --nav-border: rgba(255, 255, 255, 0.08);
-  --nav-text: #f3f4f6;
-  --nav-text-muted: #9ca3af;
-  --nav-glow: rgba(59, 130, 246, 0.15);
-  --nav-active: #60a5fa;
+  --nav-text: #f1f5f9;
+  --nav-text-muted: #94a3b8;
+  --nav-glow: rgba(229, 192, 123, 0.15);
+  --nav-active: #e5c07b;
   
   /* Subject specific accents */
-  --nav-color-ds: #10b981;
-  --nav-color-web: #3b82f6;
-  --nav-color-phil: #f59e0b;
-  --nav-color-maths: #8b5cf6;
-  --nav-color-chem: #06b6d4;
+  --nav-color-ds: #86efac;
+  --nav-color-web: #93c5fd;
+  --nav-color-phil: #e5c07b;
+  --nav-color-maths: #d8b4fe;
+  --nav-color-chem: #67e8f9;
 }
 
 .global-nav-header {
@@ -22,8 +22,8 @@
   width: 100%;
   height: 68px;
   background: var(--nav-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--nav-border);
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@
 }
 
 .global-nav-logo span.gradient-text {
-  background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 100%);
+  background: linear-gradient(135deg, #ffffff 40%, #e5c07b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -76,15 +76,15 @@
 
 .global-nav-item:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .global-nav-item.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
-  border-color: var(--subject-accent, var(--nav-active));
-  box-shadow: 0 0 15px rgba(var(--subject-rgb, 59, 130, 246), 0.15);
+  color: var(--nav-active);
+  background: rgba(229, 192, 123, 0.12);
+  border-color: rgba(229, 192, 123, 0.35);
+  box-shadow: 0 0 15px rgba(229, 192, 123, 0.12);
 }
 
 /* Hamburg mobile elements */
