@@ -2,29 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Design and Analysis of Algorithms (DAA) | Semester III Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Design and Analysis of Algorithms (DAA) | Semester III Master Study Suite</title>
   <link rel="stylesheet" href="../../nav-header.css">
   <script src="../../nav-header.js" defer></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
 
+    /* =========================================================================
+       SOFT TWILIGHT MATTE THEME SYSTEM (CLASSY GRAPHITE SLATE & WARM CHAMPAGNE GOLD)
+       ========================================================================= */
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(17, 24, 39, 0.7);
-      --text: #f3f4f6;
-      --text-muted: #9ca3af;
+      --bg: #1e232d;
+      --bg-surface: #262c37;
+      --card-bg: #2a313e;
+      --card-hover: #313948;
+      --text: #f1f5f9;
+      --text-body: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
       --border: rgba(255, 255, 255, 0.08);
-      --accent: #10b981;
-      --accent-rgb: 16, 185, 129;
-      --accent-secondary: #06b6d4;
+      --border-hover: rgba(229, 192, 123, 0.4);
+      --border-subtle: rgba(255, 255, 255, 0.05);
+
+      /* Academic Accents */
+      --accent-gold: #e5c07b;
+      --accent-gold-rgb: 229, 192, 123;
+      --accent-gold-bg: rgba(229, 192, 123, 0.12);
+      --accent-gold-border: rgba(229, 192, 123, 0.28);
+
+      --accent-mint: #86efac;
+      --accent-mint-bg: rgba(134, 239, 172, 0.1);
+      --accent-mint-border: rgba(134, 239, 172, 0.25);
+
+      --accent-sky: #93c5fd;
+      --accent-sky-bg: rgba(147, 197, 253, 0.1);
+      --accent-sky-border: rgba(147, 197, 253, 0.25);
+
+      --accent-coral: #f87171;
+      --accent-coral-bg: rgba(248, 113, 113, 0.12);
+      --accent-coral-border: rgba(248, 113, 113, 0.3);
+
+      --accent-lilac: #d8b4fe;
+      --accent-lilac-bg: rgba(216, 180, 254, 0.1);
+      --accent-lilac-border: rgba(216, 180, 254, 0.25);
+
+      /* Code Editor Dark Slate */
+      --code-bg: #1a1e27;
+      --code-header-bg: #242b36;
+      --code-gutter-bg: #1e232d;
+      --code-gutter-border: rgba(255, 255, 255, 0.06);
+      --code-text: #e2e8f0;
+
+      /* Syntax tokens */
+      --tok-kw: #d8b4fe;
+      --tok-fn: #fde047;
+      --tok-builtin: #93c5fd;
+      --tok-num: #fca5a5;
+      --tok-str: #86efac;
+      --tok-comment: #94a3b8;
+      --tok-op: #f87171;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
     code, pre {
@@ -34,28 +78,31 @@
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 10% 15%, rgba(16, 185, 129, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(6, 182, 212, 0.06) 0%, transparent 45%);
-      color: var(--text);
+        radial-gradient(circle at 10% 15%, rgba(147, 197, 253, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(229, 192, 123, 0.04) 0%, transparent 45%);
+      color: var(--text-body);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 3rem 2rem 5rem;
+      padding: 80px 1.5rem 5rem;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1260px;
       width: 100%;
     }
 
+    /* Top Utility & Breadcrumb */
     .breadcrumb {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .breadcrumb a {
@@ -65,11 +112,12 @@
     }
 
     .breadcrumb a:hover {
-      color: var(--accent);
+      color: var(--accent-gold);
     }
 
+    /* Hero Section */
     .hero {
-      margin-bottom: 3.5rem;
+      margin-bottom: 2.5rem;
       position: relative;
     }
 
@@ -77,248 +125,149 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 0.35rem 1rem;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.25);
-      border-radius: 100px;
-      font-size: 0.75rem;
+      padding: 0.35rem 0.95rem;
+      background: var(--accent-gold-bg);
+      border: 1px solid var(--accent-gold-border);
+      border-radius: 6px;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: var(--accent);
+      color: var(--accent-gold);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.25rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
     }
 
     h1 {
-      font-size: 3.4rem;
+      font-size: 2.75rem;
       font-weight: 800;
       font-family: 'Outfit', sans-serif;
-      letter-spacing: -0.04em;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 40%, #a7f3d0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+      line-height: 1.2;
     }
 
     h1 span {
-      font-weight: 400;
-      font-style: italic;
-      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--accent-gold);
     }
 
     .lead {
       color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 820px;
-      line-height: 1.7;
-      margin-bottom: 2rem;
+      font-size: 1.05rem;
+      max-width: 980px;
+      line-height: 1.68;
+      margin-bottom: 1.75rem;
     }
 
-    /* Stats */
+    /* Stats Strip */
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 3rem;
+      gap: 1rem;
+      margin-bottom: 2.25rem;
     }
 
     .stat-card {
-      background: rgba(255, 255, 255, 0.02);
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.25rem 1.5rem;
+      border-radius: 14px;
+      padding: 1rem 1.25rem;
       display: flex;
       align-items: center;
       gap: 1rem;
+      transition: all 0.25s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
     }
 
     .stat-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
+      flex-shrink: 0;
     }
 
     .stat-info h4 {
-      font-size: 1.35rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      color: #ffffff;
+      color: var(--text);
       font-family: 'Outfit', sans-serif;
     }
 
     .stat-info p {
-      font-size: 0.8rem;
+      font-size: 0.74rem;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    /* Interactive Master Theorem Calculator */
-    .interactive-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(var(--accent-rgb), 0.3);
-      border-radius: 24px;
-      padding: 2.25rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .interactive-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-    }
-
-    .simulator-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .simulator-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .simulator-title h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .presets-row {
+    /* Category Nav Pills Bar */
+    .filter-tabs-bar {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.25rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 6px;
     }
 
-    .preset-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
+    .tab-btn {
+      background: transparent;
+      border: 1px solid transparent;
       color: var(--text-muted);
-      padding: 0.35rem 0.8rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
-    }
-
-    .preset-btn:hover {
-      color: #ffffff;
-      background: rgba(var(--accent-rgb), 0.15);
-      border-color: rgba(var(--accent-rgb), 0.3);
-    }
-
-    .calc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .calc-inputs {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .calc-field {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      background: rgba(0, 0, 0, 0.25);
-      border: 1px solid var(--border);
-      padding: 0.6rem 1rem;
-      border-radius: 12px;
+      gap: 6px;
     }
 
-    .calc-field label {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #cbd5e1;
+    .tab-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
     }
 
-    .calc-field input {
-      width: 70px;
-      background: #1f2937;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: #ffffff;
-      padding: 0.3rem 0.6rem;
-      font-size: 0.95rem;
+    .tab-btn.active {
+      background: var(--card-bg);
+      color: var(--accent-gold);
+      border-color: var(--accent-gold-border);
       font-weight: 700;
-      text-align: center;
-      outline: none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
-    .calc-result-box {
-      background: #0f172a;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-
-    .result-badge {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 0.3rem 0.8rem;
+    .tab-btn .badge-count {
+      font-size: 0.68rem;
+      padding: 0.1rem 0.45rem;
       border-radius: 100px;
-      background: rgba(var(--accent-rgb), 0.15);
-      color: var(--accent);
-      margin-bottom: 0.75rem;
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
     }
 
-    .result-complexity {
-      font-size: 2.2rem;
-      font-weight: 800;
-      font-family: 'Fira Code', monospace;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-    }
-
-    .result-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* Modules */
+    /* Section Headers */
     .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
+      font-size: 1.55rem;
+      font-weight: 800;
       font-family: 'Outfit', sans-serif;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       gap: 12px;
+      color: var(--text);
     }
 
     .section-title::after {
@@ -328,127 +277,1047 @@
       background: var(--border);
     }
 
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: -0.75rem;
+      margin-bottom: 1.5rem;
     }
 
-    .module-card {
+    /* Content Cards & Containers */
+    .content-section {
+      display: block;
+      margin-bottom: 3.5rem;
+    }
+
+    /* =========================================================================
+       ASSETS GALLERY (CLASS HANDWRITTEN NOTES IMAGE 1 - 5)
+       ========================================================================= */
+    .assets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .asset-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.25s ease;
       display: flex;
       flex-direction: column;
     }
 
-    .module-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(var(--accent-rgb), 0.4);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    .asset-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
     }
 
-    .module-num {
-      font-size: 0.75rem;
+    .asset-thumb-wrap {
+      height: 160px;
+      background: #151820;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .asset-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .asset-card:hover .asset-thumb-wrap img {
+      transform: scale(1.04);
+    }
+
+    .asset-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(30, 35, 45, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      color: var(--accent-gold);
+      font-size: 0.68rem;
       font-weight: 700;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
     }
 
-    .module-card h3 {
-      font-size: 1.25rem;
+    .asset-body {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .asset-body h4 {
+      font-size: 0.95rem;
       font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 0.75rem;
+      color: var(--text);
+      margin-bottom: 0.35rem;
       font-family: 'Outfit', sans-serif;
     }
 
-    .module-card p {
-      font-size: 0.9rem;
+    .asset-body p {
+      font-size: 0.78rem;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+      flex-grow: 1;
+    }
+
+    .asset-view-hint {
+      font-size: 0.73rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Teacher Standard Answering Format Callout Box */
+    .teacher-format-banner {
+      background: linear-gradient(135deg, rgba(229, 192, 123, 0.08) 0%, rgba(38, 44, 55, 0.95) 100%);
+      border: 1px solid var(--accent-gold-border);
+      border-radius: 14px;
+      padding: 1.35rem 1.65rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .teacher-format-banner h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 0.45rem;
+      font-family: 'Outfit', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .teacher-format-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 0.85rem;
+      margin-top: 1rem;
+    }
+
+    .format-step-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 0.95rem;
+    }
+
+    .format-step-card span.step-num {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .format-step-card h5 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .format-step-card p {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    /* =========================================================================
+       20-MARK MEGA QUESTIONS & MODEL ANSWERS (ACCORDIONS)
+       ========================================================================= */
+    .exam-question-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    .exam-question-card.highlight-20m {
+      border-color: rgba(248, 113, 113, 0.35);
+    }
+
+    .exam-question-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .exam-q-header {
+      padding: 1.35rem 1.65rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      user-select: none;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .exam-q-title-wrap {
+      flex: 1;
+    }
+
+    .exam-badges-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-20m {
+      background: var(--accent-coral-bg);
+      border: 1px solid var(--accent-coral-border);
+      color: var(--accent-coral);
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .badge-topic {
+      background: var(--accent-gold-bg);
+      border: 1px solid var(--accent-gold-border);
+      color: var(--accent-gold);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    .badge-unit {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.18rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    .exam-q-title-wrap h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.35;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .exam-toggle-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .exam-question-card.open .exam-toggle-icon {
+      transform: rotate(180deg);
+      color: var(--accent-gold);
+    }
+
+    .exam-q-body {
+      padding: 1.65rem;
+      display: none;
+      background: var(--card-bg);
+    }
+
+    .exam-question-card.open .exam-q-body {
+      display: block;
+    }
+
+    /* 5-Section Answering Structure inside 20-mark cards */
+    .answer-part-block {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .answer-part-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .part-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .part-header h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .part-marks-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold-border);
+    }
+
+    .answer-content {
+      font-size: 0.88rem;
+      line-height: 1.65;
+      color: var(--text-body);
+    }
+
+    .answer-content p {
+      margin-bottom: 0.75rem;
+    }
+
+    .answer-content ul, .answer-content ol {
+      margin-left: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .answer-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* Mathematical Formula Callouts */
+    .formula-box {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent-gold);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: var(--accent-gold);
+      margin: 0.75rem 0;
+      overflow-x: auto;
+    }
+
+    /* Markdown-style Tables for DP and Invariants */
+    .exam-table-wrap {
+      overflow-x: auto;
+      margin: 0.85rem 0;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .exam-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      text-align: left;
+      min-width: 500px;
+    }
+
+    .exam-table th {
+      background: var(--code-header-bg);
+      color: var(--text);
+      font-weight: 700;
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .exam-table td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-body);
+    }
+
+    .exam-table tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .exam-table td.highlight-cell {
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    /* Embedded Code Boxes */
+    .code-box {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0.75rem 0;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.78rem;
+    }
+
+    .code-box-header {
+      background: var(--code-header-bg);
+      padding: 0.45rem 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .code-box-header span.lang {
+      color: var(--accent-mint);
+      font-weight: 600;
+    }
+
+    .code-box pre {
+      padding: 0.85rem;
+      overflow-x: auto;
+      line-height: 1.55;
+      color: var(--code-text);
+    }
+
+    /* Comparison Dual Grid */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 0.85rem 0;
+    }
+
+    .compare-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.95rem;
+    }
+
+    .compare-card h5 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 0.45rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* =========================================================================
+       UNIT 1 & UNIT 2 MODULE CARDS (SYLLABUS ARCHITECTURE)
+       ========================================================================= */
+    .units-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .unit-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.25s ease;
+    }
+
+    .unit-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+    }
+
+    .unit-header-strip {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+    }
+
+    .unit-tag {
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-gold);
+      background: var(--accent-gold-bg);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    .unit-hours-badge {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .unit-card h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 0.65rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .unit-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.55;
       margin-bottom: 1.25rem;
       flex-grow: 1;
     }
 
-    .topics-list {
+    .unit-topics-list {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
+      flex-direction: column;
+      gap: 0.45rem;
       margin-bottom: 1.25rem;
     }
 
-    .topic-badge {
-      font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      color: #cbd5e1;
+    .unit-topic-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-body);
+      line-height: 1.4;
     }
 
-    .status-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #10b981;
+    .unit-topic-item span.bullet {
+      color: var(--accent-gold);
+      font-weight: bold;
+      flex-shrink: 0;
     }
 
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10b981;
+    /* =========================================================================
+       UNIT DEEP-DIVE EXPANDABLE MODULES
+       ========================================================================= */
+    .unit-section-block {
+      margin-bottom: 3.5rem;
     }
 
-    /* Materials */
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .material-box {
-      background: rgba(255, 255, 255, 0.02);
+    .unit-banner {
+      background: linear-gradient(135deg, rgba(38, 44, 55, 0.95), rgba(42, 49, 62, 0.9));
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s;
+      border-radius: 16px;
+      padding: 1.5rem 1.85rem;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 1rem;
     }
 
-    .material-box:hover {
-      background: rgba(var(--accent-rgb), 0.08);
-      border-color: rgba(var(--accent-rgb), 0.3);
-      transform: translateY(-3px);
+    .unit-banner-info h3 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 0.35rem;
     }
 
-    .mat-icon {
-      font-size: 1.8rem;
-    }
-
-    .mat-text h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 0.25rem;
-    }
-
-    .mat-text p {
-      font-size: 0.8rem;
+    .unit-banner-info p {
+      font-size: 0.88rem;
       color: var(--text-muted);
+      max-width: 800px;
+      line-height: 1.5;
+    }
+
+    .unit-pill-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold-border);
+    }
+
+    .topic-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .topic-card:hover {
+      border-color: var(--border-hover);
+    }
+
+    .topic-header {
+      padding: 1.15rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      user-select: none;
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .topic-header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .topic-header-title h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .topic-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      background: var(--accent-sky-bg);
+      color: var(--accent-sky);
+      border: 1px solid var(--accent-sky-border);
+    }
+
+    .topic-card.open .exam-toggle-icon {
+      transform: rotate(180deg);
+      color: var(--accent-gold);
+    }
+
+    .topic-body {
+      padding: 1.5rem;
+      display: none;
+      background: var(--card-bg);
+      font-size: 0.88rem;
+      line-height: 1.68;
+      color: var(--text-body);
+    }
+
+    .topic-card.open .topic-body {
+      display: block;
+    }
+
+    .key-points-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .point-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .point-card h5 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 0.45rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .point-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Interactive 0/1 Knapsack Simulator Styles */
+    .knapsack-matrix-container {
+      overflow-x: auto;
+      margin: 1.25rem 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--code-bg);
+    }
+
+    .knapsack-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.82rem;
+      text-align: center;
+      min-width: 600px;
+    }
+
+    .knapsack-table th {
+      background: var(--code-header-bg);
+      color: var(--text);
+      padding: 0.6rem 0.8rem;
+      border: 1px solid var(--border-subtle);
+      font-weight: 700;
+    }
+
+    .knapsack-table td {
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--border-subtle);
+      background: var(--code-bg);
+      color: var(--code-text);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .knapsack-table td:hover {
+      background: rgba(229, 192, 123, 0.22);
+      color: var(--accent-gold);
+      font-weight: 700;
+    }
+
+    .knapsack-table td.cell-chosen {
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      font-weight: 700;
+      border-color: var(--accent-gold-border);
+    }
+
+    .knapsack-table td.cell-optimal {
+      background: rgba(134, 239, 172, 0.22);
+      color: var(--accent-mint);
+      font-weight: 800;
+      border: 1px solid var(--accent-mint);
+    }
+
+    .knapsack-item-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.25rem 0.65rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-family: 'Fira Code', monospace;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .knapsack-cell-callout {
+      background: var(--bg-surface);
+      border: 1px solid var(--accent-gold-border);
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.85rem;
+      color: var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .knapsack-summary-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.85rem;
+      margin: 1.25rem 0;
+    }
+
+    .knapsack-summary-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      text-align: center;
+    }
+
+    .knapsack-summary-box span.lbl {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .knapsack-summary-box span.val {
+      font-size: 1.25rem;
+      font-weight: 800;
+      font-family: 'Fira Code', monospace;
+      color: var(--accent-mint);
+    }
+
+    /* =========================================================================
+       INTERACTIVE SOLVERS (MASTER THEOREM, 0/1 KNAPSACK, N-QUEENS)
+       ========================================================================= */
+    .interactive-card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent-gold-border);
+      border-radius: 18px;
+      padding: 2rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .solver-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .solver-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .solver-title h3 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .solver-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+    }
+
+    .presets-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+
+    .preset-label {
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      font-weight: 600;
+    }
+
+    .preset-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      color: var(--text-body);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .preset-btn:hover {
+      color: var(--text);
+      background: var(--card-hover);
+      border-color: var(--accent-gold-border);
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+
+    .calc-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .calc-field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+    }
+
+    .calc-field label {
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-body);
+    }
+
+    .calc-field input {
+      width: 76px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 0.3rem 0.6rem;
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-align: center;
+      outline: none;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .calc-field input:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .calc-result-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .result-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      background: var(--accent-gold-bg);
+      color: var(--accent-gold);
+      border: 1px solid var(--accent-gold-border);
+      margin-bottom: 0.75rem;
+    }
+
+    .result-complexity {
+      font-size: 2.2rem;
+      font-weight: 800;
+      font-family: 'Fira Code', monospace;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .result-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Lightbox Modal */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 18, 24, 0.92);
+      backdrop-filter: blur(10px);
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .image-modal.active {
+      display: flex;
+    }
+
+    .modal-content-box {
+      max-width: 900px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--border);
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 10;
+    }
+
+    .modal-img-wrap {
+      flex: 1;
+      background: #11141b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      overflow: auto;
+    }
+
+    .modal-img-wrap img {
+      max-width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .modal-info {
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-info h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    .modal-info p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.5;
     }
 
     /* Footer */
@@ -459,16 +1328,17 @@
       border-top: 1px solid var(--border);
       padding-top: 2rem;
       color: var(--text-muted);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       flex-wrap: wrap;
       gap: 1rem;
+      margin-top: 3rem;
     }
 
     .back-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      color: var(--accent);
+      color: var(--accent-gold);
       text-decoration: none;
       font-weight: 600;
       transition: transform 0.2s;
@@ -478,12 +1348,12 @@
       transform: translateX(-4px);
     }
 
-    @media (max-width: 768px) {
-      .calc-grid {
+    @media (max-width: 900px) {
+      .calc-grid, .compare-grid {
         grid-template-columns: 1fr;
       }
       h1 {
-        font-size: 2.6rem;
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -491,198 +1361,1646 @@
 <body>
 
   <div class="container">
+    
+    <!-- Breadcrumb -->
     <div class="breadcrumb">
+      <a href="../../index.html">Study Portal Hub</a>
+      <span>/</span>
       <a href="../index.html">Semester III</a>
       <span>/</span>
-      <span>DAA (Design &amp; Analysis of Algorithms)</span>
+      <span style="color: var(--accent-gold);">Design and Analysis of Algorithms (DAA)</span>
     </div>
 
+    <!-- Hero Header -->
     <div class="hero">
-      <div class="subject-tag">📊 Asymptotic Complexity &amp; Paradigms</div>
-      <h1>Design &amp; Analysis of <span>Algorithms</span></h1>
-      <p class="lead">Mathematical rigor and design architectures: Master growth of functions, recurrence solutions, Divide &amp; Conquer decompositions, Greedy matroid optimizations, Dynamic Programming matrices, Graph traversals, and P vs NP classifications.</p>
+      <div class="subject-tag">📊 Academic Core &bull; Theory &amp; Asymptotic Rigor</div>
+      <h1>Design &amp; Analysis of <span>Algorithms (DAA)</span></h1>
+      <p class="lead">Curriculum reference for Units 1 &amp; 2 (22 Hours): Asymptotic bounds, Recurrence solving via Master Theorem, Divide &amp; Conquer, Greedy matroids, and Dynamic Programming. Features classroom handwritten notes transcription, <strong>highest-yield 20-mark model answers (structured by official 5-part marking scheme)</strong>, and interactive algorithm solvers.</p>
     </div>
 
-    <!-- Stats -->
+    <!-- Quick Stats -->
     <div class="stats-strip">
       <div class="stat-card">
-        <div class="stat-icon">📈</div>
+        <div class="stat-icon">⏱️</div>
         <div class="stat-info">
-          <h4>Big-O, Ω, Θ</h4>
-          <p>Asymptotic Bounds</p>
+          <h4>Unit 1 &bull; 12h</h4>
+          <p>Complexity &amp; Foundations</p>
         </div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">🌲</div>
         <div class="stat-info">
-          <h4>Dynamic Prog</h4>
-          <p>Memoized Matrices</p>
+          <h4>Unit 2 &bull; 10h</h4>
+          <p>D&amp;C, Greedy &amp; DP</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🌐</div>
+        <div class="stat-icon">🔥</div>
         <div class="stat-info">
-          <h4>Graph Theory</h4>
-          <p>MST, Shortest Path</p>
+          <h4>7 Mega Blueprints</h4>
+          <p>20-Mark Exam Hotspots</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-info">🟢</div>
+        <div class="stat-icon">📸</div>
         <div class="stat-info">
-          <h4>Active Core</h4>
-          <p>Status: Ready</p>
+          <h4>5 Class Notes</h4>
+          <p>Whiteboard &amp; Handouts</p>
         </div>
       </div>
     </div>
 
-    <!-- Master Theorem Calculator -->
-    <div class="interactive-card">
-      <div class="simulator-header">
-        <div class="simulator-title">
-          <span>🧮</span>
-          <h3>Master Theorem Recurrence Solver</h3>
+    <!-- Filter Navigation Tabs -->
+    <div class="filter-tabs-bar">
+      <button class="tab-btn active" onclick="switchFilter('all', this)">
+        <span>🌐</span> All Materials
+      </button>
+      <button class="tab-btn" onclick="switchFilter('20marks', this)">
+        <span>🔥</span> 20-Mark Exam Hotspots <span class="badge-count">7 Qs</span>
+      </button>
+      <button class="tab-btn" onclick="switchFilter('notes', this)">
+        <span>📸</span> Classroom Notes &amp; Assets <span class="badge-count">5</span>
+      </button>
+      <button class="tab-btn" onclick="switchFilter('unit1', this)">
+        <span>📘</span> Unit 1: Complexity (12h)
+      </button>
+      <button class="tab-btn" onclick="switchFilter('unit2', this)">
+        <span>📗</span> Unit 2: D&amp;C / Greedy / DP (10h)
+      </button>
+      <button class="tab-btn" onclick="switchFilter('solvers', this)">
+        <span>🧮</span> Interactive Solvers
+      </button>
+    </div>
+
+    <!-- =========================================================================
+         SECTION 1: CLASSROOM HANDWRITTEN NOTES & MARKING SCHEME BANNER
+         ========================================================================= -->
+    <div class="content-section" id="section-notes">
+      <h2 class="section-title">Classroom Assets &amp; Teacher Answering Schema</h2>
+      <p class="section-sub">Direct transcription and high-resolution scans of classroom whiteboard diagrams, loop complexity rules, 0/1 knapsack tables, and the official 5-part university answering framework.</p>
+
+      <!-- Teacher 5-Part Answering Scheme Banner (from image3.jpeg) -->
+      <div class="teacher-format-banner">
+        <h3>📌 Official University 20-Mark / 10-Mark Answering Scheme (from Class Note #3)</h3>
+        <p style="font-size: 0.85rem; color: var(--text-body); max-width: 900px;">
+          To secure maximum marks in long-form theoretical questions (20 marks &amp; 10 marks), answers must strictly follow the teacher's 5-step breakdown. Never jump directly to code without formulation and trace!
+        </p>
+
+        <div class="teacher-format-steps">
+          <div class="format-step-card">
+            <span class="step-num">Step 1 &bull; 2 Marks</span>
+            <h5>Problem Definition</h5>
+            <p>Formal input, output, constraints, and objective function statement.</p>
+          </div>
+          <div class="format-step-card">
+            <span class="step-num">Step 2 &bull; 4 Marks</span>
+            <h5>Algorithmic Approach</h5>
+            <p>Why this paradigm fits (e.g. DP tabular vs Greedy), recurrence derivation, counterexample.</p>
+          </div>
+          <div class="format-step-card">
+            <span class="step-num">Step 3 &bull; 4 Marks</span>
+            <h5>Clean Pseudocode</h5>
+            <p>Clear, syntax-sound algorithm with explicit loops, conditions, and base cases.</p>
+          </div>
+          <div class="format-step-card">
+            <span class="step-num">Step 4 &bull; 6 Marks</span>
+            <h5>Problem Solution / Trace</h5>
+            <p>Step-by-step matrix/table calculations on the given numbers, cell invariants, final cell extraction.</p>
+          </div>
+          <div class="format-step-card">
+            <span class="step-num">Step 5 &bull; 4 Marks</span>
+            <h5>Time &amp; Space Complexity</h5>
+            <p>Rigorous asymptotic analysis: best, worst, and auxiliary space bounds with proofs.</p>
+          </div>
         </div>
-        <div style="font-size: 0.8rem; color: var(--text-muted);">Equation: T(n) = a·T(n/b) + Θ(n^k)</div>
       </div>
 
-      <div class="presets-row">
-        <span style="font-size: 0.8rem; color: var(--text-muted); align-self: center;">Presets:</span>
-        <button class="preset-btn" onclick="applyPreset(2, 2, 1)">MergeSort: 2T(n/2)+n</button>
-        <button class="preset-btn" onclick="applyPreset(1, 2, 0)">BinarySearch: T(n/2)+1</button>
-        <button class="preset-btn" onclick="applyPreset(7, 2, 2)">Strassen: 7T(n/2)+n²</button>
-        <button class="preset-btn" onclick="applyPreset(3, 2, 1)">Karatsuba: 3T(n/2)+n</button>
-      </div>
-
-      <div class="calc-grid">
-        <div class="calc-inputs">
-          <div class="calc-field">
-            <label for="valA">Subproblems (a):</label>
-            <input type="number" id="valA" value="2" min="1" oninput="solveRecurrence()">
+      <!-- 5 Handwritten Image Assets Grid -->
+      <div class="assets-grid">
+        <!-- Asset 1 -->
+        <div class="asset-card" onclick="openModal('assets/image1.jpeg', 'Class Note 1: Loop & Recursion Complexity Rules', 'Fundamental loop rules written in lecture: single loop = O(n), nested loop = O(n²), sequential loops = 2n = O(n), 3 nested loops = O(n³). Recursion solved via Master Theorem.')">
+          <div class="asset-thumb-wrap">
+            <span class="asset-badge">Note 1</span>
+            <img src="assets/image1.jpeg" alt="Loop Complexity Rules">
           </div>
-          <div class="calc-field">
-            <label for="valB">Division Factor (b):</label>
-            <input type="number" id="valB" value="2" min="2" oninput="solveRecurrence()">
-          </div>
-          <div class="calc-field">
-            <label for="valK">Work Exponent (k):</label>
-            <input type="number" id="valK" value="1" min="0" step="0.5" oninput="solveRecurrence()">
+          <div class="asset-body">
+            <h4>Loop Complexity Rules</h4>
+            <p>Single vs nested loops, sequential 2n code, 3-nested loops (n³), and Master Theorem pointer.</p>
+            <div class="asset-view-hint">🔍 Click to inspect scan</div>
           </div>
         </div>
 
-        <div class="calc-result-box">
-          <div class="result-badge" id="caseBadge">Case 2: Balanced Work</div>
-          <div class="result-complexity" id="compDisplay">Θ(n log n)</div>
-          <p class="result-desc" id="compDesc">log_b(a) = log_2(2) = 1.0 equals k = 1. Work is evenly spread across all tree levels.</p>
+        <!-- Asset 2 -->
+        <div class="asset-card" onclick="openModal('assets/image2.jpeg', 'Class Note 2: 0/1 Knapsack DP Tabular Numerical Trace', 'Complete handwritten matrix trace for W=8, w={3, 4, 6, 5}, p={2, 3, 1, 4}. Demonstrates cell computation max(3+0, 2) = 3 and final cell max profit = 6.')">
+          <div class="asset-thumb-wrap">
+            <span class="asset-badge">Note 2</span>
+            <img src="assets/image2.jpeg" alt="0/1 Knapsack DP Table">
+          </div>
+          <div class="asset-body">
+            <h4>0/1 Knapsack Table (W=8)</h4>
+            <p>Handwritten 5×9 DP table calculation, cell transitions, and final maximum profit = 6.</p>
+            <div class="asset-view-hint">🔍 Click to inspect scan</div>
+          </div>
+        </div>
+
+        <!-- Asset 3 -->
+        <div class="asset-card" onclick="openModal('assets/image3.jpeg', 'Class Note 3: Teacher\'s 5-Point Exam Answering Structure', 'Exact university marking rubric written by instructor: (1) Problem def -> 2 marks, (2) Approach -> DP tabular, (3) Pseudocode, (4) Problem soln table, (5) Time complexity.')">
+          <div class="asset-thumb-wrap">
+            <span class="asset-badge">Note 3</span>
+            <img src="assets/image3.jpeg" alt="Answer Format Rubric">
+          </div>
+          <div class="asset-body">
+            <h4>Official Answer Format</h4>
+            <p>Teacher's 5-step marking scheme: Definition, Approach, Pseudocode, Solution, Complexity.</p>
+            <div class="asset-view-hint">🔍 Click to inspect scan</div>
+          </div>
+        </div>
+
+        <!-- Asset 4 -->
+        <div class="asset-card" onclick="openModal('assets/image4.jpeg', 'Class Note 4: Whiteboard 0/1 Knapsack Bellman Recurrence', 'Lecture whiteboard photo showing the master recurrence relation: M[i, w] = max(M[i-1, w], M[i-1, w - w[i]] + P[i]).')">
+          <div class="asset-thumb-wrap">
+            <span class="asset-badge">Note 4</span>
+            <img src="assets/image4.jpeg" alt="Whiteboard Recurrence">
+          </div>
+          <div class="asset-body">
+            <h4>Whiteboard DP Recurrence</h4>
+            <p>M[i, w] = max(M[i-1, w], M[i-1, w - w[i]] + P[i]) Bellman equation written on lecture whiteboard.</p>
+            <div class="asset-view-hint">🔍 Click to inspect scan</div>
+          </div>
+        </div>
+
+        <!-- Asset 5 -->
+        <div class="asset-card" onclick="openModal('assets/image5.jpeg', 'Class Note 5: Syllabus High-Yield Priority Topics List', 'Class priority topics: QuickSort, MergeSort, Activity Selection, Binary Search, Linear Search, Greedy Algorithm, Knapsack Problem.')">
+          <div class="asset-thumb-wrap">
+            <span class="asset-badge">Note 5</span>
+            <img src="assets/image5.jpeg" alt="High-Yield Topics List">
+          </div>
+          <div class="asset-body">
+            <h4>Core Exam Topics List</h4>
+            <p>QuickSort, MergeSort, Activity Selection, Binary Search, Linear Search, Greedy &amp; Knapsack.</p>
+            <div class="asset-view-hint">🔍 Click to inspect scan</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Modules -->
-    <h2 class="section-title">Theoretical Syllabus &amp; Units</h2>
-    <div class="modules-grid">
-      <div class="module-card">
-        <span class="module-num">Unit 01</span>
-        <h3>Asymptotic Analysis &amp; Recurrences</h3>
-        <p>Mathematical definitions of O, Ω, Θ, o, ω. Master Theorem derivation, substitution induction proofs, and recursion tree geometric summation.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Master Theorem</span>
-          <span class="topic-badge">Substitution Method</span>
-          <span class="topic-badge">Recursion Tree</span>
-          <span class="topic-badge">Growth Rankings</span>
+    <!-- =========================================================================
+         SECTION 2: 🔥 TOP 20-MARK HIGH-YIELD EXAM BLUEPRINTS (MODEL ANSWERS)
+         ========================================================================= -->
+    <div class="content-section" id="section-20marks">
+      <h2 class="section-title">🔥 20-Mark Mega High-Yield Exam Blueprints</h2>
+      <p class="section-sub">These 7 questions represent the highest probability 20-mark and 15-mark questions in Semester III DAA university papers. Every answer strictly follows the teacher's 5-point answering standard.</p>
+
+      <!-- Question 1: 0/1 Knapsack (DP) vs Fractional Knapsack (Greedy) -->
+      <div class="exam-question-card highlight-20m open" id="q-knapsack">
+        <div class="exam-q-header" onclick="toggleExamCard('q-knapsack')">
+          <div class="exam-q-title-wrap">
+            <div class="exam-badges-row">
+              <span class="badge-20m">🔥 20 Marks Highest Probability</span>
+              <span class="badge-topic">Knapsack (0/1 DP vs Fractional Greedy)</span>
+              <span class="badge-unit">Unit 2 &bull; 10h</span>
+            </div>
+            <h3>Q1. State and solve the 0/1 Knapsack Problem using Dynamic Programming. Explain why the Greedy approach fails for 0/1 Knapsack, derive the recurrence, and provide the complete tabular trace for W=8, w={3, 4, 6, 5}, p={2, 3, 1, 4}. Compare it with Fractional Knapsack.</h3>
+          </div>
+          <div class="exam-toggle-icon">▼</div>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+
+        <div class="exam-q-body">
+          <!-- Step 1: Problem Definition -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>1.</span> Problem Definition &amp; Mathematical Formulation</h4>
+              <span class="part-marks-tag">2 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p><strong>0/1 Knapsack Formulation:</strong> We are given $n$ items, each with an integer weight $w_i > 0$ and integer profit $p_i > 0$, and a knapsack with maximum weight capacity $W$. We must select an assignment vector $x = \langle x_1, x_2, \dots, x_n \rangle$ where $x_i \in \{0, 1\}$ (each item is either completely chosen or completely left behind) to:</p>
+              <div class="formula-box">
+Maximize:  ∑(i=1 to n) p_i · x_i
+Subject to: ∑(i=1 to n) w_i · x_i ≤ W,   where x_i ∈ {0, 1}
+              </div>
+              <p><strong>Fractional Knapsack Formulation:</strong> Here, items can be broken down into fractions, meaning $x_i \in [0, 1]$. We can take an arbitrary fraction of an item if remaining capacity is less than its full weight.</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Approach & Why Greedy Fails -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>2.</span> Algorithmic Approach &amp; Proof Why Greedy Fails on 0/1</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p><strong>Why Greedy Works for Fractional Knapsack:</strong> Fractional Knapsack exhibits the <em>Greedy-Choice Property</em>: sorting items by value-to-weight ratio $r_i = p_i / w_i$ in descending order and greedily filling capacity guarantees global optimality because the knapsack can always be filled to 100% capacity with the densest value density.</p>
+              <p><strong>Why Greedy FAILS for 0/1 Knapsack (Classic Counterexample):</strong></p>
+              <div class="compare-grid">
+                <div class="compare-card">
+                  <h5>Counterexample Setup</h5>
+                  <p>Knapsack Capacity $W = 50$.</p>
+                  <p>Item 1: $w_1 = 10, p_1 = 60 \implies r_1 = 6.0$/kg</p>
+                  <p>Item 2: $w_2 = 20, p_2 = 100 \implies r_2 = 5.0$/kg</p>
+                  <p>Item 3: $w_3 = 30, p_3 = 120 \implies r_3 = 4.0$/kg</p>
+                </div>
+                <div class="compare-card">
+                  <h5>Greedy vs Optimal Choice</h5>
+                  <p><strong>Greedy Selection (by ratio):</strong> Takes Item 1 ($w=10, p=60$) + Item 2 ($w=20, p=100$). Remaining capacity = $20$. Cannot fit Item 3 ($w=30$). <strong>Greedy Profit = 160.</strong></p>
+                  <p><strong>Optimal DP Selection:</strong> Takes Item 2 ($w=20, p=100$) + Item 3 ($w=30, p=120$). Total weight = $50 \le 50$. <strong>Optimal Profit = 220!</strong></p>
+                </div>
+              </div>
+              <p><strong>Conclusion:</strong> Empty space left by indivisible items penalizes the greedy heuristic. Therefore, 0/1 Knapsack requires <strong>Dynamic Programming</strong> with Bellman's principle of optimality.</p>
+              <p><strong>Bellman Recurrence Relation (Class Note #4):</strong></p>
+              <div class="formula-box">
+M[i, w] = M[i-1, w]                                          if w_i > w (Cannot fit item i)
+M[i, w] = max( M[i-1, w],  M[i-1, w - w_i] + p_i )          if w_i ≤ w (Exclude vs Include)
+Base Cases: M[0, w] = 0 for all w;   M[i, 0] = 0 for all i
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: Pseudocode -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>3.</span> Tabular Dynamic Programming Pseudocode</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <div class="code-box">
+                <div class="code-box-header">
+                  <span>Algorithm: 0/1 Knapsack Bottom-Up Tabulation</span>
+                  <span class="lang">Python 3 / Pseudocode</span>
+                </div>
+                <pre><code>def knapsack_01(n: int, W: int, weights: list, profits: list):
+    # dp[i][w] = maximum profit using a subset of items 1..i with capacity w
+    dp = [[0] * (W + 1) for _ in range(n + 1)]
+    
+    for i in range(1, n + 1):
+        wi = weights[i - 1]
+        pi = profits[i - 1]
+        for w in range(1, W + 1):
+            if wi > w:
+                dp[i][w] = dp[i - 1][w]
+            else:
+                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - wi] + pi)
+                
+    max_profit = dp[n][W]
+    
+    # Backtrack to identify selected items
+    selected_items = []
+    curr_w = W
+    for i in range(n, 0, -1):
+        if dp[i][curr_w] != dp[i - 1][curr_w]:
+            selected_items.append(i) # Item i was included
+            curr_w -= weights[i - 1]
+            
+    return max_profit, selected_items</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: Step-by-Step Table Trace (Matching Image 2 from Class) -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>4.</span> Step-by-Step Problem Solution &amp; Table Trace (From Classroom Note #2)</h4>
+              <span class="part-marks-tag">6 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p><strong>Input Parameters:</strong> $W = 8$, Items $n = 4$</p>
+              <p>Item 1: $w_1 = 3, p_1 = 2$ | Item 2: $w_2 = 4, p_2 = 3$ | Item 3: $w_3 = 5, p_3 = 4$ | Item 4: $w_4 = 6, p_4 = 1$ (Class Note set)</p>
+              
+              <div class="exam-table-wrap">
+                <table class="exam-table">
+                  <thead>
+                    <tr>
+                      <th>Item ($i$)</th>
+                      <th>$(p_i, w_i)$</th>
+                      <th>w = 0</th>
+                      <th>w = 1</th>
+                      <th>w = 2</th>
+                      <th>w = 3</th>
+                      <th>w = 4</th>
+                      <th>w = 5</th>
+                      <th>w = 6</th>
+                      <th>w = 7</th>
+                      <th>w = 8</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>i = 0</strong></td>
+                      <td>Base</td>
+                      <td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                    </tr>
+                    <tr>
+                      <td><strong>i = 1</strong></td>
+                      <td>(2, 3)</td>
+                      <td>0</td><td>0</td><td>0</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td>
+                    </tr>
+                    <tr>
+                      <td><strong>i = 2</strong></td>
+                      <td>(3, 4)</td>
+                      <td>0</td><td>0</td><td>0</td><td>2</td><td>3</td><td>3</td><td>3</td><td>5</td><td>5</td>
+                    </tr>
+                    <tr>
+                      <td><strong>i = 3</strong></td>
+                      <td>(4, 5)</td>
+                      <td>0</td><td>0</td><td>0</td><td>2</td><td>3</td><td>4</td><td>4</td><td>5</td><td class="highlight-cell">6</td>
+                    </tr>
+                    <tr>
+                      <td><strong>i = 4</strong></td>
+                      <td>(1, 6)</td>
+                      <td>0</td><td>0</td><td>0</td><td>2</td><td>3</td><td>4</td><td>4</td><td>5</td><td class="highlight-cell">6</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p><strong>Cell Transition Highlight (as shown in student notebook):</strong></p>
+              <ul>
+                <li>At $i = 3, w = 8$: $M[3, 8] = \max(M[2, 8], M[2, 8-5] + p_3) = \max(5, M[2, 3] + 4) = \max(5, 2 + 4) = 6$.</li>
+                <li>At $i = 4, w = 8$: $M[4, 8] = \max(M[3, 8], M[3, 8-6] + p_4) = \max(6, M[3, 2] + 1) = \max(6, 0 + 1) = 6$.</li>
+              </ul>
+              <p><strong>Item Backtracking Trace:</strong> $M[4, 8] == M[3, 8] \implies$ Item 4 NOT picked. $M[3, 8] \ne M[2, 8] \implies$ <strong>Item 3 picked!</strong> Capacity remaining = $8 - 5 = 3$. At row 2, $M[2, 3] == M[1, 3] \implies$ Item 2 NOT picked. At row 1, $M[1, 3] \ne M[0, 3] \implies$ <strong>Item 1 picked!</strong> Capacity = $3 - 3 = 0$.</p>
+              <p><strong>Final Answer:</strong> $\text{Selected Items} = \{ \text{Item 1}, \text{Item 3} \}$, Total Weight = $3 + 5 = 8$, <strong>Maximum Profit = 6</strong>.</p>
+            </div>
+          </div>
+
+          <!-- Step 5: Complexity -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>5.</span> Asymptotic Time &amp; Space Complexity Analysis</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <ul>
+                <li><strong>Time Complexity:</strong> Filling an $(n + 1) \times (W + 1)$ table where each cell computes an $O(1)$ max operation takes $\mathbf{O(n \cdot W)}$ time. Backtracking takes $O(n)$ time. Total Time = $\mathbf{O(n \cdot W)}$.</li>
+                <li><strong>Pseudo-Polynomial Nature:</strong> Note that $W$ is represented in $\log_2 W$ bits. If $W$ is exponentially large ($W \approx 2^k$), the time is exponential in input size. Hence, 0/1 Knapsack is <em>NP-Complete</em>, and this DP algorithm is <em>pseudo-polynomial</em>.</li>
+                <li><strong>Auxiliary Space Complexity:</strong> Full matrix table takes $\mathbf{O(n \cdot W)}$ space. If only maximum value is needed, it can be space-optimized to $\mathbf{O(W)}$ using a 1D reverse-iterated array.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 02</span>
-        <h3>Divide and Conquer Strategies</h3>
-        <p>Recursive problem partitioning, combine step complexities, QuickSort pivot strategies, Strassen's matrix algorithm, and Closest Pair of Points in 2D plane.</p>
-        <div class="topics-list">
-          <span class="topic-badge">MergeSort Inversions</span>
-          <span class="topic-badge">QuickSort Randomized</span>
-          <span class="topic-badge">Strassen Matrix</span>
-          <span class="topic-badge">Closest Pair O(n log n)</span>
+      <!-- Question 2: Master Theorem & Recurrence Relations -->
+      <div class="exam-question-card highlight-20m" id="q-master">
+        <div class="exam-q-header" onclick="toggleExamCard('q-master')">
+          <div class="exam-q-title-wrap">
+            <div class="exam-badges-row">
+              <span class="badge-20m">🔥 20 Marks Highest Probability</span>
+              <span class="badge-topic">Master Theorem &amp; Recurrences</span>
+              <span class="badge-unit">Unit 1 &bull; 12h</span>
+            </div>
+            <h3>Q2. State the Master Theorem for Divide-and-Conquer Recurrences with all 3 cases and its logarithmic extension. Solve MergeSort, Binary Search, Strassen's Matrix Multiplication, and Karatsuba's Algorithm. Explain when the Master Theorem FAILS and provide the loop complexity rules from class notes.</h3>
+          </div>
+          <div class="exam-toggle-icon">▼</div>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+
+        <div class="exam-q-body">
+          <!-- Step 1: Definition -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>1.</span> Standard Recurrence Form &amp; Recursion Tree Model</h4>
+              <span class="part-marks-tag">2 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Divide-and-Conquer algorithms partition a problem of size $n$ into $a$ subproblems, each of size $n/b$, with $f(n)$ work spent outside the recursive calls (partitioning and combining). The recurrence is expressed as:</p>
+              <div class="formula-box">
+T(n) = a · T(n / b) + f(n)      where a ≥ 1, b > 1, and f(n) is asymptotically positive
+              </div>
+              <p>The recursion tree has depth $\log_b n$ and the number of leaves at the deepest level is $a^{\log_b n} = n^{\log_b a}$. The core intuition of Master Theorem is a "tug-of-war" between the work done at the leaf nodes ($\Theta(n^{\log_b a})$) and the work done at the root ($f(n)$).</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Formal Master Theorem Statement -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>2.</span> Formal Statement of Master Theorem (All 3 Cases + Extension)</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Let $c_{crit} = \log_b a$. We compare $f(n)$ asymptotically with the watershed function $n^{\log_b a}$:</p>
+              <ul>
+                <li><strong>Case 1 (Leaves Dominate):</strong> If $f(n) = O(n^{\log_b a - \epsilon})$ for some constant $\epsilon > 0$ (i.e. $f(n)$ is polynomially smaller than $n^{\log_b a}$), then:
+                  <div class="formula-box">T(n) = \Theta(n^{\log_b a})</div>
+                </li>
+                <li><strong>Case 2 (Equal Work Distribution Across Tree Levels):</strong> If $f(n) = \Theta(n^{\log_b a})$, then work is distributed equally across all $\log_b n$ levels:
+                  <div class="formula-box">T(n) = \Theta(n^{\log_b a} \cdot \log n)</div>
+                  <em>Extended Case 2 (Logarithmic factors):</em> If $f(n) = \Theta(n^{\log_b a} \cdot \log^k n)$ for $k \ge 0$, then:
+                  <div class="formula-box">T(n) = \Theta(n^{\log_b a} \cdot \log^{k+1} n)</div>
+                </li>
+                <li><strong>Case 3 (Root Dominates):</strong> If $f(n) = \Omega(n^{\log_b a + \epsilon})$ for some constant $\epsilon > 0$ AND satisfies the regularity condition $a \cdot f(n/b) \le c \cdot f(n)$ for some $c < 1$ and all large $n$, then:
+                  <div class="formula-box">T(n) = \Theta(f(n))</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3: 4 Complete Worked Solved Derivations -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>3.</span> 4 Solved University Standard Recurrence Derivations</h4>
+              <span class="part-marks-tag">6 Marks</span>
+            </div>
+            <div class="answer-content">
+              <div class="compare-grid">
+                <div class="compare-card">
+                  <h5>Problem 1: Merge Sort</h5>
+                  <p>$T(n) = 2T(n/2) + \Theta(n)$</p>
+                  <p>$a = 2, b = 2, f(n) = \Theta(n)$</p>
+                  <p>$\log_b a = \log_2 2 = 1 \implies n^{\log_b a} = n^1 = n$.</p>
+                  <p>Since $f(n) = \Theta(n^1)$, this falls under <strong>Case 2</strong>.</p>
+                  <div class="formula-box">T(n) = \Theta(n \log n)</div>
+                </div>
+                <div class="compare-card">
+                  <h5>Problem 2: Binary Search</h5>
+                  <p>$T(n) = T(n/2) + \Theta(1)$</p>
+                  <p>$a = 1, b = 2, f(n) = \Theta(1) = n^0$</p>
+                  <p>$\log_b a = \log_2 1 = 0 \implies n^{\log_b a} = n^0 = 1$.</p>
+                  <p>Since $f(n) = \Theta(n^0)$, this falls under <strong>Case 2</strong>.</p>
+                  <div class="formula-box">T(n) = \Theta(\log n)</div>
+                </div>
+              </div>
+              <div class="compare-grid">
+                <div class="compare-card">
+                  <h5>Problem 3: Strassen's Matrix Multiplication</h5>
+                  <p>$T(n) = 7T(n/2) + \Theta(n^2)$</p>
+                  <p>$a = 7, b = 2, f(n) = \Theta(n^2)$</p>
+                  <p>$\log_b a = \log_2 7 \approx 2.807 \implies n^{\log_b a} = n^{2.807}$.</p>
+                  <p>Since $n^2 = O(n^{2.807 - \epsilon})$ ($\epsilon \approx 0.807$), this is <strong>Case 1</strong>.</p>
+                  <div class="formula-box">T(n) = \Theta(n^{\log_2 7}) \approx \Theta(n^{2.81})</div>
+                </div>
+                <div class="compare-card">
+                  <h5>Problem 4: Karatsuba Fast Multiplication</h5>
+                  <p>$T(n) = 3T(n/2) + \Theta(n)$</p>
+                  <p>$a = 3, b = 2, f(n) = \Theta(n)$</p>
+                  <p>$\log_b a = \log_2 3 \approx 1.585 \implies n^{\log_b a} = n^{1.585}$.</p>
+                  <p>Since $n^1 = O(n^{1.585 - \epsilon})$, this is <strong>Case 1</strong>.</p>
+                  <div class="formula-box">T(n) = \Theta(n^{\log_2 3}) \approx \Theta(n^{1.585})</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4: When Master Theorem Fails -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>4.</span> Fallacy Analysis: When Master Theorem FAILS</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>The Master Theorem does not apply in 4 specific failure modes:</p>
+              <ol>
+                <li><strong>Non-Polynomial Gap:</strong> $T(n) = 2T(n/2) + n / \log n$. Here $\log_b a = 1 \implies n^{\log_b a} = n$. The ratio is $n / (n / \log n) = \log n$. Although $f(n)$ is smaller than $n$, it is <em>not polynomially smaller</em> (no constant $\epsilon > 0$ satisfies $n / \log n = O(n^{1 - \epsilon})$). Master Theorem fails! Solution via Recursion Tree: $T(n) = \Theta(n \log \log n)$.</li>
+                <li><strong>Non-Constant Subproblem Division:</strong> $T(n) = T(n-1) + n$ (e.g., Insertion Sort). Here size decreases by subtraction, not division by a constant factor $b > 1$.</li>
+                <li><strong>Varying Subproblem Sizes:</strong> $T(n) = T(n/3) + T(2n/3) + n$ (Akra-Bazzi method required instead).</li>
+                <li><strong>Violation of Regularity Condition in Case 3:</strong> $T(n) = 2T(n/2) + n(2 - \cos n)$. Oscillating function violates regularity condition $a \cdot f(n/b) \le c \cdot f(n)$.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Step 5: Loop Complexity Rules from Class Notes -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>5.</span> Loop Complexity Rules &amp; Mathematical Verification (Class Note #1)</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>From classroom handwritten note <code>image1.jpeg</code>, the following deterministic asymptotic deduction rules apply to non-recursive code snippets:</p>
+              <div class="exam-table-wrap">
+                <table class="exam-table">
+                  <thead>
+                    <tr>
+                      <th>Code Structure Pattern</th>
+                      <th>Class Note Rule</th>
+                      <th>Time Complexity</th>
+                      <th>Formal Mathematical Reasoning</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Straight-line Code / No Loops</td>
+                      <td>"Simple term time complexity"</td>
+                      <td>$\mathbf{O(1)}$</td>
+                      <td>Fixed number of assembly instructions independent of input $n$.</td>
+                    </tr>
+                    <tr>
+                      <td>Single Loop</td>
+                      <td>"For single loop = O(n)"</td>
+                      <td>$\mathbf{O(n)}$</td>
+                      <td>$\sum_{i=1}^n c = c \cdot n = \Theta(n)$.</td>
+                    </tr>
+                    <tr>
+                      <td>Sequential Loops (One after another)</td>
+                      <td>"Agar 1 ke niche ek code hoga = 2n"</td>
+                      <td>$\mathbf{O(n)}$</td>
+                      <td>$T(n) = c_1 n + c_2 n = (c_1 + c_2)n = 2n \implies O(n)$ (Constants drop).</td>
+                    </tr>
+                    <tr>
+                      <td>Nested Double Loop</td>
+                      <td>"For nested loop = O(n²)"</td>
+                      <td>$\mathbf{O(n^2)}$</td>
+                      <td>$\sum_{i=1}^n \sum_{j=1}^n c = c \cdot n^2 = \Theta(n^2)$.</td>
+                    </tr>
+                    <tr>
+                      <td>Nested Triple Loop</td>
+                      <td>"3 loops nested = (n³)"</td>
+                      <td>$\mathbf{O(n^3)}$</td>
+                      <td>$\sum_{i=1}^n \sum_{j=1}^n \sum_{k=1}^n c = c \cdot n^3 = \Theta(n^3)$ (e.g. Matrix Mult).</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 03</span>
-        <h3>Greedy Paradigms &amp; Matroids</h3>
-        <p>Locally optimal choices that guarantee global optimality. Greedy-choice property, optimal substructure, Huffman prefix-free encoding, and Minimum Spanning Trees.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Fractional Knapsack</span>
-          <span class="topic-badge">Huffman Coding Tree</span>
-          <span class="topic-badge">Kruskal's &amp; Prim's MST</span>
-          <span class="topic-badge">Activity Selection</span>
+      <!-- Question 3: N-Queens Problem -->
+      <div class="exam-question-card highlight-20m" id="q-nqueens">
+        <div class="exam-q-header" onclick="toggleExamCard('q-nqueens')">
+          <div class="exam-q-title-wrap">
+            <div class="exam-badges-row">
+              <span class="badge-20m">🔥 20 Marks Highest Probability</span>
+              <span class="badge-topic">Backtracking &amp; State-Space Tree</span>
+              <span class="badge-unit">Unit 2 &bull; 10h</span>
+            </div>
+            <h3>Q3. Explain the Backtracking paradigm using the N-Queens Problem. Formulate the non-attacking bounding conditions (row, column, and diagonal). Draw the complete State-Space Tree for the 4-Queens Problem and write the algorithm with asymptotic complexity.</h3>
+          </div>
+          <div class="exam-toggle-icon">▼</div>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+
+        <div class="exam-q-body">
+          <!-- Step 1: Definition -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>1.</span> Problem Definition &amp; Mathematical Formulation</h4>
+              <span class="part-marks-tag">2 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>The <strong>N-Queens Problem</strong> requires placing $N$ non-attacking chess queens on an $N \times N$ chessboard such that no two queens threaten each other. In chess, a queen attacks any piece in the same row, same column, or along any diagonal.</p>
+              <p><strong>Representation Vector:</strong> Since every row must contain exactly one queen, we can represent a solution as an $N$-tuple $X = (x_1, x_2, \dots, x_N)$, where $x_i \in \{1, 2, \dots, N\}$ indicates the column index of the queen placed in row $i$.</p>
+            </div>
+          </div>
+
+          <!-- Step 2: Backtracking Paradigm vs Permutation Search -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>2.</span> Backtracking Paradigm vs. Brute Force Search</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <ul>
+                <li><strong>Naive Brute Force:</strong> Placing $N$ queens randomly on $N^2$ squares takes $\binom{N^2}{N}$ states. For $N=8$, $\binom{64}{8} \approx 4.4 \times 10^9$ states!</li>
+                <li><strong>One-Queen-Per-Row Heuristic:</strong> Placing one queen per row gives $N^N$ states ($8^8 = 16,777,216$ states).</li>
+                <li><strong>Permutation Generator:</strong> Ensuring no two queens share the same column restricts states to $N!$ ($8! = 40,320$ states).</li>
+                <li><strong>Backtracking (Pruned Depth-First Search):</strong> Backtracking incrementally constructs a solution vector $X$. At row $k$, if placing a queen at column $x_k$ violates any bounding condition with previously placed queens $(x_1, \dots, x_{k-1})$, the algorithm <em>prunes the entire subtree</em> immediately and backtracks to row $k-1$. For $N=8$, only $2,057$ nodes are visited, a massive efficiency jump!</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 3: Diagonal Invariant Bounding Conditions -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>3.</span> Mathematical Diagonal Invariant &amp; Bounding Functions</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Two queens placed at coordinates $(r_1, c_1)$ and $(r_2, c_2)$ are in conflict if and only if:</p>
+              <ol>
+                <li><strong>Same Column:</strong> $c_1 = c_2$</li>
+                <li><strong>Same Major Diagonal (\):</strong> The slope is $+1$, which means $(r_1 - c_1) = (r_2 - c_2) \implies r_1 - r_2 = c_1 - c_2$.</li>
+                <li><strong>Same Minor Diagonal (/):</strong> The slope is $-1$, which means $(r_1 + c_1) = (r_2 + c_2) \implies r_1 - r_2 = c_2 - c_1$.</li>
+              </ol>
+              <p><strong>Combined Absolute Condition:</strong> Two queens placed at rows $i$ and $k$ with columns $x_i$ and $x_k$ conflict along a diagonal if:</p>
+              <div class="formula-box">
+|i - k| = |x_i - x_k|
+              </div>
+              <p><strong>O(1) Bounding Check via Boolean Tracking Arrays:</strong> Instead of looping through all previous queens, we can use three boolean lookup arrays: <code>col[c]</code>, <code>diag1[r - c + N - 1]</code>, and <code>diag2[r + c]</code>, enabling instantaneous $O(1)$ safety verification!</p>
+            </div>
+          </div>
+
+          <!-- Step 4: 4-Queens State Space Tree -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>4.</span> Complete 4-Queens State-Space Tree Trace</h4>
+              <span class="part-marks-tag">6 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>For $N = 4$, the chessboard is $4 \times 4$. The search proceeds depth-first:</p>
+              <div class="formula-box">
+Root Level (Row 0): []
+  ├── Place Q1 at col 1: [1]
+  │     ├── Place Q2 at col 1: Conflict (same col) -> PRUNED
+  │     ├── Place Q2 at col 2: Conflict (|2-1| = |2-1| diagonal) -> PRUNED
+  │     ├── Place Q2 at col 3: [1, 3] Valid
+  │     │     ├── Q3 col 1,2,3,4: ALL CONFLICT -> PRUNED & BACKTRACK
+  │     └── Place Q2 at col 4: [1, 4] Valid
+  │           └── Place Q3 at col 2: [1, 4, 2] Valid
+  │                 └── Q4 col 1,2,3,4: ALL CONFLICT -> PRUNED & BACKTRACK
+  │
+  ├── Place Q1 at col 2: [2]
+  │     ├── Place Q2 at col 4: [2, 4] Valid
+  │     │     └── Place Q3 at col 1: [2, 4, 1] Valid
+  │     │           └── Place Q4 at col 3: [2, 4, 1, 3] Valid -> ★ SOLUTION 1 FOUND!
+  │
+  ├── Place Q1 at col 3: [3]
+  │     ├── Place Q2 at col 1: [3, 1] Valid
+  │     │     └── Place Q3 at col 4: [3, 1, 4] Valid
+  │     │           └── Place Q4 at col 2: [3, 1, 4, 2] Valid -> ★ SOLUTION 2 FOUND!
+  │
+  └── Place Q1 at col 4: [4] (Symmetric to col 1) -> No new solutions
+              </div>
+              <p><strong>The 2 Valid Solutions for N = 4:</strong></p>
+              <ul>
+                <li>Solution 1: $X = [2, 4, 1, 3]$ (Queens at $(1,2), (2,4), (3,1), (4,3)$)</li>
+                <li>Solution 2: $X = [3, 1, 4, 2]$ (Queens at $(1,3), (2,1), (3,4), (4,2)$)</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Step 5: Algorithm & Complexity -->
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>5.</span> Algorithm Implementation &amp; Complexity Bounds</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <div class="code-box">
+                <div class="code-box-header">
+                  <span>Algorithm: N-Queens Backtracking with O(1) Sets</span>
+                  <span class="lang">Python 3</span>
+                </div>
+                <pre><code>def solveNQueens(n: int):
+    solutions = []
+    board = [-1] * n
+    cols = set()
+    diag1 = set() # r - c
+    diag2 = set() # r + c
+    
+    def backtrack(r: int):
+        if r == n:
+            solutions.append(list(board))
+            return
+            
+        for c in range(n):
+            if c in cols or (r - c) in diag1 or (r + c) in diag2:
+                continue # Prune invalid branch
+                
+            # Place Queen
+            board[r] = c
+            cols.add(c)
+            diag1.add(r - c)
+            diag2.add(r + c)
+            
+            backtrack(r + 1)
+            
+            # Backtrack state unwind
+            cols.remove(c)
+            diag1.remove(r - c)
+            diag2.remove(r + c)
+            board[r] = -1
+            
+    backtrack(0)
+    return solutions</code></pre>
+              </div>
+              <ul>
+                <li><strong>Time Complexity:</strong> Upper bound is $O(N!)$ because the first row has $N$ options, second at most $N-1$, etc. With aggressive diagonal pruning, effective runtime is dramatically lower, but asymptotic worst-case remains $\mathbf{O(N!)}$.</li>
+                <li><strong>Auxiliary Space Complexity:</strong> $\mathbf{O(N)}$ for the recursion call stack (depth $N$) and the board / diagonal tracking sets.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 04</span>
-        <h3>Dynamic Programming Framework</h3>
-        <p>Overlapping subproblems and memoization tables. Bellman equations, state transition matrices, sequence alignments, and all-pairs shortest paths.</p>
-        <div class="topics-list">
-          <span class="topic-badge">0/1 Knapsack DP</span>
-          <span class="topic-badge">Longest Common Subsequence</span>
-          <span class="topic-badge">Matrix Chain Multiplication</span>
-          <span class="topic-badge">Floyd-Warshall</span>
+      <!-- Question 4: Matrix Chain Multiplication (MCM) -->
+      <div class="exam-question-card highlight-20m" id="q-mcm">
+        <div class="exam-q-header" onclick="toggleExamCard('q-mcm')">
+          <div class="exam-q-title-wrap">
+            <div class="exam-badges-row">
+              <span class="badge-20m">🔥 20 Marks Highest Probability</span>
+              <span class="badge-topic">Dynamic Programming</span>
+              <span class="badge-unit">Unit 2 &bull; 10h</span>
+            </div>
+            <h3>Q4. Formulate the Matrix Chain Multiplication (MCM) Problem. Derive the Bellman recurrence relation, develop the O(n³) dynamic programming algorithm, and trace the cost table m[i, j] and split table s[i, j] for matrices with dimensions P = &lt;10, 20, 30, 40, 30&gt;. Print the optimal parenthesization.</h3>
+          </div>
+          <div class="exam-toggle-icon">▼</div>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+
+        <div class="exam-q-body">
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>1.</span> Problem Statement &amp; Arithmetic Cost</h4>
+              <span class="part-marks-tag">2 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Given a sequence of $n$ matrices $\langle A_1, A_2, \dots, A_n \rangle$ where matrix $A_i$ has dimensions $p_{i-1} \times p_i$, matrix multiplication is associative ($A(BC) = (AB)C$) but the number of scalar multiplications depends heavily on parenthesization.</p>
+              <p>Multiplying a $p \times q$ matrix by a $q \times r$ matrix requires $p \cdot q \cdot r$ scalar multiplications. The goal is to find a full parenthesization that minimizes total scalar multiplications.</p>
+            </div>
+          </div>
+
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>2.</span> Optimal Substructure &amp; Recurrence</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Let $m[i, j]$ be the minimum number of scalar multiplications needed to compute $A_i \dots A_j$. Any optimal parenthesization splits the chain at some index $k$ ($i \le k < j$): $(A_i \dots A_k)(A_{k+1} \dots A_j)$.</p>
+              <div class="formula-box">
+m[i, j] = 0                                                             if i = j
+m[i, j] = min_{i ≤ k < j} { m[i, k] + m[k+1, j] + p_{i-1} · p_k · p_j }  if i < j
+              </div>
+              <p>We record the optimal split index $k$ in table $s[i, j]$ to reconstruct the parenthesization.</p>
+            </div>
+          </div>
+
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>3.</span> Complete Numerical Trace for P = &lt;10, 20, 30, 40, 30&gt;</h4>
+              <span class="part-marks-tag">6 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Matrices: $A_1 (10 \times 20)$, $A_2 (20 \times 30)$, $A_3 (30 \times 40)$, $A_4 (40 \times 30)$. Chain length $n = 4$.</p>
+              <p><strong>Diagonal L = 1 (Single matrix):</strong> $m[1,1] = m[2,2] = m[3,3] = m[4,4] = 0$.</p>
+              <p><strong>Diagonal L = 2 (Chain of length 2):</strong></p>
+              <ul>
+                <li>$m[1, 2] = m[1,1] + m[2,2] + p_0 p_1 p_2 = 0 + 0 + 10 \times 20 \times 30 = \mathbf{6,000}$ (s[1,2] = 1)</li>
+                <li>$m[2, 3] = m[2,2] + m[3,3] + p_1 p_2 p_3 = 0 + 0 + 20 \times 30 \times 40 = \mathbf{24,000}$ (s[2,3] = 2)</li>
+                <li>$m[3, 4] = m[3,3] + m[4,4] + p_2 p_3 p_4 = 0 + 0 + 30 \times 40 \times 30 = \mathbf{36,000}$ (s[3,4] = 3)</li>
+              </ul>
+              <p><strong>Diagonal L = 3 (Chain of length 3):</strong></p>
+              <ul>
+                <li>$m[1, 3] = \min(k=1: 0 + 24000 + 10 \times 20 \times 40 = 32000;\ k=2: 6000 + 0 + 10 \times 30 \times 40 = 18000) = \mathbf{18,000}$ ($s[1,3] = 2$)</li>
+                <li>$m[2, 4] = \min(k=2: 0 + 36000 + 20 \times 30 \times 30 = 54000;\ k=3: 24000 + 0 + 20 \times 40 \times 30 = 48000) = \mathbf{48,000}$ ($s[2,4] = 3$)</li>
+              </ul>
+              <p><strong>Diagonal L = 4 (Full chain A1..A4):</strong></p>
+              <ul>
+                <li>$k = 1: m[1,1] + m[2,4] + p_0 p_1 p_4 = 0 + 48000 + 10 \times 20 \times 30 = 48000 + 6000 = 54,000$</li>
+                <li>$k = 2: m[1,2] + m[3,4] + p_0 p_2 p_4 = 6000 + 36000 + 10 \times 30 \times 30 = 42000 + 9000 = 51,000$</li>
+                <li>$k = 3: m[1,3] + m[4,4] + p_0 p_3 p_4 = 18000 + 0 + 10 \times 40 \times 30 = 18000 + 12000 = \mathbf{30,000}$ (Minimum!)</li>
+              </ul>
+              <p><strong>Minimum Scalar Cost:</strong> $\mathbf{30,000}$ with $s[1, 4] = 3$.</p>
+              <p><strong>Optimal Parenthesization:</strong> $(A_1 A_2 A_3)(A_4) \implies$ Split at $s[1,3]=2 \implies \mathbf{((A_1 A_2) A_3) A_4}$.</p>
+            </div>
+          </div>
+
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>4.</span> Complexity Analysis</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <ul>
+                <li><strong>Time Complexity:</strong> $L$ loops from $2$ to $n$, $i$ from $1$ to $n-L+1$, $k$ from $i$ to $j-1$. Three nested loops: $\sum_{L=2}^n (n - L + 1)(L - 1) = \mathbf{\Theta(n^3)}$.</li>
+                <li><strong>Space Complexity:</strong> Storing tables $m$ and $s$ takes $\mathbf{\Theta(n^2)}$ space.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 05</span>
-        <h3>Backtracking &amp; Branch and Bound</h3>
-        <p>Systematic state-space tree traversals with bounding functions. Pruning non-promising paths for NP-hard combinatorial optimizations.</p>
-        <div class="topics-list">
-          <span class="topic-badge">N-Queens Problem</span>
-          <span class="topic-badge">Graph Coloring (m-colors)</span>
-          <span class="topic-badge">Hamiltonian Cycles</span>
-          <span class="topic-badge">TSP Branch &amp; Bound</span>
+      <!-- Question 5: MST Kruskal's vs Prim's -->
+      <div class="exam-question-card highlight-20m" id="q-mst">
+        <div class="exam-q-header" onclick="toggleExamCard('q-mst')">
+          <div class="exam-q-title-wrap">
+            <div class="exam-badges-row">
+              <span class="badge-20m">🔥 20 Marks Highest Probability</span>
+              <span class="badge-topic">Greedy Matroids &amp; Graphs</span>
+              <span class="badge-unit">Unit 2 &bull; 10h</span>
+            </div>
+            <h3>Q5. Define Minimum Spanning Tree (MST) and prove the Cut Property. Contrast Kruskal's Algorithm (with Disjoint Set Union) and Prim's Algorithm (with Min-Heap). Trace both on a weighted graph and discuss performance on sparse vs dense graphs.</h3>
+          </div>
+          <div class="exam-toggle-icon">▼</div>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+
+        <div class="exam-q-body">
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>1.</span> MST Definition &amp; Cut Property Theorem</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Given an undirected connected weighted graph $G = (V, E, w)$, a <strong>Spanning Tree</strong> is an acyclic subgraph $T \subseteq E$ containing all $|V|$ vertices with $|V|-1$ edges. A <strong>Minimum Spanning Tree</strong> minimizes $\sum_{e \in T} w(e)$.</p>
+              <p><strong>The Cut Property:</strong> Let $S \subset V$ be any cut partitioning vertices into $S$ and $V - S$. If an edge $e = (u, v)$ crosses the cut ($u \in S, v \in V - S$) and has strictly minimum weight among all crossing edges, then $e$ must belong to every MST of $G$.</p>
+            </div>
+          </div>
+
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>2.</span> Kruskal's vs. Prim's Comprehensive Comparison</h4>
+              <span class="part-marks-tag">8 Marks</span>
+            </div>
+            <div class="answer-content">
+              <div class="exam-table-wrap">
+                <table class="exam-table">
+                  <thead>
+                    <tr>
+                      <th>Dimension</th>
+                      <th>Kruskal's Algorithm</th>
+                      <th>Prim's Algorithm</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Greedy Strategy</strong></td>
+                      <td>Edge-based: Sorts edges globally, greedily adds smallest edge if no cycle.</td>
+                      <td>Vertex-based: Grows a single connected tree outwards from an arbitrary root.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Cycle Detection</strong></td>
+                      <td>Uses Disjoint Set Union (DSU) with Union-by-Rank &amp; Path Compression.</td>
+                      <td>Inherently acyclic because it only adds edges between $S$ and $V-S$.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Data Structures</strong></td>
+                      <td>Edge array + DSU ($find(u) \ne find(v)$).</td>
+                      <td>Min-Priority Queue (Binary Heap / Fibonacci Heap).</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Time Complexity</strong></td>
+                      <td>$\mathbf{O(E \log E)}$ or $\mathbf{O(E \log V)}$ (Edge sorting dominates).</td>
+                      <td>$\mathbf{O(E \log V)}$ with Binary Heap; $\mathbf{O(E + V \log V)}$ with Fibonacci Heap.</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Graph Suitability</strong></td>
+                      <td>Preferred for <strong>Sparse Graphs</strong> ($E \approx V$).</td>
+                      <td>Preferred for <strong>Dense Graphs</strong> ($E \approx V^2$) using adjacency matrix $O(V^2)$.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 06</span>
-        <h3>Complexity Classes (P, NP, NP-C)</h3>
-        <p>Deterministic vs Nondeterministic Polynomial Time. Polynomial-time verification, reductions (A ≤p B), Cook-Levin theorem, and 3-SAT reduction chains.</p>
-        <div class="topics-list">
-          <span class="topic-badge">P vs NP Concepts</span>
-          <span class="topic-badge">NP-Complete Proofs</span>
-          <span class="topic-badge">Vertex Cover &amp; Clique</span>
-          <span class="topic-badge">Approximation Ratios</span>
+      <!-- Question 6: Closest Pair of Points -->
+      <div class="exam-question-card" id="q-closest">
+        <div class="exam-q-header" onclick="toggleExamCard('q-closest')">
+          <div class="exam-q-title-wrap">
+            <div class="exam-badges-row">
+              <span class="badge-20m">⭐ 10–20 Marks Classic D&amp;C</span>
+              <span class="badge-topic">Divide &amp; Conquer</span>
+              <span class="badge-unit">Unit 2 &bull; 10h</span>
+            </div>
+            <h3>Q6. Formulate the Closest Pair of Points problem in a 2D Euclidean plane. Explain how Divide and Conquer achieves O(n log n) by bounding point comparisons in the vertical strip to at most 7-8 points.</h3>
+          </div>
+          <div class="exam-toggle-icon">▼</div>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+
+        <div class="exam-q-body">
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>1.</span> Divide &amp; Conquer Strategy &amp; Strip Bound Proof</h4>
+              <span class="part-marks-tag">6 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>Given $n$ points in a 2D plane, finding the pair with minimum Euclidean distance $d(p_i, p_j)$ takes $O(n^2)$ by brute force. Divide &amp; Conquer achieves $O(n \log n)$:</p>
+              <ol>
+                <li>Sort points by x-coordinate into $P_x$ and y-coordinate into $P_y$ in $O(n \log n)$.</li>
+                <li>Divide: Split at vertical median line $L: x = x_{mid}$ into left half $Q$ and right half $R$.</li>
+                <li>Conquer: Recursively find minimum distance $\delta_L$ in $Q$ and $\delta_R$ in $R$. Let $\delta = \min(\delta_L, \delta_R)$.</li>
+                <li>Combine: A closer pair can only exist across the median line within strip $[x_{mid} - \delta, x_{mid} + \delta]$.</li>
+                <li><strong>The 7-Point Geometric Proof:</strong> In the strip, consider a rectangle of width $2\delta$ and height $\delta$. Each half ($\delta \times \delta$) can contain at most 4 points without violating the invariant that any two points in the same half are at least $\delta$ apart. Thus, for any point $p$, at most <strong>7 other points</strong> in the y-sorted strip need to be checked!</li>
+              </ol>
+              <div class="formula-box">
+T(n) = 2T(n/2) + O(n)  ==>  T(n) = O(n log n)  (By Master Theorem Case 2)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Question 7: Sorting Lower Bound & Algorithms Comparison -->
+      <div class="exam-question-card" id="q-sorting">
+        <div class="exam-q-header" onclick="toggleExamCard('q-sorting')">
+          <div class="exam-q-title-wrap">
+            <div class="exam-badges-row">
+              <span class="badge-20m">⭐ 10–20 Marks Core Theory</span>
+              <span class="badge-topic">Sorting &amp; Complexity Classes</span>
+              <span class="badge-unit">Unit 1 &bull; 12h</span>
+            </div>
+            <h3>Q7. Prove that any comparison-based sorting algorithm requires Ω(n log n) operations in the worst case using a Decision Tree model. Compare MergeSort, QuickSort, HeapSort, Counting Sort, and Radix Sort in terms of time, space, and stability.</h3>
+          </div>
+          <div class="exam-toggle-icon">▼</div>
+        </div>
+
+        <div class="exam-q-body">
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>1.</span> Decision Tree Lower Bound Proof</h4>
+              <span class="part-marks-tag">4 Marks</span>
+            </div>
+            <div class="answer-content">
+              <p>In any comparison-based sort, every execution traces a path from the root to a leaf in a binary decision tree where internal nodes represent comparisons $a_i \le a_j$.</p>
+              <ul>
+                <li>For $n$ distinct elements, there are $n!$ possible permutations. Each permutation must correspond to at least one reachable leaf to guarantee correctness $\implies \text{Leaves } L \ge n!$.</li>
+                <li>A binary tree of height $h$ has at most $2^h$ leaves $\implies 2^h \ge L \ge n! \implies h \ge \log_2(n!)$.</li>
+                <li>By Stirling's approximation, $\log_2(n!) = \sum_{i=1}^n \log_2 i \ge \sum_{i=n/2}^n \log_2(n/2) = \frac{n}{2} \log_2(n/2) = \mathbf{\Omega(n \log n)}$.</li>
+                <li>Hence, no comparison sort can run faster than $\mathbf{\Omega(n \log n)}$ in the worst case.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="answer-part-block">
+            <div class="part-header">
+              <h4><span>2.</span> Master Sorting Comparison Matrix</h4>
+              <span class="part-marks-tag">6 Marks</span>
+            </div>
+            <div class="answer-content">
+              <div class="exam-table-wrap">
+                <table class="exam-table">
+                  <thead>
+                    <tr>
+                      <th>Algorithm</th>
+                      <th>Best Time</th>
+                      <th>Average Time</th>
+                      <th>Worst Time</th>
+                      <th>Space</th>
+                      <th>Stable?</th>
+                      <th>Method Paradigm</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>MergeSort</strong></td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(n)$</td>
+                      <td>Yes</td>
+                      <td>Divide &amp; Conquer</td>
+                    </tr>
+                    <tr>
+                      <td><strong>QuickSort</strong></td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(n^2)$</td>
+                      <td>$O(\log n)$ stack</td>
+                      <td>No</td>
+                      <td>Divide &amp; Conquer (Partition)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>HeapSort</strong></td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(n \log n)$</td>
+                      <td>$O(1)$ in-place</td>
+                      <td>No</td>
+                      <td>Binary Heap Priority Queue</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Counting Sort</strong></td>
+                      <td>$O(n + k)$</td>
+                      <td>$O(n + k)$</td>
+                      <td>$O(n + k)$</td>
+                      <td>$O(n + k)$</td>
+                      <td>Yes</td>
+                      <td>Non-comparison / Frequency array</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Radix Sort</strong></td>
+                      <td>$O(d(n + k))$</td>
+                      <td>$O(d(n + k))$</td>
+                      <td>$O(d(n + k))$</td>
+                      <td>$O(n + k)$</td>
+                      <td>Yes</td>
+                      <td>Digit-by-digit Stable Pass</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Materials -->
-    <h2 class="section-title">Course Assets &amp; Resources</h2>
-    <div class="materials-grid">
-      <div class="material-box">
-        <span class="mat-icon">📐</span>
-        <div class="mat-text">
-          <h4>Recurrence Proof Guides</h4>
-          <p>Step-by-step substitution induction templates</p>
+    <!-- =========================================================================
+         SECTION 3: UNIT 1 & UNIT 2 SYLLABUS KNOWLEDGE MODULES
+         ========================================================================= -->
+    <div class="content-section" id="section-units">
+      <h2 class="section-title">Official Syllabus &amp; Lecture Units</h2>
+      <p class="section-sub">Comprehensive modular breakdown of Unit 1 (12 Contact Hours) and Unit 2 (10 Contact Hours) with theoretical foundations, mathematical recurrences, and exam gotchas.</p>
+
+      <!-- High-level Unit Overview Cards -->
+      <div class="units-grid">
+        <!-- Unit 1 -->
+        <div class="unit-card" id="card-unit1">
+          <div class="unit-header-strip">
+            <span class="unit-tag">Unit 01 &bull; Core Foundations</span>
+            <span class="unit-hours-badge">⏳ 12 Contact Hours</span>
+          </div>
+          <h3>Complexity Analysis &amp; Fundamental Algorithms</h3>
+          <p>Mathematical foundations of algorithm design, asymptotic growth order, recurrence relations, comparison &amp; linear-time sorting, searching mechanisms, amortized potential frameworks, randomised algorithms, and cache-aware hardware thinking.</p>
+          
+          <div class="unit-topics-list">
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Mathematical Foundations:</strong> Growth of functions, limits, Recurrence Relations, Master Theorem.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Asymptotic Notations:</strong> Big-O ($O$), Big-Omega ($\Omega$), Big-Theta ($\Theta$), Little-o, Little-omega.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Sorting &amp; Complexity:</strong> Merge Sort, Quick Sort, Heap Sort, Counting Sort, Radix Sort.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Searching &amp; Hashing:</strong> Binary Search, Interpolation Search, Universal Hashing &amp; Collisions.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Amortized Analysis:</strong> Aggregate method, Accounting method, Potential function method $\Phi$.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Randomised Algorithms:</strong> QuickSort/QuickSelect, Karger's Min-Cut, Monte-Carlo vs Las-Vegas.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Cache-Aware Thinking:</strong> Memory hierarchy, spatial/temporal locality, Cache-Oblivious models.</div>
+          </div>
+        </div>
+
+        <!-- Unit 2 -->
+        <div class="unit-card" id="card-unit2">
+          <div class="unit-header-strip">
+            <span class="unit-tag">Unit 02 &bull; Core Paradigms</span>
+            <span class="unit-hours-badge">⏳ 10 Contact Hours</span>
+          </div>
+          <h3>Divide &amp; Conquer, Greedy, &amp; Dynamic Programming</h3>
+          <p>Major algorithm design paradigms: Recursive partitioning strategies, matroid-based locally optimal greedy selections, overlapping subproblem memoization and bottom-up tables, plus recursive execution complexity bounds.</p>
+          
+          <div class="unit-topics-list">
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Divide &amp; Conquer:</strong> Binary Search, Closest Pair of Points ($O(n \log n)$), Convex Hull (Graham scan).</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Greedy Algorithms:</strong> Huffman Prefix Coding, Activity Selection, Kruskal's &amp; Prim's MST.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Dynamic Programming:</strong> Tabulation vs Memoization, 0/1 Knapsack, Matrix Chain Multiplication (MCM), Longest Common Subsequence (LCS), Floyd-Warshall All-Pairs.</div>
+            <div class="unit-topic-item"><span class="bullet">▶</span> <strong>Complexity of Recursion:</strong> Master theorem bounds, recursion tree depth, call stack auxiliary space.</div>
+          </div>
         </div>
       </div>
-      <div class="material-box">
-        <span class="mat-icon">💡</span>
-        <div class="mat-text">
-          <h4>DP State Transition Sheet</h4>
-          <p>Common recurrences &amp; base case table</p>
+
+      <!-- UNIT 1 DETAILED CURRICULUM MODULES -->
+      <div class="unit-section-block" id="unit1-container">
+        <div class="unit-banner">
+          <div class="unit-banner-info">
+            <div class="unit-pill-tag">📘 Unit 1 Deep Dive</div>
+            <h3>Complexity Analysis &amp; Fundamental Algorithms (12 Hours)</h3>
+            <p>Formal asymptotic limit theorems, comparison vs non-comparison sorting lower bounds, universal hashing families, amortized potential proofs, randomised algorithms, and cache-aware hardware thinking.</p>
+          </div>
+          <span style="font-size: 2.2rem;">⏱️</span>
+        </div>
+
+        <!-- Module 1.1 -->
+        <div class="topic-card" id="topic-1-1">
+          <div class="topic-header" onclick="toggleTopicCard('topic-1-1')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 1.1</span>
+              <h4>Mathematical Foundations, Asymptotic Limits &amp; Growth Hierarchy</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Algorithm analysis quantifies resource consumption (time steps and memory words) as a function of input size $n \to \infty$. By abstracting away machine constants, asymptotic notations provide hardware-independent performance guarantees.</p>
+            
+            <div class="formula-box">
+              Limit Theorem for Asymptotic Classification:<br>
+              L = lim_{n &to; &infin;} [ f(n) / g(n) ]<br>
+              &bull; L = 0 &rArr; f(n) = o(g(n)) [Strict Upper Bound]<br>
+              &bull; 0 &lt; L &lt; &infin; &rArr; f(n) = &Theta;(g(n)) [Asymptotically Tight Bound]<br>
+              &bull; L = &infin; &rArr; f(n) = &omega;(g(n)) [Strict Lower Bound]
+            </div>
+
+            <div class="key-points-grid">
+              <div class="point-card">
+                <h5>Formal Big-O ($O$) Definition</h5>
+                <p>$f(n) = O(g(n))$ if $\exists c > 0, n_0 \ge 1$ such that $0 \le f(n) \le c \cdot g(n)$ for all $n \ge n_0$. Represents an asymptotic upper bound (worst-case ceiling).</p>
+              </div>
+              <div class="point-card">
+                <h5>Formal Big-Omega ($\Omega$) Definition</h5>
+                <p>$f(n) = \Omega(g(n))$ if $\exists c > 0, n_0 \ge 1$ such that $0 \le c \cdot g(n) \le f(n)$ for all $n \ge n_0$. Represents an asymptotic lower bound (algorithmic floor).</p>
+              </div>
+              <div class="point-card">
+                <h5>Formal Big-Theta ($\Theta$) Definition</h5>
+                <p>$f(n) = \Theta(g(n))$ if $\exists c_1, c_2 > 0, n_0 \ge 1$ such that $c_1 g(n) \le f(n) \le c_2 g(n)$ for all $n \ge n_0$. True if and only if $f(n) = O(g(n))$ AND $f(n) = \Omega(g(n))$.</p>
+              </div>
+            </div>
+
+            <p><strong>Universal Asymptotic Growth Hierarchy:</strong></p>
+            <div class="formula-box">
+              O(1) &lt; O(log log n) &lt; O(log n) &lt; O(&radic;n) &lt; O(n) &lt; O(n log n) &lt; O(n&sup2;) &lt; O(n&sup3;) &lt; O(2&supn;) &lt; O(e&supn;) &lt; O(n!) &lt; O(n&supn;)
+            </div>
+
+            <p><strong>Classroom Rules for Loop Complexity (Direct from Class Note #1):</strong></p>
+            <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: var(--text-body);">
+              <li><strong>Single Loop:</strong> <code>for i = 1 to n do ...</code> &rarr; Executes $n$ times &rarr; $O(n)$.</li>
+              <li><strong>Nested Loops:</strong> <code>for i = 1 to n do for j = 1 to n do ...</code> &rarr; Executes $n \times n = n^2$ times &rarr; $O(n^2)$.</li>
+              <li><strong>Sequential Loops:</strong> Two successive non-nested loops of size $n$ &rarr; $n + n = 2n$ &rarr; $O(n)$.</li>
+              <li><strong>Three-Level Nested Loops:</strong> <code>for i ... for j ... for k ...</code> &rarr; $n \times n \times n = n^3$ times &rarr; $O(n^3)$.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Module 1.2 -->
+        <div class="topic-card" id="topic-1-2">
+          <div class="topic-header" onclick="toggleTopicCard('topic-1-2')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 1.2</span>
+              <h4>Recurrence Relations &amp; Master Theorem Framework</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Divide-and-conquer algorithms generate recursive runtimes characterized by the recurrence $T(n) = a T(n/b) + f(n)$, where $a \ge 1$ is the number of subproblems, $b > 1$ is the subproblem reduction factor, and $f(n)$ represents partition and combination overhead.</p>
+
+            <div class="formula-box">
+              Standard Master Recurrence: T(n) = a &middot; T(n/b) + &Theta;(n^k &middot; log^p n)<br>
+              Critical Watershed Exponent: c_{crit} = log_b(a)<br>
+              &bull; Case 1 (Leaves Dominate): c_{crit} &gt; k &rArr; T(n) = &Theta;(n^{log_b a})<br>
+              &bull; Case 2 (Balanced Work): c_{crit} = k &rArr; T(n) = &Theta;(n^k &middot; log^{p+1} n)<br>
+              &bull; Case 3 (Root Dominates): c_{crit} &lt; k AND regularity a &middot; f(n/b) &le; c &middot; f(n) &rArr; T(n) = &Theta;(n^k &middot; log^p n)
+            </div>
+
+            <p><strong>Primary Solving Methods:</strong></p>
+            <ol style="margin-left: 1.25rem; font-size: 0.85rem; color: var(--text-body);">
+              <li><strong>Substitution Method:</strong> Formulate a mathematical guess for $T(n)$, then establish the inductive step and verify boundary conditions for $n \ge n_0$.</li>
+              <li><strong>Recursion Tree Method:</strong> Expand the recurrence into a tree of depth $\log_b n$. Compute work at level $i$: $a^i f(n/b^i)$. Sum across all levels from $i=0$ to $\log_b n$.</li>
+              <li><strong>Master Theorem:</strong> Algebraic formula delivering instant closed-form asymptotic bounds when subproblem branches shrink by a constant factor.</li>
+            </ol>
+
+            <div class="formula-box" style="border-left-color: var(--accent-coral);">
+              &bull; Non-Applicable Pitfall: T(n) = 2T(n/2) + n / log n<br>
+              Here log_2(2) = 1 and f(n) = n / log n. The ratio f(n) / n^{log_b a} = 1 / log n is asymptotically smaller than n^1, but NOT polynomially smaller (no positive &epsilon; exists such that n / log n = O(n^{1 - &epsilon;})). Master Theorem does NOT apply! (Solved via recursion tree to &Theta;(n log log n)).
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 1.3 -->
+        <div class="topic-card" id="topic-1-3">
+          <div class="topic-header" onclick="toggleTopicCard('topic-1-3')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 1.3</span>
+              <h4>Comparison-Sort Lower Bound &amp; Linear-Time Sorting Algorithms</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Any sorting algorithm that operates exclusively by pairwise comparison operations ($A[i] \le A[j]$) can be modeled as a binary decision tree. For $n$ distinct keys, there are $n!$ possible permutations, requiring at least $n!$ distinct leaf nodes.</p>
+
+            <div class="formula-box">
+              Binary Tree Depth Invariant: 2^h &ge; L &ge; n!<br>
+              h &ge; log_2(n!) = &sum;_{i=1}^n log_2 i &ge; &int;_1^n log_2 x dx = &Omega;(n log n)<br>
+              Therefore, no comparison-based sort can beat &Omega;(n log n) in the worst-case!
+            </div>
+
+            <div class="key-points-grid">
+              <div class="point-card">
+                <h5>Counting Sort &bull; $O(n + k)$</h5>
+                <p>Non-comparison integer sorting. Counts occurrences of each value in range $[0, k]$, constructs prefix sums to determine exact output positions. <strong>Stable</strong>, requires $O(n + k)$ auxiliary space.</p>
+              </div>
+              <div class="point-card">
+                <h5>Radix Sort &bull; $O(d(n + k))$</h5>
+                <p>Sorts elements digit-by-digit from Least Significant Digit (LSD) to Most Significant Digit (MSD) using Counting Sort as an intermediate subroutine. Invariant: Stability of digit sort preserves relative ordering of preceding digits.</p>
+              </div>
+              <div class="point-card">
+                <h5>Heap Sort &bull; $O(n \log n)$</h5>
+                <p>Builds Max-Heap in $O(n)$ time via bottom-up sift-down, then repeatedly extracts max and places it at the end in $O(\log n)$ per element. In-place $O(1)$ auxiliary memory, but <strong>unstable</strong> due to long-range child swaps.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 1.4 -->
+        <div class="topic-card" id="topic-1-4">
+          <div class="topic-header" onclick="toggleTopicCard('topic-1-4')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 1.4</span>
+              <h4>Searching Algorithms &amp; Universal Hashing Systems</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Searching locates target keys in structured or unstructured data collections. While Binary Search halves the search space each step, Interpolation Search mirrors human phone-book lookups by probing based on numerical key distribution.</p>
+
+            <div class="formula-box">
+              Interpolation Search Probe Formula:<br>
+              pos = low + &lfloor; [ (key - A[low]) / (A[high] - A[low]) ] &times; (high - low) &rfloor;<br>
+              &bull; Average Case: O(log log n) on uniformly distributed data.<br>
+              &bull; Worst Case: O(n) when keys grow exponentially (e.g., [1, 2, 4, 8, 16, 32, ...]).
+            </div>
+
+            <p><strong>Hashing Collisions &amp; Resolution Paradigms:</strong></p>
+            <ul style="margin-left: 1.25rem; font-size: 0.85rem; color: var(--text-body); margin-bottom: 0.75rem;">
+              <li><strong>Chaining:</strong> Each table slot heads a linked list. Average search cost is $O(1 + \alpha)$ where load factor $\alpha = n / m$.</li>
+              <li><strong>Open Addressing - Linear Probing:</strong> $h(k, i) = (h'(k) + i) \bmod m$. Suffers from <em>primary clustering</em> (long contiguous runs of occupied slots).</li>
+              <li><strong>Open Addressing - Quadratic Probing:</strong> $h(k, i) = (h'(k) + c_1 i + c_2 i^2) \bmod m$. Eliminates primary clustering; mild secondary clustering.</li>
+              <li><strong>Double Hashing:</strong> $h(k, i) = (h_1(k) + i \cdot h_2(k)) \bmod m$. Provides permutation of all slots if $\gcd(h_2(k), m) = 1$. Optimal open addressing.</li>
+            </ul>
+
+            <div class="formula-box">
+              Universal Hashing Family &H;_{p, m}:<br>
+              Choose prime p &gt; m. Let h_{a, b}(x) = ((a &middot; x + b) mod p) mod m for a &isin; {1, ..., p-1}, b &isin; {0, ..., p-1}.<br>
+              Collision Property: &forall; x &ne; y, Pr_{h &isin; &H;}[ h(x) == h(y) ] &le; 1/m.<br>
+              Guarantees expected O(1) operations irrespective of any adversarial input sequence!
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 1.5 -->
+        <div class="topic-card" id="topic-1-5">
+          <div class="topic-header" onclick="toggleTopicCard('topic-1-5')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 1.5</span>
+              <h4>Amortized Analysis: Aggregate, Accounting &amp; Potential Method &Phi;</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Amortized analysis guarantees the average performance of each operation over a worst-case sequence of operations. Unlike average-case analysis, no probability distribution over inputs is assumed.</p>
+
+            <div class="key-points-grid">
+              <div class="point-card">
+                <h5>1. Aggregate Method</h5>
+                <p>Computes the total worst-case cost $T(n)$ across the entire sequence of $n$ operations, then assigns the amortized cost $\hat{c} = T(n) / n$ equally to each operation.</p>
+              </div>
+              <div class="point-card">
+                <h5>2. Accounting (Banker's) Method</h5>
+                <p>Assigns an artificial charge $\hat{c}_i$ to each operation. If $\hat{c}_i > c_i$, excess is stored as credit on specific data items. Credit must remain $\ge 0$ at all times to fund costly future operations.</p>
+              </div>
+              <div class="point-card">
+                <h5>3. Potential (Physicist's) Method</h5>
+                <p>Defines potential function $\Phi(D_i)$ mapping data structure state $D_i$ to a real number. Amortized cost: $\hat{c}_i = c_i + \Phi(D_i) - \Phi(D_{i-1})$. If $\Phi(D_n) \ge \Phi(D_0)$, total amortized upper-bounds total real cost.</p>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              Dynamic Table Doubling Proof via Potential Method &Phi;:<br>
+              Let &Phi;(D_i) = 2 &middot; num_i - size_i, where num_i is element count and size_i is array capacity.<br>
+              &bull; Immediately after doubling: size = 2 &times; num &rArr; &Phi; = 2(num) - 2(num) = 0.<br>
+              &bull; When full (ready to double): size = num &rArr; &Phi; = 2(num) - num = num.<br>
+              &bull; Normal Insertion (no resize): c_i = 1, &Delta;&Phi; = (2(num+1) - size) - (2(num) - size) = 2.<br>
+                &hat;c_i = 1 + 2 = 3.<br>
+              &bull; Doubling Insertion (num == size): c_i = num + 1 (copy num elements + 1 insert).<br>
+                Old &Phi; = num. New size = 2 &middot; num. New &Phi; = 2(num+1) - 2 &middot; num = 2.<br>
+                &Delta;&Phi; = 2 - num. &hat;c_i = (num + 1) + (2 - num) = 3.<br>
+              Result: Every insert operation has amortized cost strictly &le; 3 &rArr; O(1) amortized!
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 1.6 -->
+        <div class="topic-card" id="topic-1-6">
+          <div class="topic-header" onclick="toggleTopicCard('topic-1-6')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 1.6</span>
+              <h4>Randomised Algorithms: Monte Carlo, Las Vegas &amp; Karger's Min-Cut</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Randomised algorithms utilize a source of pseudo-random coin flips during execution. They thwart worst-case adversary inputs and are classified into two complementary families:</p>
+
+            <div class="compare-grid">
+              <div class="compare-card">
+                <h5>Las Vegas Algorithms</h5>
+                <p style="font-size: 0.82rem; color: var(--text-body);"><strong>Always outputs the correct answer.</strong> Running time is a random variable. Examples: Randomized QuickSort (expected $O(n \log n)$), Randomized QuickSelect (expected $O(n)$ order statistics).</p>
+              </div>
+              <div class="compare-card">
+                <h5>Monte Carlo Algorithms</h5>
+                <p style="font-size: 0.82rem; color: var(--text-body);"><strong>Running time is deterministic.</strong> Output has a bounded probability of error ($P_{\text{err}} \le \epsilon$). Confidence can be amplified arbitrarily close to 1 by repeating independent trials. Examples: Karger's Min-Cut, Miller-Rabin Primality.</p>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              Karger's Contraction Algorithm for Global Min-Cut:<br>
+              Given multigraph G=(V, E). Repeatedly pick random edge (u, v) and contract vertices u and v until 2 meta-vertices remain.<br>
+              Min-Cut Size: k. Min degree of any vertex &ge; k &rArr; |E| &ge; n &middot; k / 2.<br>
+              Pr[Random edge belongs to min-cut] &le; k / |E| &le; k / (nk/2) = 2/n.<br>
+              Pr[Min-cut survives step 1] &ge; 1 - 2/n = (n-2) / n.<br>
+              Overall Survival Probability:<br>
+              P_{success} &ge; &prod;_{i=0}^{n-3} [ (n - i - 2) / (n - i) ] = (2) / (n(n - 1)) = 1 / &Cscr;(n, 2) &asymp; 2 / n&sup2;.<br>
+              By repeating N = &Cscr;(n, 2) &middot; ln(1/&delta;) trials, min-cut is found with probability &ge; 1 - &delta; in O(n&sup2; log n) time.
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 1.7 -->
+        <div class="topic-card" id="topic-1-7">
+          <div class="topic-header" onclick="toggleTopicCard('topic-1-7')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 1.7</span>
+              <h4>Cache-Aware Architecture &amp; Cache-Oblivious Model</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Modern microprocessors are orders of magnitude faster than main memory (RAM). Memory hierarchy bridges this speed gap through tiered caches governed by spatial and temporal locality.</p>
+
+            <div class="key-points-grid">
+              <div class="point-card">
+                <h5>Memory Latency Cliff</h5>
+                <p>CPU Registers (< 1 ns) &rarr; L1 Cache (~1 ns, 32-64KB) &rarr; L2 Cache (~3-4 ns, 512KB) &rarr; L3 Cache (~15 ns, 16-64MB) &rarr; Main DRAM (~60-100 ns). Accessing RAM causes a 100x latency stall.</p>
+              </div>
+              <div class="point-card">
+                <h5>Cache Line &amp; Locality</h5>
+                <p>Data moves in fixed 64-byte blocks (cache lines). <strong>Spatial locality:</strong> Accessing consecutive array elements. <strong>Temporal locality:</strong> Reusing the same memory address within a short time window.</p>
+              </div>
+              <div class="point-card">
+                <h5>The 3 C's of Cache Misses</h5>
+                <p><strong>1. Compulsory (Cold):</strong> First access to a block. <strong>2. Capacity:</strong> Working set exceeds cache size. <strong>3. Conflict:</strong> Multiple active blocks map to the same set (set-associative).</p>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              Cache-Oblivious Model (Frigo, Leiserson, Prokop, Ramachandran, 1999):<br>
+              Analyzes algorithms under parameters M (cache size) and B (cache line block size) WITHOUT the code knowing M or B!<br>
+              &bull; Standard Loop Matrix Transpose: Causes O(N&sup2;) cache misses if column stride exceeds cache size.<br>
+              &bull; Cache-Oblivious Recursive Divide-and-Conquer Transpose:<br>
+                Recursively partition N &times; N matrix into four (N/2) &times; (N/2) blocks.<br>
+                Once subproblem size N &times; N fits inside cache (&le; &alpha; M), ALL remaining operations hit in cache!<br>
+                Achieves optimal cache miss bound: Q(N) = O(1 + N&sup2; / B), optimal across ALL hierarchy tiers simultaneously!
+            </div>
+          </div>
         </div>
       </div>
-      <div class="material-box">
-        <span class="mat-icon">🎯</span>
-        <div class="mat-text">
-          <h4>Viva &amp; Exam Hotspots</h4>
-          <p>Comparison tables (Greedy vs DP, Prim vs Kruskal)</p>
+
+      <!-- UNIT 2 DETAILED CURRICULUM MODULES -->
+      <div class="unit-section-block" id="unit2-container">
+        <div class="unit-banner">
+          <div class="unit-banner-info">
+            <div class="unit-pill-tag">📗 Unit 2 Deep Dive</div>
+            <h3>Divide &amp; Conquer, Greedy Algorithms, &amp; Dynamic Programming (10 Hours)</h3>
+            <p>Recursive partitioning geometry, optimal prefix Huffman codes, Matroid greedy choices, 0/1 Knapsack Bellman tables, Matrix Chain parenthesization, LCS alignment, and Floyd-Warshall all-pairs shortest paths.</p>
+          </div>
+          <span style="font-size: 2.2rem;">🌲</span>
+        </div>
+
+        <!-- Module 2.1 -->
+        <div class="topic-card" id="topic-2-1">
+          <div class="topic-header" onclick="toggleTopicCard('topic-2-1')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 2.1</span>
+              <h4>Divide &amp; Conquer Foundations: Closest Pair &amp; Convex Hull Graham Scan</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Divide-and-conquer decomposes a problem into disjoint subproblems of identical type, solves them recursively, and combines the sub-solutions. It achieves optimal $O(n \log n)$ bounds for fundamental computational geometry problems.</p>
+
+            <div class="key-points-grid">
+              <div class="point-card">
+                <h5>Closest Pair of Points in 2D &bull; $O(n \log n)$</h5>
+                <p>Divide points by vertical median $x$-line. Recursively find minimum distance $\delta = \min(\delta_L, \delta_R)$. In the boundary strip $[x_{mid} - \delta, x_{mid} + \delta]$, any rectangle of size $\delta \times 2\delta$ contains at most 8 points. Hence, for each point, checking only the next <strong>7 points</strong> sorted by $y$ guarantees correctness! Combine step takes $O(n)$, giving $T(n) = 2T(n/2) + O(n) = O(n \log n)$.</p>
+              </div>
+              <div class="point-card">
+                <h5>Convex Hull: Graham's Scan &bull; $O(n \log n)$</h5>
+                <p>Finds minimal convex polygon enclosing $n$ points. Find pivot $P_0$ (minimum $y$, lowest $x$). Sort remaining points by polar angle with $P_0$. Maintain stack of hull vertices. For each point $P_i$, test orientation using 2D vector cross product. Pop stack while turn is non-left (clockwise or collinear). Push $P_i$. Overall runtime: $O(n \log n)$ dominated by angular sort; linear stack sweep.</p>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              Cross-Product Orientation Test (Graham's Scan Invariant):<br>
+              Given points P_1(x_1, y_1), P_2(x_2, y_2), P_3(x_3, y_3):<br>
+              Cross Product = (x_2 - x_1)(y_3 - y_1) - (y_2 - y_1)(x_3 - x_1)<br>
+              &bull; &gt; 0: Counter-Clockwise (Left Turn &rArr; Valid convex hull vertex, keep on stack)<br>
+              &bull; &lt; 0: Clockwise (Right Turn &rArr; Non-convex interior vertex, pop previous point)<br>
+              &bull; == 0: Collinear points (Keep only the furthest point from P_0)
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2.2 -->
+        <div class="topic-card" id="topic-2-2">
+          <div class="topic-header" onclick="toggleTopicCard('topic-2-2')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 2.2</span>
+              <h4>Greedy Strategy &amp; Matroid Optimization: Huffman, Activity Selection &amp; MST</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Greedy algorithms construct solutions piece by piece, always selecting the locally optimal choice that appears best at the moment. A greedy algorithm yields a globally optimal solution if and only if the problem exhibits the <strong>Greedy-Choice Property</strong> and <strong>Optimal Substructure</strong>.</p>
+
+            <div class="key-points-grid">
+              <div class="point-card">
+                <h5>Huffman Prefix Coding &bull; $O(n \log n)$</h5>
+                <p>Constructs optimal variable-length prefix code. Frequencies inserted into Min-Heap. Repeatedly extract two lowest frequency trees $T_1, T_2$, merge into parent with weight $w_1 + w_2$, and re-insert. Produces prefix-free code tree minimizing average code length $L = \sum f_i \cdot \text{length}_i$.</p>
+              </div>
+              <div class="point-card">
+                <h5>Activity Selection Problem &bull; $O(n \log n)$</h5>
+                <p>Selects maximal non-overlapping activities. <strong>Greedy Choice:</strong> Sort all activities by earliest finish time $f_i$. Always pick the compatible activity that finishes first. <em>Proof by induction / exchange argument:</em> Leaving the maximum possible remaining time window never restricts future compatible choices.</p>
+              </div>
+              <div class="point-card">
+                <h5>MST: Kruskal vs Prim &bull; Cut Property</h5>
+                <p><strong>Cut Property Theorem:</strong> For any cut $(S, V \setminus S)$ in connected graph $G$, the lightest crossing edge belongs to every MST. <strong>Kruskal's:</strong> Sorts $E$ edges, adds edge if endpoints belong to different sets using Disjoint Set Union (DSU with rank + path compression, $O(E \alpha(V))$). <strong>Prim's:</strong> Expands tree via Min-Heap ($O(E \log V)$).</p>
+              </div>
+            </div>
+
+            <div class="formula-box">
+              Fractional Knapsack vs 0/1 Knapsack (Greedy vs DP Contrast):<br>
+              &bull; Fractional Knapsack: Greedy rule &mdash; Sort items descending by value-to-weight ratio p_i / w_i. Take full items while remaining capacity W &ge; w_i, then take fraction W_{rem} / w_{last} of the next item. Optimal in O(n log n).<br>
+              &bull; 0/1 Knapsack: Fractional greedy FAILS because items cannot be broken. A heavy item with high ratio can leave unfilled slack capacity. Requires Dynamic Programming Bellman table!
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2.3 -->
+        <div class="topic-card" id="topic-2-3">
+          <div class="topic-header" onclick="toggleTopicCard('topic-2-3')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 2.3</span>
+              <h4>Dynamic Programming Master Matrix: 0/1 Knapsack, MCM, LCS &amp; Floyd-Warshall</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Dynamic programming solves problems by combining solutions to overlapping subproblems. Optimal substructure guarantees that optimal solutions to a problem contain optimal solutions to subproblems. DP stores intermediate states in a table to prevent exponential redundant re-evaluations.</p>
+
+            <div class="exam-table-wrap">
+              <table class="exam-table">
+                <thead>
+                  <tr>
+                    <th>Algorithm</th>
+                    <th>Subproblem State Space</th>
+                    <th>Recurrence Relation</th>
+                    <th>Time</th>
+                    <th>Space</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>0/1 Knapsack</strong></td>
+                    <td>$M[i, w]$: Max profit using items $1..i$ with capacity $w$</td>
+                    <td>$M[i, w] = \max(M[i-1, w], M[i-1, w-w_i] + p_i)$</td>
+                    <td>$O(nW)$</td>
+                    <td>$O(nW)$ &rarr; $O(W)$</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Matrix Chain Mult (MCM)</strong></td>
+                    <td>$m[i, j]$: Min multiplications to multiply chain $A_i .. A_j$</td>
+                    <td>$m[i, j] = \min_{i \le k < j} \{m[i, k] + m[k+1, j] + p_{i-1}p_k p_j\}$</td>
+                    <td>$O(n^3)$</td>
+                    <td>$O(n^2)$</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Longest Common Subseq (LCS)</strong></td>
+                    <td>$c[i, j]$: LCS length of prefixes $X[1..i]$ and $Y[1..j]$</td>
+                    <td>If $X_i == Y_j$: $c[i-1, j-1] + 1$; else $\max(c[i-1, j], c[i, j-1])$</td>
+                    <td>$O(mn)$</td>
+                    <td>$O(mn)$</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Floyd-Warshall All-Pairs</strong></td>
+                    <td>$D^{(k)}[i][j]$: Shortest path $i \to j$ using intermediate vertices $1..k$</td>
+                    <td>$D^{(k)}[i][j] = \min(D^{(k-1)}[i][j], D^{(k-1)}[i][k] + D^{(k-1)}[k][j])$</td>
+                    <td>$O(V^3)$</td>
+                    <td>$O(V^2)$</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="formula-box">
+              Floyd-Warshall All-Pairs Shortest Path Triply-Nested Invariant:<br>
+              for k = 1 to V do<br>
+              &nbsp;&nbsp;for i = 1 to V do<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;for j = 1 to V do<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D[i][j] = min( D[i][j], D[i][k] + D[k][j] )<br>
+              &bull; Detects Negative Weight Cycles: If any diagonal entry D[i][i] &lt; 0 after termination, graph contains a negative cycle reachable from vertex i.
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2.4 -->
+        <div class="topic-card" id="topic-2-4">
+          <div class="topic-header" onclick="toggleTopicCard('topic-2-4')">
+            <div class="topic-header-title">
+              <span class="topic-badge">Module 2.4</span>
+              <h4>Complexity of Recursion &amp; Call Stack Auxiliary Space</h4>
+            </div>
+            <div class="exam-toggle-icon">&darr;</div>
+          </div>
+          <div class="topic-body">
+            <p>Every recursive call allocates an activation record (stack frame) on the runtime call stack containing return address, parameters, and local variables. The auxiliary space of any recursive algorithm is bounded by the maximum depth of its call stack.</p>
+
+            <div class="key-points-grid">
+              <div class="point-card">
+                <h5>Recursion Tree Depth vs Stack Frames</h5>
+                <p>Space complexity = $\text{Maximum Stack Depth} \times \text{Memory per Stack Frame}$. Merge Sort has recursion depth $\log_2 n$, but requires $O(n)$ heap space for the merge buffer. Naive recursive Fibonacci has recursion depth $n$, consuming $O(n)$ call stack memory while taking $O(2^n)$ runtime.</p>
+              </div>
+              <div class="point-card">
+                <h5>Tail Call Optimization (TCO)</h5>
+                <p>When a function's final statement is a recursive call, modern compilers overwrite the existing stack frame rather than pushing a new one. Eliminates call stack overflow, transforming $O(n)$ recursion stack into $O(1)$ iterative space.</p>
+              </div>
+              <div class="point-card">
+                <h5>QuickSort Call Stack Guarantee</h5>
+                <p>By enforcing tail call optimization on the larger partition and making the recursive call on the smaller partition ($\le n/2$), QuickSort is guaranteed never to exceed $O(\log n)$ call stack auxiliary space even in the worst case!</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+
+    <!-- =========================================================================
+         SECTION 4: INTERACTIVE ALGORITHM SOLVERS
+         ========================================================================= -->
+    <div class="content-section" id="section-solvers">
+      
+      <!-- Solver 1: Master Theorem -->
+      <div class="interactive-card">
+        <div class="solver-header">
+          <div class="solver-title">
+            <span>🧮</span>
+            <h3>Interactive Master Theorem Recurrence Solver</h3>
+          </div>
+          <div class="solver-sub">T(n) = a &middot; T(n/b) + &Theta;(n^k &middot; log^p n)</div>
+        </div>
+
+        <div class="presets-row">
+          <span class="preset-label">Quick Presets:</span>
+          <button class="preset-btn" onclick="applyPreset(2, 2, 1, 0)">MergeSort: 2T(n/2)+n</button>
+          <button class="preset-btn" onclick="applyPreset(1, 2, 0, 0)">BinarySearch: T(n/2)+1</button>
+          <button class="preset-btn" onclick="applyPreset(7, 2, 2, 0)">Strassen: 7T(n/2)+n²</button>
+          <button class="preset-btn" onclick="applyPreset(3, 2, 1, 0)">Karatsuba: 3T(n/2)+n</button>
+          <button class="preset-btn" onclick="applyPreset(2, 2, 1, 1)">2T(n/2)+n log n</button>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label for="valA">Number of Subproblems (a ≥ 1):</label>
+              <input type="number" id="valA" value="2" min="1" step="1" oninput="solveMasterTheorem()">
+            </div>
+            <div class="calc-field">
+              <label for="valB">Division Factor (b > 1):</label>
+              <input type="number" id="valB" value="2" min="1.1" step="0.5" oninput="solveMasterTheorem()">
+            </div>
+            <div class="calc-field">
+              <label for="valK">Work Exponent (k ≥ 0):</label>
+              <input type="number" id="valK" value="1" min="0" step="0.5" oninput="solveMasterTheorem()">
+            </div>
+            <div class="calc-field">
+              <label for="valP">Log Power Exponent (p ≥ 0):</label>
+              <input type="number" id="valP" value="0" min="0" step="1" oninput="solveMasterTheorem()">
+            </div>
+          </div>
+
+          <div class="calc-result-box">
+            <div class="result-badge" id="caseBadge">Case 2: Equal Level Work</div>
+            <div class="result-complexity" id="compDisplay">Θ(n log n)</div>
+            <p class="result-desc" id="compDesc">log_b(a) = log_2(2) = 1.0 equals k = 1. Work is balanced across all recursion levels.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Solver 2: Interactive 0/1 Knapsack DP Table Simulator -->
+      <div class="interactive-card" id="knapsack-solver-card">
+        <div class="solver-header">
+          <div class="solver-title">
+            <span>🎒</span>
+            <h3>Interactive 0/1 Knapsack DP Table Simulator</h3>
+          </div>
+          <div class="solver-sub">M[i, w] = max( M[i-1, w], M[i-1, w - w_i] + p_i )</div>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Builds the full bottom-up Dynamic Programming table cell-by-cell. Click or hover any cell in the matrix below to see its exact Bellman recurrence evaluation step! Includes the classroom lecture note instance from <strong>Class Note #2</strong>.
+        </p>
+
+        <div class="presets-row">
+          <span class="preset-label">Load Problem Presets:</span>
+          <button class="preset-btn" onclick="applyKnapsackPreset(1)">📌 Class Note #2 (W=8, w=[3,4,6,5], p=[2,3,1,4])</button>
+          <button class="preset-btn" onclick="applyKnapsackPreset(2)">📚 Textbook Classic (W=7, w=[1,3,4,5], p=[1,4,5,7])</button>
+          <button class="preset-btn" onclick="applyKnapsackPreset(3)">⚡ Mini Test (W=5, w=[1,2,3], p=[6,10,12])</button>
+        </div>
+
+        <div class="calc-grid" style="margin-bottom: 1.25rem;">
+          <div class="calc-inputs">
+            <div class="calc-field">
+              <label for="knapCapacity">Knapsack Capacity (W):</label>
+              <input type="number" id="knapCapacity" value="8" min="1" max="15" step="1" oninput="runKnapsackSolver()">
+            </div>
+            <div class="calc-field" style="flex-direction: column; align-items: flex-start; gap: 6px;">
+              <label>Items List (Weight : Profit):</label>
+              <div id="itemsInputList" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+            </div>
+          </div>
+
+          <div>
+            <div class="knapsack-summary-strip">
+              <div class="knapsack-summary-box">
+                <span class="lbl">Max Profit</span>
+                <span class="val" id="knapMaxProfit">6</span>
+              </div>
+              <div class="knapsack-summary-box">
+                <span class="lbl">Total Weight</span>
+                <span class="val" id="knapTotalWeight">8 / 8</span>
+              </div>
+              <div class="knapsack-summary-box">
+                <span class="lbl">Selected Items</span>
+                <span class="val" id="knapSelectedItems" style="font-size: 1rem; color: var(--accent-gold);">Item 1, Item 4</span>
+              </div>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+              Highlighted green cell indicates final global optimum $M[n, W]$. Cells with champagne borders trace the optimal item selection subset.
+            </p>
+          </div>
+        </div>
+
+        <!-- Generated Matrix Table Container -->
+        <div class="knapsack-matrix-container">
+          <table class="knapsack-table" id="knapTable">
+            <!-- Dynamically generated via JS -->
+          </table>
+        </div>
+
+        <!-- Dynamic Cell Explanation Callout -->
+        <div class="knapsack-cell-callout" id="knapCellCallout">
+          <span>Hover or click any cell above to inspect its dynamic programming derivation step.</span>
+        </div>
+      </div>
+
     </div>
 
     <!-- Footer -->
@@ -691,22 +3009,121 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         Back to Semester III Portal
       </a>
-      <span>Academic Portal • Semester III (DAA)</span>
+      <span>Academic Portal &bull; Semester III DAA Master Suite &bull; Soft Twilight Edition</span>
     </footer>
+
+  </div>
+
+  <!-- Lightbox Modal for Classroom Notes Images -->
+  <div class="image-modal" id="imageModal" onclick="closeModal()">
+    <div class="modal-content-box" onclick="event.stopPropagation()">
+      <button class="modal-close-btn" onclick="closeModal()">&times;</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="Classroom Note Preview">
+      </div>
+      <div class="modal-info">
+        <h4 id="modalTitle">Note Title</h4>
+        <p id="modalDesc">Note description</p>
+      </div>
+    </div>
   </div>
 
   <script>
-    function applyPreset(a, b, k) {
+    // Tab filtering controller
+    function switchFilter(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const secNotes = document.getElementById('section-notes');
+      const sec20 = document.getElementById('section-20marks');
+      const secUnits = document.getElementById('section-units');
+      const secSolvers = document.getElementById('section-solvers');
+
+      if (category === 'all') {
+        secNotes.style.display = 'block';
+        sec20.style.display = 'block';
+        secUnits.style.display = 'block';
+        secSolvers.style.display = 'block';
+      } else if (category === '20marks') {
+        secNotes.style.display = 'none';
+        sec20.style.display = 'block';
+        secUnits.style.display = 'none';
+        secSolvers.style.display = 'none';
+        sec20.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (category === 'notes') {
+        secNotes.style.display = 'block';
+        sec20.style.display = 'none';
+        secUnits.style.display = 'none';
+        secSolvers.style.display = 'none';
+        secNotes.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (category === 'unit1') {
+        secNotes.style.display = 'none';
+        sec20.style.display = 'none';
+        secUnits.style.display = 'block';
+        secSolvers.style.display = 'none';
+        document.getElementById('unit1-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (category === 'unit2') {
+        secNotes.style.display = 'none';
+        sec20.style.display = 'none';
+        secUnits.style.display = 'block';
+        secSolvers.style.display = 'none';
+        document.getElementById('unit2-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else if (category === 'solvers') {
+        secNotes.style.display = 'none';
+        sec20.style.display = 'none';
+        secUnits.style.display = 'none';
+        secSolvers.style.display = 'block';
+        secSolvers.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Toggle 20-Mark Question Accordions
+    function toggleExamCard(cardId) {
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
+
+    // Toggle Topic Cards
+    function toggleTopicCard(cardId) {
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
+
+    // Classroom Note Modal Viewer
+    function openModal(imgSrc, title, desc) {
+      const modal = document.getElementById('imageModal');
+      document.getElementById('modalImg').src = imgSrc;
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalDesc').innerText = desc;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
+    }
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // Master Theorem Solver Engine
+    function applyPreset(a, b, k, p) {
       document.getElementById('valA').value = a;
       document.getElementById('valB').value = b;
       document.getElementById('valK').value = k;
-      solveRecurrence();
+      document.getElementById('valP').value = p;
+      solveMasterTheorem();
     }
 
-    function solveRecurrence() {
+    function solveMasterTheorem() {
       const a = parseFloat(document.getElementById('valA').value) || 1;
       const b = parseFloat(document.getElementById('valB').value) || 2;
       const k = parseFloat(document.getElementById('valK').value) || 0;
+      const p = parseFloat(document.getElementById('valP').value) || 0;
 
       const logBA = Math.log(a) / Math.log(b);
       const diff = logBA - k;
@@ -718,33 +3135,226 @@
       const roundedLog = Math.round(logBA * 100) / 100;
 
       if (Math.abs(diff) < 0.001) {
-        badge.innerText = 'Case 2: Equal Work';
-        if (k === 0) {
-          disp.innerText = 'Θ(log n)';
-        } else if (k === 1) {
-          disp.innerText = 'Θ(n log n)';
-        } else {
-          disp.innerText = `Θ(n^${k} log n)`;
-        }
-        desc.innerText = `log_${b}(${a}) = ${roundedLog} equals k = ${k}. Work is distributed equally across all recursion tree levels.`;
+        badge.innerText = 'Case 2: Balanced Work';
+        badge.style.color = '#e5c07b';
+        badge.style.borderColor = 'rgba(229, 192, 123, 0.4)';
+
+        let pPart = p === 0 ? 'log n' : (p === 1 ? 'log² n' : `log^${p + 1} n`);
+        let basePart = k === 0 ? '' : (k === 1 ? 'n ' : `n^${k} `);
+
+        disp.innerText = `Θ(${basePart}${pPart})`.trim();
+        desc.innerText = `log_${b}(${a}) = ${roundedLog} equals k = ${k}. Work is distributed equally across all tree levels. Total work multiplies by log n.`;
       } else if (diff > 0) {
         badge.innerText = 'Case 1: Leaves Dominate';
-        disp.innerText = `Θ(n^${roundedLog})`;
-        desc.innerText = `log_${b}(${a}) = ${roundedLog} > k = ${k}. Bottom leaf subproblems overpower the root work.`;
+        badge.style.color = '#86efac';
+        badge.style.borderColor = 'rgba(134, 239, 172, 0.4)';
+
+        let logStr = Number.isInteger(roundedLog) ? roundedLog : roundedLog.toFixed(2);
+        disp.innerText = `Θ(n^${logStr})`;
+        desc.innerText = `log_${b}(${a}) = ${roundedLog} > k = ${k}. Bottom leaf subproblems (n^log_${b}(${a})) overpower the root partition work.`;
       } else {
         badge.innerText = 'Case 3: Root Dominates';
-        if (k === 1) {
-          disp.innerText = 'Θ(n)';
-        } else if (k === 0) {
-          disp.innerText = 'Θ(1)';
-        } else {
-          disp.innerText = `Θ(n^${k})`;
-        }
-        desc.innerText = `log_${b}(${a}) = ${roundedLog} < k = ${k}. Root level work dominates total computational cost.`;
+        badge.style.color = '#93c5fd';
+        badge.style.borderColor = 'rgba(147, 197, 253, 0.4)';
+
+        let pStr = p > 0 ? (p === 1 ? ' log n' : ` log^${p} n`) : '';
+        let basePart = k === 0 ? '1' : (k === 1 ? 'n' : `n^${k}`);
+        disp.innerText = `Θ(${basePart}${pStr})`;
+        desc.innerText = `log_${b}(${a}) = ${roundedLog} < k = ${k}. Top root level work dominates total computational cost (regularity condition verified).`;
       }
     }
 
-    solveRecurrence();
+    // =========================================================================
+    // 0/1 KNAPSACK DYNAMIC PROGRAMMING MATRIX SIMULATOR ENGINE
+    // =========================================================================
+    let currentKnapItems = [
+      { name: 'Item 1', w: 3, p: 2 },
+      { name: 'Item 2', w: 4, p: 3 },
+      { name: 'Item 3', w: 6, p: 1 },
+      { name: 'Item 4', w: 5, p: 4 }
+    ];
+
+    function applyKnapsackPreset(presetId) {
+      if (presetId === 1) {
+        document.getElementById('knapCapacity').value = 8;
+        currentKnapItems = [
+          { name: 'Item 1', w: 3, p: 2 },
+          { name: 'Item 2', w: 4, p: 3 },
+          { name: 'Item 3', w: 6, p: 1 },
+          { name: 'Item 4', w: 5, p: 4 }
+        ];
+      } else if (presetId === 2) {
+        document.getElementById('knapCapacity').value = 7;
+        currentKnapItems = [
+          { name: 'Item 1', w: 1, p: 1 },
+          { name: 'Item 2', w: 3, p: 4 },
+          { name: 'Item 3', w: 4, p: 5 },
+          { name: 'Item 4', w: 5, p: 7 }
+        ];
+      } else if (presetId === 3) {
+        document.getElementById('knapCapacity').value = 5;
+        currentKnapItems = [
+          { name: 'Item 1', w: 1, p: 6 },
+          { name: 'Item 2', w: 2, p: 10 },
+          { name: 'Item 3', w: 3, p: 12 }
+        ];
+      }
+      renderItemsInputs();
+      runKnapsackSolver();
+    }
+
+    function renderItemsInputs() {
+      const wrap = document.getElementById('itemsInputList');
+      wrap.innerHTML = '';
+      currentKnapItems.forEach((item, idx) => {
+        const pill = document.createElement('span');
+        pill.className = 'knapsack-item-pill';
+        pill.innerHTML = `<strong>${item.name}:</strong> w=${item.w}, p=${item.p}`;
+        wrap.appendChild(pill);
+      });
+    }
+
+    let knapTableData = null;
+
+    function runKnapsackSolver() {
+      const W = parseInt(document.getElementById('knapCapacity').value) || 8;
+      const n = currentKnapItems.length;
+
+      // Initialize (n+1) x (W+1) matrix
+      const M = Array.from({ length: n + 1 }, () => Array(W + 1).fill(0));
+
+      for (let i = 1; i <= n; i++) {
+        const wi = currentKnapItems[i - 1].w;
+        const pi = currentKnapItems[i - 1].p;
+        for (let w = 0; w <= W; w++) {
+          if (w >= wi) {
+            M[i][w] = Math.max(M[i - 1][w], M[i - 1][w - wi] + pi);
+          } else {
+            M[i][w] = M[i - 1][w];
+          }
+        }
+      }
+
+      // Backtrack selected items
+      let curW = W;
+      const selected = [];
+      const optimalCells = new Set();
+      optimalCells.add(`${n},${W}`);
+
+      for (let i = n; i > 0; i--) {
+        if (M[i][curW] !== M[i - 1][curW]) {
+          selected.push(i);
+          optimalCells.add(`${i},${curW}`);
+          curW -= currentKnapItems[i - 1].w;
+          optimalCells.add(`${i - 1},${curW}`);
+        } else {
+          optimalCells.add(`${i - 1},${curW}`);
+        }
+      }
+
+      selected.reverse();
+      const totalWeight = selected.reduce((sum, idx) => sum + currentKnapItems[idx - 1].w, 0);
+
+      document.getElementById('knapMaxProfit').innerText = M[n][W];
+      document.getElementById('knapTotalWeight').innerText = `${totalWeight} / ${W}`;
+      document.getElementById('knapSelectedItems').innerText = selected.length > 0 
+        ? selected.map(idx => `Item ${idx}`).join(', ')
+        : 'None';
+
+      knapTableData = { M, n, W, selected, optimalCells };
+      renderKnapTable();
+    }
+
+    function renderKnapTable() {
+      if (!knapTableData) return;
+      const { M, n, W, optimalCells } = knapTableData;
+      const table = document.getElementById('knapTable');
+      table.innerHTML = '';
+
+      // Header row
+      const thead = document.createElement('thead');
+      const trHead = document.createElement('tr');
+      trHead.innerHTML = `<th>Item i</th><th>(w, p)</th>`;
+      for (let w = 0; w <= W; w++) {
+        trHead.innerHTML += `<th>w=${w}</th>`;
+      }
+      thead.appendChild(trHead);
+      table.appendChild(thead);
+
+      // Body rows
+      const tbody = document.createElement('tbody');
+      for (let i = 0; i <= n; i++) {
+        const tr = document.createElement('tr');
+        if (i === 0) {
+          tr.innerHTML = `<td><strong>0 (Base)</strong></td><td>—</td>`;
+        } else {
+          const itm = currentKnapItems[i - 1];
+          tr.innerHTML = `<td><strong>Item ${i}</strong></td><td>(${itm.w}, ${itm.p})</td>`;
+        }
+
+        for (let w = 0; w <= W; w++) {
+          const td = document.createElement('td');
+          td.innerText = M[i][w];
+          td.id = `cell-${i}-${w}`;
+
+          const isFinal = (i === n && w === W);
+          const isOptimal = optimalCells.has(`${i},${w}`);
+
+          if (isFinal) {
+            td.className = 'cell-optimal';
+          } else if (isOptimal) {
+            td.className = 'cell-chosen';
+          }
+
+          td.onmouseenter = () => explainKnapCell(i, w);
+          td.onclick = () => explainKnapCell(i, w);
+          tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+      }
+      table.appendChild(tbody);
+    }
+
+    function explainKnapCell(i, w) {
+      if (!knapTableData) return;
+      const callout = document.getElementById('knapCellCallout');
+      const { M } = knapTableData;
+
+      if (i === 0) {
+        callout.innerHTML = `<span><strong>Base Case M[0, ${w}] = 0:</strong> Zero profit when no items are available.</span>`;
+        return;
+      }
+
+      const itm = currentKnapItems[i - 1];
+      const wi = itm.w;
+      const pi = itm.p;
+
+      if (w < wi) {
+        callout.innerHTML = `
+          <span>
+            <strong>Cell M[${i}, ${w}] = ${M[i][w]}</strong> &bull; Current capacity <strong>${w} &lt; weight ${wi}</strong>. Cannot include Item ${i}.<br>
+            Formula: M[${i}, ${w}] = M[${i - 1}, ${w}] = <strong>${M[i - 1][w]}</strong>.
+          </span>
+        `;
+      } else {
+        const excludeVal = M[i - 1][w];
+        const includeVal = M[i - 1][w - wi] + pi;
+        const tookIt = includeVal > excludeVal;
+
+        callout.innerHTML = `
+          <span>
+            <strong>Cell M[${i}, ${w}] = ${M[i][w]}</strong> &bull; Capacity <strong>${w} &ge; weight ${wi}</strong>.<br>
+            Formula: max( Exclude Item ${i}: M[${i - 1}, ${w}], Include Item ${i}: M[${i - 1}, ${w - wi}] + ${pi} )<br>
+            = max( ${excludeVal}, ${M[i - 1][w - wi]} + ${pi} ) = max( ${excludeVal}, ${includeVal} ) = <strong>${M[i][w]}</strong> ${tookIt ? '(&check; Took Item ' + i + ')' : '(&cross; Excluded Item ' + i + ')'}.
+          </span>
+        `;
+      }
+    }
+
+    // Initialize Solvers on load
+    solveMasterTheorem();
+    renderItemsInputs();
+    runKnapsackSolver();
   </script>
 </body>
 </html>
