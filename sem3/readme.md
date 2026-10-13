@@ -25,10 +25,26 @@ Comprehensive academic preparation repository for Semester III Computer Science 
   - **Shortest Method**: Built-in Python standard library functions (`collections.Counter`, `math.isqrt`, `sys.stdin.read`, `heapq`, `bisect`) for competitive time efficiency.
   - Time &amp; Space complexity badges for every approach.
 
-### 3. Additional Semester III Core Disciplines
+### 3. Database Management Systems (DBMS)
+- **Directory**: [`./DBMS/`](file:///c:/Users/USER/Desktop/Extras/da-tum/.study/sem3/DBMS/index.html)
+- **Syllabus &amp; Exam Coverage**:
+  - **Relational Algebra &amp; Formal Modeling**: Select ($\sigma$), Project ($\pi$), Cartesian product ($\times$), Set operations, Natural &amp; Theta Joins ($\bowtie$), Division ($\div$), Tuple and Domain Relational Calculus.
+  - **Entity-Relationship &amp; Enhanced ER (EER)**: Entities, weak entities and identifying relationships, composite/multivalued/derived attributes, cardinality ratios ($1:1, 1:N, M:N$), participation constraints (total vs partial), generalization/specialization hierarchies (disjoint/overlapping, total/partial), attribute inheritance, and step-by-step ER-to-Relational mapping algorithms.
+  - **Schema Normalization**: Functional Dependencies (FDs), Armstrong's Axioms &amp; formal proofs, attribute closure computation, candidate key discovery, minimal (canonical) cover algorithms, 1NF, 2NF (elimination of partial dependencies), 3NF (transitive dependencies), Boyce-Codd Normal Form (BCNF), lossless-join decomposition tests, and dependency preservation tests.
+  - **Advanced SQL &amp; Query Optimization**: DDL, DML, DCL, integrity constraints (PK, FK, UNIQUE, CHECK, NOT NULL), subqueries (correlated vs non-correlated), advanced joins (INNER, LEFT, RIGHT, FULL OUTER), aggregation with `GROUP BY` and `HAVING`, window ranking functions (`RANK()`, `DENSE_RANK()`, `ROW_NUMBER()`), views &amp; security, and index architectures (clustered vs non-clustered, B+ Tree indexing).
+  - **Transaction Processing &amp; Concurrency Control**: ACID properties (Atomicity, Consistency, Isolation, Durability), serializability (conflict vs view), precedence graph cycle detection, Strict Two-Phase Locking (2PL), deadlock prevention/detection, write-ahead logging (WAL), and undo/redo recovery.
+- **Classroom Notes &amp; Optical Bifurcation**:
+  - High-resolution scans from `assets/image.png` (lecture whiteboard note with 5 essential exam pillars) and `assets/sec-e-images/` (5 complete classroom problem-solving drill sheets) transcribed verbatim.
+  - Teacher's 10-mark model answers with derivation steps and verification rubrics.
+- **Interactive Workbench &amp; Revision**:
+  - **Interactive Normalization Workbench**: Dynamic FD rule tester, anomaly explanations, and runnable SQL migration previews across 1NF, 2NF, 3NF, BCNF, and ACID transaction isolation.
+  - **7 Master `;short-revision;` Modules**: Normalization rule tables, BCNF decomposition guide, ANSI/SPARC 3-level data independence, candidate key algorithms, SQL commands cheatsheet, and data models matrix.
+- **Question Bank Engine**:
+  - 87 verified exam questions across Segregation 1 (Teacher Suggested), Segregation 2 (Mid-Term Practice Paper), and Segregation 3 (University Question Bank Units 1 &amp; 2) with real-time multi-tag filtering, keyword search, and solution toggling.
+
+### 4. Additional Semester III Core Disciplines
 - **N2T (Nand to Tetris)**: Hardware systems, logic gates, ALU datapath, sequential chips, CPU architecture, Hack machine language, assembly compilers.
 - **Web-Dev-3**: Advanced fullstack engineering, Next.js App Router, Express REST APIs, JWT authentication, Prisma ORM, state management.
-- **DBMS**: Relational database management systems, ER modeling, SQL joins, Normalization (1NF through BCNF), ACID transactions, B-Tree indexing.
 - **VA &amp; OEIKS001**: Verbal Ability and Indian Knowledge Systems.
 
 ---

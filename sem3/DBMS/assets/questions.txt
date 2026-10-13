@@ -1,0 +1,284 @@
+
+--- Seggregation_1_Teacher_Suggested---
+1. SQL Queries (10 marks)
+City-wise queries using ASC and DESC.
+2. Hierarchical and network model
+3. Candidate key , prime and non prime functional dependency 
+4. Inner join
+5. 50000 se jyada salary
+6. Index
+7. EER model university or hospital Generalization or specialisation
+8. differnece between ddl dml and dcl with suitable sql commands.
+
+
+DBMS 
+Practice Questions
+Q1. An online shopping app displays only the product name, price and availability to customers. Customers do not need to know how product records are stored in files, blocks or storage devices. (5 marks)
+1. Identify the appropriate level of the 3-level DBMS architecture involved.
+2. Describe how the mapping between levels helps hide storage from the user.
+
+
+Q2. R(P, Q, R, S, T, U) with FDs: P→Q, QR→S, S→T, PU→R, T→U (5 marks)
+a) Determine all the candidate keys of R.
+b) Determine whether {P,U}, {P,Q,U}, {Q,R}, {S,U} are super keys, candidate keys or neither.
+c) Identify prime and non-prime attributes.
+
+
+Q3. Student(Stud_id, S_Name, Branch, Semester), Course(C_id, C_name, Credits), Result(Stud_id, C_id, Marks). Write SQL queries: (10 marks)
+1. Display the names of students whose marks > 75.
+2. Display the average marks for each course.
+3.Display student names along with course names using INNER JOIN.
+4.Display only those courses whose average marks > 65.
+5.Create an index on Stud_id of the Result table.
+
+
+Q4. Library Management System (10 marks)
+1. Lib Member → Student Member, Faculty Member.
+2. Every student member must belong to a department.
+3. A member can borrow multiple books.
+4.A book can be borrowed by different members over time.
+
+Attributes: Book (Book ID, Title, Author, Price), Student (s_id, Name, Dept), Faculty (Id, Name, Designation).
+Concepts to use in the EER diagram: generalisation, specialization, cardinality.
+
+
+
+Q5. Customers(customer_id, name, c_city), Order(order_id, c_id, order_date, Amount)
+1. Display customers whose total order amount exceeds 100,000.
+2. Display the customer having the max total order amount.
+3. Display city-wise number of customers.
+4. Display the orders whose amount is > the average order amount.
+
+
+Q6. Hierarchical and Network models (important for exam)
+
+
+
+7. Consider a scenario for a university management system:
+1.A person entity generalizes into a faculty and a student.
+2.Each student must be assigned to at least one faculty member.
+3.A faculty has attributes: faculty id, name, department and experience. A student has attributes: S_id, name and age.
+4.A mentor relationship exists between faculty and student.
+
+A. Draw the EER diagram for the above scenario indicating the generalization/specialization hierarchy.
+B. Specify the total participation constraint wherever required.
+C. Depict all attribute types.
+D. Depict the relationship set with its attributes.
+
+Q8
+A university faculty data has a tree-like organizational structure, that is, each faculty member reports to exactly one head of dept and is currently stored using a hierarchical data model.
+The university now wants to add a feature where a faculty member can be associated with multiple research projects simultaneously, with each project having its own project coordinator.
+1. Explain whether the hierarchical model can represent this new requirement.
+2. Describe migrating to which data model could be more efficient for this scenario. Draw a brief comparison of how these two models would structure this data.
+
+
+IMPORTANT TOPICS 
+a) Describe the model
+b) Find out candidate keys. Key / Prime / Non-prime
+c) SQL Query
+d) 3 level arch. questions
+e) EER / Generalization
+
+--- Seggregation_2_DBMS Mid-Term Practice Set---
+
+DBMS Mid-Term Practice Set (ETCCMS304)
+Mock paper drill (1 hour, 20 marks): pick any two questions from Section A and one OR-pair from Section B, then attempt one question of that pair.
+Instructions: All questions are mandatory unless an OR choice is given. Justify every classification you make (keys, normal forms, model choice).
+Section A (5 marks each)
+Q1. [CO-1] [L-3] · 5 Marks
+A public library stores its catalogue in a Hierarchical data model: Library → Category → Book, where every book sits under exactly one category.
+The library now wants a book to appear under several categories at once (for example, Data Science and Statistics), and each category has its own curator.
+1.	Explain whether the Hierarchical model can represent this requirement without duplicating book records.
+2.	Suggest a better model for this scenario and compare how both models would structure the Book–Category data.
+Q2. [CO-1] [L-3] · 5 Marks
+A university uses a Network data model in which STUDENT and COURSE records are linked through owner–member sets.
+1.	Explain how the Network model handles the many-to-many link between students and courses.
+2.	The university plans to migrate to the Relational model. Compare how each model represents the enrolment data and state two advantages of the migration.
+Q3. [CO-1] [L-2] · 5 Marks
+The DBA moves the ORDERS table to faster SSD storage and adds a B+ tree index on Order_Date. No application program or user query had to be changed.
+1.	Identify the type of data independence shown here and the two levels of the Three-Level Architecture involved.
+2.	Explain the role of the mapping between those two levels.
+Q4. [CO-1] [L-2] · 5 Marks
+A new column Email is added to the STUDENT table in the conceptual schema. The fee-department view, which shows only Roll_No, Name and Fee_Status, keeps working unchanged.
+1.	Name the type of data independence and the levels involved.
+2.	Explain why this type of independence is harder to achieve than the other type.
+Q5. [CO-1] [L-2] · 5 Marks
+A mapping company stores city maps in which each map contains regions, each region contains roads, and each road is a list of coordinate points.
+1.	Would you recommend a Relational or an Object-Oriented database? Justify by contrasting how each model represents this nested data.
+2.	Name one situation where the Relational model would still be the better choice.
+Q6. [CO-1] [L-4] · 5 Marks
+Consider R(P, Q, R, S, T) with FDs: P → Q, QR → S, S → T, T → P.
+1.	Determine all candidate keys of R.
+2.	Classify each set as super key, candidate key or neither, with justification: (a) {R} (b) {P, R} (c) {P, Q, R} (d) {S, T} (e) {T, R}
+3.	List the prime and non-prime attributes.
+Q7. [CO-1] [L-4] · 5 Marks
+Consider R(A, B, C, D, E) with FDs: AB → C, C → D, B → E.
+1.	Compute the closures {AB}⁺, {B}⁺ and {C}⁺.
+2.	Find the candidate key of R.
+3.	Determine the highest normal form of R and name the dependency that causes the violation.
+Q8. [CO-1] [L-4] · 5 Marks
+Given F = {A → B, B → C, A → C, AB → D}:
+1.	Using Armstrong's axioms, prove that A → CD holds. Name each rule you use.
+2.	Find a minimal (canonical) cover of F.
+3.	Is F equivalent to G = {A → B, B → C, A → D}? Justify.
+Q9. [CO-1] [L-4] · 5 Marks
+Consider two tables:
+•	STUDENT (Roll_No, Name, Branch, CGPA)
+•	ENROLLMENT (Roll_No, Course_Code, Semester)
+1.	Write a SQL query to display names of CSE students with CGPA above 8.0, highest CGPA first.
+2.	Write a SQL query to list all students with their course codes, including students not enrolled in any course.
+3.	Write a SQL query to create a view TOPPERS showing Roll_No and Name of students with CGPA of 9.0 or more.
+Q10. [CO-1] [L-3] · 5 Marks
+1.	Write a CREATE TABLE statement for PRODUCT (Product_ID, Product_Name, Price, Supplier_ID) such that: Product_ID is the primary key, Product_Name is unique and not null, Price must be greater than 0, and Supplier_ID references SUPPLIER(Supplier_ID.
+2.	Write a statement to add a column Stock_Qty .
+3.	Differentiate between DELETE, TRUNCATE and DROP with one example each.
+Q11. [CO-1] [L-3] · 5 Marks
+A bank records LOAN (Loan_No, Amount) and PAYMENT (Payment_No, Payment_Date, Payment_Amount). Payment numbers restart from 1 for every loan.
+1.	Identify the weak entity, its partial key and the identifying relationship.
+2.	Draw the ER diagram with correct notation and state the primary key of the weak entity's relation.
+Q12. [CO-1] [L-3] · 5 Marks
+In a hostel, every student is allotted exactly one room, and a room can hold up to three students. Some rooms may be empty.
+1.	Identify the cardinality ratio and the participation constraint on each side of the ALLOTTED relationship.
+2.	Convert the scenario to relations and explain on which side the foreign key should be placed and why.
+Q13. [CO-1] [L-3] · 5 Marks
+Consider EMPLOYEE (Emp_ID, Aadhaar_No, Email, Name, Phone, Dept_ID), where Emp_ID, Aadhaar_No and Email are each unique, and Dept_ID refers to DEPARTMENT.
+1.	Identify the candidate keys, a suitable primary key, the alternate keys and the foreign key.
+2.	Give two super keys that are not candidate keys.
+3.	Can Name be used as a key? Justify.
+Q14. [CO-1] [L-2] · 5 Marks
+A college keeps student data in separate spreadsheets for the library, accounts and exam cell. A student's address was updated in one sheet but not in the others.
+1.	Identify three problems of this file-based approach visible in the scenario.
+2.	Explain how a DBMS solves each problem.
+Q15. [CO-1] [L-3] · 5 Marks
+Given DEPT (Dept_ID PK, Dept_Name) and EMP (Emp_ID PK, Name, Age CHECK (Age ≥ 18), Dept_ID FK → DEPT), state which integrity constraint each operation violates and how the DBMS responds:
+1.	INSERT INTO EMP VALUES (NULL, 'Ravi', 25, 'D1');
+2.	INSERT INTO EMP VALUES (105, 'Meena', 16, 'D2');
+3.	INSERT INTO EMP VALUES (106, 'Arjun', 30, 'D9'); — D9 does not exist
+4.	DELETE FROM DEPT WHERE Dept_ID = 'D1'; — employees still work in D1. Explain what ON DELETE CASCADE and ON DELETE SET NULL would each do here.
+Section B (10 marks each, internal choice)
+Each pair below is one exam slot: attempt either question of the pair.
+Q16. [CO-2] [L-3] · 10 Marks
+Consider the following tables for a Library System:
+•	MEMBER (Member_ID, Name, City, Join_Date)
+•	BOOK (Book_ID, Title, Category, Price)
+•	ISSUE (Issue_ID, Member_ID, Book_ID, Issue_Date, Return_Date)
+Write SQL queries for the following:
+1.	Display the names of members who have issued more books than the average number of books issued per member.
+2.	Display the titles of books that have never been issued.
+3.	Display the category-wise number of books and average price, only for categories whose average price exceeds 500, sorted by number of books in descending order.
+OR
+Q17. [CO-2] [L-4] · 10 Marks
+Consider the following unnormalized relation for an Online Shopping System:
+ONLINE_ORDER (Order_ID, Customer_ID, Customer_Name, Customer_Phone, Product_ID, Product_Name, Unit_Price, Quantity, Order_Date)
+Functional Dependencies:
+•	Customer_ID → Customer_Name, Customer_Phone
+•	Product_ID → Product_Name, Unit_Price
+•	Order_ID → Customer_ID, Order_Date
+•	(Order_ID, Product_ID) → Quantity
+1.	Identify the candidate key of the relation.
+2.	Determine the highest normal form currently satisfied. Justify by pointing out the specific dependency causing a violation.
+3.	Decompose step-by-step to 2NF, then 3NF, showing the resulting tables with keys clearly marked at each stage.
+4.	Check whether your 3NF tables also satisfy BCNF.
+Q18. [CO-2] [L-3] · 10 Marks
+Consider the following scenario for a University Management System:
+•	A PERSON entity has Person_ID, Name (First_Name, Last_Name), Date_of_Birth, Age and one or more Phone_Numbers.
+•	PERSON specializes into STUDENT and FACULTY. Every person is at least one of these, and a research scholar can be both.
+•	STUDENT has Branch and CGPA. FACULTY has Designation and Salary.
+•	An ADVISES relationship exists between FACULTY and STUDENT, with attribute Start_Date. Every student must have exactly one advisor; a faculty member may advise many students.
+Draw the EER diagram for the above scenario, clearly indicating:
+1.	The specialization hierarchy, with disjoint/overlapping and total/partial constraints
+2.	Total participation wherever required
+3.	All attribute types (composite, multivalued, derived, key)
+4.	The relationship set with its attribute and cardinality
+Further, convert this EER model to the Relational Model.
+OR
+Q19. [CO-2] [L-4] · 10 Marks
+Consider the relation for a Coaching Centre:
+COACHING (Student_ID, Subject, Tutor_ID)
+Rules: each tutor teaches only one subject; a subject has several tutors; for each subject a student has exactly one tutor.
+Functional Dependencies:
+•	(Student_ID, Subject) → Tutor_ID
+•	Tutor_ID → Subject
+Sample data:
+Student_ID	Subject	Tutor_ID
+S1	DBMS	T1
+S2	DBMS	T1
+S1	OS	T3
+S3	DBMS	T2
+1.	Identify all candidate keys and list the prime attributes.
+2.	Determine the highest normal form satisfied by COACHING. Justify.
+3.	Using the sample data, show one update anomaly and one deletion anomaly.
+4.	Decompose COACHING into BCNF. Check whether the decomposition is lossless and dependency-preserving.
+Q20. [CO-2] [L-3] · 10 Marks
+Consider the following tables for a Banking System:
+•	BRANCH (Branch_ID, Branch_Name, City)
+•	CUSTOMER (Cust_ID, Cust_Name, City)
+•	ACCOUNT (Acc_No, Cust_ID, Branch_ID, Balance)
+Write SQL queries for the following:
+1.	Display the name of the branch having the highest total balance.
+2.	Display the names of customers who hold accounts in more than one branch.
+3.	Display the account numbers whose balance is greater than the average balance of their own branch.
+4.	Increase the balance by 5% for all accounts held in branches located in Delhi.
+OR
+Q21. [CO-2] [L-3] · 10 Marks
+Consider the following scenario for a Food Delivery System:
+•	CUSTOMER has Cust_ID, Name, Address (House_No, Street, City) and multiple Phone numbers.
+•	RESTAURANT has Rest_ID, Name and Area.
+•	Each restaurant has MENU_ITEMs identified by Item_No within that restaurant, with Item_Name and Price.
+•	A customer places many ORDERs; each order (Order_ID, Order_Time, Total_Amount) belongs to exactly one customer. Total_Amount is computed from the items.
+•	An order CONTAINS one or more menu items, with attribute Quantity.
+•	Each order is delivered by exactly one DELIVERY_AGENT (Agent_ID, Name, Vehicle_No).
+Draw the ER diagram showing the weak entity, cardinalities, participation constraints and all attribute types. Further, convert it to the Relational Model.
+Q22. [CO-2] [L-4] · 10 Marks
+Consider the following unnormalized relation for a Company Project System:
+EMP_PROJECT (Emp_ID, Emp_Name, Phone_Numbers, Dept_ID, Dept_Name, Dept_Location, Project_ID, Project_Name, Hours)
+Phone_Numbers stores values like "98110XXXXX, 99990XXXXX" in a single cell.
+Functional Dependencies:
+•	Emp_ID → Emp_Name, Dept_ID
+•	Dept_ID → Dept_Name, Dept_Location
+•	Project_ID → Project_Name
+•	(Emp_ID, Project_ID) → Hours
+1.	Explain why the relation is not in 1NF and convert it to 1NF.
+2.	Identify the candidate key and the partial and transitive dependencies.
+3.	Decompose step-by-step to 2NF, then 3NF, showing the resulting tables with keys clearly marked.
+4.	Check whether your 3NF tables also satisfy BCNF.
+OR
+Q23. [CO-2] [L-3] · 10 Marks
+Consider the following tables for a Movie Streaming Platform:
+•	USERS (User_ID, User_Name, Country)
+•	MOVIE (Movie_ID, Title, Genre, Release_Year)
+•	WATCH (User_ID, Movie_ID, Watch_Date, Rating)
+Write SQL queries for the following:
+1.	Display each movie's title and average rating, only for movies rated by at least 3 users, highest average first.
+2.	Display the names of users who have never watched any movie, using NOT EXISTS.
+3.	Display the genre-wise number of distinct viewers.
+4.	Create a view INDIA_FANS showing names of users from India who gave any movie a rating of 5.
+Q24. [CO-2] [L-4] · 10 Marks
+Consider R(A, B, C, D, E, G) with FDs: A → BC, B → D, AB → E, E → G, D → G.
+1.	Find a minimal cover of the given FDs.
+2.	Find the candidate key(s) and determine the highest normal form of R.
+3.	Decompose R into 3NF using the synthesis algorithm.
+4.	R is decomposed into R1(A, B, C), R2(B, D) and R3(A, E, G). Check whether this decomposition is lossless and dependency-preserving.
+OR
+Q25. [CO-2] [L-3] · 10 Marks
+Consider the following scenario for a Vehicle Rental System:
+•	VEHICLE has Reg_No, Model, Year and multiple Features.
+•	VEHICLE specializes into CAR (Seats, Fuel_Type), BIKE (Engine_CC) and TRUCK (Load_Capacity). Every vehicle belongs to exactly one of these types.
+•	CUSTOMER has Cust_ID, Name, Licence_No and Address (Street, City, PIN).
+•	A RENTS relationship exists between CUSTOMER and VEHICLE with attributes Rent_Date, Return_Date and Rental_Days (computed from the two dates).
+Draw the EER diagram for the above scenario, clearly indicating:
+1.	The specialization hierarchy with its constraints
+2.	Total participation wherever required
+3.	All attribute types
+4.	The relationship set with its attributes
+Further, convert this EER model to the Relational Model and compare two ways of mapping the specialization.
+
+--- Seggregation_3_DBMS_QB---
+
+Database Management Systems (ETCCMS304)  UNIT-1   Section A – Short Answer Questions (2 Marks Each)   Q1. Differentiate between a File System and a Database Management System (DBMS).   Q2. List any four characteristics of a DBMS.   Q3. Compare the storage and retrieval mechanisms of file systems and DBMS using a banking application.   Q4. An online shopping platform stores customer and order details. Identify suitable primary keys, foreign keys, and candidate keys.   Q5. A hospital database contains tables PATIENT, DOCTOR, and APPOINTMENT. Identify the integrity constraints that must be enforced.   
+Q6. Differentiate between specialization and generalization using an employee management system.   Q7. A company stores sales data using a star schema. Suggest situations where a snowflake schema would be preferable.   Q8. For the following dependencies:  EmployeeID → EmployeeName, DepartmentID DepartmentID → DepartmentName  Identify the transitive dependency.  Q9. Analyze whether the following relation satisfies 2NF:  STUDENT (StudentID, StudentName, CourseID, CourseName, Grade)  
+Q10. An analytics company plans to use a star schema. Identify the fact table and dimension tables.  Also, differentiate between Star Schema and Snowflake Schema.   Section B – Long Answer Questions (10 Marks Each)   Q11. (a) Consider the relation R(A, B, C, D, E, F) with the following set of Functional Dependencies (FDs):  AB → C  C → D  D → E  AB → F  F → A  (i) Determine all candidate keys of R.  (ii) From the following list of attribute sets, identify which are super keys, which are candidate keys, and which are neither with justification for each: (a) {A, B} (b) {A, B, C} (c) {C, F} (d) {D} (e) {F, B}  (iii) List the Prime and Non-Prime Attributes.  Q11.(b)  Draw an ER diagram for a Hospital Management System containing:   • Patient   • Doctor   • Appointment   • Department   a) Show appropriate relationships and cardinalities.   b) Convert the ER diagram into relational schema.   Q12 (a) Consider the following unnormalized relation for an Online Shopping System: ORDER_DETAILS (Order_ID, Customer_ID, Customer_Name, Product_ID, Product_Name, Category_ID, Category_Name, Supplier_ID, Supplier_Name, Quantity, Order_Date) Functional Dependencies: ● Customer_ID → Customer_Name ● Product_ID → Product_Name, Category_ID, Supplier_ID ● Category_ID → Category_Name ● Supplier_ID → Supplier_Name ● Order_ID → Customer_ID, Product_ID, Quantity, Order_Date Questions: (a) Identify the candidate key of the relation. (b) Determine the highest normal form currently satisfied by ORDER_DETAILS. Justify by identifying the dependency that causes the violation. (c) Decompose the relation step-by-step into 2NF and then 3NF. Clearly indicate the primary key and foreign key of each resulting relation. (d) Examine all 3NF relations for BCNF violations. If a violation exists, perform the necessary decomposition to obtain BCNF relations. Q12.(b)  A university wants to develop a database system to manage:   • Students   • Courses   • Faculty   • Enrollments   Each student can enroll in multiple courses and each course can have multiple students. a) Identify entities, attributes, and relationships.   b) Draw the ER diagram.   c) Specify primary keys and foreign keys.   Q13.(a) PATIENT (Patient_ID, Patient_Name, Age, Doctor_ID) DOCTOR (Doctor_ID, Doctor_Name, Specialization) 1. Write a SQL query to display the names of all patients whose age is greater than 40. 2. Write a SQL query to display all patient names along with their doctor names using an INNER JOIN. 3. Write a SQL query to create an index on the Doctor_ID column of the PATIENT table. 
+Q13 (b) Consider the relation:   STUDENT_COURSE(StudentID, StudentName, CourseID, CourseName, FacultyID,   FacultyName, Semester)   Given Functional Dependencies:   • StudentID → StudentName   • CourseID → CourseName, FacultyID   • FacultyID → FacultyName   • StudentID, CourseID → Semester   a) Identify all candidate keys.    b) Differentiate between Candidate Key and Primary Key.    c) Justify why the identified keys qualify as candidate keys.    Q14. (a) Consider the following scenario for a Railway Reservation System: - A PERSON entity generalizes into PASSENGER and STAFF. - Every PASSENGER must have at least one RESERVATION. - PASSENGER has attributes: Passenger_ID, Name, Age, Contact_No. - STAFF has attributes: Staff_ID, Name, Designation, Salary. - TRAIN has attributes: Train_ID, Train_Name, Source, Destination. - A BOOKS relationship exists between PASSENGER and TRAIN, with attributes Booking_Date and Seat_No. Draw the EER diagram for the above scenario, clearly indicating: (i) The generalization/specialization hierarchy (ii) Specify Total participation constraints wherever required (iii) Depict all attribute types (iv) Depict the relationship set with its attributes   Further, convert this EER model into a Relational Model. Q14 (b) Consider the relation:   EMPLOYEE(   EmpID,   EmpName,   DeptID,   DeptName,   ProjectID,   ProjectName,   ManagerName   )   Given:   • EmpID → EmpName, DeptID   • DeptID → DeptName, ManagerName   • ProjectID → ProjectName   a) Identify partial and transitive dependencies.   b) Normalize the relation up to 3NF.   c) Show the final schemas obtained.   Q15(a) Consider the following unnormalized relation for a Library Book-Issue Management System: BOOK_ISSUE (Member_ID, Member_Name, Book_ID, Book_Title, Author_ID, Author_Name, Author_Department, Issue_Date, Return_Date) Functional Dependencies: - Member_ID → Member_Name - Book_ID → Book_Title, Author_ID - Author_ID → Author_Name, Author_Department - (Member_ID, Book_ID) → Issue_Date, Return_Date, Author_ID (i) Identify the candidate key of the relation and determine the highest normal form currently satisfied by BOOK_ISSUE. Justify by pointing out the specific dependency causing a violation. (ii) Decompose the relation step-by-step to 2NF, then 3NF, showing the resulting tables with keys clearly marked at each stage. (iii) Check whether your 3NF tables also satisfy BCNF. If not, decompose further to achieve BCNF. Q15 (b) A Library Management System maintains:   • Books   • Authors   • Publishers   • Members   • Book Issue Records   a) Draw an ER diagram.   b) Identify all keys.   c) Convert the design into relational tables.   d) Mention integrity constraints.   
+Q16. A banking application stores:   • Customer Details   • Accounts   • Branches   • Transactions   a) Design an ER model for the system.   b) Show one-to-many and many-to-many relationships.   c) Transform the model into relational schema.   d) Discuss how relational databases support banking operations.   Q17. Given the relation:   BOOK_ISSUE(BookID, BookTitle, AuthorID, AuthorName, MemberName,  IssueDate, ReturnDate) Functional Dependencies:   • BookID → BookTitle, AuthorID   • AuthorID → AuthorName   • MemberID → MemberName   • BookID, MemberID → IssueDate, ReturnDate   a) Identify all candidate keys.   b) Normalize the relation step-by-step up to 3NF.   c) Draw the final schema after normalization.   Q18. A company manages projects.   Entities:   • Employee   • Project   • Department   An employee works on projects through departments. a) Explain aggregation in ER modeling.   b) Draw an ER diagram using aggregation.   c) Convert the diagram into a relational schema.   Q19. A College Management System maintains information about:   MemberID, • Students   • Departments   • Faculty   • Courses   • Enrollments Business Rules:   • Each department offers many courses.   • Each faculty member belongs to one department.   • Students can enroll in multiple courses.   • Each course can have multiple students.   a) Draw a complete ER diagram showing entities, attributes, and relationships.   b) Convert the ER diagram into a relational schema.    c) Identify candidate keys, primary keys, and foreign keys for each table.    d) Discuss whether the resulting schema satisfies 3NF/BCNF and justify your answer.   Q20. An e-commerce company wants to analyze:   • Sales   • Products   • Customers   • Time   • Region   a) Design a Star Schema for the sales warehouse.   b) Draw the schema.   c) Convert the Star Schema into a Snowflake Schema.   d) Compare Star and Snowflake schemas with respect to:   • Query performance   • Storage requirements   • Complexity   UNIT-2   Section A – Short Answer Questions (2 Marks Each)   Q1. Differentiate between DELETE, TRUNCATE, and DROP using suitable examples.   Q2. Demonstrate INNER JOIN and LEFT JOIN using employee and department tables.   Q3. Analyze the impact of indexing on query performance.   Q4. Identify situations where views improve security.   Q5. Differentiate between UNION and UNION ALL.   Q6. Suggest suitable window functions for ranking employees based on salary.   Q7. Compare clustered and non-clustered indexes.   Q8. Identify SQL clauses required to generate monthly sales reports.  Q9. Demonstrate a subquery with one example.   Q10. Illustrate window functions, with the help of any two window examples.   Section B – Long Answer Questions (10 Marks Each)   
+Q11. (a) Consider the following tables: • PASSENGER (Passenger_ID, Passenger_Name, City) • FLIGHT (Flight_ID, Flight_Name, Source, Destination, Fare) • BOOKING (Booking_ID, Passenger_ID, Flight_ID, Booking_Date) Write SQL queries for the following: 1. Display the names of passengers who have booked more flights than the average number of flights booked by passengers. 2. Display the Flight_Name and total number of bookings for each flight in descending order. 3. Display the Destination-wise number of flights, but include only destinations having more than 3 flights. Q11. (b) Consider the following tables:   CUSTOMER(CustomerID, CustomerName, City), ORDERS(OrderID, CustomerID, OrderDate,Amount).  Write SQL queries to:  a) Create both tables.    b) Insert at least five records into each table.    c) Display all customers from Delhi.   d) Display orders having amount greater than ₹10,000.    e) Update the city of a customer.    Q12. Consider:   EMPLOYEE(EmpID, EmpName, DeptID, Salary) DEPARTMENT(DeptID, DeptName)   Write SQL queries to:   a) Display employee names along with department names using INNER JOIN.   b) Display all departments including those without employees using LEFT JOIN.    c) Differentiate between INNER JOIN and OUTER JOIN with outputs.    Q13. Given the following schema:   CUSTOMER ----< ORDERS >---- PRODUCT   a) Draw the relationship diagram.    b) Write SQL queries using JOIN to display:   • Customer Name   • Product Name   • Order Date   c) Demonstrate how JOIN operations are executed internally.    Q14. Consider:   STUDENT(StudentID, Name, CGPA)   Write SQL queries to:   a) Find students having CGPA greater than the average CGPA.    b) Find the student(s) with the highest CGPA using a subquery.    c) Differentiate correlated and non-correlated subqueries with examples.    Q15. Consider two tables:   UG_STUDENTS PG_STUDENTS   Write SQL queries using: a)  UNION    b) UNION ALL   c) INTERSECT    d) EXCEPT/MINUS   Also analyze the difference among these operations.   Q16. Consider an E-Commerce Database.   a) Create a view named HIGH_VALUE_CUSTOMERS containing customers whose purchases exceed ₹50,000.    b) Create an index on CustomerID.    c) Differentiate clustered and non-clustered indexes.    d) Discuss situations where indexing may degrade performance.    Q17. A retail company wants to analyze sales performance.   Tables:   • CUSTOMER   • ORDERS   • PRODUCTS   • SALES   Write SQL queries to:   a) Find the top 5 customers by sales value.    b) Find best-selling products.    c) Generate category-wise sales report.    d) Demonstarte how such reports support business intelligence.    Q18. Consider:   EMPLOYEE(EmpID, EmpName, Department, Salary)   Write SQL queries using: a)  RANK()    b) DENSE_RANK()    c) ROW_NUMBER()    d) Calculate department-wise average salary using window functions.    Q19. (Industry Case Study – E-Commerce Analytics) An online shopping platform stores:   • Customers   • Orders   • Products   • Payments Management wants:   • Monthly revenue   • Top customers   • Product-wise sales   • Repeat customers   a) Write suitable SQL queries for the above requirements.    b) Identify the SQL concepts used (joins, subqueries, grouping, aggregation, etc.).    c) Illustrate how SQL supports decision-making in e-commerce businesses.    Q20. A banking database contains 10 million transaction records. a) Analyze why some queries become slow.   b) Suggest suitable indexes.    c) Compare execution of queries with and without indexes.    d) Illustrate B-Tree indexing with a diagram.  
+

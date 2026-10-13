@@ -1,42 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Prevent duplicate insertion
+  if (document.querySelector('.global-nav-header')) return;
+
   const path = window.location.pathname.replace(/\\/g, '/'); // normalize backslashes
+  const lowerPath = path.toLowerCase();
   
   // Calculate relative depth prefix based on script tag location relative to current page
-  const scriptEl = document.currentScript;
+  const scriptEl = document.currentScript || document.querySelector('script[src*="nav-header.js"]');
   let prefix = './';
-  let isSem1 = path.includes('/sem1/');
-  let isSem2 = path.includes('/sem2/');
-  let isSem3 = path.includes('/sem3/');
+  let isSem1 = lowerPath.includes('/sem1/');
+  let isSem2 = lowerPath.includes('/sem2/');
+  let isSem3 = lowerPath.includes('/sem3/');
   
-  if (scriptEl && scriptEl.src) {
-    try {
-      const scriptUrl = new URL(scriptEl.src);
-      const scriptPath = scriptUrl.pathname.replace(/\\/g, '/');
-      
-      // Extract root dir of .study (where nav-header.js is located)
-      const lastSlashIdx = scriptPath.lastIndexOf('/');
-      const rootDir = lastSlashIdx !== -1 ? scriptPath.substring(0, lastSlashIdx) : '';
-      
-      if (rootDir === '' || path.startsWith(rootDir)) {
-        const relativePart = rootDir !== '' ? path.substring(rootDir.length) : path;
-        const segments = relativePart.split('/').filter(s => s.length > 0);
-        
-        // Slices away the page name (e.g. index.html or ds.html)
-        const depth = segments.length - 1;
-        if (depth > 0) {
-          prefix = '../'.repeat(depth);
-        }
-      }
-    } catch (e) {
-      console.error('Error computing dynamic path prefix:', e);
-      // Fallback depth calculation using simple path scanning if URL parsing fails
-      if (path.includes('/Exam-Material/') || path.includes('/exam-material/') || path.includes('/photo-ref/') || path.includes('/final-material/')) {
-        prefix = '../../../'; // Nested subject pages
-      } else if (path.includes('/chem/') || path.includes('/ds/') || path.includes('/philosophy/') || path.includes('/comp-maths/') || path.includes('/web-dev/') || path.includes('/python/') || path.includes('/web-dev-1/') || path.includes('/csfcp/') || path.includes('/N2T/') || path.includes('/CC-1/') || path.includes('/DAA/') || path.includes('/Web-Dev-3/') || path.includes('/DBMS/') || path.includes('/VA/') || path.includes('/OEIKS001/')) {
-        prefix = '../../'; // Direct subject pages
-      } else if (path.includes('/sem1/') || path.includes('/sem2/') || path.includes('/sem3/')) {
-        prefix = '../'; // Semester landing pages
-      }
+  // 1. Determine prefix from script tag's relative src attribute if available
+  if (scriptEl) {
+    const srcAttr = (scriptEl.getAttribute('src') || '').replace(/\\/g, '/');
+    const lastSlash = srcAttr.lastIndexOf('/');
+    if (lastSlash !== -1) {
+      prefix = srcAttr.substring(0, lastSlash + 1);
+    }
+  }
+
+  // 2. Fallback / verify prefix based on URL path depth
+  if (prefix === './') {
+    if (lowerPath.includes('/exam-material/') || lowerPath.includes('/photo-ref/') || lowerPath.includes('/final-material/')) {
+      prefix = '../../../';
+    } else if (
+      (lowerPath.includes('/sem1/') && lowerPath.split('/sem1/')[1] && lowerPath.split('/sem1/')[1].includes('/')) ||
+      (lowerPath.includes('/sem2/') && lowerPath.split('/sem2/')[1] && lowerPath.split('/sem2/')[1].includes('/')) ||
+      (lowerPath.includes('/sem3/') && lowerPath.split('/sem3/')[1] && lowerPath.split('/sem3/')[1].includes('/'))
+    ) {
+      prefix = '../../';
+    } else if (lowerPath.includes('/sem1/') || lowerPath.includes('/sem2/') || lowerPath.includes('/sem3/')) {
+      prefix = '../';
     }
   }
 
@@ -120,15 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if the current page matches this item
     let isActive = false;
     if (item.id === 'sem1-home') {
-      isActive = path.endsWith('/sem1/index.html') || path.endsWith('/sem1/');
+      isActive = lowerPath.endsWith('/sem1/index.html') || lowerPath.endsWith('/sem1/') || lowerPath.endsWith('/sem1');
     } else if (item.id === 'sem2-home') {
-      isActive = path.endsWith('/sem2/index.html') || path.endsWith('/sem2/');
+      isActive = lowerPath.endsWith('/sem2/index.html') || lowerPath.endsWith('/sem2/') || lowerPath.endsWith('/sem2');
     } else if (item.id === 'sem3-home') {
-      isActive = path.endsWith('/sem3/index.html') || path.endsWith('/sem3/');
+      isActive = lowerPath.endsWith('/sem3/index.html') || lowerPath.endsWith('/sem3/') || lowerPath.endsWith('/sem3');
     } else if (item.id === 'home') {
-      isActive = (path.endsWith('index.html') || path.endsWith('/')) && !isSem1 && !isSem2 && !isSem3;
+      isActive = (lowerPath.endsWith('/index.html') || lowerPath.endsWith('/') || lowerPath.endsWith('/.study')) && !isSem1 && !isSem2 && !isSem3;
     } else {
-      const lowerPath = path.toLowerCase();
       const lowerId = item.id.toLowerCase();
       isActive = lowerPath.includes(`/${lowerId}/`) || 
                  (item.id === 'ds' && lowerPath.includes('/ds/')) || 
