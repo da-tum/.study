@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Verbal Ability (VA) | Semester III Portal</title>
+  <title>Verbal Ability (VA) — Exam Prep Master Sheet | Semester III</title>
+  <meta name="description" content="Comprehensive 24-question VA master sheet: vocabulary pairs, idioms, word roots, one-word substitutions, interactive flashcards and original asset gallery.">
   <link rel="stylesheet" href="../../nav-header.css">
   <script src="../../nav-header.js" defer></script>
   <style>
@@ -12,29 +13,30 @@
     :root {
       --bg: #090d16;
       --card-bg: rgba(17, 24, 39, 0.7);
+      --card-bg-solid: #111827;
       --text: #f3f4f6;
       --text-muted: #9ca3af;
       --border: rgba(255, 255, 255, 0.08);
       --accent: #ec4899;
       --accent-rgb: 236, 72, 153;
       --accent-secondary: #f43f5e;
+      --green: #10b981;
+      --green-rgb: 16, 185, 129;
+      --amber: #f59e0b;
+      --amber-rgb: 245, 158, 11;
+      --blue: #6366f1;
+      --blue-rgb: 99, 102, 241;
+      --cyan: #06b6d4;
+      --cyan-rgb: 6, 182, 212;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-    }
-
-    code, pre {
-      font-family: 'Fira Code', monospace;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    code, pre { font-family: 'Fira Code', monospace; }
 
     body {
       background: var(--bg);
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(236, 72, 153, 0.08) 0%, transparent 45%),
+      background-image:
+        radial-gradient(circle at 10% 15%, rgba(var(--accent-rgb), 0.08) 0%, transparent 45%),
         radial-gradient(circle at 90% 85%, rgba(244, 63, 94, 0.06) 0%, transparent 45%);
       color: var(--text);
       display: flex;
@@ -44,467 +46,278 @@
       padding: 3rem 2rem 5rem;
     }
 
-    .container {
-      max-width: 1200px;
-      width: 100%;
-    }
+    .container { max-width: 1260px; width: 100%; }
 
-    .breadcrumb {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-    }
+    /* ─── Breadcrumb ─── */
+    .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
 
-    .breadcrumb a {
-      color: var(--text-muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .breadcrumb a:hover {
-      color: var(--accent);
-    }
-
-    .hero {
-      margin-bottom: 3.5rem;
-      position: relative;
-    }
-
+    /* ─── Hero ─── */
+    .hero { margin-bottom: 3rem; position: relative; }
     .subject-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 0.35rem 1rem;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.25);
-      border-radius: 100px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 1.25rem;
+      display: inline-flex; align-items: center; gap: 6px; padding: 0.35rem 1rem;
+      background: rgba(var(--accent-rgb), 0.1); border: 1px solid rgba(var(--accent-rgb), 0.25);
+      border-radius: 100px; font-size: 0.75rem; font-weight: 700; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1.25rem;
     }
-
     h1 {
-      font-size: 3.4rem;
-      font-weight: 800;
-      font-family: 'Outfit', sans-serif;
-      letter-spacing: -0.04em;
-      margin-bottom: 1rem;
+      font-size: 3.4rem; font-weight: 800; font-family: 'Outfit', sans-serif;
+      letter-spacing: -0.04em; margin-bottom: 1rem;
       background: linear-gradient(135deg, #ffffff 40%, #fbcfe8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-
     h1 span {
-      font-weight: 400;
-      font-style: italic;
+      font-weight: 400; font-style: italic;
       background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+    .lead { color: var(--text-muted); font-size: 1.15rem; max-width: 860px; line-height: 1.7; margin-bottom: 2rem; }
 
-    .lead {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 820px;
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    /* Stats */
-    .stats-strip {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 3rem;
-    }
-
+    /* ─── Stats Strip ─── */
+    .stats-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
     .stat-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border);
+      border-radius: 18px; padding: 1.15rem 1.4rem; display: flex; align-items: center; gap: 1rem;
     }
-
     .stat-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
+      width: 46px; height: 46px; border-radius: 14px;
+      background: rgba(var(--accent-rgb), 0.1); border: 1px solid rgba(var(--accent-rgb), 0.2);
+      display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0;
     }
+    .stat-info h4 { font-size: 1.25rem; font-weight: 700; color: #fff; font-family: 'Outfit', sans-serif; }
+    .stat-info p { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
 
-    .stat-info h4 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'Outfit', sans-serif;
+    /* ─── Tab Navigation ─── */
+    .tab-bar {
+      display: flex; gap: 4px; margin-bottom: 2.5rem; overflow-x: auto;
+      border-bottom: 1px solid var(--border); padding-bottom: 0;
     }
-
-    .stat-info p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .tab-btn {
+      background: transparent; border: none; border-bottom: 2px solid transparent;
+      color: var(--text-muted); padding: 0.85rem 1.35rem; font-size: 0.88rem;
+      font-weight: 600; cursor: pointer; transition: all 0.25s; white-space: nowrap;
+      font-family: 'Inter', sans-serif;
     }
+    .tab-btn:hover { color: #fff; background: rgba(255,255,255,0.03); }
+    .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .tab-panel { display: none; animation: fadeUp 0.35s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Interactive Flashcard / Quiz Tool */
-    .interactive-card {
+    /* ─── Section Titles ─── */
+    .section-title {
+      font-size: 1.6rem; font-weight: 700; font-family: 'Outfit', sans-serif;
+      margin-bottom: 1.5rem; display: flex; align-items: center; gap: 12px;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+    /* ─── Master Sheet Table ─── */
+    .master-table-wrap {
+      overflow-x: auto; margin-bottom: 2.5rem;
+      border: 1px solid var(--border); border-radius: 18px;
       background: var(--card-bg);
-      border: 1px solid rgba(var(--accent-rgb), 0.3);
-      border-radius: 24px;
-      padding: 2.25rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
+    }
+    .master-table {
+      width: 100%; border-collapse: collapse; font-size: 0.88rem;
+    }
+    .master-table thead th {
+      background: rgba(var(--accent-rgb), 0.08);
+      color: var(--accent); font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.06em; font-size: 0.75rem;
+      padding: 1rem 1.25rem; text-align: left; border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 2;
+    }
+    .master-table tbody tr { transition: background 0.2s; }
+    .master-table tbody tr:hover { background: rgba(var(--accent-rgb), 0.04); }
+    .master-table tbody td {
+      padding: 0.85rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: top; color: var(--text);
+    }
+    .master-table tbody td:first-child {
+      font-weight: 700; color: var(--accent); font-family: 'Fira Code', monospace;
+      font-size: 0.82rem; width: 50px; text-align: center;
+    }
+    .master-table .answer-cell {
+      color: var(--green); font-weight: 600;
+    }
+    .master-table .category-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 700;
+      padding: 0.15rem 0.55rem; border-radius: 6px; text-transform: uppercase;
+      letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .cat-vocab { background: rgba(var(--blue-rgb), 0.12); color: #818cf8; border: 1px solid rgba(var(--blue-rgb), 0.25); }
+    .cat-idiom { background: rgba(var(--amber-rgb), 0.12); color: #fbbf24; border: 1px solid rgba(var(--amber-rgb), 0.25); }
+    .cat-sub   { background: rgba(var(--cyan-rgb), 0.12); color: #22d3ee; border: 1px solid rgba(var(--cyan-rgb), 0.25); }
+    .cat-root  { background: rgba(var(--green-rgb), 0.12); color: #34d399; border: 1px solid rgba(var(--green-rgb), 0.25); }
+    .cat-gram  { background: rgba(var(--accent-rgb), 0.12); color: #f472b6; border: 1px solid rgba(var(--accent-rgb), 0.25); }
+
+    .source-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+    .src-tag {
+      font-size: 0.65rem; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08); padding: 0.1rem 0.4rem;
+      border-radius: 4px; color: #94a3b8; white-space: nowrap;
+    }
+    .src-tag.hot { background: rgba(var(--accent-rgb), 0.15); border-color: rgba(var(--accent-rgb), 0.3); color: #f9a8d4; }
+
+    /* ─── Filter Bar ─── */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .filter-chip {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      color: var(--text-muted); padding: 0.4rem 0.9rem; border-radius: 10px;
+      font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.2s;
+    }
+    .filter-chip:hover, .filter-chip.active {
+      background: rgba(var(--accent-rgb), 0.15); border-color: rgba(var(--accent-rgb), 0.4);
+      color: var(--accent);
     }
 
+    /* ─── Interactive Flashcard ─── */
+    .interactive-card {
+      background: var(--card-bg); border: 1px solid rgba(var(--accent-rgb), 0.3);
+      border-radius: 24px; padding: 2.25rem; margin-bottom: 2.5rem;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3); position: relative; overflow: hidden;
+    }
     .interactive-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
       background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
     }
+    .sim-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+    .sim-title { display: flex; align-items: center; gap: 10px; }
+    .sim-title h3 { font-size: 1.3rem; font-weight: 700; color: #fff; font-family: 'Outfit', sans-serif; }
+    .sim-meta { font-size: 0.8rem; color: var(--text-muted); }
 
-    .simulator-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .simulator-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .simulator-title h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .flashcard-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
+    .flashcard-wrapper { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
     .flashcard {
-      width: 100%;
-      max-width: 650px;
-      min-height: 220px;
-      background: #0f172a;
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      cursor: pointer;
-      position: relative;
-      transition: all 0.3s ease;
-      user-select: none;
+      width: 100%; max-width: 680px; min-height: 240px;
+      background: #0f172a; border: 1px solid var(--border); border-radius: 20px;
+      padding: 2rem; display: flex; flex-direction: column; justify-content: center;
+      align-items: center; text-align: center; cursor: pointer; position: relative;
+      transition: all 0.3s ease; user-select: none;
     }
-
-    .flashcard:hover {
-      border-color: rgba(var(--accent-rgb), 0.5);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      transform: translateY(-3px);
-    }
-
+    .flashcard:hover { border-color: rgba(var(--accent-rgb), 0.5); box-shadow: 0 10px 30px rgba(0,0,0,0.4); transform: translateY(-3px); }
     .flashcard-badge {
-      position: absolute;
-      top: 1rem;
-      right: 1.25rem;
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--accent);
-      background: rgba(var(--accent-rgb), 0.12);
-      padding: 0.25rem 0.6rem;
-      border-radius: 8px;
+      position: absolute; top: 1rem; right: 1.25rem; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent);
+      background: rgba(var(--accent-rgb), 0.12); padding: 0.25rem 0.6rem; border-radius: 8px;
     }
-
-    .word-heading {
-      font-size: 2.2rem;
-      font-weight: 800;
-      font-family: 'Outfit', sans-serif;
-      color: #ffffff;
-      margin-bottom: 0.4rem;
+    .fc-counter {
+      position: absolute; top: 1rem; left: 1.25rem; font-size: 0.72rem; font-weight: 600;
+      color: var(--text-muted); font-family: 'Fira Code', monospace;
     }
-
-    .phonetic {
-      font-size: 0.95rem;
-      color: #f472b6;
-      margin-bottom: 0.8rem;
-      font-family: 'Fira Code', monospace;
+    .word-heading { font-size: 2rem; font-weight: 800; font-family: 'Outfit', sans-serif; color: #fff; margin-bottom: 0.6rem; }
+    .card-hint { font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+    .card-back-content { display: none; width: 100%; }
+    .card-back-content h4 { font-size: 1.15rem; color: #fff; margin-bottom: 0.5rem; }
+    .card-back-content p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.75rem; }
+    .alt-row { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0.5rem; }
+    .alt-tag {
+      font-size: 0.75rem; background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1); padding: 0.2rem 0.6rem;
+      border-radius: 6px; color: #fbcfe8;
     }
-
-    .card-hint {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .card-back-content {
-      display: none;
-      width: 100%;
-    }
-
-    .card-back-content h4 {
-      font-size: 1.15rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-back-content p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 0.75rem;
-    }
-
-    .syn-row {
-      display: flex;
-      gap: 0.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .syn-tag {
-      font-size: 0.75rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      color: #fbcfe8;
-    }
-
-    .fc-controls {
-      display: flex;
-      gap: 1rem;
-    }
-
+    .fc-controls { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
     .fc-btn {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border);
-      color: #ffffff;
-      padding: 0.55rem 1.4rem;
-      border-radius: 12px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.25s;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      color: #fff; padding: 0.55rem 1.4rem; border-radius: 12px;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.25s;
+    }
+    .fc-btn:hover { background: rgba(var(--accent-rgb), 0.2); border-color: rgba(var(--accent-rgb), 0.5); }
+    .fc-btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .fc-progress {
+      width: 100%; max-width: 680px; height: 4px; background: rgba(255,255,255,0.06);
+      border-radius: 4px; overflow: hidden;
+    }
+    .fc-progress-bar { height: 100%; background: var(--accent); border-radius: 4px; transition: width 0.4s ease; }
+
+    /* ─── Asset Gallery ─── */
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .gallery-card {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px;
+      overflow: hidden; transition: all 0.3s; cursor: pointer;
+    }
+    .gallery-card:hover { transform: translateY(-5px); border-color: rgba(var(--accent-rgb), 0.4); box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+    .gallery-thumb {
+      width: 100%; height: 220px; object-fit: cover; display: block;
+      border-bottom: 1px solid var(--border);
+    }
+    .gallery-info { padding: 1rem 1.25rem; }
+    .gallery-info h4 { font-size: 0.95rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
+    .gallery-info p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+    .gallery-info .file-size { font-size: 0.7rem; color: #64748b; font-family: 'Fira Code', monospace; margin-top: 0.3rem; }
+
+    /* ─── Lightbox ─── */
+    .lightbox-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.92); z-index: 9999; justify-content: center; align-items: center;
+      backdrop-filter: blur(8px);
+    }
+    .lightbox-overlay.active { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 88vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 2rem; font-size: 2rem; color: #fff;
+      cursor: pointer; background: rgba(255,255,255,0.1); border: none;
+      width: 48px; height: 48px; border-radius: 50%; display: flex;
+      align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .lightbox-close:hover { background: rgba(var(--accent-rgb), 0.3); }
+    .lightbox-caption {
+      position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+      color: var(--text-muted); font-size: 0.85rem; text-align: center;
+      background: rgba(0,0,0,0.6); padding: 0.5rem 1.5rem; border-radius: 10px;
     }
 
-    .fc-btn:hover {
-      background: rgba(var(--accent-rgb), 0.2);
-      border-color: rgba(var(--accent-rgb), 0.5);
-    }
-
-    .fc-btn.primary {
-      background: var(--accent);
-      color: #ffffff;
-      border-color: var(--accent);
-    }
-
-    /* Modules */
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      font-family: 'Outfit', sans-serif;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-
+    /* ─── Modules Grid ─── */
+    .modules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
     .module-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px;
+      padding: 1.75rem; transition: all 0.3s ease; display: flex; flex-direction: column;
     }
-
-    .module-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(var(--accent-rgb), 0.4);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .module-num {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .module-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 0.75rem;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .module-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-
-    .topics-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
+    .module-card:hover { transform: translateY(-5px); border-color: rgba(var(--accent-rgb), 0.4); box-shadow: 0 15px 30px rgba(0,0,0,0.3); }
+    .module-num { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.5rem; }
+    .module-card h3 { font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.7rem; font-family: 'Outfit', sans-serif; }
+    .module-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.1rem; flex-grow: 1; }
+    .topics-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
     .topic-badge {
-      font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      color: #cbd5e1;
+      font-size: 0.72rem; background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08); padding: 0.2rem 0.6rem;
+      border-radius: 6px; color: #cbd5e1;
     }
 
-    .status-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #10b981;
+    /* ─── Revision Matrix ─── */
+    .revision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-bottom: 2.5rem; }
+    .revision-card {
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+      padding: 1.5rem; transition: all 0.3s;
     }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10b981;
+    .revision-card:hover { border-color: rgba(var(--accent-rgb), 0.3); }
+    .revision-card h4 { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 0.8rem; font-family: 'Outfit', sans-serif; }
+    .revision-list { list-style: none; }
+    .revision-list li {
+      font-size: 0.85rem; color: var(--text-muted); padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.03); line-height: 1.5;
     }
+    .revision-list li:last-child { border-bottom: none; }
+    .revision-list li strong { color: var(--text); }
 
-    /* Materials */
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .material-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .material-box:hover {
-      background: rgba(var(--accent-rgb), 0.08);
-      border-color: rgba(var(--accent-rgb), 0.3);
-      transform: translateY(-3px);
-    }
-
-    .mat-icon {
-      font-size: 1.8rem;
-    }
-
-    .mat-text h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 0.25rem;
-    }
-
-    .mat-text p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    /* Footer */
+    /* ─── Footer ─── */
     footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      flex-wrap: wrap;
-      gap: 1rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid var(--border); padding-top: 2rem;
+      color: var(--text-muted); font-size: 0.85rem; flex-wrap: wrap; gap: 1rem;
     }
-
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: transform 0.2s;
+      display: inline-flex; align-items: center; gap: 6px; color: var(--accent);
+      text-decoration: none; font-weight: 600; transition: transform 0.2s;
     }
+    .back-btn:hover { transform: translateX(-4px); }
 
-    .back-btn:hover {
-      transform: translateX(-4px);
-    }
-
+    /* ─── Responsive ─── */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2.6rem;
-      }
+      h1 { font-size: 2.4rem; }
+      .tab-btn { padding: 0.7rem 1rem; font-size: 0.82rem; }
+      .master-table { font-size: 0.8rem; }
+      .master-table thead th, .master-table tbody td { padding: 0.65rem 0.8rem; }
     }
   </style>
 </head>
@@ -512,6 +325,8 @@
 
   <div class="container">
     <div class="breadcrumb">
+      <a href="../../index.html">Study Portal</a>
+      <span>/</span>
       <a href="../index.html">Semester III</a>
       <span>/</span>
       <span>VA (Verbal Ability &amp; Professional Skills)</span>
@@ -520,269 +335,592 @@
     <div class="hero">
       <div class="subject-tag">🗣️ Verbal Reasoning &amp; Linguistic Mastery</div>
       <h1>Verbal Ability <span>(VA)</span></h1>
-      <p class="lead">Accelerated communication and verbal aptitude framework: Grammatical syntax diagnostics, high-yield Latin/Greek vocabulary etymologies, critical reasoning syllogisms, speed reading comprehension inference strategies, and corporate case study discourse.</p>
+      <p class="lead">Comprehensive exam prep portal — 24-question master bank compiled from 4 handwritten assets + PDF worksheet. Covers vocabulary pairs, idioms &amp; phrases, one-word substitutions, Latin/Greek word roots, and grammar fundamentals.</p>
     </div>
 
     <!-- Stats -->
     <div class="stats-strip">
       <div class="stat-card">
-        <div class="stat-icon">📖</div>
+        <div class="stat-icon">📝</div>
         <div class="stat-info">
-          <h4>500+ Words</h4>
-          <p>Etymological Roots</p>
+          <h4>24</h4>
+          <p>Unique Questions</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">🧠</div>
+        <div class="stat-icon">📸</div>
         <div class="stat-info">
-          <h4>Syllogisms</h4>
-          <p>Critical Logic</p>
+          <h4>4 Images</h4>
+          <p>+ 1 PDF Sheet</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-icon">⚡</div>
+        <div class="stat-icon">🏷️</div>
         <div class="stat-info">
-          <h4>RC Speed</h4>
-          <p>Inference Frameworks</p>
+          <h4>5 Categories</h4>
+          <p>Vocab · Idioms · Subs · Roots · Grammar</p>
         </div>
       </div>
       <div class="stat-card">
-        <div class="stat-info">🟢</div>
+        <div class="stat-icon">🔥</div>
         <div class="stat-info">
-          <h4>Active Core</h4>
-          <p>Status: Ready</p>
+          <h4>100%</h4>
+          <p>Solved &amp; Cross-Verified</p>
         </div>
       </div>
     </div>
 
-    <!-- Interactive Flashcard Tool -->
-    <div class="interactive-card">
-      <div class="simulator-header">
-        <div class="simulator-title">
-          <span>💡</span>
-          <h3>Interactive Vocabulary &amp; Etymology Flashcard</h3>
-        </div>
-        <div style="font-size: 0.8rem; color: var(--text-muted);">Click card to reveal definition, roots &amp; usage</div>
+    <!-- Tabs -->
+    <div class="tab-bar" id="tabBar">
+      <button class="tab-btn active" data-tab="master" onclick="switchTab('master')">📋 Master Sheet</button>
+      <button class="tab-btn" data-tab="flashcards" onclick="switchTab('flashcards')">💡 Flashcard Drill</button>
+      <button class="tab-btn" data-tab="revision" onclick="switchTab('revision')">⚡ Quick Revision</button>
+      <button class="tab-btn" data-tab="units" onclick="switchTab('units')">📖 Unit Overview</button>
+      <button class="tab-btn" data-tab="gallery" onclick="switchTab('gallery')">🖼️ Source Assets</button>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- TAB 1: MASTER SHEET                                 -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="tab-panel active" id="panel-master">
+      <h2 class="section-title">📋 24-Question Master Bank</h2>
+
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-chip active" data-filter="all" onclick="filterTable('all')">All (24)</button>
+        <button class="filter-chip" data-filter="vocab" onclick="filterTable('vocab')">Vocabulary (9)</button>
+        <button class="filter-chip" data-filter="idiom" onclick="filterTable('idiom')">Idioms (5)</button>
+        <button class="filter-chip" data-filter="sub" onclick="filterTable('sub')">Substitutions (6)</button>
+        <button class="filter-chip" data-filter="root" onclick="filterTable('root')">Word Roots (3)</button>
+        <button class="filter-chip" data-filter="gram" onclick="filterTable('gram')">Grammar (1)</button>
       </div>
 
-      <div class="flashcard-wrapper">
-        <div class="flashcard" id="vocabCard" onclick="flipCard()">
-          <span class="flashcard-badge" id="fcPart">Adjective</span>
-          <div class="card-front-content" id="frontContent">
-            <h2 class="word-heading" id="fcWord">Ephemeral</h2>
-            <div class="phonetic" id="fcPhonetic">/ɪˈfɛm.ər.əl/</div>
-            <p class="card-hint">Click card to reveal meaning &amp; etymology ↻</p>
+      <div class="master-table-wrap">
+        <table class="master-table" id="masterTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Category</th>
+              <th>Question</th>
+              <th>Answer</th>
+              <th>Sources</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- VOCABULARY PAIRS -->
+            <tr data-cat="vocab">
+              <td>1</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Synonym of <strong>'Catastrophe'</strong></td>
+              <td class="answer-cell">Disaster <span style="color:var(--text-muted); font-weight:400;">(Calamity, Cataclysm, Tragedy)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q1</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>2</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Antonym of <strong>'Optimist'</strong></td>
+              <td class="answer-cell">Pessimist</td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q2</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>3</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Synonym of <strong>'Commence'</strong></td>
+              <td class="answer-cell">Begin <span style="color:var(--text-muted); font-weight:400;">(Start, Initiate, Launch)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q3</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>4</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Synonym of <strong>'Benevolent'</strong></td>
+              <td class="answer-cell">Kind <span style="color:var(--text-muted); font-weight:400;">(Charitable, Generous, Altruistic)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q4</span><span class="src-tag">Img2</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>5</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Antonym of <strong>'Bellicose'</strong></td>
+              <td class="answer-cell">Peaceful <span style="color:var(--text-muted); font-weight:400;">(Pacific, Friendly, Non-aggressive)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q5</span><span class="src-tag">Img2</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>6</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Antonym of <strong>'Verbatim'</strong></td>
+              <td class="answer-cell">Paraphrased <span style="color:var(--text-muted); font-weight:400;">(Inexact, Summarized, Loose)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q6</span><span class="src-tag">Img2</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>7</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Antonym of <strong>'Gregarious'</strong></td>
+              <td class="answer-cell">Reserved <span style="color:var(--text-muted); font-weight:400;">(Antisocial, Introverted)</span></td>
+              <td><div class="source-tags"><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>8</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Synonym of <strong>'Infallible'</strong></td>
+              <td class="answer-cell">Unerring <span style="color:var(--text-muted); font-weight:400;">(Flawless, Error-Free)</span></td>
+              <td><div class="source-tags"><span class="src-tag">Img1</span><span class="src-tag">Img2</span></div></td>
+            </tr>
+
+            <!-- IDIOMS -->
+            <tr data-cat="idiom">
+              <td>9</td>
+              <td><span class="category-badge cat-idiom">Idiom</span></td>
+              <td>What does <strong>'Beat around the bush'</strong> mean?</td>
+              <td class="answer-cell">To avoid talking directly about the main topic; to delay getting to the point</td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q7</span><span class="src-tag">Img1</span></div></td>
+            </tr>
+            <tr data-cat="idiom">
+              <td>10</td>
+              <td><span class="category-badge cat-idiom">Idiom</span></td>
+              <td>What does <strong>'Smell a rat'</strong> mean?</td>
+              <td class="answer-cell">To suspect deception, dishonesty, or that something is wrong</td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q8</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="idiom">
+              <td>11</td>
+              <td><span class="category-badge cat-idiom">Idiom</span></td>
+              <td>What does <strong>'Don't put all your eggs in one basket'</strong> mean?</td>
+              <td class="answer-cell">Diversify your resources or efforts instead of risking everything on a single option</td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q9</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="idiom">
+              <td>12</td>
+              <td><span class="category-badge cat-idiom">Idiom</span></td>
+              <td>What does <strong>'A blessing in disguise'</strong> mean?</td>
+              <td class="answer-cell">An apparent misfortune that ultimately results in an unforeseen benefit</td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q10</span><span class="src-tag">Img1</span></div></td>
+            </tr>
+            <tr data-cat="idiom">
+              <td>13</td>
+              <td><span class="category-badge cat-idiom">Idiom</span></td>
+              <td>What does <strong>'A bird in hand is better than two in the bush'</strong> mean?</td>
+              <td class="answer-cell">It's safer to keep what you already have rather than risking it for a greater reward</td>
+              <td><div class="source-tags"><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+
+            <!-- ONE-WORD SUBSTITUTIONS -->
+            <tr data-cat="sub">
+              <td>14</td>
+              <td><span class="category-badge cat-sub">Substitution</span></td>
+              <td>One who <strong>never drinks alcohol</strong> is called?</td>
+              <td class="answer-cell">Teetotaler</td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q11</span><span class="src-tag">Img1</span><span class="src-tag">Img2</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="sub">
+              <td>15</td>
+              <td><span class="category-badge cat-sub">Substitution</span></td>
+              <td>A person who is <strong>new to a profession</strong> is called?</td>
+              <td class="answer-cell">Novice <span style="color:var(--text-muted); font-weight:400;">(Neophyte, Tyro, Beginner)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q12</span><span class="src-tag">Img1</span><span class="src-tag">Img2</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="sub">
+              <td>16</td>
+              <td><span class="category-badge cat-sub">Substitution</span></td>
+              <td>Something <strong>spoken or done without preparation</strong> is called?</td>
+              <td class="answer-cell">Extempore <span style="color:var(--text-muted); font-weight:400;">(Impromptu, Unrehearsed)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q13</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="sub">
+              <td>17</td>
+              <td><span class="category-badge cat-sub">Substitution</span></td>
+              <td>A person who <strong>dislikes and distrusts other people</strong> is called?</td>
+              <td class="answer-cell">Misanthrope <span style="color:var(--text-muted); font-weight:400;">(Misanthropist)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q14</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="sub">
+              <td>18</td>
+              <td><span class="category-badge cat-sub">Substitution</span></td>
+              <td>A person who <strong>speaks many languages</strong> is called?</td>
+              <td class="answer-cell">Polyglot</td>
+              <td><div class="source-tags"><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+
+            <!-- WORD ROOTS -->
+            <tr data-cat="root">
+              <td>19</td>
+              <td><span class="category-badge cat-root">Root</span></td>
+              <td>What does the root <strong>'circum'</strong> mean?</td>
+              <td class="answer-cell">Around / About <span style="color:var(--text-muted); font-weight:400;">(e.g., circumvent, circumference)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q15</span></div></td>
+            </tr>
+            <tr data-cat="root">
+              <td>20</td>
+              <td><span class="category-badge cat-root">Root</span></td>
+              <td>What does the root <strong>'bene'</strong> mean?</td>
+              <td class="answer-cell">Good / Well <span style="color:var(--text-muted); font-weight:400;">(e.g., benefit, benediction)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q16</span><span class="src-tag">Img3</span><span class="src-tag">Img4</span></div></td>
+            </tr>
+            <tr data-cat="root">
+              <td>21</td>
+              <td><span class="category-badge cat-root">Root</span></td>
+              <td>What does the root <strong>'anthrop'</strong> mean?</td>
+              <td class="answer-cell">Human / Mankind <span style="color:var(--text-muted); font-weight:400;">(e.g., anthropology, philanthropy)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q17</span></div></td>
+            </tr>
+
+            <!-- GRAMMAR -->
+            <tr data-cat="gram">
+              <td>22</td>
+              <td><span class="category-badge cat-gram">Grammar</span></td>
+              <td><strong>'Each other'</strong> is used when referring to?</td>
+              <td class="answer-cell">Two people or entities <span style="color:var(--text-muted); font-weight:400;">(use 'one another' for 3+)</span></td>
+              <td><div class="source-tags"><span class="src-tag hot">PDF Q18</span></div></td>
+            </tr>
+            <tr data-cat="vocab">
+              <td>23</td>
+              <td><span class="category-badge cat-vocab">Vocabulary</span></td>
+              <td>Synonym of <strong>'Inevitable'</strong></td>
+              <td class="answer-cell">Unavoidable <span style="color:var(--text-muted); font-weight:400;">(Inescapable, Certain)</span></td>
+              <td><div class="source-tags"><span class="src-tag">Img1</span><span class="src-tag">Img2</span></div></td>
+            </tr>
+            <tr data-cat="sub">
+              <td>24</td>
+              <td><span class="category-badge cat-sub">Substitution</span></td>
+              <td>The word for <strong>a remedy for all diseases or difficulties</strong></td>
+              <td class="answer-cell">Panacea</td>
+              <td><div class="source-tags"><span class="src-tag">Img1</span></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- TAB 2: FLASHCARD DRILL                              -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-flashcards">
+      <div class="interactive-card">
+        <div class="sim-header">
+          <div class="sim-title">
+            <span>💡</span>
+            <h3>24-Card Exam Drill</h3>
           </div>
-          <div class="card-back-content" id="backContent">
-            <h4 id="fcMeaning">Lasting for a very short time; fleeting.</h4>
-            <p id="fcRoot"><strong>Root:</strong> Greek <em>ephemeros</em> (epi- 'upon' + hemera 'day').</p>
-            <p id="fcSentence"><em>"Fame in the age of algorithmic social media is notoriously ephemeral."</em></p>
-            <div class="syn-row" id="fcSyns">
-              <span class="syn-tag">Transitory</span>
-              <span class="syn-tag">Evanescent</span>
-              <span class="syn-tag">Transient</span>
+          <div class="sim-meta">Click card to reveal answer · All 24 questions from master bank</div>
+        </div>
+
+        <div class="flashcard-wrapper">
+          <div class="fc-progress"><div class="fc-progress-bar" id="fcProgressBar" style="width: 4.17%"></div></div>
+          <div class="flashcard" id="vocabCard" onclick="flipCard()">
+            <span class="fc-counter" id="fcCounter">1 / 24</span>
+            <span class="flashcard-badge" id="fcCat">Vocabulary</span>
+            <div class="card-front-content" id="frontContent">
+              <h2 class="word-heading" id="fcQuestion">Loading...</h2>
+              <p class="card-hint">Click card to reveal answer ↻</p>
+            </div>
+            <div class="card-back-content" id="backContent">
+              <h4 id="fcAnswer">—</h4>
+              <div class="alt-row" id="fcAlts"></div>
             </div>
           </div>
-        </div>
 
-        <div class="fc-controls">
-          <button class="fc-btn" onclick="flipCard()">Flip Card ↻</button>
-          <button class="fc-btn primary" onclick="nextCard()">Next Word →</button>
+          <div class="fc-controls">
+            <button class="fc-btn" onclick="prevCard()">← Prev</button>
+            <button class="fc-btn" onclick="flipCard()">Flip ↻</button>
+            <button class="fc-btn" onclick="shuffleDeck()">🔀 Shuffle</button>
+            <button class="fc-btn primary" onclick="nextCard()">Next →</button>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Modules -->
-    <h2 class="section-title">Verbal Ability Units</h2>
-    <div class="modules-grid">
-      <div class="module-card">
-        <span class="module-num">Unit 01</span>
-        <h3>Grammar Diagnostics &amp; Sentence Correction</h3>
-        <p>Subject-Verb Agreement rules, dangling and misplaced modifiers, parallelism in compound structures, conditional tenses, and pronoun-antecedent ambiguity.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Subject-Verb Concord</span>
-          <span class="topic-badge">Dangling Modifiers</span>
-          <span class="topic-badge">Parallel Construction</span>
-          <span class="topic-badge">Subjunctive Mood</span>
-        </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- TAB 3: QUICK REVISION                               -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-revision">
+      <h2 class="section-title">⚡ Quick Revision Matrices</h2>
+      <div class="revision-grid">
 
-      <div class="module-card">
-        <span class="module-num">Unit 02</span>
-        <h3>Lexical Semantics &amp; Etymology</h3>
-        <p>Root word expansion using Latin and Greek prefixes, connotation vs denotation subtleties, collocations, phrasal verbs, and context-dependent usage.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Latin / Greek Roots</span>
-          <span class="topic-badge">Analogies &amp; Synonyms</span>
-          <span class="topic-badge">Contextual Vocabulary</span>
-          <span class="topic-badge">Tone Inflections</span>
+        <div class="revision-card">
+          <h4>🔤 Synonym Pairs</h4>
+          <ul class="revision-list">
+            <li><strong>Catastrophe</strong> → Disaster, Calamity, Cataclysm</li>
+            <li><strong>Commence</strong> → Begin, Start, Initiate</li>
+            <li><strong>Benevolent</strong> → Kind, Charitable, Generous</li>
+            <li><strong>Infallible</strong> → Unerring, Flawless, Error-Free</li>
+            <li><strong>Inevitable</strong> → Unavoidable, Inescapable</li>
+          </ul>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 03</span>
-        <h3>Reading Comprehension &amp; Critical Inferences</h3>
-        <p>Analytical reading frameworks: Distinguishing explicit factual claims from implicit deductions. Mapping paragraph transitions, tone identification, and primary purpose analysis.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Inference vs Direct Fact</span>
-          <span class="topic-badge">Author's Tone &amp; Stance</span>
-          <span class="topic-badge">Main Idea Synthesis</span>
-          <span class="topic-badge">Speed Reading &amp; Skimming</span>
+        <div class="revision-card">
+          <h4>🔄 Antonym Pairs</h4>
+          <ul class="revision-list">
+            <li><strong>Optimist</strong> → Pessimist</li>
+            <li><strong>Bellicose</strong> → Peaceful, Pacific, Friendly</li>
+            <li><strong>Verbatim</strong> → Paraphrased, Summarized</li>
+            <li><strong>Gregarious</strong> → Reserved, Antisocial</li>
+          </ul>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 04</span>
-        <h3>Critical Reasoning &amp; Argument Analysis</h3>
-        <p>Premise-conclusion decomposition. Identifying unstated assumptions, strengthening and weakening arguments, logical fallacies, and categorical syllogisms.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Assumption Hunting</span>
-          <span class="topic-badge">Weaken / Strengthen</span>
-          <span class="topic-badge">Correlation vs Causation</span>
-          <span class="topic-badge">Syllogistic Proofs</span>
+        <div class="revision-card">
+          <h4>💬 Idioms &amp; Phrases</h4>
+          <ul class="revision-list">
+            <li><strong>Beat around the bush</strong> → Avoid the main topic</li>
+            <li><strong>Smell a rat</strong> → Suspect dishonesty</li>
+            <li><strong>Eggs in one basket</strong> → Don't concentrate resources</li>
+            <li><strong>Blessing in disguise</strong> → Hidden benefit from misfortune</li>
+            <li><strong>Bird in hand…</strong> → Keep what you have vs. risking for more</li>
+          </ul>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 05</span>
-        <h3>Para-Jumbles &amp; Structural Coherence</h3>
-        <p>Sentence rearrangement methodologies: Spotting mandatory pairs, transition discourse markers (however, therefore, conversely), and acronym-to-full-form sequences.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Mandatory Pairing</span>
-          <span class="topic-badge">Chronological Sequences</span>
-          <span class="topic-badge">Pronoun Referencing</span>
-          <span class="topic-badge">Odd-One-Out Elimination</span>
+        <div class="revision-card">
+          <h4>👤 One-Word Substitutions</h4>
+          <ul class="revision-list">
+            <li><strong>Teetotaler</strong> — never drinks alcohol</li>
+            <li><strong>Novice</strong> — new to a profession</li>
+            <li><strong>Extempore</strong> — without preparation</li>
+            <li><strong>Misanthrope</strong> — dislikes &amp; distrusts people</li>
+            <li><strong>Polyglot</strong> — speaks many languages</li>
+            <li><strong>Panacea</strong> — remedy for all diseases</li>
+          </ul>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
 
-      <div class="module-card">
-        <span class="module-num">Unit 06</span>
-        <h3>Professional &amp; Technical Communication</h3>
-        <p>Précis summarization techniques, corporate email etiquette, technical presentation pitch structure, and behavioral interview narrative frameworks (STAR method).</p>
-        <div class="topics-list">
-          <span class="topic-badge">STAR Methodology</span>
-          <span class="topic-badge">Executive Précis</span>
-          <span class="topic-badge">Technical Presentation</span>
-          <span class="topic-badge">Cross-cultural Discourse</span>
+        <div class="revision-card">
+          <h4>🌿 Latin/Greek Roots</h4>
+          <ul class="revision-list">
+            <li><strong>circum</strong> → Around / About (circumvent, circumference)</li>
+            <li><strong>bene</strong> → Good / Well (benefit, benediction)</li>
+            <li><strong>anthrop</strong> → Human / Mankind (anthropology, philanthropy)</li>
+          </ul>
         </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
+
+        <div class="revision-card">
+          <h4>📐 Grammar Quick Hits</h4>
+          <ul class="revision-list">
+            <li><strong>'Each other'</strong> → for TWO people only</li>
+            <li><strong>'One another'</strong> → for THREE or more people</li>
+            <li><strong>Reciprocal pronouns</strong> — express mutual action between entities</li>
+          </ul>
+        </div>
+
       </div>
     </div>
 
-    <!-- Materials -->
-    <h2 class="section-title">Course Assets &amp; Resources</h2>
-    <div class="materials-grid">
-      <div class="material-box">
-        <span class="mat-icon">📚</span>
-        <div class="mat-text">
-          <h4>GRE / CAT High-Frequency Wordlist</h4>
-          <p>Alphabetical PDF list with mnemonics</p>
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- TAB 4: UNIT OVERVIEW                                -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-units">
+      <h2 class="section-title">📖 Verbal Ability Units</h2>
+      <div class="modules-grid">
+        <div class="module-card">
+          <span class="module-num">Unit 01</span>
+          <h3>Grammar Diagnostics &amp; Sentence Correction</h3>
+          <p>Subject-Verb Agreement rules, dangling and misplaced modifiers, parallelism in compound structures, conditional tenses, and pronoun-antecedent ambiguity.</p>
+          <div class="topics-list">
+            <span class="topic-badge">Subject-Verb Concord</span>
+            <span class="topic-badge">Dangling Modifiers</span>
+            <span class="topic-badge">Parallel Construction</span>
+            <span class="topic-badge">Subjunctive Mood</span>
+          </div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Unit 02</span>
+          <h3>Lexical Semantics &amp; Etymology</h3>
+          <p>Root word expansion using Latin and Greek prefixes, connotation vs denotation subtleties, collocations, phrasal verbs, and context-dependent usage.</p>
+          <div class="topics-list">
+            <span class="topic-badge">Latin / Greek Roots</span>
+            <span class="topic-badge">Analogies &amp; Synonyms</span>
+            <span class="topic-badge">Contextual Vocabulary</span>
+            <span class="topic-badge">Tone Inflections</span>
+          </div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Unit 03</span>
+          <h3>Reading Comprehension &amp; Critical Inferences</h3>
+          <p>Analytical reading frameworks: distinguishing explicit factual claims from implicit deductions, paragraph transitions, tone identification, and primary purpose analysis.</p>
+          <div class="topics-list">
+            <span class="topic-badge">Inference vs Direct Fact</span>
+            <span class="topic-badge">Author's Tone</span>
+            <span class="topic-badge">Main Idea Synthesis</span>
+            <span class="topic-badge">Speed Reading</span>
+          </div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Unit 04</span>
+          <h3>Critical Reasoning &amp; Argument Analysis</h3>
+          <p>Premise-conclusion decomposition. Identifying unstated assumptions, strengthening and weakening arguments, logical fallacies, and categorical syllogisms.</p>
+          <div class="topics-list">
+            <span class="topic-badge">Assumption Hunting</span>
+            <span class="topic-badge">Weaken / Strengthen</span>
+            <span class="topic-badge">Correlation vs Causation</span>
+            <span class="topic-badge">Syllogistic Proofs</span>
+          </div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Unit 05</span>
+          <h3>Para-Jumbles &amp; Structural Coherence</h3>
+          <p>Sentence rearrangement methodologies: spotting mandatory pairs, transition discourse markers, and acronym-to-full-form sequences.</p>
+          <div class="topics-list">
+            <span class="topic-badge">Mandatory Pairing</span>
+            <span class="topic-badge">Chronological Sequences</span>
+            <span class="topic-badge">Pronoun Referencing</span>
+            <span class="topic-badge">Odd-One-Out</span>
+          </div>
+        </div>
+        <div class="module-card">
+          <span class="module-num">Unit 06</span>
+          <h3>Professional &amp; Technical Communication</h3>
+          <p>Précis summarization techniques, corporate email etiquette, technical presentation pitch structure, and behavioral interview narrative frameworks (STAR method).</p>
+          <div class="topics-list">
+            <span class="topic-badge">STAR Methodology</span>
+            <span class="topic-badge">Executive Précis</span>
+            <span class="topic-badge">Technical Presentation</span>
+            <span class="topic-badge">Cross-cultural Discourse</span>
+          </div>
         </div>
       </div>
-      <div class="material-box">
-        <span class="mat-icon">✍️</span>
-        <div class="mat-text">
-          <h4>Sentence Correction Rules Sheet</h4>
-          <p>20 golden rules with sample error sentences</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- TAB 5: SOURCE ASSETS GALLERY                        -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-gallery">
+      <h2 class="section-title">🖼️ Original Source Assets</h2>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+        Click any card to open the full-resolution original. Cross-referenced duplicate content has been merged into the master sheet above.
+      </p>
+      <div class="gallery-grid">
+        <div class="gallery-card" onclick="openLightbox('Assets/image1.jpeg', 'Image 1 — Answers Sheet (Q8–Q10 + Ans 1–10)')">
+          <img class="gallery-thumb" src="Assets/image1.jpeg" alt="Handwritten answers sheet" loading="lazy">
+          <div class="gallery-info">
+            <h4>image1.jpeg — Answers Page</h4>
+            <p>Questions 8–10 (Panacea, Beat around the bush, Blessing in disguise) + Answer keys 1–10</p>
+            <div class="file-size">108 KB · JPEG</div>
+          </div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox('Assets/image2.jpeg', 'Image 2 — Imp Questions (Cloze Test = 2)')">
+          <img class="gallery-thumb" src="Assets/image2.jpeg" alt="Important questions list" loading="lazy">
+          <div class="gallery-info">
+            <h4>image2.jpeg — Imp Questions</h4>
+            <p>Cloze Test marker. 8 questions: Benevolent, Bellicose, Infallible, Verbatim, Inevitable, Teetotaler, Novice</p>
+            <div class="file-size">92 KB · JPEG</div>
+          </div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox('Assets/image3.jpeg', 'Image 3 — Cloze Test Full (15 Questions, no answers)')">
+          <img class="gallery-thumb" src="Assets/image3.jpeg" alt="Cloze test questions" loading="lazy">
+          <div class="gallery-info">
+            <h4>image3.jpeg — Cloze Test (Questions)</h4>
+            <p>15 questions with partial answers in margin. Covers vocabulary, idioms, substitutions, and word roots</p>
+            <div class="file-size">154 KB · JPEG</div>
+          </div>
+        </div>
+        <div class="gallery-card" onclick="openLightbox('Assets/image4.jpeg', 'Image 4 — Cloze Test Full (15 Questions + Complete Answers)')">
+          <img class="gallery-thumb" src="Assets/image4.jpeg" alt="Cloze test with answers" loading="lazy">
+          <div class="gallery-info">
+            <h4>image4.jpeg — Cloze Test (Solved)</h4>
+            <p>Same 15 questions as image3 with complete answer set. Primary answer-verification source</p>
+            <div class="file-size">148 KB · JPEG</div>
+          </div>
+        </div>
+        <div class="gallery-card" onclick="window.open('Assets/English_Verbal_Ability_Practice_Worksheet.pdf', '_blank')">
+          <div style="width:100%;height:220px;display:flex;align-items:center;justify-content:center;background:rgba(var(--accent-rgb),0.05);border-bottom:1px solid var(--border);">
+            <span style="font-size:4rem;">📄</span>
+          </div>
+          <div class="gallery-info">
+            <h4>Practice Worksheet — PDF</h4>
+            <p>18-question comprehensive Q&A set with vocabulary pairs, idioms, substitutions, roots &amp; grammar</p>
+            <div class="file-size">160 KB · PDF · 1 page</div>
+          </div>
         </div>
       </div>
-      <div class="material-box">
-        <span class="mat-icon">🎯</span>
-        <div class="mat-text">
-          <h4>Mock Reading Passages</h4>
-          <p>Curated science &amp; philosophy passages with answer keys</p>
-        </div>
-      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox(event)">
+      <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="Full resolution asset">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
     </div>
 
     <!-- Footer -->
     <footer>
-      <a href="../index.html" class="back-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Semester III Portal
-      </a>
-      <span>Academic Portal • Semester III (VA)</span>
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <a href="../../index.html" class="back-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Study Portal Master
+        </a>
+        <a href="../index.html" class="back-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Semester III Portal
+        </a>
+      </div>
+      <span>Academic Portal • Semester III (VA) • 24-Question Master Sheet</span>
     </footer>
   </div>
 
   <script>
-    const deck = [
-      {
-        word: 'Ephemeral',
-        part: 'Adjective',
-        phonetic: '/ɪˈfɛm.ər.əl/',
-        meaning: 'Lasting for a very short time; fleeting.',
-        root: 'Greek ephemeros (epi- upon + hemera day).',
-        sentence: '"Fame in the age of algorithmic social media is notoriously ephemeral."',
-        syns: ['Transitory', 'Evanescent', 'Transient']
-      },
-      {
-        word: 'Obsequious',
-        part: 'Adjective',
-        phonetic: '/əbˈsiː.kwi.əs/',
-        meaning: 'Obedient or attentive to an excessive or servile degree; sycophantic.',
-        root: 'Latin obsequiosus (from obsequi "to comply with, follow").',
-        sentence: '"The courtiers surrounded the new emperor with obsequious praise."',
-        syns: ['Servile', 'Fawning', 'Sycophantic']
-      },
-      {
-        word: 'Enervate',
-        part: 'Verb',
-        phonetic: '/ˈɛn.ər.veɪt/',
-        meaning: 'To cause someone to feel drained of energy or vitality; weaken.',
-        root: 'Latin enervare (e- out + nervus sinew, nerve).',
-        sentence: '"The relentless tropical heat threatened to enervate the expedition team."',
-        syns: ['Debilitate', 'Exhaust', 'Sap']
-      },
-      {
-        word: 'Ubiquitous',
-        part: 'Adjective',
-        phonetic: '/juːˈbɪk.wɪ.təs/',
-        meaning: 'Present, appearing, or found everywhere simultaneously.',
-        root: 'Latin ubique (from ubi "where" + -que "every").',
-        sentence: '"Smartphones have become ubiquitous across every modern urban landscape."',
-        syns: ['Omnipresent', 'Pervasive', 'Universal']
-      },
-      {
-        word: 'Pernicious',
-        part: 'Adjective',
-        phonetic: '/pərˈnɪʃ.əs/',
-        meaning: 'Having a harmful effect, especially in a gradual or subtle way.',
-        root: 'Latin perniciosus (per- completely + nex death/slaughter).',
-        sentence: '"The spread of unverified claims had a pernicious impact on scientific discourse."',
-        syns: ['Detrimental', 'Inimical', 'Malignant']
-      }
+    /* ═══════════ Tab System ═══════════ */
+    function switchTab(id) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelector(`[data-tab="${id}"]`).classList.add('active');
+      document.getElementById('panel-' + id).classList.add('active');
+    }
+
+    /* ═══════════ Master Table Filter ═══════════ */
+    function filterTable(cat) {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      document.querySelector(`[data-filter="${cat}"]`).classList.add('active');
+      const rows = document.querySelectorAll('#masterTable tbody tr');
+      rows.forEach(row => {
+        row.style.display = (cat === 'all' || row.dataset.cat === cat) ? '' : 'none';
+      });
+    }
+
+    /* ═══════════ Flashcard Deck ═══════════ */
+    const masterDeck = [
+      { q: "Synonym of 'Catastrophe'?", a: "Disaster", alt: ["Calamity","Cataclysm","Tragedy"], cat: "Vocabulary" },
+      { q: "Antonym of 'Optimist'?", a: "Pessimist", alt: [], cat: "Vocabulary" },
+      { q: "Synonym of 'Commence'?", a: "Begin", alt: ["Start","Initiate","Launch"], cat: "Vocabulary" },
+      { q: "Synonym of 'Benevolent'?", a: "Kind", alt: ["Charitable","Generous","Altruistic"], cat: "Vocabulary" },
+      { q: "Antonym of 'Bellicose'?", a: "Peaceful", alt: ["Pacific","Friendly"], cat: "Vocabulary" },
+      { q: "Antonym of 'Verbatim'?", a: "Paraphrased", alt: ["Summarized","Inexact"], cat: "Vocabulary" },
+      { q: "Antonym of 'Gregarious'?", a: "Reserved", alt: ["Antisocial","Introverted"], cat: "Vocabulary" },
+      { q: "Synonym of 'Infallible'?", a: "Unerring", alt: ["Flawless","Error-Free"], cat: "Vocabulary" },
+      { q: "Idiom: 'Beat around the bush' means?", a: "To avoid talking directly about the main topic", alt: [], cat: "Idiom" },
+      { q: "Idiom: 'Smell a rat' means?", a: "To suspect something is wrong or dishonest", alt: [], cat: "Idiom" },
+      { q: "Idiom: 'Don't put all eggs in one basket' means?", a: "Diversify resources instead of risking everything on one option", alt: [], cat: "Idiom" },
+      { q: "Idiom: 'A blessing in disguise' means?", a: "A misfortune that ultimately results in a benefit", alt: [], cat: "Idiom" },
+      { q: "Idiom: 'A bird in hand is better than two in the bush' means?", a: "Keep what you have rather than risking for more", alt: [], cat: "Idiom" },
+      { q: "One who never drinks alcohol?", a: "Teetotaler", alt: [], cat: "Substitution" },
+      { q: "A person new to a profession?", a: "Novice", alt: ["Neophyte","Tyro","Beginner"], cat: "Substitution" },
+      { q: "Something done without preparation?", a: "Extempore", alt: ["Impromptu","Unrehearsed"], cat: "Substitution" },
+      { q: "A person who dislikes & distrusts people?", a: "Misanthrope", alt: ["Misanthropist"], cat: "Substitution" },
+      { q: "A person who speaks many languages?", a: "Polyglot", alt: [], cat: "Substitution" },
+      { q: "Root 'circum' means?", a: "Around / About", alt: ["circumvent","circumference"], cat: "Root" },
+      { q: "Root 'bene' means?", a: "Good / Well", alt: ["benefit","benediction"], cat: "Root" },
+      { q: "Root 'anthrop' means?", a: "Human / Mankind", alt: ["anthropology","philanthropy"], cat: "Root" },
+      { q: "'Each other' is used for?", a: "Two people (use 'one another' for 3+)", alt: [], cat: "Grammar" },
+      { q: "Synonym of 'Inevitable'?", a: "Unavoidable", alt: ["Inescapable","Certain"], cat: "Vocabulary" },
+      { q: "A remedy for all diseases or difficulties?", a: "Panacea", alt: [], cat: "Substitution" }
     ];
 
+    let deck = [...masterDeck];
     let currentIdx = 0;
     let isFlipped = false;
 
     function renderCard() {
-      const item = deck[currentIdx];
-      document.getElementById('fcPart').innerText = item.part;
-      document.getElementById('fcWord').innerText = item.word;
-      document.getElementById('fcPhonetic').innerText = item.phonetic;
-      document.getElementById('fcMeaning').innerText = item.meaning;
-      document.getElementById('fcRoot').innerHTML = '<strong>Root:</strong> ' + item.root;
-      document.getElementById('fcSentence').innerHTML = '<em>' + item.sentence + '</em>';
-
-      const synContainer = document.getElementById('fcSyns');
-      synContainer.innerHTML = '';
-      item.syns.forEach(s => {
-        const tag = document.createElement('span');
-        tag.className = 'syn-tag';
-        tag.innerText = s;
-        synContainer.appendChild(tag);
-      });
-
+      const c = deck[currentIdx];
+      document.getElementById('fcCounter').textContent = `${currentIdx + 1} / ${deck.length}`;
+      document.getElementById('fcCat').textContent = c.cat;
+      document.getElementById('fcQuestion').textContent = c.q;
+      document.getElementById('fcAnswer').textContent = c.a;
+      const altWrap = document.getElementById('fcAlts');
+      altWrap.innerHTML = '';
+      if (c.alt.length) {
+        c.alt.forEach(a => {
+          const t = document.createElement('span');
+          t.className = 'alt-tag';
+          t.textContent = a;
+          altWrap.appendChild(t);
+        });
+      }
       isFlipped = false;
       document.getElementById('frontContent').style.display = 'block';
       document.getElementById('backContent').style.display = 'none';
+      document.getElementById('fcProgressBar').style.width = ((currentIdx + 1) / deck.length * 100) + '%';
     }
 
     function flipCard() {
@@ -791,12 +929,40 @@
       document.getElementById('backContent').style.display = isFlipped ? 'block' : 'none';
     }
 
-    function nextCard() {
-      currentIdx = (currentIdx + 1) % deck.length;
+    function nextCard() { currentIdx = (currentIdx + 1) % deck.length; renderCard(); }
+    function prevCard() { currentIdx = (currentIdx - 1 + deck.length) % deck.length; renderCard(); }
+
+    function shuffleDeck() {
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      currentIdx = 0;
       renderCard();
     }
 
     renderCard();
+
+    /* ═══════════ Lightbox ═══════════ */
+    function openLightbox(src, caption) {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxCaption').textContent = caption;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(e) {
+      if (e.target === document.getElementById('lightbox') || e.target.closest('.lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
   </script>
 </body>
 </html>
