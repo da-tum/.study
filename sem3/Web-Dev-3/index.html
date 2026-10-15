@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Development III &bull; Comprehensive Exam Prep Portal &bull; da-tum .study</title>
-  <meta name="description" content="Production-grade Web Development III exam prep portal: 13 Teacher Blueprint Solved Questions, 3 Classroom Tests Solved, 24-Question Master Core Bank, 7 ;short-revision; matrices, and Interactive Node/Express Workbench.">
+  <title>Web Development III &bull; Comprehensive Exam Prep &bull; da-tum .study</title>
+  <meta name="description" content="Production-grade Web Development III study portal: 13 Teacher Blueprint solved questions, Classroom Tests 1 & 3 solved, 24-Question Master Core Bank, 7 ;short-revision; matrices, and Interactive Express Workbench.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -15,25 +15,25 @@
 
   <style>
     :root {
-      --bg: #090d16;
-      --bg-surface: #111827;
-      --card-bg: rgba(17, 24, 39, 0.7);
-      --card-hover: rgba(31, 41, 55, 0.9);
+      --bg: #1e232d;
+      --bg-surface: #262c37;
+      --card-bg: #2a313e;
+      --card-hover: #313948;
       --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(99, 102, 241, 0.45);
-      --border-focus: rgba(129, 140, 248, 0.5);
-      --accent: #6366f1;
-      --accent-rgb: 99, 102, 241;
-      --accent-secondary: #8b5cf6;
-      --accent-gold: #fbbf24;
-      --accent-gold-rgb: 251, 191, 36;
-      --accent-emerald: #10b981;
-      --accent-rose: #f43f5e;
-      --text: #f3f4f6;
+      --border-hover: rgba(229, 192, 123, 0.4);
+      --border-focus: rgba(103, 232, 249, 0.5);
+      --accent: #67e8f9;
+      --accent-rgb: 103, 232, 249;
+      --accent-secondary: #93c5fd;
+      --accent-gold: #e5c07b;
+      --accent-gold-rgb: 229, 192, 123;
+      --accent-emerald: #86efac;
+      --accent-rose: #f87171;
+      --text: #f1f5f9;
       --text-body: #cbd5e1;
-      --text-muted: #9ca3af;
+      --text-muted: #94a3b8;
       --text-dim: #64748b;
-      --code-bg: #050811;
+      --code-bg: #1a1e27;
     }
 
     * {
@@ -49,23 +49,24 @@
 
     body {
       background: var(--bg);
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(139, 92, 246, 0.06) 0%, transparent 45%);
+      background-image:
+        radial-gradient(circle at 10% 12%, rgba(103, 232, 249, 0.04) 0%, transparent 45%),
+        radial-gradient(circle at 90% 88%, rgba(229, 192, 123, 0.04) 0%, transparent 45%);
       color: var(--text-body);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 3rem 1.5rem 5rem;
+      padding: 2rem 1.25rem 5rem;
     }
 
-    .container, .portal-container {
-      max-width: 1240px;
+    .portal-container {
+      max-width: 1280px;
       width: 100%;
+      padding-top: 1.25rem;
     }
 
-    /* Breadcrumbs */
+    /* Breadcrumbs matching DBMS */
     .breadcrumb {
       display: flex;
       align-items: center;
@@ -85,25 +86,9 @@
       color: var(--accent);
     }
 
-    /* Header */
+    /* Header matching DBMS */
     .header {
       margin-bottom: 2rem;
-    }
-
-    .subject-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      background: rgba(var(--accent-rgb), 0.12);
-      border: 1px solid rgba(var(--accent-rgb), 0.3);
-      padding: 4px 12px;
-      border-radius: 100px;
-      margin-bottom: 12px;
     }
 
     h1 {
@@ -112,7 +97,7 @@
       font-family: 'Outfit', sans-serif;
       letter-spacing: -0.04em;
       margin-bottom: 0.6rem;
-      background: linear-gradient(135deg, #ffffff 30%, #38bdf8 70%, #818cf8 100%);
+      background: linear-gradient(135deg, #ffffff 30%, #a5f3fc 70%, #fde68a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -127,18 +112,18 @@
 
     .subtitle code {
       color: var(--accent-gold);
-      background: rgba(var(--accent-gold-rgb), 0.12);
+      background: rgba(229, 192, 123, 0.12);
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 0.95rem;
     }
 
-    /* Stats Ribbon */
+    /* Stats Ribbon matching DBMS */
     .stats-ribbon {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 14px;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
     .stat-card {
@@ -153,7 +138,7 @@
     }
 
     .stat-card:hover {
-      border-color: rgba(var(--accent-rgb), 0.35);
+      border-color: rgba(var(--accent-rgb), 0.3);
       transform: translateY(-2px);
     }
 
@@ -178,14 +163,9 @@
       letter-spacing: 0.05em;
     }
 
-    /* Sticky Navigation Tabs */
-    .sticky-nav {
-      position: sticky;
-      top: 76px;
-      z-index: 1000;
+    /* Non-Sticky Navigation Tabs matching DBMS */
+    .tabs-nav {
       margin-bottom: 1.75rem;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
     }
 
     .nav-tabs-wrapper {
@@ -203,12 +183,12 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
+      padding: 9px 16px;
       background: transparent;
       border: 1px solid transparent;
       border-radius: 8px;
       color: var(--text-muted);
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s;
@@ -220,10 +200,10 @@
     }
 
     .nav-tab.active {
-      color: #0b1120;
-      background: linear-gradient(135deg, var(--accent) 0%, #7dd3fc 100%);
+      color: #1e232d;
+      background: linear-gradient(135deg, var(--accent) 0%, #a5f3fc 100%);
       font-weight: 700;
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+      box-shadow: 0 4px 14px rgba(103, 232, 249, 0.3);
     }
 
     /* Content Section Visibility */
@@ -291,19 +271,18 @@
 
     .sub-section-header p {
       color: var(--text-muted);
-      font-size: 0.88rem;
     }
 
-    /* Search & Filter Bar */
+    /* Filter Bar */
     .filter-bar {
-      background: var(--card-bg);
+      background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 16px;
       margin-bottom: 2rem;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 14px;
     }
 
     .search-input-wrapper {
@@ -316,84 +295,80 @@
       position: absolute;
       left: 14px;
       color: var(--text-muted);
-      pointer-events: none;
     }
 
     .search-input {
       width: 100%;
-      background: #181d26;
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 11px 14px 11px 44px;
       color: #fff;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
+      padding: 10px 14px 10px 42px;
+      border-radius: 10px;
       outline: none;
-      transition: all 0.2s;
+      transition: border 0.2s;
     }
 
     .search-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent-gold);
     }
 
     .filter-pills-row {
       display: flex;
-      align-items: center;
-      gap: 8px;
       flex-wrap: wrap;
+      gap: 8px;
     }
 
     .filter-pill {
-      background: rgba(255, 255, 255, 0.04);
+      background: var(--card-bg);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .filter-pill:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.08);
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
     .filter-pill.active {
-      background: rgba(var(--accent-rgb), 0.15);
-      border-color: var(--accent);
-      color: var(--accent);
+      color: #1e232d;
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
       font-weight: 700;
     }
 
     .filter-actions {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-top: 4px;
+      align-items: center;
       font-size: 0.82rem;
       color: var(--text-muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 10px;
     }
 
     .btn-action-small {
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid var(--border);
-      color: var(--text-muted);
-      padding: 4px 10px;
-      border-radius: 6px;
+      color: var(--text);
       font-size: 0.78rem;
-      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .btn-action-small:hover {
       background: rgba(255, 255, 255, 0.12);
-      color: #fff;
+      border-color: var(--accent-gold);
     }
 
-    /* Inspection Sheet Cards */
+    /* ==================== INSPECTION SHEET CARDS ==================== */
     .sheet-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -409,8 +384,8 @@
     }
 
     .sheet-card.priority-card {
-      border: 1px solid rgba(251, 191, 36, 0.4);
-      background: linear-gradient(180deg, rgba(251, 191, 36, 0.04) 0%, var(--card-bg) 30%);
+      border: 1px solid rgba(229, 192, 123, 0.4);
+      background: linear-gradient(180deg, rgba(229, 192, 123, 0.05) 0%, var(--card-bg) 35%);
     }
 
     .sheet-header {
@@ -423,7 +398,7 @@
     }
 
     .sheet-title-group h3 {
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-weight: 700;
       font-family: 'Outfit', sans-serif;
       color: #fff;
@@ -433,8 +408,8 @@
     }
 
     .badge-primary-asset {
-      background: rgba(251, 191, 36, 0.15);
-      border: 1px solid rgba(251, 191, 36, 0.35);
+      background: rgba(229, 192, 123, 0.15);
+      border: 1px solid rgba(229, 192, 123, 0.35);
       color: var(--accent-gold);
       font-size: 0.72rem;
       font-weight: 700;
@@ -444,8 +419,8 @@
     }
 
     .badge-test-asset {
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: rgba(103, 232, 249, 0.12);
+      border: 1px solid rgba(103, 232, 249, 0.3);
       color: var(--accent);
       font-size: 0.72rem;
       font-weight: 700;
@@ -533,21 +508,23 @@
       line-height: 1.6;
     }
 
-    /* Solved Question Cards */
-    .exam-question-card {
+    /* ==================== SOLVED EXAM QUESTION CARDS ==================== */
+    .exam-question-card, .q-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 22px;
       margin-bottom: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       transition: all 0.2s;
     }
 
-    .exam-question-card:hover {
+    .exam-question-card:hover, .q-card:hover {
       border-color: rgba(var(--accent-rgb), 0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
 
-    .question-top {
+    .question-top, .q-card-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
@@ -556,14 +533,14 @@
       flex-wrap: wrap;
     }
 
-    .question-title-wrap {
+    .question-title-wrap, .q-title-group {
       display: flex;
       align-items: flex-start;
       gap: 12px;
       flex: 1;
     }
 
-    .question-num {
+    .question-num, .q-num-badge {
       background: rgba(var(--accent-rgb), 0.15);
       border: 1px solid rgba(var(--accent-rgb), 0.3);
       color: var(--accent);
@@ -575,7 +552,7 @@
       white-space: nowrap;
     }
 
-    .question-title {
+    .question-title, .q-text {
       font-size: 1.12rem;
       font-weight: 700;
       color: #fff;
@@ -583,30 +560,30 @@
       font-family: 'Outfit', sans-serif;
     }
 
-    .question-badges {
+    .question-badges, .q-meta-group {
       display: flex;
       align-items: center;
       gap: 6px;
       flex-wrap: wrap;
     }
 
-    .mark-badge-2-5 {
-      background: rgba(52, 211, 153, 0.12);
-      border: 1px solid rgba(52, 211, 153, 0.3);
+    .mark-badge-2-5, .marks-2-5 {
+      background: rgba(134, 239, 172, 0.12);
+      border: 1px solid rgba(134, 239, 172, 0.3);
       color: var(--accent-emerald);
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: 6px;
     }
 
-    .mark-badge-10 {
-      background: rgba(251, 191, 36, 0.12);
-      border: 1px solid rgba(251, 191, 36, 0.3);
+    .mark-badge-10, .marks-10 {
+      background: rgba(229, 192, 123, 0.12);
+      border: 1px solid rgba(229, 192, 123, 0.3);
       color: var(--accent-gold);
       font-size: 0.72rem;
       font-weight: 700;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: 6px;
     }
 
@@ -616,7 +593,7 @@
       color: var(--text-muted);
       font-size: 0.72rem;
       font-weight: 600;
-      padding: 2px 7px;
+      padding: 3px 8px;
       border-radius: 6px;
     }
 
@@ -643,7 +620,7 @@
       border-color: var(--accent);
     }
 
-    .solution-details {
+    .solution-details, .q-body {
       display: none;
       margin-top: 16px;
       padding-top: 16px;
@@ -651,7 +628,7 @@
       animation: fadeIn 0.2s ease-in-out;
     }
 
-    .solution-details.open {
+    .solution-details.open, .q-card.open .q-body {
       display: block;
     }
 
@@ -663,7 +640,7 @@
       margin-bottom: 12px;
     }
 
-    .model-answer-title {
+    .model-answer-title, .model-sol-label {
       font-size: 0.82rem;
       font-weight: 700;
       text-transform: uppercase;
@@ -675,31 +652,35 @@
       gap: 6px;
     }
 
-    .answer-text {
+    .answer-text, .sol-prose {
       font-size: 0.92rem;
       line-height: 1.65;
       color: var(--text-body);
     }
 
-    .answer-text p {
+    .answer-text p, .sol-prose p {
       margin-bottom: 10px;
     }
 
-    .answer-text p:last-child {
+    .answer-text p:last-child, .sol-prose p:last-child {
       margin-bottom: 0;
     }
 
-    .answer-text ul, .answer-text ol {
+    .answer-text strong, .sol-prose strong {
+      color: #fff;
+    }
+
+    .answer-text ul, .answer-text ol, .sol-prose ul, .sol-prose ol {
       margin-left: 20px;
       margin-bottom: 10px;
     }
 
-    .answer-text li {
+    .answer-text li, .sol-prose li {
       margin-bottom: 6px;
     }
 
     .exam-tip-box {
-      background: rgba(251, 191, 36, 0.06);
+      background: rgba(229, 192, 123, 0.08);
       border-left: 3px solid var(--accent-gold);
       padding: 10px 14px;
       border-radius: 0 8px 8px 0;
@@ -708,8 +689,8 @@
       color: #fde68a;
     }
 
-    /* Code Container with Copy */
-    .code-container {
+    /* ==================== CODE CONTAINERS ==================== */
+    .code-container, .sol-code-block {
       position: relative;
       background: var(--code-bg);
       border: 1px solid var(--border);
@@ -745,7 +726,7 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    pre.code-block {
+    pre.code-block, .sol-code-block pre {
       padding: 14px 16px;
       overflow-x: auto;
       font-size: 0.84rem;
@@ -754,7 +735,7 @@
       margin: 0;
     }
 
-    /* Tables */
+    /* ==================== STUDY TABLES ==================== */
     .study-table {
       width: 100%;
       border-collapse: collapse;
@@ -784,7 +765,7 @@
       background: rgba(255, 255, 255, 0.04);
     }
 
-    /* Revision Cards */
+    /* ==================== REVISION GRIDS ==================== */
     .revision-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -816,7 +797,7 @@
       gap: 8px;
     }
 
-    /* Interactive Workbench */
+    /* ==================== INTERACTIVE WORKBENCH ==================== */
     .workbench-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -842,7 +823,7 @@
       margin-bottom: 14px;
     }
 
-    .form-label {
+    .form-label, .wb-label {
       display: block;
       font-size: 0.8rem;
       font-weight: 700;
@@ -852,12 +833,12 @@
       margin-bottom: 6px;
     }
 
-    .request-row {
+    .request-row, .wb-input-row {
       display: flex;
       gap: 8px;
     }
 
-    .method-select {
+    .method-select, .wb-select {
       background: #141720;
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -869,7 +850,7 @@
       cursor: pointer;
     }
 
-    .endpoint-input {
+    .endpoint-input, .wb-input {
       flex: 1;
       background: #141720;
       border: 1px solid var(--border);
@@ -881,11 +862,11 @@
       outline: none;
     }
 
-    .endpoint-input:focus, .method-select:focus {
+    .endpoint-input:focus, .method-select:focus, .wb-input:focus, .wb-select:focus {
       border-color: var(--accent);
     }
 
-    .payload-area {
+    .payload-area, .wb-textarea {
       width: 100%;
       height: 120px;
       background: #141720;
@@ -899,7 +880,7 @@
       resize: vertical;
     }
 
-    .payload-area:focus {
+    .payload-area:focus, .wb-textarea:focus {
       border-color: var(--accent);
     }
 
@@ -928,14 +909,14 @@
       cursor: pointer;
     }
 
-    .btn-send-request {
+    .btn-send-request, .wb-btn-send {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       width: 100%;
       background: linear-gradient(135deg, var(--accent) 0%, #0284c7 100%);
-      color: #fff;
+      color: #1e232d;
       border: none;
       border-radius: 8px;
       padding: 12px;
@@ -945,12 +926,12 @@
       transition: all 0.2s;
     }
 
-    .btn-send-request:hover {
-      box-shadow: 0 4px 16px rgba(56, 189, 248, 0.4);
+    .btn-send-request:hover, .wb-btn-send:hover {
+      box-shadow: 0 4px 16px rgba(103, 232, 249, 0.4);
       transform: translateY(-1px);
     }
 
-    .pipeline-view {
+    .pipeline-view, .wb-pipeline-flow {
       background: #141720;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -967,7 +948,7 @@
       flex-wrap: wrap;
     }
 
-    .pipe-badge {
+    .pipe-badge, .wb-pipe-step {
       font-size: 0.72rem;
       font-weight: 600;
       padding: 4px 8px;
@@ -978,17 +959,17 @@
       transition: all 0.3s;
     }
 
-    .pipe-badge.active-step {
-      background: rgba(56, 189, 248, 0.2);
+    .pipe-badge.active-step, .wb-pipe-step.active-step {
+      background: rgba(103, 232, 249, 0.2);
       border-color: var(--accent);
       color: #38bdf8;
-      box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 8px rgba(103, 232, 249, 0.3);
     }
 
     .pipe-badge.pass-step {
-      background: rgba(52, 211, 153, 0.2);
+      background: rgba(134, 239, 172, 0.2);
       border-color: var(--accent-emerald);
-      color: #34d399;
+      color: #86efac;
     }
 
     .pipe-badge.fail-step {
@@ -1014,9 +995,9 @@
       font-size: 0.8rem;
     }
 
-    .status-200 { background: rgba(52, 211, 153, 0.2); color: #34d399; }
-    .status-201 { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
-    .status-400 { background: rgba(251, 191, 36, 0.2); color: #fbbf24; }
+    .status-200 { background: rgba(134, 239, 172, 0.2); color: #86efac; }
+    .status-201 { background: rgba(103, 232, 249, 0.2); color: #67e8f9; }
+    .status-400 { background: rgba(229, 192, 123, 0.2); color: #e5c07b; }
     .status-404 { background: rgba(248, 113, 113, 0.2); color: #f87171; }
 
     .json-output {
@@ -1055,14 +1036,47 @@
       color: #fff;
     }
 
-    /* Lightbox Modal */
+    .endpoint-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .endpoint-btn.active, .endpoint-btn:hover {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    .pipe-step {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .pipe-step.active {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* ==================== LIGHTBOX MODAL ==================== */
     .img-modal-backdrop {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0, 0, 0, 0.88);
       backdrop-filter: blur(10px);
-      z-index: 9999;
+      z-index: 20000;
       align-items: center;
       justify-content: center;
       padding: 20px;
@@ -1127,14 +1141,16 @@
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--border);
       color: #fff;
-      padding: 5px 10px;
+      font-size: 0.78rem;
+      padding: 6px 12px;
       border-radius: 6px;
-      font-size: 0.82rem;
       cursor: pointer;
+      transition: all 0.2s;
     }
 
     .btn-modal-ctrl:hover {
-      background: rgba(255, 255, 255, 0.16);
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--accent-gold);
     }
 
     .img-modal-close {
@@ -1155,7 +1171,7 @@
       z-index: 10;
     }
 
-    /* Footer */
+    /* ==================== FOOTER MATCHING DBMS ==================== */
     .portal-footer {
       display: flex;
       align-items: center;
@@ -1183,361 +1199,44 @@
       transform: translateX(-4px);
     }
 
-    /* Master Template Module & Curriculum Grid Styles */
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      font-family: 'Outfit', sans-serif;
-      margin: 2.5rem 0 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #fff;
+    @media (max-width: 768px) {
+      .workbench-grid {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        font-size: 2.2rem;
+      }
+      .stats-ribbon {
+        grid-template-columns: 1fr 1fr;
+      }
     }
-
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .modules-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .module-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .module-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(var(--accent-rgb), 0.4);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .module-num {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .module-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 0.75rem;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .module-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      flex-grow: 1;
-    }
-
-    .topics-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .topic-badge {
-      font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      color: #cbd5e1;
-    }
-
-    .status-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #10b981;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10b981;
-    }
-
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-
-    .material-box {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .material-box:hover {
-      background: rgba(var(--accent-rgb), 0.08);
-      border-color: rgba(var(--accent-rgb), 0.3);
-      transform: translateY(-3px);
-    }
-
-    .mat-icon {
-      font-size: 1.8rem;
-    }
-
-    .mat-text h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 0.25rem;
-    }
-
-    .mat-text p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    /* Master Interactive API Tester */
-    .interactive-card {
-      background: var(--card-bg);
-      border: 1px solid rgba(var(--accent-rgb), 0.3);
-      border-radius: 24px;
-      padding: 2.25rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .interactive-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
-    }
-
-    .simulator-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .simulator-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .simulator-title h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .api-tester-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: 2rem;
-    }
-
-    .endpoint-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .endpoint-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0.85rem 1.2rem;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      cursor: pointer;
-      color: #ffffff;
-      transition: all 0.25s;
-      text-align: left;
-    }
-
-    .endpoint-btn:hover, .endpoint-btn.active {
-      background: rgba(var(--accent-rgb), 0.12);
-      border-color: rgba(var(--accent-rgb), 0.4);
-      transform: translateX(4px);
-    }
-
-    .method-badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-      font-family: 'Fira Code', monospace;
-    }
-
-    .method-get { background: rgba(16, 185, 129, 0.2); color: #10b981; }
-    .method-post { background: rgba(99, 102, 241, 0.25); color: #818cf8; }
-
-    .pipeline-view {
-      background: #050811;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .pipeline-steps {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .pipe-step {
-      font-size: 0.75rem;
-      font-family: 'Fira Code', monospace;
-      padding: 0.35rem 0.75rem;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border);
-      color: #94a3b8;
-    }
-
-    .pipe-step.active {
-      border-color: var(--accent);
-      color: #c7d2fe;
-      background: rgba(var(--accent-rgb), 0.15);
-    }
-
-    .response-status {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border);
-      padding-top: 0.75rem;
-    }
-
-    .status-pill {
-      font-family: 'Fira Code', monospace;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      background: rgba(16, 185, 129, 0.2);
-      color: #34d399;
-    }
-
-    .json-code {
-      background: #000000;
-      padding: 1rem;
-      border-radius: 10px;
-      font-size: 0.8rem;
-      color: #a5b4fc;
-      max-height: 160px;
-      overflow-y: auto;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* Back Buttons & Dual Route Links */
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: all 0.2s;
-      padding: 7px 14px;
-      border-radius: 10px;
-      border: 1px solid rgba(var(--accent-rgb), 0.25);
-      background: rgba(var(--accent-rgb), 0.06);
-    }
-
-    .back-btn:hover {
-      transform: translateX(-4px);
-      background: rgba(var(--accent-rgb), 0.18);
-      border-color: var(--accent);
-      color: #fff;
-    }
-
-    footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-top: 1px solid var(--border);
-      padding-top: 2rem;
-      margin-top: 4rem;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      flex-wrap: wrap;
-      gap: 1.25rem;
-      width: 100%;
-    }
-
   </style>
 </head>
 <body>
 
   <div class="portal-container">
-    <!-- Breadcrumb with Full Route Back to Master Hub -->
+    <!-- Breadcrumbs matching DBMS exactly -->
     <div class="breadcrumb">
-      <a href="../../index.html">Study Portal</a>
-      <span>/</span>
+      <a href="../../index.html">Academic Hub</a>
+      <span>&rsaquo;</span>
       <a href="../index.html">Semester III</a>
-      <span>/</span>
-      <span style="color: #fff;">Web-Dev-3 (Web Development III)</span>
+      <span>&rsaquo;</span>
+      <span>Web Development III (Web-Dev-3)</span>
     </div>
 
-    <!-- Hero -->
-    <div class="hero">
-      <div class="subject-tag">🌐 Fullstack Architecture &amp; APIs</div>
-      <h1>Web Development <span>III</span></h1>
-      <p class="lead">Building production-grade fullstack web systems: Next.js 14+ App Router, React Server Components (RSC), Express.js backend microservices, JWT authorization middleware, schema validation with Zod, and complete 40-question university exam blueprints.</p>
+    <!-- Header matching DBMS exactly -->
+    <div class="header">
+      <h1>Web Development III (Web-Dev-3)</h1>
+      <p class="subtitle">Curated Exam Repository &bull; 13 Teacher Blueprint Solved Questions &bull; Classroom Tests 1 &amp; 3 Solved &bull; 24-Question Master Core Bank &bull; Specialized <code>;short-revision;</code> &bull; Interactive Workbench</p>
     </div>
 
-    <!-- Stats Ribbon -->
-    <div class="stats-strip">
+    <!-- Stats Ribbon matching DBMS exactly -->
+    <div class="stats-ribbon">
       <div class="stat-card">
         <div class="stat-icon">📚</div>
         <div class="stat-info">
-          <h4>40 Questions</h4>
-          <p>100% Solved Solutions</p>
+          <h4>40 Solved Qs</h4>
+          <p>100% Comprehensive Bank</p>
         </div>
       </div>
       <div class="stat-card">
@@ -1558,36 +1257,33 @@
         <div class="stat-icon">⚡</div>
         <div class="stat-info">
           <h4>Express Engine</h4>
-          <p>Live Workbench &amp; Simulator</p>
+          <p>Live Workbench</p>
         </div>
       </div>
     </div>
 
-    <!-- Sticky Navigation Tabs: 5 Dedicated Sections -->
-    <div class="sticky-nav">
+    <!-- Non-Sticky Navigation Tabs matching DBMS exactly -->
+    <div class="tabs-nav">
       <div class="nav-tabs-wrapper">
         <button class="nav-tab active" onclick="switchMainTab('blueprint', this)">
-          <span>⭐</span> Teacher's Blueprint (13 Solved Qs)
+          <span>⭐</span> Teacher Blueprint (13)
         </button>
         <button class="nav-tab" onclick="switchMainTab('tests', this)">
-          <span>🧪</span> Classroom Tests (Tests 1 &amp; 3 Solved)
+          <span>🧪</span> Classroom Tests (3)
         </button>
         <button class="nav-tab" onclick="switchMainTab('questions', this)">
-          <span>📚</span> 24-Question Master Question Bank
+          <span>📚</span> Master Core Bank (24)
         </button>
         <button class="nav-tab" onclick="switchMainTab('revision', this)">
-          <span>⚡</span> ;short-revision; Core
+          <span>⚡</span> ;short-revision; (7)
         </button>
         <button class="nav-tab" onclick="switchMainTab('workbench', this)">
-          <span>🛠️</span> Interactive Express Workbench
-        </button>
-        <button class="nav-tab" onclick="switchMainTab('curriculum', this)">
-          <span>🗺️</span> Fullstack Modules &amp; Curriculum
+          <span>🛠️</span> Interactive Workbench
         </button>
       </div>
     </div>
 
-    <!-- Global Search & Tag Filter Bar (Visible in Blueprint & Question tabs) -->
+    <!-- Global Search & Tag Filter Bar matching DBMS -->
     <div class="filter-bar" id="global-filter-bar">
       <div class="search-input-wrapper">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -5175,30 +4871,29 @@ app.listen(3000, () => console.log('Pipeline server active on port 3000'));</cod
       </div>
     </div>
 
-    <!-- ==================== FOOTER WITH DUAL PORTAL NAVIGATION ==================== -->
-    <footer>
-      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-        <a href="../index.html" class="back-btn">
+        <!-- ==================== FOOTER MATCHING DBMS ==================== -->
+    <footer class="portal-footer">
+      <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+        <a href="../index.html" class="back-link">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           Back to Semester III Portal
         </a>
-        <a href="../../index.html" class="back-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-          Back to Main Study Portal
+        <a href="../../index.html" class="back-link">
+          🎓 Academic Master Hub
         </a>
       </div>
-      <span style="font-size: 0.85rem; color: var(--text-muted);">da-tum .study &bull; Academic Engineering Hub &bull; Semester III Web-Dev-3 (Issue #12)</span>
+      <span style="font-size: 0.82rem; color: var(--text-muted);">da-tum .study &bull; Academic Engineering Hub &bull; Semester III Web-Dev-3 (Issue #12)</span>
     </footer>
   </div>
 
   <!-- ==================== CLIENT JAVASCRIPT ==================== -->
   <script>
-    // Tab switching logic across 5 tabs
+    // Tab switching logic across 6 tabs
     function switchMainTab(tabId, btn) {
-      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-btn, .nav-tab').forEach(t => t.classList.remove('active'));
       document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
       
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
       const targetSec = document.getElementById('section-' + tabId);
       if (targetSec) {
         targetSec.classList.add('active');
@@ -5206,14 +4901,15 @@ app.listen(3000, () => console.log('Pipeline server active on port 3000'));</cod
       
       // Control search bar visibility (show in blueprint, tests, questions tabs)
       const filterBar = document.getElementById('global-filter-bar');
-      if (['blueprint', 'tests', 'questions'].includes(tabId)) {
-        filterBar.style.display = 'flex';
-      } else {
-        filterBar.style.display = 'none';
+      if (filterBar) {
+        if (['blueprint', 'tests', 'questions'].includes(tabId)) {
+          filterBar.style.display = 'flex';
+        } else {
+          filterBar.style.display = 'none';
+        }
       }
       
       handleSearch();
-      window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
     // Lightbox modal logic with zoom controls
@@ -5392,84 +5088,6 @@ app.listen(3000, () => console.log('Pipeline server active on port 3000'));</cod
       }
 
       handleMethodChange();
-
-    // ==================== MASTER PIPELINE SIMULATOR ====================
-    const masterRoutes = {
-      login: {
-        steps: ['1. express.json()', '2. rateLimiter()', '3. zodValidate(LoginSchema)', '4. bcrypt.compare()', '5. jwt.sign()'],
-        status: '200 OK',
-        json: `{
-  "status": "success",
-  "data": {
-    "user": { "id": "usr_99", "email": "dev@college.edu", "role": "STUDENT" },
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "expiresIn": "7d"
-  }
-}`
-      },
-      profile: {
-        steps: ['1. cookieParser()', '2. requireAuth()', '3. jwt.verify()', '4. prisma.user.findUnique()'],
-        status: '200 OK',
-        json: `{
-  "status": "success",
-  "user": {
-    "id": "usr_99",
-    "name": "Harsh Dev",
-    "semester": 3,
-    "enrolledCourses": ["N2T", "CC-1", "DAA", "Web-Dev-3", "DBMS"]
-  }
-}`
-      },
-      createPost: {
-        steps: ['1. requireAuth()', '2. zodValidate(PostSchema)', '3. sanitizeInput()', '4. prisma.post.create()'],
-        status: '201 Created',
-        json: `{
-  "status": "success",
-  "message": "Resource published successfully",
-  "post": {
-    "id": "pst_102",
-    "title": "Complete DAA Master Theorem Guide",
-    "authorId": "usr_99",
-    "createdAt": "2026-10-11T14:32:00Z"
-  }
-}`
-      },
-      getPosts: {
-        steps: ['1. paginationParser()', '2. redisCacheCheck()', '3. prisma.post.findMany({ take: 10 })'],
-        status: '200 OK (Cache Hit)',
-        json: `{
-  "status": "success",
-  "meta": { "page": 1, "limit": 10, "total": 48 },
-  "data": [
-    { "id": "pst_102", "title": "Complete DAA Guide" },
-    { "id": "pst_101", "title": "Nand2Tetris ALU Design" }
-  ]
-}`
-      }
-    };
-
-    function testEndpoint(routeKey, btn) {
-      document.querySelectorAll('.endpoint-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-
-      const data = masterRoutes[routeKey];
-      const pipeContainer = document.getElementById('pipeSteps');
-      if (pipeContainer && data) {
-        pipeContainer.innerHTML = '';
-        data.steps.forEach(step => {
-          const span = document.createElement('span');
-          span.className = 'pipe-step active';
-          span.innerText = step;
-          pipeContainer.appendChild(span);
-        });
-        document.getElementById('respStatus').innerText = data.status;
-        document.getElementById('jsonResp').innerText = data.json;
-      }
-    }
-
-    // Initialize default master pipeline
-    testEndpoint('login', document.querySelector('.endpoint-btn'));
-
       executeSimulatedRequest();
     }
 
