@@ -1,0 +1,25 @@
+1. What is Backend Development? Explain its importance and major components.
+2. What are Modules in Node.js? Explain the different types of modules with suitable examples.
+3. What is the fs module in Node.js? Explain any two operations performed using the fs module with examples.
+4. What is HTTP? Explain the difference between an HTTP Request and an HTTP Response.
+5. What is Express.js? Explain its role in Node.js backend development.
+6. What is Express Routing? Define Static Routing and Dynamic Routing with suitable examples.
+7. What is Middleware? Explain its types in Express.js with examples.
+8. What is Middleware Chaining? Explain with a suitable example.
+9. Create a basic HTTP server using Node.js. Implement at least two routes and handle the request, response, and errors properly.
+10. Create a server using Express.js. Implement at least two routes and handle the request, response, and errors properly.
+11. Perform CRUD operations using Express.js. Explain and implement Create, Read, Update, and Delete operations.
+12. Implement CRUD operations using the fs module in Node.js without using a database.
+13. What is MVC architecture? Explain its components and advantages in backend development.
+14. Implement CRUD operations using the MVC architecture in Express.js.
+15. ⁠What are HTTP methods? Explain GET, POST, PUT, PATCH, and DELETE with examples.
+16. What are HTTP status codes? Explain 200, 201, 400, 401, 404, and 500.
+17. What is the difference between req.params, req.query, and req.body in Express.js?
+18. What is express.json() middleware? Why is it used in Express.js?
+19. What is REST API? Explain its features and principles with an example.
+20. What is the difference between PUT and PATCH requests? Explain with examples.
+21. Create an Express.js API to perform CRUD operations on an array of student objects.
+22. Create a dynamic route in Express.js to fetch a student using their ID.
+23. Create an error-handling middleware in Express.js and explain how it works.
+24. Explain the complete flow of an Express.js request from Client → Middleware → Route → Controller → Response with a suitable example.
+
