@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="820" height="440" fill="url(#bgGrad3)" rx="16" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <text x="410" y="34" fill="#f3f4f6" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" text-anchor="middle">4-Way Multiplexer (Mux4Way) Tree Architecture</text>
+  <text x="410" y="58" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="13" text-anchor="middle">Built from 3 two-way Mux gates; selects a (00), b (01), c (10), or d (11)</text>
+
+  <!-- Input a -->
+  <line x1="80" y1="100" x2="180" y2="100" stroke="#f59e0b" stroke-width="2.5"/>
+  <circle cx="80" cy="100" r="5" fill="#f59e0b"/>
+  <text x="70" y="105" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="15" font-weight="bold" text-anchor="end">a</text>
+
+  <!-- Input b -->
+  <line x1="80" y1="150" x2="180" y2="150" stroke="#f59e0b" stroke-width="2.5"/>
+  <circle cx="80" cy="150" r="5" fill="#f59e0b"/>
+  <text x="70" y="155" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="15" font-weight="bold" text-anchor="end">b</text>
+
+  <!-- Stage 1 Mux AB -->
+  <rect x="180" y="80" width="130" height="95" rx="10" fill="rgba(239, 68, 68, 0.12)" stroke="#ef4444" stroke-width="2"/>
+  <text x="245" y="115" fill="#fca5a5" font-family="'Outfit', sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Mux (ab)</text>
+  <text x="245" y="135" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="11" text-anchor="middle">sel = sel[0]</text>
+
+  <!-- Input c -->
+  <line x1="80" y1="240" x2="180" y2="240" stroke="#f59e0b" stroke-width="2.5"/>
+  <circle cx="80" cy="240" r="5" fill="#f59e0b"/>
+  <text x="70" y="245" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="15" font-weight="bold" text-anchor="end">c</text>
+
+  <!-- Input d -->
+  <line x1="80" y1="290" x2="180" y2="290" stroke="#f59e0b" stroke-width="2.5"/>
+  <circle cx="80" cy="290" r="5" fill="#f59e0b"/>
+  <text x="70" y="295" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="15" font-weight="bold" text-anchor="end">d</text>
+
+  <!-- Stage 1 Mux CD -->
+  <rect x="180" y="220" width="130" height="95" rx="10" fill="rgba(239, 68, 68, 0.12)" stroke="#ef4444" stroke-width="2"/>
+  <text x="245" y="255" fill="#fca5a5" font-family="'Outfit', sans-serif" font-size="14" font-weight="bold" text-anchor="middle">Mux (cd)</text>
+  <text x="245" y="275" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="11" text-anchor="middle">sel = sel[0]</text>
+
+  <!-- sel[0] bus line -->
+  <line x1="245" y1="380" x2="245" y2="315" stroke="#06b6d4" stroke-width="2.5"/>
+  <line x1="245" y1="220" x2="245" y2="175" stroke="#06b6d4" stroke-width="2.5"/>
+  <circle cx="245" cy="380" r="5" fill="#06b6d4"/>
+  <text x="245" y="405" fill="#06b6d4" font-family="'Fira Code', monospace" font-size="14" font-weight="bold" text-anchor="middle">sel[0]</text>
+
+  <!-- Lines from Stage 1 to Stage 2 Mux -->
+  <line x1="310" y1="125" x2="430" y2="125" stroke="#a78bfa" stroke-width="3"/>
+  <line x1="430" y1="125" x2="430" y2="170" stroke="#a78bfa" stroke-width="3"/>
+  <line x1="430" y1="170" x2="460" y2="170" stroke="#a78bfa" stroke-width="3"/>
+  <text x="370" y="118" fill="#a78bfa" font-family="'Fira Code', monospace" font-size="11">muxAB</text>
+
+  <line x1="310" y1="265" x2="430" y2="265" stroke="#a78bfa" stroke-width="3"/>
+  <line x1="430" y1="265" x2="430" y2="220" stroke="#a78bfa" stroke-width="3"/>
+  <line x1="430" y1="220" x2="460" y2="220" stroke="#a78bfa" stroke-width="3"/>
+  <text x="370" y="280" fill="#a78bfa" font-family="'Fira Code', monospace" font-size="11">muxCD</text>
+
+  <!-- Stage 2 Final Mux -->
+  <rect x="460" y="145" width="150" height="105" rx="12" fill="rgba(99, 102, 241, 0.15)" stroke="#6366f1" stroke-width="2.5"/>
+  <text x="535" y="185" fill="#c7d2fe" font-family="'Outfit', sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Final Mux</text>
+  <text x="535" y="205" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="11" text-anchor="middle">sel = sel[1]</text>
+
+  <!-- sel[1] line -->
+  <line x1="535" y1="380" x2="535" y2="250" stroke="#06b6d4" stroke-width="2.5"/>
+  <circle cx="535" cy="380" r="5" fill="#06b6d4"/>
+  <text x="535" y="405" fill="#06b6d4" font-family="'Fira Code', monospace" font-size="14" font-weight="bold" text-anchor="middle">sel[1]</text>
+
+  <!-- Final Output line -->
+  <line x1="610" y1="195" x2="740" y2="195" stroke="#10b981" stroke-width="4"/>
+  <circle cx="740" cy="195" r="6" fill="#10b981"/>
+  <text x="755" y="200" fill="#10b981" font-family="'Fira Code', monospace" font-size="18" font-weight="bold">out</text>
+
+  <rect x="635" y="250" width="160" height="90" rx="8" fill="#1f2937" stroke="rgba(255,255,255,0.1)"/>
+  <text x="715" y="272" fill="#e5e7eb" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Selection Table</text>
+  <text x="650" y="295" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="11">00 → a   01 → b</text>
+  <text x="650" y="320" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="11">10 → c   11 → d</text>
+</svg>

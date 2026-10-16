@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="850" height="380" fill="url(#bgGrad7)" rx="16" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <text x="425" y="34" fill="#f3f4f6" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" text-anchor="middle">16-Bit Adder (Add16) Ripple-Carry Topology</text>
+  <text x="425" y="58" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="13" text-anchor="middle">16 chained FullAdders; carry ripples from bit 0 (LSB) up to bit 15 (MSB)</text>
+
+  <!-- FA 0 (LSB) -->
+  <g transform="translate(60, 100)">
+    <rect width="130" height="150" rx="10" fill="rgba(239, 68, 68, 0.12)" stroke="#ef4444" stroke-width="2"/>
+    <text x="65" y="30" fill="#fca5a5" font-family="'Outfit', sans-serif" font-size="15" font-weight="bold" text-anchor="middle">FullAdder 0</text>
+    <text x="65" y="48" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="10" text-anchor="middle">(LSB Bit 0)</text>
+    <text x="15" y="80" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="11">a[0]</text>
+    <text x="15" y="105" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="11">b[0]</text>
+    <text x="15" y="130" fill="#06b6d4" font-family="'Fira Code', monospace" font-size="11">c=0</text>
+    <text x="115" y="90" fill="#10b981" font-family="'Fira Code', monospace" font-size="11" text-anchor="end">out[0]</text>
+    <text x="115" y="130" fill="#ef4444" font-family="'Fira Code', monospace" font-size="11" text-anchor="end">c1</text>
+    <line x1="130" y1="125" x2="190" y2="125" stroke="#ef4444" stroke-width="3"/>
+  </g>
+
+  <!-- FA 1 -->
+  <g transform="translate(250, 100)">
+    <rect width="130" height="150" rx="10" fill="rgba(239, 68, 68, 0.12)" stroke="#ef4444" stroke-width="2"/>
+    <text x="65" y="30" fill="#fca5a5" font-family="'Outfit', sans-serif" font-size="15" font-weight="bold" text-anchor="middle">FullAdder 1</text>
+    <text x="65" y="48" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="10" text-anchor="middle">(Bit 1)</text>
+    <text x="15" y="80" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="11">a[1]</text>
+    <text x="15" y="105" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="11">b[1]</text>
+    <text x="15" y="130" fill="#ef4444" font-family="'Fira Code', monospace" font-size="11">c1</text>
+    <text x="115" y="90" fill="#10b981" font-family="'Fira Code', monospace" font-size="11" text-anchor="end">out[1]</text>
+    <text x="115" y="130" fill="#ef4444" font-family="'Fira Code', monospace" font-size="11" text-anchor="end">c2</text>
+    <line x1="130" y1="125" x2="190" y2="125" stroke="#ef4444" stroke-width="3"/>
+  </g>
+
+  <!-- Dots ellipsis -->
+  <text x="470" y="180" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="28" font-weight="bold">· · ·</text>
+  <line x1="510" y1="225" x2="570" y2="225" stroke="#ef4444" stroke-width="3"/>
+  <text x="540" y="215" fill="#fca5a5" font-family="'Fira Code', monospace" font-size="11" text-anchor="middle">c15</text>
+
+  <!-- FA 15 (MSB) -->
+  <g transform="translate(630, 100)">
+    <rect width="130" height="150" rx="10" fill="rgba(239, 68, 68, 0.12)" stroke="#ef4444" stroke-width="2"/>
+    <text x="65" y="30" fill="#fca5a5" font-family="'Outfit', sans-serif" font-size="15" font-weight="bold" text-anchor="middle">FullAdder 15</text>
+    <text x="65" y="48" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="10" text-anchor="middle">(MSB Bit 15)</text>
+    <text x="15" y="80" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="11">a[15]</text>
+    <text x="15" y="105" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="11">b[15]</text>
+    <text x="15" y="130" fill="#ef4444" font-family="'Fira Code', monospace" font-size="11">c15</text>
+    <text x="115" y="90" fill="#10b981" font-family="'Fira Code', monospace" font-size="11" text-anchor="end">out[15]</text>
+    <text x="115" y="130" fill="#ef4444" font-family="'Fira Code', monospace" font-size="11" text-anchor="end">drop</text>
+  </g>
+
+  <!-- Output 16-bit bus annotation -->
+  <g transform="translate(100, 300)">
+    <rect width="650" height="45" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="#10b981" stroke-width="1.5"/>
+    <text x="325" y="28" fill="#a7f3d0" font-family="'Fira Code', monospace" font-size="13" text-anchor="middle">
+      out[0..15] = a[0..15] + b[0..15] (two's complement integer addition; final overflow carry dropped)
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="500" fill="url(#bgGrad5)" rx="16" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <text x="450" y="34" fill="#f3f4f6" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" text-anchor="middle">Hack ALU Architecture &amp; Control Signal Datapath</text>
+  <text x="450" y="58" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="13" text-anchor="middle">6 Control Bits: zx, nx (x-processing) · zy, ny (y-processing) · f (function) · no (output negate)</text>
+
+  <!-- Input X Pipeline -->
+  <g transform="translate(60, 90)">
+    <text x="0" y="35" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="16" font-weight="bold">x[16]</text>
+    <line x1="50" y1="30" x2="100" y2="30" stroke="#f59e0b" stroke-width="3"/>
+    
+    <!-- zx Mux -->
+    <rect x="100" y="5" width="85" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="142" y="30" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">zx Mux</text>
+    <text x="142" y="46" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">0 or x</text>
+
+    <line x1="185" y1="30" x2="230" y2="30" stroke="#f59e0b" stroke-width="2.5"/>
+
+    <!-- nx Mux -->
+    <rect x="230" y="5" width="85" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="272" y="30" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">nx Mux</text>
+    <text x="272" y="46" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">!x or x</text>
+
+    <line x1="315" y1="30" x2="420" y2="30" stroke="#f59e0b" stroke-width="3"/>
+    <text x="365" y="22" fill="#fde68a" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">x2[16]</text>
+  </g>
+
+  <!-- Input Y Pipeline -->
+  <g transform="translate(60, 200)">
+    <text x="0" y="35" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="16" font-weight="bold">y[16]</text>
+    <line x1="50" y1="30" x2="100" y2="30" stroke="#f59e0b" stroke-width="3"/>
+
+    <!-- zy Mux -->
+    <rect x="100" y="5" width="85" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="142" y="30" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">zy Mux</text>
+    <text x="142" y="46" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">0 or y</text>
+
+    <line x1="185" y1="30" x2="230" y2="30" stroke="#f59e0b" stroke-width="2.5"/>
+
+    <!-- ny Mux -->
+    <rect x="230" y="5" width="85" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="272" y="30" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">ny Mux</text>
+    <text x="272" y="46" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">!y or y</text>
+
+    <line x1="315" y1="30" x2="420" y2="30" stroke="#f59e0b" stroke-width="3"/>
+    <text x="365" y="22" fill="#fde68a" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">y2[16]</text>
+  </g>
+
+  <!-- Function Core (Add16 & And16) -->
+  <g transform="translate(480, 110)">
+    <!-- Big ALU Wedge -->
+    <polygon points="0,0 120,40 120,140 0,180 0,110 30,90 0,70" fill="rgba(239, 68, 68, 0.18)" stroke="#ef4444" stroke-width="2.5"/>
+    <text x="55" y="70" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="16" font-weight="bold" text-anchor="middle">x2 &amp; y2</text>
+    <text x="55" y="115" fill="#ffffff" font-family="'Outfit', sans-serif" font-size="16" font-weight="bold" text-anchor="middle">x2 + y2</text>
+    <text x="60" y="150" fill="#fca5a5" font-family="'Fira Code', monospace" font-size="11" text-anchor="middle">f = 1 (+) / 0 (&amp;)</text>
+  </g>
+
+  <!-- Output Pipeline (no bit) -->
+  <g transform="translate(620, 175)">
+    <line x1="0" y1="25" x2="50" y2="25" stroke="#ef4444" stroke-width="3"/>
+    <!-- no Mux -->
+    <rect x="50" y="0" width="85" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="92" y="25" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">no Mux</text>
+    <text x="92" y="40" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="9" text-anchor="middle">!out / out</text>
+
+    <!-- Final Output -->
+    <line x1="135" y1="25" x2="220" y2="25" stroke="#10b981" stroke-width="4"/>
+    <circle cx="220" cy="25" r="5" fill="#10b981"/>
+    <text x="235" y="30" fill="#10b981" font-family="'Fira Code', monospace" font-size="16" font-weight="bold">out[16]</text>
+  </g>
+
+  <!-- Condition Flags Box (zr, ng) -->
+  <g transform="translate(680, 290)">
+    <rect width="180" height="95" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+    <text x="90" y="25" fill="#a7f3d0" font-family="'Outfit', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">Status Condition Flags</text>
+    <line x1="15" y1="35" x2="165" y2="35" stroke="rgba(255,255,255,0.08)"/>
+    <text x="20" y="55" fill="#e5e7eb" font-family="'Fira Code', monospace" font-size="12">zr: 1 if out==0</text>
+    <text x="20" y="75" fill="#e5e7eb" font-family="'Fira Code', monospace" font-size="12">ng: 1 if out&lt;0 (out[15])</text>
+  </g>
+
+  <!-- Control Bits Annotation Bar -->
+  <g transform="translate(60, 420)">
+    <rect width="780" height="50" rx="8" fill="rgba(6, 182, 212, 0.08)" stroke="#06b6d4" stroke-width="1.5"/>
+    <text x="390" y="31" fill="#67e8f9" font-family="'Fira Code', monospace" font-size="13" font-weight="600" text-anchor="middle">
+      6 Control Bits: [zx] zero X · [nx] negate X · [zy] zero Y · [ny] negate Y · [f] add/and · [no] negate output
+    </text>
+  </g>
+</svg>
