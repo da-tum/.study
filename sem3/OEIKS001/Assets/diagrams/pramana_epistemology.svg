@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="100%" height="100%" style="background:#090d16; border-radius:16px;">
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" fill="#f59e0b" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" letter-spacing="1">NYAYA EPISTEMOLOGY: THE 4 PRAMANAS &amp; SYLLOGISM</text>
+  <text x="400" y="60" text-anchor="middle" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="12">Valid Means of Knowledge (Prama) &amp; The 5-Step Invariable Concomitance (Vyapti) Inference</text>
+
+  <!-- Left: The 4 Pramanas -->
+  <g transform="translate(40, 85)">
+    <rect x="0" y="0" width="345" height="345" rx="14" fill="#111827" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1.5"/>
+    <text x="172" y="30" text-anchor="middle" fill="#fbbf24" font-family="'Outfit', sans-serif" font-size="15" font-weight="600">THE 4 NYAYA PRAMANAS (प्रमाण)</text>
+
+    <!-- 1. Pratyaksha -->
+    <rect x="15" y="48" width="315" height="60" rx="8" fill="rgba(234, 179, 8, 0.08)" stroke="rgba(234, 179, 8, 0.25)"/>
+    <text x="25" y="70" fill="#fde047" font-family="'Inter', sans-serif" font-size="12" font-weight="700">1. Pratyaksha (प्रत्यक्ष) • Direct Perception</text>
+    <text x="25" y="90" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="10.5">Direct sense-object contact (Indriyartha Sannikarsha). Nirvikalpa &amp; Savikalpa.</text>
+
+    <!-- 2. Anumana -->
+    <rect x="15" y="118" width="315" height="60" rx="8" fill="rgba(59, 130, 246, 0.08)" stroke="rgba(59, 130, 246, 0.25)"/>
+    <text x="25" y="140" fill="#60a5fa" font-family="'Inter', sans-serif" font-size="12" font-weight="700">2. Anumana (अनुमान) • Logical Inference</text>
+    <text x="25" y="160" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="10.5">Knowledge derived from prior perception via unconditioned universal relation (Vyapti).</text>
+
+    <!-- 3. Upamana -->
+    <rect x="15" y="188" width="315" height="60" rx="8" fill="rgba(16, 185, 129, 0.08)" stroke="rgba(16, 185, 129, 0.25)"/>
+    <text x="25" y="210" fill="#34d399" font-family="'Inter', sans-serif" font-size="12" font-weight="700">3. Upamana (उपमान) • Analogy / Comparison</text>
+    <text x="25" y="230" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="10.5">Cognition of similarity linking an unfamiliar object (e.g. wild gavaya) to a familiar one (cow).</text>
+
+    <!-- 4. Shabda -->
+    <rect x="15" y="258" width="315" height="60" rx="8" fill="rgba(168, 85, 247, 0.08)" stroke="rgba(168, 85, 247, 0.25)"/>
+    <text x="25" y="280" fill="#c084fc" font-family="'Inter', sans-serif" font-size="12" font-weight="700">4. Shabda (शब्द) • Reliable Testimony (Aptavakya)</text>
+    <text x="25" y="300" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="10.5">Verbal statements from a trustworthy person/source who possesses direct insight.</text>
+  </g>
+
+  <!-- Right: The 5-Step Nyaya Syllogism (Pancha-Avayava) -->
+  <g transform="translate(415, 85)">
+    <rect x="0" y="0" width="345" height="345" rx="14" fill="#111827" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5"/>
+    <text x="172" y="30" text-anchor="middle" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="15" font-weight="600">PANCHA-AVAYAVA (5-STEP SYLLOGISM)</text>
+    <text x="172" y="48" text-anchor="middle" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">Classic Inference of Fire from Smoke on the Mountain</text>
+
+    <!-- 5 Steps -->
+    <g transform="translate(15, 60)" font-family="'Inter', sans-serif">
+      <!-- Step 1 -->
+      <rect x="0" y="0" width="315" height="46" rx="6" fill="#0d1322" stroke="rgba(255,255,255,0.06)"/>
+      <text x="10" y="18" fill="#fde047" font-size="11" font-weight="700">1. Pratijñā (Thesis):</text>
+      <text x="10" y="34" fill="#cbd5e1" font-size="10">"The mountain has fire" (Parvato vahniman)</text>
+
+      <!-- Step 2 -->
+      <rect x="0" y="52" width="315" height="46" rx="6" fill="#0d1322" stroke="rgba(255,255,255,0.06)"/>
+      <text x="10" y="70" fill="#60a5fa" font-size="11" font-weight="700">2. Hetu (Ground / Reason):</text>
+      <text x="10" y="86" fill="#cbd5e1" font-size="10">"Because it possesses smoke" (Dhumavattvat)</text>
+
+      <!-- Step 3 -->
+      <rect x="0" y="104" width="315" height="52" rx="6" fill="#0d1322" stroke="rgba(255,255,255,0.06)"/>
+      <text x="10" y="122" fill="#34d399" font-size="11" font-weight="700">3. Udāharaṇa (Example + Universal Rule):</text>
+      <text x="10" y="137" fill="#cbd5e1" font-size="10">"Wherever there is smoke, there is fire, as in a hearth"</text>
+      <text x="10" y="149" fill="#a7f3d0" font-family="'Fira Code', monospace" font-size="9">Invariable Concomitance (Vyapti)</text>
+
+      <!-- Step 4 -->
+      <rect x="0" y="162" width="315" height="46" rx="6" fill="#0d1322" stroke="rgba(255,255,255,0.06)"/>
+      <text x="10" y="180" fill="#fb923c" font-size="11" font-weight="700">4. Upanaya (Application):</text>
+      <text x="10" y="196" fill="#cbd5e1" font-size="10">"This mountain possesses smoke pervaded by fire"</text>
+
+      <!-- Step 5 -->
+      <rect x="0" y="214" width="315" height="46" rx="6" fill="#0d1322" stroke="rgba(255,255,255,0.06)"/>
+      <text x="10" y="232" fill="#c084fc" font-size="11" font-weight="700">5. Nigamana (Conclusion):</text>
+      <text x="10" y="248" fill="#e9d5ff" font-size="10">"Therefore, this mountain has fire"</text>
+    </g>
+
+    <text x="172" y="335" text-anchor="middle" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="10.5">Combines Inductive Verification with Deductive Form</text>
+  </g>
+</svg>

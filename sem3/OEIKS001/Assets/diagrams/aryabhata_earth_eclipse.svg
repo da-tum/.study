@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="100%" height="100%" style="background:#090d16; border-radius:16px;">
+  <defs>
+    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ea580c"/>
+    </linearGradient>
+    <linearGradient id="earthGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="60%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="umbraGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" letter-spacing="1">ARYABHATA I: ARYABHATIYA (499 CE)</text>
+  <text x="400" y="60" text-anchor="middle" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="12">Diurnal Axial Earth Rotation &amp; Scientific Shadow Mechanism of Eclipses (Debunking Rahu/Ketu Myth)</text>
+
+  <!-- Left: Axial Rotation of Earth -->
+  <g transform="translate(40, 85)">
+    <rect x="0" y="0" width="345" height="345" rx="14" fill="#111827" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5"/>
+    <text x="172" y="30" text-anchor="middle" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="15" font-weight="600">EARTH'S AXIAL ROTATION (BHRAMANA)</text>
+    
+    <!-- Sanskrit verse quote -->
+    <rect x="15" y="48" width="315" height="48" rx="8" fill="rgba(56, 189, 248, 0.08)" stroke="rgba(56, 189, 248, 0.2)"/>
+    <text x="172" y="68" text-anchor="middle" fill="#7dd3fc" font-family="'Inter', sans-serif" font-size="11" font-style="italic">"Anulomagatir nausthah pasyaty acalam vilomagam..."</text>
+    <text x="172" y="85" text-anchor="middle" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="10">Like a man in a boat sees stationary trees moving backward...</text>
+
+    <!-- Earth globe rotating -->
+    <g transform="translate(172, 185)">
+      <!-- Axis tilted line -->
+      <line x1="-30" y1="-75" x2="30" y2="75" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 2"/>
+      <!-- Globe -->
+      <circle cx="0" cy="0" r="50" fill="url(#earthGrad)" stroke="#38bdf8" stroke-width="2"/>
+      
+      <!-- Day / Night shading -->
+      <path d="M 0,-50 A 50,50 0 0,1 0,50 Z" fill="rgba(0,0,0,0.5)"/>
+      <ellipse cx="0" cy="0" rx="49" ry="20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      
+      <!-- Rotation arrow curved -->
+      <path d="M -35,25 A 40,25 0 0,0 35,25" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+      <polygon points="35,20 45,28 35,32" fill="#f59e0b"/>
+      <text x="0" y="45" text-anchor="middle" fill="#fde047" font-family="'Fira Code', monospace" font-size="10">West to East</text>
+    </g>
+
+    <text x="172" y="275" text-anchor="middle" fill="#e5e7eb" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Scientific Cause of Day &amp; Night</text>
+    <text x="172" y="295" text-anchor="middle" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Apparent eastward star movement is relative motion</text>
+    <text x="172" y="315" text-anchor="middle" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Calculated sidereal day: 23h 56m 4.1s (Matches modern!)</text>
+  </g>
+
+  <!-- Right: Scientific Eclipse Mechanics -->
+  <g transform="translate(415, 85)">
+    <rect x="0" y="0" width="345" height="345" rx="14" fill="#111827" stroke="rgba(245, 158, 11, 0.3)" stroke-width="1.5"/>
+    <text x="172" y="30" text-anchor="middle" fill="#fbbf24" font-family="'Outfit', sans-serif" font-size="15" font-weight="600">ECLIPSE AS SHADOW PHENOMENON</text>
+
+    <!-- Ray Diagram -->
+    <g transform="translate(20, 60)">
+      <!-- Sun -->
+      <circle cx="30" cy="90" r="26" fill="url(#sunGrad)" stroke="#f59e0b" stroke-width="2"/>
+      <text x="30" y="130" text-anchor="middle" fill="#fde047" font-family="'Inter', sans-serif" font-size="10" font-weight="600">Surya (Sun)</text>
+
+      <!-- Light rays -->
+      <line x1="56" y1="75" x2="160" y2="82" stroke="rgba(254, 240, 138, 0.4)" stroke-width="1.5"/>
+      <line x1="56" y1="105" x2="160" y2="98" stroke="rgba(254, 240, 138, 0.4)" stroke-width="1.5"/>
+      
+      <!-- Earth -->
+      <circle cx="175" cy="90" r="16" fill="url(#earthGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="175" y="120" text-anchor="middle" fill="#38bdf8" font-family="'Inter', sans-serif" font-size="10" font-weight="600">Prithvi (Earth)</text>
+
+      <!-- Earth shadow cone (Umbra) -->
+      <polygon points="191,82 290,87 290,93 191,98" fill="url(#umbraGrad)"/>
+      <line x1="191" y1="82" x2="290" y2="87" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2 2"/>
+      <line x1="191" y1="98" x2="290" y2="93" stroke="rgba(255,255,255,0.2)" stroke-dasharray="2 2"/>
+
+      <!-- Moon entering shadow (Lunar Eclipse) -->
+      <circle cx="260" cy="90" r="8" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5"/>
+      <path d="M 252,90 A 8,8 0 0,0 268,90 Z" fill="#090d16"/>
+      <text x="260" y="112" text-anchor="middle" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="9">Chandra</text>
+    </g>
+
+    <!-- Detailed Notes Box -->
+    <rect x="15" y="210" width="315" height="115" rx="8" fill="#0d1322" stroke="rgba(255,255,255,0.06)"/>
+    <text x="25" y="232" fill="#fbbf24" font-family="'Inter', sans-serif" font-size="11" font-weight="700">Aryabhata's Decisive Revolution:</text>
+    <text x="25" y="252" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="11">• Lunar Eclipse: Moon enters the cylindrical shadow of Earth (Bha-chāyā)</text>
+    <text x="25" y="272" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="11">• Solar Eclipse: Moon obstructs line-of-sight between observer &amp; Sun</text>
+    <text x="25" y="292" fill="#34d399" font-family="'Inter', sans-serif" font-size="11">• Proved Moon reflects sunlight; eradicated demon swallowing folklore</text>
+    <text x="25" y="312" fill="#93c5fd" font-family="'Inter', sans-serif" font-size="11">• π ≈ 3.1416 explicitly stated as 'asanna' (approximative)</text>
+  </g>
+</svg>
