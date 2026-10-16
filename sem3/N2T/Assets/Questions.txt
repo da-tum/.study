@@ -1,0 +1,37 @@
+Nand to Tetris
+                                SET-A
+                                         1MM
+1) The 8 bit whose compliment representation of -42 is :
+2) The law  stating NOT(x and y)=Not x or NOT y is known as______________ law :
+3) The chip that routes one of several input signals to a single output line is called___________:
+4) Name the flag raised by the HACKALU whenever its output is negative__________:
+5) A RAM64 chip requires _________________ address bits to access any one  of its resistors.
+                                          5MM
+1) Construct a FULL adder using 2 Half adders and one OR gate? Explain its working and write HDL code? 
+                                                       (OR) 
+Justify why Nand is called functionally complete gate by deriving AND gate and OR gate from Nand gate alone with logic diagram and HDL code?
+ 
+                                          10MM
+1) a) Design a multiplexer (MUX 4-way). Write the truth table and verify the output for all select lines combinations? (5MM)
+ b) A RAM-64 chip is built from 8RAM-8 chips for the address 100101 6bits. Identify the target RAM8 chip and the resistor within it? State the role of DMUX and MUX?
+                                     (OR)
+2)a)Explain the hack ALU structure with a block diagram for the control bits zx=1, nx=1, zy=0, ny=0, f=1 and no=1. Trace each bit in sequence and determine the output with the zr and ng flags? (Hint: Take any value of x in 16 bit form ),
+b) Draw the block diagram of hack programme counter. State the priority order of the reset, load increment and increment signals and explain what the programme counter outputs when all three are asserted together. 
+
+                                                             SET B
+                                      1-MM
+If Boolean algebra (A+1) is always equal to_________________________________.
+In Nand to Tetris HDL  what keyboard is used to define the inputs of a chip____________________________.
+Name the chip is used to select one of two inputs based on a control bit______________________________.
+Name the flag raised by the hack ALU whenever its output bits are all zero________________________.
+A circuit that adds two single bits and produce a summon carry but does not accept carry in is__________________.
+                                       5MM
+Design and implement a 16 bit adder. Explain its working and write HDL code.
+                                         (OR)
+Design a two input XOR gate by drawing its logic circuit diagrams. Write its Boolean expression and truth table and implement and verify its functionally using HDL code?
+                                      10 MM
+1) a. Design a D multiplexer. Write the truth table and verify the output for all select lines combination.
+b. Explain D flipflop. Mention its working and role in sequential logic. Write the HDL code to implement bit chip in Nand to Tetris using a D flip flop
+(OR) 
+2) A. The hack ALU receives the control bits that x=1 NY=1 ZY=0 NY=1 F=1 O=0. Trace the affect of each control bit in sequence. Determine the final output and the values of zr and mg flags.
+B. Design and explain the functionality of programme counter chip used in hack computer or architecture. Explain the role of load increment and reset signal in programme counter.

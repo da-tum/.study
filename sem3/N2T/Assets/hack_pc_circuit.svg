@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="850" height="440" fill="url(#bgGrad6)" rx="16" stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+  <text x="425" y="34" fill="#f3f4f6" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" text-anchor="middle">Hack Program Counter (PC) Arbitration Logic</text>
+  <text x="425" y="58" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="13" text-anchor="middle">Priority Order: reset (highest) &gt; load (medium) &gt; inc (lowest) &gt; retain state</text>
+
+  <!-- Feedback Loop from Register -->
+  <!-- Register 16 -->
+  <rect x="530" y="150" width="140" height="120" rx="12" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="2.5"/>
+  <text x="600" y="200" fill="#a7f3d0" font-family="'Outfit', sans-serif" font-size="16" font-weight="bold" text-anchor="middle">Register 16</text>
+  <text x="600" y="225" fill="#9ca3af" font-family="'Fira Code', monospace" font-size="11" text-anchor="middle">load=true</text>
+
+  <!-- Output line -->
+  <line x1="670" y1="210" x2="760" y2="210" stroke="#10b981" stroke-width="4"/>
+  <circle cx="760" cy="210" r="5" fill="#10b981"/>
+  <text x="775" y="215" fill="#10b981" font-family="'Fira Code', monospace" font-size="16" font-weight="bold">out[16]</text>
+
+  <!-- Feedback line back to Inc16 -->
+  <line x1="710" y1="210" x2="710" y2="340" stroke="#60a5fa" stroke-width="2"/>
+  <line x1="710" y1="340" x2="50" y2="340" stroke="#60a5fa" stroke-width="2"/>
+  <line x1="50" y1="340" x2="50" y2="180" stroke="#60a5fa" stroke-width="2"/>
+
+  <!-- Inc16 Block -->
+  <rect x="70" y="155" width="85" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+  <text x="112" y="185" fill="#38bdf8" font-family="'Fira Code', monospace" font-size="13" font-weight="bold" text-anchor="middle">Inc16</text>
+  <line x1="50" y1="180" x2="70" y2="180" stroke="#60a5fa" stroke-width="2"/>
+  <line x1="155" y1="180" x2="190" y2="180" stroke="#38bdf8" stroke-width="2"/>
+
+  <!-- Stage 1 Mux: inc -->
+  <rect x="190" y="150" width="85" height="60" rx="6" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <text x="232" y="177" fill="#c4b5fd" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">Mux16</text>
+  <text x="232" y="197" fill="#fb923c" font-family="'Fira Code', monospace" font-size="10" text-anchor="middle">sel=inc</text>
+
+  <!-- Stage 2 Mux: load -->
+  <line x1="275" y1="180" x2="310" y2="180" stroke="#a78bfa" stroke-width="2"/>
+  <rect x="310" y="150" width="85" height="60" rx="6" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+  <text x="352" y="177" fill="#c4b5fd" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">Mux16</text>
+  <text x="352" y="197" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="10" text-anchor="middle">sel=load</text>
+  <line x1="352" y1="90" x2="352" y2="150" stroke="#f59e0b" stroke-width="2"/>
+  <text x="352" y="80" fill="#f59e0b" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">in[16]</text>
+
+  <!-- Stage 3 Mux: reset -->
+  <line x1="395" y1="180" x2="430" y2="180" stroke="#a78bfa" stroke-width="2"/>
+  <rect x="430" y="150" width="85" height="60" rx="6" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+  <text x="472" y="177" fill="#fca5a5" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">Mux16</text>
+  <text x="472" y="197" fill="#ef4444" font-family="'Fira Code', monospace" font-size="10" text-anchor="middle">sel=reset</text>
+  <line x1="472" y1="90" x2="472" y2="150" stroke="#ef4444" stroke-width="2"/>
+  <text x="472" y="80" fill="#ef4444" font-family="'Fira Code', monospace" font-size="12" text-anchor="middle">false (0)</text>
+
+  <line x1="515" y1="180" x2="530" y2="180" stroke="#10b981" stroke-width="3"/>
+
+  <!-- Priority table annotation -->
+  <rect x="180" y="270" width="490" height="50" rx="8" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="425" y="300" fill="#fca5a5" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" text-anchor="middle">
+    WHEN reset=1, load=1, inc=1 → Output = 0 (reset overrides load and inc)
+  </text>
+</svg>
