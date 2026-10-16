@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" width="100%" height="100%" style="background:#090d16; border-radius:16px;">
+  <defs>
+    <linearGradient id="fireGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="50%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#fde047"/>
+    </linearGradient>
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#475569"/>
+      <stop offset="50%" stop-color="#94a3b8"/>
+      <stop offset="100%" stop-color="#334155"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" fill="#f97316" font-family="'Outfit', sans-serif" font-size="20" font-weight="700" letter-spacing="1">ANCIENT INDIAN METALLURGY &amp; ALCHEMY (RASASHASTRA)</text>
+  <text x="400" y="60" text-anchor="middle" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="12">Wootz Crucible Steel, Zawar Inverted Zinc Distillation &amp; Delhi Iron Pillar Corrosion Resistance</text>
+
+  <!-- 3-Panel Grid -->
+  <!-- Box 1: Wootz Crucible Steel -->
+  <g transform="translate(40, 85)">
+    <rect x="0" y="0" width="225" height="345" rx="14" fill="#111827" stroke="rgba(249, 115, 22, 0.3)" stroke-width="1.5"/>
+    <text x="112" y="30" text-anchor="middle" fill="#fb923c" font-family="'Outfit', sans-serif" font-size="14" font-weight="700">1. WOOTZ CRUCIBLE STEEL</text>
+    
+    <!-- Crucible Illustration -->
+    <g transform="translate(62, 50)">
+      <!-- Flame base -->
+      <path d="M 0,110 Q 25,80 50,110 Q 75,80 100,110 L 100,120 L 0,120 Z" fill="url(#fireGrad)"/>
+      <!-- Sealed clay crucible -->
+      <path d="M 15,100 L 25,20 Q 50,10 75,20 L 85,100 Q 50,108 15,100 Z" fill="#292524" stroke="#78716c" stroke-width="2"/>
+      <!-- Internal contents -->
+      <rect x="35" y="45" width="30" height="40" rx="4" fill="#71717a"/>
+      <circle cx="43" cy="55" r="3" fill="#22c55e"/> <!-- biomass carbon -->
+      <circle cx="57" cy="65" r="3" fill="#22c55e"/>
+      <circle cx="48" cy="75" r="3" fill="#22c55e"/>
+      <text x="50" y="35" text-anchor="middle" fill="#fbbf24" font-family="'Fira Code', monospace" font-size="9">1400°C</text>
+    </g>
+
+    <text x="112" y="195" text-anchor="middle" fill="#e5e7eb" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Ukku / Damascus Origin</text>
+    <text x="15" y="220" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Sealed clay crucible process</text>
+    <text x="15" y="240" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Wrought iron + Cassia auriculata</text>
+    <text x="15" y="260" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Ultra-high carbon (1.0 - 1.6% C)</text>
+    <text x="15" y="280" fill="#fde047" font-family="'Inter', sans-serif" font-size="11">• Carbon nanotube structure</text>
+    <text x="15" y="300" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Signature water-wave pattern</text>
+  </g>
+
+  <!-- Box 2: Zawar Zinc Distillation -->
+  <g transform="translate(285, 85)">
+    <rect x="0" y="0" width="230" height="345" rx="14" fill="#111827" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1.5"/>
+    <text x="115" y="30" text-anchor="middle" fill="#38bdf8" font-family="'Outfit', sans-serif" font-size="14" font-weight="700">2. ZAWAR ZINC SMELTING</text>
+
+    <!-- Inverted Retort Illustration -->
+    <g transform="translate(70, 50)">
+      <!-- Top furnace wall -->
+      <rect x="0" y="0" width="90" height="15" fill="#475569"/>
+      <!-- Inverted clay retort -->
+      <path d="M 15,20 Q 45,5 75,20 L 70,60 L 55,95 L 35,95 L 20,60 Z" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+      <!-- Condenser neck going down -->
+      <rect x="40" y="95" width="10" height="30" fill="#64748b"/>
+      <!-- Lower cooling basin -->
+      <rect x="25" y="125" width="40" height="12" rx="3" fill="#0284c7" stroke="#38bdf8"/>
+      <text x="45" y="148" text-anchor="middle" fill="#38bdf8" font-family="'Inter', sans-serif" font-size="9">Liquid Zinc</text>
+    </g>
+
+    <text x="115" y="215" text-anchor="middle" fill="#e5e7eb" font-family="'Inter', sans-serif" font-size="12" font-weight="600">World's 1st Industrial Zinc</text>
+    <text x="15" y="240" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Downward distillation retort</text>
+    <text x="15" y="260" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Zinc boils at 907°C (vapour)</text>
+    <text x="15" y="280" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Condensation below furnace</text>
+    <text x="15" y="300" fill="#38bdf8" font-family="'Inter', sans-serif" font-size="11">• Mentioned in Rasaratnasamuccaya</text>
+    <text x="15" y="320" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• 12th-16th C Rajasthan plant</text>
+  </g>
+
+  <!-- Box 3: Delhi Iron Pillar -->
+  <g transform="translate(535, 85)">
+    <rect x="0" y="0" width="225" height="345" rx="14" fill="#111827" stroke="rgba(16, 185, 129, 0.3)" stroke-width="1.5"/>
+    <text x="112" y="30" text-anchor="middle" fill="#34d399" font-family="'Outfit', sans-serif" font-size="14" font-weight="700">3. DELHI IRON PILLAR</text>
+
+    <!-- Pillar Graphic -->
+    <g transform="translate(90, 50)">
+      <!-- Pillar Capital -->
+      <polygon points="12,10 32,10 27,20 17,20" fill="#e2e8f0"/>
+      <rect x="17" y="20" width="10" height="90" fill="url(#metalGrad)" stroke="#64748b" stroke-width="1"/>
+      <!-- Protective Layer Glow -->
+      <rect x="14" y="20" width="16" height="90" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3"/>
+      <!-- Base -->
+      <rect x="5" y="110" width="34" height="15" rx="2" fill="#334155"/>
+      <text x="22" y="140" text-anchor="middle" fill="#34d399" font-family="'Fira Code', monospace" font-size="9">~1600 Yrs</text>
+    </g>
+
+    <text x="112" y="215" text-anchor="middle" fill="#e5e7eb" font-family="'Inter', sans-serif" font-size="12" font-weight="600">Corrosion Resistance Mechanism</text>
+    <text x="15" y="240" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• 6+ tonnes forged wrought iron</text>
+    <text x="15" y="260" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Gupta era (King Chandragupta II)</text>
+    <text x="15" y="280" fill="#a7f3d0" font-family="'Inter', sans-serif" font-size="11">• High phosphorus content (0.25%)</text>
+    <text x="15" y="300" fill="#9ca3af" font-family="'Inter', sans-serif" font-size="11">• Misawite (δ-FeOOH) film</text>
+    <text x="15" y="320" fill="#fde047" font-family="'Inter', sans-serif" font-size="11">• Catalyzed amorphous barrier</text>
+  </g>
+</svg>

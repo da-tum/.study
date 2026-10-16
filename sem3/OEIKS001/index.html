@@ -3,21 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Indian Knowledge Systems (OEIKS001) | Semester III Portal</title>
+  <title>Indian Knowledge Systems (OEIKS001) — Marvels of Science &amp; Heritage Portal | Semester III</title>
+  <meta name="description" content="Academic repository and university exam blueprint for Indian Knowledge Systems (OEIKS001): Marvels of Science and Wonder, Sulba Sutras, Panini grammar, Aryabhata astronomy, Wootz steel metallurgy, and Nyaya epistemology.">
   <link rel="stylesheet" href="../../nav-header.css">
   <script src="../../nav-header.js" defer></script>
+  
+  <!-- KaTeX for authentic mathematical typography -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body, {delimiters: [{left: '$$', right: '$$', display: true}, {left: '$', right: '$', display: false}]});"></script>
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
 
     :root {
       --bg: #090d16;
-      --card-bg: rgba(17, 24, 39, 0.7);
+      --card-bg: rgba(17, 24, 39, 0.78);
+      --card-hover: rgba(26, 35, 55, 0.95);
       --text: #f3f4f6;
       --text-muted: #9ca3af;
+      --text-dim: #6b7280;
       --border: rgba(255, 255, 255, 0.08);
+      --border-light: rgba(255, 255, 255, 0.15);
       --accent: #eab308;
       --accent-rgb: 234, 179, 8;
       --accent-secondary: #f97316;
+      --accent-secondary-rgb: 249, 115, 22;
+      --emerald: #10b981;
+      --sky: #38bdf8;
+      --purple: #c084fc;
+      --glow: rgba(234, 179, 8, 0.15);
     }
 
     * {
@@ -27,28 +43,31 @@
       font-family: 'Inter', sans-serif;
     }
 
-    code, pre {
+    code, pre, .font-mono {
       font-family: 'Fira Code', monospace;
     }
 
     body {
       background: var(--bg);
       background-image: 
-        radial-gradient(circle at 10% 15%, rgba(234, 179, 8, 0.08) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(249, 115, 22, 0.06) 0%, transparent 45%);
+        radial-gradient(circle at 10% 12%, rgba(234, 179, 8, 0.09) 0%, transparent 45%),
+        radial-gradient(circle at 90% 88%, rgba(249, 115, 22, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(56, 189, 248, 0.03) 0%, transparent 60%);
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       min-height: 100vh;
-      padding: 3rem 2rem 5rem;
+      padding: 3rem 1.75rem 6rem;
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1240px;
       width: 100%;
     }
 
+    /* ─── Breadcrumb ─── */
     .breadcrumb {
       display: flex;
       align-items: center;
@@ -57,49 +76,46 @@
       color: var(--text-muted);
       margin-bottom: 2rem;
     }
-
     .breadcrumb a {
       color: var(--text-muted);
       text-decoration: none;
       transition: color 0.2s;
     }
-
     .breadcrumb a:hover {
       color: var(--accent);
     }
 
+    /* ─── Hero Section ─── */
     .hero {
       margin-bottom: 3.5rem;
       position: relative;
     }
-
     .subject-tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 0.35rem 1rem;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.25);
+      gap: 7px;
+      padding: 0.38rem 1.1rem;
+      background: rgba(var(--accent-rgb), 0.12);
+      border: 1px solid rgba(var(--accent-rgb), 0.3);
       border-radius: 100px;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       margin-bottom: 1.25rem;
     }
-
     h1 {
-      font-size: 3.4rem;
-      font-weight: 800;
+      font-size: 3.5rem;
+      font-weight: 900;
       font-family: 'Outfit', sans-serif;
       letter-spacing: -0.04em;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #ffffff 40%, #fef08a 100%);
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #ffffff 30%, #fef08a 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     h1 span {
       font-weight: 400;
       font-style: italic;
@@ -107,71 +123,132 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
     .lead {
-      color: var(--text-muted);
+      color: #d1d5db;
       font-size: 1.15rem;
-      max-width: 820px;
-      line-height: 1.7;
-      margin-bottom: 2rem;
+      max-width: 900px;
+      line-height: 1.75;
+      margin-bottom: 2.25rem;
     }
 
-    /* Stats */
+    /* ─── Stats Grid ─── */
     .stats-strip {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 1.25rem;
-      margin-bottom: 3rem;
+      margin-bottom: 3.5rem;
     }
-
     .stat-card {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.025);
       border: 1px solid var(--border);
       border-radius: 18px;
-      padding: 1.25rem 1.5rem;
+      padding: 1.35rem 1.5rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.15rem;
+      transition: all 0.25s ease;
     }
-
+    .stat-card:hover {
+      background: rgba(var(--accent-rgb), 0.06);
+      border-color: rgba(var(--accent-rgb), 0.3);
+      transform: translateY(-3px);
+    }
     .stat-icon {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 14px;
-      background: rgba(var(--accent-rgb), 0.1);
-      border: 1px solid rgba(var(--accent-rgb), 0.2);
+      background: rgba(var(--accent-rgb), 0.12);
+      border: 1px solid rgba(var(--accent-rgb), 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      flex-shrink: 0;
     }
-
     .stat-info h4 {
-      font-size: 1.35rem;
-      font-weight: 700;
+      font-size: 1.45rem;
+      font-weight: 800;
       color: #ffffff;
       font-family: 'Outfit', sans-serif;
+      line-height: 1.2;
     }
-
     .stat-info p {
       font-size: 0.8rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
     }
 
-    /* Interactive Timeline / Scientific Matrix */
+    /* ─── Navigation Tabs & Jump Bar ─── */
+    .jump-nav {
+      display: flex;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 0.8rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .jump-btn {
+      padding: 0.6rem 1.2rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .jump-btn:hover, .jump-btn.active {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* ─── Section Headers ─── */
+    .section-head {
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title span {
+      color: var(--accent);
+    }
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0.3rem;
+      max-width: 800px;
+    }
+
+    /* ─── Interactive Tool: Chronological Heritage Timeline ─── */
     .interactive-card {
       background: var(--card-bg);
-      border: 1px solid rgba(var(--accent-rgb), 0.3);
+      border: 1px solid rgba(var(--accent-rgb), 0.35);
       border-radius: 24px;
-      padding: 2.25rem;
-      margin-bottom: 3.5rem;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      padding: 2.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
       position: relative;
       overflow: hidden;
     }
-
     .interactive-card::before {
       content: '';
       position: absolute;
@@ -179,297 +256,610 @@
       left: 0;
       width: 100%;
       height: 4px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary), var(--sky));
     }
-
-    .simulator-header {
+    .timeline-scrubber {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.6rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
     }
-
-    .simulator-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .simulator-title h3 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    .matrix-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 2rem;
-    }
-
-    .matrix-picker {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .matrix-item {
-      padding: 1rem 1.25rem;
+    .era-pill {
+      padding: 0.65rem 1.25rem;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      cursor: pointer;
-      transition: all 0.25s;
-    }
-
-    .matrix-item:hover, .matrix-item.active {
-      background: rgba(var(--accent-rgb), 0.12);
-      border-color: rgba(var(--accent-rgb), 0.4);
-      transform: translateX(4px);
-    }
-
-    .matrix-item h4 {
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 0.2rem;
-    }
-
-    .matrix-item span {
-      font-size: 0.8rem;
+      border-radius: 12px;
       color: var(--text-muted);
-    }
-
-    .matrix-details {
-      background: #0d1322;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.75rem;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.25s;
       display: flex;
       flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
     }
-
-    .matrix-field-tag {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #fde047;
-      margin-bottom: 0.5rem;
+    .era-pill span.era-date {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      font-family: 'Fira Code', monospace;
     }
-
-    .matrix-heading {
-      font-size: 1.3rem;
-      font-weight: 700;
+    .era-pill:hover, .era-pill.active {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
       color: #ffffff;
-      font-family: 'Outfit', sans-serif;
-      margin-bottom: 0.75rem;
+      transform: translateY(-2px);
     }
-
-    .matrix-desc {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
+    .era-pill.active span.era-date {
+      color: var(--accent);
     }
-
-    .cs-box {
-      background: #050811;
-      border: 1px solid rgba(234, 179, 8, 0.2);
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      margin-top: auto;
-    }
-
-    .cs-box h5 {
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #facc15;
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .cs-box p {
-      font-size: 0.82rem;
-      color: #cbd5e1;
-      line-height: 1.5;
-    }
-
-    /* Modules */
-    .section-title {
-      font-size: 1.8rem;
-      font-weight: 700;
-      font-family: 'Outfit', sans-serif;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .section-title::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .modules-grid {
+    .timeline-display {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .module-card {
-      background: var(--card-bg);
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.25rem;
+      background: #0b1120;
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 1.75rem;
-      transition: all 0.3s ease;
-      display: flex;
-      flex-direction: column;
+      padding: 2rem;
     }
-
-    .module-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(var(--accent-rgb), 0.4);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    .timeline-info h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
     }
-
-    .module-num {
+    .timeline-era-badge {
+      display: inline-block;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--accent);
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .timeline-info p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .timeline-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+    .timeline-features li {
+      font-size: 0.88rem;
+      color: #9ca3af;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .timeline-features li strong {
+      color: #f3f4f6;
+    }
+    .timeline-diagram-container {
+      background: #060913;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      min-height: 280px;
+    }
+    .timeline-diagram-container img, .timeline-diagram-container svg {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
     }
 
-    .module-card h3 {
-      font-size: 1.25rem;
+    /* ─── Vedic Math Arithmetic Sandbox ─── */
+    .sandbox-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .sandbox-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .sandbox-box h3 {
+      font-size: 1.35rem;
       font-weight: 700;
       color: #ffffff;
-      margin-bottom: 0.75rem;
       font-family: 'Outfit', sans-serif;
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sandbox-sutra-tag {
+      font-size: 0.75rem;
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+    }
+    .calc-input-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+    }
+    .calc-input-field {
+      width: 90px;
+      background: #0d1322;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 0.6rem 0.8rem;
+      color: #ffffff;
+      font-family: 'Fira Code', monospace;
+      font-size: 1.15rem;
+      text-align: center;
+      outline: none;
+    }
+    .calc-input-field:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.3);
+    }
+    .calc-btn {
+      padding: 0.65rem 1.2rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      border: none;
+      border-radius: 10px;
+      color: #090d16;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .calc-btn:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.4);
+    }
+    .calc-visual-output {
+      background: #050811;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 14px;
+      padding: 1.25rem;
+      flex-grow: 1;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+    .calc-visual-output .highlight {
+      color: #fde047;
+      font-weight: 700;
+    }
+    .calc-visual-output .cross-step {
+      color: #38bdf8;
     }
 
-    .module-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    /* ─── Classroom Drill Sheets Section ─── */
+    .classroom-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 1.75rem;
+      margin-bottom: 4rem;
+    }
+    .sheet-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s;
+    }
+    .sheet-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+    }
+    .sheet-thumb-wrap {
+      width: 100%;
+      height: 220px;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      background: #070b14;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 1.25rem;
+      cursor: pointer;
+    }
+    .sheet-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .sheet-thumb-wrap:hover img {
+      transform: scale(1.05);
+    }
+    .zoom-hint {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .sheet-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 0.5rem;
+    }
+    .sheet-transcription {
+      background: #060913;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 1rem;
+      font-size: 0.82rem;
+      color: #cbd5e1;
       line-height: 1.6;
       margin-bottom: 1.25rem;
       flex-grow: 1;
     }
+    .sheet-transcription ol, .sheet-transcription ul {
+      padding-left: 1.2rem;
+      margin-top: 0.4rem;
+    }
+    .sheet-transcription li {
+      margin-bottom: 0.3rem;
+    }
+    .sheet-transcription strong {
+      color: #fde047;
+    }
 
-    .topics-list {
+    /* ─── Search & Category Filter ─── */
+    .filter-bar {
       display: flex;
+      gap: 1rem;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    .search-input-wrap {
+      flex: 1;
+      min-width: 280px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: #0d1322;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      color: #ffffff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.25);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 1rem;
+    }
+    .category-pills {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .cat-btn {
+      padding: 0.45rem 0.95rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cat-btn:hover, .cat-btn.active {
+      background: rgba(var(--accent-rgb), 0.15);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* ─── Exam Blueprint & Solutions Hub ─── */
+    .questions-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 4.5rem;
+    }
+    .question-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 2.25rem;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .question-card:hover {
+      border-color: rgba(var(--accent-rgb), 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    }
+    .card-top-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+    .marks-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.3rem 0.85rem;
+      border-radius: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .marks-10 {
+      background: rgba(234, 179, 8, 0.15);
+      border: 1px solid rgba(234, 179, 8, 0.4);
+      color: #fde047;
+    }
+    .marks-5 {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+    .domain-tag {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+    .question-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
       margin-bottom: 1.25rem;
+      line-height: 1.35;
     }
-
-    .topic-badge {
-      font-size: 0.72rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      color: #cbd5e1;
-    }
-
-    .status-tag {
+    .rubric-pill {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #10b981;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10b981;
-    }
-
-    /* Materials */
-    .materials-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
-
-    .material-box {
-      background: rgba(255, 255, 255, 0.02);
+      gap: 6px;
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 1.5rem;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.3s;
+      padding: 0.3rem 0.8rem;
+      border-radius: 8px;
+      color: #e5e7eb;
+      margin-bottom: 1.5rem;
+    }
+    .solution-body {
+      color: #d1d5db;
+      font-size: 0.95rem;
+      line-height: 1.75;
+    }
+    .solution-body h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fef08a;
+      margin: 1.5rem 0 0.6rem;
+      font-family: 'Outfit', sans-serif;
+    }
+    .solution-body ul, .solution-body ol {
+      padding-left: 1.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .solution-body li {
+      margin-bottom: 0.45rem;
+    }
+    .solution-body p {
+      margin-bottom: 1rem;
+    }
+    .diagram-embed {
+      margin: 1.75rem 0;
+      background: #060913;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .diagram-embed img, .diagram-embed svg {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .diagram-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+      text-align: center;
+    }
+    .highlight-box {
+      background: rgba(234, 179, 8, 0.06);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      font-size: 0.9rem;
+      color: #fef08a;
+    }
+
+    /* ─── High-Yield Revision Tables ─── */
+    .tables-section {
+      margin-bottom: 5rem;
+    }
+    .table-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      overflow-x: auto;
+    }
+    .table-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 10px;
     }
-
-    .material-box:hover {
-      background: rgba(var(--accent-rgb), 0.08);
-      border-color: rgba(var(--accent-rgb), 0.3);
-      transform: translateY(-3px);
-    }
-
-    .mat-icon {
-      font-size: 1.8rem;
-    }
-
-    .mat-text h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #ffffff;
-      margin-bottom: 0.25rem;
-    }
-
-    .mat-text p {
-      font-size: 0.8rem;
+    .table-card p.table-sub {
+      font-size: 0.85rem;
       color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+    table.custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+    table.custom-table th {
+      background: #0b1120;
+      color: #fbbf24;
+      font-weight: 700;
+      padding: 0.9rem 1.1rem;
+      border-bottom: 2px solid rgba(var(--accent-rgb), 0.3);
+      font-family: 'Outfit', sans-serif;
+      letter-spacing: 0.03em;
+    }
+    table.custom-table td {
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      color: #cbd5e1;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    table.custom-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+    table.custom-table td strong {
+      color: #ffffff;
     }
 
-    /* Footer */
+    /* ─── Lightbox Modal ─── */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 14px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #ffffff;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    .lightbox-caption {
+      margin-top: 1rem;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.5rem 1.5rem;
+      border-radius: 100px;
+    }
+
+    /* ─── Footer ─── */
     footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid var(--border);
-      padding-top: 2rem;
+      padding-top: 2.5rem;
       color: var(--text-muted);
       font-size: 0.85rem;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.25rem;
     }
-
     .back-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: var(--accent);
       text-decoration: none;
       font-weight: 600;
       transition: transform 0.2s;
     }
-
     .back-btn:hover {
       transform: translateX(-4px);
     }
 
-    @media (max-width: 768px) {
-      .matrix-grid {
+    /* ─── Responsive Queries ─── */
+    @media (max-width: 900px) {
+      .timeline-display {
+        grid-template-columns: 1fr;
+      }
+      .sandbox-grid {
         grid-template-columns: 1fr;
       }
       h1 {
@@ -481,278 +871,1259 @@
 <body>
 
   <div class="container">
+    <!-- Breadcrumb -->
     <div class="breadcrumb">
+      <a href="../../index.html">Study Portal</a>
+      <span>/</span>
       <a href="../index.html">Semester III</a>
       <span>/</span>
       <span>OEIKS001 (Indian Knowledge Systems)</span>
     </div>
 
+    <!-- Hero Header -->
     <div class="hero">
       <div class="subject-tag">📜 Interdisciplinary Ancient Sciences &amp; Engineering</div>
       <h1>Indian Knowledge <span>Systems (OEIKS001)</span></h1>
-      <p class="lead">Scientific foundations and technological heritage of ancient India: Sulba Sutra geometry, Pingala's binary combinatorics, Aryabhata's astronomical algorithms, Panini's formal grammar metalanguage, Wootz crucible metallurgy, and Nyaya epistemological proofs.</p>
-    </div>
-
-    <!-- Stats -->
-    <div class="stats-strip">
-      <div class="stat-card">
-        <div class="stat-icon">🧮</div>
-        <div class="stat-info">
-          <h4>Vedic Math</h4>
-          <p>Sulba &amp; Madhava Series</p>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">⚙️</div>
-        <div class="stat-info">
-          <h4>Metallurgy</h4>
-          <p>Wootz Steel &amp; Zinc</p>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">🔤</div>
-        <div class="stat-info">
-          <h4>Linguistics</h4>
-          <p>Paninian Formal BNF</p>
-        </div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-info">🟢</div>
-        <div class="stat-info">
-          <h4>Active Core</h4>
-          <p>Status: Ready</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Interactive Matrix Sandbox -->
-    <div class="interactive-card">
-      <div class="simulator-header">
-        <div class="simulator-title">
-          <span>🏛️</span>
-          <h3>Ancient Indian Scientific &amp; Epistemic Matrix</h3>
-        </div>
-        <div style="font-size: 0.8rem; color: var(--text-muted);">Explore ancient treatises &amp; their modern computing equivalents</div>
-      </div>
-
-      <div class="matrix-grid">
-        <div class="matrix-picker">
-          <div class="matrix-item active" onclick="selectMatrix('panini', this)">
-            <h4>Panini &amp; Ashtadhyayi (~500 BCE)</h4>
-            <span>Formal generative grammar, auxiliary markers &amp; rule engines</span>
-          </div>
-          <div class="matrix-item" onclick="selectMatrix('pingala', this)">
-            <h4>Pingala &amp; Chandas Shastra (~300 BCE)</h4>
-            <span>Binary arithmetic, Meru Prastara (Pascal triangle) &amp; sequences</span>
-          </div>
-          <div class="matrix-item" onclick="selectMatrix('sulba', this)">
-            <h4>Baudhayana Sulba Sutras (~800 BCE)</h4>
-            <span>Pre-Pythagorean geometry, altar layouts &amp; square root series</span>
-          </div>
-          <div class="matrix-item" onclick="selectMatrix('aryabhata', this)">
-            <h4>Aryabhata &amp; Aryabhatiya (499 CE)</h4>
-            <span>Place-value system, trigonometry (Jya), and Diophantine solvers</span>
-          </div>
-          <div class="matrix-item" onclick="selectMatrix('madhava', this)">
-            <h4>Madhava of Sangamagrama (14th C)</h4>
-            <span>Infinite calculus series for π, sine, and cosine expansions</span>
-          </div>
-          <div class="matrix-item" onclick="selectMatrix('metallurgy', this)">
-            <h4>Crucible Metallurgy &amp; Distillation</h4>
-            <span>Wootz steel, high-carbon Damascus blades &amp; zinc smelting</span>
+      <p class="lead">Scientific foundations and technological heritage of ancient India: Sulba Sutra sacred geometry, Pingala's binary metrics and combinatorial Meru Prastara, Aryabhata's axial earth rotation and trigonometry, Acharya Kanada's atomic theory, Panini's formal generative metalanguage, Wootz crucible metallurgy, and Nyaya epistemological proofs.</p>
+      
+      <!-- Stats Strip -->
+      <div class="stats-strip">
+        <div class="stat-card">
+          <div class="stat-icon">📜</div>
+          <div class="stat-info">
+            <h4>15 Treatises</h4>
+            <p>Vedas, Sutras &amp; Shastras</p>
           </div>
         </div>
-
-        <div class="matrix-details">
-          <span class="matrix-field-tag" id="matTag">Computational Linguistics</span>
-          <h3 class="matrix-heading" id="matHeading">Panini: The World's First Formal Language Specification</h3>
-          <p class="matrix-desc" id="matDesc">Panini's Ashtadhyayi composed ~4,000 algorithmic rules using auxiliary symbols (it-markers) and meta-rules (paribhāṣā). It generates the entire Sanskrit phonology and morphology through context-sensitive derivation steps.</p>
-
-          <div class="cs-box">
-            <h5 id="matCSTitle">⚡ Modern Computer Science Parallel</h5>
-            <p id="matCSDesc">Direct historical precursor to Backus-Naur Form (BNF) used in compiler construction, context-free grammars (Noam Chomsky), and modern production rule expert systems.</p>
+        <div class="stat-card">
+          <div class="stat-icon">🧮</div>
+          <div class="stat-info">
+            <h4>16 Sutras</h4>
+            <p>Vedic Mental Arithmetic</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🔬</div>
+          <div class="stat-info">
+            <h4>6 Eras</h4>
+            <p>1500 BCE — 16th C CE</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon">🎯</div>
+          <div class="stat-info">
+            <h4>10 Master Cards</h4>
+            <p>Classroom &amp; Exam Blueprint</p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Modules -->
-    <h2 class="section-title">Course Modules &amp; Syllabus</h2>
-    <div class="modules-grid">
-      <div class="module-card">
-        <span class="module-num">Unit 01</span>
-        <h3>Foundations of IKS &amp; Epistemology</h3>
-        <p>Vedic corpus classification (Samhitas, Brahmanas, Aranyakas, Upanishads). The 6 Vedangas, oral preservation mnemonics (Ghana, Jata, Pada patha), and Nyaya pramana proofs.</p>
-        <div class="topics-list">
-          <span class="topic-badge">6 Vedangas</span>
-          <span class="topic-badge">Oral Mnemonics (Pathas)</span>
-          <span class="topic-badge">Pramana Theory</span>
-          <span class="topic-badge">Nyaya vs Vaisheshika</span>
-        </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
-
-      <div class="module-card">
-        <span class="module-num">Unit 02</span>
-        <h3>Ancient Mathematics &amp; Combinatorics</h3>
-        <p>Decimal place-value numeral system with zero. Sulba Sutra geometry, Pingala's binary patterns, Brahmagupta's negative integer algebra, and Bhaskara II's Lilavati.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Sulba Sutra Geometry</span>
-          <span class="topic-badge">Pingala Binary Codes</span>
-          <span class="topic-badge">Kuttaka Algorithm</span>
-          <span class="topic-badge">Lilavati Word Problems</span>
-        </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
-
-      <div class="module-card">
-        <span class="module-num">Unit 03</span>
-        <h3>Astronomy &amp; Calendrical Computations</h3>
-        <p>Siddhantic astronomical models: Aryabhata, Varahamihira's Panchasiddhantika, Yuga cycles, true planetary longitude equations, and lunar/solar eclipse forecasting.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Aryabhatiya Astronomy</span>
-          <span class="topic-badge">Surya Siddhanta</span>
-          <span class="topic-badge">Panchang Mathematics</span>
-          <span class="topic-badge">Eclipse Geometries</span>
-        </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
-
-      <div class="module-card">
-        <span class="module-num">Unit 04</span>
-        <h3>Engineering, Architecture &amp; Metallurgy</h3>
-        <p>Harappan standardized brick proportions and hydraulic sanitation networks. Wootz crucible steel, Delhi Iron Pillar rust-resistance mechanisms, and Vastu Shastra spatial grid alignments.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Wootz Crucible Steel</span>
-          <span class="topic-badge">Harappan Town Planning</span>
-          <span class="topic-badge">Zinc Distillation (Zawar)</span>
-          <span class="topic-badge">Vastu Mandala Grids</span>
-        </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
-
-      <div class="module-card">
-        <span class="module-num">Unit 05</span>
-        <h3>Traditional Health Sciences &amp; Ecology</h3>
-        <p>Ayurvedic Tridosha homeostasis (Vata, Pitta, Kapha). Charaka and Sushruta Samhitas, surgical instrumentation, stepwells (Baolis), and sacred grove ecological conservation.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Tridosha Theory</span>
-          <span class="topic-badge">Sushruta Surgical Tools</span>
-          <span class="topic-badge">Stepwell Water Systems</span>
-          <span class="topic-badge">Eco-Conservation</span>
-        </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
-
-      <div class="module-card">
-        <span class="module-num">Unit 06</span>
-        <h3>Kerala School of Calculus</h3>
-        <p>Madhava of Sangamagrama, Jyesthadeva's Yuktibhasa (the world's first calculus exposition in Malayalam/Sanskrit), infinite series for π, Taylor-Maclaurin precursors, and error bounds.</p>
-        <div class="topics-list">
-          <span class="topic-badge">Madhava Infinite Series</span>
-          <span class="topic-badge">Yuktibhasa Proofs</span>
-          <span class="topic-badge">Remainder Term Estimates</span>
-          <span class="topic-badge">Transmission Hypotheses</span>
-        </div>
-        <div class="status-tag"><span class="status-dot"></span> Ready for Notes</div>
-      </div>
+    <!-- Quick Navigation Jump Bar -->
+    <div class="jump-nav">
+      <a href="#timeline-sec" class="jump-btn active">🏛️ Heritage Timeline</a>
+      <a href="#sandbox-sec" class="jump-btn">🧮 Vedic Math Sandbox</a>
+      <a href="#sheets-sec" class="jump-btn">📷 Classroom Lecture Sheets</a>
+      <a href="#blueprint-sec" class="jump-btn">📝 Exam Solutions Hub</a>
+      <a href="#revision-sec" class="jump-btn">📊 High-Yield Tables</a>
     </div>
 
-    <!-- Materials -->
-    <h2 class="section-title">Course Assets &amp; Resources</h2>
-    <div class="materials-grid">
-      <div class="material-box">
-        <span class="mat-icon">📜</span>
-        <div class="mat-text">
-          <h4>Primary Source Excerpts</h4>
-          <p>Sulba Sutras, Aryabhatiya, and Yuktibhasa translations</p>
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: INTERACTIVE CHRONOLOGICAL HERITAGE EXPLORER                   -->
+    <!-- ========================================================================= -->
+    <div id="timeline-sec" class="interactive-card">
+      <div class="section-head" style="margin-bottom: 1.5rem;">
+        <div>
+          <h2 class="section-title"><span>🏛️</span> Chronological Heritage Discovery Timeline</h2>
+          <p class="section-desc">Interactive scientific progression from the Vedic period through the Kerala School of Astronomy and Mathematics.</p>
         </div>
       </div>
-      <div class="material-box">
-        <span class="mat-icon">📐</span>
-        <div class="mat-text">
-          <h4>Vedic Mathematics Formulae</h4>
-          <p>16 Sutras &amp; fast mental arithmetic derivations</p>
+
+      <!-- Scrubber Buttons -->
+      <div class="timeline-scrubber" id="eraScrubber">
+        <div class="era-pill active" onclick="switchEra('vedic', this)">
+          <span>1. Vedic Corpus</span>
+          <span class="era-date">~1500 – 800 BCE</span>
+        </div>
+        <div class="era-pill" onclick="switchEra('sulba', this)">
+          <span>2. Sulba Sutras</span>
+          <span class="era-date">~800 – 500 BCE</span>
+        </div>
+        <div class="era-pill" onclick="switchEra('formal', this)">
+          <span>3. Panini &amp; Pingala</span>
+          <span class="era-date">~500 – 300 BCE</span>
+        </div>
+        <div class="era-pill" onclick="switchEra('classical', this)">
+          <span>4. Classical Sciences</span>
+          <span class="era-date">~200 BCE – 600 CE</span>
+        </div>
+        <div class="era-pill" onclick="switchEra('brahmagupta', this)">
+          <span>5. Algebra Synthesis</span>
+          <span class="era-date">598 – 1150 CE</span>
+        </div>
+        <div class="era-pill" onclick="switchEra('kerala', this)">
+          <span>6. Kerala Calculus</span>
+          <span class="era-date">14th – 16th C CE</span>
         </div>
       </div>
-      <div class="material-box">
-        <span class="mat-icon">🎯</span>
-        <div class="mat-text">
-          <h4>Exam &amp; Assignment Hub</h4>
-          <p>Question banks, essay prompts, and objective question sets</p>
+
+      <!-- Timeline Display Window -->
+      <div class="timeline-display" id="eraDisplay">
+        <div class="timeline-info">
+          <span class="timeline-era-badge" id="eraBadge">Era 1 • Rigveda, Shatapatha Brahmana, Vedangas</span>
+          <h3 id="eraTitle">The Vedic Corpus: Epistemic &amp; Cosmological Genesis</h3>
+          <p id="eraDesc">The oldest extant philosophical and scientific literature in Indo-European history. Composed in an oral mnemonic system with zero phonetic corruption across millennia. Embedded early astronomy (nakshatras), decimal counting in powers of ten up to $10^{12}$ (*Parardha*), and the moral-cosmic regulatory principle of *Rta*.</p>
+          <ul class="timeline-features" id="eraFeatures">
+            <li><strong>Shatapatha Brahmana:</strong> Detailed astronomical alignment of fire altars with solstice and equinox coordinates.</li>
+            <li><strong>Decimal Nomenclature:</strong> Discrete words for powers of 10: *Eka*, *Dasha*, *Shatam*, *Sahasram* up to *Antya*.</li>
+            <li><strong> Ghana &amp; Jata Patha:</strong> Permutative error-correcting recitation algorithms preserving oral integrity.</li>
+          </ul>
+        </div>
+        <div class="timeline-diagram-container" id="eraDiagramBox">
+          <img src="Assets/diagrams/pramana_epistemology.svg" alt="Pramana Epistemology" id="eraDiagramImg">
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: VEDIC MATHEMATICS MENTAL ARITHMETIC SANDBOX                   -->
+    <!-- ========================================================================= -->
+    <div id="sandbox-sec">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title"><span>🧮</span> Vedic Mathematics Mental Arithmetic Sandbox</h2>
+          <p class="section-desc">Experience algorithmic mental computation formulated from the 16 Vedic Sutras: vertical-crosswise multiplication and base deficiency arithmetic.</p>
+        </div>
+      </div>
+
+      <div class="sandbox-grid">
+        <!-- Sandbox 1: Urdhva-Tiryagbhyam (Vertically and Crosswise) -->
+        <div class="sandbox-box">
+          <h3>⚡ Urdhva-Tiryagbhyam</h3>
+          <span class="sandbox-sutra-tag">Sutra 3: "Vertically &amp; Crosswise" (2-Digit × 2-Digit)</span>
+          
+          <div class="calc-input-row">
+            <input type="number" id="utA" class="calc-input-field" value="43" min="10" max="99">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--accent);">×</span>
+            <input type="number" id="utB" class="calc-input-field" value="27" min="10" max="99">
+            <button class="calc-btn" onclick="runUrdhva()">Calculate Steps</button>
+          </div>
+
+          <div class="calc-visual-output" id="utOutput">
+            <!-- Rendered by JS -->
+            <div class="highlight">Solving: 43 × 27 via Urdhva-Tiryagbhyam</div>
+            <div>Step 1 (Vertical Right): 3 × 7 = 21 → <span class="highlight">Units: 1, Carry: 2</span></div>
+            <div class="cross-step">Step 2 (Crosswise Sum): (4 × 7) + (3 × 2) = 28 + 6 = 34; + Carry 2 = 36 → <span class="highlight">Tens: 6, Carry: 3</span></div>
+            <div>Step 3 (Vertical Left): 4 × 2 = 8; + Carry 3 = 11 → <span class="highlight">Hundreds/Thousands: 11</span></div>
+            <div style="margin-top: 0.5rem; color: #10b981; font-weight: 700;">Final Product: 1,161</div>
+          </div>
+        </div>
+
+        <!-- Sandbox 2: Nikhilam Navatashcaramam Dashatah (All from 9 and the Last from 10) -->
+        <div class="sandbox-box">
+          <h3>⚡ Nikhilam Multiplication</h3>
+          <span class="sandbox-sutra-tag">Sutra 2: "All from 9 and Last from 10" (Base 100)</span>
+          
+          <div class="calc-input-row">
+            <input type="number" id="nikA" class="calc-input-field" value="97" min="50" max="99">
+            <span style="font-weight: 800; font-size: 1.2rem; color: var(--accent);">×</span>
+            <input type="number" id="nikB" class="calc-input-field" value="94" min="50" max="99">
+            <button class="calc-btn" onclick="runNikhilam()">Calculate Base</button>
+          </div>
+
+          <div class="calc-visual-output" id="nikOutput">
+            <!-- Rendered by JS -->
+            <div class="highlight">Solving: 97 × 94 (Base = 100)</div>
+            <div>Deficiency 1: 100 - 97 = <span class="cross-step">-03</span></div>
+            <div>Deficiency 2: 100 - 94 = <span class="cross-step">-06</span></div>
+            <div>Left Part (Cross Subtraction): 97 - 06 = <span class="highlight">91</span></div>
+            <div>Right Part (Multiply Deficiencies): (-03) × (-06) = <span class="highlight">18</span></div>
+            <div style="margin-top: 0.5rem; color: #10b981; font-weight: 700;">Final Product: 9,118</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: CLASSROOM DRILL SHEETS & OPTICAL TRANSCRIPTION                -->
+    <!-- ========================================================================= -->
+    <div id="sheets-sec">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title"><span>📷</span> Classroom Lecture Drill Sheets &amp; Optical Transcription</h2>
+          <p class="section-desc">Full-fidelity inspection of classroom lecture sheets archived in <code class="font-mono">Assets/</code> with optical transcriptions, topic allocations, and university exam weightages.</p>
+        </div>
+      </div>
+
+      <div class="classroom-grid">
+        <!-- Sheet 1 -->
+        <div class="sheet-card">
+          <div class="sheet-thumb-wrap" onclick="openLightbox('Assets/important_image1.jpeg', 'Classroom Lecture Sheet 1: Epistemology, Panini Grammar &amp; Aryabhata')">
+            <img src="Assets/important_image1.jpeg" alt="Classroom Lecture Sheet 1">
+            <div class="zoom-hint">🔍 Click to Expand</div>
+          </div>
+          <h3>Lecture Sheet 1: Core Exam Topics</h3>
+          <div class="sheet-transcription">
+            <strong>Optical Transcription of Notebook Questions:</strong>
+            <ol>
+              <li><strong>Que:</strong> What is IKS ? and Sources of IKS <em>(10 marks)</em></li>
+              <li><strong>Que:</strong> Patanjali or Kanada <em>(5 marks)</em></li>
+              <li><strong>Que:</strong> Pananni ke grammar (Panini's formal grammar) <em>(5 marks)</em></li>
+              <li><strong>Que:</strong> Overview of Mathematics (Aryabhata &amp; concept of zero) <em>(5 marks)</em></li>
+              <li><strong>Que:</strong> Shruti &amp; Smriti Literature <em>(10 marks)</em></li>
+            </ol>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between;">
+            <span>Classroom Drill Sheet • Assets/important_image1.jpeg</span>
+            <span style="color: var(--emerald); font-weight: 700;">✓ Fully Transcribed</span>
+          </div>
+        </div>
+
+        <!-- Sheet 2 -->
+        <div class="sheet-card">
+          <div class="sheet-thumb-wrap" onclick="openLightbox('Assets/important_image2.jpeg', 'Classroom Lecture Sheet 2: Patanjali Yoga Sutras &amp; Historiography')">
+            <img src="Assets/important_image2.jpeg" alt="Classroom Lecture Sheet 2">
+            <div class="zoom-hint">🔍 Click to Expand</div>
+          </div>
+          <h3>Lecture Sheet 2: Mind &amp; Treatises</h3>
+          <div class="sheet-transcription">
+            <strong>Sutra Keyphrase Analysis:</strong>
+            <p style="margin: 0.3rem 0; font-style: italic; color: #fde047;">"Yogas Citta - Vritti - Nirodha" (Unite → Consciousness → Mental Modifications → Stopping / Restraint)</p>
+            <strong>Optical Transcription of Questions:</strong>
+            <ul>
+              <li>★ <strong>Q.</strong> Shruti &amp; Smriti Literature / Sutras &amp; Shastras <em>— 10 Marks</em></li>
+              <li><strong>Q.</strong> IKS &amp; Sources of IKS <em>— 10 Marks</em></li>
+              <li>★ <strong>Q.</strong> Patanjali: Logic &amp; Philosophy <em>— 5 Marks</em></li>
+              <li><strong>Q.</strong> Kanada (Atomism) / Panini Grammar <em>— 5 Marks</em></li>
+              <li><strong>Q.</strong> Historiography of Indian Sciences <em>— 5 Marks</em></li>
+              <li>★ <strong>Q.</strong> Overview of Indian Mathematics (Aryabhata, Zero) <em>— 5 Marks</em></li>
+            </ul>
+          </div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); display: flex; align-items: center; justify-content: space-between;">
+            <span>Classroom Drill Sheet • Assets/important_image2.jpeg</span>
+            <span style="color: var(--emerald); font-weight: 700;">✓ Fully Transcribed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: EXAM BLUEPRINT & COMPREHENSIVE MODEL SOLUTIONS HUB            -->
+    <!-- ========================================================================= -->
+    <div id="blueprint-sec">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title"><span>📝</span> University Exam Blueprint &amp; Solutions Hub</h2>
+          <p class="section-desc">10 Master Examination Solutions systematically answering every query recorded in classroom drill sheets and <code class="font-mono">Assets/Marwale of science and wonder.pdf</code>.</p>
+        </div>
+      </div>
+
+      <!-- Filter and Search Bar -->
+      <div class="filter-bar">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="questionSearch" class="search-input" placeholder="Search questions by topic, scholar, or sutra..." onkeyup="filterQuestions()">
+        </div>
+        <div class="category-pills">
+          <button class="cat-btn active" onclick="setCategory('all', this)">All Questions (10)</button>
+          <button class="cat-btn" onclick="setCategory('epistemology', this)">Philosophy &amp; Epistemology</button>
+          <button class="cat-btn" onclick="setCategory('math', this)">Mathematics &amp; Linguistics</button>
+          <button class="cat-btn" onclick="setCategory('astronomy', this)">Astronomy &amp; Physics</button>
+          <button class="cat-btn" onclick="setCategory('history', this)">Historiography</button>
+        </div>
+      </div>
+
+      <!-- Stream of Master Question Cards -->
+      <div class="questions-stream" id="questionsContainer">
+
+        <!-- QUESTION 1: What is IKS & Sources of IKS (10 Marks) -->
+        <div class="question-card" data-domain="epistemology">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-10">10 Marks • Comprehensive Treatise</span>
+            <span class="domain-tag">Epistemology &amp; Foundations • Sheet 1 &amp; 2</span>
+          </div>
+          <h3 class="question-title">Q1. What is Indian Knowledge System (IKS)? Detail its core features, philosophical foundations (Dharma &amp; Rta), and the primary sources of IKS.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Definition (2M)</span> • 
+            <span>Salient Features &amp; Dharma/Rta (3M)</span> • 
+            <span>Classification of Sources (3M)</span> • 
+            <span>Ashramas &amp; Purusharthas Integration (2M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Definition of Indian Knowledge System (IKS)</h4>
+            <p><strong>IKS</strong> refers to the vast, cumulative, indigenous corpus of knowledge, methodologies, and technological frameworks developed and transmitted in the Indian subcontinent across more than five millennia. Rather than treating intellectual inquiry as fractured specializations, IKS operates on a holistic triad:</p>
+            <div class="highlight-box">
+              $$\text{IKS} = \text{Jñāna (Pure Philosophy \& Theoretical Cognition)} + \text{Vijñāna (Applied Science, Metallurgy \& Mathematics)} + \text{Jīvana-Darśana (Living Ethics \& Worldview)}$$
+            </div>
+            <p>It encompasses diverse disciplines including mathematics, astronomy, metallurgy, civil engineering, Ayurveda, linguistics, governance (Arthashastra), environmental ecology, and classical arts.</p>
+
+            <h4>2. Salient Characteristics of IKS</h4>
+            <ul>
+              <li><strong>Holistic and Integrated Worldview:</strong> Unlike Cartesian dualism which divides mind and matter, ancient Indian systems perceive nature, human consciousness, and the cosmos as an interconnected continuum.</li>
+              <li><strong>Experiential Verification (*Anubhuti*):</strong> Theoretical constructs are subjected to rigorous empirical testing, logical inference (*Anumana*), and practical utility.</li>
+              <li><strong>Dual Transmission Modality:</strong> High-density memory-based oral transmission (*Shruti* via Ghana, Jata, and Pada pathas) coupled with voluminous manuscript traditions (over 30 million palm-leaf and paper folios cataloged in the National Mission for Manuscripts).</li>
+              <li><strong>Cosmic Order (*Rta*) and Moral Responsibility (*Dharma*):</strong> *Rta* governs the immutable physical laws of the cosmos (orbital motions, seasonal changes, entropy), while *Dharma* governs human ethics and social equilibrium. Science was never pursued in isolation from moral responsibility.</li>
+            </ul>
+
+            <h4>3. Comprehensive Sources of IKS</h4>
+            <p>The corpus is fundamentally structured into two authoritative strata:</p>
+            <ol>
+              <li><strong>Śruti (Primary Divine Revelation / Heard Literature):</strong>
+                <ul>
+                  <li><strong>Rigveda:</strong> Hymns on cosmological orders, solar movements, early mathematical counting up to $10^{12}$.</li>
+                  <li><strong>Yajurveda:</strong> Procedural rituals, precise geometric altar measurements (*Sulba* foundations).</li>
+                  <li><strong>Samaveda:</strong> Musical science, tonal pitch frequencies, origin of the 7-note *Sapta Svara* scale.</li>
+                  <li><strong>Atharvaveda:</strong> Applied practical sciences, biological medicine, pharmacology, toxicology, and environmental management.</li>
+                </ul>
+              </li>
+              <li><strong>Smṛti (Recollected / Authored Literature):</strong>
+                <ul>
+                  <li><strong>Vedangas (6 Auxiliary Limbs):</strong> Shiksha (Phonetics), Kalpa (Rituals &amp; Geometry), Vyakarana (Grammar), Nirukta (Etymology), Chandas (Prosody/Metrics), Jyotisha (Astronomy/Calendar).</li>
+                  <li><strong>Upavedas (Applied Sciences):</strong> Ayurveda (Medicine), Dhanurveda (Martial Arts/Ballistics), Gandharvaveda (Music/Acoustics), Sthapatyaveda (Architecture/Civil Engineering).</li>
+                  <li><strong>Shastras &amp; Sutras:</strong> Rigorous aphoristic treatises (e.g., Vaisheshika, Nyaya, Yoga, Arthashastra).</li>
+                  <li><strong>Itihasas &amp; Puranas:</strong> Cultural history, geographic encyclopedias, and ethical narratives (Ramayana, Mahabharata, 18 Mahapuranas).</li>
+                </ul>
+              </li>
+            </ol>
+
+            <div class="diagram-embed">
+              <img src="Assets/diagrams/pramana_epistemology.svg" alt="Epistemological Proofs">
+              <span class="diagram-caption">Figure 1: Epistemic Validation Pipeline in Indian Knowledge Systems (Nyaya Pramanas)</span>
+            </div>
+
+            <h4>4. Socio-Spiritual Matrix: Purusharthas &amp; Ashramas</h4>
+            <p>Knowledge was structured to fulfill the four legitimate human aims (*Purusharthas*):</p>
+            <ul>
+              <li><strong>Dharma:</strong> Ethical governance and social duty.</li>
+              <li><strong>Artha:</strong> Wealth generation, agricultural science, and trade mechanics.</li>
+              <li><strong>Kama:</strong> Aesthetic fulfillment, performing arts, and emotional health.</li>
+              <li><strong>Moksha:</strong> Ultimate cognitive liberation through mastery over internal mental states (*Citta-Vritti-Nirodha*).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- QUESTION 2: Shruti & Smriti Literature / Sutras & Shastras (10 Marks) -->
+        <div class="question-card" data-domain="epistemology">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-10">10 Marks • Core Architecture</span>
+            <span class="domain-tag">Literature &amp; Treatises • Sheet 1 &amp; 2</span>
+          </div>
+          <h3 class="question-title">Q2. Distinguish thoroughly between Shruti and Smriti literature. Explain the architectural flow: Veda → Shastra → Sutra, with illustrative examples across academic disciplines.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Shruti vs Smriti Matrix (3M)</span> • 
+            <span>Fourfold Divisions of Vedas (2M)</span> • 
+            <span>Veda-Shastra-Sutra Continuum (3M)</span> • 
+            <span>Disciplinary Case Studies (2M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Comparative Structural Analysis: Shruti vs Smriti</h4>
+            <p>The entire library of Indian classical literature is divided based on epistemic authority and authorship:</p>
+            <ul>
+              <li><strong>Śruti (श्रुति — "That which is heard"):</strong> Considered primordial, authorless (*Apauruseya*), and immutable across cosmic time. It constitutes the direct cosmic realizations of the ancient *Rishis*. No historical author can modify a single syllable of Shruti text. It is transmitted via rigorous oral chanting algorithms.</li>
+              <li><strong>Smṛti (स्मृति — "That which is remembered"):</strong> Authored (*Pauruseya*), human compositions that interpret, systematize, and adapt Shruti principles to specific socio-historical epochs (*Yuga Dharma*). Smriti changes dynamically with cultural evolution, empirical scientific progress, and geographic context.</li>
+            </ul>
+
+            <h4>2. The Fourfold Structural Stratification of Each Veda</h4>
+            <p>Every single Veda is partitioned internally into four sequential layers representing the transition from outward ritual to inward metaphysical realization:</p>
+            <ol>
+              <li><strong>Samhitā (संहिता):</strong> The foundational core of metrical hymns, devotional poetry, mantras, and invocations to natural forces (Agni, Indra, Varuna, Surya).</li>
+              <li><strong>Brāhmaṇa (ब्राह्मण):</strong> Detailed prose commentaries explaining the technical mechanics, astronomical alignments, and mathematical calculations of Vedic ceremonies.</li>
+              <li><strong>Āraṇyaka (आरण्यक — "Forest Treatises"):</strong> Transition layer bridging ritualism and philosophy. Contemplates the inner, symbolic, and scientific meanings of sacrifices.</li>
+              <li><strong>Upaniṣad (उपनिषद् — Vedānta):</strong> Pure philosophical dialogues investigating the nature of reality (*Brahman*), individual consciousness (*Atman*), and ultimate cognitive union.</li>
+            </ol>
+
+            <h4>3. The Knowledge Transmission Continuum: Veda → Shastra → Sutra</h4>
+            <div class="highlight-box">
+              $$\text{Veda (Foundation/Source)} \xrightarrow{\text{Systematization}} \text{Śāstra (Comprehensive Applied Science)} \xrightarrow{\text{Aphoristic Compression}} \text{Sūtra (Mnemonic Formula)}$$
+            </div>
+            <ul>
+              <li><strong>Veda:</strong> Acts as the original conceptual repository and epistemological baseline.</li>
+              <li><strong>Śāstra:</strong> A comprehensive, structured, and pedagogical textbook on a specialized science (derived from root *śās* = to instruct/discipline). It links theory with empirical clinical or mechanical practice.</li>
+              <li><strong>Sūtra:</strong> Ultra-dense, algebraic aphorisms designed for effortless mental memorization. Defined as: <em>"Alpākṣaram asandigdham säravat viśvatomukham"</em> (minimal syllables, unambiguous, full of essence, and universally applicable).</li>
+            </ul>
+
+            <h4>4. Interdisciplinary Exemplar Grid</h4>
+            <ul>
+              <li><strong>Ayurveda:</strong> Veda (Atharvaveda medicinal chants) $\to$ Shastra (Charaka &amp; Sushruta Samhitas) $\to$ Sutra (Ashtanga Hridaya Sutras).</li>
+              <li><strong>Grammar:</strong> Veda (Vedic Sanskrit hymns) $\to$ Shastra (Vyakarana treatises) $\to$ Sutra (Panini's 4,000 *Ashtadhyayi* Sutras).</li>
+              <li><strong>Geometry:</strong> Veda (Yajurveda sacrificial enclosures) $\to$ Shastra (Sulba Shastras) $\to$ Sutra (Baudhayana Sulba Sutras).</li>
+              <li><strong>Governance:</strong> Veda (Rigvedic tribal assemblies: *Sabha* &amp; *Samiti*) $\to$ Shastra (Kautilya's Arthashastra) $\to$ Sutra (Chanakya Niti Sutras).</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- QUESTION 3: Acharya Kanada's Atomism (5 Marks) -->
+        <div class="question-card" data-domain="astronomy">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Atomic Physics</span>
+            <span class="domain-tag">Physics &amp; Material Philosophy • Sheet 1 &amp; 2</span>
+          </div>
+          <h3 class="question-title">Q3. Detail Acharya Kanada's Vaisheshika Atomic Theory. Explain the mechanics of Parmanu, Dvayanuka, and Tryanuka, and contrast it with Greek atomism.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Definition of Parmanu (1M)</span> • 
+            <span>Dvayanuka &amp; Tryanuka Formation (2M)</span> • 
+            <span>Pancha Mahabhuta Taxonomy (1M)</span> • 
+            <span>Comparison with Democritus (1M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Acharya Kanada &amp; Vaisheshika Darshana (~600 BCE)</h4>
+            <p>Acharya Kanada (original name Kashyapa) founded the Vaisheshika school of Indian philosophy, authoring the seminal <em>Vaiśeṣika Sūtras</em>. The system derives its name from *Visesha* (particularity/individuality) and provides the earliest systematic physical treatise on atomic theory in human civilization.</p>
+
+            <h4>2. Hierarchy of Matter: Parmanu → Dvayanuka → Tryanuka</h4>
+            <p>Kanada argued that matter cannot be divided infinitely; infinite divisibility leads to the logical fallacy of <em>Anavasthā</em> (regressus in infinitum) where a mustard seed and Mount Meru would contain equal infinite points. Therefore, division terminates at an ultimate indivisible particle:</p>
+            <ul>
+              <li><strong>Paramāṇu (परमाणु — Ultimate Indivisible Atom):</strong> The infinitesimal, eternal, uncaused (*Ahetumat*), and partless (*Niravayava*) ground of matter. It possesses spherical symmetry (*Parimandala*) and cannot be perceived by sensory organs.</li>
+              <li><strong>Dvyaṇuka (द्व्यणुक — Diatomic Binary):</strong> Two homogeneous Parmanus unite under the impetus of kinetic energy (*Spandana*) and non-physical cosmic potential (*Adrishta*) to form a binary molecule. It remains invisible to ordinary vision.</li>
+              <li><strong>Tryaṇuka / Trasareṇu (त्र्यणुक / त्रसरेणु — Triad):</strong> Three Dvayanukas combine to form a triad particle. The Tryanuka is the very first gross aggregate possessing finite magnitude (*Mahat*) and dimension (*Dirgha*). It is visually perceptible as the tiny floating dust speck seen dancing in a shaft of morning sunlight piercing a dark room.</li>
+            </ul>
+
+            <div class="diagram-embed">
+              <img src="Assets/diagrams/kanada_atomism.svg" alt="Kanada Atomism">
+              <span class="diagram-caption">Figure 2: Kanada's Structural Molecular Hierarchy and Pancha Mahabhuta Classification</span>
+            </div>
+
+            <h4>3. Five Element Classification (Pancha Mahabhuta)</h4>
+            <p>Kanada grouped all physical entities into five elemental substances (*Dravyas*):</p>
+            <ol>
+              <li><strong>Prithvi (Earth):</strong> Atomic; possesses the quality of smell (*Gandha*).</li>
+              <li><strong>Apas (Water):</strong> Atomic; possesses taste (*Rasa*).</li>
+              <li><strong>Tejas (Fire/Energy):</strong> Atomic; possesses form/color (*Rupa*).</li>
+              <li><strong>Vayu (Air):</strong> Atomic; possesses touch (*Sparsha*).</li>
+              <li><strong>Akasha (Ether/Space):</strong> <em>Non-atomic</em>, infinite, all-pervading continuum; carrier of sound (*Shabda*).</li>
+            </ol>
+
+            <h4>4. Vaisheshika Atomism vs Greek Democritean Atomism</h4>
+            <p>While the Greek philosopher Democritus (~400 BCE) viewed atoms as purely uniform, inert particles differing only in geometric shape and colliding mechanistically in an empty void, Kanada's theory maintained that:</p>
+            <ul>
+              <li>Atoms possess inherent qualitative distinctions (four elemental atomic species with distinct sensory attributes).</li>
+              <li>Atomic motion and chemical transformation (*Pilupaka* vs *Pitharapaka*) are governed by thermodynamic heat absorption and purposeful cosmic-moral principles.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- QUESTION 4: Patanjali's Logic & Philosophy (5 Marks) -->
+        <div class="question-card" data-domain="epistemology">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Cognitive Science</span>
+            <span class="domain-tag">Cognitive Science &amp; Psychology • Sheet 1 &amp; 2</span>
+          </div>
+          <h3 class="question-title">Q4. Explain Patanjali's Logic and Philosophy as formulated in the Yoga Sutras. Deconstruct the aphorism "Yogas Citta-Vritti-Nirodha" and evaluate its cognitive neuroscience relevance.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Aphorism Breakdown (2M)</span> • 
+            <span>Four Padas &amp; Ashtanga Yoga (1.5M)</span> • 
+            <span>Epistemic Link to Nyaya (0.5M)</span> • 
+            <span>Modern Cognitive Relevance (1M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Author &amp; Textual Framework</h4>
+            <p>Composed in the 2nd Century BCE by the polymath sage Patanjali (who also authored the *Mahabhashya* commentary on Panini's grammar), the <em>Yoga Sūtras</em> comprises 195 terse aphorisms partitioned into four distinct chapters (*Padas*):</p>
+            <ul>
+              <li><strong>Samādhi Pāda (51 Sutras):</strong> Nature of cognitive absorption, meditation, and mind modifications.</li>
+              <li><strong>Sādhana Pāda (55 Sutras):</strong> Practical disciplines of Ashtanga Yoga, ethical observances, and postural mastery.</li>
+              <li><strong>Vibhūti Pāda (56 Sutras):</strong> Focused concentration (*Samyama*) and heightened intuitive faculties.</li>
+              <li><strong>Kaivalya Pāda (34 Sutras):</strong> Absolute psychological autonomy and cognitive liberation.</li>
+            </ul>
+
+            <h4>2. Deconstruction of the Foundational Sutra</h4>
+            <div class="highlight-box">
+              $$\text{"Yogaś citta-vṛtti-nirodhaḥ" (योगश्चित्तवृत्तिनिरोधः — Sutra 1.2)}$$
+            </div>
+            <ul>
+              <li><strong>Yoga (योग):</strong> Derived from root *Yuj* (to unite, harness, or integrate mental focus).</li>
+              <li><strong>Citta (चित्त):</strong> The collective cognitive apparatus comprising *Manas* (sensory mind), *Buddhi* (intellect/executive judgment), and *Ahamkara* (ego-identity).</li>
+              <li><strong>Vṛtti (वृत्ति):</strong> Fluctuations, whirlpools, discursive thoughts, and reactive neural chatter.</li>
+              <li><strong>Nirodha (निरोध):</strong> Cessation, mastery, stilling, and deliberate redirection of attention.</li>
+            </ul>
+            <p><strong>Core Insight:</strong> Patanjali defines Yoga not as physical contortion or somatic gymnastics, but as rigorous cognitive mastery and stabilization of attention.</p>
+
+            <h4>3. The 8-Fold Path (Aṣṭāṅga Yoga)</h4>
+            <ol>
+              <li><strong>Yama (Restraints):</strong> Ahimsa (non-violence), Satya (truth), Asteya (non-stealing), Brahmacharya (energy conservation), Aparigraha (non-possessiveness).</li>
+              <li><strong>Niyama (Observances):</strong> Shaucha (purity), Santosha (contentment), Tapas (discipline), Svadhyaya (self-study), Ishvara Pranidhana (surrender to universal order).</li>
+              <li><strong>Asana:</strong> Steady and comfortable physical posture (*Sthira-sukham asanam*).</li>
+              <li><strong>Pranayama:</strong> Rhythmic breath modulation stabilizing the autonomic nervous system.</li>
+              <li><strong>Pratyahara:</strong> Sensory withdrawal from external cognitive distractions.</li>
+              <li><strong>Dharana:</strong> Unbroken focal attention directed at a single target.</li>
+              <li><strong>Dhyana:</strong> Continuous, meditative cognitive flow.</li>
+              <li><strong>Samadhi:</strong> Complete cognitive integration where duality between observer and observed dissolves.</li>
+            </ol>
+
+            <h4>4. Epistemic Link to Nyaya &amp; Modern Neuroscience</h4>
+            <p>Patanjali adopts the Nyaya-Samkhya epistemological matrix, recognizing three valid means of knowledge: <em>Pratyaksha</em> (direct perception), <em>Anumana</em> (inference), and <em>Agama/Shabda</em> (reliable testimony). In contemporary neuroscience, *Citta-Vritti-Nirodha* maps directly onto the down-regulation of the Default Mode Network (DMN) in the brain, enhanced prefrontal cortex executive control, and vagus nerve stimulation.</p>
+          </div>
+        </div>
+
+        <!-- QUESTION 5: Panini's Grammar as Formal Metalanguage (5 Marks) -->
+        <div class="question-card" data-domain="math">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Computational Linguistics</span>
+            <span class="domain-tag">Linguistics &amp; Computer Science • Sheet 1 &amp; 2</span>
+          </div>
+          <h3 class="question-title">Q5. Why is Panini's Ashtadhyayi considered the world's first formal programming language specification? Explain Shiva Sutras, auxiliary markers, and its equivalence to BNF.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Ashtadhyayi Architecture (1.5M)</span> • 
+            <span>Shiva Sutras &amp; Pratyaharas (1.5M)</span> • 
+            <span>Auxiliary IT Markers (1M)</span> • 
+            <span>Backus-Naur Form (BNF) Parallel (1M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Panini &amp; The Ashtadhyayi (~500 BCE)</h4>
+            <p>Panini lived in Gandhara (ancient Shalatura near modern Attock). His magnum opus, the <em>Aṣṭādhyāyī</em> ("Eight Chapters"), is an algorithmic, generative, and context-sensitive formal grammar of the Sanskrit language comprising 3,959 algebraic sutras. It does not merely describe language; it generates every valid utterance from morphological root primitives.</p>
+
+            <h4>2. Architectural Subsystems</h4>
+            <ul>
+              <li><strong>Śiva Sūtras (Maheshvara Sutras):</strong> A 14-line phonetic matrix organizing vowels and consonants according to articulatory points (velar, palatal, retroflex, dental, labial).</li>
+              <li><strong>Pratyāhāra (Phonetic Compaction Algorithm):</strong> By pairing the initial sound of a Shiva Sutra with a terminating dummy marker, Panini created concise compressed phonetic classes. For example, <em>aC</em> represents all vowels, while <em>haL</em> represents all consonants.</li>
+              <li><strong>Dhātupāṭha:</strong> Lexicon of ~2,000 verbal roots classified into ten morphological classes (*Ganas*).</li>
+              <li><strong>Gaṇapāṭha:</strong> Lexicon of nominal stems.</li>
+            </ul>
+
+            <h4>3. Auxiliary Markers (*It-Kāra*) &amp; Rule Engines</h4>
+            <p>Panini introduced "dummy symbols" or markers (*It*) attached to suffixes and roots that never appear in the final output string. These markers function identically to control flags or compiler metadata:</p>
+            <ul>
+              <li>A marker flag might signal vowel strengthening (*Guna* or *Vriddhi*).</li>
+              <li>Another marker dictates whether the accent falls on the stem or suffix.</li>
+              <li>When the derivation algorithm finishes, the marker is deleted via the rule <em>"Tasya lopaḥ"</em> (delete the It-marker), identical to a runtime clean-up step.</li>
+            </ul>
+
+            <h4>4. Direct Equivalence to Backus-Naur Form (BNF) &amp; Modern Compilers</h4>
+            <p>In 1965, the computer pioneer Frits Staal demonstrated that Panini's grammatical metalanguage is mathematically isomorphic to <strong>Backus-Naur Form (BNF)</strong>, developed by John Backus and Peter Naur for specifying ALGOL 60. Rick Briggs (NASA scientist) published a famous 1985 paper in <em>AI Magazine</em> showing that Sanskrit's rigid Paninian rule engine is ideally suited for natural language processing (NLP) and knowledge representation in artificial intelligence systems.</p>
+          </div>
+        </div>
+
+        <!-- QUESTION 6: Overview of Indian Mathematics (Aryabhata & Zero) (5 Marks) -->
+        <div class="question-card" data-domain="math">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Mathematics &amp; Astronomy</span>
+            <span class="domain-tag">Mathematics &amp; Zero • Sheet 1 &amp; 2</span>
+          </div>
+          <h3 class="question-title">Q6. Provide a comprehensive overview of ancient Indian Mathematics with special emphasis on Aryabhata I, the invention of Zero (Shunya), and the decimal place-value system.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Decimal Place-Value &amp; Zero (2M)</span> • 
+            <span>Aryabhatiya 4 Padas (1M)</span> • 
+            <span>Approximation of Pi &amp; Jya (1M)</span> • 
+            <span>Global Transmission Route (1M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Invention of Zero (*Śūnya*) &amp; Decimal Place-Value Notation</h4>
+            <p>Ancient India's greatest contribution to human civilization is the decimal place-value system with an operative zero. Found inscribed on the Bakshali Manuscript (~3rd–4th Century CE) and the Gwalior Chaturbhuj Temple inscription (876 CE), the zero evolved through three evolutionary phases:</p>
+            <ul>
+              <li><strong>Philosophical Void (*Shunyata*):</strong> Concept of emptiness that simultaneously holds potential.</li>
+              <li><strong>Positional Placeholder (*Shunya-bindu*):</strong> A dot used to signify an empty ten-fold column (*"Sthānāt sthānaṁ daśaguṇaṁ syāt"* — each step to the left increases value tenfold).</li>
+              <li><strong>Algebraic Operational Number:</strong> Fully formalized by Brahmagupta in 598 CE as a computational integer with explicit rules for addition, subtraction, and multiplication ($a + 0 = a$, $a - 0 = a$, $a \times 0 = 0$).</li>
+            </ul>
+
+            <h4>2. Aryabhata I &amp; The Aryabhatiya (499 CE)</h4>
+            <p>Composed when Aryabhata was only 23 years old in Kusumapura (Pataliputra), the <em>Āryabhaṭīya</em> consists of 121 verses partitioned into four sections:</p>
+            <ol>
+              <li><strong>Gītikāpāda (13 verses):</strong> Basic astronomical definitions, large time cycles (*Mahayugas*), and alphanumeric number notation.</li>
+              <li><strong>Gaṇitapāda (33 verses):</strong> Arithmetic, geometric progressions, quadratic equations, area of circles/triangles, and indeterminate linear solvers.</li>
+              <li><strong>Kālakriyāpāda (25 verses):</strong> Time reckoning, planetary velocity equations, intercalation of lunar months.</li>
+              <li><strong>Golapāda (50 verses):</strong> Spherical geometry, celestial sphere, trigonometric projections, and solar/lunar eclipse shadow physics.</li>
+            </ol>
+
+            <div class="diagram-embed">
+              <img src="Assets/diagrams/aryabhata_earth_eclipse.svg" alt="Aryabhata Astronomy">
+              <span class="diagram-caption">Figure 3: Aryabhata's Diurnal Earth Rotation and Scientific Eclipse Shadow Mechanics</span>
+            </div>
+
+            <h4>3. Specific Mathematical Breakthroughs</h4>
+            <ul>
+              <li><strong>Approximation of $\pi$:</strong> In Gaṇitapāda verse 10, Aryabhata gives:
+                $$\pi \approx \frac{62832}{20000} = 3.1416$$
+                Crucially, he characterized this value as <em>Āsanna</em> (approximative), recognizing the incommensurability / irrationality of $\pi$.
+              </li>
+              <li><strong>Trigonometric Sines (*Jyā* &amp; *Utkrama-jyā*):</strong> Developed the world's first sine table at intervals of $3^\circ 45'$ ($225'$ of arc), calculating first and second differences.</li>
+              <li><strong>Kuttaka Algorithm:</strong> The "pulverizer" method for solving indeterminate linear equations of the form $ax - by = c$, anticipating the modern Extended Euclidean Algorithm.</li>
+              <li><strong>Diurnal Rotation of the Earth:</strong> Stated that the Earth rotates daily on its axis from West to East, explaining the apparent motion of stars using the relative motion analogy of a passenger in a boat.</li>
+            </ul>
+
+            <h4>4. Global Transmission Route</h4>
+            <p>Indian numerals and mathematical treatises traveled through the Islamic Golden Age via scholars like Al-Khwarizmi (author of <em>Kitāb al-Jamʿ wa-l-tafrīq bi-ḥisāb al-Hind</em>, ~825 CE) and Al-Biruni (11th C), entering Europe through Leonardo Fibonacci's <em>Liber Abaci</em> (1202 CE) as the "Hindu-Arabic" numeral system.</p>
+          </div>
+        </div>
+
+        <!-- QUESTION 7: Historiography of Indian Sciences (5 Marks) -->
+        <div class="question-card" data-domain="history">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Critical Historiography</span>
+            <span class="domain-tag">Historiography &amp; Epigraphy • Sheet 1 &amp; 2</span>
+          </div>
+          <h3 class="question-title">Q7. Define the Historiography of Indian Science. Contrast textual vs archaeological sources and analyze how colonial disruption obscured indigenous scientific achievements.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Historiography Definition (1M)</span> • 
+            <span>Textual vs Archaeological Evidence (1.5M)</span> • 
+            <span>Colonial Distortion &amp; Macaulayism (1.5M)</span> • 
+            <span>Modern Institutional Revival (1M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Definition of Scientific Historiography</h4>
+            <p><strong>Historiography</strong> is the critical study of the methodology, perspectives, sources, and interpretative frameworks through which historical narratives are written and reconstructed over time. Applied to Indian science, it analyzes how ancient Indian achievements in metallurgy, surgery, mathematics, and astronomy were recorded, translated, minimized, or rediscovered.</p>
+
+            <h4>2. Primary Evidence Taxonomy</h4>
+            <ul>
+              <li><strong>Textual Sources:</strong>
+                <ul>
+                  <li>Primary canonical texts: Vedas, Sulba Sutras, Aryabhatiya, Charaka Samhita, Sushruta Samhita, Rasaratnasamuccaya.</li>
+                  <li>*Tikās* (Commentaries): Critical annotations by downstream masters (e.g., Nilakantha Somayaji's commentary on Aryabhata, Halayudha on Pingala) that tracked incremental empirical improvements.</li>
+                  <li>Foreign chronicles: Megasthenes' *Indica*, Faxian, Xuanzang, and notably Al-Biruni's 11th-century encyclopedia *Tārīkh al-Hind* (Kitab al-Hind), which critically surveyed Indian trigonometry, calendars, and planetary models.</li>
+                </ul>
+              </li>
+              <li><strong>Archaeological &amp; Material Sources:</strong>
+                <ul>
+                  <li>Harappan metrology: Standardized binary and decimal chert weights, kiln-fired bricks with exact 4:2:1 dimensional ratios, and drainage conduits.</li>
+                  <li>Epigraphy &amp; Numismatics: Copper-plate land grants (*Tamra-shasana*) and punch-marked coins recording astronomical conjunctions and calendar dates.</li>
+                  <li>Physical metallurgy: The 1,600-year-old rustless Delhi Iron Pillar, Wootz crucible furnaces in Tamil Nadu and Telangana, and industrial zinc distillation retorts at Zawar, Rajasthan.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <div class="diagram-embed">
+              <img src="Assets/diagrams/wootz_steel_crucible.svg" alt="Ancient Metallurgy">
+              <span class="diagram-caption">Figure 4: Physical Evidence of Ancient Metallurgy: Wootz Crucible Steel and Zawar Zinc Smelting</span>
+            </div>
+
+            <h4>3. Colonial Disruption &amp; Ideological Distortion</h4>
+            <p>During British colonial rule, indigenous sciences were systematically marginalized:</p>
+            <ul>
+              <li><strong>Macaulay's Minute of 1835:</strong> Thomas Babington Macaulay declared that <em>"a single shelf of a good European library was worth the whole native literature of India and Arabia,"</em> deliberately dismantling traditional Gurukula and Patashala networks.</li>
+              <li><strong>Mythological Dismissal:</strong> Colonial historians categorized Indian science as "purely mystical and theological speculation," ignoring rigorous algorithmic, surgical, and metallurgical proofs.</li>
+              <li><strong>Swadeshi Historiographical Counter-Movement:</strong> Scholars like Dharampal (author of <em>The Beautiful Tree</em> and <em>Indian Science and Technology in the Eighteenth Century</em>) unearthed British East India Company archival records proving India possessed widespread village school literacy and sophisticated inoculation techniques prior to colonial subjugation. D.D. Kosambi introduced materialist historical methods combining numismatics with field archaeology.</li>
+            </ul>
+
+            <h4>4. Contemporary Institutional Renaissance</h4>
+            <p>Today, this heritage is recovered through evidence-based bodies: Ministry of AYUSH, Council of Scientific &amp; Industrial Research (CSIR), the Indian Knowledge Systems (IKS) Division under the Ministry of Education, and the <strong>Traditional Knowledge Digital Library (TKDL)</strong>, which preempts global biopiracy on Ayurvedic botanical formulations.</p>
+          </div>
+        </div>
+
+        <!-- QUESTION 8: Mathematical Legacy of Brahmagupta & Bhaskara II (5 Marks) -->
+        <div class="question-card" data-domain="math">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Advanced Algebra</span>
+            <span class="domain-tag">Algebra &amp; Calculus Precursors • Marwale Digest</span>
+          </div>
+          <h3 class="question-title">Q8. Detail the mathematical innovations of Brahmagupta (Brahmasphutasiddhanta) and Bhaskaracharya II (Siddhanta Shiromani), including the Chakravala algorithm and calculus precursors.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Brahmagupta Arithmetic of Zero &amp; Negative Numbers (1.5M)</span> • 
+            <span>Brahmagupta's Quadrilateral Formula (1M)</span> • 
+            <span>Bhaskara II &amp; Lilavati (1M)</span> • 
+            <span>Chakravala Algorithm for Pell's Equation (1.5M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Brahmagupta (598–668 CE) &amp; The Brahmasphutasiddhanta</h4>
+            <p>Working at the astronomical observatory of Ujjain, Brahmagupta wrote the <em>Brāhmasphuṭasiddhānta</em> ("Correctly Established Doctrine of Brahma") in 628 CE. His principal breakthroughs include:</p>
+            <ul>
+              <li><strong>Arithmetic of Negative Numbers &amp; Zero:</strong> Defined negative numbers as debts (*Kṣaya* or *Ṛṇa*) and positive numbers as fortunes (*Dhana*):
+                $$\text{Debt} \times \text{Debt} = \text{Fortune} \quad ((-) \times (-) = (+))$$
+                $$\text{Debt} \times \text{Fortune} = \text{Debt} \quad ((-) \times (+) = (-))$$
+                Formulated rules for operations involving Zero (*Kham*).
+              </li>
+              <li><strong>Cyclic Quadrilateral Area Formula:</strong> For a cyclic quadrilateral with sides $a, b, c, d$ and semi-perimeter $s = \frac{a+b+c+d}{2}$:
+                $$\text{Area} = \sqrt{(s-a)(s-b)(s-c)(s-d)}$$
+                This generalized Heron's formula 1,000 years before European adoption.
+              </li>
+              <li><strong>Brahmagupta's Identity &amp; Samasa:</strong> Established composition rules for quadratic Diophantine equations:
+                $$(x_1^2 - Dy_1^2)(x_2^2 - Dy_2^2) = (x_1 x_2 + D y_1 y_2)^2 - D (x_1 y_2 + x_2 y_1)^2$$
+              </li>
+            </ul>
+
+            <h4>2. Bhaskaracharya II (1114–1185 CE) &amp; Siddhanta Shiromani</h4>
+            <p>Bhaskara II headed the astronomical observatory at Ujjain. His masterwork, the <em>Siddhānta Śiromaṇi</em> (1150 CE), contains four legendary treatises: <em>Līlāvatī</em> (arithmetic), <em>Bījagaṇita</em> (algebra), <em>Grahagaṇita</em> (planetary mathematics), and <em>Golādhyāya</em> (spherical geometry).</p>
+
+            <h4>3. The Chakravala Cyclic Algorithm for Pell's Equation</h4>
+            <p>Bhaskara perfected the <strong>Chakravāla</strong> (cyclic) algorithm for finding integer solutions to indeterminate quadratic equations of the form:</p>
+            <div class="highlight-box">
+              $$x^2 - D y^2 = 1$$
+            </div>
+            <p>Centuries later, Pierre de Fermat posed this problem to European mathematicians (mistakenly attributed by Euler to John Pell). In 1768, Joseph-Louis Lagrange published a complicated continuous fraction solution. However, Hermann Hankel, the noted 19th-century German historian of mathematics, stated:</p>
+            <blockquote style="font-style: italic; color: #fde047; margin: 0.5rem 0 1rem; border-left: 2px solid var(--accent); padding-left: 1rem;">
+              "It is above all praise; it is the finest thing achieved in the theory of numbers before Lagrange."
+            </blockquote>
+            <p>For the notoriously difficult case $x^2 - 61y^2 = 1$, Bhaskara found the smallest integer solution in just a few cyclic steps:</p>
+            <p class="font-mono" style="color: #38bdf8;">x = 1,766,319,049 \quad \text{and} \quad y = 226,153,980</p>
+
+            <h4>4. Early Precursors to Differential Calculus</h4>
+            <p>Bhaskara II investigated instantaneous planetary motion, defining *Tātkālikī Gati* (instantaneous velocity). He proved that when a variable reaches its maximum value, its differential vanishes, anticipating Fermat's theorem: $d(\sin \theta) = \cos \theta \, d\theta$.</p>
+          </div>
+        </div>
+
+        <!-- QUESTION 9: Surya Siddhanta & Cosmological Timekeeping (5 Marks) -->
+        <div class="question-card" data-domain="astronomy">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Calendrics &amp; Cosmology</span>
+            <span class="domain-tag">Astronomy &amp; Panchanga • Marwale Digest</span>
+          </div>
+          <h3 class="question-title">Q9. Analyze the astronomical and cosmological calculations in the Surya Siddhanta. Explain the 5 limbs of the Panchanga calendar and ancient Indian time measurement scales.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Surya Siddhanta Authorship &amp; Constants (1.5M)</span> • 
+            <span>Panchanga 5 Limbs Breakdown (2M)</span> • 
+            <span>Time Scales from Truti to Mahayuga (1.5M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Surya Siddhanta &amp; Latadeva (~4th–5th Century CE)</h4>
+            <p>The <em>Sūrya Siddhānta</em> is the foundational treatise of classical Indian mathematical astronomy, historically updated by Latadeva (disciple of Aryabhata I). It presents rigorous spherical trigonometry formulas, solar-lunar eclipse tracking algorithms, and remarkably precise cosmic constants:</p>
+            <ul>
+              <li><strong>Sidereal Year Duration:</strong> Calculated as $365.25636$ days (differing from modern satellite data by merely 1.4 seconds!).</li>
+              <li><strong>Diameter of Earth:</strong> Calculated as 8,000 miles (~12,742 km), matching modern polar-equatorial averages within a 1% margin.</li>
+              <li><strong>Ghatikā Yantra:</strong> Precision copper water basin with a micro-orifice that sank into water over exactly one *Ghatika* (24 minutes).</li>
+            </ul>
+
+            <div class="diagram-embed">
+              <img src="Assets/diagrams/panchanga_elements.svg" alt="Panchanga Elements">
+              <span class="diagram-caption">Figure 5: Mathematical Coordinates of the 5 Panchanga Astronomical Coordinates</span>
+            </div>
+
+            <h4>2. The 5 Limbs of the Panchanga (पञ्चाङ्ग)</h4>
+            <p>The traditional Hindu lunisolar calendar calculates time using five exact celestial coordinates:</p>
+            <ol>
+              <li><strong>Tithi (Lunar Day):</strong> The time taken for the angular longitudinal separation between the Moon and Sun to increase by $12^\circ$ ($\Delta \theta = \theta_m - \theta_s = 12^\circ$). 30 Tithis make one lunar month (15 in *Shukla Paksha*, 15 in *Krishna Paksha*).</li>
+              <li><strong>Vāra (Solar Weekday):</strong> The solar day reckoned from true local sunrise to sunrise. 7 Varas named after presiding celestial bodies (Ravivara, Somavara, Mangalavara, Budhavara, Brihaspativara, Shukravara, Shanivara).</li>
+              <li><strong>Nakṣatra (Lunar Mansion):</strong> The $360^\circ$ ecliptic zodiac divided into 27 equal segments of $13^\circ 20'$ each, tracking the Moon's path through prominent star constellations (from Ashvini to Revati).</li>
+              <li><strong>Yoga (Angular Longitudinal Sum):</strong> The combined angular position of Sun and Moon divided by $13^\circ 20'$ ($\theta_m + \theta_s = 13^\circ 20' \times k$). There are 27 Yogas evaluating psychological and environmental harmony.</li>
+              <li><strong>Karaṇa (Half-Tithi):</strong> Half of a Tithi ($6^\circ$ elongation between Moon and Sun). There are 60 Karanas in a lunar month (7 movable and 4 fixed).</li>
+            </ol>
+
+            <h4>3. Cosmic Time Scales: From Micro-seconds to Kalpas</h4>
+            <p>Ancient Indian timekeeping bridged microscopic instants with macrocosmic cycles (*Kāla Cakra*):</p>
+            <ul>
+              <li><strong>Micro-Units:</strong> 1 *Truṭi* ($\approx 29.6 \ \mu\text{s}$) $\to$ 1 *Nimiṣa* (blinking of an eye, $\approx 0.213\text{ s}$) $\to$ 1 *Kāṣṭhā* $\to$ 1 *Kalā* $\to$ 1 *Ghaṭikā* ($24\text{ minutes}$).</li>
+              <li><strong>Macro-Units:</strong> 1 *Caturyuga* ($4.32 \times 10^6$ solar years) $\to$ 1 *Kalpa* (Day of Brahma = 1,000 Caturyugas = $4.32 \times 10^9$ solar years), closely approximating modern cosmological astrophysical estimates for the age of planetary systems.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- QUESTION 10: Ancient Indian Civil Engineering, Metallurgy & Architecture (5 Marks) -->
+        <div class="question-card" data-domain="history">
+          <div class="card-top-meta">
+            <span class="marks-badge marks-5">5 Marks • Applied Engineering</span>
+            <span class="domain-tag">Engineering &amp; Metallurgy • Marwale Digest</span>
+          </div>
+          <h3 class="question-title">Q10. Evaluate the engineering marvels of ancient India across Wootz steel, Harappan hydraulic town planning, Western Indian stepwells (Baolis), and Vastu Shastra grids.</h3>
+          <div class="rubric-pill">
+            <span>🎯 Marking Rubric:</span>
+            <span>Wootz Steel &amp; Nanotubes (1.5M)</span> • 
+            <span>Harappan Sanitation &amp; Dholavira (1.5M)</span> • 
+            <span>Baolis / Stepwells Hydraulics (1M)</span> • 
+            <span>Vastu Mandala Grids (1M)</span>
+          </div>
+          <div class="solution-body">
+            <h4>1. Wootz Steel &amp; Nanomaterial Metallurgy</h4>
+            <p>Originating in southern India (Tamil: *Ukku*, Kannada: *Uku*), <strong>Wootz steel</strong> was an ultra-high-carbon crucible steel (1.0–1.6% Carbon) exported across the ancient world to forge legendary Damascus swords. Wrought iron was sealed inside high-temperature refractory clay crucibles alongside carbon-rich biomass (leaves of *Cassia auriculata*) and heated to $1,400^\circ\text{C}$. In 2006, electron microscopy at the University of Dresden revealed that Wootz steel contained <strong>carbon nanotubes and cementite nanowires</strong>, explaining its unprecedented tensile strength, razor sharpness, and characteristic flowing water-wave surface pattern (*Jauhar*).</p>
+
+            <h4>2. Harappan Hydraulic Engineering (Sindhu-Saraswati Civilization)</h4>
+            <p>Dating back to 2600 BCE, Harappan cities like Mohenjo-Daro, Harappa, and Dholavira exhibited the world's most advanced subterranean hydraulic sanitary grids:</p>
+            <ul>
+              <li><strong>Standardized Masonry:</strong> Strict 4:2:1 length-to-width-to-thickness brick ratios ensuring seismic resilience.</li>
+              <li><strong>Underground Drainage:</strong> Covered terracotta brick conduits with inspection manholes and sediment settling traps alongside every paved street.</li>
+              <li><strong>Dholavira Water Harvesting:</strong> A series of 16 massive stone-cut interlinked reservoirs storing over 250,000 cubic meters of seasonal rainwater in the arid Rann of Kutch.</li>
+            </ul>
+
+            <h4>3. Subterranean Stepwells (*Bāolīs* / *Vāvs*)</h4>
+            <p>Engineered throughout Gujarat and Rajasthan (e.g., Rani ki Vav, Chand Baori), stepwells represent sophisticated subterranean hydraulic architecture. They tapped high water tables during monsoons, maintained natural evaporative micro-cooling during scorching summers, and incorporated subterranean pavilion galleries that doubled as community social sanctums.</p>
+
+            <h4>4. Vāstu Puruṣa Mandala Spatial Planning</h4>
+            <p>Ancient civil architecture relied on modular geometric fractal grids:</p>
+            <ul>
+              <li><strong>Paramasayika Mandala (9×9 = 81 squares):</strong> Used for temple sanctuaries and civic town planning.</li>
+              <li><strong>Manduka Mandala (8×8 = 64 squares):</strong> Used for domestic habitation and public halls.</li>
+              <li><strong>Brahmasthana:</strong> The open central courtyard ensuring natural cross-ventilation, daylighting, and seismic energy distribution.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 5: SPECIALIZED SHORT-REVISION HIGH-YIELD REFERENCE TABLES        -->
+    <!-- ========================================================================= -->
+    <div id="revision-sec" class="tables-section">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title"><span>📊</span> Specialized Short-Revision Heritage Matrices</h2>
+          <p class="section-desc">High-yield comparative reference tables designed for rapid university exam revision and conceptual recall.</p>
+        </div>
+      </div>
+
+      <!-- Table 1: Indian Astronomy vs Ptolemaic Geocentrism -->
+      <div class="table-card">
+        <h3>🌌 Table 1: Indian Astronomy (Aryabhata) vs Western Ptolemaic Model</h3>
+        <p class="table-sub">Comparative analysis of cosmological mechanics, earth rotation, and eclipse theories.</p>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Indian Siddhantic Astronomy (Aryabhata, 499 CE)</th>
+              <th>Western Classical Astronomy (Ptolemy, ~150 CE)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Diurnal Motion of Earth</strong></td>
+              <td>Earth rotates daily on its axis from West to East (*Bhramana*); apparent planetary motion is relative.</td>
+              <td>Earth is completely static, immovable, and anchored at the absolute center of the universe.</td>
+            </tr>
+            <tr>
+              <td><strong>Cause of Day &amp; Night</strong></td>
+              <td>Axial rotation of the spherical terrestrial globe (*Bhu-gola*).</td>
+              <td>The entire celestial sphere and starry vault rotate around the stationary Earth once every 24 hours.</td>
+            </tr>
+            <tr>
+              <td><strong>Eclipse Mechanism</strong></td>
+              <td>Pure optical shadow phenomenon: Lunar eclipse = Earth's shadow (*Bha-chāyā*) on Moon; Solar eclipse = Moon blocking Sun.</td>
+              <td>Early Mediterranean folklore attributed eclipses to mythological omens or complex crystalline epicycles.</td>
+            </tr>
+            <tr>
+              <td><strong>Value of $\pi$</strong></td>
+              <td>Calculated $\pi \approx 3.1416$ ($62832 / 20000$); designated explicitly as *Asanna* (approximative).</td>
+              <td>Ptolemy used $377/120 \approx 3.14166$, derived from Archimedean polygon perimeters.</td>
+            </tr>
+            <tr>
+              <td><strong>Cosmological Time Scales</strong></td>
+              <td>Cyclic Mahayugas ($4.32 \times 10^6$ years) and Kalpas ($4.32 \times 10^9$ years).</td>
+              <td>Linear, short-timeline biblical cosmology spanning only a few thousand years.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table 2: Charaka Samhita vs Sushruta Samhita -->
+      <div class="table-card">
+        <h3>🩺 Table 2: Charaka Samhita (Medicine) vs Sushruta Samhita (Surgery)</h3>
+        <p class="table-sub">Core distinctions between the two foundational pillars of classical Ayurveda (*Brihat Trayi*).</p>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Caraka Saṁhitā (Kayachikitsa / Internal Medicine)</th>
+              <th>Suśruta Saṁhitā (Shalyatantra / Surgical Science)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Founding Master</strong></td>
+              <td>Acharya Charaka (based on Agnivesha's earlier treatise).</td>
+              <td>Acharya Sushruta (Father of Surgery, practicing in Varanasi).</td>
+            </tr>
+            <tr>
+              <td><strong>Primary Specialization</strong></td>
+              <td><strong>Kāyacikitsā:</strong> Systemic pathology, etiology, pharmacology, digestive fire (*Agni*), and metabolic homeostasis.</td>
+              <td><strong>Śalyatantra:</strong> Operative surgical techniques, wound excision, anatomical dissection, and plastic reconstruction.</td>
+            </tr>
+            <tr>
+              <td><strong>Pathological Triad</strong></td>
+              <td>Detailed Tridosha homeostasis (*Vāta*, *Pitta*, *Kapha*) and 7 bodily tissues (*Dhatus*).</td>
+              <td>Emphasizes *Rakta* (blood) as the fourth vital humor alongside Vata, Pitta, and Kapha.</td>
+            </tr>
+            <tr>
+              <td><strong>Instrumentation</strong></td>
+              <td>Pharmaceutical formulation apparatus, decoction vessels, steam fermentation baths.</td>
+              <td>Over <strong>101 blunt instruments (*Yantras*)</strong> and <strong>20 sharp steel instruments (*Shastras*)</strong> modeled on animal/bird jaws.</td>
+            </tr>
+            <tr>
+              <td><strong>Pioneering Surgeries</strong></td>
+              <td>Preventive lifestyle regimens: *Dinacharya* (daily routine) and *Ritucharya* (seasonal adaptation).</td>
+              <td>Earliest recorded <strong>Rhinoplasty</strong> (forehead flap reconstruction), cataract couching, lithotomy (bladder stone removal), and cesarean delivery.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table 3: Sulba Sutras vs Pythagorean Geometry -->
+      <div class="table-card">
+        <h3>📐 Table 3: Baudhayana Sulba Sutras vs Pythagorean Formulations</h3>
+        <p class="table-sub">Pre-Pythagorean geometric theorems, square-circle transformations, and $\sqrt{2}$ approximations.</p>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Mathematical Concept</th>
+              <th>Baudhayana Sulba Sutra (~800 BCE)</th>
+              <th>Greek Pythagorean School (~500 BCE)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Diagonal Theorem Statement</strong></td>
+              <td><em>"Dīrghasyākṣaṇayā rajjuḥ..."</em>: The diagonal rope of a rectangle produces an area equal to both the flank and horizontal sides.</td>
+              <td>The square on the hypotenuse of a right-angled triangle equals the sum of the squares on the other two sides.</td>
+            </tr>
+            <tr>
+              <td><strong>Chronological Precedence</strong></td>
+              <td>Documented ~800 BCE in context of Vedic sacrificial fire altars (*Yagyavedis*).</td>
+              <td>Formulated ~530–500 BCE by Pythagoras of Samos (~300 years later).</td>
+            </tr>
+            <tr>
+              <td><strong>Approximation of $\sqrt{2}$</strong></td>
+              <td>$\sqrt{2} \approx 1 + \frac{1}{3} + \frac{1}{3 \times 4} - \frac{1}{3 \times 4 \times 34} = \frac{577}{408} \approx 1.4142156$ (Accurate to 5 decimals).</td>
+              <td>Hippasus discovered that $\sqrt{2}$ is irrational, reportedly leading to philosophical scandal and crisis in the Pythagorean brotherhood.</td>
+            </tr>
+            <tr>
+              <td><strong>Practical Application</strong></td>
+              <td>Geometric altar transformations (Squaring the Circle, doubling area without changing shapes).</td>
+              <td>Abstract, mystical number worship and pure deductive planar geometry.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table 4: Vedic Mathematics 16 Sutras Matrix -->
+      <div class="table-card">
+        <h3>⚡ Table 4: The 16 Vedic Mathematics Sutras &amp; Computational Applications</h3>
+        <p class="table-sub">Reconstructed from Atharvavedic appendices by Swami Bharati Krishna Tirtha (1884–1960).</p>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Vedic Sutra (Sanskrit)</th>
+              <th>English Meaning</th>
+              <th>Primary Computational Domain</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><strong>Ekādhikena Pūrveṇa</strong></td>
+              <td>By one more than the previous one</td>
+              <td>Squaring numbers ending in 5 ($45^2 = (4 \times 5) \ | \ 25 = 2025$), recurring decimals.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><strong>Nikhilaṁ Navataścaramaṁ Daśataḥ</strong></td>
+              <td>All from 9 and the last from 10</td>
+              <td>Multiplication of numbers near base powers of 10 ($98 \times 96$), division by 9/99.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td><strong>Ūrdhva-Tiryagbhyām</strong></td>
+              <td>Vertically and crosswise</td>
+              <td>General multiplication of any $N$-digit numbers, matrix determinants, division.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td><strong>Parāvartya Yojayet</strong></td>
+              <td>Transpose and apply</td>
+              <td>Synthetic algebraic division, solving simultaneous linear equations.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td><strong>Śūnyaṁ Sāmyasamuccaye</strong></td>
+              <td>When the collection is equal, it is zero</td>
+              <td>Solving algebraic equations by inspection (e.g., $(x+1)+(x+2) = (x+3)$).</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td><strong>Ānurūpye Śūnyamanyat</strong></td>
+              <td>If one is in ratio, the other is zero</td>
+              <td>Solving simultaneous linear equations with proportional coefficients.</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td><strong>Saṅkalana-Vyavakalana-bhyām</strong></td>
+              <td>By addition and by subtraction</td>
+              <td>Elimination in symmetric simultaneous equations ($ax+by=c$ and $bx+ay=d$).</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td><strong>Pūraṇāpūraṇābhyām</strong></td>
+              <td>By completion or non-completion</td>
+              <td>Solving cubic equations, completing squares in quadratic equations.</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td><strong>Calana-Kalanābhyām</strong></td>
+              <td>By differential calculus motion</td>
+              <td>Factorization of quadratic polynomials, finding roots via derivative steps.</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td><strong>Yāvadūnam</strong></td>
+              <td>By the deficiency</td>
+              <td>Squaring and cubing numbers close to powers of 10 ($103^2 = 106 \ | \ 09 = 10609$).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Table 5: Ancient Indian Universities -->
+      <div class="table-card">
+        <h3>🏛️ Table 5: Ancient Indian Universities &amp; Knowledge Centers</h3>
+        <p class="table-sub">Global residential centers of higher learning that attracted scholars across Asia.</p>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>University</th>
+              <th>Location &amp; Epoch</th>
+              <th>Academic Specialization</th>
+              <th>Notable Scholars &amp; Architecture</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Takṣaśilā (Taxila)</strong></td>
+              <td>Gandhara (Rawalpindi) • ~6th C BCE – 5th C CE</td>
+              <td>Medicine (Ayurveda), military science (Dhanurveda), statecraft, Paninian linguistics, astronomy.</td>
+              <td>Panini, Kautilya (Chanakya), Charaka, King Prasenajit, Jivaka (physician to Lord Buddha).</td>
+            </tr>
+            <tr>
+              <td><strong>Nālandā</strong></td>
+              <td>Magadha (Bihar) • 5th C – 12th C CE</td>
+              <td>Mahayana &amp; Hinayana logic, epistemology, mathematics, metallurgy, international scholars.</td>
+              <td>Aryabhata, Nagarjuna, Dharmapala, Xuanzang; 9-story library (*Dharmaganja*) containing millions of texts.</td>
+            </tr>
+            <tr>
+              <td><strong>Valabhī</strong></td>
+              <td>Saurashtra (Gujarat) • 6th C – 12th C CE</td>
+              <td>Administrative statecraft, business jurisprudence, Hinayana philosophy, maritime commerce economics.</td>
+              <td>Gunamati, Sthiramati; recognized rival to Nalanda, noted by Chinese traveler Yijing.</td>
+            </tr>
+            <tr>
+              <td><strong>Vikramaśīlā</strong></td>
+              <td>Bhagalpur (Bihar) • 8th C – 12th C CE</td>
+              <td>Advanced Buddhist logic, Tantric chemistry, metallurgy, grammar, metaphysics.</td>
+              <td>Founded by King Dharmapala; headed by Atisha Dipankara (who transmitted Buddhist sciences to Tibet).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- FOOTER                                                                    -->
+    <!-- ========================================================================= -->
     <footer>
       <a href="../index.html" class="back-btn">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-        Back to Semester III Portal
+        Back to Semester III Academic Portal
       </a>
-      <span>Academic Portal • Semester III (OEIKS001)</span>
+      <span>Academic Blueprint &amp; Digital Treatise • Semester III (OEIKS001)</span>
     </footer>
+
   </div>
 
+  <!-- Lightbox Modal Container -->
+  <div class="lightbox-modal" id="lightboxModal" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <img src="" alt="Classroom Zoom" class="lightbox-img" id="lightboxImage">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC: TIMELINE, SANDBOXES, SEARCH & LIGHTBOX                  -->
+  <!-- ========================================================================= -->
   <script>
-    const matrixData = {
-      panini: {
-        tag: 'Computational Linguistics',
-        heading: "Panini: The World's First Formal Language Specification",
-        desc: "Panini's Ashtadhyayi composed ~4,000 algorithmic rules using auxiliary symbols (it-markers) and meta-rules (paribhāṣā). It generates the entire Sanskrit phonology and morphology through context-sensitive derivation steps.",
-        csTitle: '⚡ Modern Computer Science Parallel',
-        csDesc: 'Direct historical precursor to Backus-Naur Form (BNF) used in compiler construction, context-free grammars (Noam Chomsky), and modern production rule expert systems.'
-      },
-      pingala: {
-        tag: 'Binary Combinatorics & Information Theory',
-        heading: "Pingala: Binary Numbers & Combinatorial Meru Prastara",
-        desc: "In the Chandas Shastra (~300 BCE), Pingala categorized poetic meters into binary short (Laghu) and long (Guru) syllables, developing algorithms for binary conversion, binomial coefficients, and combinatorial expansion.",
-        csTitle: '⚡ Modern Computer Science Parallel',
-        csDesc: 'The earliest documented binary representation of numbers, preceded Leibniz by nearly 2,000 years, along with the Pascal triangle and Fibonacci series generators.'
+    // ─── 1. TIMELINE DATA & INTERACTION ───
+    const eraData = {
+      vedic: {
+        badge: "Era 1 • Rigveda, Shatapatha Brahmana, Vedangas (~1500 – 800 BCE)",
+        title: "The Vedic Corpus: Epistemic & Cosmological Genesis",
+        desc: "The oldest extant philosophical and scientific literature in Indo-European history. Composed in an oral mnemonic system with zero phonetic corruption across millennia. Embedded early astronomy (nakshatras), decimal counting in powers of ten up to 10¹² (Parardha), and the moral-cosmic regulatory principle of Rta.",
+        features: [
+          "<strong>Shatapatha Brahmana:</strong> Detailed astronomical alignment of fire altars with solstice and equinox coordinates.",
+          "<strong>Decimal Nomenclature:</strong> Discrete words for powers of 10: Eka, Dasha, Shatam, Sahasram up to Antya.",
+          "<strong>Ghana & Jata Patha:</strong> Permutative error-correcting recitation algorithms preserving oral integrity."
+        ],
+        diagram: "Assets/diagrams/pramana_epistemology.svg"
       },
       sulba: {
-        tag: 'Sacred Geometry & Approximations',
-        heading: 'Baudhayana Sulba Sutras: Pre-Pythagorean Geometry',
-        desc: 'Detailed geometric rules for constructing fire altars of specific areas. Contains explicit statement of the Pythagorean theorem and rational approximation of sqrt(2) accurate to five decimal places.',
-        csTitle: '⚡ Modern Engineering Parallel',
-        csDesc: 'Algorithmic geometric transformations (squaring the circle, doubling rectangles) equivalent to modern computer-aided drafting and numerical rational approximations.'
+        badge: "Era 2 • Baudhayana, Apastamba, Katyayana (~800 – 500 BCE)",
+        title: "Sulba Sutras: Sacred Geometry & Altar Engineering",
+        desc: "The earliest documented planar and spatial geometry manuals in the world. Formulated explicit rules for constructing complex tiered brick fire altars (Yagyavedis) of precise square, circular, and avian geometries.",
+        features: [
+          "<strong>Baudhayana Theorem:</strong> Explicit pre-Pythagorean statement of the diagonal rope theorem (d² = a² + b²).",
+          "<strong>Precision Approximation of √2:</strong> Calculated as 1 + 1/3 + 1/12 - 1/408 = 577/408 ≈ 1.4142156 (accurate to 5 decimals).",
+          "<strong>Geometric Transformations:</strong> Squaring the circle and doubling altar volume while preserving planar geometry."
+        ],
+        diagram: "Assets/diagrams/sulba_sutra_geometry.svg"
       },
-      aryabhata: {
-        tag: 'Siddhantic Mathematics & Planetary Motion',
-        heading: 'Aryabhata: Decimal Value, Sine Differences & Diophantine Equations',
-        desc: 'In 499 CE, Aryabhata presented the approximation of pi = 3.1416, computed first differences of sine functions (Jya-ardha), declared the earth rotates on its axis, and invented the Kuttaka pulverized algorithm.',
-        csTitle: '⚡ Modern Computing Parallel',
-        csDesc: 'The Kuttaka method is functionally identical to the Extended Euclidean Algorithm used extensively in modern RSA cryptography and modular arithmetic engines.'
+      formal: {
+        badge: "Era 3 • Panini & Pingala (~500 – 300 BCE)",
+        title: "Panini & Pingala: Formal Metalanguages & Binary Codes",
+        desc: "A golden epoch of formal logic, linguistic generative rules, and binary combinatorics that laid the bedrock for modern computer science, compiling theory, and discrete mathematics.",
+        features: [
+          "<strong>Panini's Ashtadhyayi:</strong> 3,959 generative rules using Shiva Sutras and auxiliary markers; direct precursor to Backus-Naur Form (BNF).",
+          "<strong>Pingala's Chhandas Shastra:</strong> Laghu (0) and Guru (1) binary meter expansion and combinatorics.",
+          "<strong>Meru Prastara:</strong> Halayudha's pyramid of binomial coefficients, anticipating Pascal's triangle by 1,800 years."
+        ],
+        diagram: "Assets/diagrams/pingala_binary_meru.svg"
       },
-      madhava: {
-        tag: 'Infinite Series & Kerala Calculus',
-        heading: 'Madhava: Infinite Series for Trigonometric Functions',
-        desc: 'In the 14th century, Madhava founded the Kerala School of Astronomy and Mathematics, discovering infinite power series for sine, cosine, and arctangent with error correction terms centuries before Newton or Leibniz.',
-        csTitle: '⚡ Modern Engineering Parallel',
-        csDesc: 'Modern floating-point math libraries (IEEE 754) still use Taylor-Maclaurin series approximations derived from the same mathematical foundations for trigonometric function calculation.'
+      classical: {
+        badge: "Era 4 • Patanjali, Kanada & Aryabhata (~200 BCE – 600 CE)",
+        title: "Classical Golden Age: Atomism, Yoga & Astronomy",
+        desc: "Simultaneous flowering of physical atomism, empirical psychology, and planetary mathematics during the classical and Gupta eras.",
+        features: [
+          "<strong>Kanada's Vaisheshika Atomism:</strong> Indivisible Parmanu combining into Dvayanuka (diatomic) and Tryanuka (triad matter).",
+          "<strong>Patanjali's Yoga Sutras:</strong> Definition of cognitive mastery as 'Yogas Citta-Vritti-Nirodha' with 8 limbs.",
+          "<strong>Aryabhata's Aryabhatiya (499 CE):</strong> Axial diurnal rotation of Earth, shadow eclipse theory, and π ≈ 3.1416."
+        ],
+        diagram: "Assets/diagrams/aryabhata_earth_eclipse.svg"
       },
-      metallurgy: {
-        tag: 'Applied Materials Science',
-        heading: 'Wootz Crucible Steel & High-Purity Zinc Distillation',
-        desc: 'Ancient Indian metallurgists pioneered crucible steel production (Wootz) with ultra-high carbon content (1.5%) creating carbon nanotube structures, and invented downward condenser furnaces for smelting zinc at Zawar.',
-        csTitle: '⚡ Modern Materials Science Parallel',
-        csDesc: 'High-temperature nano-carbide engineering and vacuum distillation techniques that form the bedrock of modern advanced alloy manufacturing.'
+      brahmagupta: {
+        badge: "Era 5 • Brahmagupta & Bhaskara II (598 – 1150 CE)",
+        title: "Algebraic Synthesis: Zero, Negative Numbers & Pell's Equation",
+        desc: "The maturation of indeterminate algebra, cyclic Diophantine solvers, and early concepts of the differential calculus.",
+        features: [
+          "<strong>Brahmagupta (628 CE):</strong> First systematic arithmetic operations on Zero and negative numbers; cyclic quadrilateral area formula.",
+          "<strong>Bhaskara II (1150 CE):</strong> Lilavati, Bijaganita, and the legendary Chakravala method for Pell's equation x² - Dy² = 1.",
+          "<strong>Calculus Precursors:</strong> Instantaneous velocity (Tatkalika gati) and differential d(sin θ) = cos θ dθ."
+        ],
+        diagram: "Assets/diagrams/panchanga_elements.svg"
+      },
+      kerala: {
+        badge: "Era 6 • Madhava, Parameshvara & Nilakantha (14th – 16th C CE)",
+        title: "Kerala School: Precursors to Modern Infinite Calculus",
+        desc: "The Kerala School of Astronomy and Mathematics founded by Madhava of Sangamagrama developed power series expansions for trigonometric functions centuries before Gregory, Newton, or Leibniz.",
+        features: [
+          "<strong>Madhava-Leibniz Series:</strong> Infinite series for π: π/4 = 1 - 1/3 + 1/5 - 1/7 + ... with remainder correction terms.",
+          "<strong>Madhava-Newton Series:</strong> Infinite power series expansions for Sine and Cosine.",
+          "<strong>Yuktibhasa (1530 CE):</strong> Authored by Jyesthadeva, recognized as the world's first complete textbook of calculus."
+        ],
+        diagram: "Assets/diagrams/wootz_steel_crucible.svg"
       }
     };
 
-    function selectMatrix(key, el) {
-      document.querySelectorAll('.matrix-item').forEach(i => i.classList.remove('active'));
-      el.classList.add('active');
+    function switchEra(eraKey, element) {
+      document.querySelectorAll('.era-pill').forEach(btn => btn.classList.remove('active'));
+      element.classList.add('active');
 
-      const item = matrixData[key];
-      document.getElementById('matTag').innerText = item.tag;
-      document.getElementById('matHeading').innerText = item.heading;
-      document.getElementById('matDesc').innerText = item.desc;
-      document.getElementById('matCSTitle').innerText = item.csTitle;
-      document.getElementById('matCSDesc').innerText = item.csDesc;
+      const data = eraData[eraKey];
+      document.getElementById('eraBadge').innerText = data.badge;
+      document.getElementById('eraTitle').innerText = data.title;
+      document.getElementById('eraDesc').innerText = data.desc;
+      
+      const featuresList = document.getElementById('eraFeatures');
+      featuresList.innerHTML = '';
+      data.features.forEach(feat => {
+        const li = document.createElement('li');
+        li.innerHTML = feat;
+        featuresList.appendChild(li);
+      });
+
+      document.getElementById('eraDiagramImg').src = data.diagram;
     }
 
-    selectMatrix('panini', document.querySelector('.matrix-item'));
+    // ─── 2. VEDIC MATHEMATICS SANDBOX ───
+    function runUrdhva() {
+      const a = parseInt(document.getElementById('utA').value, 10);
+      const b = parseInt(document.getElementById('utB').value, 10);
+      const out = document.getElementById('utOutput');
+
+      if (isNaN(a) || isNaN(b) || a < 10 || a > 99 || b < 10 || b > 99) {
+        out.innerHTML = '<span style="color:#ef4444;">Please enter two 2-digit numbers between 10 and 99.</span>';
+        return;
+      }
+
+      const a1 = Math.floor(a / 10), a0 = a % 10;
+      const b1 = Math.floor(b / 10), b0 = b % 10;
+
+      // Step 1: Vertical right
+      const step1 = a0 * b0;
+      const unitDigit = step1 % 10;
+      const carry1 = Math.floor(step1 / 10);
+
+      // Step 2: Crosswise
+      const crossSum = (a1 * b0) + (a0 * b1);
+      const step2 = crossSum + carry1;
+      const tensDigit = step2 % 10;
+      const carry2 = Math.floor(step2 / 10);
+
+      // Step 3: Vertical left
+      const step3 = (a1 * b1) + carry2;
+
+      const product = (step3 * 100) + (tensDigit * 10) + unitDigit;
+
+      out.innerHTML = `
+        <div class="highlight">Solving: ${a} × ${b} via Ūrdhva-Tiryagbhyām</div>
+        <div>Step 1 (Vertical Right): ${a0} × ${b0} = ${step1} → <span class="highlight">Units: ${unitDigit}, Carry: ${carry1}</span></div>
+        <div class="cross-step">Step 2 (Crosswise Sum): (${a1} × ${b0}) + (${a0} × ${b1}) = ${a1*b0} + ${a0*b1} = ${crossSum}; + Carry ${carry1} = ${step2} → <span class="highlight">Tens: ${tensDigit}, Carry: ${carry2}</span></div>
+        <div>Step 3 (Vertical Left): (${a1} × ${b1}) + Carry ${carry2} = ${a1*b1} + ${carry2} = <span class="highlight">${step3}</span></div>
+        <div style="margin-top: 0.5rem; color: #10b981; font-weight: 700;">Final Computed Product: ${product.toLocaleString()} (${a * b === product ? '✓ Verified' : 'Error'})</div>
+      `;
+    }
+
+    function runNikhilam() {
+      const a = parseInt(document.getElementById('nikA').value, 10);
+      const b = parseInt(document.getElementById('nikB').value, 10);
+      const out = document.getElementById('nikOutput');
+
+      if (isNaN(a) || isNaN(b) || a < 50 || a > 99 || b < 50 || b > 99) {
+        out.innerHTML = '<span style="color:#ef4444;">Please enter two numbers near base 100 (50 to 99).</span>';
+        return;
+      }
+
+      const base = 100;
+      const d1 = base - a;
+      const d2 = base - b;
+
+      const left = a - d2; // or b - d1
+      const right = d1 * d2;
+
+      let rightStr = right.toString();
+      if (rightStr.length === 1) rightStr = '0' + rightStr;
+
+      const product = a * b;
+
+      out.innerHTML = `
+        <div class="highlight">Solving: ${a} × ${b} (Working Base = 100)</div>
+        <div>Deficiency 1: 100 - ${a} = <span class="cross-step">-${d1}</span></div>
+        <div>Deficiency 2: 100 - ${b} = <span class="cross-step">-${d2}</span></div>
+        <div>Left Part (Diagonal Subtraction): ${a} - ${d2} = <span class="highlight">${left}</span></div>
+        <div>Right Part (Multiply Deficiencies): (-${d1}) × (-${d2}) = <span class="highlight">${rightStr}</span></div>
+        <div style="margin-top: 0.5rem; color: #10b981; font-weight: 700;">Final Computed Product: ${product.toLocaleString()} (Left: ${left} | Right: ${rightStr})</div>
+      `;
+    }
+
+    // ─── 3. LIGHTBOX VIEWER ───
+    function openLightbox(src, caption) {
+      document.getElementById('lightboxImage').src = src;
+      document.getElementById('lightboxCaption').innerText = caption;
+      document.getElementById('lightboxModal').classList.add('active');
+    }
+    function closeLightbox(e) {
+      if (!e || e.target.id === 'lightboxModal' || e.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightboxModal').classList.remove('active');
+      }
+    }
+
+    // ─── 4. SEARCH AND CATEGORY FILTER ───
+    let currentCategory = 'all';
+
+    function setCategory(cat, btn) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterQuestions();
+    }
+
+    function filterQuestions() {
+      const q = document.getElementById('questionSearch').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.question-card');
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        const domain = card.getAttribute('data-domain');
+
+        const matchesQuery = text.includes(q);
+        const matchesCat = (currentCategory === 'all' || domain === currentCategory);
+
+        if (matchesQuery && matchesCat) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
   </script>
 </body>
 </html>
